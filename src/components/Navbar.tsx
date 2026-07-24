@@ -108,7 +108,7 @@ export function Navbar() {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Chains
+                CHAINS
                 <span className="text-[0.65em] text-ink/40 group-hover:text-ink/70" aria-hidden>
                   ▾
                 </span>
@@ -205,7 +205,7 @@ export function Navbar() {
                   setChainsOpen((v) => !v);
                 }}
               >
-                <span>Chains</span>
+                <span>CHAINS</span>
                 <span className="text-muted" aria-hidden>
                   {chainsOpen ? '▴' : '▾'}
                 </span>
