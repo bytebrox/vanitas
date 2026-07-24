@@ -12,7 +12,7 @@ export function Footer({ compact = false }: FooterProps) {
     <footer
       className={`px-4 sm:px-8 lg:px-12 border-t border-ink/15 ${
         compact
-          ? 'py-3 sm:py-5'
+          ? 'py-3 sm:py-5 border-t-0'
           : 'mt-14 sm:mt-20 py-8 sm:py-10 pb-[max(2rem,env(safe-area-inset-bottom))]'
       }`}
     >
@@ -27,11 +27,11 @@ export function Footer({ compact = false }: FooterProps) {
           </p>
           <p
             className={`text-micro text-muted max-w-sm leading-relaxed normal-case tracking-normal ${
-              compact ? 'line-clamp-2' : ''
+              compact ? 'line-clamp-2 sm:line-clamp-none' : ''
             }`}
           >
-            Client-side vanity tooling for Solana, EVM, Bitcoin, Tron, Aptos & Sui. No project token. No key leaves this device.
-            {' '}Dev’d by{' '}
+            Client-side vanity tooling for Solana, EVM, Bitcoin, Tron, Aptos & Sui. No project token. No key leaves this
+            device. Dev’d by{' '}
             <a
               href="https://x.com/bytebrox"
               target="_blank"
@@ -43,18 +43,44 @@ export function Footer({ compact = false }: FooterProps) {
             .
           </p>
         </div>
-        <div className="flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-2 text-micro uppercase tracking-[0.14em] sm:tracking-[0.16em] text-muted">
-          <a href="/" className="hover:text-ink py-1">Home</a>
-          <a href="/sol" className="hover:text-ink py-1">SOL</a>
-          <a href="/evm" className="hover:text-ink py-1">EVM</a>
-          <a href="/btc" className="hover:text-ink py-1">BTC</a>
-          <a href="/tron" className="hover:text-ink py-1">TRON</a>
-          <a href="/aptos" className="hover:text-ink py-1">APTOS</a>
-          <a href="/sui" className="hover:text-ink py-1">SUI</a>
-          <a href="/security" className="hover:text-ink py-1">Security</a>
-          <a href="/audit" className="hover:text-ink py-1">Audit</a>
-          <a href="/faq" className="hover:text-ink py-1">FAQ</a>
-          <a href="/how-it-works" className="hover:text-ink py-1">How</a>
+        <div className="flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-1.5 text-micro uppercase tracking-[0.14em] sm:tracking-[0.16em] text-muted">
+          {!compact && (
+            <>
+              <a href="/" className="hover:text-ink py-1">
+                Home
+              </a>
+              <a href="/sol" className="hover:text-ink py-1">
+                SOL
+              </a>
+              <a href="/evm" className="hover:text-ink py-1">
+                EVM
+              </a>
+              <a href="/btc" className="hover:text-ink py-1">
+                BTC
+              </a>
+              <a href="/tron" className="hover:text-ink py-1">
+                TRON
+              </a>
+              <a href="/aptos" className="hover:text-ink py-1">
+                APTOS
+              </a>
+              <a href="/sui" className="hover:text-ink py-1">
+                SUI
+              </a>
+            </>
+          )}
+          <a href="/security" className="hover:text-ink py-1">
+            Security
+          </a>
+          <a href="/audit" className="hover:text-ink py-1">
+            Audit
+          </a>
+          <a href="/faq" className="hover:text-ink py-1">
+            FAQ
+          </a>
+          <a href="/how-it-works" className="hover:text-ink py-1">
+            How
+          </a>
           <a
             href="https://github.com/bytebrox/vanitas"
             target="_blank"

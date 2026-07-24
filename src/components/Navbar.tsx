@@ -4,14 +4,17 @@ import { useEffect, useState } from 'react';
 
 const GITHUB_URL = 'https://github.com/bytebrox/vanitas';
 
+const chains = [
+  { href: '/sol', label: 'Solana', short: 'SOL' },
+  { href: '/evm', label: 'EVM', short: 'EVM' },
+  { href: '/btc', label: 'Bitcoin', short: 'BTC' },
+  { href: '/tron', label: 'Tron', short: 'TRON' },
+  { href: '/aptos', label: 'Aptos', short: 'APTOS' },
+  { href: '/sui', label: 'Sui', short: 'SUI' },
+];
+
 const links = [
   { href: '/', label: 'Home' },
-  { href: '/sol', label: 'SOL' },
-  { href: '/evm', label: 'EVM' },
-  { href: '/btc', label: 'BTC' },
-  { href: '/tron', label: 'TRON' },
-  { href: '/aptos', label: 'APTOS' },
-  { href: '/sui', label: 'SUI' },
   { href: '/how-it-works', label: 'How' },
   { href: '/faq', label: 'FAQ' },
   { href: '/security', label: 'Security' },
@@ -39,6 +42,7 @@ function GitHubIcon({ className = '' }: { className?: string }) {
  */
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [chainsOpen, setChainsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -51,7 +55,10 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (!open) return;
+    if (!open) {
+      setChainsOpen(false);
+      return;
+    }
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setOpen(false);
     };
@@ -87,9 +94,50 @@ export function Navbar() {
               scrolled ? 'bg-transparent' : 'bg-paper/50 backdrop-blur-sm'
             }`}
           >
-            {links.map((l, i) => (
+            <a href="/" className="px-1.5 py-0.5 hover:text-ink transition-colors whitespace-nowrap">
+              Home
+            </a>
+            <span className="text-ink/25 px-0.5" aria-hidden>
+              ·
+            </span>
+
+            <div className="relative group">
+              <button
+                type="button"
+                className="px-1.5 py-0.5 hover:text-ink transition-colors whitespace-nowrap inline-flex items-center gap-1"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Chains
+                <span className="text-[0.65em] text-ink/40 group-hover:text-ink/70" aria-hidden>
+                  ▾
+                </span>
+              </button>
+              <div
+                className="invisible opacity-0 pointer-events-none group-hover:visible group-hover:opacity-100 group-hover:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100 group-focus-within:pointer-events-auto absolute left-1/2 -translate-x-1/2 top-full pt-2 transition-opacity duration-150 z-50"
+              >
+                <div className="min-w-[11rem] border border-ink/15 bg-paper shadow-[0_8px_24px_rgba(0,0,0,0.08)] py-1">
+                  {chains.map((c) => (
+                    <a
+                      key={c.href}
+                      href={c.href}
+                      className="flex items-baseline justify-between gap-6 px-3.5 py-2.5 text-micro uppercase tracking-[0.14em] text-ink/75 hover:text-ink hover:bg-ink/[0.04] transition-colors"
+                    >
+                      <span>{c.label}</span>
+                      <span className="text-ink/35 normal-case tracking-normal text-[0.7rem]">
+                        {c.short}
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {links.slice(1).map((l) => (
               <span key={l.href} className="flex items-center gap-1">
-                {i > 0 && <span className="text-ink/25 px-0.5" aria-hidden>·</span>}
+                <span className="text-ink/25 px-0.5" aria-hidden>
+                  ·
+                </span>
                 <a href={l.href} className="px-1.5 py-0.5 hover:text-ink transition-colors whitespace-nowrap">
                   {l.label}
                 </a>
@@ -117,7 +165,9 @@ export function Navbar() {
             className={`md:hidden text-micro uppercase tracking-[0.16em] min-h-11 min-w-[4.5rem] px-3 py-2 text-ink/80 ${
               scrolled || open ? 'bg-transparent' : 'bg-paper/50 backdrop-blur-sm'
             }`}
-            onClick={() => { setOpen((v) => !v); }}
+            onClick={() => {
+              setOpen((v) => !v);
+            }}
             aria-expanded={open}
             aria-controls="mobile-nav"
           >
@@ -132,15 +182,66 @@ export function Navbar() {
           className="pointer-events-auto md:hidden mt-3 -mx-4 sm:-mx-6 border-t border-ink/10 bg-paper/98 backdrop-blur-md animate-fade-in-up"
         >
           <ul className="flex flex-col divide-y divide-ink/10">
-            {links.map((l) => (
+            <li>
+              <a
+                href="/"
+                className="flex items-center justify-between px-5 py-3.5 text-sm uppercase tracking-[0.16em] text-ink/85 hover:text-ink hover:bg-ink/[0.03] active:bg-ink/[0.05]"
+                onClick={() => {
+                  setOpen(false);
+                }}
+              >
+                <span>Home</span>
+                <span className="text-muted" aria-hidden>
+                  →
+                </span>
+              </a>
+            </li>
+            <li>
+              <button
+                type="button"
+                className="flex w-full items-center justify-between px-5 py-3.5 text-sm uppercase tracking-[0.16em] text-ink/85 hover:text-ink hover:bg-ink/[0.03]"
+                aria-expanded={chainsOpen}
+                onClick={() => {
+                  setChainsOpen((v) => !v);
+                }}
+              >
+                <span>Chains</span>
+                <span className="text-muted" aria-hidden>
+                  {chainsOpen ? '▴' : '▾'}
+                </span>
+              </button>
+              {chainsOpen && (
+                <ul className="border-t border-ink/10 bg-ink/[0.02]">
+                  {chains.map((c) => (
+                    <li key={c.href}>
+                      <a
+                        href={c.href}
+                        className="flex items-center justify-between px-5 pl-8 py-3 text-sm uppercase tracking-[0.16em] text-ink/75 hover:text-ink hover:bg-ink/[0.03]"
+                        onClick={() => {
+                          setOpen(false);
+                        }}
+                      >
+                        <span>{c.label}</span>
+                        <span className="text-muted text-micro tracking-[0.12em]">{c.short}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+            {links.slice(1).map((l) => (
               <li key={l.href}>
                 <a
                   href={l.href}
                   className="flex items-center justify-between px-5 py-3.5 text-sm uppercase tracking-[0.16em] text-ink/85 hover:text-ink hover:bg-ink/[0.03] active:bg-ink/[0.05]"
-                  onClick={() => { setOpen(false); }}
+                  onClick={() => {
+                    setOpen(false);
+                  }}
                 >
                   <span>{l.label}</span>
-                  <span className="text-muted" aria-hidden>→</span>
+                  <span className="text-muted" aria-hidden>
+                    →
+                  </span>
                 </a>
               </li>
             ))}
@@ -150,13 +251,17 @@ export function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-between px-5 py-3.5 text-sm uppercase tracking-[0.16em] text-ink/85 hover:text-ink hover:bg-ink/[0.03]"
-                onClick={() => { setOpen(false); }}
+                onClick={() => {
+                  setOpen(false);
+                }}
               >
                 <span className="inline-flex items-center gap-2">
                   <GitHubIcon />
                   GitHub
                 </span>
-                <span className="text-muted" aria-hidden>↗</span>
+                <span className="text-muted" aria-hidden>
+                  ↗
+                </span>
               </a>
             </li>
           </ul>
