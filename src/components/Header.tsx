@@ -5,7 +5,7 @@ import { HeroBand } from './HeroBand';
 
 interface HeaderProps {
   imageSrc?: string;
-  mode?: 'wallet' | 'mint' | 'eth';
+  mode?: 'wallet' | 'mint' | 'evm';
 }
 
 export function Header({
@@ -14,19 +14,19 @@ export function Header({
 }: HeaderProps) {
   const copy = useFadeIn();
   const isMint = mode === 'mint';
-  const isEth = mode === 'eth';
+  const isEvm = mode === 'evm';
 
-  const heroEyebrow = isEth ? 'EVM forge' : isMint ? 'Mint forge' : 'Wallet forge';
-  const heroTitle = isEth ? 'Ethereum' : 'Solana';
+  const heroEyebrow = isEvm ? '0x forge' : isMint ? 'Mint forge' : 'Wallet forge';
+  const heroTitle = isEvm ? 'EVM' : 'Solana';
 
-  const headline = isEth
+  const headline = isEvm
     ? 'Name the 0x. Same key everywhere.'
     : isMint
       ? 'Name the mint. Launch with presence.'
       : 'Name the address. Keep the key.';
 
-  const blurb = isEth
-    ? 'Generate vanity Ethereum wallet or contract addresses — entirely in this browser. Works on every EVM chain.'
+  const blurb = isEvm
+    ? 'Generate vanity wallet or contract addresses — entirely in this browser. One key works on Ethereum, BNB Smart Chain, Base, Arbitrum, Optimism, and every other EVM chain.'
     : isMint
       ? 'Generate a vanity Solana mint for any launchpad — entirely in this browser.'
       : 'Generate a vanity Solana wallet address — entirely in this browser, on your CPU.';
@@ -37,7 +37,7 @@ export function Header({
         imageSrc={imageSrc}
         title={heroTitle}
         eyebrow={heroEyebrow}
-        chain={isEth ? 'eth' : 'sol'}
+        chain={isEvm ? 'evm' : 'sol'}
         scrollHref="#forge"
         scrollLabel="Scroll to forge"
       />

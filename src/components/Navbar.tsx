@@ -7,7 +7,7 @@ const GITHUB_URL = 'https://github.com/bytebrox/vanitas';
 const links = [
   { href: '/', label: 'Home' },
   { href: '/sol', label: 'SOL' },
-  { href: '/eth', label: 'ETH' },
+  { href: '/evm', label: 'EVM' },
   { href: '/how-it-works', label: 'How' },
   { href: '/faq', label: 'FAQ' },
   { href: '/security', label: 'Security' },

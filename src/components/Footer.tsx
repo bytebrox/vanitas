@@ -46,7 +46,7 @@ export function Footer({ compact = false }: FooterProps) {
         <div className="flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-2 text-micro uppercase tracking-[0.14em] sm:tracking-[0.16em] text-muted">
           <a href="/" className="hover:text-ink py-1">Home</a>
           <a href="/sol" className="hover:text-ink py-1">SOL</a>
-          <a href="/eth" className="hover:text-ink py-1">ETH</a>
+          <a href="/evm" className="hover:text-ink py-1">EVM</a>
           <a href="/security" className="hover:text-ink py-1">Security</a>
           <a href="/audit" className="hover:text-ink py-1">Audit</a>
           <a href="/faq" className="hover:text-ink py-1">FAQ</a>

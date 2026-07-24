@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 const links = [
   { href: '/sol', label: 'SOL forge' },
-  { href: '/eth', label: 'ETH forge' },
+  { href: '/evm', label: 'EVM forge' },
   { href: '/how-it-works', label: 'How it works' },
   { href: '/faq', label: 'FAQ' },
 ];

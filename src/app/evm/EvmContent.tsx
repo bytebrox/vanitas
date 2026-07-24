@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * ETH forge — wallet + contract on one page (slider toggle)
+ * EVM forge — wallet + contract on one page (slider toggle)
  */
 
 import { useState, useCallback, useEffect, useRef } from 'react';
@@ -17,13 +17,13 @@ import {
   EthDifficultyDisplay,
   EthResultDisplay,
 } from '@/components';
-import { EthHeader } from './EthHeader';
+import { EvmHeader } from './EvmHeader';
 import { useEthGenerator } from '@/hooks/useEthGenerator';
 import { useSound } from '@/hooks/useSound';
 import { validateEthPrefix, validateEthSuffix, estimateEthDifficulty } from '@/lib/eth-validation';
 import type { EthMode, GeneratedEthResult } from '@/types/eth';
 
-export function EthContent() {
+export function EvmContent() {
   const { state, start, stop, reset, updateConfig, maxThreads } = useEthGenerator();
   const { soundEnabled, toggleSound, playSuccessSound } = useSound();
   const [copied, setCopied] = useState(false);
@@ -61,7 +61,7 @@ export function EthContent() {
     if (prefix) params.set('prefix', prefix);
     if (suffix) params.set('suffix', suffix);
     const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
-    const shareUrl = `${baseUrl}/eth?${params.toString()}`;
+    const shareUrl = `${baseUrl}/evm?${params.toString()}`;
     navigator.clipboard.writeText(shareUrl).then(() => {
       setCopied(true);
       setTimeout(() => { setCopied(false); }, 2000);
@@ -92,7 +92,7 @@ export function EthContent() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <EthHeader />
+      <EvmHeader />
 
       <main id="forge" className="flex-1 px-4 sm:px-8 lg:px-8 xl:px-12 pb-16 scroll-mt-24">
         <ContentWithSide imageSrc="/ascii/side-forum.webp" caption="Fig. VII — Forum">
@@ -155,12 +155,12 @@ export function EthContent() {
                 </div>
 
                 <p className="text-micro text-muted leading-relaxed max-w-xl normal-case tracking-normal">
-                EVM addresses are chain-agnostic: the same 0x key works on Ethereum mainnet,
-                L2s, and Robinhood Chain. Solana forges live on{' '}
-                <a href="/sol" className="underline underline-offset-2 decoration-ink/30 hover:decoration-ink">
-                  SOL
-                </a>
-                .
+                  Same 0x key on Ethereum, BNB Smart Chain, Base, Arbitrum, Optimism, Polygon,
+                  and every other EVM network. Solana forges live on{' '}
+                  <a href="/sol" className="underline underline-offset-2 decoration-ink/30 hover:decoration-ink">
+                    SOL
+                  </a>
+                  .
                 </p>
 
                 <div className="flex flex-wrap gap-x-8 gap-y-2 text-micro uppercase tracking-[0.16em] text-muted">

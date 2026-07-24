@@ -6,7 +6,7 @@
  */
 
 import { Navbar, Footer } from '@/components';
-import { SolanaLogo, EthereumLogo } from '@/components/ChainLogos';
+import { SolanaLogo, EvmChainLogos } from '@/components/ChainLogos';
 
 const PAPER = '#F5F0E8';
 
@@ -57,9 +57,9 @@ export function LandingContent() {
                 className="landing-forge-box group flex flex-col justify-between px-4 py-4 sm:px-6 sm:py-6 min-h-0 sm:min-h-[10rem] active:scale-[0.99] transition-transform"
               >
                 <div className="relative z-[1]">
-                  <div className="flex items-center gap-2.5 mb-1.5 sm:mb-2">
-                    <SolanaLogo className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
-                    <p className="text-micro uppercase tracking-[0.18em] text-muted">Solana</p>
+                  <p className="text-micro uppercase tracking-[0.18em] text-muted mb-1.5 sm:mb-2">Solana</p>
+                  <div className="mb-2 sm:mb-2.5">
+                    <SolanaLogo className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
                   <p className="font-display text-lg sm:text-2xl font-semibold text-ink normal-case tracking-tight mb-1.5 sm:mb-2">
                     Wallet &amp; mint
@@ -77,21 +77,24 @@ export function LandingContent() {
               </a>
 
               <a
-                href="/eth"
+                href="/evm"
                 className="landing-forge-box group flex flex-col justify-between px-4 py-4 sm:px-6 sm:py-6 min-h-0 sm:min-h-[10rem] active:scale-[0.99] transition-transform"
               >
                 <div className="relative z-[1]">
-                  <div className="flex items-center gap-2.5 mb-1.5 sm:mb-2">
-                    <EthereumLogo className="w-4 h-[1.35rem] sm:w-[1.15rem] sm:h-[1.85rem] shrink-0" />
-                    <p className="text-micro uppercase tracking-[0.18em] text-muted">Ethereum</p>
+                  <p className="text-micro uppercase tracking-[0.18em] text-muted mb-1.5 sm:mb-2">EVM</p>
+                  <div className="mb-2 sm:mb-2.5" aria-label="Ethereum, BNB, Base, Arbitrum, Optimism">
+                    <EvmChainLogos />
                   </div>
                   <p className="font-display text-lg sm:text-2xl font-semibold text-ink normal-case tracking-tight mb-1.5 sm:mb-2">
                     Wallet &amp; contract
                   </p>
                   <p className="text-sm text-muted leading-relaxed normal-case tracking-normal">
-                    <span className="sm:hidden">0x vanity wallets and contracts — every EVM chain.</span>
+                    <span className="sm:hidden">
+                      One 0x key for Ethereum, BNB, Base, Arbitrum, Optimism &amp; more.
+                    </span>
                     <span className="hidden sm:inline">
-                      Forge 0x vanity wallets and contracts — same key on every EVM chain.
+                      One 0x vanity key for Ethereum, BNB Smart Chain, Base, Arbitrum, Optimism,
+                      and every other EVM network.
                     </span>
                   </p>
                 </div>

@@ -200,7 +200,7 @@ export default function SecurityPage() {
 
             <Section id="crypto" n="03 — Crypto" title="Cryptographic security">
               <p>
-                Solana forges use Ed25519; Ethereum forges use secp256k1 + keccak-256. Randomness
+                Solana forges use Ed25519; EVM forges use secp256k1 + keccak-256. Randomness
                 comes from the browser CSPRNG.
               </p>
               <div className="border-y border-ink/15">

@@ -188,7 +188,7 @@ export function SolContent() {
                       {copied ? 'Copied' : 'Share pattern'}
                     </button>
                   )}
-                  <a href="/eth" className="hover:text-ink">ETH forge</a>
+                  <a href="/evm" className="hover:text-ink">EVM forge</a>
                   <a href="/how-it-works" className="hover:text-ink">How it works</a>
                   <a href="/audit" className="hover:text-ink">Live audit</a>
                 </div>

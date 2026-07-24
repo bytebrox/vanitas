@@ -44,7 +44,58 @@ const faqs: FAQItem[] = [
   {
     category: 'General',
     question: 'What\'s the difference between Wallet and Token Mint generator?',
-    answer: 'The Wallet generator creates vanity addresses for your personal wallet. The Token Mint generator creates vanity addresses for token contracts - useful when launching tokens on any Solana launchpad or DEX. Technically they\'re identical (both Ed25519 keypairs), but the usage is different.',
+    answer: 'On the Solana forge, Wallet creates a vanity address for your personal wallet. Mint creates a vanity token mint for launchpads. Technically they\'re the same Ed25519 keypairs — the difference is how you use them.',
+  },
+  {
+    category: 'General',
+    question: 'What\'s the difference between the Solana and EVM forges?',
+    answer:
+      'Solana uses Base58 Ed25519 addresses (Phantom, Solflare, etc.). The EVM forge uses 0x hex addresses (secp256k1). That same private key works on every EVM chain — Ethereum, BNB, Base, Arbitrum, and more — so you do not need a separate tool per network.',
+  },
+
+  // Ethereum / EVM
+  {
+    category: 'Ethereum / EVM',
+    question: 'Which chains work with the EVM forge?',
+    answer: (
+      <div className="space-y-2">
+        <p>
+          Any EVM-compatible chain. A vanity wallet or contract address from the{' '}
+          <a href="/evm" className="text-accent hover:underline">
+            EVM forge
+          </a>{' '}
+          is a standard <span className="font-mono">0x</span> address. The same private key
+          produces the same address on every EVM network — there is no separate key per chain.
+        </p>
+        <p>That includes, among others:</p>
+        <ul className="list-disc list-inside space-y-1 text-muted">
+          <li>Ethereum mainnet</li>
+          <li>BNB Smart Chain (BSC)</li>
+          <li>Base</li>
+          <li>Arbitrum</li>
+          <li>Optimism</li>
+          <li>Polygon</li>
+          <li>Avalanche C-Chain</li>
+          <li>Robinhood Chain and other EVM L1s / L2s</li>
+        </ul>
+        <p>
+          Import the key into MetaMask, Rabby, or any EVM wallet, switch the network, and the
+          address matches. Contract mode (CREATE · nonce 0) follows the same rule on every EVM chain.
+        </p>
+      </div>
+    ),
+  },
+  {
+    category: 'Ethereum / EVM',
+    question: 'Do I need a separate generator for BNB / BSC?',
+    answer:
+      'No. BNB Smart Chain is EVM-compatible, so addresses from the EVM forge work on BSC without any extra step. A dedicated “BNB generator” would search the same 0x space. (This does not cover old BNB Beacon Chain bech32 addresses that start with bnb1 — those are a different format.)',
+  },
+  {
+    category: 'Ethereum / EVM',
+    question: 'What can I forge on the EVM page?',
+    answer:
+      'Two modes: a vanity wallet (EOA) whose 0x address matches your hex pattern, or a vanity contract address derived from the first deploy of that key (CREATE with nonce 0). Both work on every EVM chain listed above.',
   },
 
   // Token Mint
