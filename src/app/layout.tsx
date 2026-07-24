@@ -9,7 +9,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://vanitas.fun'),
+  metadataBase: new URL('https://www.vanitas.fun'),
   title: {
     default: 'Vanitas | Solana & Ethereum Vanity Address Forge',
     template: '%s | Vanitas',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     'ed25519',
     'evm vanity',
   ],
-  authors: [{ name: 'Bytebrox', url: 'https://vanitas.fun' }],
+  authors: [{ name: 'Bytebrox', url: 'https://www.vanitas.fun' }],
   creator: 'Bytebrox',
   publisher: 'Vanitas',
   applicationName: 'Vanitas',
@@ -35,17 +35,17 @@ export const metadata: Metadata = {
     title: 'Vanitas | Solana & Ethereum Vanity Address Forge',
     description:
       'Forge vanity addresses for Solana and Ethereum entirely in your browser. No keys leave this device.',
-    url: 'https://vanitas.fun',
+    url: 'https://www.vanitas.fun',
     siteName: 'Vanitas',
     type: 'website',
     locale: 'en_US',
     images: [
       {
-        url: '/og-home.webp',
+        url: '/og-home.jpg',
         width: 1200,
         height: 630,
         alt: 'Vanitas — Solana & Ethereum vanity forge',
-        type: 'image/webp',
+        type: 'image/jpeg',
       },
     ],
   },
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     title: 'Vanitas | Solana & Ethereum Vanity Address Forge',
     description:
       'Forge vanity addresses for Solana and Ethereum entirely in your browser.',
-    images: ['/og-home.webp'],
+    images: ['/og-home.jpg'],
   },
   robots: {
     index: true,
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://vanitas.fun',
+    canonical: 'https://www.vanitas.fun',
   },
 };
 

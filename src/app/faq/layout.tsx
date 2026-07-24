@@ -15,17 +15,17 @@ export const metadata: Metadata = {
     title: 'FAQ | Vanitas',
     description:
       'Security, performance, wallets, mints — common questions about Vanitas.',
-    url: 'https://vanitas.fun/faq',
+    url: 'https://www.vanitas.fun/faq',
     siteName: 'Vanitas',
     type: 'website',
     locale: 'en_US',
     images: [
       {
-        url: '/og-faq.webp',
+        url: '/og-faq.jpg',
         width: 1200,
         height: 630,
         alt: 'Vanitas FAQ',
-        type: 'image/webp',
+        type: 'image/jpeg',
       },
     ],
   },
@@ -34,10 +34,10 @@ export const metadata: Metadata = {
     title: 'FAQ | Vanitas',
     description:
       'Security, performance, wallets, mints — common questions about Vanitas.',
-    images: ['/og-faq.webp'],
+    images: ['/og-faq.jpg'],
   },
   alternates: {
-    canonical: 'https://vanitas.fun/faq',
+    canonical: 'https://www.vanitas.fun/faq',
   },
 };
 

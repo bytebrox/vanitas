@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: 'Redirects to the EVM vanity forge.',
   robots: { index: false, follow: true },
   alternates: {
-    canonical: 'https://vanitas.fun/evm',
+    canonical: 'https://www.vanitas.fun/evm',
   },
 };
 

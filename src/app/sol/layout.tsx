@@ -18,17 +18,17 @@ export const metadata: Metadata = {
     title: 'Solana Vanity Address Generator | Vanitas',
     description:
       'Forge vanity Solana wallet and mint addresses client-side. No keys leave this device.',
-    url: 'https://vanitas.fun/sol',
+    url: 'https://www.vanitas.fun/sol',
     siteName: 'Vanitas',
     type: 'website',
     locale: 'en_US',
     images: [
       {
-        url: '/og-wallet.webp',
+        url: '/og-wallet.jpg',
         width: 1200,
         height: 630,
         alt: 'Vanitas — Solana vanity forge',
-        type: 'image/webp',
+        type: 'image/jpeg',
       },
     ],
   },
@@ -37,10 +37,10 @@ export const metadata: Metadata = {
     title: 'Solana Vanity Address Generator | Vanitas',
     description:
       'Forge vanity Solana wallet and mint addresses client-side.',
-    images: ['/og-wallet.webp'],
+    images: ['/og-wallet.jpg'],
   },
   alternates: {
-    canonical: 'https://vanitas.fun/sol',
+    canonical: 'https://www.vanitas.fun/sol',
   },
 };
 

@@ -16,17 +16,17 @@ export const metadata: Metadata = {
     title: 'Security | Vanitas',
     description:
       'Your keys never leave this browser. Architecture, storage, crypto, and how to verify it.',
-    url: 'https://vanitas.fun/security',
+    url: 'https://www.vanitas.fun/security',
     siteName: 'Vanitas',
     type: 'website',
     locale: 'en_US',
     images: [
       {
-        url: '/og-security.webp',
+        url: '/og-security.jpg',
         width: 1200,
         height: 630,
         alt: 'Vanitas security — keys stay in your browser',
-        type: 'image/webp',
+        type: 'image/jpeg',
       },
     ],
   },
@@ -35,10 +35,10 @@ export const metadata: Metadata = {
     title: 'Security | Vanitas',
     description:
       'Your keys never leave this browser. Open source and verifiable.',
-    images: ['/og-security.webp'],
+    images: ['/og-security.jpg'],
   },
   alternates: {
-    canonical: 'https://vanitas.fun/security',
+    canonical: 'https://www.vanitas.fun/security',
   },
 };
 

@@ -16,17 +16,17 @@ export const metadata: Metadata = {
     title: 'Live Audit | Vanitas',
     description:
       'Eight automated checks in your browser. Nothing is faked, nothing is sent.',
-    url: 'https://vanitas.fun/audit',
+    url: 'https://www.vanitas.fun/audit',
     siteName: 'Vanitas',
     type: 'website',
     locale: 'en_US',
     images: [
       {
-        url: '/og-audit.webp',
+        url: '/og-audit.jpg',
         width: 1200,
         height: 630,
         alt: 'Vanitas live security audit',
-        type: 'image/webp',
+        type: 'image/jpeg',
       },
     ],
   },
@@ -35,10 +35,10 @@ export const metadata: Metadata = {
     title: 'Live Audit | Vanitas',
     description:
       'Eight automated checks in your browser. Nothing is faked, nothing is sent.',
-    images: ['/og-audit.webp'],
+    images: ['/og-audit.jpg'],
   },
   alternates: {
-    canonical: 'https://vanitas.fun/audit',
+    canonical: 'https://www.vanitas.fun/audit',
   },
 };
 

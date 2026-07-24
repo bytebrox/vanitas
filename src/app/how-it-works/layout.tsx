@@ -15,17 +15,17 @@ export const metadata: Metadata = {
     title: 'How it Works | Vanitas',
     description:
       'Native browser cryptography at 100K+ keys/sec. Everything runs on your device.',
-    url: 'https://vanitas.fun/how-it-works',
+    url: 'https://www.vanitas.fun/how-it-works',
     siteName: 'Vanitas',
     type: 'website',
     locale: 'en_US',
     images: [
       {
-        url: '/og-how.webp',
+        url: '/og-how.jpg',
         width: 1200,
         height: 630,
         alt: 'Vanitas — how vanity address generation works',
-        type: 'image/webp',
+        type: 'image/jpeg',
       },
     ],
   },
@@ -34,10 +34,10 @@ export const metadata: Metadata = {
     title: 'How it Works | Vanitas',
     description:
       'Native browser cryptography at 100K+ keys/sec. Everything runs on your device.',
-    images: ['/og-how.webp'],
+    images: ['/og-how.jpg'],
   },
   alternates: {
-    canonical: 'https://vanitas.fun/how-it-works',
+    canonical: 'https://www.vanitas.fun/how-it-works',
   },
 };
 

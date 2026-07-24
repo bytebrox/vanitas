@@ -19,17 +19,17 @@ export const metadata: Metadata = {
     title: 'EVM Vanity Address Generator | Vanitas',
     description:
       'Forge vanity 0x wallet and contract addresses client-side. Same key on Ethereum, BNB, Base, Arbitrum, and every EVM chain.',
-    url: 'https://vanitas.fun/evm',
+    url: 'https://www.vanitas.fun/evm',
     siteName: 'Vanitas',
     type: 'website',
     locale: 'en_US',
     images: [
       {
-        url: '/og-eth.webp',
+        url: '/og-eth.jpg',
         width: 1200,
         height: 630,
         alt: 'Vanitas — EVM vanity wallet & contract generator',
-        type: 'image/webp',
+        type: 'image/jpeg',
       },
     ],
   },
@@ -38,10 +38,10 @@ export const metadata: Metadata = {
     title: 'EVM Vanity Address Generator | Vanitas',
     description:
       'Forge vanity 0x wallet and contract addresses client-side. Same key on every EVM chain.',
-    images: ['/og-eth.webp'],
+    images: ['/og-eth.jpg'],
   },
   alternates: {
-    canonical: 'https://vanitas.fun/evm',
+    canonical: 'https://www.vanitas.fun/evm',
   },
 };
 

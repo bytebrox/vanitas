@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Token Mint Generator',
   robots: { index: false, follow: true },
   alternates: {
-    canonical: 'https://vanitas.fun/sol?mode=mint',
+    canonical: 'https://www.vanitas.fun/sol?mode=mint',
   },
 };
 
