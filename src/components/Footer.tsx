@@ -51,6 +51,14 @@ export function Footer({ compact = false }: FooterProps) {
           <a href="/audit" className="hover:text-ink py-1">Audit</a>
           <a href="/faq" className="hover:text-ink py-1">FAQ</a>
           <a href="/how-it-works" className="hover:text-ink py-1">How</a>
+          <a
+            href="https://github.com/bytebrox/vanitas"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-ink py-1"
+          >
+            GitHub
+          </a>
           <span className="py-1">© {year}</span>
         </div>
       </div>

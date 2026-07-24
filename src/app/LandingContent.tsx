@@ -6,6 +6,7 @@
  */
 
 import { Navbar, Footer } from '@/components';
+import { SolanaLogo, EthereumLogo } from '@/components/ChainLogos';
 
 const PAPER = '#F5F0E8';
 
@@ -56,7 +57,10 @@ export function LandingContent() {
                 className="landing-forge-box group flex flex-col justify-between px-4 py-4 sm:px-6 sm:py-6 min-h-0 sm:min-h-[10rem] active:scale-[0.99] transition-transform"
               >
                 <div className="relative z-[1]">
-                  <p className="text-micro uppercase tracking-[0.18em] text-muted mb-1.5 sm:mb-2">Solana</p>
+                  <div className="flex items-center gap-2.5 mb-1.5 sm:mb-2">
+                    <SolanaLogo className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
+                    <p className="text-micro uppercase tracking-[0.18em] text-muted">Solana</p>
+                  </div>
                   <p className="font-display text-lg sm:text-2xl font-semibold text-ink normal-case tracking-tight mb-1.5 sm:mb-2">
                     Wallet &amp; mint
                   </p>
@@ -77,7 +81,10 @@ export function LandingContent() {
                 className="landing-forge-box group flex flex-col justify-between px-4 py-4 sm:px-6 sm:py-6 min-h-0 sm:min-h-[10rem] active:scale-[0.99] transition-transform"
               >
                 <div className="relative z-[1]">
-                  <p className="text-micro uppercase tracking-[0.18em] text-muted mb-1.5 sm:mb-2">Ethereum</p>
+                  <div className="flex items-center gap-2.5 mb-1.5 sm:mb-2">
+                    <EthereumLogo className="w-4 h-[1.35rem] sm:w-[1.15rem] sm:h-[1.85rem] shrink-0" />
+                    <p className="text-micro uppercase tracking-[0.18em] text-muted">Ethereum</p>
+                  </div>
                   <p className="font-display text-lg sm:text-2xl font-semibold text-ink normal-case tracking-tight mb-1.5 sm:mb-2">
                     Wallet &amp; contract
                   </p>

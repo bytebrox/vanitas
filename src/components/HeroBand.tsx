@@ -2,12 +2,15 @@
 
 import { Navbar } from './Navbar';
 import { useHeroScrollFade } from '@/hooks/useHeroScrollFade';
+import { SolanaLogo, EthereumLogo } from './ChainLogos';
 
 interface HeroBandProps {
   imageSrc: string;
   /** Centered page label on the hero */
   title?: string;
   eyebrow?: string;
+  /** Official chain mark beside the title */
+  chain?: 'sol' | 'eth';
   /** Anchor for the scroll cue */
   scrollHref?: string;
   scrollLabel?: string;
@@ -24,6 +27,7 @@ export function HeroBand({
   imageSrc,
   title,
   eyebrow,
+  chain,
   scrollHref = '#content',
   scrollLabel = 'Scroll down',
 }: HeroBandProps) {
@@ -93,9 +97,17 @@ export function HeroBand({
                 {eyebrow}
               </p>
             )}
-            <h1 className="font-display text-[2rem] leading-tight sm:text-5xl md:text-6xl font-semibold tracking-tight text-ink normal-case drop-shadow-sm max-w-[16rem] sm:max-w-3xl">
-              {title}
-            </h1>
+            <div className="flex items-center justify-center gap-2.5 sm:gap-4 max-w-[16rem] sm:max-w-3xl">
+              {chain === 'sol' && (
+                <SolanaLogo className="w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 shrink-0 drop-shadow-sm" />
+              )}
+              {chain === 'eth' && (
+                <EthereumLogo className="w-5 h-8 sm:w-7 sm:h-11 md:w-8 md:h-12 shrink-0 drop-shadow-sm" />
+              )}
+              <h1 className="font-display text-[2rem] leading-tight sm:text-5xl md:text-6xl font-semibold tracking-tight text-ink normal-case drop-shadow-sm">
+                {title}
+              </h1>
+            </div>
             <a
               href={scrollHref}
               className="mt-6 sm:mt-10 inline-flex flex-col items-center gap-1.5 sm:gap-2 text-[0.65rem] sm:text-micro uppercase tracking-[0.18em] sm:tracking-[0.2em] text-ink/80 hover:text-ink transition-colors min-h-11 justify-center"

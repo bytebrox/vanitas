@@ -37,6 +37,7 @@ export function Header({
         imageSrc={imageSrc}
         title={heroTitle}
         eyebrow={heroEyebrow}
+        chain={isEth ? 'eth' : 'sol'}
         scrollHref="#forge"
         scrollLabel="Scroll to forge"
       />
