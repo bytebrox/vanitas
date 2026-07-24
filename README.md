@@ -4,28 +4,28 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Live Audit](https://img.shields.io/badge/Live_Audit-vanitas.fun%2Faudit-8B7355.svg)](https://vanitas.fun/audit)
 
-**Forge vanity addresses for Solana, EVM, Bitcoin, Tron, Aptos, and Sui — entirely in your browser.**
+**Forge vanity addresses for Solana, EVM, Bitcoin, Tron, Aptos, and Sui, entirely in your browser.**
 
-Create personalized wallet (and related) addresses that start or end with patterns you choose. All cryptographic work runs locally — private keys never leave your device.
+Create personalized wallet (and related) addresses that start or end with patterns you choose. All cryptographic work runs locally; private keys never leave your device.
 
 Website: [vanitas.fun](https://vanitas.fun)
 
 ## Forges
 
-| Forge | Use Case | URL |
-|-------|----------|-----|
-| **Solana** | Wallet + token mint (Base58 Ed25519) | `/sol` |
-| **EVM** | Wallet, CREATE nonce 0, CREATE2 salt / deployer | `/evm` |
-| **Bitcoin** | Legacy `1…`, SegWit `bc1q…`, Taproot `bc1p…` (WIF) | `/btc` |
-| **Tron** | Wallet + CREATE nonce 0 (`T…` Base58Check) | `/tron` |
-| **Aptos** | Hex account addresses (Ed25519) | `/aptos` |
-| **Sui** | Hex account addresses (Ed25519) | `/sui` |
+| | Forge | Use Case | URL |
+|---|-------|----------|-----|
+| <img src="public/chains/solana.svg" width="20" height="20" alt="Solana" /> | **Solana** | Wallet + token mint (Base58 Ed25519) | `/sol` |
+| <img src="public/chains/ethereum.svg" width="20" height="20" alt="Ethereum" /> | **EVM** | Wallet, CREATE nonce 0, CREATE2 salt / deployer | `/evm` |
+| <img src="public/chains/bitcoin.svg" width="20" height="20" alt="Bitcoin" /> | **Bitcoin** | Legacy `1…`, SegWit `bc1q…`, Taproot `bc1p…` (WIF) | `/btc` |
+| <img src="public/chains/tron.svg" width="20" height="20" alt="Tron" /> | **Tron** | Wallet + CREATE nonce 0 (`T…` Base58Check) | `/tron` |
+| <img src="public/chains/aptos.svg" width="20" height="20" alt="Aptos" /> | **Aptos** | Hex account addresses (Ed25519) | `/aptos` |
+| <img src="public/chains/sui.svg" width="20" height="20" alt="Sui" /> | **Sui** | Hex account addresses (Ed25519) | `/sui` |
 
 Legacy `/token` redirects to `/sol?mode=mint`. `/eth` redirects to `/evm`.
 
 ## What is a Vanity Address?
 
-A vanity address contains a recognizable pattern instead of looking fully random — for example `VANI…` on Solana, `0xcafe…` on EVM, or a memorable Bitcoin / Tron prefix. Useful for public wallets, donations, and branding.
+A vanity address contains a recognizable pattern instead of looking fully random, for example `VANI…` on Solana, `0xcafe…` on EVM, or a memorable Bitcoin / Tron prefix. Useful for public wallets, donations, and branding.
 
 ## Features
 
@@ -56,7 +56,7 @@ Vanitas is designed with one principle: **your private keys should never leave y
 
 This tool is provided as-is. Always verify generated keys work correctly before using them for significant transactions. The authors are not responsible for any loss of funds.
 
-*Not affiliated with Solana, Ethereum, Bitcoin, Tron, or any related foundation or project.*
+*Not affiliated with Solana, Ethereum, Bitcoin, Tron, Aptos, Sui, or any related foundation or project.*
 
 ## License
 

@@ -72,12 +72,12 @@ export function TronLogo({ className = 'w-5 h-5', title = 'Tron' }: LogoProps) {
   return <ChainImg src="/chains/tron.svg" title={title} className={className} />;
 }
 
-/** Aptos mark (simple placeholder) */
+/** Official Aptos logomark */
 export function AptosLogo({ className = 'w-5 h-5', title = 'Aptos' }: LogoProps) {
   return <ChainImg src="/chains/aptos.svg" title={title} className={className} />;
 }
 
-/** Sui mark (simple placeholder) */
+/** Official Sui logomark */
 export function SuiLogo({ className = 'w-5 h-5', title = 'Sui' }: LogoProps) {
   return <ChainImg src="/chains/sui.svg" title={title} className={className} />;
 }
