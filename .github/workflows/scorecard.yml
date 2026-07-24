@@ -27,6 +27,9 @@ jobs:
           results_file: results.sarif
           results_format: sarif
           publish_results: true
+          # Analyze the git tree (not the export tarball) so SECURITY.md
+          # and Dependabot config are always visible to Scorecard.
+          file_mode: git
 
       - name: Upload SARIF results
         uses: github/codeql-action/upload-sarif@7434149006143a4d75b82a2f411ef15b03ccc2d7 # v4
