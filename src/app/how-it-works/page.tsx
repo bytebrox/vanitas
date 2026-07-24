@@ -39,15 +39,17 @@ export default function HowItWorksPage() {
           <div className="space-y-4">
             <Section n="01 — Performance" title="Native speed">
               <p>
-                <strong className="text-ink">Vanitas</strong> uses the native Web Crypto API for Ed25519 —
+                <strong className="text-ink">Vanitas</strong> runs generation in Web Workers on your CPU.
+                The Solana forge uses the native Web Crypto Ed25519 path where available —
                 up to <span className="text-ink">100,000+ keys/sec</span>, about{' '}
                 <span className="text-ink">125×</span> faster than typical JS implementations.
+                EVM, Bitcoin, and Tron forges use audited secp256k1 stacks with the same multi-core model.
               </p>
               <p className="font-mono text-sm text-ink/70">
-                100K+/s · 125× · 100% local
+                Multi-core · 100% local · four forges
               </p>
               <p>
-                Chrome 113+, Firefox 129+, Safari 17+ use native Ed25519. Older browsers fall back to WASM.
+                Chrome 113+, Firefox 129+, Safari 17+ use native Ed25519 for Solana. Older browsers fall back to WASM.
               </p>
             </Section>
 
@@ -76,9 +78,11 @@ export default function HowItWorksPage() {
               </p>
               <p>
                 <strong className="text-ink">Workers</strong> parallelize across your CPU cores — more cores, more speed.
+                Each forge has its own worker bundle (`sol`, `evm`, `btc`, `tron`).
               </p>
               <p>
-                <strong className="text-ink">Crypto</strong> — Ed25519 via Web Crypto (or WASM fallback). Randomness from{' '}
+                <strong className="text-ink">Crypto</strong> — Solana: Ed25519 via Web Crypto (or WASM fallback).
+                EVM / Bitcoin / Tron: secp256k1 (+ keccak where needed). Randomness from{' '}
                 <span className="font-mono text-sm">crypto.getRandomValues</span>.
               </p>
             </Section>
@@ -110,16 +114,24 @@ export default function HowItWorksPage() {
               <p>Strict headers block external scripts, outbound APIs, data exfiltration, and iframe embedding.</p>
             </Section>
 
-            <Section n="07 — Mint" title="Token mint generator">
+            <Section n="07 — Modes" title="Mint, contract, and chain formats">
               <p>
-                Create vanity mint addresses for launches on pump.fun, Raydium, Meteora, and other Solana launchpads.
+                <strong className="text-ink">Solana mint</strong> — vanity mint addresses for pump.fun, Raydium, Meteora, and other launchpads.
+                Open <a href="/sol?mode=mint" className="text-accent hover:text-ink">/sol</a> (Mint mode), copy the private key, paste into the launchpad custom-mint field.
               </p>
-              <ol className="list-decimal list-inside space-y-2 text-sm">
-                <li>Open <a href="/sol?mode=mint" className="text-accent hover:text-ink">/sol</a> (Mint mode) and forge a pattern</li>
-                <li>Copy the <strong className="text-ink">private key</strong></li>
-                <li>Paste it into the launchpad custom-mint field</li>
-                <li>Launch with your vanity address</li>
-              </ol>
+              <p>
+                <strong className="text-ink">EVM contract</strong> — CREATE with nonce 0 on{' '}
+                <a href="/evm" className="text-accent hover:text-ink">/evm</a> (same key works on every EVM chain).
+              </p>
+              <p>
+                <strong className="text-ink">Bitcoin</strong> — legacy <span className="font-mono text-sm">1…</span> and SegWit{' '}
+                <span className="font-mono text-sm">bc1q…</span> on{' '}
+                <a href="/btc" className="text-accent hover:text-ink">/btc</a> (WIF export).
+              </p>
+              <p>
+                <strong className="text-ink">Tron</strong> — Base58Check <span className="font-mono text-sm">T…</span> on{' '}
+                <a href="/tron" className="text-accent hover:text-ink">/tron</a>.
+              </p>
             </Section>
 
             <Section n="08 — Quality" title="Key security check">

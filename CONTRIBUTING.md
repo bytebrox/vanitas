@@ -74,13 +74,15 @@ npm run dev
 
 ```
 src/
-├── app/           # Next.js pages
+├── app/           # Next.js pages (/, /sol, /evm, /btc, /tron, docs)
 ├── components/    # React components
-├── hooks/         # Custom React hooks
-├── lib/           # Utility functions
+├── hooks/         # Custom React hooks per forge
+├── lib/           # Encoding, difficulty, shared utilities
 ├── types/         # TypeScript types
-└── workers/       # Web Workers
+└── workers/       # Web Worker sources (built into public/*-worker.js)
 ```
+
+Forges: Solana (Ed25519), EVM (secp256k1 + keccak), Bitcoin (legacy + SegWit), Tron (Base58Check).
 
 ## Security
 

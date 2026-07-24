@@ -11,14 +11,17 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.vanitas.fun'),
   title: {
-    default: 'Vanitas | Solana & Ethereum Vanity Address Forge',
+    default: 'Vanitas | Solana, EVM, Bitcoin & Tron Vanity Forge',
     template: '%s | Vanitas',
   },
   description:
-    'Client-side vanity address forge for Solana and Ethereum. Wallets, mints, and contracts — keys never leave this browser.',
+    'Client-side vanity address forge for Solana, EVM, Bitcoin, and Tron. Wallets, mints, and contracts — keys never leave this browser.',
   keywords: [
     'solana',
     'ethereum',
+    'bitcoin',
+    'tron',
+    'evm',
     'vanity address',
     'wallet generator',
     'vanitas',
@@ -32,9 +35,9 @@ export const metadata: Metadata = {
   applicationName: 'Vanitas',
   category: 'technology',
   openGraph: {
-    title: 'Vanitas | Solana & Ethereum Vanity Address Forge',
+    title: 'Vanitas | Solana, EVM, Bitcoin & Tron Vanity Forge',
     description:
-      'Forge vanity addresses for Solana and Ethereum entirely in your browser. No keys leave this device.',
+      'Forge vanity addresses for Solana, EVM, Bitcoin, and Tron entirely in your browser. No keys leave this device.',
     url: 'https://www.vanitas.fun',
     siteName: 'Vanitas',
     type: 'website',
@@ -44,16 +47,16 @@ export const metadata: Metadata = {
         url: 'https://www.vanitas.fun/og.jpg',
         width: 1200,
         height: 630,
-        alt: 'Vanitas Solana and Ethereum vanity forge',
+        alt: 'Vanitas multi-chain vanity forge',
         type: 'image/jpeg',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Vanitas | Solana & Ethereum Vanity Address Forge',
+    title: 'Vanitas | Solana, EVM, Bitcoin & Tron Vanity Forge',
     description:
-      'Forge vanity addresses for Solana and Ethereum entirely in your browser.',
+      'Forge vanity addresses for Solana, EVM, Bitcoin, and Tron entirely in your browser.',
     images: ['https://www.vanitas.fun/og.jpg'],
   },
   robots: {

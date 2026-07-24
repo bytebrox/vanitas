@@ -1,59 +1,58 @@
 ﻿# Vanitas
 
-[![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-8B7355.svg)](https://vanitas.fun)
+[![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-8B7355.svg)](https://vanitas.fun)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Live Audit](https://img.shields.io/badge/Live_Audit-vanitas.fun%2Faudit-8B7355.svg)](https://vanitas.fun/audit)
 
-**Generate custom Solana addresses – entirely in your browser.**
+**Forge vanity addresses for Solana, EVM, Bitcoin, and Tron — entirely in your browser.**
 
-Create personalized Solana wallet addresses and token mint addresses that start or end with specific characters (like `SOL...` or `...MOON`). All cryptographic operations happen locally on your device – your private keys never leave your browser.
+Create personalized wallet (and related) addresses that start or end with patterns you choose. All cryptographic work runs locally — private keys never leave your device.
 
 Website: [vanitas.fun](https://vanitas.fun)
 
-## Two Generators
+## Forges
 
-| Generator | Use Case | URL |
-|-----------|----------|-----|
-| **Wallet Address** | Personal wallets, donations, branding | `/` |
-| **Token Mint Address** | Token launches on any Solana launchpad | `/token` |
+| Forge | Use Case | URL |
+|-------|----------|-----|
+| **Solana** | Wallet + token mint (Base58 Ed25519) | `/sol` |
+| **EVM** | Wallet + contract CREATE nonce 0 (`0x` hex) | `/evm` |
+| **Bitcoin** | Legacy `1…` + SegWit `bc1q…` (WIF export) | `/btc` |
+| **Tron** | Base58Check `T…` addresses | `/tron` |
+
+Legacy `/token` redirects to `/sol?mode=mint`. `/eth` redirects to `/evm`.
 
 ## What is a Vanity Address?
 
-A vanity address is a cryptocurrency wallet address that contains a recognizable pattern. Instead of a random address like `4tVbKSR8gniF2Lq7aEzHbMD8WCAdPJBn6G9oPYzXmJcR`, you can generate one like:
-
-- `VANI...` (starts with your pattern)
-- `...TAS` (ends with your pattern)
-
-This makes addresses more memorable and personal – perfect for public wallets, donations, or branding.
+A vanity address contains a recognizable pattern instead of looking fully random — for example `VANI…` on Solana, `0xcafe…` on EVM, or a memorable Bitcoin / Tron prefix. Useful for public wallets, donations, and branding.
 
 ## Features
 
-- **100% Client-Side** – All computation happens in your browser
-- **125x Faster** – Native Web Crypto API outperforms all JavaScript/WASM implementations
-- **Multi-Core Processing** – Uses all available CPU cores (~100,000 keys/second)
-- **Token Mint Generator** – Create vanity addresses for token launches on any Solana launchpad
-- **Domain Suggestions** – Get matching .sol, .solana, .bonk, .poor domain suggestions after generating
-- **Key Security Check** – Verify cryptographic quality with real-time entropy analysis
-- **Smart Difficulty Estimation** – Accurate time estimates including first-character rarity
-- **Sound Notification** – Optional audio alert when address is found
-- **Instant Export** – Download keys as TXT or JSON (Solana CLI compatible)
-- **Works Offline** – No internet required after page loads
-- **Mobile Optimized** – Fully responsive design with touch-friendly controls
+- **100% Client-Side** – Generation runs in Web Workers on your device
+- **Multi-Chain** – Solana, EVM (Ethereum, BNB, Base, …), Bitcoin, Tron
+- **Native Web Crypto** – Fast Ed25519 path for Solana where supported
+- **Multi-Core** – Uses available CPU cores for parallel search
+- **Token Mint & Contract Modes** – Solana mint + EVM CREATE (nonce 0)
+- **Key Security Check** – Entropy / CSPRNG / chi-square probes after a find
+- **Difficulty Estimates** – Time estimates based on pattern and alphabet
+- **Sound Notification** – Optional alert when an address is found
+- **Export** – Download keys (format depends on forge: Solana CLI JSON, WIF, hex, …)
+- **Works Offline** – No network required after the page loads
+- **Mobile Optimized** – Responsive UI with touch-friendly controls
 
 ## Security
 
-Vanitas is designed with a single principle: **your private keys should never leave your device**.
+Vanitas is designed with one principle: **your private keys should never leave your device**.
 
-1. **No Server Communication** – The generation process makes zero network requests
-2. **Open Source** – The codebase is auditable
-3. **Live Audit** – Visit [vanitas.fun/audit](https://vanitas.fun/audit) for automated browser checks
+1. **No Server Communication** – Generation makes zero network requests
+2. **Open Source** – Auditable codebase
+3. **Live Audit** – [vanitas.fun/audit](https://vanitas.fun/audit) for in-browser checks
 4. **Offline Capable** – Works without internet after initial load
 
 ## Disclaimer
 
 This tool is provided as-is. Always verify generated keys work correctly before using them for significant transactions. The authors are not responsible for any loss of funds.
 
-*Not affiliated with the Solana Foundation.*
+*Not affiliated with Solana, Ethereum, Bitcoin, Tron, or any related foundation or project.*
 
 ## License
 

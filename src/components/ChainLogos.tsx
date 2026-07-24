@@ -62,6 +62,16 @@ export function OptimismLogo({ className = 'w-5 h-5', title = 'Optimism' }: Logo
   return <ChainImg src="/chains/optimism.svg" title={title} className={className} />;
 }
 
+/** Bitcoin token mark */
+export function BitcoinLogo({ className = 'w-5 h-5', title = 'Bitcoin' }: LogoProps) {
+  return <ChainImg src="/chains/bitcoin.svg" title={title} className={className} />;
+}
+
+/** Tron token mark */
+export function TronLogo({ className = 'w-5 h-5', title = 'Tron' }: LogoProps) {
+  return <ChainImg src="/chains/tron.svg" title={title} className={className} />;
+}
+
 const EVM_MARKS = [
   { src: '/chains/ethereum.svg', title: 'Ethereum' },
   { src: '/chains/bnb.svg', title: 'BNB Smart Chain' },

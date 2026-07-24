@@ -200,15 +200,19 @@ export default function SecurityPage() {
 
             <Section id="crypto" n="03 — Crypto" title="Cryptographic security">
               <p>
-                Solana forges use Ed25519; EVM forges use secp256k1 + keccak-256. Randomness
-                comes from the browser CSPRNG.
+                Solana uses Ed25519; EVM, Bitcoin, and Tron use secp256k1 (plus keccak-256 where
+                the chain requires it). Randomness comes from the browser CSPRNG.
               </p>
               <div className="border-y border-ink/15">
                 <LedgerRow label="Algorithm" value="Ed25519 · secp256k1" note="RFC 8032 · SEC standards" />
                 <LedgerRow label="Key gen" value="Web Crypto API · @noble" note="W3C · audited libraries" />
                 <LedgerRow label="RNG" value="crypto.getRandomValues()" note="Hardware-backed CSPRNG" />
                 <LedgerRow label="Entropy" value="256 bits" note="Industry standard private-key size" />
-                <LedgerRow label="Encoding" value="Base58 · hex 0x" note="Solana · EVM compatible" />
+                <LedgerRow
+                  label="Encoding"
+                  value="Base58 · hex · bech32"
+                  note="Solana · EVM · BTC · Tron"
+                />
               </div>
               <div className="border-t border-ink/15 pt-6">
                 <p className="text-micro uppercase tracking-[0.18em] text-accent mb-3">

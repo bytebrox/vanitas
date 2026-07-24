@@ -3,10 +3,11 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'FAQ',
   description:
-    'Answers about Vanitas vanity addresses: security, speed, wallet vs mint, launchpads, private keys, and what happens offline.',
+    'Answers about Vanitas vanity addresses across Solana, EVM, Bitcoin, and Tron: security, speed, formats, and offline use.',
   keywords: [
     'vanitas faq',
     'solana vanity faq',
+    'evm bitcoin tron vanity',
     'vanity address help',
     'token mint questions',
     'client-side wallet security',

@@ -28,23 +28,32 @@ const faqs: FAQItem[] = [
   },
   {
     category: 'General',
-    question: 'Is the address generated here a real Solana address?',
-    answer: 'Yes, absolutely. The addresses generated are standard Solana Ed25519 keypairs, fully compatible with all Solana wallets (Phantom, Solflare, etc.), exchanges, and dApps.',
+    question: 'Are these real blockchain addresses?',
+    answer:
+      'Yes. Each forge produces standard keys for that chain: Solana Ed25519 (Phantom, Solflare, …), EVM secp256k1 0x addresses (MetaMask and every EVM network), Bitcoin mainnet (legacy / SegWit), and Tron Base58Check T… addresses. Import into a matching wallet and they work like any other key.',
   },
   {
     category: 'General',
     question: 'How long does it take to find an address?',
-    answer: 'It depends on the pattern length. Each additional character multiplies the search time by approximately 58x. A 3-character pattern takes seconds, 4 characters about 1 minute, 5 characters can take 30-60 minutes, and 6+ characters can take hours or days.',
+    answer:
+      'It depends on the pattern length and the alphabet of that forge. Solana/Tron Base58 is roughly 58 possibilities per character; EVM hex is 16; Bitcoin formats differ by type. Short patterns take seconds; each extra character multiplies expected time. Use the on-page estimate for your pattern.',
   },
   {
     category: 'General',
     question: 'Why can\'t I use certain characters like 0, O, I, or l?',
-    answer: 'Solana addresses use Base58 encoding, which deliberately excludes characters that look similar to avoid confusion. This means 0 (zero), O (capital o), I (capital i), and l (lowercase L) are not valid.',
+    answer:
+      'On Solana (and similar Base58 alphabets), those look-alike characters are excluded by design. EVM patterns use hex (0-9, a-f) only. Bitcoin and Tron each have their own allowed character sets — the forge UI validates as you type.',
   },
   {
     category: 'General',
     question: 'What\'s the difference between Wallet and Token Mint generator?',
     answer: 'On the Solana forge, Wallet creates a vanity address for your personal wallet. Mint creates a vanity token mint for launchpads. Technically they\'re the same Ed25519 keypairs — the difference is how you use them.',
+  },
+  {
+    category: 'General',
+    question: 'Which forges does Vanitas offer?',
+    answer:
+      'Four: Solana (/sol), EVM (/evm — one key for Ethereum, BNB, Base, Arbitrum, …), Bitcoin (/btc), and Tron (/tron). Pick the chain whose address format you need.',
   },
   {
     category: 'General',
@@ -96,6 +105,28 @@ const faqs: FAQItem[] = [
     question: 'What can I forge on the EVM page?',
     answer:
       'Two modes: a vanity wallet (EOA) whose 0x address matches your hex pattern, or a vanity contract address derived from the first deploy of that key (CREATE with nonce 0). Both work on every EVM chain listed above.',
+  },
+
+  // Bitcoin
+  {
+    category: 'Bitcoin',
+    question: 'What Bitcoin address types does Vanitas support?',
+    answer:
+      'Mainnet legacy P2PKH (addresses starting with 1) and SegWit bech32 (bc1q…). Export is WIF for wallet import. Keys stay in the browser like every other forge.',
+  },
+  {
+    category: 'Bitcoin',
+    question: 'Can I generate Taproot or Lightning addresses?',
+    answer:
+      'Not yet. The Bitcoin forge focuses on legacy and SegWit (bc1q). Taproot (bc1p) and other formats are out of scope for now.',
+  },
+
+  // Tron
+  {
+    category: 'Tron',
+    question: 'What does the Tron forge produce?',
+    answer:
+      'Standard mainnet Base58Check addresses starting with T, from secp256k1 keys. Compatible with typical Tron wallets that accept private-key import.',
   },
 
   // Token Mint
@@ -189,7 +220,7 @@ const faqs: FAQItem[] = [
           <li>Whether your random number generator works correctly</li>
           <li>Whether any data leaves your browser during key generation</li>
           <li>Whether the code running here matches the open-source version on GitHub</li>
-          <li>Whether your browser can securely create Solana keys</li>
+          <li>Whether your browser can securely create keys for the forges</li>
         </ul>
         <p>Every test runs locally on your device. Green = good. Red = something needs attention.</p>
       </div>
@@ -230,12 +261,14 @@ const faqs: FAQItem[] = [
   {
     category: 'Technical',
     question: 'How does the generation work?',
-    answer: 'We use your browser\'s native Web Crypto API to generate random Ed25519 keypairs, then check if the resulting public key (Base58 encoded) matches your pattern. This is repeated until a match is found. Modern browsers can generate 100,000+ keys per second using all CPU cores.',
+    answer:
+      'Workers generate random keypairs for the selected forge, encode the public address, and check your pattern until a match is found. Solana uses Ed25519 (native Web Crypto when available). EVM, Bitcoin, and Tron use secp256k1 paths. All cores run in parallel so the UI stays responsive.',
   },
   {
     category: 'Technical',
     question: 'Why is this so fast?',
-    answer: 'We use the native Web Crypto API (SubtleCrypto.generateKey) which is implemented in browser\'s C++ code, not JavaScript. This is 125x faster than JavaScript implementations and even faster than WebAssembly. Chrome 113+, Firefox 129+, and Safari 17+ all support native Ed25519.',
+    answer:
+      'Solana benefits from native Web Crypto Ed25519 (SubtleCrypto.generateKey) in modern browsers — often ~125× faster than pure JS. Other forges use optimized @noble cryptography with the same multi-worker parallelism. Chrome 113+, Firefox 129+, and Safari 17+ have the strongest Solana path.',
   },
   {
     category: 'Technical',
@@ -245,17 +278,19 @@ const faqs: FAQItem[] = [
   {
     category: 'Technical',
     question: 'Why does the speed vary?',
-    answer: 'Generation speed depends on your device\'s CPU, how many cores it has, browser support for native Ed25519, and what else your computer is doing. Modern multi-core processors with native Ed25519 support (Chrome 113+, Firefox 129+, Safari 17+) will be significantly faster.',
+    answer:
+      'Speed depends on CPU cores, browser crypto support (especially native Ed25519 on Solana), which forge you use, and what else the machine is doing.',
   },
   {
     category: 'Technical',
-    question: 'What cryptographic algorithm is used?',
-    answer: 'Ed25519, the same elliptic curve digital signature algorithm used by Solana. Keys are generated using your browser\'s native Web Crypto API (SubtleCrypto.generateKey for Ed25519), which uses hardware-backed CSPRNG for maximum security.',
+    question: 'What cryptographic algorithms are used?',
+    answer:
+      'Solana: Ed25519. EVM and Tron: secp256k1 + keccak-256 for address derivation. Bitcoin: secp256k1 with legacy and SegWit encoding. All private keys use crypto.getRandomValues() for CSPRNG entropy.',
   },
   {
     category: 'Technical',
     question: 'What if my browser doesn\'t support native Ed25519?',
-    answer: 'For older browsers without native Ed25519 support, we fall back to watsign (WebAssembly implementation). This is still fast (~22,000 keys/sec) but about 5x slower than native. The Key Security Check will show which method your browser uses.',
+    answer: 'For older browsers without native Ed25519 support, the Solana forge falls back to watsign (WebAssembly). This is still fast (~22,000 keys/sec) but about 5x slower than native. The Key Security Check will show which method your browser uses.',
   },
 
   // Usage
@@ -264,20 +299,21 @@ const faqs: FAQItem[] = [
     question: 'How do I import the generated key into Phantom?',
     answer: (
       <>
-        <p className="mb-2">Download the JSON file, then in Phantom:</p>
+        <p className="mb-2">On the Solana forge, download the JSON file, then in Phantom:</p>
         <ol className="list-decimal list-inside space-y-1 mb-2">
           <li>Settings → Manage Accounts</li>
           <li>Add/Connect Wallet → Import Private Key</li>
           <li>Select your downloaded JSON file</li>
         </ol>
-        <p>Alternatively, you can copy the private key directly and paste it.</p>
+        <p>Alternatively, you can copy the private key directly and paste it. EVM / Bitcoin / Tron keys use their own export formats (hex, WIF, etc.).</p>
       </>
     ),
   },
   {
     category: 'Usage',
     question: 'What\'s the difference between TXT and JSON download?',
-    answer: 'TXT is human-readable and good for secure storage. JSON is in Solana CLI format and can be directly imported into wallets like Phantom, Solflare, and the Solana CLI tools.',
+    answer:
+      'TXT is human-readable storage. On Solana, JSON follows Solana CLI format for Phantom / Solflare / CLI import. Other forges export formats appropriate to that chain (for example WIF on Bitcoin).',
   },
   {
     category: 'Usage',
@@ -287,7 +323,7 @@ const faqs: FAQItem[] = [
   {
     category: 'Usage',
     question: 'What does "case sensitive" mean?',
-    answer: 'When enabled, the pattern must match exactly (e.g., "Sol" won\'t match "SOL" or "sol"). When disabled, any capitalization will match, making it faster to find addresses.',
+    answer: 'When enabled, the pattern must match exactly (e.g., "Sol" won\'t match "SOL" or "sol"). When disabled, any capitalization will match, making it faster to find addresses. Availability depends on the forge alphabet.',
   },
   {
     category: 'Usage',
@@ -299,7 +335,8 @@ const faqs: FAQItem[] = [
   {
     category: 'Troubleshooting',
     question: 'Why is the "Start Crunching" button disabled?',
-    answer: 'The button is disabled if: no pattern is entered, the pattern contains invalid Base58 characters, or the pattern is too long. Check for characters like 0, O, I, or l which aren\'t allowed.',
+    answer:
+      'Usually because no pattern is entered, the pattern has characters invalid for that forge, or it is too long. Solana Base58 rejects 0, O, I, and l; EVM expects hex; Bitcoin/Tron validate against their alphabets.',
   },
   {
     category: 'Troubleshooting',
@@ -335,7 +372,7 @@ export default function FAQPage() {
         imageSrc="/ascii/page-faq-wide.webp"
         eyebrow="Help"
         title="FAQ"
-        description="Vanitas, vanity addresses, security, and how to use the tool."
+        description="Vanitas across Solana, EVM, Bitcoin, and Tron — security, formats, and usage."
       />
 
       <main className="flex-1 px-4 sm:px-8 lg:px-8 xl:px-12 pb-16">

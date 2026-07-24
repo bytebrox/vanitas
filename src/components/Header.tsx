@@ -5,7 +5,7 @@ import { HeroBand } from './HeroBand';
 
 interface HeaderProps {
   imageSrc?: string;
-  mode?: 'wallet' | 'mint' | 'evm';
+  mode?: 'wallet' | 'mint' | 'evm' | 'btc' | 'tron';
 }
 
 export function Header({
@@ -13,31 +13,57 @@ export function Header({
   mode = 'wallet',
 }: HeaderProps) {
   const copy = useFadeIn();
-  const isMint = mode === 'mint';
-  const isEvm = mode === 'evm';
 
-  const heroEyebrow = isEvm ? '0x forge' : isMint ? 'Mint forge' : 'Wallet forge';
-  const heroTitle = isEvm ? 'EVM' : 'Solana';
+  const copyByMode = {
+    wallet: {
+      eyebrow: 'Wallet forge',
+      title: 'Solana',
+      chain: 'sol' as const,
+      headline: 'Name the address. Keep the key.',
+      blurb: 'Generate a vanity Solana wallet address — entirely in this browser, on your CPU.',
+    },
+    mint: {
+      eyebrow: 'Mint forge',
+      title: 'Solana',
+      chain: 'sol' as const,
+      headline: 'Name the mint. Launch with presence.',
+      blurb: 'Generate a vanity Solana mint for any launchpad — entirely in this browser.',
+    },
+    evm: {
+      eyebrow: '0x forge',
+      title: 'EVM',
+      chain: 'evm' as const,
+      headline: 'Name the 0x. Same key everywhere.',
+      blurb:
+        'Generate vanity wallet or contract addresses — entirely in this browser. One key works on Ethereum, BNB Smart Chain, Base, Arbitrum, Optimism, and every other EVM chain.',
+    },
+    btc: {
+      eyebrow: 'UTXO forge',
+      title: 'Bitcoin',
+      chain: 'btc' as const,
+      headline: 'Name the coin. Own the address.',
+      blurb:
+        'Generate vanity Bitcoin addresses — legacy 1… or SegWit bc1q… — entirely in this browser. Keys never leave this device.',
+    },
+    tron: {
+      eyebrow: 'T forge',
+      title: 'Tron',
+      chain: 'tron' as const,
+      headline: 'Name the T. Keep the key.',
+      blurb:
+        'Generate vanity Tron Base58 addresses — entirely in this browser. Import into TronLink and other Tron wallets.',
+    },
+  };
 
-  const headline = isEvm
-    ? 'Name the 0x. Same key everywhere.'
-    : isMint
-      ? 'Name the mint. Launch with presence.'
-      : 'Name the address. Keep the key.';
-
-  const blurb = isEvm
-    ? 'Generate vanity wallet or contract addresses — entirely in this browser. One key works on Ethereum, BNB Smart Chain, Base, Arbitrum, Optimism, and every other EVM chain.'
-    : isMint
-      ? 'Generate a vanity Solana mint for any launchpad — entirely in this browser.'
-      : 'Generate a vanity Solana wallet address — entirely in this browser, on your CPU.';
+  const c = copyByMode[mode];
 
   return (
     <div className="w-full">
       <HeroBand
         imageSrc={imageSrc}
-        title={heroTitle}
-        eyebrow={heroEyebrow}
-        chain={isEvm ? 'evm' : 'sol'}
+        title={c.title}
+        eyebrow={c.eyebrow}
+        chain={c.chain}
         scrollHref="#forge"
         scrollLabel="Scroll to forge"
       />
@@ -55,10 +81,10 @@ export function Header({
         <div className="lg:w-1/2 lg:pr-8 xl:pr-12">
           <div className="w-full max-w-xl xl:max-w-2xl lg:ml-auto lg:pl-8 text-left lg:text-right">
             <h2 className="font-display text-xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-ink normal-case leading-tight mb-3 sm:mb-4">
-              {headline}
+              {c.headline}
             </h2>
             <p className="text-sm sm:text-lg text-muted max-w-2xl leading-relaxed lg:ml-auto">
-              {blurb}
+              {c.blurb}
             </p>
           </div>
         </div>

@@ -8,6 +8,8 @@ const links = [
   { href: '/', label: 'Home' },
   { href: '/sol', label: 'SOL' },
   { href: '/evm', label: 'EVM' },
+  { href: '/btc', label: 'BTC' },
+  { href: '/tron', label: 'TRON' },
   { href: '/how-it-works', label: 'How' },
   { href: '/faq', label: 'FAQ' },
   { href: '/security', label: 'Security' },

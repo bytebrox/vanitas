@@ -15,6 +15,13 @@ export { EthModeToggle } from './EthModeToggle';
 export { EthPatternInput } from './EthPatternInput';
 export { EthDifficultyDisplay } from './EthDifficultyDisplay';
 export { EthResultDisplay } from './EthResultDisplay';
+export { BtcModeToggle } from './BtcModeToggle';
+export { BtcPatternInput } from './BtcPatternInput';
+export { BtcDifficultyDisplay } from './BtcDifficultyDisplay';
+export { BtcResultDisplay } from './BtcResultDisplay';
+export { TronPatternInput } from './TronPatternInput';
+export { TronDifficultyDisplay } from './TronDifficultyDisplay';
+export { TronResultDisplay } from './TronResultDisplay';
 export { SolModeToggle } from './SolModeToggle';
 export { TokenResultDisplay } from './TokenResultDisplay';
 

@@ -1,12 +1,11 @@
 'use client';
 
 /**
- * Landing — single viewport: hero image + two forge boxes + footer
- * On short phones, main scrolls inside the viewport so CTAs stay reachable.
+ * Landing — single viewport: hero image + forge boxes + footer
  */
 
 import { Navbar, Footer } from '@/components';
-import { SolanaLogo, EvmChainLogos } from '@/components/ChainLogos';
+import { SolanaLogo, EvmChainLogos, BitcoinLogo, TronLogo } from '@/components/ChainLogos';
 
 const PAPER = '#F5F0E8';
 
@@ -19,7 +18,6 @@ export function LandingContent() {
       <Navbar />
 
       <main className="relative flex-1 min-h-0 flex flex-col overflow-y-auto overscroll-contain">
-        {/* Full-bleed hero plane */}
         <div className="absolute inset-0 overflow-hidden" aria-hidden>
           <img
             src="/ascii/hero-wallet-wide.webp"
@@ -39,10 +37,9 @@ export function LandingContent() {
           />
         </div>
 
-        {/* Content over hero */}
         <div className="relative z-10 flex-1 min-h-0 flex flex-col justify-center px-4 sm:px-8 lg:px-12 pt-[max(5.5rem,calc(env(safe-area-inset-top)+4.5rem))] pb-4 sm:pb-6">
           <div className="w-full max-w-5xl mx-auto my-auto">
-            <header className="text-center mb-4 sm:mb-8 animate-fade-in-up">
+            <header className="text-center mb-4 sm:mb-6 animate-fade-in-up">
               <p className="inline-block text-[0.65rem] sm:text-micro uppercase tracking-[0.18em] sm:tracking-[0.2em] text-ink/80 mb-2 sm:mb-3 px-2.5 sm:px-3 py-1 rounded-md bg-paper/80 backdrop-blur-sm border border-ink/10">
                 Client-side vanity forge
               </p>
@@ -51,54 +48,87 @@ export function LandingContent() {
               </h1>
             </header>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-4 animate-fade-in-up">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 animate-fade-in-up">
               <a
                 href="/sol"
-                className="landing-forge-box group flex flex-col justify-between px-4 py-4 sm:px-6 sm:py-6 min-h-0 sm:min-h-[10rem] active:scale-[0.99] transition-transform"
+                className="landing-forge-box group flex flex-col justify-between px-4 py-3.5 sm:px-5 sm:py-5 min-h-0 active:scale-[0.99] transition-transform"
               >
                 <div className="relative z-[1]">
-                  <p className="text-micro uppercase tracking-[0.18em] text-muted mb-1.5 sm:mb-2">Solana</p>
-                  <div className="mb-2 sm:mb-2.5">
+                  <p className="text-micro uppercase tracking-[0.18em] text-muted mb-1.5">Solana</p>
+                  <div className="mb-2">
                     <SolanaLogo className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
-                  <p className="font-display text-lg sm:text-2xl font-semibold text-ink normal-case tracking-tight mb-1.5 sm:mb-2">
+                  <p className="font-display text-lg sm:text-xl font-semibold text-ink normal-case tracking-tight mb-1">
                     Wallet &amp; mint
                   </p>
                   <p className="text-sm text-muted leading-relaxed normal-case tracking-normal">
-                    <span className="sm:hidden">Base58 vanity wallets and token mints — in this browser.</span>
-                    <span className="hidden sm:inline">
-                      Forge Base58 vanity wallets and token mints entirely in this browser.
-                    </span>
+                    Base58 vanity wallets and token mints.
                   </p>
                 </div>
-                <p className="relative z-[1] mt-3 sm:mt-4 text-micro uppercase tracking-[0.16em] text-ink group-hover:text-accent transition-colors">
+                <p className="relative z-[1] mt-2.5 text-micro uppercase tracking-[0.16em] text-ink group-hover:text-accent transition-colors">
                   Enter forge →
                 </p>
               </a>
 
               <a
                 href="/evm"
-                className="landing-forge-box group flex flex-col justify-between px-4 py-4 sm:px-6 sm:py-6 min-h-0 sm:min-h-[10rem] active:scale-[0.99] transition-transform"
+                className="landing-forge-box group flex flex-col justify-between px-4 py-3.5 sm:px-5 sm:py-5 min-h-0 active:scale-[0.99] transition-transform"
               >
                 <div className="relative z-[1]">
-                  <p className="text-micro uppercase tracking-[0.18em] text-muted mb-1.5 sm:mb-2">EVM</p>
-                  <div className="mb-2 sm:mb-2.5" aria-label="Ethereum, BNB, Base, Arbitrum, Optimism">
+                  <p className="text-micro uppercase tracking-[0.18em] text-muted mb-1.5">EVM</p>
+                  <div className="mb-2" aria-label="Ethereum, BNB, Base, Arbitrum, Optimism">
                     <EvmChainLogos />
                   </div>
-                  <p className="font-display text-lg sm:text-2xl font-semibold text-ink normal-case tracking-tight mb-1.5 sm:mb-2">
+                  <p className="font-display text-lg sm:text-xl font-semibold text-ink normal-case tracking-tight mb-1">
                     Wallet &amp; contract
                   </p>
                   <p className="text-sm text-muted leading-relaxed normal-case tracking-normal">
-                    <span className="sm:hidden">
-                      One 0x key for Ethereum, BNB, Base, Arbitrum, Optimism &amp; more.
-                    </span>
-                    <span className="hidden sm:inline">
-                      One 0x vanity key for Ethereum, BNB Smart Chain, Base, Arbitrum, Optimism,
-                      and every other EVM network.
-                    </span>
+                    One 0x key for every EVM chain.
                   </p>
                 </div>
-                <p className="relative z-[1] mt-3 sm:mt-4 text-micro uppercase tracking-[0.16em] text-ink group-hover:text-accent transition-colors">
+                <p className="relative z-[1] mt-2.5 text-micro uppercase tracking-[0.16em] text-ink group-hover:text-accent transition-colors">
+                  Enter forge →
+                </p>
+              </a>
+
+              <a
+                href="/btc"
+                className="landing-forge-box group flex flex-col justify-between px-4 py-3.5 sm:px-5 sm:py-5 min-h-0 active:scale-[0.99] transition-transform"
+              >
+                <div className="relative z-[1]">
+                  <p className="text-micro uppercase tracking-[0.18em] text-muted mb-1.5">Bitcoin</p>
+                  <div className="mb-2">
+                    <BitcoinLogo className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </div>
+                  <p className="font-display text-lg sm:text-xl font-semibold text-ink normal-case tracking-tight mb-1">
+                    Legacy &amp; SegWit
+                  </p>
+                  <p className="text-sm text-muted leading-relaxed normal-case tracking-normal">
+                    Vanity 1… and bc1q… addresses.
+                  </p>
+                </div>
+                <p className="relative z-[1] mt-2.5 text-micro uppercase tracking-[0.16em] text-ink group-hover:text-accent transition-colors">
+                  Enter forge →
+                </p>
+              </a>
+
+              <a
+                href="/tron"
+                className="landing-forge-box group flex flex-col justify-between px-4 py-3.5 sm:px-5 sm:py-5 min-h-0 active:scale-[0.99] transition-transform"
+              >
+                <div className="relative z-[1]">
+                  <p className="text-micro uppercase tracking-[0.18em] text-muted mb-1.5">Tron</p>
+                  <div className="mb-2">
+                    <TronLogo className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </div>
+                  <p className="font-display text-lg sm:text-xl font-semibold text-ink normal-case tracking-tight mb-1">
+                    Base58 wallet
+                  </p>
+                  <p className="text-sm text-muted leading-relaxed normal-case tracking-normal">
+                    Vanity T… addresses for TronLink.
+                  </p>
+                </div>
+                <p className="relative z-[1] mt-2.5 text-micro uppercase tracking-[0.16em] text-ink group-hover:text-accent transition-colors">
                   Enter forge →
                 </p>
               </a>

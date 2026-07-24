@@ -30,7 +30,7 @@ export function Footer({ compact = false }: FooterProps) {
               compact ? 'line-clamp-2' : ''
             }`}
           >
-            Client-side Solana & ETH vanity tooling. No project token. No key leaves this device.
+            Client-side vanity tooling for Solana, EVM, Bitcoin & Tron. No project token. No key leaves this device.
             {' '}Dev’d by{' '}
             <a
               href="https://x.com/bytebrox"
@@ -47,6 +47,8 @@ export function Footer({ compact = false }: FooterProps) {
           <a href="/" className="hover:text-ink py-1">Home</a>
           <a href="/sol" className="hover:text-ink py-1">SOL</a>
           <a href="/evm" className="hover:text-ink py-1">EVM</a>
+          <a href="/btc" className="hover:text-ink py-1">BTC</a>
+          <a href="/tron" className="hover:text-ink py-1">TRON</a>
           <a href="/security" className="hover:text-ink py-1">Security</a>
           <a href="/audit" className="hover:text-ink py-1">Audit</a>
           <a href="/faq" className="hover:text-ink py-1">FAQ</a>

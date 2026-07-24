@@ -3,12 +3,12 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'How it Works',
   description:
-    'How Vanitas forges Solana vanity addresses: native Web Crypto Ed25519, multi-core workers, zero network during generation, and verifiable client-side security.',
+    'How Vanitas forges vanity addresses for Solana, EVM, Bitcoin, and Tron: multi-core workers, zero network during generation, and verifiable client-side security.',
   keywords: [
     'how vanity addresses work',
     'web crypto ed25519',
     'client-side key generation',
-    'solana address generation',
+    'solana ethereum bitcoin tron vanity',
     'vanitas architecture',
   ],
   openGraph: {

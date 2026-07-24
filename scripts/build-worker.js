@@ -1,5 +1,5 @@
 /**
- * Build Solana + ETH vanity workers and publish integrity hashes
+ * Build Solana + ETH + BTC + TRON vanity workers and publish integrity hashes
  */
 
 const esbuild = require('esbuild');
@@ -27,37 +27,47 @@ async function buildOne(entry, outfile) {
 }
 
 async function build() {
-  const solanaOut = path.join(__dirname, '../public/vanity-worker.js');
-  const ethOut = path.join(__dirname, '../public/eth-worker.js');
   const hashFile = path.join(__dirname, '../public/worker-hash.json');
+  const built = new Date().toISOString();
 
   try {
     const solana = await buildOne(
       path.join(__dirname, '../src/workers/vanity.worker.source.ts'),
-      solanaOut
+      path.join(__dirname, '../public/vanity-worker.js')
     );
     console.log('Solana worker built successfully!');
 
     const eth = await buildOne(
       path.join(__dirname, '../src/workers/eth.worker.source.ts'),
-      ethOut
+      path.join(__dirname, '../public/eth-worker.js')
     );
     console.log('ETH worker built successfully!');
 
-    const built = new Date().toISOString();
+    const btc = await buildOne(
+      path.join(__dirname, '../src/workers/btc.worker.source.ts'),
+      path.join(__dirname, '../public/btc-worker.js')
+    );
+    console.log('BTC worker built successfully!');
+
+    const tron = await buildOne(
+      path.join(__dirname, '../src/workers/tron.worker.source.ts'),
+      path.join(__dirname, '../public/tron-worker.js')
+    );
+    console.log('TRON worker built successfully!');
+
     const hashData = {
       hash: solana.hash,
       size: solana.size,
       built,
-      eth: {
-        hash: eth.hash,
-        size: eth.size,
-        built,
-      },
+      eth: { hash: eth.hash, size: eth.size, built },
+      btc: { hash: btc.hash, size: btc.size, built },
+      tron: { hash: tron.hash, size: tron.size, built },
     };
     fs.writeFileSync(hashFile, JSON.stringify(hashData, null, 2));
-    console.log(`Solana worker hash: ${solana.hash}`);
-    console.log(`ETH worker hash: ${eth.hash}`);
+    console.log(`Solana: ${solana.hash}`);
+    console.log(`ETH: ${eth.hash}`);
+    console.log(`BTC: ${btc.hash}`);
+    console.log(`TRON: ${tron.hash}`);
   } catch (error) {
     console.error('Worker build failed:', error);
     process.exit(1);
