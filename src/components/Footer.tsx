@@ -10,7 +10,16 @@ export function Footer() {
           <p className="font-bold uppercase tracking-[0.16em] text-ink text-sm mb-2">Vanitas</p>
           <p className="text-micro text-muted max-w-sm leading-relaxed normal-case tracking-normal">
             Client-side Solana vanity tooling. No project token. No key leaves this device.
-            {' '}Dev’d by Bytebrox.
+            {' '}Dev’d by{' '}
+            <a
+              href="https://x.com/bytebrox"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink underline underline-offset-2 decoration-ink/30 hover:decoration-ink"
+            >
+              Bytebrox
+            </a>
+            .
           </p>
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-micro uppercase tracking-[0.16em] text-muted">
