@@ -36,10 +36,12 @@ const cspHeader = {
   ].join('; '),
 };
 
+const pageHeaders = [...securityHeaders, cspHeader];
+
 const nextConfig = {
   async headers() {
     return [
-      // Static share images: no CSP (X/Twitter crawlers fail on CSP-wrapped OG assets)
+      // Share images: crawlable, no CSP (X ignores / fails cards when CSP is on the asset)
       {
         source: '/og.jpg',
         headers: [
@@ -60,12 +62,10 @@ const nextConfig = {
           { key: 'Access-Control-Allow-Origin', value: '*' },
         ],
       },
-      // App routes only (exclude common static extensions from CSP)
-      {
-        source:
-          '/:path((?!.*\\.(?:jpg|jpeg|png|webp|gif|svg|ico|js|css|map|txt|json|woff2?)$).*)*',
-        headers: [...securityHeaders, cspHeader],
-      },
+      // HTML pages only (no dots in segment → skips /og.jpg, /favicon.png, …)
+      { source: '/', headers: pageHeaders },
+      { source: '/:page([\\w-]+)', headers: pageHeaders },
+      { source: '/:page([\\w-]+)/:rest*', headers: pageHeaders },
     ];
   },
 };
