@@ -132,7 +132,13 @@ const faqs: FAQItem[] = [
     category: 'Tron',
     question: 'What does the Tron forge produce?',
     answer:
-      'Standard mainnet Base58Check addresses starting with T, from secp256k1 keys. Compatible with typical Tron wallets that accept private-key import. Typing RON searches for TRON… — the leading T is added automatically.',
+      'Standard mainnet Base58Check addresses starting with T, from secp256k1 keys. Compatible with typical Tron wallets that accept private-key import. Typing Ace searches for TAce… — the leading T is added automatically. Leave Case sensitive off unless you need an exact letter case.',
+  },
+  {
+    category: 'Tron',
+    question: 'Why does Case sensitive + a lowercase prefix never find anything?',
+    answer:
+      'Tron addresses use Base58 with version byte 0x41. The character right after T is almost always uppercase (or a digit) — a lowercase letter there is effectively impossible. Also capital O, I, and l are not in Base58, so patterns like “TRON” cannot appear literally. Uncheck Case sensitive so oko matches TOko / Toko / etc.',
   },
 
   // Token Mint

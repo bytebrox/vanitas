@@ -10,7 +10,7 @@ const initialState: TronGeneratorState = {
     prefix: '',
     suffix: '',
     threads: 4,
-    caseSensitive: true,
+    caseSensitive: false,
   },
   stats: {
     totalAttempts: 0,

@@ -27,9 +27,9 @@ export function TronPatternInput({
   const [suffixError, setSuffixError] = useState<string | null>(null);
 
   useEffect(() => {
-    const r = validateTronPrefix(prefix);
+    const r = validateTronPrefix(prefix, caseSensitive);
     setPrefixError(r.valid ? null : r.error || null);
-  }, [prefix]);
+  }, [prefix, caseSensitive]);
 
   useEffect(() => {
     const r = validateTronSuffix(suffix);
@@ -43,8 +43,9 @@ export function TronPatternInput({
     <div className="space-y-0 divide-y divide-ink/15 border-y border-ink/15">
       <div className="py-4">
         <p className="text-micro leading-relaxed text-muted">
-          Tron addresses start with <span className="font-mono">T</span> — type RON to search for TRON…
-          (the leading T is added automatically). No 0, O, I, or l.
+          Tron addresses start with <span className="font-mono">T</span> — type Ace to search for TAce…
+          (leading T is added automatically). No 0, O, I, or l. Leave Case sensitive off unless you
+          need an exact mix of upper/lower case.
         </p>
       </div>
 
@@ -55,7 +56,7 @@ export function TronPatternInput({
             type="text"
             value={prefix}
             onChange={(e) => { onPrefixChange(sanitize(e.target.value)); }}
-            placeholder="RON"
+            placeholder="Ace"
             maxLength={12}
             spellCheck={false}
             autoCapitalize="off"
@@ -75,7 +76,7 @@ export function TronPatternInput({
             type="text"
             value={suffix}
             onChange={(e) => { onSuffixChange(sanitize(e.target.value)); }}
-            placeholder="tron"
+            placeholder="fun"
             maxLength={12}
             spellCheck={false}
             autoCapitalize="off"
@@ -88,15 +89,21 @@ export function TronPatternInput({
         </div>
       </label>
 
-      <label className="flex items-center gap-3 py-4 cursor-pointer">
+      <label className="flex items-start gap-3 py-4 cursor-pointer">
         <input
           type="checkbox"
           checked={caseSensitive}
           disabled={disabled}
           onChange={(e) => { onCaseSensitiveChange(e.target.checked); }}
-          className="accent-ink"
+          className="accent-ink mt-0.5"
         />
-        <span className="text-micro uppercase tracking-[0.16em] text-muted">Case sensitive</span>
+        <span>
+          <span className="text-micro uppercase tracking-[0.16em] text-muted block">Case sensitive</span>
+          <span className="text-micro text-muted normal-case tracking-normal leading-relaxed block mt-1">
+            Off (recommended): oko matches TOko, Toko, etc. On: exact case — and the letter right after T
+            is almost always uppercase.
+          </span>
+        </span>
       </label>
     </div>
   );

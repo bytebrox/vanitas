@@ -30,7 +30,7 @@ export class TronVanityGenerator {
       prefix: '',
       suffix: '',
       threads: this.getOptimalThreadCount(),
-      caseSensitive: true,
+      caseSensitive: false,
     };
   }
 

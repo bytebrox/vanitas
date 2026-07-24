@@ -46,7 +46,7 @@ export function TronContent() {
   }, [searchParams]);
 
   const expectedDifficulty = estimateTronDifficulty(prefix, suffix, caseSensitive);
-  const prefixValid = validateTronPrefix(prefix).valid;
+  const prefixValid = validateTronPrefix(prefix, caseSensitive).valid;
   const suffixValid = validateTronSuffix(suffix).valid;
   const hasPattern = prefix.length > 0 || suffix.length > 0;
   const canStart = prefixValid && suffixValid && hasPattern;
