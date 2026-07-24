@@ -5,6 +5,18 @@
 import { TRON_BASE58 } from '@/types/tron';
 import type { ValidationResult } from '@/types';
 
+/** Tron mainnet addresses always start with T. Users type "RON" meaning "TRON…". */
+export function normalizeTronPrefix(prefix: string): string {
+  if (!prefix) return '';
+  return prefix.startsWith('T') ? prefix : `T${prefix}`;
+}
+
+export function tronVariablePatternLength(prefix: string, suffix: string): number {
+  const norm = normalizeTronPrefix(prefix);
+  const prefixLen = norm.startsWith('T') ? Math.max(0, norm.length - 1) : norm.length;
+  return prefixLen + suffix.length;
+}
+
 export function validateTronPrefix(prefix: string): ValidationResult {
   if (!prefix) return { valid: true };
   if (prefix.length > 10) {
@@ -38,7 +50,7 @@ export function estimateTronDifficulty(
   suffix: string,
   caseSensitive: boolean
 ): number {
-  const total = prefix.length + suffix.length;
+  const total = tronVariablePatternLength(prefix, suffix);
   if (total === 0) return 1;
   return Math.pow(caseSensitive ? 58 : 33, total);
 }

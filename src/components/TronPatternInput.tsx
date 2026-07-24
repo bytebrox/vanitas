@@ -43,7 +43,8 @@ export function TronPatternInput({
     <div className="space-y-0 divide-y divide-ink/15 border-y border-ink/15">
       <div className="py-4">
         <p className="text-micro leading-relaxed text-muted">
-          Tron addresses are Base58 and start with <span className="font-mono">T</span>. No 0, O, I, or l.
+          Tron addresses start with <span className="font-mono">T</span> — type RON to search for TRON…
+          (the leading T is added automatically). No 0, O, I, or l.
         </p>
       </div>
 
@@ -54,7 +55,7 @@ export function TronPatternInput({
             type="text"
             value={prefix}
             onChange={(e) => { onPrefixChange(sanitize(e.target.value)); }}
-            placeholder="TXyz"
+            placeholder="RON"
             maxLength={12}
             spellCheck={false}
             autoCapitalize="off"

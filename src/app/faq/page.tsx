@@ -116,6 +116,12 @@ const faqs: FAQItem[] = [
   },
   {
     category: 'Bitcoin',
+    question: 'Do I need to type the leading 1 or bc1q in the prefix?',
+    answer:
+      'No. For legacy, typing BTC searches for 1BTC… — the leading 1 is added automatically (you can still type 1BTC yourself). For SegWit, typing cafe searches for bc1qcafe… unless you already start the prefix with bc1.',
+  },
+  {
+    category: 'Bitcoin',
     question: 'Can I generate Taproot or Lightning addresses?',
     answer:
       'Not yet. The Bitcoin forge focuses on legacy and SegWit (bc1q). Taproot (bc1p) and other formats are out of scope for now.',
@@ -126,7 +132,7 @@ const faqs: FAQItem[] = [
     category: 'Tron',
     question: 'What does the Tron forge produce?',
     answer:
-      'Standard mainnet Base58Check addresses starting with T, from secp256k1 keys. Compatible with typical Tron wallets that accept private-key import.',
+      'Standard mainnet Base58Check addresses starting with T, from secp256k1 keys. Compatible with typical Tron wallets that accept private-key import. Typing RON searches for TRON… — the leading T is added automatically.',
   },
 
   // Token Mint

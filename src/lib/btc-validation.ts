@@ -5,6 +5,43 @@
 import { BTC_BASE58, BTC_BECH32, type BtcMode } from '@/types/btc';
 import type { ValidationResult } from '@/types';
 
+/**
+ * Legacy P2PKH always starts with "1". Users type "BTC" meaning "1BTC…".
+ * SegWit P2WPKH always starts with "bc1q". Users type a body after that HRP.
+ */
+export function normalizeBtcPrefix(prefix: string, mode: BtcMode): string {
+  if (!prefix) return '';
+  if (mode === 'segwit') {
+    const p = prefix.toLowerCase();
+    if (p.startsWith('bc1q')) return p;
+    if (p.startsWith('bc1')) return p;
+    return `bc1q${p}`;
+  }
+  return prefix.startsWith('1') ? prefix : `1${prefix}`;
+}
+
+/** Characters the user actually searches for (excludes fixed address HRP / version digit). */
+export function btcVariablePatternLength(
+  prefix: string,
+  suffix: string,
+  mode: BtcMode
+): number {
+  const norm = normalizeBtcPrefix(prefix, mode);
+  let prefixLen = 0;
+  if (norm) {
+    if (mode === 'segwit') {
+      prefixLen = norm.startsWith('bc1q')
+        ? Math.max(0, norm.length - 4)
+        : norm.startsWith('bc1')
+          ? Math.max(0, norm.length - 3)
+          : norm.length;
+    } else {
+      prefixLen = norm.startsWith('1') ? Math.max(0, norm.length - 1) : norm.length;
+    }
+  }
+  return prefixLen + suffix.length;
+}
+
 export function validateBtcPrefix(prefix: string, mode: BtcMode): ValidationResult {
   if (!prefix) return { valid: true };
   if (prefix.length > 12) {
@@ -68,7 +105,7 @@ export function estimateBtcDifficulty(
   mode: BtcMode,
   caseSensitive: boolean
 ): number {
-  const total = prefix.length + suffix.length;
+  const total = btcVariablePatternLength(prefix, suffix, mode);
   if (total === 0) return 1;
   if (mode === 'segwit') return Math.pow(32, total);
   return Math.pow(caseSensitive ? 58 : 33, total);

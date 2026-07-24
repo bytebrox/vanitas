@@ -44,13 +44,17 @@ function matches(
   caseSensitive: boolean
 ): boolean {
   if (!prefix && !suffix) return true;
+  // Mainnet addresses always start with T — auto-prepend so "RON" means TRON…
+  let p = prefix || '';
+  if (p && !p.startsWith('T')) p = `T${p}`;
+  const s = suffix || '';
   if (caseSensitive) {
-    return (!prefix || address.startsWith(prefix)) && (!suffix || address.endsWith(suffix));
+    return (!p || address.startsWith(p)) && (!s || address.endsWith(s));
   }
   const addr = address.toLowerCase();
   return (
-    (!prefix || addr.startsWith(prefix.toLowerCase())) &&
-    (!suffix || addr.endsWith(suffix.toLowerCase()))
+    (!p || addr.startsWith(p.toLowerCase())) &&
+    (!s || addr.endsWith(s.toLowerCase()))
   );
 }
 

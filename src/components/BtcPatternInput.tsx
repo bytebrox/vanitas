@@ -50,8 +50,8 @@ export function BtcPatternInput({
       <div className="py-4">
         <p className="text-micro leading-relaxed text-muted">
           {isSegwit
-            ? 'SegWit addresses are lowercase Bech32. Prefix usually starts with bc1q.'
-            : 'Legacy addresses use Base58 (no 0, O, I, l). They typically start with 1.'}
+            ? 'SegWit addresses start with bc1q — type a body like “cafe”, or the full bc1q… prefix.'
+            : 'Legacy addresses start with 1 — type BTC to search for 1BTC… (the leading 1 is added automatically).'}
         </p>
       </div>
 
@@ -62,7 +62,7 @@ export function BtcPatternInput({
             type="text"
             value={prefix}
             onChange={(e) => { onPrefixChange(sanitize(e.target.value)); }}
-            placeholder={isSegwit ? 'bc1q' : '1Love'}
+            placeholder={isSegwit ? 'cafe' : 'BTC'}
             maxLength={20}
             spellCheck={false}
             autoCapitalize="off"

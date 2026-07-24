@@ -5,6 +5,7 @@ import {
   estimateTronDifficulty,
   formatTronDifficulty,
   estimateTronTime,
+  normalizeTronPrefix,
 } from '@/lib/tron-validation';
 
 interface TronDifficultyDisplayProps {
@@ -35,6 +36,10 @@ export function TronDifficultyDisplay({
     () => estimateTronTime(difficulty, estimatedRate),
     [difficulty, estimatedRate]
   );
+  const displayPrefix = useMemo(
+    () => (prefix ? normalizeTronPrefix(prefix) : ''),
+    [prefix]
+  );
   const hasPattern = prefix.length > 0 || suffix.length > 0;
 
   return (
@@ -42,7 +47,9 @@ export function TronDifficultyDisplay({
       <div>
         <p className="text-micro uppercase tracking-[0.18em] text-muted mb-2">Pattern</p>
         <p className="font-mono text-lg sm:text-xl tracking-wide break-all">
-          <span className={prefix ? 'text-accent' : 'text-ink/25'}>{prefix || '····'}</span>
+          <span className={displayPrefix ? 'text-accent' : 'text-ink/25'}>
+            {displayPrefix || '····'}
+          </span>
           <span className="text-ink/20 mx-1">…</span>
           <span className={suffix ? 'text-accent' : 'text-ink/25'}>{suffix || '····'}</span>
         </p>

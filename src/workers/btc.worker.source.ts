@@ -56,21 +56,26 @@ function matches(
   if (!prefix && !suffix) return true;
 
   if (mode === 'segwit') {
-    // bc1q + 38 bech32 chars typically; match on full address (lowercase)
+    // P2WPKH always starts with bc1q — auto-prepend so "dead" means bc1qdead…
     const addr = address.toLowerCase();
-    const p = prefix.toLowerCase();
-    const s = suffix.toLowerCase();
+    let p = (prefix || '').toLowerCase();
+    const s = (suffix || '').toLowerCase();
+    if (p && !p.startsWith('bc1')) p = `bc1q${p}`;
     return (!p || addr.startsWith(p)) && (!s || addr.endsWith(s));
   }
 
-  // Legacy: match against full address (includes leading 1)
+  // Legacy P2PKH always starts with 1 — auto-prepend so "BTC" means 1BTC…
+  let p = prefix || '';
+  if (p && !p.startsWith('1')) p = `1${p}`;
+  const s = suffix || '';
+
   if (caseSensitive) {
-    return (!prefix || address.startsWith(prefix)) && (!suffix || address.endsWith(suffix));
+    return (!p || address.startsWith(p)) && (!s || address.endsWith(s));
   }
   const addr = address.toLowerCase();
   return (
-    (!prefix || addr.startsWith(prefix.toLowerCase())) &&
-    (!suffix || addr.endsWith(suffix.toLowerCase()))
+    (!p || addr.startsWith(p.toLowerCase())) &&
+    (!s || addr.endsWith(s.toLowerCase()))
   );
 }
 
