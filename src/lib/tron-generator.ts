@@ -31,6 +31,7 @@ export class TronVanityGenerator {
       suffix: '',
       threads: this.getOptimalThreadCount(),
       caseSensitive: false,
+      mode: 'wallet',
     };
   }
 

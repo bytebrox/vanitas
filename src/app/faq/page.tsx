@@ -53,7 +53,7 @@ const faqs: FAQItem[] = [
     category: 'General',
     question: 'Which forges does Vanitas offer?',
     answer:
-      'Four: Solana (/sol), EVM (/evm — one key for Ethereum, BNB, Base, Arbitrum, …), Bitcoin (/btc), and Tron (/tron). Pick the chain whose address format you need.',
+      'Four forges for wallets plus deploy helpers: Solana (/sol), EVM (/evm — wallet, CREATE, CREATE2), Bitcoin (/btc — legacy, SegWit, Taproot), Tron (/tron — wallet or CREATE). Plus Aptos (/aptos) and Sui (/sui). Pick the chain whose address format you need.',
   },
   {
     category: 'General',
@@ -124,7 +124,7 @@ const faqs: FAQItem[] = [
     category: 'Bitcoin',
     question: 'Can I generate Taproot or Lightning addresses?',
     answer:
-      'Not yet. The Bitcoin forge focuses on legacy and SegWit (bc1q). Taproot (bc1p) and other formats are out of scope for now.',
+      'Taproot (bc1p…) is supported on the Bitcoin forge — switch Address type to Taproot. Lightning invoices are out of scope.',
   },
 
   // Tron
@@ -132,7 +132,7 @@ const faqs: FAQItem[] = [
     category: 'Tron',
     question: 'What does the Tron forge produce?',
     answer:
-      'Standard mainnet Base58Check addresses starting with T, from secp256k1 keys. Compatible with typical Tron wallets that accept private-key import. Typing Ace searches for TAce… — the leading T is added automatically. Leave Case sensitive off unless you need an exact letter case.',
+      'Standard mainnet Base58Check addresses starting with T, from secp256k1 keys. Compatible with typical Tron wallets that accept private-key import. Typing Ace searches for TAce… — the leading T is added automatically. Leave Case sensitive off unless you need an exact letter case. Use Target → CREATE for a vanity contract address at deployer nonce 0 (same RLP math as EVM, then Tron encoding).',
   },
   {
     category: 'Tron',
@@ -297,7 +297,7 @@ const faqs: FAQItem[] = [
     category: 'Technical',
     question: 'What cryptographic algorithms are used?',
     answer:
-      'Solana: Ed25519. EVM and Tron: secp256k1 + keccak-256 for address derivation. Bitcoin: secp256k1 with legacy and SegWit encoding. All private keys use crypto.getRandomValues() for CSPRNG entropy.',
+      'Solana: Ed25519. EVM and Tron: secp256k1 + keccak-256 for address derivation. Bitcoin: secp256k1 with legacy, SegWit, and Taproot encoding. Aptos and Sui: Ed25519 with chain-specific hashing. All private keys use crypto.getRandomValues() for CSPRNG entropy.',
   },
   {
     category: 'Technical',

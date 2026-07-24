@@ -11,6 +11,7 @@ import {
   TronPatternInput,
   TronDifficultyDisplay,
   TronResultDisplay,
+  TronModeToggle,
 } from '@/components';
 import { Header } from '@/components/Header';
 import { useTronGenerator } from '@/hooks/useTronGenerator';
@@ -20,28 +21,43 @@ import {
   validateTronSuffix,
   estimateTronDifficulty,
 } from '@/lib/tron-validation';
-import type { GeneratedTronResult } from '@/types/tron';
+import { saveRecentFind } from '@/lib/find-history';
+import type { GeneratedTronResult, TronMode } from '@/types/tron';
+import { RecentFinds } from '@/components/RecentFinds';
 
 export function TronContent() {
   const { state, start, stop, reset, updateConfig, maxThreads } = useTronGenerator();
   const { soundEnabled, toggleSound, playSuccessSound } = useSound();
   const [copied, setCopied] = useState(false);
+  const [historyKey, setHistoryKey] = useState(0);
   const searchParams = useSearchParams();
   const prevResultRef = useRef<GeneratedTronResult | null>(null);
 
   const { status, config, stats, result } = state;
-  const { prefix, suffix, threads, caseSensitive } = config;
+  const { prefix, suffix, threads, caseSensitive, mode } = config;
 
   useEffect(() => {
-    if (result && result !== prevResultRef.current) playSuccessSound();
+    if (result && result !== prevResultRef.current) {
+      playSuccessSound();
+      saveRecentFind({
+        chain: 'tron',
+        address: result.address,
+        pattern: result.matchedPattern,
+      });
+      setHistoryKey((k) => k + 1);
+    }
     prevResultRef.current = result;
   }, [result, playSuccessSound]);
 
   useEffect(() => {
     const urlPrefix = searchParams.get('prefix');
     const urlSuffix = searchParams.get('suffix');
+    const urlMode = searchParams.get('mode');
     if (urlPrefix) updateConfig({ prefix: urlPrefix });
     if (urlSuffix) updateConfig({ suffix: urlSuffix });
+    if (urlMode === 'wallet' || urlMode === 'contract') {
+      updateConfig({ mode: urlMode });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
@@ -51,16 +67,28 @@ export function TronContent() {
   const hasPattern = prefix.length > 0 || suffix.length > 0;
   const canStart = prefixValid && suffixValid && hasPattern;
 
+  const onModeChange = useCallback(
+    (next: TronMode) => {
+      if (next === mode) return;
+      if (status === 'running') stop();
+      updateConfig({ mode: next });
+    },
+    [mode, status, stop, updateConfig]
+  );
+
   const generateShareLink = useCallback(() => {
     const params = new URLSearchParams();
+    params.set('mode', mode);
     if (prefix) params.set('prefix', prefix);
     if (suffix) params.set('suffix', suffix);
     const shareUrl = `${window.location.origin}/tron?${params.toString()}`;
     navigator.clipboard.writeText(shareUrl).then(() => {
       setCopied(true);
-      setTimeout(() => { setCopied(false); }, 2000);
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000);
     }).catch(() => {});
-  }, [prefix, suffix]);
+  }, [mode, prefix, suffix]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -70,9 +98,18 @@ export function TronContent() {
         <ContentWithSide imageSrc="/ascii/side-forum.webp" caption="Fig. IX — Circuit">
           <FadeIn className="space-y-8 sm:space-y-12">
             {result ? (
-              <TronResultDisplay result={result} onReset={reset} />
+              <>
+                <TronResultDisplay result={result} onReset={reset} />
+                <RecentFinds chain="tron" refreshKey={historyKey} />
+              </>
             ) : (
               <>
+                <TronModeToggle
+                  mode={mode}
+                  onChange={onModeChange}
+                  disabled={status === 'running'}
+                />
+
                 <div>
                   <p className="text-micro uppercase tracking-[0.2em] text-muted mb-2">01 — Pattern</p>
                   <TronPatternInput
@@ -102,7 +139,9 @@ export function TronContent() {
                     status={status}
                     threads={threads}
                     maxThreads={maxThreads}
-                    onStart={() => { if (canStart) start(config); }}
+                    onStart={() => {
+                      if (canStart) start(config);
+                    }}
                     onStop={stop}
                     onThreadsChange={(value) => updateConfig({ threads: value })}
                     disabled={!canStart}
@@ -120,14 +159,24 @@ export function TronContent() {
                   />
                 </div>
 
+                <RecentFinds chain="tron" refreshKey={historyKey} />
+
                 <p className="text-micro text-muted leading-relaxed max-w-xl normal-case tracking-normal">
-                  Tron mainnet Base58 addresses (T…). Same secp256k1 curve family as EVM, different encoding.
+                  {mode === 'contract'
+                    ? 'Contract mode grinds a deployer key whose first CREATE (nonce 0) yields a vanity T… address — same RLP math as EVM, then Tron Base58Check.'
+                    : 'Tron mainnet Base58 addresses (T…). Same secp256k1 curve family as EVM, different encoding.'}{' '}
                   Other forges:{' '}
-                  <a href="/sol" className="underline underline-offset-2 decoration-ink/30 hover:decoration-ink">SOL</a>
+                  <a href="/sol" className="underline underline-offset-2 decoration-ink/30 hover:decoration-ink">
+                    SOL
+                  </a>
                   {' · '}
-                  <a href="/evm" className="underline underline-offset-2 decoration-ink/30 hover:decoration-ink">EVM</a>
+                  <a href="/evm" className="underline underline-offset-2 decoration-ink/30 hover:decoration-ink">
+                    EVM
+                  </a>
                   {' · '}
-                  <a href="/btc" className="underline underline-offset-2 decoration-ink/30 hover:decoration-ink">BTC</a>
+                  <a href="/btc" className="underline underline-offset-2 decoration-ink/30 hover:decoration-ink">
+                    BTC
+                  </a>
                   .
                 </p>
 
@@ -142,8 +191,12 @@ export function TronContent() {
                       {copied ? 'Copied' : 'Share pattern'}
                     </button>
                   )}
-                  <a href="/how-it-works" className="hover:text-ink">How it works</a>
-                  <a href="/audit" className="hover:text-ink">Live audit</a>
+                  <a href="/how-it-works" className="hover:text-ink">
+                    How it works
+                  </a>
+                  <a href="/audit" className="hover:text-ink">
+                    Live audit
+                  </a>
                 </div>
               </>
             )}

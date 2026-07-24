@@ -10,6 +10,8 @@ const links = [
   { href: '/evm', label: 'EVM' },
   { href: '/btc', label: 'BTC' },
   { href: '/tron', label: 'TRON' },
+  { href: '/aptos', label: 'APTOS' },
+  { href: '/sui', label: 'SUI' },
   { href: '/how-it-works', label: 'How' },
   { href: '/faq', label: 'FAQ' },
   { href: '/security', label: 'Security' },

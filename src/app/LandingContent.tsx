@@ -5,7 +5,14 @@
  */
 
 import { Navbar, Footer } from '@/components';
-import { SolanaLogo, EvmChainLogos, BitcoinLogo, TronLogo } from '@/components/ChainLogos';
+import {
+  SolanaLogo,
+  EvmChainLogos,
+  BitcoinLogo,
+  TronLogo,
+  AptosLogo,
+  SuiLogo,
+} from '@/components/ChainLogos';
 
 const PAPER = '#F5F0E8';
 
@@ -48,7 +55,7 @@ export function LandingContent() {
               </h1>
             </header>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 animate-fade-in-up">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3 animate-fade-in-up">
               <a
                 href="/sol"
                 className="landing-forge-box group flex flex-col justify-between px-4 py-3.5 sm:px-5 sm:py-5 min-h-0 active:scale-[0.99] transition-transform"
@@ -126,6 +133,48 @@ export function LandingContent() {
                   </p>
                   <p className="text-sm text-muted leading-relaxed normal-case tracking-normal">
                     Vanity T… addresses for TronLink.
+                  </p>
+                </div>
+                <p className="relative z-[1] mt-2.5 text-micro uppercase tracking-[0.16em] text-ink group-hover:text-accent transition-colors">
+                  Enter forge →
+                </p>
+              </a>
+
+              <a
+                href="/aptos"
+                className="landing-forge-box group flex flex-col justify-between px-4 py-3.5 sm:px-5 sm:py-5 min-h-0 active:scale-[0.99] transition-transform"
+              >
+                <div className="relative z-[1]">
+                  <p className="text-micro uppercase tracking-[0.18em] text-muted mb-1.5">Aptos</p>
+                  <div className="mb-2">
+                    <AptosLogo className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </div>
+                  <p className="font-display text-lg sm:text-xl font-semibold text-ink normal-case tracking-tight mb-1">
+                    Ed25519 0x
+                  </p>
+                  <p className="text-sm text-muted leading-relaxed normal-case tracking-normal">
+                    Hex vanity for Petra &amp; Martian.
+                  </p>
+                </div>
+                <p className="relative z-[1] mt-2.5 text-micro uppercase tracking-[0.16em] text-ink group-hover:text-accent transition-colors">
+                  Enter forge →
+                </p>
+              </a>
+
+              <a
+                href="/sui"
+                className="landing-forge-box group flex flex-col justify-between px-4 py-3.5 sm:px-5 sm:py-5 min-h-0 active:scale-[0.99] transition-transform"
+              >
+                <div className="relative z-[1]">
+                  <p className="text-micro uppercase tracking-[0.18em] text-muted mb-1.5">Sui</p>
+                  <div className="mb-2">
+                    <SuiLogo className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </div>
+                  <p className="font-display text-lg sm:text-xl font-semibold text-ink normal-case tracking-tight mb-1">
+                    Ed25519 0x
+                  </p>
+                  <p className="text-sm text-muted leading-relaxed normal-case tracking-normal">
+                    Hex vanity for Sui Wallet &amp; Suiet.
                   </p>
                 </div>
                 <p className="relative z-[1] mt-2.5 text-micro uppercase tracking-[0.16em] text-ink group-hover:text-accent transition-colors">

@@ -1,20 +1,30 @@
 {
   "hash": "sha256-bb9f32069f104fb2e27ff1d07aee354111b2f48e81e973bd64d4bd962945aa55",
   "size": 19285,
-  "built": "2026-07-24T19:32:20.929Z",
+  "built": "2026-07-24T20:33:24.822Z",
   "eth": {
-    "hash": "sha256-cc31373143d42ee1d7a778681361c2108794bb7f1868e3fd9ba5c3ff96c6d743",
-    "size": 12181,
-    "built": "2026-07-24T19:32:20.929Z"
+    "hash": "sha256-b6d21e9b981c27331d3f909fc0949cc9da701554cd9a30f9f454c7af1e1810fe",
+    "size": 13268,
+    "built": "2026-07-24T20:33:24.822Z"
   },
   "btc": {
-    "hash": "sha256-665b1d0e4225d3b5003c7ad422841e701fb136ecb677a91f566239508c83f103",
-    "size": 15510,
-    "built": "2026-07-24T19:32:20.929Z"
+    "hash": "sha256-9dd9f4b563ac6cd2bdad2a8ec37645653f31408ccbbf951f243d36e14cd19bfd",
+    "size": 18198,
+    "built": "2026-07-24T20:33:24.822Z"
   },
   "tron": {
-    "hash": "sha256-a042fe63b931ff78a70b63a611e9d4d764dde709d83b8eb9181b3061fa4c8d2a",
-    "size": 16279,
-    "built": "2026-07-24T19:32:20.929Z"
+    "hash": "sha256-899dcd17210b4789ec8623228531ec1f08f9c0d01eb3a59a6510b178e231db9d",
+    "size": 16491,
+    "built": "2026-07-24T20:33:24.822Z"
+  },
+  "aptos": {
+    "hash": "sha256-d4d5fecf97d03d9b54b17ff9340f97b0a5a03904440f112a9fbce9c99aec3d86",
+    "size": 19040,
+    "built": "2026-07-24T20:33:24.822Z"
+  },
+  "sui": {
+    "hash": "sha256-a0fd0b316379cecab8fd6521797ad8b3aba64df4a2bd848d203ca700b323e04e",
+    "size": 21686,
+    "built": "2026-07-24T20:33:24.822Z"
   }
 }

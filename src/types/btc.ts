@@ -2,14 +2,14 @@
  * Types for Bitcoin vanity generation
  */
 
-export type BtcMode = 'legacy' | 'segwit';
+export type BtcMode = 'legacy' | 'segwit' | 'taproot';
 
 export interface BtcGeneratorConfig {
   prefix: string;
   suffix: string;
   threads: number;
   mode: BtcMode;
-  /** Legacy Base58 is case-sensitive; SegWit is always lowercase */
+  /** Legacy Base58 is case-sensitive; SegWit/Taproot are always lowercase */
   caseSensitive: boolean;
 }
 

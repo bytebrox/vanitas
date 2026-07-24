@@ -2,17 +2,23 @@
  * Types for Tron vanity generation
  */
 
+export type TronMode = 'wallet' | 'contract';
+
 export interface TronGeneratorConfig {
   prefix: string;
   suffix: string;
   threads: number;
   caseSensitive: boolean;
+  mode: TronMode;
 }
 
 export interface GeneratedTronResult {
+  mode: TronMode;
   address: string;
   privateKey: string;
   privateKeyBytes: Uint8Array;
+  /** Wallet that deploys the contract (CREATE nonce 0) */
+  deployerAddress?: string;
   attempts: number;
   duration: number;
   matchedPattern: string;

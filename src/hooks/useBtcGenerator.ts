@@ -64,7 +64,7 @@ export function useBtcGenerator() {
   const updateConfig = useCallback((updates: Partial<BtcGeneratorConfig>) => {
     const prevConfig = configRef.current;
     const nextConfig = { ...prevConfig, ...updates };
-    if (updates.mode === 'segwit') nextConfig.caseSensitive = false;
+    if (updates.mode === 'segwit' || updates.mode === 'taproot') nextConfig.caseSensitive = false;
     const modeChanged = updates.mode !== undefined && updates.mode !== prevConfig.mode;
     configRef.current = nextConfig;
     generatorRef.current?.patchConfig(nextConfig);

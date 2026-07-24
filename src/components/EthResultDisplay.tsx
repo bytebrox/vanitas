@@ -18,6 +18,9 @@ export function EthResultDisplay({ result, onReset }: EthResultDisplayProps) {
   const [showPrivateKey, setShowPrivateKey] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
   const isContract = result.mode === 'contract';
+  const isCreate2 =
+    result.mode === 'create2-salt' || result.mode === 'create2-deployer';
+  const isDeployStyle = isContract || isCreate2;
 
   const copyToClipboard = async (text: string, field: string) => {
     try {
@@ -30,7 +33,30 @@ export function EthResultDisplay({ result, onReset }: EthResultDisplayProps) {
   };
 
   const downloadTxt = () => {
-    const content = isContract
+    const content = isCreate2
+      ? `VANITAS - ETH CREATE2 VANITY (${result.mode})
+===============================================
+Generated: ${new Date().toISOString()}
+
+CONTRACT ADDRESS:
+${result.address}
+
+DEPLOYER ADDRESS:
+${result.deployerAddress || ''}
+
+DEPLOYER PRIVATE KEY:
+${result.privateKey}
+
+SALT:
+${result.create2Salt || ''}
+
+INIT CODE HASH:
+${result.create2InitCodeHash || ''}
+
+===============================================
+Deploy via CREATE2 with the salt and init code that hash to the initCodeHash above.
+`
+      : isContract
       ? `VANITAS - ETH CONTRACT VANITY (CREATE · nonce 0)
 ===============================================
 Generated: ${new Date().toISOString()}
@@ -81,7 +107,7 @@ IMPORTANT:
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = isContract
+    a.download = isDeployStyle
       ? `eth-contract-${result.address.slice(2, 10)}.txt`
       : `eth-wallet-${result.address.slice(2, 10)}.txt`;
     document.body.appendChild(a);
@@ -91,19 +117,28 @@ IMPORTANT:
   };
 
   const downloadJson = () => {
-    const payload = isContract
+    const payload = isCreate2
       ? {
-          mode: 'contract',
+          mode: result.mode,
           contractAddress: result.address,
           deployerAddress: result.deployerAddress,
           privateKey: result.privateKey,
-          note: 'Deploy first contract with this key at nonce 0',
+          salt: result.create2Salt,
+          initCodeHash: result.create2InitCodeHash,
         }
-      : {
-          mode: 'wallet',
-          address: result.address,
-          privateKey: result.privateKey,
-        };
+      : isContract
+        ? {
+            mode: 'contract',
+            contractAddress: result.address,
+            deployerAddress: result.deployerAddress,
+            privateKey: result.privateKey,
+            note: 'Deploy first contract with this key at nonce 0',
+          }
+        : {
+            mode: 'wallet',
+            address: result.address,
+            privateKey: result.privateKey,
+          };
 
     const blob = new Blob([JSON.stringify(payload, null, 2)], {
       type: 'application/json',
@@ -111,7 +146,7 @@ IMPORTANT:
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = isContract
+    a.download = isDeployStyle
       ? `eth-contract-${result.address.slice(2, 10)}.json`
       : `eth-wallet-${result.address.slice(2, 10)}.json`;
     document.body.appendChild(a);
@@ -125,7 +160,7 @@ IMPORTANT:
       <header className="border-b border-ink/15 pb-6">
         <p className="text-micro uppercase tracking-[0.2em] text-accent mb-2">Found</p>
         <h2 className="text-2xl sm:text-3xl font-bold text-ink normal-case tracking-tight mb-2">
-          {isContract ? 'Contract address ready' : 'Wallet address ready'}
+          {isDeployStyle ? 'Contract address ready' : 'Wallet address ready'}
         </h2>
         <p className="text-sm text-muted font-mono">
           {formatNumber(result.attempts)} attempts · {formatDuration(result.duration)}
@@ -136,7 +171,7 @@ IMPORTANT:
         <div className="py-5">
           <div className="flex items-center justify-between gap-4 mb-3">
             <p className="text-micro uppercase tracking-[0.18em] text-muted">
-              {isContract ? 'Contract address' : 'Wallet address'}
+              {isDeployStyle ? 'Contract address' : 'Wallet address'}
             </p>
             <button
               type="button"
@@ -151,7 +186,7 @@ IMPORTANT:
           </p>
         </div>
 
-        {isContract && result.deployerAddress && (
+        {isDeployStyle && result.deployerAddress && (
           <div className="py-5">
             <div className="flex items-center justify-between gap-4 mb-3">
               <p className="text-micro uppercase tracking-[0.18em] text-muted">Deployer address</p>
@@ -172,7 +207,7 @@ IMPORTANT:
         <div className="py-5">
           <div className="flex items-center justify-between gap-4 mb-3">
             <p className="text-micro uppercase tracking-[0.18em] text-muted">
-              {isContract ? 'Deployer private key' : 'Private key'}
+              {isDeployStyle ? 'Deployer private key' : 'Private key'}
             </p>
             <div className="flex items-center gap-4">
               <button
@@ -209,7 +244,9 @@ IMPORTANT:
         <p className="text-micro uppercase tracking-[0.18em] text-accent mb-3">Keep safe</p>
         <ul className="text-sm text-muted space-y-2 leading-relaxed">
           <li>Save the private key before leaving this page</li>
-          {isContract ? (
+          {isCreate2 ? (
+            <li>Use CREATE2 with the returned salt and the init code that matches initCodeHash</li>
+          ) : isContract ? (
             <li>Deploy as the first transaction from this key — nonce must be 0</li>
           ) : (
             <li>Import into any EVM wallet — same address on every chain</li>
@@ -241,8 +278,8 @@ IMPORTANT:
           </button>
         </div>
         <p className="text-micro text-muted">
-          {isContract
-            ? 'TXT / JSON include contract + deployer key'
+          {isDeployStyle
+            ? 'TXT / JSON include contract + deployer key (and CREATE2 salt when applicable)'
             : 'Hex private key for MetaMask, Rabby, Frame, …'}
         </p>
       </section>

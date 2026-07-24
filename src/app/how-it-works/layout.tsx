@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'How it Works',
   description:
-    'How Vanitas forges vanity addresses for Solana, EVM, Bitcoin, and Tron: multi-core workers, zero network during generation, and verifiable client-side security.',
+    'How Vanitas forges vanity addresses for Solana, EVM, Bitcoin, Tron, Aptos, and Sui: multi-core workers, zero network during generation, and verifiable client-side security.',
   keywords: [
     'how vanity addresses work',
     'web crypto ed25519',

@@ -1,5 +1,5 @@
 /**
- * Build Solana + ETH + BTC + TRON vanity workers and publish integrity hashes
+ * Build Solana + ETH + BTC + TRON + APTOS + SUI vanity workers and publish integrity hashes
  */
 
 const esbuild = require('esbuild');
@@ -55,6 +55,18 @@ async function build() {
     );
     console.log('TRON worker built successfully!');
 
+    const aptos = await buildOne(
+      path.join(__dirname, '../src/workers/aptos.worker.source.ts'),
+      path.join(__dirname, '../public/aptos-worker.js')
+    );
+    console.log('APTOS worker built successfully!');
+
+    const sui = await buildOne(
+      path.join(__dirname, '../src/workers/sui.worker.source.ts'),
+      path.join(__dirname, '../public/sui-worker.js')
+    );
+    console.log('SUI worker built successfully!');
+
     const hashData = {
       hash: solana.hash,
       size: solana.size,
@@ -62,12 +74,16 @@ async function build() {
       eth: { hash: eth.hash, size: eth.size, built },
       btc: { hash: btc.hash, size: btc.size, built },
       tron: { hash: tron.hash, size: tron.size, built },
+      aptos: { hash: aptos.hash, size: aptos.size, built },
+      sui: { hash: sui.hash, size: sui.size, built },
     };
     fs.writeFileSync(hashFile, JSON.stringify(hashData, null, 2));
     console.log(`Solana: ${solana.hash}`);
     console.log(`ETH: ${eth.hash}`);
     console.log(`BTC: ${btc.hash}`);
     console.log(`TRON: ${tron.hash}`);
+    console.log(`APTOS: ${aptos.hash}`);
+    console.log(`SUI: ${sui.hash}`);
   } catch (error) {
     console.error('Worker build failed:', error);
     process.exit(1);

@@ -31,7 +31,8 @@ export function EvmContent() {
   const prevResultRef = useRef<GeneratedEthResult | null>(null);
 
   const { status, config, stats, result } = state;
-  const { prefix, suffix, threads, mode } = config;
+  const { prefix, suffix, threads, mode, create2Salt, create2InitCodeHash, create2DeployerKey } =
+    config;
 
   useEffect(() => {
     if (result && result !== prevResultRef.current) {
@@ -46,14 +47,20 @@ export function EvmContent() {
     const urlMode = searchParams.get('mode');
     if (urlPrefix) updateConfig({ prefix: urlPrefix.replace(/^0x/i, '') });
     if (urlSuffix) updateConfig({ suffix: urlSuffix.replace(/^0x/i, '') });
-    if (urlMode === 'wallet' || urlMode === 'contract') {
+    if (
+      urlMode === 'wallet' ||
+      urlMode === 'contract' ||
+      urlMode === 'create2-salt' ||
+      urlMode === 'create2-deployer'
+    ) {
       updateConfig({ mode: urlMode });
     }
-    // Only apply URL params on mount / search change
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- intentional: read URL once per searchParams change
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
   const expectedDifficulty = estimateEthDifficulty(prefix, suffix);
+
+  const isHex32 = (v?: string) => /^[0-9a-fA-F]{64}$/.test((v || '').replace(/^0x/i, ''));
 
   const generateShareLink = useCallback(() => {
     const params = new URLSearchParams();
@@ -71,7 +78,13 @@ export function EvmContent() {
   const prefixValid = validateEthPrefix(prefix).valid;
   const suffixValid = validateEthSuffix(suffix).valid;
   const hasPattern = prefix.length > 0 || suffix.length > 0;
-  const canStart = prefixValid && suffixValid && hasPattern;
+  const create2Ok =
+    mode === 'wallet' || mode === 'contract'
+      ? true
+      : mode === 'create2-salt'
+        ? isHex32(create2InitCodeHash) && isHex32(create2DeployerKey)
+        : isHex32(create2InitCodeHash) && isHex32(create2Salt);
+  const canStart = prefixValid && suffixValid && hasPattern && create2Ok;
 
   const handleStart = useCallback(() => {
     if (canStart) start(config);
@@ -120,6 +133,72 @@ export function EvmContent() {
                     disabled={status === 'running'}
                   />
                 </div>
+
+                {(mode === 'create2-salt' || mode === 'create2-deployer') && (
+                  <div className="border-y border-ink/15 divide-y divide-ink/15">
+                    <p className="text-micro uppercase tracking-[0.2em] text-muted py-4">
+                      CREATE2 parameters
+                    </p>
+                    <label className="grid grid-cols-1 sm:grid-cols-[7rem_1fr] gap-2 sm:gap-6 py-4 items-start">
+                      <span className="text-micro uppercase tracking-[0.18em] text-muted sm:pt-2">
+                        Init hash
+                      </span>
+                      <input
+                        type="text"
+                        value={create2InitCodeHash || ''}
+                        onChange={(e) => {
+                          updateConfig({
+                            create2InitCodeHash: e.target.value.replace(/^0x/i, '').toLowerCase(),
+                          });
+                        }}
+                        placeholder="keccak256(initCode) — 64 hex"
+                        spellCheck={false}
+                        disabled={status === 'running'}
+                        className="w-full bg-transparent border-0 border-b border-ink/25 font-mono text-sm py-2 focus:outline-none focus:border-accent"
+                      />
+                    </label>
+                    {mode === 'create2-deployer' && (
+                      <label className="grid grid-cols-1 sm:grid-cols-[7rem_1fr] gap-2 sm:gap-6 py-4 items-start">
+                        <span className="text-micro uppercase tracking-[0.18em] text-muted sm:pt-2">
+                          Salt
+                        </span>
+                        <input
+                          type="text"
+                          value={create2Salt || ''}
+                          onChange={(e) => {
+                            updateConfig({
+                              create2Salt: e.target.value.replace(/^0x/i, '').toLowerCase(),
+                            });
+                          }}
+                          placeholder="32-byte salt — 64 hex"
+                          spellCheck={false}
+                          disabled={status === 'running'}
+                          className="w-full bg-transparent border-0 border-b border-ink/25 font-mono text-sm py-2 focus:outline-none focus:border-accent"
+                        />
+                      </label>
+                    )}
+                    {mode === 'create2-salt' && (
+                      <label className="grid grid-cols-1 sm:grid-cols-[7rem_1fr] gap-2 sm:gap-6 py-4 items-start">
+                        <span className="text-micro uppercase tracking-[0.18em] text-muted sm:pt-2">
+                          Deployer key
+                        </span>
+                        <input
+                          type="text"
+                          value={create2DeployerKey || ''}
+                          onChange={(e) => {
+                            updateConfig({
+                              create2DeployerKey: e.target.value.replace(/^0x/i, '').toLowerCase(),
+                            });
+                          }}
+                          placeholder="Deployer private key — 64 hex"
+                          spellCheck={false}
+                          disabled={status === 'running'}
+                          className="w-full bg-transparent border-0 border-b border-ink/25 font-mono text-sm py-2 focus:outline-none focus:border-accent"
+                        />
+                      </label>
+                    )}
+                  </div>
+                )}
 
                 <div>
                   <p className="text-micro uppercase tracking-[0.2em] text-muted mb-4">03 — Estimate</p>

@@ -22,9 +22,18 @@ export { BtcResultDisplay } from './BtcResultDisplay';
 export { TronPatternInput } from './TronPatternInput';
 export { TronDifficultyDisplay } from './TronDifficultyDisplay';
 export { TronResultDisplay } from './TronResultDisplay';
+export { TronModeToggle } from './TronModeToggle';
+export { AptosPatternInput } from './AptosPatternInput';
+export { AptosDifficultyDisplay } from './AptosDifficultyDisplay';
+export { AptosResultDisplay } from './AptosResultDisplay';
+export { SuiPatternInput } from './SuiPatternInput';
+export { SuiDifficultyDisplay } from './SuiDifficultyDisplay';
+export { SuiResultDisplay } from './SuiResultDisplay';
 export { SolModeToggle } from './SolModeToggle';
 export { TokenResultDisplay } from './TokenResultDisplay';
 
+export { PatternTemplates } from './PatternTemplates';
+export { RecentFinds } from './RecentFinds';
 export { Footer } from './Footer';
 export { DomainSuggestions } from './DomainSuggestions';
 export { EntropyInfo } from './EntropyInfo';

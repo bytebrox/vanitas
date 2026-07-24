@@ -5,7 +5,7 @@ import { HeroBand } from './HeroBand';
 
 interface HeaderProps {
   imageSrc?: string;
-  mode?: 'wallet' | 'mint' | 'evm' | 'btc' | 'tron';
+  mode?: 'wallet' | 'mint' | 'evm' | 'btc' | 'tron' | 'aptos' | 'sui';
 }
 
 export function Header({
@@ -52,6 +52,22 @@ export function Header({
       headline: 'Name the T. Keep the key.',
       blurb:
         'Generate vanity Tron Base58 addresses — entirely in this browser. Import into TronLink and other Tron wallets.',
+    },
+    aptos: {
+      eyebrow: '0x forge',
+      title: 'Aptos',
+      chain: 'aptos' as const,
+      headline: 'Name the 0x. Keep the key.',
+      blurb:
+        'Generate vanity Aptos Ed25519 addresses — entirely in this browser. Import into Petra, Martian, and other Aptos wallets.',
+    },
+    sui: {
+      eyebrow: '0x forge',
+      title: 'Sui',
+      chain: 'sui' as const,
+      headline: 'Name the 0x. Keep the key.',
+      blurb:
+        'Generate vanity Sui Ed25519 addresses — entirely in this browser. Import into Sui Wallet, Suiet, and other Sui wallets.',
     },
   };
 

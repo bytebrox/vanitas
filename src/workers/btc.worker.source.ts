@@ -1,16 +1,17 @@
 /**
  * Bitcoin vanity Web Worker
- * Modes: legacy (1…) P2PKH · segwit (bc1q…) P2WPKH
+ * Modes: legacy (1…) · segwit (bc1q…) · taproot (bc1p…)
  */
 
-import { getPublicKey, utils, etc } from '@noble/secp256k1';
+import { getPublicKey, utils, etc, schnorr } from '@noble/secp256k1';
 import {
   btcLegacyAddress,
   btcSegwitAddress,
+  btcTaprootAddress,
   btcWifCompressed,
 } from '../lib/address-encoding';
 
-type BtcMode = 'legacy' | 'segwit';
+type BtcMode = 'legacy' | 'segwit' | 'taproot';
 
 interface BtcGeneratorConfig {
   prefix: string;
@@ -55,16 +56,15 @@ function matches(
 ): boolean {
   if (!prefix && !suffix) return true;
 
-  if (mode === 'segwit') {
-    // P2WPKH always starts with bc1q — auto-prepend so "dead" means bc1qdead…
+  if (mode === 'segwit' || mode === 'taproot') {
     const addr = address.toLowerCase();
     let p = (prefix || '').toLowerCase();
     const s = (suffix || '').toLowerCase();
-    if (p && !p.startsWith('bc1')) p = `bc1q${p}`;
+    const hrp = mode === 'taproot' ? 'bc1p' : 'bc1q';
+    if (p && !p.startsWith('bc1')) p = `${hrp}${p}`;
     return (!p || addr.startsWith(p)) && (!s || addr.endsWith(s));
   }
 
-  // Legacy P2PKH always starts with 1 — auto-prepend so "BTC" means 1BTC…
   let p = prefix || '';
   if (p && !p.startsWith('1')) p = `1${p}`;
   const s = suffix || '';
@@ -79,6 +79,14 @@ function matches(
   );
 }
 
+function deriveAddress(secret: Uint8Array, mode: BtcMode): string {
+  if (mode === 'taproot') {
+    return btcTaprootAddress(schnorr.getPublicKey(secret));
+  }
+  const pub = getPublicKey(secret, true);
+  return mode === 'segwit' ? btcSegwitAddress(pub) : btcLegacyAddress(pub);
+}
+
 let isRunning = false;
 let workerId = 0;
 
@@ -86,7 +94,8 @@ async function generateBtcVanity(config: BtcGeneratorConfig): Promise<void> {
   const prefix = config.prefix || '';
   const suffix = config.suffix || '';
   const mode = config.mode || 'legacy';
-  const caseSensitive = mode === 'segwit' ? false : Boolean(config.caseSensitive);
+  const caseSensitive =
+    mode === 'segwit' || mode === 'taproot' ? false : Boolean(config.caseSensitive);
   const startTime = performance.now();
   let attempts = 0;
   let lastProgressUpdate = startTime;
@@ -98,9 +107,7 @@ async function generateBtcVanity(config: BtcGeneratorConfig): Promise<void> {
   while (isRunning) {
     for (let i = 0; i < batchSize && isRunning; i++) {
       const secret = utils.randomSecretKey();
-      const pub = getPublicKey(secret, true);
-      const address =
-        mode === 'segwit' ? btcSegwitAddress(pub) : btcLegacyAddress(pub);
+      const address = deriveAddress(secret, mode);
       attempts++;
 
       if (matches(address, prefix, suffix, caseSensitive, mode)) {

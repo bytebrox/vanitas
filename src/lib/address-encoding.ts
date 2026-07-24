@@ -119,10 +119,28 @@ function bech32CreateChecksum(hrp: string, data: number[]): number[] {
   return ret;
 }
 
+/** BIP-350 Bech32m checksum (Taproot witness v1) */
+function bech32mCreateChecksum(hrp: string, data: number[]): number[] {
+  const values = bech32HrpExpand(hrp).concat(data).concat([0, 0, 0, 0, 0, 0]);
+  const polymod = bech32Polymod(values) ^ 0x2bc830a3;
+  const ret: number[] = [];
+  for (let i = 0; i < 6; i++) ret.push((polymod >> (5 * (5 - i))) & 31);
+  return ret;
+}
+
 /** BIP-173 Bech32 encode (for P2WPKH / witness v0) */
 export function bech32Encode(hrp: string, witver: number, witprog: Uint8Array): string {
   const data = [witver].concat(convertBits(witprog, 8, 5, true)!);
   const combined = data.concat(bech32CreateChecksum(hrp, data));
+  let str = hrp + '1';
+  for (const d of combined) str += BECH32_ALPHABET[d];
+  return str;
+}
+
+/** BIP-350 Bech32m encode (for Taproot / witness v1) */
+export function bech32mEncode(hrp: string, witver: number, witprog: Uint8Array): string {
+  const data = [witver].concat(convertBits(witprog, 8, 5, true)!);
+  const combined = data.concat(bech32mCreateChecksum(hrp, data));
   let str = hrp + '1';
   for (const d of combined) str += BECH32_ALPHABET[d];
   return str;
@@ -139,6 +157,17 @@ export function btcLegacyAddress(pubCompressed: Uint8Array): string {
 /** Bitcoin mainnet native SegWit P2WPKH (bc1q…) */
 export function btcSegwitAddress(pubCompressed: Uint8Array): string {
   return bech32Encode('bc', 0, hash160(pubCompressed));
+}
+
+/**
+ * Bitcoin mainnet Taproot P2TR (bc1p…) from 32-byte x-only pubkey (BIP-341 key-path).
+ * Pass schnorr.getPublicKey(secret) output.
+ */
+export function btcTaprootAddress(xOnlyPubkey32: Uint8Array): string {
+  if (xOnlyPubkey32.length !== 32) {
+    throw new Error('Taproot output key must be 32 bytes');
+  }
+  return bech32mEncode('bc', 1, xOnlyPubkey32);
 }
 
 /** Bitcoin WIF (compressed) */

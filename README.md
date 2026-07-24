@@ -1,10 +1,10 @@
 ﻿# Vanitas
 
-[![Version: 1.1.2](https://img.shields.io/badge/Version-1.1.2-8B7355.svg)](https://vanitas.fun)
+[![Version: 1.5.0](https://img.shields.io/badge/Version-1.5.0-8B7355.svg)](https://vanitas.fun)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Live Audit](https://img.shields.io/badge/Live_Audit-vanitas.fun%2Faudit-8B7355.svg)](https://vanitas.fun/audit)
 
-**Forge vanity addresses for Solana, EVM, Bitcoin, and Tron — entirely in your browser.**
+**Forge vanity addresses for Solana, EVM, Bitcoin, Tron, Aptos, and Sui — entirely in your browser.**
 
 Create personalized wallet (and related) addresses that start or end with patterns you choose. All cryptographic work runs locally — private keys never leave your device.
 
@@ -15,9 +15,11 @@ Website: [vanitas.fun](https://vanitas.fun)
 | Forge | Use Case | URL |
 |-------|----------|-----|
 | **Solana** | Wallet + token mint (Base58 Ed25519) | `/sol` |
-| **EVM** | Wallet + contract CREATE nonce 0 (`0x` hex) | `/evm` |
-| **Bitcoin** | Legacy `1…` + SegWit `bc1q…` (WIF export) | `/btc` |
-| **Tron** | Base58Check `T…` addresses | `/tron` |
+| **EVM** | Wallet, CREATE nonce 0, CREATE2 salt / deployer | `/evm` |
+| **Bitcoin** | Legacy `1…`, SegWit `bc1q…`, Taproot `bc1p…` (WIF) | `/btc` |
+| **Tron** | Wallet + CREATE nonce 0 (`T…` Base58Check) | `/tron` |
+| **Aptos** | Hex account addresses (Ed25519) | `/aptos` |
+| **Sui** | Hex account addresses (Ed25519) | `/sui` |
 
 Legacy `/token` redirects to `/sol?mode=mint`. `/eth` redirects to `/evm`.
 
@@ -28,10 +30,12 @@ A vanity address contains a recognizable pattern instead of looking fully random
 ## Features
 
 - **100% Client-Side** – Generation runs in Web Workers on your device
-- **Multi-Chain** – Solana, EVM (Ethereum, BNB, Base, …), Bitcoin, Tron
+- **Multi-Chain** – Solana, EVM, Bitcoin, Tron, Aptos, Sui
 - **Native Web Crypto** – Fast Ed25519 path for Solana where supported
 - **Multi-Core** – Uses available CPU cores for parallel search
-- **Token Mint & Contract Modes** – Solana mint + EVM CREATE (nonce 0)
+- **Deploy Modes** – Solana mint, EVM/Tron CREATE, EVM CREATE2 (salt or deployer)
+- **Recent Finds** – Session history of addresses only (no private keys stored)
+- **Pattern Templates** – Quick-start prefixes per forge
 - **Key Security Check** – Entropy / CSPRNG / chi-square probes after a find
 - **Difficulty Estimates** – Time estimates based on pattern and alphabet
 - **Sound Notification** – Optional alert when an address is found

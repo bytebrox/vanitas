@@ -85,9 +85,16 @@ export function normalizeEthPattern(value: string): string {
 }
 
 export function ethPatternHint(mode: EthMode): string {
-  return mode === 'contract'
-    ? 'Pattern matches the contract address created by the deployer at nonce 0 (first deploy).'
-    : 'Pattern matches the wallet address (0x + 40 hex). Same address on every EVM chain.';
+  if (mode === 'contract') {
+    return 'Pattern matches the contract address created by the deployer at nonce 0 (first deploy).';
+  }
+  if (mode === 'create2-salt') {
+    return 'Pattern matches the CREATE2 contract; you supply deployer key + initCodeHash; salt is ground.';
+  }
+  if (mode === 'create2-deployer') {
+    return 'Pattern matches the CREATE2 contract; you supply salt + initCodeHash; deployer key is ground.';
+  }
+  return 'Pattern matches the wallet address (0x + 40 hex). Same address on every EVM chain.';
 }
 
 /** Strip to lowercase hex body for validation helpers */

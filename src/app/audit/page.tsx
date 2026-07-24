@@ -61,8 +61,8 @@ const initialTests: AuditTest[] = [
   {
     id: 'integrity',
     name: 'Code Integrity',
-    description: 'SHA-256 fingerprint matches the published build',
-    why: 'We compute a unique fingerprint (hash) of the code running on this page and compare it to the one published on GitHub. If they match, the code hasn\'t been tampered with.',
+    description: 'SHA-256 fingerprints match all published forge workers',
+    why: 'We hash every key-generation worker (Solana, EVM, Bitcoin, Tron, Aptos, Sui) and compare each to worker-hash.json from the open build. If they match, the code hasn\'t been tampered with.',
     status: 'idle',
   },
   {
@@ -231,31 +231,60 @@ async function runWorkerTest(): Promise<{ pass: boolean; detail: string }> {
   }
 }
 
+async function hashWorkerFile(path: string): Promise<string> {
+  const workerResp = await fetch(path);
+  if (!workerResp.ok) throw new Error(`Failed to fetch ${path}`);
+  const workerBuf = await workerResp.arrayBuffer();
+  const hashBuf = await crypto.subtle.digest('SHA-256', workerBuf);
+  const hashArr = Array.from(new Uint8Array(hashBuf));
+  return 'sha256-' + hashArr.map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+
 async function runIntegrityTest(): Promise<{ pass: boolean; detail: string }> {
   try {
-    // Fetch the worker file
-    const workerResp = await fetch('/vanity-worker.js');
-    const workerBuf = await workerResp.arrayBuffer();
-
-    // Compute SHA-256
-    const hashBuf = await crypto.subtle.digest('SHA-256', workerBuf);
-    const hashArr = Array.from(new Uint8Array(hashBuf));
-    const liveHash = 'sha256-' + hashArr.map(b => b.toString(16).padStart(2, '0')).join('');
-
-    // Fetch the published hash
     const hashResp = await fetch('/worker-hash.json');
     if (!hashResp.ok) {
-      return { pass: true, detail: `Live hash: ${liveHash.slice(0, 20)}… (no published hash to compare)` };
+      return { pass: false, detail: 'Could not load published worker-hash.json' };
+    }
+    const published = await hashResp.json() as {
+      hash?: string;
+      eth?: { hash?: string };
+      btc?: { hash?: string };
+      tron?: { hash?: string };
+      aptos?: { hash?: string };
+      sui?: { hash?: string };
+    };
+
+    const checks: { label: string; path: string; expected?: string }[] = [
+      { label: 'Solana', path: '/vanity-worker.js', expected: published.hash },
+      { label: 'EVM', path: '/eth-worker.js', expected: published.eth?.hash },
+      { label: 'Bitcoin', path: '/btc-worker.js', expected: published.btc?.hash },
+      { label: 'Tron', path: '/tron-worker.js', expected: published.tron?.hash },
+      { label: 'Aptos', path: '/aptos-worker.js', expected: published.aptos?.hash },
+      { label: 'Sui', path: '/sui-worker.js', expected: published.sui?.hash },
+    ];
+
+    const results: string[] = [];
+    let allPass = true;
+    for (const check of checks) {
+      if (!check.expected) {
+        allPass = false;
+        results.push(`${check.label}: missing published hash`);
+        continue;
+      }
+      const live = await hashWorkerFile(check.path);
+      const ok = live === check.expected;
+      if (!ok) allPass = false;
+      results.push(
+        ok
+          ? `${check.label}: ok`
+          : `${check.label}: mismatch (${live.slice(0, 18)}…)`
+      );
     }
 
-    const published = await hashResp.json();
-    const match = liveHash === published.hash;
-
     return {
-      pass: match,
-      detail: match
-        ? `Hash verified: ${liveHash.slice(0, 24)}… matches published build`
-        : `Mismatch! Live: ${liveHash.slice(0, 20)}… vs Published: ${published.hash.slice(0, 20)}…`,
+      pass: allPass,
+      detail: results.join(' · '),
     };
   } catch (e) {
     return { pass: false, detail: `Integrity check failed: ${e instanceof Error ? e.message : 'unknown'}` };
@@ -442,11 +471,11 @@ export default function AuditPage() {
               <p className="text-micro uppercase tracking-[0.2em] text-muted mb-2">Build integrity</p>
               <h4 className="text-lg font-bold text-ink normal-case mb-3">Worker fingerprint</h4>
               <p className="text-sm text-muted mb-4 leading-relaxed">
-                The key-generation worker has a SHA-256 fingerprint. Compare it with the published build
-                to confirm the code matches the open repository.
+                Each forge worker has a SHA-256 fingerprint published in{' '}
+                <code className="font-mono text-ink/70">worker-hash.json</code>. The integrity test
+                above verifies Solana, EVM, Bitcoin, and Tron against this list.
               </p>
               <div className="border-y border-ink/15 py-4">
-                <p className="text-micro text-muted mb-1 font-mono">SHA-256</p>
                 <WorkerHash />
               </div>
               <details className="mt-4">
@@ -501,21 +530,46 @@ function StatusIcon({ status }: { status: TestStatus }) {
 }
 
 function WorkerHash() {
-  const [hash, setHash] = useState<string | null>(null);
+  const [rows, setRows] = useState<{ label: string; hash: string }[] | null>(null);
 
-  useState(() => {
+  useEffect(() => {
     fetch('/worker-hash.json')
-      .then(r => r.json())
-      .then(data => setHash(data.hash))
-      .catch(() => setHash('unavailable'));
-  });
+      .then((r) => r.json())
+      .then((data: {
+        hash?: string;
+        eth?: { hash?: string };
+        btc?: { hash?: string };
+        tron?: { hash?: string };
+        aptos?: { hash?: string };
+        sui?: { hash?: string };
+      }) => {
+        setRows([
+          { label: 'Solana', hash: data.hash || '—' },
+          { label: 'EVM', hash: data.eth?.hash || '—' },
+          { label: 'Bitcoin', hash: data.btc?.hash || '—' },
+          { label: 'Tron', hash: data.tron?.hash || '—' },
+          { label: 'Aptos', hash: data.aptos?.hash || '—' },
+          { label: 'Sui', hash: data.sui?.hash || '—' },
+        ]);
+      })
+      .catch(() => {
+        setRows([{ label: 'error', hash: 'unavailable' }]);
+      });
+  }, []);
 
-  if (!hash) return <p className="font-mono text-sm text-muted animate-pulse">Loading...</p>;
+  if (!rows) return <p className="font-mono text-sm text-muted animate-pulse">Loading...</p>;
 
   return (
-    <p className="font-mono text-sm break-all select-all cursor-pointer" title="Click to select">
-      {hash}
-    </p>
+    <div className="space-y-3">
+      {rows.map((row) => (
+        <div key={row.label}>
+          <p className="text-micro text-muted mb-1 font-mono uppercase tracking-[0.14em]">{row.label}</p>
+          <p className="font-mono text-sm break-all select-all cursor-pointer" title="Click to select">
+            {row.hash}
+          </p>
+        </div>
+      ))}
+    </div>
   );
 }
 

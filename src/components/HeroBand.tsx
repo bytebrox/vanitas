@@ -2,7 +2,7 @@
 
 import { Navbar } from './Navbar';
 import { useHeroScrollFade } from '@/hooks/useHeroScrollFade';
-import { SolanaLogo, EvmChainLogos, BitcoinLogo, TronLogo } from './ChainLogos';
+import { SolanaLogo, EvmChainLogos, BitcoinLogo, TronLogo, AptosLogo, SuiLogo } from './ChainLogos';
 
 interface HeroBandProps {
   imageSrc: string;
@@ -10,7 +10,7 @@ interface HeroBandProps {
   title?: string;
   eyebrow?: string;
   /** Official chain mark(s) with the title */
-  chain?: 'sol' | 'evm' | 'btc' | 'tron';
+  chain?: 'sol' | 'evm' | 'btc' | 'tron' | 'aptos' | 'sui';
   /** Anchor for the scroll cue */
   scrollHref?: string;
   scrollLabel?: string;
@@ -97,19 +97,26 @@ export function HeroBand({
                 {eyebrow}
               </p>
             )}
-            {chain === 'sol' ? (
+            {chain === 'sol' ||
+            chain === 'btc' ||
+            chain === 'tron' ||
+            chain === 'aptos' ||
+            chain === 'sui' ? (
               <div className="flex items-center justify-center gap-2.5 sm:gap-4 max-w-[16rem] sm:max-w-3xl">
-                <SolanaLogo className="w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 shrink-0 drop-shadow-sm" />
-                <h1 className="font-display text-[2rem] leading-tight sm:text-5xl md:text-6xl font-semibold tracking-tight text-ink normal-case drop-shadow-sm">
-                  {title}
-                </h1>
-              </div>
-            ) : chain === 'btc' || chain === 'tron' ? (
-              <div className="flex items-center justify-center gap-2.5 sm:gap-4 max-w-[16rem] sm:max-w-3xl">
-                {chain === 'btc' ? (
+                {chain === 'sol' && (
+                  <SolanaLogo className="w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 shrink-0 drop-shadow-sm" />
+                )}
+                {chain === 'btc' && (
                   <BitcoinLogo className="w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 shrink-0 drop-shadow-sm" />
-                ) : (
+                )}
+                {chain === 'tron' && (
                   <TronLogo className="w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 shrink-0 drop-shadow-sm" />
+                )}
+                {chain === 'aptos' && (
+                  <AptosLogo className="w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 shrink-0 drop-shadow-sm" />
+                )}
+                {chain === 'sui' && (
+                  <SuiLogo className="w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 shrink-0 drop-shadow-sm" />
                 )}
                 <h1 className="font-display text-[2rem] leading-tight sm:text-5xl md:text-6xl font-semibold tracking-tight text-ink normal-case drop-shadow-sm">
                   {title}

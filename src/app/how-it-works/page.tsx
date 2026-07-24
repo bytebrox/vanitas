@@ -120,17 +120,22 @@ export default function HowItWorksPage() {
                 Open <a href="/sol?mode=mint" className="text-accent hover:text-ink">/sol</a> (Mint mode), copy the private key, paste into the launchpad custom-mint field.
               </p>
               <p>
-                <strong className="text-ink">EVM contract</strong> — CREATE with nonce 0 on{' '}
-                <a href="/evm" className="text-accent hover:text-ink">/evm</a> (same key works on every EVM chain).
+                <strong className="text-ink">EVM</strong> — wallet, CREATE (nonce 0), and CREATE2 (grind salt or deployer) on{' '}
+                <a href="/evm" className="text-accent hover:text-ink">/evm</a>.
               </p>
               <p>
-                <strong className="text-ink">Bitcoin</strong> — legacy <span className="font-mono text-sm">1…</span> and SegWit{' '}
-                <span className="font-mono text-sm">bc1q…</span> on{' '}
+                <strong className="text-ink">Bitcoin</strong> — legacy <span className="font-mono text-sm">1…</span>, SegWit{' '}
+                <span className="font-mono text-sm">bc1q…</span>, Taproot <span className="font-mono text-sm">bc1p…</span> on{' '}
                 <a href="/btc" className="text-accent hover:text-ink">/btc</a> (WIF export).
               </p>
               <p>
-                <strong className="text-ink">Tron</strong> — Base58Check <span className="font-mono text-sm">T…</span> on{' '}
+                <strong className="text-ink">Tron</strong> — wallet or CREATE (nonce 0) Base58Check <span className="font-mono text-sm">T…</span> on{' '}
                 <a href="/tron" className="text-accent hover:text-ink">/tron</a>.
+              </p>
+              <p>
+                <strong className="text-ink">Aptos / Sui</strong> — hex account addresses on{' '}
+                <a href="/aptos" className="text-accent hover:text-ink">/aptos</a> and{' '}
+                <a href="/sui" className="text-accent hover:text-ink">/sui</a>.
               </p>
             </Section>
 

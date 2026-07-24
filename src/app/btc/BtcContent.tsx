@@ -17,12 +17,15 @@ import { Header } from '@/components/Header';
 import { useBtcGenerator } from '@/hooks/useBtcGenerator';
 import { useSound } from '@/hooks/useSound';
 import { validateBtcPrefix, validateBtcSuffix, estimateBtcDifficulty } from '@/lib/btc-validation';
+import { saveRecentFind } from '@/lib/find-history';
 import type { BtcMode, GeneratedBtcResult } from '@/types/btc';
+import { RecentFinds } from '@/components/RecentFinds';
 
 export function BtcContent() {
   const { state, start, stop, reset, updateConfig, maxThreads } = useBtcGenerator();
   const { soundEnabled, toggleSound, playSuccessSound } = useSound();
   const [copied, setCopied] = useState(false);
+  const [historyKey, setHistoryKey] = useState(0);
   const searchParams = useSearchParams();
   const prevResultRef = useRef<GeneratedBtcResult | null>(null);
 
@@ -30,7 +33,16 @@ export function BtcContent() {
   const { prefix, suffix, threads, mode, caseSensitive } = config;
 
   useEffect(() => {
-    if (result && result !== prevResultRef.current) playSuccessSound();
+    if (result && result !== prevResultRef.current) {
+      playSuccessSound();
+      saveRecentFind({
+        chain: 'btc',
+        mode: result.mode,
+        address: result.address,
+        pattern: result.matchedPattern,
+      });
+      setHistoryKey((k) => k + 1);
+    }
     prevResultRef.current = result;
   }, [result, playSuccessSound]);
 
@@ -40,12 +52,14 @@ export function BtcContent() {
     const urlMode = searchParams.get('mode');
     if (urlPrefix) updateConfig({ prefix: urlPrefix });
     if (urlSuffix) updateConfig({ suffix: urlSuffix });
-    if (urlMode === 'legacy' || urlMode === 'segwit') updateConfig({ mode: urlMode });
+    if (urlMode === 'legacy' || urlMode === 'segwit' || urlMode === 'taproot') {
+      updateConfig({ mode: urlMode });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
   const expectedDifficulty = estimateBtcDifficulty(prefix, suffix, mode, caseSensitive);
-  const prefixValid = validateBtcPrefix(prefix, mode).valid;
+  const prefixValid = validateBtcPrefix(prefix, mode, caseSensitive).valid;
   const suffixValid = validateBtcSuffix(suffix, mode).valid;
   const hasPattern = prefix.length > 0 || suffix.length > 0;
   const canStart = prefixValid && suffixValid && hasPattern;
@@ -84,7 +98,10 @@ export function BtcContent() {
             </div>
 
             {result ? (
-              <BtcResultDisplay result={result} onReset={reset} />
+              <>
+                <BtcResultDisplay result={result} onReset={reset} />
+                <RecentFinds chain="btc" refreshKey={historyKey} />
+              </>
             ) : (
               <>
                 <div>
@@ -135,6 +152,8 @@ export function BtcContent() {
                     expectedDifficulty={expectedDifficulty}
                   />
                 </div>
+
+                <RecentFinds chain="btc" refreshKey={historyKey} />
 
                 <p className="text-micro text-muted leading-relaxed max-w-xl normal-case tracking-normal">
                   Bitcoin mainnet only. Keys stay in this browser. Solana and EVM forges live on{' '}

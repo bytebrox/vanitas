@@ -1,22 +1,28 @@
 /**
  * Tron vanity Web Worker — Base58 T… addresses (secp256k1 + keccak)
+ * Modes: wallet | contract (CREATE at nonce 0, same RLP as EVM)
  */
 
 import { getPublicKey, utils, etc } from '@noble/secp256k1';
 import { keccak_256 } from '@noble/hashes/sha3.js';
 import { tronAddressFromEth20 } from '../lib/address-encoding';
 
+type TronMode = 'wallet' | 'contract';
+
 interface TronGeneratorConfig {
   prefix: string;
   suffix: string;
   threads: number;
   caseSensitive: boolean;
+  mode?: TronMode;
 }
 
 interface GeneratedTronResult {
+  mode: TronMode;
   address: string;
   privateKey: string;
   privateKeyBytes: Uint8Array;
+  deployerAddress?: string;
   attempts: number;
   duration: number;
   matchedPattern: string;
@@ -35,6 +41,16 @@ interface WorkerOutboundMessage {
   attempts?: number;
   rate?: number;
   error?: string;
+}
+
+/** EVM CREATE(deployer, nonce=0) → last 20 bytes of keccak(RLP([from, 0])) */
+function contractEth20AtNonce0(from20: Uint8Array): Uint8Array {
+  const rlp = new Uint8Array(23);
+  rlp[0] = 0xd6;
+  rlp[1] = 0x94;
+  rlp.set(from20, 2);
+  rlp[22] = 0x80;
+  return keccak_256(rlp).slice(-20);
 }
 
 function matches(
@@ -65,6 +81,7 @@ async function generateTronVanity(config: TronGeneratorConfig): Promise<void> {
   const prefix = config.prefix || '';
   const suffix = config.suffix || '';
   const caseSensitive = Boolean(config.caseSensitive);
+  const mode: TronMode = config.mode === 'contract' ? 'contract' : 'wallet';
   const startTime = performance.now();
   let attempts = 0;
   let lastProgressUpdate = startTime;
@@ -78,15 +95,26 @@ async function generateTronVanity(config: TronGeneratorConfig): Promise<void> {
       const secret = utils.randomSecretKey();
       const pub = getPublicKey(secret, false);
       const hash = keccak_256(pub.slice(1));
-      const address = tronAddressFromEth20(hash.slice(-20));
+      const wallet20 = hash.slice(-20);
+      const walletAddress = tronAddressFromEth20(wallet20);
+
+      let address = walletAddress;
+      let deployerAddress: string | undefined;
+      if (mode === 'contract') {
+        address = tronAddressFromEth20(contractEth20AtNonce0(wallet20));
+        deployerAddress = walletAddress;
+      }
+
       attempts++;
 
       if (matches(address, prefix, suffix, caseSensitive)) {
         const duration = performance.now() - startTime;
         const result: GeneratedTronResult = {
+          mode,
           address,
           privateKey: etc.bytesToHex(secret),
           privateKeyBytes: secret,
+          deployerAddress,
           attempts,
           duration,
           matchedPattern: `${prefix}...${suffix}`,

@@ -1,26 +1,34 @@
 /**
  * Types for ETH / EVM vanity generation
- * Addresses work on Ethereum and all EVM chains (Arbitrum, Robinhood Chain, Base, …)
  */
 
-export type EthMode = 'wallet' | 'contract';
+export type EthMode = 'wallet' | 'contract' | 'create2-salt' | 'create2-deployer';
+
+export const ETH_HEX_LOWER = '0123456789abcdef';
 
 export interface EthGeneratorConfig {
   prefix: string;
   suffix: string;
   threads: number;
   mode: EthMode;
+  /** CREATE2: 32-byte hex salt (with or without 0x) — required for create2-deployer; ignored when grinding salt */
+  create2Salt?: string;
+  /** CREATE2: 32-byte keccak of init code */
+  create2InitCodeHash?: string;
+  /** CREATE2 salt mode: fixed deployer private key hex (generates deployer address) */
+  create2DeployerKey?: string;
 }
 
 export interface GeneratedEthResult {
   mode: EthMode;
-  /** Vanity target: wallet address or contract address (CREATE, nonce 0) */
+  /** Vanity target: wallet, CREATE contract, or CREATE2 contract */
   address: string;
-  /** Private key hex (0x…) — wallet key, or deployer key for contract mode */
+  /** Private key hex (0x…) — wallet/deployer key (empty string when create2-salt uses fixed deployer) */
   privateKey: string;
   privateKeyBytes: Uint8Array;
-  /** Deployer EOA — only set in contract mode */
   deployerAddress?: string;
+  create2Salt?: string;
+  create2InitCodeHash?: string;
   attempts: number;
   duration: number;
   matchedPattern: string;
@@ -57,7 +65,3 @@ export interface EthGeneratorState {
   result: GeneratedEthResult | null;
   error: string | null;
 }
-
-/** Hex alphabet for Ethereum addresses (without 0x) */
-export const ETH_HEX_ALPHABET = '0123456789abcdefABCDEF';
-export const ETH_HEX_LOWER = '0123456789abcdef';

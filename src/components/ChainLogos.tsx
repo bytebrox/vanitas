@@ -72,6 +72,16 @@ export function TronLogo({ className = 'w-5 h-5', title = 'Tron' }: LogoProps) {
   return <ChainImg src="/chains/tron.svg" title={title} className={className} />;
 }
 
+/** Aptos mark (simple placeholder) */
+export function AptosLogo({ className = 'w-5 h-5', title = 'Aptos' }: LogoProps) {
+  return <ChainImg src="/chains/aptos.svg" title={title} className={className} />;
+}
+
+/** Sui mark (simple placeholder) */
+export function SuiLogo({ className = 'w-5 h-5', title = 'Sui' }: LogoProps) {
+  return <ChainImg src="/chains/sui.svg" title={title} className={className} />;
+}
+
 const EVM_MARKS = [
   { src: '/chains/ethereum.svg', title: 'Ethereum' },
   { src: '/chains/bnb.svg', title: 'BNB Smart Chain' },

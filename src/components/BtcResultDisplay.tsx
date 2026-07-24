@@ -10,10 +10,15 @@ interface BtcResultDisplayProps {
   onReset: () => void;
 }
 
+function modeLabel(mode: GeneratedBtcResult['mode']): string {
+  if (mode === 'taproot') return 'TAPROOT bc1p';
+  if (mode === 'segwit') return 'SEGWIT bc1q';
+  return 'LEGACY 1…';
+}
+
 export function BtcResultDisplay({ result, onReset }: BtcResultDisplayProps) {
   const [showPrivateKey, setShowPrivateKey] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
-  const isSegwit = result.mode === 'segwit';
 
   const copyToClipboard = async (text: string, field: string) => {
     try {
@@ -26,7 +31,7 @@ export function BtcResultDisplay({ result, onReset }: BtcResultDisplayProps) {
   };
 
   const downloadTxt = () => {
-    const content = `VANITAS - BITCOIN VANITY (${isSegwit ? 'SEGWIT bc1q' : 'LEGACY 1…'})
+    const content = `VANITAS - BITCOIN VANITY (${modeLabel(result.mode)})
 ===============================================
 Generated: ${new Date().toISOString()}
 
@@ -41,6 +46,7 @@ ${result.privateKeyHex}
 
 ===============================================
 Import WIF into Electrum, Sparrow, BlueWallet, etc.
+(Taproot: use a Taproot-capable wallet; key is still standard secp256k1 WIF.)
 
 IMPORTANT:
 - Never share the private key
@@ -57,6 +63,28 @@ IMPORTANT:
     URL.revokeObjectURL(url);
   };
 
+  const downloadJson = () => {
+    const payload = {
+      chain: 'bitcoin',
+      network: 'mainnet',
+      mode: result.mode,
+      address: result.address,
+      privateKeyWif: result.privateKeyWif,
+      privateKeyHex: result.privateKeyHex,
+      generatedAt: new Date().toISOString(),
+      importHint: 'Import privateKeyWif into Electrum, Sparrow, or another Bitcoin wallet.',
+    };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `btc-${result.address.slice(0, 12)}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="space-y-10">
       <header className="border-b border-ink/15 pb-6">
@@ -65,7 +93,7 @@ IMPORTANT:
           Bitcoin address ready
         </h2>
         <p className="text-sm text-muted font-mono">
-          {formatNumber(result.attempts)} attempts · {formatDuration(result.duration)}
+          {formatNumber(result.attempts)} attempts · {formatDuration(result.duration)} · {result.mode}
         </p>
       </header>
 
@@ -115,6 +143,9 @@ IMPORTANT:
               <span className="text-ink/25 select-none tracking-widest">••••••••••••••••••••••••••••••••</span>
             )}
           </p>
+          <p className="text-micro text-muted mt-3 normal-case tracking-normal leading-relaxed">
+            Import WIF into Electrum, Sparrow, BlueWallet, etc.
+          </p>
         </div>
       </section>
 
@@ -128,6 +159,13 @@ IMPORTANT:
             className="text-ink border-b border-ink pb-0.5 hover:text-accent hover:border-accent"
           >
             Download txt
+          </button>
+          <button
+            type="button"
+            onClick={downloadJson}
+            className="text-ink border-b border-ink pb-0.5 hover:text-accent hover:border-accent"
+          >
+            Download json
           </button>
           <button
             type="button"

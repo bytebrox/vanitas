@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { validateTronPrefix, validateTronSuffix } from '@/lib/tron-validation';
 import { TRON_BASE58 } from '@/types/tron';
 
+import { PatternTemplates, TRON_TEMPLATES } from './PatternTemplates';
+
 interface TronPatternInputProps {
   prefix: string;
   suffix: string;
@@ -48,6 +50,12 @@ export function TronPatternInput({
           need an exact mix of upper/lower case.
         </p>
       </div>
+
+      <PatternTemplates
+        templates={TRON_TEMPLATES}
+        disabled={disabled}
+        onSelect={(p) => { onPrefixChange(sanitize(p)); }}
+      />
 
       <label className="grid grid-cols-1 sm:grid-cols-[7rem_1fr] gap-2 sm:gap-6 py-4 sm:py-5 items-start cursor-text">
         <span className="text-micro uppercase tracking-[0.18em] text-muted sm:pt-3">Prefix</span>

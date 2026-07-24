@@ -11,6 +11,7 @@ const initialState: TronGeneratorState = {
     suffix: '',
     threads: 4,
     caseSensitive: false,
+    mode: 'wallet',
   },
   stats: {
     totalAttempts: 0,
