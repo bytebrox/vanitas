@@ -1,5 +1,5 @@
 /* Import fonts - must be first */
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -12,22 +12,31 @@
   }
 
   body {
-    @apply bg-paper text-ink font-mono;
+    @apply bg-paper text-ink font-sans;
     background-color: #F5F0E8;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
     background-attachment: fixed;
+    -webkit-tap-highlight-color: transparent;
+    text-size-adjust: 100%;
   }
 
   h1 {
-    @apply text-display font-bold tracking-tight uppercase;
+    @apply font-display text-display font-semibold tracking-tight normal-case;
   }
 
   h2 {
-    @apply text-headline font-semibold uppercase tracking-tight;
+    @apply font-display text-headline font-semibold tracking-tight normal-case;
   }
 
   h3 {
-    @apply text-title font-medium;
+    @apply font-display text-title font-medium tracking-tight normal-case;
+  }
+
+  code,
+  kbd,
+  samp,
+  pre {
+    @apply font-mono;
   }
 
   ::selection {
@@ -67,7 +76,7 @@
 
   .btn {
     @apply inline-flex items-center justify-center px-6 py-3
-           font-medium text-body font-mono uppercase tracking-wider
+           font-medium text-body font-sans uppercase tracking-wider
            transition-all duration-200
            focus-visible:outline-2 focus-visible:outline-offset-2;
   }
@@ -124,6 +133,22 @@
     @apply text-micro uppercase tracking-[0.18em] text-muted;
   }
 
+  /* Landing forge choice boxes — soft radius + paper grain */
+  .landing-forge-box {
+    @apply relative overflow-hidden rounded-xl border border-ink/20 transition-colors;
+    background-color: rgba(245, 240, 232, 0.9);
+    backdrop-filter: blur(8px);
+    background-image:
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E"),
+      linear-gradient(155deg, rgba(255, 252, 247, 0.55) 0%, rgba(245, 240, 232, 0.2) 48%, rgba(232, 224, 212, 0.45) 100%);
+    background-blend-mode: multiply, normal;
+  }
+
+  .landing-forge-box:hover {
+    @apply border-ink/45;
+    background-color: rgba(245, 240, 232, 0.97);
+  }
+
   .stat {
     @apply text-center;
   }
@@ -155,6 +180,22 @@
 
   .animate-fade-in-up {
     animation: fadeInUp 0.5s ease-out forwards;
+  }
+
+  @keyframes heroScrollBounce {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translateY(6px);
+      opacity: 1;
+    }
+  }
+
+  .hero-scroll-chevron {
+    animation: heroScrollBounce 1.6s ease-in-out infinite;
   }
 
   @keyframes shimmer {

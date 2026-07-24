@@ -7,7 +7,7 @@
 import { useState } from 'react';
 import { GeneratedKeypair } from '@/types';
 import { formatNumber, formatDuration } from '@/lib/format';
-import { EntropyInfo } from '@/components';
+import { EntropyInfo } from './EntropyInfo';
 
 interface TokenResultDisplayProps {
   result: GeneratedKeypair;

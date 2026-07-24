@@ -1,20 +1,20 @@
 'use client';
 
 /**
- * Hook for Solana vanity generator
+ * Hook for ETH vanity generator
  */
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { VanityGenerator } from '@/lib/generator';
-import { GeneratorState, GeneratorConfig } from '@/types';
+import { EthVanityGenerator } from '@/lib/eth-generator';
+import type { EthGeneratorConfig, EthGeneratorState } from '@/types/eth';
 
-const initialState: GeneratorState = {
+const initialState: EthGeneratorState = {
   status: 'idle',
   config: {
     prefix: '',
     suffix: '',
-    caseSensitive: false,
     threads: 4,
+    mode: 'wallet',
   },
   stats: {
     totalAttempts: 0,
@@ -26,13 +26,13 @@ const initialState: GeneratorState = {
   error: null,
 };
 
-export function useGenerator() {
-  const [state, setState] = useState<GeneratorState>(initialState);
-  const generatorRef = useRef<VanityGenerator | null>(null);
+export function useEthGenerator() {
+  const [state, setState] = useState<EthGeneratorState>(initialState);
+  const generatorRef = useRef<EthVanityGenerator | null>(null);
   const configRef = useRef(initialState.config);
 
   useEffect(() => {
-    generatorRef.current = new VanityGenerator((newState) => {
+    generatorRef.current = new EthVanityGenerator((newState) => {
       configRef.current = newState.config;
       setState(newState);
     });
@@ -50,7 +50,7 @@ export function useGenerator() {
     };
   }, []);
 
-  const start = useCallback((config: Partial<GeneratorConfig>) => {
+  const start = useCallback((config: Partial<EthGeneratorConfig>) => {
     if (!generatorRef.current) return;
     generatorRef.current.start({
       ...configRef.current,
@@ -74,13 +74,34 @@ export function useGenerator() {
     }));
   }, []);
 
-  const updateConfig = useCallback((updates: Partial<GeneratorConfig>) => {
-    const nextConfig = { ...configRef.current, ...updates };
+  const updateConfig = useCallback((updates: Partial<EthGeneratorConfig>) => {
+    const prevConfig = configRef.current;
+    const nextConfig = { ...prevConfig, ...updates };
+    const modeChanged =
+      updates.mode !== undefined && updates.mode !== prevConfig.mode;
+
     configRef.current = nextConfig;
     generatorRef.current?.patchConfig(nextConfig);
+
     if (updates.threads !== undefined) {
       generatorRef.current?.setThreadCount(updates.threads);
     }
+
+    // Switching wallet ↔ contract after a find: clear result and return to forge
+    if (modeChanged) {
+      generatorRef.current?.reset();
+      // reset() emits idle with patched config; also sync React in case generator missing
+      setState((prev) => ({
+        ...prev,
+        status: 'idle',
+        result: null,
+        error: null,
+        config: nextConfig,
+        stats: { ...initialState.stats },
+      }));
+      return;
+    }
+
     setState((prev) => ({
       ...prev,
       config: nextConfig,

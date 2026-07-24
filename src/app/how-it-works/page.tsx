@@ -30,11 +30,11 @@ export default function HowItWorksPage() {
       <PageIntro
         imageSrc="/ascii/page-how-wide.webp"
         eyebrow="Docs"
-        title="How Vanitas works"
+        title="How it works"
         description="Everything happens in your browser. No servers compute keys. No trust required."
       />
 
-      <main className="flex-1 px-5 sm:px-8 lg:px-8 xl:px-12 pb-16">
+      <main className="flex-1 px-4 sm:px-8 lg:px-8 xl:px-12 pb-16">
         <ContentWithSide imageSrc="/ascii/side-figure.webp" caption="Fig. III — Orator">
           <div className="space-y-4">
             <Section n="01 — Performance" title="Native speed">
@@ -115,7 +115,7 @@ export default function HowItWorksPage() {
                 Create vanity mint addresses for launches on pump.fun, Raydium, Meteora, and other Solana launchpads.
               </p>
               <ol className="list-decimal list-inside space-y-2 text-sm">
-                <li>Open <a href="/token" className="text-accent hover:text-ink">/token</a> and forge a pattern</li>
+                <li>Open <a href="/sol?mode=mint" className="text-accent hover:text-ink">/sol</a> (Mint mode) and forge a pattern</li>
                 <li>Copy the <strong className="text-ink">private key</strong></li>
                 <li>Paste it into the launchpad custom-mint field</li>
                 <li>Launch with your vanity address</li>

@@ -43,7 +43,7 @@ export function ContentWithSide({
           <div className="w-full max-w-xl xl:max-w-2xl">{children}</div>
         </div>
 
-        {/* Right half — plate flush to the center line */}
+        {/* Right half — plate flush to the center line (desktop) */}
         <div className="relative hidden lg:flex lg:pl-10 xl:pl-14 justify-start min-h-0 self-stretch">
           <aside className="side-plate" aria-hidden="true">
             <div className="side-plate__press">
@@ -59,6 +59,21 @@ export function ContentWithSide({
           </aside>
         </div>
       </div>
+
+      {/* Compact plate strip on mobile / tablet */}
+      <figure className="lg:hidden mt-12 sm:mt-16 mx-auto max-w-[14rem] sm:max-w-[16rem] opacity-80" aria-hidden="true">
+        <img
+          src={plateSrc}
+          alt=""
+          className="w-full h-auto select-none"
+          loading="lazy"
+          decoding="async"
+          draggable={false}
+        />
+        <figcaption className="mt-2 text-center text-micro uppercase tracking-[0.16em] text-muted">
+          {caption}
+        </figcaption>
+      </figure>
     </div>
   );
 }

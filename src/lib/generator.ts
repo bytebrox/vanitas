@@ -223,6 +223,29 @@ export class VanityGenerator {
   }
 
   /**
+   * Clear result and return to idle — keeps current pattern/threads
+   */
+  reset(): void {
+    this.isRunning = false;
+    if (this.statsInterval) {
+      clearInterval(this.statsInterval);
+      this.statsInterval = null;
+    }
+    this.workers.forEach((worker) => {
+      worker.terminate();
+    });
+    this.workers = [];
+    this.result = null;
+    this.workerAttempts.clear();
+    this.workerRates.clear();
+    this.emitState('idle');
+  }
+
+  patchConfig(updates: Partial<GeneratorConfig>): void {
+    this.config = { ...this.config, ...updates };
+  }
+
+  /**
    * Update thread count
    */
   setThreadCount(count: number): void {
@@ -247,6 +270,6 @@ export class VanityGenerator {
    * Cleanup resources
    */
   destroy(): void {
-    this.stop();
+    this.reset();
   }
 }

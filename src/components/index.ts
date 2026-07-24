@@ -11,6 +11,12 @@ export { DifficultyDisplay } from './DifficultyDisplay';
 export { StatsDisplay } from './StatsDisplay';
 export { ResultDisplay } from './ResultDisplay';
 export { GeneratorControls } from './GeneratorControls';
+export { EthModeToggle } from './EthModeToggle';
+export { EthPatternInput } from './EthPatternInput';
+export { EthDifficultyDisplay } from './EthDifficultyDisplay';
+export { EthResultDisplay } from './EthResultDisplay';
+export { SolModeToggle } from './SolModeToggle';
+export { TokenResultDisplay } from './TokenResultDisplay';
 
 export { Footer } from './Footer';
 export { DomainSuggestions } from './DomainSuggestions';

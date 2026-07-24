@@ -41,8 +41,8 @@ export function PatternInput({
 
   return (
     <div className="space-y-0 divide-y divide-ink/15 border-y border-ink/15">
-      <label className="grid grid-cols-1 sm:grid-cols-[7rem_1fr] gap-2 sm:gap-6 py-5 items-start cursor-text">
-        <span className="text-micro uppercase tracking-[0.18em] text-muted pt-3">Prefix</span>
+      <label className="grid grid-cols-1 sm:grid-cols-[7rem_1fr] gap-2 sm:gap-6 py-4 sm:py-5 items-start cursor-text">
+        <span className="text-micro uppercase tracking-[0.18em] text-muted sm:pt-3">Prefix</span>
         <div>
           <input
             id="prefix"
@@ -52,7 +52,7 @@ export function PatternInput({
             placeholder="SOL"
             maxLength={8}
             disabled={disabled}
-            className={`w-full bg-transparent border-0 border-b border-ink/25 rounded-none px-0 py-2 text-2xl font-mono tracking-wide
+            className={`w-full bg-transparent border-0 border-b border-ink/25 rounded-none px-0 py-2.5 sm:py-2 text-xl sm:text-2xl font-mono tracking-wide
               placeholder:text-ink/20 focus:outline-none focus:border-accent
               ${prefixError ? 'border-accent' : ''} ${disabled ? 'opacity-50' : ''}`}
           />
@@ -61,8 +61,8 @@ export function PatternInput({
         </div>
       </label>
 
-      <label className="grid grid-cols-1 sm:grid-cols-[7rem_1fr] gap-2 sm:gap-6 py-5 items-start cursor-text">
-        <span className="text-micro uppercase tracking-[0.18em] text-muted pt-3">Suffix</span>
+      <label className="grid grid-cols-1 sm:grid-cols-[7rem_1fr] gap-2 sm:gap-6 py-4 sm:py-5 items-start cursor-text">
+        <span className="text-micro uppercase tracking-[0.18em] text-muted sm:pt-3">Suffix</span>
         <div>
           <input
             id="suffix"
@@ -72,7 +72,7 @@ export function PatternInput({
             placeholder="xyz"
             maxLength={8}
             disabled={disabled}
-            className={`w-full bg-transparent border-0 border-b border-ink/25 rounded-none px-0 py-2 text-2xl font-mono tracking-wide
+            className={`w-full bg-transparent border-0 border-b border-ink/25 rounded-none px-0 py-2.5 sm:py-2 text-xl sm:text-2xl font-mono tracking-wide
               placeholder:text-ink/20 focus:outline-none focus:border-accent
               ${suffixError ? 'border-accent' : ''} ${disabled ? 'opacity-50' : ''}`}
           />
@@ -81,16 +81,16 @@ export function PatternInput({
         </div>
       </label>
 
-      <div className="grid grid-cols-1 sm:grid-cols-[7rem_1fr] gap-2 sm:gap-6 py-5 items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-[7rem_1fr] gap-2 sm:gap-6 py-4 sm:py-5 items-center">
         <span className="text-micro uppercase tracking-[0.18em] text-muted">Match</span>
-        <label className={`flex items-center gap-3 ${disabled ? 'opacity-50' : 'cursor-pointer'}`}>
+        <label className={`flex items-center gap-3 min-h-11 ${disabled ? 'opacity-50' : 'cursor-pointer'}`}>
           <input
             id="caseSensitive"
             type="checkbox"
             checked={caseSensitive}
             onChange={(e) => { onCaseSensitiveChange(e.target.checked); }}
             disabled={disabled}
-            className="w-4 h-4 accent-ink"
+            className="w-5 h-5 sm:w-4 sm:h-4 accent-ink"
           />
           <span className="text-sm text-ink">Case sensitive</span>
         </label>

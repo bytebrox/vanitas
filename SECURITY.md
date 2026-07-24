@@ -14,7 +14,8 @@ Vanitas takes security seriously. We designed this tool with a security-first mi
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 0.9.x   | :white_check_mark: |
+| 1.0.x   | :white_check_mark: |
+| 0.9.x   | :x:                |
 | < 0.9   | :x:                |
 
 ## Reporting a Vulnerability

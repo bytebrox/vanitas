@@ -362,14 +362,15 @@ export default function AuditPage() {
     <div className="min-h-screen flex flex-col">
       <PageIntro
         imageSrc="/ascii/page-audit-wide.webp"
-        eyebrow="Live audit"
-        title={
-          <>
-            Check it yourself
-            {allDone && failed === 0 ? ' — clear' : allDone && failed > 0 ? ` — ${failed} issue${failed > 1 ? 's' : ''}` : ''}
-          </>
+        eyebrow="Live checks"
+        title="Audit"
+        description={
+          allDone && failed === 0
+            ? 'Eight local checks — clear. Nothing is faked, nothing is sent to a server.'
+            : allDone && failed > 0
+              ? `Eight local checks — ${failed} issue${failed > 1 ? 's' : ''}. Green means good.`
+              : 'Eight local checks. Nothing is faked, nothing is sent to a server. Green means good.'
         }
-        description="Eight local checks. Nothing is faked, nothing is sent to a server. Green means good."
       >
         <div className="flex flex-col sm:flex-row sm:items-center gap-4">
           <button
@@ -387,7 +388,7 @@ export default function AuditPage() {
         </div>
       </PageIntro>
 
-      <main className="flex-1 px-5 sm:px-8 lg:px-8 xl:px-12 pb-16">
+      <main className="flex-1 px-4 sm:px-8 lg:px-8 xl:px-12 pb-16">
         <ContentWithSide imageSrc="/ascii/side-forum.webp" caption="Fig. VI — Forum">
           <FadeIn>
             <div className="mb-12 border-y border-ink/15 py-8">

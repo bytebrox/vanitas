@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 };
 
 const links = [
-  { href: '/', label: 'Wallet forge' },
-  { href: '/token', label: 'Mint forge' },
+  { href: '/sol', label: 'SOL forge' },
+  { href: '/eth', label: 'ETH forge' },
   { href: '/how-it-works', label: 'How it works' },
   { href: '/faq', label: 'FAQ' },
 ];
@@ -22,7 +22,7 @@ export default function NotFound() {
     <div className="min-h-screen flex flex-col">
       <Navbar />
 
-      <main className="flex-1 px-5 sm:px-8 lg:px-8 xl:px-12 pt-28 sm:pt-32 pb-16">
+      <main className="flex-1 px-4 sm:px-8 lg:px-8 xl:px-12 pt-28 sm:pt-32 pb-16">
         <div className="relative">
           <div
             className="pointer-events-none absolute left-1/2 top-0 bottom-0 z-[2] hidden lg:flex -translate-x-1/2 flex-col items-center gap-3 pt-6"
@@ -38,7 +38,7 @@ export default function NotFound() {
                 <p className="text-micro uppercase tracking-[0.2em] text-accent mb-3">
                   Error 404
                 </p>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-ink normal-case leading-tight mb-4">
+                <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-ink normal-case leading-tight mb-4">
                   This address was never forged
                 </h1>
                 <p className="text-base sm:text-lg text-muted leading-relaxed mb-10 max-w-md">

@@ -33,16 +33,16 @@ export function GeneratorControls({
   const canStart = !disabled && (status === 'idle' || status === 'stopped' || status === 'found');
 
   return (
-    <div className="flex flex-col gap-8">
-      <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-10">
+    <div className="flex flex-col gap-6 sm:gap-8">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-10">
         <div className="flex items-center gap-4">
-          <span className="text-micro uppercase tracking-[0.18em] text-muted w-16">Cores</span>
+          <span className="text-micro uppercase tracking-[0.18em] text-muted w-16 shrink-0">Cores</span>
           <div className="flex items-center gap-3">
             <button
               type="button"
               onClick={() => { onThreadsChange(Math.max(1, threads - 1)); }}
               disabled={isRunning || threads <= 1}
-              className="text-lg text-ink disabled:opacity-30 hover:text-accent"
+              className="min-h-11 min-w-11 text-lg text-ink disabled:opacity-30 hover:text-accent"
               aria-label="Fewer cores"
             >
               −
@@ -52,7 +52,7 @@ export function GeneratorControls({
               type="button"
               onClick={() => { onThreadsChange(Math.min(maxThreads, threads + 1)); }}
               disabled={isRunning || threads >= maxThreads}
-              className="text-lg text-ink disabled:opacity-30 hover:text-accent"
+              className="min-h-11 min-w-11 text-lg text-ink disabled:opacity-30 hover:text-accent"
               aria-label="More cores"
             >
               +
@@ -65,16 +65,16 @@ export function GeneratorControls({
           <button
             type="button"
             onClick={onSoundToggle}
-            className="text-micro uppercase tracking-[0.18em] text-muted hover:text-ink text-left"
+            className="text-micro uppercase tracking-[0.18em] text-muted hover:text-ink text-left min-h-11"
           >
             Sound {soundEnabled ? 'on' : 'off'}
           </button>
         )}
       </div>
 
-      <div>
+      <div className="w-full sm:w-auto">
         {isRunning ? (
-          <button type="button" onClick={onStop} className="btn-danger min-w-[12rem]">
+          <button type="button" onClick={onStop} className="btn-danger w-full sm:w-auto sm:min-w-[12rem]">
             Stop
           </button>
         ) : (
@@ -82,7 +82,7 @@ export function GeneratorControls({
             type="button"
             onClick={onStart}
             disabled={!canStart}
-            className={`btn-primary min-w-[12rem] ${!canStart ? 'opacity-40 cursor-not-allowed' : ''}`}
+            className={`btn-primary w-full sm:w-auto sm:min-w-[12rem] ${!canStart ? 'opacity-40 cursor-not-allowed' : ''}`}
           >
             Forge
           </button>

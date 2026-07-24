@@ -5,17 +5,30 @@ import { useHeroScrollFade } from '@/hooks/useHeroScrollFade';
 
 interface HeroBandProps {
   imageSrc: string;
+  /** Centered page label on the hero */
+  title?: string;
+  eyebrow?: string;
+  /** Anchor for the scroll cue */
+  scrollHref?: string;
+  scrollLabel?: string;
 }
 
 /** Exact page paper — must match tailwind `paper` / body base */
 const PAPER = '#F5F0E8';
 
 /**
- * Full-width hero. Nav is fixed separately and stays visible while scrolling.
- * Bottom edge dissolves via mask into paper so the handoff has no hard seam.
+ * Full-width hero — image keeps its natural aspect (fully visible).
+ * Optional centered page title + scroll cue sit over the image.
  */
-export function HeroBand({ imageSrc }: HeroBandProps) {
+export function HeroBand({
+  imageSrc,
+  title,
+  eyebrow,
+  scrollHref = '#content',
+  scrollLabel = 'Scroll down',
+}: HeroBandProps) {
   const { ref, imageOpacity, progress } = useHeroScrollFade();
+  const showOverlay = Boolean(title);
 
   return (
     <>
@@ -33,7 +46,12 @@ export function HeroBand({ imageSrc }: HeroBandProps) {
               'linear-gradient(to bottom, #000 0%, #000 42%, rgba(0,0,0,0.85) 58%, rgba(0,0,0,0.35) 78%, transparent 100%)',
           }}
         >
-          <img src={imageSrc} alt="" className="block w-full h-auto select-none" draggable={false} />
+          <img
+            src={imageSrc}
+            alt=""
+            className="block w-full h-auto select-none"
+            draggable={false}
+          />
         </div>
 
         <div
@@ -45,7 +63,50 @@ export function HeroBand({ imageSrc }: HeroBandProps) {
               ${PAPER}99 62%,
               ${PAPER} 100%)`,
           }}
+          aria-hidden
         />
+
+        {showOverlay && (
+          <div
+            className="pointer-events-none absolute inset-0 z-[5]"
+            style={{
+              background: `linear-gradient(to bottom,
+                ${PAPER}55 0%,
+                ${PAPER}22 28%,
+                transparent 55%)`,
+            }}
+            aria-hidden
+          />
+        )}
+
+        {showOverlay && (
+          <div
+            className="absolute inset-0 z-10 flex flex-col items-center justify-center px-4 sm:px-5 text-center pt-20 sm:pt-20 pb-12 sm:pb-16"
+            style={{
+              opacity: Math.max(0, 1 - progress * 1.35),
+              transform: `translateY(${progress * 24}px)`,
+              transition: 'opacity 60ms linear, transform 60ms linear',
+            }}
+          >
+            {eyebrow && (
+              <p className="text-[0.65rem] sm:text-micro uppercase tracking-[0.2em] sm:tracking-[0.22em] text-ink/80 mb-2 sm:mb-4">
+                {eyebrow}
+              </p>
+            )}
+            <h1 className="font-display text-[2rem] leading-tight sm:text-5xl md:text-6xl font-semibold tracking-tight text-ink normal-case drop-shadow-sm max-w-[16rem] sm:max-w-3xl">
+              {title}
+            </h1>
+            <a
+              href={scrollHref}
+              className="mt-6 sm:mt-10 inline-flex flex-col items-center gap-1.5 sm:gap-2 text-[0.65rem] sm:text-micro uppercase tracking-[0.18em] sm:tracking-[0.2em] text-ink/80 hover:text-ink transition-colors min-h-11 justify-center"
+            >
+              <span>{scrollLabel}</span>
+              <span className="hero-scroll-chevron text-base sm:text-lg leading-none" aria-hidden>
+                ↓
+              </span>
+            </a>
+          </div>
+        )}
       </div>
     </>
   );

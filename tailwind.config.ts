@@ -9,9 +9,24 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['IBM Plex Mono', 'Menlo', 'Monaco', 'monospace'],
-        mono: ['IBM Plex Mono', 'Menlo', 'Monaco', 'monospace'],
-        display: ['IBM Plex Mono', 'Menlo', 'Monaco', 'monospace'],
+        sans: [
+          'IBM Plex Sans',
+          'ui-sans-serif',
+          'system-ui',
+          'sans-serif',
+        ],
+        display: [
+          'EB Garamond',
+          'Georgia',
+          'Times New Roman',
+          'serif',
+        ],
+        mono: [
+          'IBM Plex Mono',
+          'Menlo',
+          'Monaco',
+          'monospace',
+        ],
       },
       colors: {
         paper: '#F5F0E8',
@@ -23,9 +38,9 @@ const config: Config = {
         border: '#C8C2B8',
       },
       fontSize: {
-        'display': ['4.5rem', { lineHeight: '1', letterSpacing: '-0.03em' }],
-        'headline': ['2.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
-        'title': ['1.5rem', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
+        'display': ['4.5rem', { lineHeight: '1', letterSpacing: '-0.02em' }],
+        'headline': ['2.5rem', { lineHeight: '1.15', letterSpacing: '-0.015em' }],
+        'title': ['1.5rem', { lineHeight: '1.25', letterSpacing: '-0.01em' }],
         'body': ['1rem', { lineHeight: '1.6', letterSpacing: '0' }],
         'caption': ['0.875rem', { lineHeight: '1.4', letterSpacing: '0.01em' }],
         'micro': ['0.75rem', { lineHeight: '1.4', letterSpacing: '0.02em' }],

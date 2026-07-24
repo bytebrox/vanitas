@@ -1,33 +1,33 @@
-'use client';
+import { redirect } from 'next/navigation';
+import { LandingContent } from './LandingContent';
 
-/**
- * Vanitas - Main Page
- * Solana vanity address generator
- */
+type SearchParams = Promise<Record<string, string | string[] | undefined>>;
 
-import { Suspense } from 'react';
-import { HomeContent } from './HomeContent';
-
-export default function Home() {
-  return (
-    <Suspense fallback={<PageSkeleton />}>
-      <HomeContent />
-    </Suspense>
-  );
+function first(value: string | string[] | undefined): string | undefined {
+  if (Array.isArray(value)) return value[0];
+  return value;
 }
 
-function PageSkeleton() {
-  return (
-    <div className="min-h-screen flex flex-col">
-      <div className="px-5 sm:px-8 lg:px-12 pt-10 pb-6">
-        <div className="h-14 w-48 bg-ink/5 animate-pulse" />
-      </div>
-      <div className="w-full aspect-video bg-beige border-y border-ink/15 animate-pulse" />
-      <div className="px-5 sm:px-8 lg:px-12 py-12 max-w-3xl space-y-6">
-        <div className="h-8 w-2/3 bg-ink/5 animate-pulse" />
-        <div className="h-24 bg-ink/5 animate-pulse" />
-        <div className="h-24 bg-ink/5 animate-pulse" />
-      </div>
-    </div>
-  );
+/**
+ * Landing at /. Legacy wallet query params redirect to /sol.
+ */
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: SearchParams;
+}) {
+  const sp = await searchParams;
+  const prefix = first(sp.prefix);
+  const suffix = first(sp.suffix);
+  const mode = first(sp.mode);
+
+  if (prefix || suffix || mode === 'wallet' || mode === 'mint') {
+    const params = new URLSearchParams();
+    if (prefix) params.set('prefix', prefix);
+    if (suffix) params.set('suffix', suffix);
+    params.set('mode', mode === 'mint' ? 'mint' : 'wallet');
+    redirect(`/sol?${params.toString()}`);
+  }
+
+  return <LandingContent />;
 }

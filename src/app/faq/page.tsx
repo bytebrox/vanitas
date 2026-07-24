@@ -282,12 +282,12 @@ export default function FAQPage() {
     <div className="min-h-screen flex flex-col">
       <PageIntro
         imageSrc="/ascii/page-faq-wide.webp"
-        eyebrow="FAQ"
-        title="Questions, answered"
+        eyebrow="Help"
+        title="FAQ"
         description="Vanitas, vanity addresses, security, and how to use the tool."
       />
 
-      <main className="flex-1 px-5 sm:px-8 lg:px-8 xl:px-12 pb-16">
+      <main className="flex-1 px-4 sm:px-8 lg:px-8 xl:px-12 pb-16">
         <ContentWithSide imageSrc="/ascii/side-landscape.webp" caption="Fig. IV — Landscape">
           <FadeIn>
             <div className="flex flex-wrap gap-x-5 gap-y-2 mb-10 pb-6 border-b border-ink/15 text-micro uppercase tracking-[0.16em]">
