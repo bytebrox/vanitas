@@ -5,7 +5,7 @@ import { HeroBand } from './HeroBand';
 
 interface HeaderProps {
   imageSrc?: string;
-  mode?: 'wallet' | 'mint' | 'evm' | 'btc' | 'tron' | 'aptos' | 'sui';
+  mode?: 'wallet' | 'mint' | 'evm' | 'btc' | 'tron' | 'aptos' | 'sui' | 'ton' | 'cardano';
 }
 
 export function Header({
@@ -20,14 +20,14 @@ export function Header({
       title: 'Solana',
       chain: 'sol' as const,
       headline: 'Name the address. Keep the key.',
-      blurb: 'Generate a vanity Solana wallet address — entirely in this browser, on your CPU.',
+      blurb: 'Generate a vanity Solana wallet address, entirely in this browser, on your CPU.',
     },
     mint: {
       eyebrow: 'Mint forge',
       title: 'Solana',
       chain: 'sol' as const,
       headline: 'Name the mint. Launch with presence.',
-      blurb: 'Generate a vanity Solana mint for any launchpad — entirely in this browser.',
+      blurb: 'Generate a vanity Solana mint for any launchpad, entirely in this browser.',
     },
     evm: {
       eyebrow: '0x forge',
@@ -35,7 +35,7 @@ export function Header({
       chain: 'evm' as const,
       headline: 'Name the 0x. Same key everywhere.',
       blurb:
-        'Generate vanity wallet or contract addresses — entirely in this browser. One key works on Ethereum, BNB Smart Chain, Base, Arbitrum, Optimism, and every other EVM chain.',
+        'Generate vanity wallet or contract addresses, entirely in this browser. One key works on Ethereum, BNB Smart Chain, Base, Arbitrum, Optimism, and every other EVM chain.',
     },
     btc: {
       eyebrow: 'UTXO forge',
@@ -43,7 +43,7 @@ export function Header({
       chain: 'btc' as const,
       headline: 'Name the coin. Own the address.',
       blurb:
-        'Generate vanity Bitcoin addresses — legacy 1… or SegWit bc1q… — entirely in this browser. Keys never leave this device.',
+        'Generate vanity Bitcoin addresses (legacy, SegWit, Taproot), entirely in this browser. Keys never leave this device.',
     },
     tron: {
       eyebrow: 'T forge',
@@ -51,7 +51,7 @@ export function Header({
       chain: 'tron' as const,
       headline: 'Name the T. Keep the key.',
       blurb:
-        'Generate vanity Tron Base58 addresses — entirely in this browser. Import into TronLink and other Tron wallets.',
+        'Generate vanity Tron Base58 addresses, entirely in this browser. Import into TronLink and other Tron wallets.',
     },
     aptos: {
       eyebrow: '0x forge',
@@ -59,7 +59,7 @@ export function Header({
       chain: 'aptos' as const,
       headline: 'Name the 0x. Keep the key.',
       blurb:
-        'Generate vanity Aptos Ed25519 addresses — entirely in this browser. Import into Petra, Martian, and other Aptos wallets.',
+        'Generate vanity Aptos Ed25519 addresses, entirely in this browser. Import into Petra, Martian, and other Aptos wallets.',
     },
     sui: {
       eyebrow: '0x forge',
@@ -67,7 +67,23 @@ export function Header({
       chain: 'sui' as const,
       headline: 'Name the 0x. Keep the key.',
       blurb:
-        'Generate vanity Sui Ed25519 addresses — entirely in this browser. Import into Sui Wallet, Suiet, and other Sui wallets.',
+        'Generate vanity Sui Ed25519 addresses, entirely in this browser. Import into Sui Wallet, Suiet, and other Sui wallets.',
+    },
+    ton: {
+      eyebrow: 'UQ forge',
+      title: 'TON',
+      chain: 'ton' as const,
+      headline: 'Name the UQ. Keep the key.',
+      blurb:
+        'Generate vanity TON Wallet v4R2 addresses (UQ / EQ), entirely in this browser. Import into Tonkeeper and MyTonWallet.',
+    },
+    cardano: {
+      eyebrow: 'addr1 forge',
+      title: 'Cardano',
+      chain: 'cardano' as const,
+      headline: 'Name the addr. Keep the key.',
+      blurb:
+        'Generate vanity Cardano enterprise addresses (addr1…), entirely in this browser. Payment key only.',
     },
   };
 

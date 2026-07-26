@@ -1,9 +1,10 @@
 /**
- * Shared address encodings for Bitcoin & Tron (browser + workers)
+ * Shared address encodings for Bitcoin, Tron & Cardano (browser + workers)
  */
 
 import { sha256 } from '@noble/hashes/sha2.js';
 import { ripemd160 } from '@noble/hashes/legacy.js';
+import { blake2b } from '@noble/hashes/blake2.js';
 
 export const BASE58_ALPHABET =
   '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
@@ -137,6 +138,16 @@ export function bech32Encode(hrp: string, witver: number, witprog: Uint8Array): 
   return str;
 }
 
+/** BIP-173 Bech32 encode of arbitrary bytes (Cardano Shelley / enterprise) */
+export function bech32EncodeData(hrp: string, payload: Uint8Array): string {
+  const data = convertBits(payload, 8, 5, true);
+  if (!data) throw new Error('bech32 convertBits failed');
+  const combined = data.concat(bech32CreateChecksum(hrp, data));
+  let str = hrp + '1';
+  for (const d of combined) str += BECH32_ALPHABET[d];
+  return str;
+}
+
 /** BIP-350 Bech32m encode (for Taproot / witness v1) */
 export function bech32mEncode(hrp: string, witver: number, witprog: Uint8Array): string {
   const data = [witver].concat(convertBits(witprog, 8, 5, true)!);
@@ -185,4 +196,16 @@ export function tronAddressFromEth20(addr20: Uint8Array): string {
   payload[0] = 0x41;
   payload.set(addr20, 1);
   return base58CheckEncode(payload);
+}
+
+/**
+ * Cardano mainnet enterprise address (CIP-19 type 6): payment key only.
+ * Header 0x61 = type 6 (PaymentKeyHash, no delegation) + network 1 (mainnet).
+ */
+export function cardanoEnterpriseAddress(pubEd25519: Uint8Array): string {
+  const paymentHash = blake2b(pubEd25519, { dkLen: 28 });
+  const payload = new Uint8Array(29);
+  payload[0] = 0x61;
+  payload.set(paymentHash, 1);
+  return bech32EncodeData('addr', payload);
 }

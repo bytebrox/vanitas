@@ -253,6 +253,8 @@ async function runIntegrityTest(): Promise<{ pass: boolean; detail: string }> {
       tron?: { hash?: string };
       aptos?: { hash?: string };
       sui?: { hash?: string };
+      ton?: { hash?: string };
+      cardano?: { hash?: string };
     };
 
     const checks: { label: string; path: string; expected?: string }[] = [
@@ -262,6 +264,8 @@ async function runIntegrityTest(): Promise<{ pass: boolean; detail: string }> {
       { label: 'Tron', path: '/tron-worker.js', expected: published.tron?.hash },
       { label: 'Aptos', path: '/aptos-worker.js', expected: published.aptos?.hash },
       { label: 'Sui', path: '/sui-worker.js', expected: published.sui?.hash },
+      { label: 'TON', path: '/ton-worker.js', expected: published.ton?.hash },
+      { label: 'Cardano', path: '/cardano-worker.js', expected: published.cardano?.hash },
     ];
 
     const results: string[] = [];
@@ -542,14 +546,18 @@ function WorkerHash() {
         tron?: { hash?: string };
         aptos?: { hash?: string };
         sui?: { hash?: string };
+        ton?: { hash?: string };
+        cardano?: { hash?: string };
       }) => {
         setRows([
-          { label: 'Solana', hash: data.hash || '—' },
-          { label: 'EVM', hash: data.eth?.hash || '—' },
-          { label: 'Bitcoin', hash: data.btc?.hash || '—' },
-          { label: 'Tron', hash: data.tron?.hash || '—' },
-          { label: 'Aptos', hash: data.aptos?.hash || '—' },
-          { label: 'Sui', hash: data.sui?.hash || '—' },
+          { label: 'Solana', hash: data.hash || '...' },
+          { label: 'EVM', hash: data.eth?.hash || '...' },
+          { label: 'Bitcoin', hash: data.btc?.hash || '...' },
+          { label: 'Tron', hash: data.tron?.hash || '...' },
+          { label: 'Aptos', hash: data.aptos?.hash || '...' },
+          { label: 'Sui', hash: data.sui?.hash || '...' },
+          { label: 'TON', hash: data.ton?.hash || '...' },
+          { label: 'Cardano', hash: data.cardano?.hash || '...' },
         ]);
       })
       .catch(() => {

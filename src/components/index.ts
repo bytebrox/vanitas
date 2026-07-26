@@ -29,6 +29,14 @@ export { AptosResultDisplay } from './AptosResultDisplay';
 export { SuiPatternInput } from './SuiPatternInput';
 export { SuiDifficultyDisplay } from './SuiDifficultyDisplay';
 export { SuiResultDisplay } from './SuiResultDisplay';
+export { TonModeToggle } from './TonModeToggle';
+export { TonPatternInput } from './TonPatternInput';
+export { TonDifficultyDisplay } from './TonDifficultyDisplay';
+export { TonResultDisplay } from './TonResultDisplay';
+export { CardanoPatternInput } from './CardanoPatternInput';
+export { CardanoDifficultyDisplay } from './CardanoDifficultyDisplay';
+export { CardanoResultDisplay } from './CardanoResultDisplay';
+export { ShareProofButton } from './ShareProofButton';
 export { SolModeToggle } from './SolModeToggle';
 export { TokenResultDisplay } from './TokenResultDisplay';
 

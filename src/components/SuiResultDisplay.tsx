@@ -8,6 +8,7 @@ import { useState } from 'react';
 import type { GeneratedSuiResult } from '@/types/sui';
 import { formatNumber, formatDuration } from '@/lib/format';
 import { EntropyInfo } from './EntropyInfo';
+import { ShareProofButton } from './ShareProofButton';
 
 interface SuiResultDisplayProps {
   result: GeneratedSuiResult;
@@ -179,6 +180,13 @@ IMPORTANT:
           <button type="button" onClick={downloadJson} className="text-muted hover:text-ink">
             Download json
           </button>
+          <ShareProofButton
+            chain="sui"
+            address={result.address}
+            matchedPattern={result.matchedPattern}
+            attempts={result.attempts}
+            duration={result.duration}
+          />
           <button
             type="button"
             onClick={onReset}

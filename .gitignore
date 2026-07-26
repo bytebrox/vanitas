@@ -7,6 +7,12 @@ node_modules/
 .next/
 out/
 build/
+cli/dist/
+
+# CLI mine outputs (may contain private keys)
+vanitas-*.json
+cli/vanitas-*.json
+
 
 # Misc
 .DS_Store

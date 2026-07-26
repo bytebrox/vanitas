@@ -1,9 +1,10 @@
 {
   "name": "vanitas",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "private": true,
   "scripts": {
     "build:worker": "node scripts/build-worker.js",
+    "build:cli": "npm run build --prefix cli",
     "convert:webp": "node scripts/convert-to-webp.js",
     "dev": "npm run build:worker && next dev",
     "build": "npm run build:worker && next build",
@@ -14,6 +15,10 @@
     "@noble/ed25519": "^3.0.0",
     "@noble/hashes": "^2.0.1",
     "@noble/secp256k1": "^3.1.0",
+    "@ton/core": "^0.63.1",
+    "@ton/crypto": "^3.3.0",
+    "@ton/ton": "^16.3.0",
+    "buffer": "^6.0.3",
     "next": "^16.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

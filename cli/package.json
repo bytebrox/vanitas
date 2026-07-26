@@ -1,0 +1,61 @@
+{
+  "name": "vanitas",
+  "version": "1.6.0",
+  "description": "Client-side vanity address forge CLI for Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, and Cardano",
+  "license": "MIT",
+  "author": "bytebrox",
+  "homepage": "https://vanitas.fun",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bytebrox/vanitas.git",
+    "directory": "cli"
+  },
+  "bugs": {
+    "url": "https://github.com/bytebrox/vanitas/issues"
+  },
+  "keywords": [
+    "vanity",
+    "address",
+    "solana",
+    "ethereum",
+    "bitcoin",
+    "tron",
+    "aptos",
+    "sui",
+    "ton",
+    "cardano",
+    "cli"
+  ],
+  "type": "commonjs",
+  "bin": {
+    "vanitas": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "start": "node dist/index.js",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.11.0",
+    "@noble/ed25519": "^3.0.0",
+    "@noble/hashes": "^2.0.1",
+    "@noble/secp256k1": "^3.1.0",
+    "@ton/core": "^0.63.1",
+    "@ton/ton": "^16.3.0",
+    "buffer": "^6.0.3",
+    "picocolors": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "esbuild": "^0.27.2",
+    "typescript": "^5.0.0"
+  }
+}

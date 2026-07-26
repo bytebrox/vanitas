@@ -11,6 +11,8 @@ const chains = [
   { href: '/tron', label: 'Tron', short: 'TRON' },
   { href: '/aptos', label: 'Aptos', short: 'APTOS' },
   { href: '/sui', label: 'Sui', short: 'SUI' },
+  { href: '/ton', label: 'TON', short: 'TON' },
+  { href: '/cardano', label: 'Cardano', short: 'ADA' },
 ];
 
 const links = [
@@ -19,6 +21,7 @@ const links = [
   { href: '/faq', label: 'FAQ' },
   { href: '/security', label: 'Security' },
   { href: '/audit', label: 'Audit' },
+  { href: '/proof', label: 'Proof' },
 ];
 
 function GitHubIcon({ className = '' }: { className?: string }) {

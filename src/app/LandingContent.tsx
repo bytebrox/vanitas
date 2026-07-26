@@ -13,6 +13,8 @@ import {
   TronLogo,
   AptosLogo,
   SuiLogo,
+  TonLogo,
+  CardanoLogo,
 } from '@/components/ChainLogos';
 
 const PAPER = '#F5F0E8';
@@ -69,6 +71,20 @@ const FORGES: {
     title: 'Ed25519 0x',
     blurb: 'Hex vanity for Sui Wallet & Suiet.',
     logo: <SuiLogo className="w-5 h-5 sm:w-6 sm:h-6" />,
+  },
+  {
+    href: '/ton',
+    name: 'TON',
+    title: 'Wallet v4R2',
+    blurb: 'Vanity UQ… / EQ… addresses.',
+    logo: <TonLogo className="w-5 h-5 sm:w-6 sm:h-6" />,
+  },
+  {
+    href: '/cardano',
+    name: 'Cardano',
+    title: 'Enterprise addr1',
+    blurb: 'Bech32 vanity payment addresses.',
+    logo: <CardanoLogo className="w-5 h-5 sm:w-6 sm:h-6" />,
   },
 ];
 
