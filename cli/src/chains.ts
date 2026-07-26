@@ -17,7 +17,7 @@ import {
   btcWifCompressed,
   cardanoEnterpriseAddress,
   tronAddressFromEth20,
-} from '../../src/lib/address-encoding';
+} from './encoding';
 
 hashes.sha512 = sha512;
 

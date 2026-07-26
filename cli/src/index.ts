@@ -5,7 +5,6 @@
 import * as p from '@clack/prompts';
 import pc from 'picocolors';
 import { writeFileSync } from 'fs';
-import { homedir } from 'os';
 import { join } from 'path';
 import { cpus } from 'os';
 import { CHAIN_META, type CliChain, type MineConfig, type MineHit } from './chains';
