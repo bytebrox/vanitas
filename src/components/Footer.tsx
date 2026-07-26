@@ -30,7 +30,7 @@ export function Footer({ compact = false }: FooterProps) {
               compact ? 'line-clamp-2 sm:line-clamp-none' : ''
             }`}
           >
-            Client-side vanity tooling for Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON & Cardano. No project token. No key leaves this
+            Client-side vanity tooling for Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano & XRP. No project token. No key leaves this
             device. Dev’d by{' '}
             <a
               href="https://x.com/bytebrox"
@@ -73,6 +73,9 @@ export function Footer({ compact = false }: FooterProps) {
               <a href="/cardano" className="hover:text-ink py-1">
                 ADA
               </a>
+              <a href="/xrp" className="hover:text-ink py-1">
+                XRP
+              </a>
               <a href="/proof" className="hover:text-ink py-1">
                 Proof
               </a>
@@ -89,6 +92,14 @@ export function Footer({ compact = false }: FooterProps) {
           </a>
           <a href="/how-it-works" className="hover:text-ink py-1">
             How
+          </a>
+          <a
+            href="https://www.npmjs.com/package/vanitas"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-ink py-1"
+          >
+            CLI
           </a>
           <a
             href="https://github.com/bytebrox/vanitas"

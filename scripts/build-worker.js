@@ -79,6 +79,12 @@ async function build() {
     );
     console.log('CARDANO worker built successfully!');
 
+    const xrp = await buildOne(
+      path.join(__dirname, '../src/workers/xrp.worker.source.ts'),
+      path.join(__dirname, '../public/xrp-worker.js')
+    );
+    console.log('XRP worker built successfully!');
+
     const hashData = {
       hash: solana.hash,
       size: solana.size,
@@ -90,6 +96,7 @@ async function build() {
       sui: { hash: sui.hash, size: sui.size, built },
       ton: { hash: ton.hash, size: ton.size, built },
       cardano: { hash: cardano.hash, size: cardano.size, built },
+      xrp: { hash: xrp.hash, size: xrp.size, built },
     };
     fs.writeFileSync(hashFile, JSON.stringify(hashData, null, 2));
     console.log(`Solana: ${solana.hash}`);
@@ -100,6 +107,7 @@ async function build() {
     console.log(`SUI: ${sui.hash}`);
     console.log(`TON: ${ton.hash}`);
     console.log(`CARDANO: ${cardano.hash}`);
+    console.log(`XRP: ${xrp.hash}`);
   } catch (error) {
     console.error('Worker build failed:', error);
     process.exit(1);

@@ -53,13 +53,35 @@ const faqs: FAQItem[] = [
     category: 'General',
     question: 'Which forges does Vanitas offer?',
     answer:
-      'Four forges for wallets plus deploy helpers: Solana (/sol), EVM (/evm — wallet, CREATE, CREATE2), Bitcoin (/btc — legacy, SegWit, Taproot), Tron (/tron — wallet or CREATE). Plus Aptos (/aptos) and Sui (/sui). Pick the chain whose address format you need.',
+      'Nine forges: Solana (/sol), EVM (/evm — wallet, CREATE, CREATE2), Bitcoin (/btc — legacy, SegWit, Taproot), Tron (/tron), Aptos (/aptos), Sui (/sui), TON (/ton), Cardano (/cardano), and XRP (/xrp). There is also a terminal CLI via npx vanitas.',
   },
   {
     category: 'General',
     question: 'What\'s the difference between the Solana and EVM forges?',
     answer:
       'Solana uses Base58 Ed25519 addresses (Phantom, Solflare, etc.). The EVM forge uses 0x hex addresses (secp256k1). That same private key works on every EVM chain — Ethereum, BNB, Base, Arbitrum, and more — so you do not need a separate tool per network.',
+  },
+  {
+    category: 'General',
+    question: 'Is there a terminal CLI?',
+    answer: (
+      <div className="space-y-2">
+        <p>
+          Yes. Same forges, keys stay on your machine. Run{' '}
+          <code className="font-mono text-ink">npx vanitas</code> for an interactive wizard, or pass
+          flags (chain, prefix, threads). Package:{' '}
+          <a
+            href="https://www.npmjs.com/package/vanitas"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent hover:underline"
+          >
+            npmjs.com/package/vanitas
+          </a>
+          .
+        </p>
+      </div>
+    ),
   },
 
   // Ethereum / EVM

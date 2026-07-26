@@ -8,40 +8,39 @@ import {
   Footer,
   FadeIn,
   ContentWithSide,
-  CardanoPatternInput,
-  CardanoDifficultyDisplay,
-  CardanoResultDisplay,
+  XrpPatternInput,
+  XrpDifficultyDisplay,
+  XrpResultDisplay,
 } from '@/components';
 import { Header } from '@/components/Header';
-import { useCardanoGenerator } from '@/hooks/useCardanoGenerator';
+import { useXrpGenerator } from '@/hooks/useXrpGenerator';
 import { useSound } from '@/hooks/useSound';
 import {
-  validateCardanoPrefix,
-  validateCardanoSuffix,
-  estimateCardanoDifficulty,
-  cardanoUserPrefix,
-  stripCardanoHrp,
-} from '@/lib/cardano-validation';
+  validateXrpPrefix,
+  validateXrpSuffix,
+  estimateXrpDifficulty,
+  xrpPrefixBody,
+} from '@/lib/xrp-validation';
 import { saveRecentFind } from '@/lib/find-history';
-import type { GeneratedCardanoResult } from '@/types/cardano';
+import type { GeneratedXrpResult } from '@/types/xrp';
 import { RecentFinds } from '@/components/RecentFinds';
 
-export function CardanoContent() {
-  const { state, start, stop, reset, updateConfig, maxThreads } = useCardanoGenerator();
+export function XrpContent() {
+  const { state, start, stop, reset, updateConfig, maxThreads } = useXrpGenerator();
   const { soundEnabled, toggleSound, playSuccessSound } = useSound();
   const [copied, setCopied] = useState(false);
   const [historyKey, setHistoryKey] = useState(0);
   const searchParams = useSearchParams();
-  const prevResultRef = useRef<GeneratedCardanoResult | null>(null);
+  const prevResultRef = useRef<GeneratedXrpResult | null>(null);
 
   const { status, config, stats, result } = state;
-  const { prefix, suffix, threads } = config;
+  const { prefix, suffix, threads, caseSensitive } = config;
 
   useEffect(() => {
     if (result && result !== prevResultRef.current) {
       playSuccessSound();
       saveRecentFind({
-        chain: 'cardano',
+        chain: 'xrp',
         address: result.address,
         pattern: result.matchedPattern,
       });
@@ -53,60 +52,69 @@ export function CardanoContent() {
   useEffect(() => {
     const urlPrefix = searchParams.get('prefix');
     const urlSuffix = searchParams.get('suffix');
-    if (urlPrefix) updateConfig({ prefix: cardanoUserPrefix(urlPrefix) });
-    if (urlSuffix) updateConfig({ suffix: stripCardanoHrp(urlSuffix) });
+    const urlCase = searchParams.get('case');
+    if (urlPrefix) updateConfig({ prefix: xrpPrefixBody(urlPrefix) });
+    if (urlSuffix) updateConfig({ suffix: urlSuffix.replace(/^r+/, '') });
+    if (urlCase === '1' || urlCase === 'true') updateConfig({ caseSensitive: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
-  const expectedDifficulty = estimateCardanoDifficulty(prefix, suffix);
-  const prefixValid = validateCardanoPrefix(prefix).valid;
-  const suffixValid = validateCardanoSuffix(suffix).valid;
-  const hasPattern = prefix.length > 0 || suffix.length > 0;
+  const expectedDifficulty = estimateXrpDifficulty(prefix, suffix, caseSensitive);
+  const prefixValid = validateXrpPrefix(prefix).valid;
+  const suffixValid = validateXrpSuffix(suffix).valid;
+  const hasPattern = xrpPrefixBody(prefix).length > 0 || suffix.length > 0;
   const canStart = prefixValid && suffixValid && hasPattern;
 
   const generateShareLink = useCallback(() => {
     const params = new URLSearchParams();
     if (prefix) params.set('prefix', prefix);
     if (suffix) params.set('suffix', suffix);
-    const shareUrl = `${window.location.origin}/cardano?${params.toString()}`;
-    navigator.clipboard.writeText(shareUrl).then(() => {
-      setCopied(true);
-      setTimeout(() => {
-        setCopied(false);
-      }, 2000);
-    }).catch(() => {});
-  }, [prefix, suffix]);
+    if (caseSensitive) params.set('case', '1');
+    const shareUrl = `${window.location.origin}/xrp?${params.toString()}`;
+    navigator.clipboard
+      .writeText(shareUrl)
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => {
+          setCopied(false);
+        }, 2000);
+      })
+      .catch(() => {});
+  }, [prefix, suffix, caseSensitive]);
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header mode="cardano" />
+      <Header mode="xrp" />
 
       <main id="forge" className="flex-1 px-4 sm:px-8 lg:px-8 xl:px-12 pb-16 scroll-mt-24">
-        <ContentWithSide imageSrc="/ascii/side-forum.webp" caption="Fig. XII - Ledger">
+        <ContentWithSide imageSrc="/ascii/side-forum.webp" caption="Fig. XIV - Ledger">
           <FadeIn className="space-y-8 sm:space-y-12">
             {result ? (
               <>
-                <CardanoResultDisplay result={result} onReset={reset} />
-                <RecentFinds chain="cardano" refreshKey={historyKey} />
+                <XrpResultDisplay result={result} onReset={reset} />
+                <RecentFinds chain="xrp" refreshKey={historyKey} />
               </>
             ) : (
               <>
                 <div>
                   <p className="text-micro uppercase tracking-[0.2em] text-muted mb-2">01 - Pattern</p>
-                  <CardanoPatternInput
+                  <XrpPatternInput
                     prefix={prefix}
                     suffix={suffix}
+                    caseSensitive={caseSensitive}
                     onPrefixChange={(value) => updateConfig({ prefix: value })}
                     onSuffixChange={(value) => updateConfig({ suffix: value })}
+                    onCaseSensitiveChange={(value) => updateConfig({ caseSensitive: value })}
                     disabled={status === 'running'}
                   />
                 </div>
 
                 <div>
                   <p className="text-micro uppercase tracking-[0.2em] text-muted mb-4">02 - Estimate</p>
-                  <CardanoDifficultyDisplay
+                  <XrpDifficultyDisplay
                     prefix={prefix}
                     suffix={suffix}
+                    caseSensitive={caseSensitive}
                     currentRate={stats.attemptsPerSecond}
                   />
                 </div>
@@ -137,10 +145,11 @@ export function CardanoContent() {
                   />
                 </div>
 
-                <RecentFinds chain="cardano" refreshKey={historyKey} />
+                <RecentFinds chain="xrp" refreshKey={historyKey} />
 
                 <p className="text-micro text-muted leading-relaxed max-w-xl normal-case tracking-normal">
-                  Cardano enterprise mainnet addresses (addr1…). Payment key only (CIP-19 type 6).
+                  XRPL classic mainnet addresses (r…). secp256k1 compressed keys. X-addresses are not
+                  generated here.
                 </p>
 
                 <div className="flex flex-wrap gap-x-8 gap-y-2 text-micro uppercase tracking-[0.16em] text-muted">

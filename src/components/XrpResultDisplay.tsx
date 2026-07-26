@@ -1,58 +1,59 @@
 'use client';
 
-/**
- * Wallet result — open ledger, no card chrome
- */
-
 import { useState } from 'react';
-import { GeneratedKeypair } from '@/types';
+import type { GeneratedXrpResult } from '@/types/xrp';
 import { formatNumber, formatDuration } from '@/lib/format';
-import { DomainSuggestions } from './DomainSuggestions';
 import { EntropyInfo } from './EntropyInfo';
 import { ShareProofButton } from './ShareProofButton';
 
-interface ResultDisplayProps {
-  result: GeneratedKeypair;
+interface Props {
+  result: GeneratedXrpResult;
   onReset: () => void;
 }
 
-export function ResultDisplay({ result, onReset }: ResultDisplayProps) {
+export function XrpResultDisplay({ result, onReset }: Props) {
   const [showPrivateKey, setShowPrivateKey] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
+  const shortId = result.address.slice(1, 9);
 
   const copyToClipboard = async (text: string, field: string) => {
     try {
       await navigator.clipboard.writeText(text);
       setCopiedField(field);
-      setTimeout(() => { setCopiedField(null); }, 2000);
-    } catch (err) {
-      console.error('Failed to copy:', err);
+      setTimeout(() => {
+        setCopiedField(null);
+      }, 2000);
+    } catch {
+      /* ignore */
     }
   };
 
   const downloadTxt = () => {
-    const content = `VANITAS - SOLANA KEYPAIR
-============================
+    const content = `VANITAS - XRP VANITY
+===============================================
 Generated: ${new Date().toISOString()}
 
-PUBLIC KEY (Address):
+ADDRESS (classic):
+${result.address}
+
+PUBLIC KEY (compressed secp256k1):
 ${result.publicKey}
 
 PRIVATE KEY (Keep secret!):
 ${result.privateKey}
 
-============================
-IMPORTANT:
-- Never share your private key
-- Store this file securely
-- This keypair was generated locally in your browser
-`;
+===============================================
+Import into Xaman, Toast, or other XRPL wallets that accept a hex/secp256k1 secret.
 
+IMPORTANT:
+- Never share the private key
+- Generated locally in your browser
+`;
     const blob = new Blob([content], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `solana-keypair-${result.publicKey.slice(0, 8)}.txt`;
+    a.download = `xrp-${shortId}.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -60,14 +61,21 @@ IMPORTANT:
   };
 
   const downloadJson = () => {
-    const secretKeyArray = Array.from(result.secretKey);
-    const blob = new Blob([JSON.stringify(secretKeyArray)], {
-      type: 'application/json',
-    });
+    const payload = {
+      chain: 'xrp',
+      network: 'mainnet',
+      addressType: 'classic',
+      address: result.address,
+      publicKey: result.publicKey,
+      privateKey: result.privateKey,
+      generatedAt: new Date().toISOString(),
+      importHint: 'secp256k1 secret (hex). Classic r… address.',
+    };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `solana-keypair-${result.publicKey.slice(0, 8)}.json`;
+    a.download = `xrp-${shortId}.json`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -79,7 +87,7 @@ IMPORTANT:
       <header className="border-b border-ink/15 pb-6">
         <p className="text-micro uppercase tracking-[0.2em] text-accent mb-2">Found</p>
         <h2 className="text-2xl sm:text-3xl font-bold text-ink normal-case tracking-tight mb-2">
-          Address ready
+          XRP address ready
         </h2>
         <p className="text-sm text-muted font-mono">
           {formatNumber(result.attempts)} attempts · {formatDuration(result.duration)}
@@ -89,17 +97,19 @@ IMPORTANT:
       <section className="border-y border-ink/15 divide-y divide-ink/15">
         <div className="py-5">
           <div className="flex items-center justify-between gap-4 mb-3">
-            <p className="text-micro uppercase tracking-[0.18em] text-muted">Public address</p>
+            <p className="text-micro uppercase tracking-[0.18em] text-muted">Address</p>
             <button
               type="button"
-              onClick={() => { void copyToClipboard(result.publicKey, 'public'); }}
+              onClick={() => {
+                void copyToClipboard(result.address, 'address');
+              }}
               className="text-micro uppercase tracking-[0.14em] text-muted hover:text-ink"
             >
-              {copiedField === 'public' ? 'Copied' : 'Copy'}
+              {copiedField === 'address' ? 'Copied' : 'Copy'}
             </button>
           </div>
           <p className="font-mono text-base sm:text-lg break-all leading-relaxed text-ink">
-            <HighlightedKey pubkey={result.publicKey} pattern={result.matchedPattern} />
+            {result.address}
           </p>
         </div>
 
@@ -109,7 +119,9 @@ IMPORTANT:
             <div className="flex items-center gap-4">
               <button
                 type="button"
-                onClick={() => { setShowPrivateKey(!showPrivateKey); }}
+                onClick={() => {
+                  setShowPrivateKey(!showPrivateKey);
+                }}
                 className="text-micro uppercase tracking-[0.14em] text-muted hover:text-ink"
               >
                 {showPrivateKey ? 'Hide' : 'Reveal'}
@@ -117,7 +129,9 @@ IMPORTANT:
               {showPrivateKey && (
                 <button
                   type="button"
-                  onClick={() => { void copyToClipboard(result.privateKey, 'private'); }}
+                  onClick={() => {
+                    void copyToClipboard(result.privateKey, 'private');
+                  }}
                   className="text-micro uppercase tracking-[0.14em] text-muted hover:text-ink"
                 >
                   {copiedField === 'private' ? 'Copied' : 'Copy'}
@@ -129,77 +143,45 @@ IMPORTANT:
             {showPrivateKey ? (
               <span className="text-accent">{result.privateKey}</span>
             ) : (
-              <span className="text-ink/25 select-none tracking-widest">••••••••••••••••••••••••••••••••</span>
+              <span className="text-ink/25 select-none tracking-widest">
+                ••••••••••••••••••••••••••••••••
+              </span>
             )}
           </p>
         </div>
       </section>
 
-      <section>
-        <p className="text-micro uppercase tracking-[0.18em] text-accent mb-3">Keep safe</p>
-        <ul className="text-sm text-muted space-y-2 leading-relaxed">
-          <li>Save the private key before leaving this page</li>
-          <li>Never share it — anyone with it controls the wallet</li>
-          <li>Generated locally; nothing was stored on a server</li>
-        </ul>
-      </section>
-
-      <DomainSuggestions pattern={result.matchedPattern} />
       <EntropyInfo />
 
       <section className="border-t border-ink/15 pt-8 space-y-5">
         <div className="flex flex-wrap gap-x-8 gap-y-3 text-micro uppercase tracking-[0.16em]">
-          <button type="button" onClick={downloadTxt} className="text-ink border-b border-ink pb-0.5 hover:text-accent hover:border-accent">
+          <button
+            type="button"
+            onClick={downloadTxt}
+            className="text-ink border-b border-ink pb-0.5 hover:text-accent hover:border-accent"
+          >
             Download txt
           </button>
           <button type="button" onClick={downloadJson} className="text-muted hover:text-ink">
             Download json
           </button>
           <ShareProofButton
-            chain="sol"
-            address={result.publicKey}
+            chain="xrp"
+            address={result.address}
             matchedPattern={result.matchedPattern}
             attempts={result.attempts}
             duration={result.duration}
           />
-          <button type="button" onClick={onReset} className="text-muted hover:text-ink">
+          <button
+            type="button"
+            onClick={onReset}
+            className="text-ink border-b border-ink pb-0.5 hover:text-accent hover:border-accent"
+          >
             Forge another
           </button>
         </div>
-        <p className="text-micro text-muted">
-          TXT for reading · JSON for Solana CLI / Phantom / Solflare · Share proof never includes keys
-        </p>
+        <p className="text-micro text-muted">Share proof links never include private keys</p>
       </section>
     </div>
-  );
-}
-
-function HighlightedKey({
-  pubkey,
-  pattern,
-}: {
-  pubkey: string;
-  pattern: string;
-}) {
-  const parts = pattern.split('...');
-  const prefix = parts[0] || '';
-  const suffix = parts[1] || '';
-  const prefixLen = prefix.length;
-  const suffixLen = suffix.length;
-
-  if (prefixLen === 0 && suffixLen === 0) {
-    return <span>{pubkey}</span>;
-  }
-
-  return (
-    <>
-      {prefixLen > 0 && (
-        <span className="text-accent font-bold">{pubkey.slice(0, prefixLen)}</span>
-      )}
-      <span>{pubkey.slice(prefixLen, suffixLen > 0 ? -suffixLen : undefined)}</span>
-      {suffixLen > 0 && (
-        <span className="text-accent font-bold">{pubkey.slice(-suffixLen)}</span>
-      )}
-    </>
   );
 }

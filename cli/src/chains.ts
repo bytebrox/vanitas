@@ -17,6 +17,7 @@ import {
   btcWifCompressed,
   cardanoEnterpriseAddress,
   tronAddressFromEth20,
+  xrpClassicAddress,
 } from './encoding';
 
 hashes.sha512 = sha512;
@@ -29,7 +30,8 @@ export type CliChain =
   | 'aptos'
   | 'sui'
   | 'ton'
-  | 'cardano';
+  | 'cardano'
+  | 'xrp';
 
 export type CliMode = string;
 
@@ -115,8 +117,10 @@ function matchTron(address: string, prefix: string, suffix: string, caseSensitiv
 function matchCardano(address: string, prefix: string, suffix: string): boolean {
   if (!prefix && !suffix) return true;
   const body = stripCardano(address);
-  const p = stripCardano(prefix);
+  let p = stripCardano(prefix);
   const s = stripCardano(suffix);
+  // Enterprise mainnet body always starts with `v` (CIP-19 header 0x61)
+  if (p && !p.startsWith('v')) p = `v${p}`;
   return (!p || body.startsWith(p)) && (!s || body.endsWith(s));
 }
 
@@ -241,7 +245,11 @@ export function tryOnce(cfg: MineConfig): Omit<MineHit, 'attempts' | 'durationMs
     const uq = wallet.address.toString({ urlSafe: true, bounceable: false });
     const eq = wallet.address.toString({ urlSafe: true, bounceable: true });
     const address = bounceable ? eq : uq;
-    if (!matchExact(address, prefix, suffix, true)) return null;
+    let p = prefix;
+    if (p && !p.startsWith('UQ') && !p.startsWith('EQ')) {
+      p = (bounceable ? 'EQ' : 'UQ') + p;
+    }
+    if (!matchExact(address, p, suffix, true)) return null;
     return {
       chain,
       mode,
@@ -262,6 +270,22 @@ export function tryOnce(cfg: MineConfig): Omit<MineHit, 'attempts' | 'durationMs
       address,
       privateKey: '0x' + edEtc.bytesToHex(secret),
       extra: { publicKey: '0x' + edEtc.bytesToHex(pub) },
+    };
+  }
+
+  if (chain === 'xrp') {
+    const secret = secpUtils.randomSecretKey();
+    const pub = getSecpPub(secret, true);
+    const address = xrpClassicAddress(pub);
+    let p = prefix;
+    if (p && !p.startsWith('r')) p = `r${p}`;
+    if (!matchExact(address, p, suffix, caseSensitive)) return null;
+    return {
+      chain,
+      mode: 'classic',
+      address,
+      privateKey: '0x' + secpEtc.bytesToHex(secret),
+      extra: { publicKey: '0x' + secpEtc.bytesToHex(pub) },
     };
   }
 
@@ -298,5 +322,6 @@ export const CHAIN_META: {
     ],
     hint: 'Base64url · case-sensitive',
   },
-  { id: 'cardano', label: 'Cardano', modes: [{ id: 'enterprise', label: 'Enterprise addr1' }], hint: 'Body after addr1' },
+  { id: 'cardano', label: 'Cardano', modes: [{ id: 'enterprise', label: 'Enterprise addr1' }], hint: 'After addr1v · first char y/9/x/8' },
+  { id: 'xrp', label: 'XRP', modes: [{ id: 'classic', label: 'Classic r…' }], hint: 'After fixed r · XRPL Base58' },
 ];

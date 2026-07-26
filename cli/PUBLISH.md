@@ -20,13 +20,13 @@ Done. You never need `npm login` on your PC for releases.
 
 ## How you publish later (only GitHub)
 
-1. Bump version in `cli/package.json` (example `1.6.1`)
+1. Bump version in `cli/package.json` (and keep root `package.json` / README badge in sync if you want one release number)
 2. Commit + push to `main`
-3. Create and push a tag that matches the version:
+3. Create and push a tag that matches the CLI version:
 
 ```bash
-git tag cli-v1.6.1
-git push origin cli-v1.6.1
+git tag cli-vX.Y.Z
+git push origin cli-vX.Y.Z
 ```
 
 GitHub Actions builds the CLI and runs `npm publish`.
@@ -45,10 +45,10 @@ Actions → **Publish CLI** → **Run workflow** → confirm input: `publish`
 
 (Uses the version currently in `cli/package.json` on that branch.)
 
-## First publish checklist
+## Checklist
 
 1. Secret `NPM_TOKEN` is set
 2. Code with `cli/` is on `main`
-3. Tag `cli-v1.6.0` pushed (matches `cli/package.json` version `1.6.0`)
+3. Tag `cli-vX.Y.Z` matches `cli/package.json` version `X.Y.Z`
 
 If the name `vanitas` is taken on npm, change `"name"` in `cli/package.json` to `@your-user/vanitas` and publish again.

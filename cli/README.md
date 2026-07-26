@@ -18,6 +18,7 @@ npx vanitas evm --prefix cafe --threads 8
 npx vanitas btc --mode taproot --prefix qabc
 npx vanitas ton --mode non-bounceable --prefix UQ
 npx vanitas cardano --prefix cafe --out ./my-ada.json
+npx vanitas xrp --prefix Ace
 ```
 
 ## Chains
@@ -32,6 +33,7 @@ npx vanitas cardano --prefix cafe --out ./my-ada.json
 | sui     | Hex                            |
 | ton     | Wallet v4R2 UQ / EQ            |
 | cardano | Enterprise `addr1…`            |
+| xrp     | Classic `r…`                   |
 
 ## Safety
 

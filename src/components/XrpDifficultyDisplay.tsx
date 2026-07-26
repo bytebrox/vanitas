@@ -2,46 +2,52 @@
 
 import { useMemo } from 'react';
 import {
-  estimateCardanoDifficulty,
-  formatCardanoDifficulty,
-  estimateCardanoTime,
-} from '@/lib/cardano-validation';
+  estimateXrpDifficulty,
+  formatXrpDifficulty,
+  estimateXrpTime,
+  xrpPrefixBody,
+} from '@/lib/xrp-validation';
 
 interface Props {
   prefix: string;
   suffix: string;
+  caseSensitive: boolean;
   currentRate: number;
 }
 
-export function CardanoDifficultyDisplay({ prefix, suffix, currentRate }: Props) {
+export function XrpDifficultyDisplay({
+  prefix,
+  suffix,
+  caseSensitive,
+  currentRate,
+}: Props) {
   const estimatedRate = useMemo(() => {
     if (currentRate > 0) return currentRate;
     const cores = typeof navigator !== 'undefined' ? navigator.hardwareConcurrency || 4 : 4;
-    return Math.max(1, cores - 1) * 5000;
+    return Math.max(1, cores - 1) * 8000;
   }, [currentRate]);
 
   const difficulty = useMemo(
-    () => estimateCardanoDifficulty(prefix, suffix),
-    [prefix, suffix]
+    () => estimateXrpDifficulty(prefix, suffix, caseSensitive),
+    [prefix, suffix, caseSensitive]
   );
-  const difficultyLabel = useMemo(() => formatCardanoDifficulty(difficulty), [difficulty]);
+  const difficultyLabel = useMemo(() => formatXrpDifficulty(difficulty), [difficulty]);
   const timeEstimate = useMemo(
-    () => estimateCardanoTime(difficulty, estimatedRate),
+    () => estimateXrpTime(difficulty, estimatedRate),
     [difficulty, estimatedRate]
   );
-  const hasPattern = prefix.length > 0 || suffix.length > 0;
-  const totalChars = prefix.length + suffix.length;
+  const body = xrpPrefixBody(prefix);
+  const hasPattern = body.length > 0 || suffix.length > 0;
+  const totalChars = body.length + suffix.length;
 
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4">
         <div>
           <p className="text-micro uppercase tracking-[0.18em] text-muted mb-2">Pattern</p>
-          <p className="font-mono text-lg sm:text-xl tracking-wide">
-            <span className="text-ink/35">addr1v</span>
-            <span className={prefix ? 'text-accent' : 'text-ink/25'}>
-              {prefix ? (prefix.startsWith('v') ? prefix.slice(1) : prefix) : '····'}
-            </span>
+          <p className="font-mono text-lg sm:text-xl tracking-wide break-all">
+            <span className="text-ink/35">r</span>
+            <span className={body ? 'text-accent' : 'text-ink/25'}>{body || '····'}</span>
             <span className="text-ink/20 mx-1">…</span>
             <span className={suffix ? 'text-accent' : 'text-ink/25'}>{suffix || '····'}</span>
           </p>
@@ -62,7 +68,8 @@ export function CardanoDifficultyDisplay({ prefix, suffix, currentRate }: Props)
       </div>
       {totalChars >= 5 && (
         <p className="text-micro text-accent leading-relaxed">
-          {totalChars} Bech32 characters can take a long time (32 possibilities each).
+          {totalChars} characters can take a long time (
+          {caseSensitive ? '58' : '~33'} possibilities each).
         </p>
       )}
     </div>

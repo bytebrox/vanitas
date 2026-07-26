@@ -209,3 +209,50 @@ export function cardanoEnterpriseAddress(pubEd25519: Uint8Array): string {
   payload.set(paymentHash, 1);
   return bech32EncodeData('addr', payload);
 }
+
+/** XRPL classic Base58 alphabet (different from Bitcoin) */
+export const XRPL_BASE58_ALPHABET =
+  'rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz';
+
+export function xrpBase58Encode(bytes: Uint8Array): string {
+  let zeros = 0;
+  while (zeros < bytes.length && bytes[zeros] === 0) zeros++;
+
+  const size = Math.ceil(((bytes.length - zeros) * 138) / 100) + 1;
+  const buf = new Uint8Array(size);
+  let length = 0;
+
+  for (let i = zeros; i < bytes.length; i++) {
+    let carry = bytes[i];
+    let j = 0;
+    for (let k = size - 1; (carry !== 0 || j < length) && k >= 0; k--, j++) {
+      carry += 256 * buf[k];
+      buf[k] = carry % 58;
+      carry = (carry / 58) | 0;
+    }
+    length = j;
+  }
+
+  let start = size - length;
+  while (start < size && buf[start] === 0) start++;
+
+  let str = XRPL_BASE58_ALPHABET[0]!.repeat(zeros);
+  for (let i = start; i < size; i++) str += XRPL_BASE58_ALPHABET[buf[i]];
+  return str;
+}
+
+export function xrpBase58CheckEncode(payload: Uint8Array): string {
+  const checksum = doubleSha256(payload).slice(0, 4);
+  return xrpBase58Encode(concatBytes(payload, checksum));
+}
+
+export function xrpClassicAddress(pub33: Uint8Array): string {
+  if (pub33.length !== 33) {
+    throw new Error('XRPL address expects a 33-byte public key');
+  }
+  const accountId = hash160(pub33);
+  const payload = new Uint8Array(21);
+  payload[0] = 0x00;
+  payload.set(accountId, 1);
+  return xrpBase58CheckEncode(payload);
+}

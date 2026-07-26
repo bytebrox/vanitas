@@ -2,7 +2,16 @@
  * Local recent finds — addresses only, never private keys
  */
 
-export type FindChain = 'sol' | 'evm' | 'btc' | 'tron' | 'aptos' | 'sui' | 'ton' | 'cardano';
+export type FindChain =
+  | 'sol'
+  | 'evm'
+  | 'btc'
+  | 'tron'
+  | 'aptos'
+  | 'sui'
+  | 'ton'
+  | 'cardano'
+  | 'xrp';
 
 export interface RecentFind {
   chain: FindChain;

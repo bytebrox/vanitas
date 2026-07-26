@@ -44,11 +44,19 @@ function stripHrp(value: string): string {
   return v.startsWith('addr1') ? v.slice(5) : v;
 }
 
+/** Enterprise mainnet body always starts with `v` (header 0x61). */
+function effectivePrefix(prefix: string): string {
+  const body = stripHrp(prefix);
+  if (!body) return '';
+  if (body.startsWith('v')) return body;
+  return 'v' + body;
+}
+
 function matches(address: string, prefix: string, suffix: string): boolean {
   if (!prefix && !suffix) return true;
   const addr = address.toLowerCase();
   const body = addr.startsWith('addr1') ? addr.slice(5) : addr;
-  const p = stripHrp(prefix);
+  const p = effectivePrefix(prefix);
   const s = stripHrp(suffix);
   return (!p || body.startsWith(p)) && (!s || body.endsWith(s));
 }
@@ -57,8 +65,8 @@ let isRunning = false;
 let workerId = 0;
 
 async function generateCardanoVanity(config: CardanoGeneratorConfig): Promise<void> {
-  const prefix = stripHrp(config.prefix || '');
-  const suffix = stripHrp(config.suffix || '');
+  const prefix = config.prefix || '';
+  const suffix = config.suffix || '';
   const startTime = performance.now();
   let attempts = 0;
   let lastProgressUpdate = startTime;

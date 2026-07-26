@@ -15,6 +15,7 @@ import {
   SuiLogo,
   TonLogo,
   CardanoLogo,
+  XrpLogo,
 } from '@/components/ChainLogos';
 
 const PAPER = '#F5F0E8';
@@ -85,6 +86,13 @@ const FORGES: {
     title: 'Enterprise addr1',
     blurb: 'Bech32 vanity payment addresses.',
     logo: <CardanoLogo className="w-5 h-5 sm:w-6 sm:h-6" />,
+  },
+  {
+    href: '/xrp',
+    name: 'XRP',
+    title: 'Classic r…',
+    blurb: 'XRPL Base58 vanity addresses.',
+    logo: <XrpLogo className="w-5 h-5 sm:w-6 sm:h-6" />,
   },
 ];
 
@@ -179,6 +187,18 @@ export function LandingContent() {
                 </a>
               ))}
             </div>
+
+            <p className="mt-5 sm:mt-7 sm:text-center text-sm text-muted normal-case tracking-normal animate-fade-in-up">
+              Prefer the terminal?{' '}
+              <a
+                href="https://www.npmjs.com/package/vanitas"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-ink underline underline-offset-2 decoration-ink/30 hover:decoration-ink"
+              >
+                npx vanitas
+              </a>
+            </p>
           </div>
         </div>
       </main>

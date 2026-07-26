@@ -8,6 +8,7 @@ import { useState } from 'react';
 import type { GeneratedEthResult } from '@/types/eth';
 import { formatNumber, formatDuration } from '@/lib/format';
 import { EntropyInfo } from './EntropyInfo';
+import { ShareProofButton } from './ShareProofButton';
 
 interface EthResultDisplayProps {
   result: GeneratedEthResult;
@@ -269,6 +270,14 @@ IMPORTANT:
           <button type="button" onClick={downloadJson} className="text-muted hover:text-ink">
             Download json
           </button>
+          <ShareProofButton
+            chain="evm"
+            address={result.address}
+            matchedPattern={result.matchedPattern}
+            attempts={result.attempts}
+            duration={result.duration}
+            mode={result.mode}
+          />
           <button
             type="button"
             onClick={onReset}
@@ -279,8 +288,8 @@ IMPORTANT:
         </div>
         <p className="text-micro text-muted">
           {isDeployStyle
-            ? 'TXT / JSON include contract + deployer key (and CREATE2 salt when applicable)'
-            : 'Hex private key for MetaMask, Rabby, Frame, …'}
+            ? 'TXT / JSON include contract + deployer key (and CREATE2 salt when applicable) · Share proof never includes keys'
+            : 'Hex private key for MetaMask, Rabby, Frame, … · Share proof never includes keys'}
         </p>
       </section>
     </div>

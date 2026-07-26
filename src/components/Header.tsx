@@ -5,7 +5,7 @@ import { HeroBand } from './HeroBand';
 
 interface HeaderProps {
   imageSrc?: string;
-  mode?: 'wallet' | 'mint' | 'evm' | 'btc' | 'tron' | 'aptos' | 'sui' | 'ton' | 'cardano';
+  mode?: 'wallet' | 'mint' | 'evm' | 'btc' | 'tron' | 'aptos' | 'sui' | 'ton' | 'cardano' | 'xrp';
 }
 
 export function Header({
@@ -84,6 +84,14 @@ export function Header({
       headline: 'Name the addr. Keep the key.',
       blurb:
         'Generate vanity Cardano enterprise addresses (addr1…), entirely in this browser. Payment key only.',
+    },
+    xrp: {
+      eyebrow: 'r forge',
+      title: 'XRP',
+      chain: 'xrp' as const,
+      headline: 'Name the r. Keep the key.',
+      blurb:
+        'Generate vanity XRP Ledger classic addresses (r…), entirely in this browser. Import into Xaman and other XRPL wallets.',
     },
   };
 

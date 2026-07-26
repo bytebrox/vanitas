@@ -45,7 +45,7 @@ ${pc.bold('Usage')}
   npx vanitas ton --mode non-bounceable --prefix UQ --threads 8
 
 ${pc.bold('Chains')}
-  sol  evm  btc  tron  aptos  sui  ton  cardano
+  sol  evm  btc  tron  aptos  sui  ton  cardano  xrp
 
 ${pc.bold('Options')}
   --prefix <str>    Address prefix

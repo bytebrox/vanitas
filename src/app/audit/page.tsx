@@ -255,6 +255,7 @@ async function runIntegrityTest(): Promise<{ pass: boolean; detail: string }> {
       sui?: { hash?: string };
       ton?: { hash?: string };
       cardano?: { hash?: string };
+      xrp?: { hash?: string };
     };
 
     const checks: { label: string; path: string; expected?: string }[] = [
@@ -266,6 +267,7 @@ async function runIntegrityTest(): Promise<{ pass: boolean; detail: string }> {
       { label: 'Sui', path: '/sui-worker.js', expected: published.sui?.hash },
       { label: 'TON', path: '/ton-worker.js', expected: published.ton?.hash },
       { label: 'Cardano', path: '/cardano-worker.js', expected: published.cardano?.hash },
+      { label: 'XRP', path: '/xrp-worker.js', expected: published.xrp?.hash },
     ];
 
     const results: string[] = [];
@@ -548,6 +550,7 @@ function WorkerHash() {
         sui?: { hash?: string };
         ton?: { hash?: string };
         cardano?: { hash?: string };
+        xrp?: { hash?: string };
       }) => {
         setRows([
           { label: 'Solana', hash: data.hash || '...' },
@@ -558,6 +561,7 @@ function WorkerHash() {
           { label: 'Sui', hash: data.sui?.hash || '...' },
           { label: 'TON', hash: data.ton?.hash || '...' },
           { label: 'Cardano', hash: data.cardano?.hash || '...' },
+          { label: 'XRP', hash: data.xrp?.hash || '...' },
         ]);
       })
       .catch(() => {

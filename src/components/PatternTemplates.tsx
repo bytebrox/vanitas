@@ -77,9 +77,15 @@ export const TRON_TEMPLATES: PatternTemplate[] = [
 ];
 
 export const CARDANO_TEMPLATES: PatternTemplate[] = [
-  { label: 'Lucky 3', prefix: 'abc', hint: 'Bech32 after addr1' },
-  { label: 'Cafe', prefix: 'cafe' },
-  { label: 'Dead', prefix: 'dead' },
+  { label: 'Lucky 1', prefix: 'y', hint: 'First char: y/9/x/8' },
+  { label: 'Cafe', prefix: 'ycafe' },
+  { label: 'Dead', prefix: '9dead' },
+];
+
+export const XRP_TEMPLATES: PatternTemplate[] = [
+  { label: 'Lucky 3', prefix: 'Ace', hint: 'After fixed r' },
+  { label: 'Xrp', prefix: 'Xrp' },
+  { label: 'Fun', prefix: 'Fun' },
 ];
 
 export const TON_TEMPLATES: PatternTemplate[] = [

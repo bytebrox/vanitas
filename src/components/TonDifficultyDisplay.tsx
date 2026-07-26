@@ -5,29 +5,38 @@ import {
   estimateTonDifficulty,
   formatTonDifficulty,
   estimateTonTime,
+  tonAddressTag,
+  tonUserPrefix,
 } from '@/lib/ton-validation';
+import type { TonMode } from '@/types/ton';
 
 interface Props {
   prefix: string;
   suffix: string;
+  mode: TonMode;
   currentRate: number;
 }
 
-export function TonDifficultyDisplay({ prefix, suffix, currentRate }: Props) {
+export function TonDifficultyDisplay({ prefix, suffix, mode, currentRate }: Props) {
   const estimatedRate = useMemo(() => {
     if (currentRate > 0) return currentRate;
     const cores = typeof navigator !== 'undefined' ? navigator.hardwareConcurrency || 4 : 4;
     return Math.max(1, cores - 1) * 2000;
   }, [currentRate]);
 
-  const difficulty = useMemo(() => estimateTonDifficulty(prefix, suffix), [prefix, suffix]);
+  const difficulty = useMemo(
+    () => estimateTonDifficulty(prefix, suffix, mode),
+    [prefix, suffix, mode]
+  );
   const difficultyLabel = useMemo(() => formatTonDifficulty(difficulty), [difficulty]);
   const timeEstimate = useMemo(
     () => estimateTonTime(difficulty, estimatedRate),
     [difficulty, estimatedRate]
   );
   const hasPattern = prefix.length > 0 || suffix.length > 0;
-  const totalChars = prefix.length + suffix.length;
+  const userPrefix = tonUserPrefix(prefix, mode);
+  const totalChars = userPrefix.length + suffix.length;
+  const tag = tonAddressTag(mode);
 
   return (
     <div className="space-y-4">
@@ -35,7 +44,10 @@ export function TonDifficultyDisplay({ prefix, suffix, currentRate }: Props) {
         <div>
           <p className="text-micro uppercase tracking-[0.18em] text-muted mb-2">Pattern</p>
           <p className="font-mono text-lg sm:text-xl tracking-wide break-all">
-            <span className={prefix ? 'text-accent' : 'text-ink/25'}>{prefix || '····'}</span>
+            <span className="text-ink/35">{tag}</span>
+            <span className={userPrefix ? 'text-accent' : 'text-ink/25'}>
+              {userPrefix || '····'}
+            </span>
             <span className="text-ink/20 mx-1">…</span>
             <span className={suffix ? 'text-accent' : 'text-ink/25'}>{suffix || '····'}</span>
           </p>
@@ -56,7 +68,7 @@ export function TonDifficultyDisplay({ prefix, suffix, currentRate }: Props) {
       </div>
       {totalChars >= 4 && (
         <p className="text-micro text-accent leading-relaxed">
-          Case-sensitive base64url: {totalChars} characters grows very fast (~64 possibilities each).
+          {totalChars} base64url characters can take a long time (64 possibilities each, case-sensitive).
         </p>
       )}
     </div>

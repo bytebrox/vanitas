@@ -92,6 +92,11 @@ export function CardanoLogo({ className = 'w-5 h-5', title = 'Cardano' }: LogoPr
   return <ChainImg src="/chains/cardano.svg" title={title} className={className} />;
 }
 
+/** XRP Ledger mark */
+export function XrpLogo({ className = 'w-5 h-5', title = 'XRP' }: LogoProps) {
+  return <ChainImg src="/chains/xrp.svg" title={title} className={className} />;
+}
+
 const EVM_MARKS = [
   { src: '/chains/ethereum.svg', title: 'Ethereum' },
   { src: '/chains/bnb.svg', title: 'BNB Smart Chain' },

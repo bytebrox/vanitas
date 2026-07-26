@@ -9,15 +9,39 @@ export function isValidTonBase64Url(str: string): boolean {
   return [...str].every((c) => TON_BASE64URL.includes(c));
 }
 
+export function tonAddressTag(mode: TonMode): 'UQ' | 'EQ' {
+  return mode === 'bounceable' ? 'EQ' : 'UQ';
+}
+
+/**
+ * Full address prefix used for matching. Wallet v4R2 user-friendly addresses
+ * always start with UQ (non-bounceable) or EQ (bounceable).
+ */
+export function tonEffectivePrefix(prefix: string, mode: TonMode): string {
+  if (!prefix) return '';
+  if (prefix.startsWith('UQ') || prefix.startsWith('EQ')) return prefix;
+  return tonAddressTag(mode) + prefix;
+}
+
+/** Part after the fixed UQ/EQ tag for the input field. */
+export function tonUserPrefix(prefix: string, mode: TonMode): string {
+  if (!prefix) return '';
+  const tag = tonAddressTag(mode);
+  if (prefix.startsWith(tag)) return prefix.slice(tag.length);
+  if (prefix.startsWith('UQ') || prefix.startsWith('EQ')) return prefix.slice(2);
+  return prefix;
+}
+
 export function validateTonPrefix(prefix: string): ValidationResult {
   if (!prefix) return { valid: true };
-  if (prefix.length > 8) {
+  const body = prefix.startsWith('UQ') || prefix.startsWith('EQ') ? prefix.slice(2) : prefix;
+  if (body.length > 8) {
     return {
       valid: false,
-      error: 'Prefix too long. Maximum 8 characters (addresses are case-sensitive).',
+      error: 'Prefix too long. Maximum 8 characters after UQ/EQ (case-sensitive).',
     };
   }
-  if (!isValidTonBase64Url(prefix)) {
+  if (!isValidTonBase64Url(body)) {
     return {
       valid: false,
       error: 'Invalid characters. Use A-Z a-z 0-9 - _ (base64url).',
@@ -40,9 +64,10 @@ export function validateTonSuffix(suffix: string): ValidationResult {
   return { valid: true };
 }
 
-/** ~64 symbols; case-sensitive */
-export function estimateTonDifficulty(prefix: string, suffix: string): number {
-  const total = prefix.length + suffix.length;
+/** ~64 symbols; case-sensitive. Counts only variable chars (not fixed UQ/EQ). */
+export function estimateTonDifficulty(prefix: string, suffix: string, mode: TonMode = 'non-bounceable'): number {
+  const p = tonUserPrefix(prefix, mode);
+  const total = p.length + suffix.length;
   if (total === 0) return 1;
   return Math.pow(64, total);
 }
@@ -70,11 +95,13 @@ export function estimateTonTime(difficulty: number, ratePerSecond: number): stri
 export function tonMatches(
   address: string,
   prefix: string,
-  suffix: string
+  suffix: string,
+  mode: TonMode = 'non-bounceable'
 ): boolean {
   if (!prefix && !suffix) return true;
+  const p = tonEffectivePrefix(prefix, mode);
   return (
-    (!prefix || address.startsWith(prefix)) &&
+    (!p || address.startsWith(p)) &&
     (!suffix || address.endsWith(suffix))
   );
 }

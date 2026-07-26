@@ -19,6 +19,7 @@ const CHAIN_LABEL: Record<ProofChain, string> = {
   sui: 'Sui',
   ton: 'TON',
   cardano: 'Cardano',
+  xrp: 'XRP',
 };
 
 const FORGE_HREF: Record<ProofChain, string> = {
@@ -30,6 +31,7 @@ const FORGE_HREF: Record<ProofChain, string> = {
   sui: '/sui',
   ton: '/ton',
   cardano: '/cardano',
+  xrp: '/xrp',
 };
 
 function ProofInner() {

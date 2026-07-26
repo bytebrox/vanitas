@@ -10,7 +10,8 @@ export type ProofChain =
   | 'aptos'
   | 'sui'
   | 'ton'
-  | 'cardano';
+  | 'cardano'
+  | 'xrp';
 
 export interface ProofPayload {
   chain: ProofChain;
@@ -98,16 +99,23 @@ export function verifyProofMatch(payload: ProofPayload): { ok: boolean; reason: 
         return { ok: false, reason: 'Not a mainnet addr1… address' };
       }
       const body = stripCardano(address);
-      const p = stripCardano(prefix);
+      let p = stripCardano(prefix);
       const s = stripCardano(suffix);
+      // Enterprise body always starts with `v`; UI often omits it
+      if (p && !p.startsWith('v')) p = `v${p}`;
       const ok = (!p || body.startsWith(p)) && (!s || body.endsWith(s));
       return ok
         ? { ok: true, reason: 'Address matches pattern' }
         : { ok: false, reason: 'Address does not match pattern' };
     }
     case 'ton': {
+      let p = prefix;
+      if (p && !p.startsWith('UQ') && !p.startsWith('EQ')) {
+        const tag = payload.mode === 'bounceable' ? 'EQ' : 'UQ';
+        p = tag + p;
+      }
       const ok =
-        (!prefix || address.startsWith(prefix)) && (!suffix || address.endsWith(suffix));
+        (!p || address.startsWith(p)) && (!suffix || address.endsWith(suffix));
       return ok
         ? { ok: true, reason: 'Address matches pattern' }
         : { ok: false, reason: 'Address does not match pattern' };
@@ -149,6 +157,19 @@ export function verifyProofMatch(payload: ProofPayload): { ok: boolean; reason: 
     case 'tron': {
       let p = prefix;
       if (p && !p.startsWith('T') && address.startsWith('T')) p = `T${p}`;
+      const ok =
+        (!p || address.toLowerCase().startsWith(p.toLowerCase())) &&
+        (!suffix || address.toLowerCase().endsWith(suffix.toLowerCase()));
+      return ok
+        ? { ok: true, reason: 'Address matches pattern' }
+        : { ok: false, reason: 'Address does not match pattern' };
+    }
+    case 'xrp': {
+      if (!address.startsWith('r')) {
+        return { ok: false, reason: 'Not a classic r… address' };
+      }
+      let p = prefix;
+      if (p && !p.startsWith('r')) p = `r${p}`;
       const ok =
         (!p || address.toLowerCase().startsWith(p.toLowerCase())) &&
         (!suffix || address.toLowerCase().endsWith(suffix.toLowerCase()));

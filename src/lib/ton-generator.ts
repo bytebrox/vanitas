@@ -71,6 +71,8 @@ export class TonVanityGenerator {
         break;
       case 'error':
         console.error(`TON worker ${workerId}:`, message.error);
+        this.stop();
+        this.emitState('error', message.error || 'Worker error');
         break;
     }
   }

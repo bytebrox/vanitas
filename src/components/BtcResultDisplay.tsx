@@ -4,6 +4,7 @@ import { useState } from 'react';
 import type { GeneratedBtcResult } from '@/types/btc';
 import { formatNumber, formatDuration } from '@/lib/format';
 import { EntropyInfo } from './EntropyInfo';
+import { ShareProofButton } from './ShareProofButton';
 
 interface BtcResultDisplayProps {
   result: GeneratedBtcResult;
@@ -167,6 +168,14 @@ IMPORTANT:
           >
             Download json
           </button>
+          <ShareProofButton
+            chain="btc"
+            address={result.address}
+            matchedPattern={result.matchedPattern}
+            attempts={result.attempts}
+            duration={result.duration}
+            mode={result.mode}
+          />
           <button
             type="button"
             onClick={onReset}
@@ -175,6 +184,7 @@ IMPORTANT:
             Forge another
           </button>
         </div>
+        <p className="text-micro text-muted">Share proof links never include private keys</p>
       </section>
     </div>
   );

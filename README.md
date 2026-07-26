@@ -1,10 +1,10 @@
 ﻿# Vanitas
 
-[![Version: 1.6.0](https://img.shields.io/badge/Version-1.6.0-8B7355.svg)](https://vanitas.fun)
+[![Version: 1.7.0](https://img.shields.io/badge/Version-1.7.0-8B7355.svg)](https://vanitas.fun)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Live Audit](https://img.shields.io/badge/Live_Audit-vanitas.fun%2Faudit-8B7355.svg)](https://vanitas.fun/audit)
 
-**Forge vanity addresses for Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, and Cardano, entirely in your browser.**
+**Forge vanity addresses for Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano, and XRP, entirely in your browser.**
 
 Create personalized wallet (and related) addresses that start or end with patterns you choose. All cryptographic work runs locally; private keys never leave your device.
 
@@ -30,6 +30,7 @@ Same forges, wizard or flags. See [cli/README.md](cli/README.md).
 | <img src="public/chains/sui.svg" width="20" height="20" alt="Sui" /> | **Sui** | Hex account addresses (Ed25519) | `/sui` |
 | <img src="public/chains/ton.svg" width="20" height="20" alt="TON" /> | **TON** | Wallet v4R2 (`UQ…` / `EQ…`) | `/ton` |
 | <img src="public/chains/cardano.svg" width="20" height="20" alt="Cardano" /> | **Cardano** | Enterprise `addr1…` (CIP-19 type 6) | `/cardano` |
+| <img src="public/chains/xrp.svg" width="20" height="20" alt="XRP" /> | **XRP** | Classic XRPL `r…` (secp256k1) | `/xrp` |
 
 Legacy `/token` redirects to `/sol?mode=mint`. `/eth` redirects to `/evm`.
 
@@ -44,7 +45,7 @@ A vanity address contains a recognizable pattern instead of looking fully random
 ## Features
 
 - **100% Client-Side** – Generation runs in Web Workers on your device
-- **Multi-Chain** – Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano
+- **Multi-Chain** – Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano, XRP
 - **Native Web Crypto** – Fast Ed25519 path for Solana where supported
 - **Multi-Core** – Uses available CPU cores for parallel search
 - **Deploy Modes** – Solana mint, EVM/Tron CREATE, EVM CREATE2 (salt or deployer)
@@ -71,7 +72,7 @@ Vanitas is designed with one principle: **your private keys should never leave y
 
 This tool is provided as-is. Always verify generated keys work correctly before using them for significant transactions. The authors are not responsible for any loss of funds.
 
-*Not affiliated with Solana, Ethereum, Bitcoin, Tron, Aptos, Sui, TON, Cardano, or any related foundation or project.*
+*Not affiliated with Solana, Ethereum, Bitcoin, Tron, Aptos, Sui, TON, Cardano, XRP Ledger, or any related foundation or project.*
 
 ## License
 

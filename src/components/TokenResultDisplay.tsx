@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { GeneratedKeypair } from '@/types';
 import { formatNumber, formatDuration } from '@/lib/format';
 import { EntropyInfo } from './EntropyInfo';
+import { ShareProofButton } from './ShareProofButton';
 
 interface TokenResultDisplayProps {
   result: GeneratedKeypair;
@@ -175,12 +176,20 @@ IMPORTANT:
           <button type="button" onClick={downloadJson} className="text-muted hover:text-ink">
             Download json
           </button>
+          <ShareProofButton
+            chain="sol"
+            address={result.publicKey}
+            matchedPattern={result.matchedPattern}
+            attempts={result.attempts}
+            duration={result.duration}
+            mode="mint"
+          />
           <button type="button" onClick={onReset} className="text-muted hover:text-ink">
             Forge another
           </button>
         </div>
         <p className="text-micro text-muted">
-          TXT includes launchpad steps · JSON for Solana CLI
+          TXT includes launchpad steps · JSON for Solana CLI · Share proof never includes keys
         </p>
       </section>
     </div>

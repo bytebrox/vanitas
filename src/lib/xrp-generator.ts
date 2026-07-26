@@ -1,35 +1,36 @@
 /**
- * Cardano vanity generator — parallel Web Workers
+ * XRPL vanity generator — parallel Web Workers
  */
 
 import type {
-  CardanoGeneratorConfig,
-  CardanoGeneratorState,
-  CardanoGeneratorStats,
-  GeneratedCardanoResult,
-  CardanoWorkerInboundMessage,
-  CardanoWorkerOutboundMessage,
-} from '@/types/cardano';
+  XrpGeneratorConfig,
+  XrpGeneratorState,
+  XrpGeneratorStats,
+  GeneratedXrpResult,
+  XrpWorkerInboundMessage,
+  XrpWorkerOutboundMessage,
+} from '@/types/xrp';
 
-export type CardanoGeneratorCallback = (state: CardanoGeneratorState) => void;
+export type XrpGeneratorCallback = (state: XrpGeneratorState) => void;
 
-export class CardanoVanityGenerator {
+export class XrpVanityGenerator {
   private workers: Worker[] = [];
-  private config: CardanoGeneratorConfig;
-  private callback: CardanoGeneratorCallback;
+  private config: XrpGeneratorConfig;
+  private callback: XrpGeneratorCallback;
   private startTime = 0;
   private workerAttempts: Map<number, number> = new Map();
   private workerRates: Map<number, number> = new Map();
-  private result: GeneratedCardanoResult | null = null;
+  private result: GeneratedXrpResult | null = null;
   private isRunning = false;
   private statsInterval: ReturnType<typeof setInterval> | null = null;
 
-  constructor(callback: CardanoGeneratorCallback) {
+  constructor(callback: XrpGeneratorCallback) {
     this.callback = callback;
     this.config = {
       prefix: '',
       suffix: '',
       threads: this.getOptimalThreadCount(),
+      caseSensitive: false,
     };
   }
 
@@ -41,8 +42,8 @@ export class CardanoVanityGenerator {
   }
 
   private createWorker(workerId: number): Worker {
-    const worker = new Worker('/cardano-worker.js');
-    worker.onmessage = (event: MessageEvent<CardanoWorkerOutboundMessage>) => {
+    const worker = new Worker('/xrp-worker.js');
+    worker.onmessage = (event: MessageEvent<XrpWorkerOutboundMessage>) => {
       this.handleWorkerMessage(event.data);
     };
     worker.onerror = (error) => {
@@ -51,7 +52,7 @@ export class CardanoVanityGenerator {
     return worker;
   }
 
-  private handleWorkerMessage(message: CardanoWorkerOutboundMessage): void {
+  private handleWorkerMessage(message: XrpWorkerOutboundMessage): void {
     const { type, workerId, result, attempts, rate } = message;
     switch (type) {
       case 'found':
@@ -69,14 +70,14 @@ export class CardanoVanityGenerator {
         if (attempts !== undefined) this.workerAttempts.set(workerId, attempts);
         break;
       case 'error':
-        console.error(`CARDANO worker ${workerId}:`, message.error);
+        console.error(`XRP worker ${workerId}:`, message.error);
         this.stop();
         this.emitState('error', message.error || 'Worker error');
         break;
     }
   }
 
-  private getStats(): CardanoGeneratorStats {
+  private getStats(): XrpGeneratorStats {
     let totalAttempts = 0;
     let totalRate = 0;
     this.workerAttempts.forEach((a) => {
@@ -94,7 +95,7 @@ export class CardanoVanityGenerator {
   }
 
   private emitState(
-    status: CardanoGeneratorState['status'],
+    status: XrpGeneratorState['status'],
     error: string | null = null
   ): void {
     this.callback({
@@ -106,7 +107,7 @@ export class CardanoVanityGenerator {
     });
   }
 
-  start(config: Partial<CardanoGeneratorConfig>): void {
+  start(config: Partial<XrpGeneratorConfig>): void {
     if (this.isRunning) this.stop();
     this.config = { ...this.config, ...config };
     this.result = null;
@@ -122,7 +123,7 @@ export class CardanoVanityGenerator {
         type: 'start',
         config: this.config,
         workerId: i,
-      } satisfies CardanoWorkerInboundMessage);
+      } satisfies XrpWorkerInboundMessage);
     }
 
     this.statsInterval = setInterval(() => {
@@ -138,7 +139,7 @@ export class CardanoVanityGenerator {
       this.statsInterval = null;
     }
     this.workers.forEach((worker, index) => {
-      worker.postMessage({ type: 'stop', workerId: index } satisfies CardanoWorkerInboundMessage);
+      worker.postMessage({ type: 'stop', workerId: index } satisfies XrpWorkerInboundMessage);
       worker.terminate();
     });
     this.workers = [];
@@ -161,7 +162,7 @@ export class CardanoVanityGenerator {
     this.emitState('idle');
   }
 
-  patchConfig(updates: Partial<CardanoGeneratorConfig>): void {
+  patchConfig(updates: Partial<XrpGeneratorConfig>): void {
     this.config = { ...this.config, ...updates };
   }
 

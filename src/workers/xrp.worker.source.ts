@@ -1,31 +1,19 @@
 /**
- * TON vanity Web Worker — Wallet v4R2 (UQ / EQ)
+ * XRPL classic vanity Web Worker — `r…` addresses (secp256k1)
  */
 
-import { Buffer } from 'buffer';
-import { getPublicKey, utils, etc, hashes } from '@noble/ed25519';
-import { sha512 } from '@noble/hashes/sha2.js';
-import { WalletContractV4 } from '@ton/ton';
+import { getPublicKey, utils, etc } from '@noble/secp256k1';
+import { xrpClassicAddress } from '../lib/address-encoding';
 
-// @ton/core uses the free global `Buffer` (Buffer.alloc / .copy). In the
-// browser worker there is no Node Buffer — pin the polyfill once up front.
-(globalThis as typeof globalThis & { Buffer: typeof Buffer }).Buffer = Buffer;
-
-hashes.sha512 = sha512;
-
-type TonMode = 'non-bounceable' | 'bounceable';
-
-interface TonGeneratorConfig {
+interface XrpGeneratorConfig {
   prefix: string;
   suffix: string;
   threads: number;
-  mode?: TonMode;
+  caseSensitive: boolean;
 }
 
-interface GeneratedTonResult {
-  mode: TonMode;
+interface GeneratedXrpResult {
   address: string;
-  bounceableAddress: string;
   privateKey: string;
   privateKeyBytes: Uint8Array;
   publicKey: string;
@@ -36,14 +24,14 @@ interface GeneratedTonResult {
 
 interface WorkerInboundMessage {
   type: 'start' | 'stop';
-  config?: TonGeneratorConfig;
+  config?: XrpGeneratorConfig;
   workerId?: number;
 }
 
 interface WorkerOutboundMessage {
   type: 'found' | 'progress' | 'error' | 'stopped' | 'ready';
   workerId: number;
-  result?: GeneratedTonResult;
+  result?: GeneratedXrpResult;
   attempts?: number;
   rate?: number;
   error?: string;
@@ -53,54 +41,48 @@ function matches(
   address: string,
   prefix: string,
   suffix: string,
-  mode: TonMode
+  caseSensitive: boolean
 ): boolean {
   if (!prefix && !suffix) return true;
   let p = prefix || '';
-  if (p && !p.startsWith('UQ') && !p.startsWith('EQ')) {
-    p = (mode === 'bounceable' ? 'EQ' : 'UQ') + p;
+  if (p && !p.startsWith('r')) p = `r${p}`;
+  const s = suffix || '';
+  if (caseSensitive) {
+    return (!p || address.startsWith(p)) && (!s || address.endsWith(s));
   }
+  const addr = address.toLowerCase();
   return (
-    (!p || address.startsWith(p)) &&
-    (!suffix || address.endsWith(suffix))
+    (!p || addr.startsWith(p.toLowerCase())) &&
+    (!s || addr.endsWith(s.toLowerCase()))
   );
 }
 
 let isRunning = false;
 let workerId = 0;
 
-async function generateTonVanity(config: TonGeneratorConfig): Promise<void> {
+async function generateXrpVanity(config: XrpGeneratorConfig): Promise<void> {
   const prefix = config.prefix || '';
   const suffix = config.suffix || '';
-  const mode: TonMode = config.mode === 'bounceable' ? 'bounceable' : 'non-bounceable';
-  const bounceable = mode === 'bounceable';
+  const caseSensitive = Boolean(config.caseSensitive);
   const startTime = performance.now();
   let attempts = 0;
   let lastProgressUpdate = startTime;
   const progressInterval = 500;
-  const batchSize = 24;
+  const batchSize = 64;
 
   isRunning = true;
 
   while (isRunning) {
     for (let i = 0; i < batchSize && isRunning; i++) {
       const secret = utils.randomSecretKey();
-      const pub = getPublicKey(secret);
-      const wallet = WalletContractV4.create({
-        workchain: 0,
-        publicKey: Buffer.from(pub),
-      });
-      const uq = wallet.address.toString({ urlSafe: true, bounceable: false });
-      const eq = wallet.address.toString({ urlSafe: true, bounceable: true });
-      const address = bounceable ? eq : uq;
+      const pub = getPublicKey(secret, true);
+      const address = xrpClassicAddress(pub);
       attempts++;
 
-      if (matches(address, prefix, suffix, mode)) {
+      if (matches(address, prefix, suffix, caseSensitive)) {
         const duration = performance.now() - startTime;
-        const result: GeneratedTonResult = {
-          mode,
+        const result: GeneratedXrpResult = {
           address,
-          bounceableAddress: eq,
           privateKey: '0x' + etc.bytesToHex(secret),
           privateKeyBytes: secret,
           publicKey: '0x' + etc.bytesToHex(pub),
@@ -149,7 +131,7 @@ self.onmessage = async (event: MessageEvent<WorkerInboundMessage>) => {
       if (config && id !== undefined) {
         workerId = id;
         try {
-          await generateTonVanity(config);
+          await generateXrpVanity(config);
         } catch (err) {
           self.postMessage({
             type: 'error',

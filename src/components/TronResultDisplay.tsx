@@ -4,6 +4,7 @@ import { useState } from 'react';
 import type { GeneratedTronResult } from '@/types/tron';
 import { formatNumber, formatDuration } from '@/lib/format';
 import { EntropyInfo } from './EntropyInfo';
+import { ShareProofButton } from './ShareProofButton';
 
 interface TronResultDisplayProps {
   result: GeneratedTronResult;
@@ -221,6 +222,14 @@ IMPORTANT:
           >
             Download json
           </button>
+          <ShareProofButton
+            chain="tron"
+            address={result.address}
+            matchedPattern={result.matchedPattern}
+            attempts={result.attempts}
+            duration={result.duration}
+            mode={result.mode}
+          />
           <button
             type="button"
             onClick={onReset}
@@ -231,8 +240,8 @@ IMPORTANT:
         </div>
         <p className="text-micro text-muted">
           {isContract
-            ? 'TXT / JSON include contract + deployer key'
-            : 'Hex private key for TronLink and compatible wallets'}
+            ? 'TXT / JSON include contract + deployer key · Share proof never includes keys'
+            : 'Hex private key for TronLink and compatible wallets · Share proof never includes keys'}
         </p>
       </section>
     </div>

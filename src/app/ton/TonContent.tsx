@@ -62,7 +62,7 @@ export function TonContent() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
-  const expectedDifficulty = estimateTonDifficulty(prefix, suffix);
+  const expectedDifficulty = estimateTonDifficulty(prefix, suffix, mode);
   const prefixValid = validateTonPrefix(prefix).valid;
   const suffixValid = validateTonSuffix(suffix).valid;
   const hasPattern = prefix.length > 0 || suffix.length > 0;
@@ -116,6 +116,7 @@ export function TonContent() {
                   <TonPatternInput
                     prefix={prefix}
                     suffix={suffix}
+                    mode={mode}
                     onPrefixChange={(value) => updateConfig({ prefix: value })}
                     onSuffixChange={(value) => updateConfig({ suffix: value })}
                     disabled={status === 'running'}
@@ -127,6 +128,7 @@ export function TonContent() {
                   <TonDifficultyDisplay
                     prefix={prefix}
                     suffix={suffix}
+                    mode={mode}
                     currentRate={stats.attemptsPerSecond}
                   />
                 </div>

@@ -13,6 +13,7 @@ const chains = [
   { href: '/sui', label: 'Sui', short: 'SUI' },
   { href: '/ton', label: 'TON', short: 'TON' },
   { href: '/cardano', label: 'Cardano', short: 'ADA' },
+  { href: '/xrp', label: 'XRP', short: 'XRP' },
 ];
 
 const links = [
