@@ -1,19 +1,75 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
+import {
+  SolanaLogo,
+  EthereumLogo,
+  BitcoinLogo,
+  TronLogo,
+  AptosLogo,
+  SuiLogo,
+  TonLogo,
+  CardanoLogo,
+  XrpLogo,
+} from './ChainLogos';
 
 const GITHUB_URL = 'https://github.com/bytebrox/vanitas';
 
-const chains = [
-  { href: '/sol', label: 'Solana', short: 'SOL' },
-  { href: '/evm', label: 'EVM', short: 'EVM' },
-  { href: '/btc', label: 'Bitcoin', short: 'BTC' },
-  { href: '/tron', label: 'Tron', short: 'TRON' },
-  { href: '/aptos', label: 'Aptos', short: 'APTOS' },
-  { href: '/sui', label: 'Sui', short: 'SUI' },
-  { href: '/ton', label: 'TON', short: 'TON' },
-  { href: '/cardano', label: 'Cardano', short: 'ADA' },
-  { href: '/xrp', label: 'XRP', short: 'XRP' },
+const chains: { href: string; label: string; short: string; logo: ReactNode }[] = [
+  {
+    href: '/sol',
+    label: 'Solana',
+    short: 'SOL',
+    logo: <SolanaLogo className="w-4 h-4" />,
+  },
+  {
+    href: '/evm',
+    label: 'EVM',
+    short: 'EVM',
+    logo: <EthereumLogo className="w-4 h-4" />,
+  },
+  {
+    href: '/btc',
+    label: 'Bitcoin',
+    short: 'BTC',
+    logo: <BitcoinLogo className="w-4 h-4" />,
+  },
+  {
+    href: '/tron',
+    label: 'Tron',
+    short: 'TRON',
+    logo: <TronLogo className="w-4 h-4" />,
+  },
+  {
+    href: '/aptos',
+    label: 'Aptos',
+    short: 'APTOS',
+    logo: <AptosLogo className="w-4 h-4" />,
+  },
+  {
+    href: '/sui',
+    label: 'Sui',
+    short: 'SUI',
+    logo: <SuiLogo className="w-4 h-4" />,
+  },
+  {
+    href: '/ton',
+    label: 'TON',
+    short: 'TON',
+    logo: <TonLogo className="w-4 h-4" />,
+  },
+  {
+    href: '/cardano',
+    label: 'Cardano',
+    short: 'ADA',
+    logo: <CardanoLogo className="w-4 h-4" />,
+  },
+  {
+    href: '/xrp',
+    label: 'XRP',
+    short: 'XRP',
+    logo: <XrpLogo className="w-4 h-4" />,
+  },
 ];
 
 const links = [
@@ -120,14 +176,19 @@ export function Navbar() {
               <div
                 className="invisible opacity-0 pointer-events-none group-hover:visible group-hover:opacity-100 group-hover:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100 group-focus-within:pointer-events-auto absolute left-1/2 -translate-x-1/2 top-full pt-2 transition-opacity duration-150 z-50"
               >
-                <div className="min-w-[11rem] border border-ink/15 bg-paper shadow-[0_8px_24px_rgba(0,0,0,0.08)] py-1">
+                <div className="min-w-[12rem] border border-ink/15 bg-paper shadow-[0_8px_24px_rgba(0,0,0,0.08)] py-1">
                   {chains.map((c) => (
                     <a
                       key={c.href}
                       href={c.href}
-                      className="flex items-baseline justify-between gap-6 px-3.5 py-2.5 text-micro uppercase tracking-[0.14em] text-ink/75 hover:text-ink hover:bg-ink/[0.04] transition-colors"
+                      className="flex items-center justify-between gap-6 px-3.5 py-2.5 text-micro uppercase tracking-[0.14em] text-ink/75 hover:text-ink hover:bg-ink/[0.04] transition-colors"
                     >
-                      <span>{c.label}</span>
+                      <span className="inline-flex items-center gap-2.5 min-w-0">
+                        <span className="shrink-0 flex items-center justify-center w-4 h-4" aria-hidden>
+                          {c.logo}
+                        </span>
+                        <span>{c.label}</span>
+                      </span>
                       <span className="text-ink/35 normal-case tracking-normal text-[0.7rem]">
                         {c.short}
                       </span>
@@ -225,7 +286,12 @@ export function Navbar() {
                           setOpen(false);
                         }}
                       >
-                        <span>{c.label}</span>
+                        <span className="inline-flex items-center gap-2.5">
+                          <span className="shrink-0 flex items-center justify-center w-4 h-4" aria-hidden>
+                            {c.logo}
+                          </span>
+                          <span>{c.label}</span>
+                        </span>
                         <span className="text-muted text-micro tracking-[0.12em]">{c.short}</span>
                       </a>
                     </li>
