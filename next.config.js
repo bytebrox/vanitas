@@ -38,6 +38,38 @@ const cspHeader = {
 
 const pageHeaders = [...securityHeaders, cspHeader];
 
+/** Embeddable proof widget — allow framing; omit X-Frame-Options DENY */
+const embedHeaders = [
+  {
+    key: 'Strict-Transport-Security',
+    value: 'max-age=31536000; includeSubDomains; preload',
+  },
+  {
+    key: 'X-Content-Type-Options',
+    value: 'nosniff',
+  },
+  {
+    key: 'X-XSS-Protection',
+    value: '1; mode=block',
+  },
+  {
+    key: 'Referrer-Policy',
+    value: 'strict-origin-when-cross-origin',
+  },
+  {
+    key: 'Content-Security-Policy',
+    value: [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-eval' 'unsafe-inline'",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      "img-src 'self' data: blob:",
+      "font-src 'self' https://fonts.gstatic.com",
+      "connect-src 'self'",
+      "frame-ancestors *",
+    ].join('; '),
+  },
+];
+
 const nextConfig = {
   async headers() {
     return [
@@ -62,10 +94,13 @@ const nextConfig = {
           { key: 'Access-Control-Allow-Origin', value: '*' },
         ],
       },
-      // HTML pages only (no dots in segment → skips /og.jpg, /favicon.png, …)
+      // Embed routes must be framed (before catch-all DENY)
+      { source: '/embed', headers: embedHeaders },
+      { source: '/embed/:path*', headers: embedHeaders },
+      // HTML pages only — exclude /embed so X-Frame-Options DENY is not merged in
       { source: '/', headers: pageHeaders },
-      { source: '/:page([\\w-]+)', headers: pageHeaders },
-      { source: '/:page([\\w-]+)/:rest*', headers: pageHeaders },
+      { source: '/:page((?!embed$)[\\w-]+)', headers: pageHeaders },
+      { source: '/:page((?!embed$)[\\w-]+)/:rest*', headers: pageHeaders },
     ];
   },
 };

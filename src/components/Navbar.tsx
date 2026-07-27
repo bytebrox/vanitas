@@ -72,13 +72,17 @@ const chains: { href: string; label: string; short: string; logo: ReactNode }[] 
   },
 ];
 
-const links = [
-  { href: '/', label: 'Home' },
-  { href: '/how-it-works', label: 'How' },
-  { href: '/faq', label: 'FAQ' },
-  { href: '/security', label: 'Security' },
-  { href: '/audit', label: 'Audit' },
-  { href: '/proof', label: 'Proof' },
+const docsLinks = [
+  { href: '/how-it-works', label: 'How', hint: 'How it works' },
+  { href: '/faq', label: 'FAQ', hint: 'Questions' },
+  { href: '/security', label: 'Security', hint: 'Trust model' },
+];
+
+const toolsLinks = [
+  { href: '/audit', label: 'Audit', hint: 'Live checks' },
+  { href: '/proof', label: 'Proof', hint: 'Verify a find' },
+  { href: '/lab', label: 'Lab', hint: 'Pattern lab' },
+  { href: '/brand', label: 'Brand', hint: 'Embed + kit' },
 ];
 
 function GitHubIcon({ className = '' }: { className?: string }) {
@@ -96,6 +100,55 @@ function GitHubIcon({ className = '' }: { className?: string }) {
   );
 }
 
+function NavDot() {
+  return (
+    <span className="text-ink/25 px-0.5" aria-hidden>
+      ·
+    </span>
+  );
+}
+
+function DesktopDropdown({
+  label,
+  items,
+}: {
+  label: string;
+  items: { href: string; label: string; hint?: string }[];
+}) {
+  return (
+    <div className="relative group">
+      <button
+        type="button"
+        className="px-1.5 py-0.5 hover:text-ink transition-colors whitespace-nowrap inline-flex items-center gap-1"
+        aria-haspopup="true"
+      >
+        {label}
+        <span className="text-[0.65em] text-ink/40 group-hover:text-ink/70" aria-hidden>
+          ▾
+        </span>
+      </button>
+      <div className="invisible opacity-0 pointer-events-none group-hover:visible group-hover:opacity-100 group-hover:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100 group-focus-within:pointer-events-auto absolute left-1/2 -translate-x-1/2 top-full pt-2 transition-opacity duration-150 z-50">
+        <div className="min-w-[13.5rem] border border-ink/15 bg-paper shadow-[0_8px_24px_rgba(0,0,0,0.08)] py-1">
+          {items.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="flex items-center justify-between gap-6 px-3.5 py-2.5 text-micro uppercase tracking-[0.14em] text-ink/75 hover:text-ink hover:bg-ink/[0.04] transition-colors"
+            >
+              <span className="shrink-0">{item.label}</span>
+              {item.hint ? (
+                <span className="text-ink/35 normal-case tracking-normal text-[0.7rem] text-right whitespace-nowrap">
+                  {item.hint}
+                </span>
+              ) : null}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /**
  * Fixed top chrome — stays visible while scrolling.
  * Soft over the hero; solid paper once you leave it.
@@ -103,6 +156,8 @@ function GitHubIcon({ className = '' }: { className?: string }) {
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [chainsOpen, setChainsOpen] = useState(false);
+  const [docsOpen, setDocsOpen] = useState(false);
+  const [toolsOpen, setToolsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -117,6 +172,8 @@ export function Navbar() {
   useEffect(() => {
     if (!open) {
       setChainsOpen(false);
+      setDocsOpen(false);
+      setToolsOpen(false);
       return;
     }
     const onKey = (e: KeyboardEvent) => {
@@ -130,6 +187,10 @@ export function Navbar() {
       document.body.style.overflow = prev;
     };
   }, [open]);
+
+  const closeMobile = () => {
+    setOpen(false);
+  };
 
   return (
     <div
@@ -157,25 +218,20 @@ export function Navbar() {
             <a href="/" className="px-1.5 py-0.5 hover:text-ink transition-colors whitespace-nowrap">
               Home
             </a>
-            <span className="text-ink/25 px-0.5" aria-hidden>
-              ·
-            </span>
+            <NavDot />
 
             <div className="relative group">
               <button
                 type="button"
                 className="px-1.5 py-0.5 hover:text-ink transition-colors whitespace-nowrap inline-flex items-center gap-1"
                 aria-haspopup="true"
-                aria-expanded="false"
               >
                 CHAINS
                 <span className="text-[0.65em] text-ink/40 group-hover:text-ink/70" aria-hidden>
                   ▾
                 </span>
               </button>
-              <div
-                className="invisible opacity-0 pointer-events-none group-hover:visible group-hover:opacity-100 group-hover:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100 group-focus-within:pointer-events-auto absolute left-1/2 -translate-x-1/2 top-full pt-2 transition-opacity duration-150 z-50"
-              >
+              <div className="invisible opacity-0 pointer-events-none group-hover:visible group-hover:opacity-100 group-hover:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100 group-focus-within:pointer-events-auto absolute left-1/2 -translate-x-1/2 top-full pt-2 transition-opacity duration-150 z-50">
                 <div className="min-w-[12rem] border border-ink/15 bg-paper shadow-[0_8px_24px_rgba(0,0,0,0.08)] py-1">
                   {chains.map((c) => (
                     <a
@@ -198,16 +254,10 @@ export function Navbar() {
               </div>
             </div>
 
-            {links.slice(1).map((l) => (
-              <span key={l.href} className="flex items-center gap-1">
-                <span className="text-ink/25 px-0.5" aria-hidden>
-                  ·
-                </span>
-                <a href={l.href} className="px-1.5 py-0.5 hover:text-ink transition-colors whitespace-nowrap">
-                  {l.label}
-                </a>
-              </span>
-            ))}
+            <NavDot />
+            <DesktopDropdown label="DOCS" items={docsLinks} />
+            <NavDot />
+            <DesktopDropdown label="TOOLS" items={toolsLinks} />
           </div>
         </nav>
 
@@ -251,9 +301,7 @@ export function Navbar() {
               <a
                 href="/"
                 className="flex items-center justify-between px-5 py-3.5 text-sm uppercase tracking-[0.16em] text-ink/85 hover:text-ink hover:bg-ink/[0.03] active:bg-ink/[0.05]"
-                onClick={() => {
-                  setOpen(false);
-                }}
+                onClick={closeMobile}
               >
                 <span>Home</span>
                 <span className="text-muted" aria-hidden>
@@ -282,9 +330,7 @@ export function Navbar() {
                       <a
                         href={c.href}
                         className="flex items-center justify-between px-5 pl-8 py-3 text-sm uppercase tracking-[0.16em] text-ink/75 hover:text-ink hover:bg-ink/[0.03]"
-                        onClick={() => {
-                          setOpen(false);
-                        }}
+                        onClick={closeMobile}
                       >
                         <span className="inline-flex items-center gap-2.5">
                           <span className="shrink-0 flex items-center justify-center w-4 h-4" aria-hidden>
@@ -299,31 +345,79 @@ export function Navbar() {
                 </ul>
               )}
             </li>
-            {links.slice(1).map((l) => (
-              <li key={l.href}>
-                <a
-                  href={l.href}
-                  className="flex items-center justify-between px-5 py-3.5 text-sm uppercase tracking-[0.16em] text-ink/85 hover:text-ink hover:bg-ink/[0.03] active:bg-ink/[0.05]"
-                  onClick={() => {
-                    setOpen(false);
-                  }}
-                >
-                  <span>{l.label}</span>
-                  <span className="text-muted" aria-hidden>
-                    →
-                  </span>
-                </a>
-              </li>
-            ))}
+            <li>
+              <button
+                type="button"
+                className="flex w-full items-center justify-between px-5 py-3.5 text-sm uppercase tracking-[0.16em] text-ink/85 hover:text-ink hover:bg-ink/[0.03]"
+                aria-expanded={docsOpen}
+                onClick={() => {
+                  setDocsOpen((v) => !v);
+                }}
+              >
+                <span>DOCS</span>
+                <span className="text-muted" aria-hidden>
+                  {docsOpen ? '▴' : '▾'}
+                </span>
+              </button>
+              {docsOpen && (
+                <ul className="border-t border-ink/10 bg-ink/[0.02]">
+                  {docsLinks.map((l) => (
+                    <li key={l.href}>
+                      <a
+                        href={l.href}
+                        className="flex items-center justify-between px-5 pl-8 py-3 text-sm uppercase tracking-[0.16em] text-ink/75 hover:text-ink hover:bg-ink/[0.03]"
+                        onClick={closeMobile}
+                      >
+                        <span>{l.label}</span>
+                        <span className="text-muted text-micro tracking-[0.12em] normal-case">
+                          {l.hint}
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+            <li>
+              <button
+                type="button"
+                className="flex w-full items-center justify-between px-5 py-3.5 text-sm uppercase tracking-[0.16em] text-ink/85 hover:text-ink hover:bg-ink/[0.03]"
+                aria-expanded={toolsOpen}
+                onClick={() => {
+                  setToolsOpen((v) => !v);
+                }}
+              >
+                <span>TOOLS</span>
+                <span className="text-muted" aria-hidden>
+                  {toolsOpen ? '▴' : '▾'}
+                </span>
+              </button>
+              {toolsOpen && (
+                <ul className="border-t border-ink/10 bg-ink/[0.02]">
+                  {toolsLinks.map((l) => (
+                    <li key={l.href}>
+                      <a
+                        href={l.href}
+                        className="flex items-center justify-between px-5 pl-8 py-3 text-sm uppercase tracking-[0.16em] text-ink/75 hover:text-ink hover:bg-ink/[0.03]"
+                        onClick={closeMobile}
+                      >
+                        <span>{l.label}</span>
+                        <span className="text-muted text-micro tracking-[0.12em] normal-case">
+                          {l.hint}
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
             <li>
               <a
                 href={GITHUB_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-between px-5 py-3.5 text-sm uppercase tracking-[0.16em] text-ink/85 hover:text-ink hover:bg-ink/[0.03]"
-                onClick={() => {
-                  setOpen(false);
-                }}
+                onClick={closeMobile}
               >
                 <span className="inline-flex items-center gap-2">
                   <GitHubIcon />

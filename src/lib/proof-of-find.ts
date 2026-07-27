@@ -35,6 +35,11 @@ export function buildProofUrl(origin: string, payload: ProofPayload): string {
   return `${origin.replace(/\/$/, '')}/proof?${params.toString()}`;
 }
 
+/** Compact embeddable proof card (iframe) — same query params as /proof */
+export function buildEmbedProofUrl(origin: string, payload: ProofPayload): string {
+  return buildProofUrl(origin, payload).replace(/\/proof\?/, '/embed/proof?');
+}
+
 export function parseProofSearchParams(
   sp: URLSearchParams | { get(name: string): string | null }
 ): ProofPayload | null {

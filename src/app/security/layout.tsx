@@ -3,19 +3,20 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Security',
   description:
-    'How Vanitas keeps keys safe: 100% client-side generation, no storage, CSP lockdown, open source, and live verifiable audits.',
+    'Vanitas trust model: client-side key generation, threat model, crypto per chain, worker integrity hashes, CSP headers, browser risks, and how to verify everything yourself.',
   keywords: [
     'vanitas security',
     'client-side key generation',
     'private key safety',
     'web crypto csprng',
+    'worker hash integrity',
     'content security policy',
-    'solana vanity security',
+    'vanity address threat model',
   ],
   openGraph: {
     title: 'Security | Vanitas',
     description:
-      'Your keys never leave this browser. Architecture, storage, crypto, and how to verify it.',
+      'Architecture, threats, crypto, headers, and verification — keys stay in your browser.',
     url: 'https://www.vanitas.fun/security',
     siteName: 'Vanitas',
     type: 'website',
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Security | Vanitas',
     description:
-      'Your keys never leave this browser. Open source and verifiable.',
+      'Architecture, threats, crypto, headers, and verification — keys stay in your browser.',
     images: ['/og-security.jpg'],
   },
   alternates: {

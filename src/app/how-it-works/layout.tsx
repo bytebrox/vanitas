@@ -3,18 +3,19 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'How it Works',
   description:
-    'How Vanitas forges vanity addresses for Solana, EVM, Bitcoin, Tron, Aptos, and Sui: multi-core workers, zero network during generation, and verifiable client-side security.',
+    'How Vanitas forges vanity addresses across Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano, and XRP: workers, modes (mint, CREATE, CREATE2), proof of find, CLI, and how to verify client-side security.',
   keywords: [
     'how vanity addresses work',
     'web crypto ed25519',
+    'secp256k1 vanity',
+    'create2 vanity address',
     'client-side key generation',
-    'solana ethereum bitcoin tron vanity',
     'vanitas architecture',
   ],
   openGraph: {
     title: 'How it Works | Vanitas',
     description:
-      'Native browser cryptography at 100K+ keys/sec. Everything runs on your device.',
+      'Full tour of every forge, worker architecture, deploy modes, and verification.',
     url: 'https://www.vanitas.fun/how-it-works',
     siteName: 'Vanitas',
     type: 'website',
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'How it Works | Vanitas',
     description:
-      'Native browser cryptography at 100K+ keys/sec. Everything runs on your device.',
+      'Full tour of every forge, worker architecture, deploy modes, and verification.',
     images: ['/og-how.jpg'],
   },
   alternates: {

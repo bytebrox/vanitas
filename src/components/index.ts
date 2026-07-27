@@ -50,4 +50,17 @@ export { DomainSuggestions } from './DomainSuggestions';
 export { EntropyInfo } from './EntropyInfo';
 export { FadeIn } from './FadeIn';
 export { ContentWithSide } from './ContentWithSide';
+export { DocsToc, DocSection, DocSubheading, DocLedgerRow, DOC_SECTION_SCROLL_MT } from './DocsToc';
+export { DocGlyph, DocGlyphBand } from './DocGlyph';
+export type { DocGlyphId } from './DocGlyph';
+export {
+  DocFigure,
+  DocSearchLoop,
+  DocDifficultyScale,
+  DocWorkerPool,
+  DocTrustBoundary,
+  DocProofSplit,
+  DocVanityAnatomy,
+} from './DocsDiagrams';
+export { LabRarityVisual } from './LabRarityVisual';
 

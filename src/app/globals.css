@@ -287,4 +287,158 @@
     opacity: 0.08;
     mix-blend-mode: soft-light;
   }
+
+  /* Docs section ASCII glyphs — multiply + soft edge fade into paper */
+  .doc-glyph {
+    /* no position here — watermark uses Tailwind `absolute`; relative would override it */
+    user-select: none;
+  }
+
+  .doc-glyph__press {
+    position: relative;
+    overflow: hidden;
+    /* Fade all four edges so beige plate grounds dissolve into paper */
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0%, #000 16%, #000 84%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
+    mask-image:
+      linear-gradient(to right, transparent 0%, #000 16%, #000 84%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+
+  .doc-glyph__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    filter: contrast(1.06) brightness(1.02) saturate(0.8);
+    mix-blend-mode: multiply;
+    opacity: 0.62;
+  }
+
+  .doc-glyph__grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.1;
+    mix-blend-mode: soft-light;
+  }
+
+  .doc-glyph__label {
+    margin-top: 0.35rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(44, 42, 39, 0.38);
+    text-align: center;
+  }
+
+  /* Soft oval dissolve — hides square plate corners as a watermark */
+  .doc-glyph--watermark .doc-glyph__press {
+    -webkit-mask-image: radial-gradient(
+      ellipse 72% 72% at 50% 48%,
+      #000 0%,
+      #000 38%,
+      rgba(0, 0, 0, 0.55) 58%,
+      rgba(0, 0, 0, 0.15) 72%,
+      transparent 82%
+    );
+    mask-image: radial-gradient(
+      ellipse 72% 72% at 50% 48%,
+      #000 0%,
+      #000 38%,
+      rgba(0, 0, 0, 0.55) 58%,
+      rgba(0, 0, 0, 0.15) 72%,
+      transparent 82%
+    );
+    -webkit-mask-composite: source-over;
+    mask-composite: add;
+  }
+
+  .doc-glyph--watermark .doc-glyph__img {
+    opacity: 0.34;
+  }
+
+  .doc-glyph--band {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 11rem;
+    margin-inline: auto;
+  }
+
+  .doc-glyph--band .doc-glyph__press {
+    width: 100%;
+    -webkit-mask-image: radial-gradient(
+      ellipse 78% 78% at 50% 50%,
+      #000 0%,
+      #000 42%,
+      rgba(0, 0, 0, 0.5) 62%,
+      transparent 80%
+    );
+    mask-image: radial-gradient(
+      ellipse 78% 78% at 50% 50%,
+      #000 0%,
+      #000 42%,
+      rgba(0, 0, 0, 0.5) 62%,
+      transparent 80%
+    );
+    -webkit-mask-composite: source-over;
+    mask-composite: add;
+  }
+
+  .doc-glyph--band .doc-glyph__img {
+    opacity: 0.55;
+  }
+
+  /* Footer full-bleed ASCII stone structure */
+  .footer-stone {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .footer-stone__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: contrast(1.04) brightness(1.06) saturate(0.7);
+    mix-blend-mode: multiply;
+    opacity: 0.22;
+  }
+
+  .footer-stone__grain {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.08;
+    mix-blend-mode: soft-light;
+  }
+
+  /* Soft paper veil so links stay readable */
+  .footer-stone__veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(245, 240, 232, 0.55) 0%,
+      rgba(245, 240, 232, 0.28) 45%,
+      rgba(245, 240, 232, 0.45) 100%
+    );
+  }
+
+  @media (min-width: 768px) {
+    .footer-stone__img {
+      opacity: 0.26;
+    }
+  }
 }

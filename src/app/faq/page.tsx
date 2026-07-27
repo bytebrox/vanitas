@@ -1,496 +1,584 @@
 'use client';
 
-/**
- * FAQ Page
- * Comprehensive answers to common questions about Vanitas
- */
-
-import { useState } from 'react';
-import { Footer, FadeIn, PageIntro, ContentWithSide } from '@/components';
+import { useState, type ReactNode } from 'react';
+import {
+  Footer,
+  FadeIn,
+  PageIntro,
+  ContentWithSide,
+  DocsToc,
+  DOC_SECTION_SCROLL_MT,
+  DocVanityAnatomy,
+  DocDifficultyScale,
+  DocGlyph,
+} from '@/components';
+import type { DocGlyphId } from '@/components';
 
 interface FAQItem {
   question: string;
-  answer: string | React.ReactNode;
-  category: string;
+  answer: ReactNode;
 }
 
-const faqs: FAQItem[] = [
-  // General
-  {
-    category: 'General',
-    question: 'What is a vanity address?',
-    answer: 'A vanity address is a cryptocurrency wallet address that contains a specific pattern you choose. For example, an address starting with "SOL" or ending with "DAO". It\'s purely cosmetic but can help with brand recognition or personalization.',
-  },
-  {
-    category: 'General',
-    question: 'Why would I want a vanity address?',
-    answer: 'Common reasons include: brand recognition for businesses and DAOs, personal customization, easier identification of your own addresses, and professional appearance for public-facing wallets.',
-  },
-  {
-    category: 'General',
-    question: 'Are these real blockchain addresses?',
-    answer:
-      'Yes. Each forge produces standard keys for that chain: Solana Ed25519 (Phantom, Solflare, …), EVM secp256k1 0x addresses (MetaMask and every EVM network), Bitcoin mainnet (legacy / SegWit), and Tron Base58Check T… addresses. Import into a matching wallet and they work like any other key.',
-  },
-  {
-    category: 'General',
-    question: 'How long does it take to find an address?',
-    answer:
-      'It depends on the pattern length and the alphabet of that forge. Solana/Tron Base58 is roughly 58 possibilities per character; EVM hex is 16; Bitcoin formats differ by type. Short patterns take seconds; each extra character multiplies expected time. Use the on-page estimate for your pattern.',
-  },
-  {
-    category: 'General',
-    question: 'Why can\'t I use certain characters like 0, O, I, or l?',
-    answer:
-      'On Solana (and similar Base58 alphabets), those look-alike characters are excluded by design. EVM patterns use hex (0-9, a-f) only. Bitcoin and Tron each have their own allowed character sets — the forge UI validates as you type.',
-  },
-  {
-    category: 'General',
-    question: 'What\'s the difference between Wallet and Token Mint generator?',
-    answer: 'On the Solana forge, Wallet creates a vanity address for your personal wallet. Mint creates a vanity token mint for launchpads. Technically they\'re the same Ed25519 keypairs — the difference is how you use them.',
-  },
-  {
-    category: 'General',
-    question: 'Which forges does Vanitas offer?',
-    answer:
-      'Nine forges: Solana (/sol), EVM (/evm — wallet, CREATE, CREATE2), Bitcoin (/btc — legacy, SegWit, Taproot), Tron (/tron), Aptos (/aptos), Sui (/sui), TON (/ton), Cardano (/cardano), and XRP (/xrp). There is also a terminal CLI via npx vanitas.',
-  },
-  {
-    category: 'General',
-    question: 'What\'s the difference between the Solana and EVM forges?',
-    answer:
-      'Solana uses Base58 Ed25519 addresses (Phantom, Solflare, etc.). The EVM forge uses 0x hex addresses (secp256k1). That same private key works on every EVM chain — Ethereum, BNB, Base, Arbitrum, and more — so you do not need a separate tool per network.',
-  },
-  {
-    category: 'General',
-    question: 'Is there a terminal CLI?',
-    answer: (
-      <div className="space-y-2">
-        <p>
-          Yes. Same forges, keys stay on your machine. Run{' '}
-          <code className="font-mono text-ink">npx vanitas</code> for an interactive wizard, or pass
-          flags (chain, prefix, threads). Package:{' '}
-          <a
-            href="https://www.npmjs.com/package/vanitas"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent hover:underline"
-          >
-            npmjs.com/package/vanitas
-          </a>
-          .
-        </p>
-      </div>
-    ),
-  },
+interface FAQCategory {
+  id: string;
+  n: string;
+  label: string;
+  items: FAQItem[];
+}
 
-  // Ethereum / EVM
-  {
-    category: 'Ethereum / EVM',
-    question: 'Which chains work with the EVM forge?',
-    answer: (
-      <div className="space-y-2">
-        <p>
-          Any EVM-compatible chain. A vanity wallet or contract address from the{' '}
-          <a href="/evm" className="text-accent hover:underline">
-            EVM forge
-          </a>{' '}
-          is a standard <span className="font-mono">0x</span> address. The same private key
-          produces the same address on every EVM network — there is no separate key per chain.
-        </p>
-        <p>That includes, among others:</p>
-        <ul className="list-disc list-inside space-y-1 text-muted">
-          <li>Ethereum mainnet</li>
-          <li>BNB Smart Chain (BSC)</li>
-          <li>Base</li>
-          <li>Arbitrum</li>
-          <li>Optimism</li>
-          <li>Polygon</li>
-          <li>Avalanche C-Chain</li>
-          <li>Robinhood Chain and other EVM L1s / L2s</li>
-        </ul>
-        <p>
-          Import the key into MetaMask, Rabby, or any EVM wallet, switch the network, and the
-          address matches. Contract mode (CREATE · nonce 0) follows the same rule on every EVM chain.
-        </p>
-      </div>
-    ),
-  },
-  {
-    category: 'Ethereum / EVM',
-    question: 'Do I need a separate generator for BNB / BSC?',
-    answer:
-      'No. BNB Smart Chain is EVM-compatible, so addresses from the EVM forge work on BSC without any extra step. A dedicated “BNB generator” would search the same 0x space. (This does not cover old BNB Beacon Chain bech32 addresses that start with bnb1 — those are a different format.)',
-  },
-  {
-    category: 'Ethereum / EVM',
-    question: 'What can I forge on the EVM page?',
-    answer:
-      'Two modes: a vanity wallet (EOA) whose 0x address matches your hex pattern, or a vanity contract address derived from the first deploy of that key (CREATE with nonce 0). Both work on every EVM chain listed above.',
-  },
+const FAQ_GLYPHS: Record<string, { id: DocGlyphId; label: string }> = {
+  general: { id: 'scroll', label: 'Fig. — Scroll' },
+  solana: { id: 'colonnade', label: 'Fig. — Colonnade' },
+  evm: { id: 'modes', label: 'Fig. — Modes' },
+  bitcoin: { id: 'key', label: 'Fig. — Key' },
+  tron: { id: 'forge', label: 'Fig. — Forge' },
+  'aptos-sui': { id: 'loop', label: 'Fig. — Loop' },
+  'ton-cardano-xrp': { id: 'stele', label: 'Fig. — Stele' },
+  security: { id: 'shield', label: 'Fig. — Shield' },
+  'proof-cli': { id: 'seal', label: 'Fig. — Seal' },
+  usage: { id: 'hourglass', label: 'Fig. — Time' },
+};
 
-  // Bitcoin
+const categories: FAQCategory[] = [
   {
-    category: 'Bitcoin',
-    question: 'What Bitcoin address types does Vanitas support?',
-    answer:
-      'Mainnet legacy P2PKH (addresses starting with 1) and SegWit bech32 (bc1q…). Export is WIF for wallet import. Keys stay in the browser like every other forge.',
+    id: 'general',
+    n: '01',
+    label: 'General',
+    items: [
+      {
+        question: 'What is a vanity address?',
+        answer: (
+          <p>
+            A cryptocurrency address that contains a pattern you choose — for example starting with{' '}
+            <code className="font-mono text-ink">VANI</code> on Solana or{' '}
+            <code className="font-mono text-ink">0xcafe</code> on EVM. It is cosmetic branding on top
+            of a normal keypair.
+          </p>
+        ),
+      },
+      {
+        question: 'Does Vanitas create “fake” addresses?',
+        answer: (
+          <p>
+            No. Every forge produces standard keys for that chain. Import into a matching wallet and
+            they work like any randomly generated address — they just look intentional.
+          </p>
+        ),
+      },
+      {
+        question: 'Which forges exist?',
+        answer: (
+          <p>
+            Nine web forges — Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano, XRP — plus{' '}
+            <code className="font-mono text-ink">npx vanitas</code> for the terminal. See{' '}
+            <a href="/how-it-works#chains" className="text-accent hover:underline">
+              How it works → Chains
+            </a>
+            .
+          </p>
+        ),
+      },
+      {
+        question: 'How long will my pattern take?',
+        answer: (
+          <p>
+            Expected attempts grow exponentially with length and alphabet size. Hex (16 chars) is
+            denser than Base58 (~58). Use the on-page difficulty estimate; start with 3–4 characters
+            before chasing long brands.
+          </p>
+        ),
+      },
+      {
+        question: 'Can I use prefix and suffix together?',
+        answer: (
+          <p>
+            Yes — both constraints multiply difficulty. Prefer one strong side (prefix <em>or</em>{' '}
+            suffix) unless you have time and hash rate to spare.
+          </p>
+        ),
+      },
+    ],
   },
   {
-    category: 'Bitcoin',
-    question: 'Do I need to type the leading 1 or bc1q in the prefix?',
-    answer:
-      'No. For legacy, typing BTC searches for 1BTC… — the leading 1 is added automatically (you can still type 1BTC yourself). For SegWit, typing cafe searches for bc1qcafe… unless you already start the prefix with bc1.',
+    id: 'solana',
+    n: '02',
+    label: 'Solana',
+    items: [
+      {
+        question: 'What does the Solana forge produce?',
+        answer: (
+          <p>
+            Ed25519 keypairs as Base58 addresses (same family as Phantom / Solflare). Export as
+            Solana CLI JSON byte arrays for easy import.
+          </p>
+        ),
+      },
+      {
+        question: 'Wallet vs mint mode?',
+        answer: (
+          <p>
+            Same cryptography. <strong className="text-ink">Wallet</strong> is for personal
+            addresses; <strong className="text-ink">Mint</strong> is labeled for launchpad custom-mint
+            fields (pump.fun, Raydium, Meteora, …). Open{' '}
+            <a href="/sol?mode=mint" className="text-accent hover:underline">
+              /sol?mode=mint
+            </a>
+            .
+          </p>
+        ),
+      },
+      {
+        question: 'Why can’t I use 0, O, I, or l?',
+        answer: (
+          <p>
+            Base58 excludes look-alike characters. Patterns containing them can never appear in a
+            real Solana address.
+          </p>
+        ),
+      },
+      {
+        question: 'Do mints need to end with “pump”?',
+        answer: (
+          <p>
+            No. That suffix is marketing, not a protocol rule. Any valid Base58 vanity pattern works
+            if the launchpad accepts a custom mint keypair.
+          </p>
+        ),
+      },
+    ],
   },
   {
-    category: 'Bitcoin',
-    question: 'Can I generate Taproot or Lightning addresses?',
-    answer:
-      'Taproot (bc1p…) is supported on the Bitcoin forge — switch Address type to Taproot. Lightning invoices are out of scope.',
-  },
-
-  // Tron
-  {
-    category: 'Tron',
-    question: 'What does the Tron forge produce?',
-    answer:
-      'Standard mainnet Base58Check addresses starting with T, from secp256k1 keys. Compatible with typical Tron wallets that accept private-key import. Typing Ace searches for TAce… — the leading T is added automatically. Leave Case sensitive off unless you need an exact letter case. Use Target → CREATE for a vanity contract address at deployer nonce 0 (same RLP math as EVM, then Tron encoding).',
-  },
-  {
-    category: 'Tron',
-    question: 'Why does Case sensitive + a lowercase prefix never find anything?',
-    answer:
-      'Tron addresses use Base58 with version byte 0x41. The character right after T is almost always uppercase (or a digit) — a lowercase letter there is effectively impossible. Also capital O, I, and l are not in Base58, so patterns like “TRON” cannot appear literally. Uncheck Case sensitive so oko matches TOko / Toko / etc.',
-  },
-
-  // Token Mint
-  {
-    category: 'Token Mint',
-    question: 'What is a Token Mint address?',
-    answer: 'A Token Mint address is the contract address of a token on Solana. When you launch a token, this address becomes permanent and public - it\'s what people see on DEXScreener, Birdeye, and other platforms.',
-  },
-  {
-    category: 'Token Mint',
-    question: 'How do I use the generated key on a launchpad?',
-    answer: (
-      <ol className="list-decimal list-inside space-y-1">
-        <li>Generate your custom token address and copy the <strong>Private Key</strong></li>
-        <li>On your launchpad (pump.fun, Raydium, Meteora, etc.), find the "Token Address" or "Custom Mint" section</li>
-        <li>Paste the private key into the input field</li>
-        <li>Complete your token launch — your token will have your custom vanity address!</li>
-      </ol>
-    ),
-  },
-  {
-    category: 'Token Mint',
-    question: 'Does the token address need to end with "pump"?',
-    answer: 'No! That\'s a common misconception. You can use any vanity pattern you like - DOGE, MOON, your project name, etc. The "pump" suffix some tokens have is just marketing, not a technical requirement.',
-  },
-  {
-    category: 'Token Mint',
-    question: 'Can someone steal my token address before I launch?',
-    answer: 'No. Your token address is protected by the private key. Without the private key, nobody can deploy a token to that address. As long as you keep your private key secret until you use it, the address is yours.',
+    id: 'evm',
+    n: '03',
+    label: 'EVM',
+    items: [
+      {
+        question: 'Which networks does an EVM vanity key work on?',
+        answer: (
+          <div className="space-y-2">
+            <p>
+              All EVM-compatible chains share the same address derivation. One key → one{' '}
+              <code className="font-mono text-ink">0x</code> address on Ethereum, Base, Arbitrum,
+              Optimism, BSC, Polygon, Avalanche C-Chain, and others.
+            </p>
+          </div>
+        ),
+      },
+      {
+        question: 'What are wallet, CREATE, and CREATE2 modes?',
+        answer: (
+          <ul className="list-disc list-inside space-y-1">
+            <li>
+              <strong className="text-ink">Wallet</strong> — vanity EOA address.
+            </li>
+            <li>
+              <strong className="text-ink">CREATE</strong> — vanity address of the first contract
+              from that key (nonce 0).
+            </li>
+            <li>
+              <strong className="text-ink">CREATE2</strong> — grind salt (fixed deployer) or grind
+              deployer (fixed salt) given an init code hash.
+            </li>
+          </ul>
+        ),
+      },
+      {
+        question: 'Do I need a separate BNB generator?',
+        answer: (
+          <p>
+            No for BNB Smart Chain (EVM). Old Beacon Chain <code className="font-mono text-ink">bnb1</code>{' '}
+            bech32 addresses are out of scope.
+          </p>
+        ),
+      },
+    ],
   },
   {
-    category: 'Token Mint',
-    question: 'Do I need to keep the private key after launching?',
-    answer: 'No. The private key is only used once during token creation. After your token is deployed, the token address becomes public and permanent. You don\'t need to store the mint keypair - it served its purpose.',
+    id: 'bitcoin',
+    n: '04',
+    label: 'Bitcoin',
+    items: [
+      {
+        question: 'Which address types are supported?',
+        answer: (
+          <p>
+            Mainnet legacy <code className="font-mono text-ink">1…</code>, SegWit{' '}
+            <code className="font-mono text-ink">bc1q…</code>, and Taproot{' '}
+            <code className="font-mono text-ink">bc1p…</code>. Export includes compressed WIF.
+          </p>
+        ),
+      },
+      {
+        question: 'Do I type the leading 1 / bc1q myself?',
+        answer: (
+          <p>
+            Optional. The UI auto-prepends the fixed version / HRP when your prefix does not already
+            include it.
+          </p>
+        ),
+      },
+      {
+        question: 'Lightning invoices?',
+        answer: <p>Out of scope — forge addresses, not BOLTs.</p>,
+      },
+    ],
   },
   {
-    category: 'Token Mint',
-    question: 'Which launchpads are supported?',
-    answer: 'The generated keypairs work with any Solana launchpad or DEX that supports custom mint addresses, including pump.fun, Raydium, Meteora, Jupiter Launch, and many more. The key format is standard Solana Ed25519.',
-  },
-
-  // Security
-  {
-    category: 'Security',
-    question: 'Is this safe to use?',
-    answer: 'Yes. All key generation happens entirely in your browser. Your private keys are never sent to any server. You can verify this by checking the Network tab in your browser\'s developer tools while generating.',
-  },
-  {
-    category: 'Security',
-    question: 'Do you store my private keys?',
-    answer: 'No. We have no database, no backend processing, and no way to access your keys. The entire application runs client-side in your browser. Once you close the page, the keys exist only where you saved them.',
-  },
-  {
-    category: 'Security',
-    question: 'How can I verify you\'re not secretly storing my data?',
-    answer: (
-      <ol className="list-decimal list-inside space-y-1">
-        <li>Open Developer Tools (F12)</li>
-        <li>Go to the <strong>Network</strong> tab</li>
-        <li>Generate an address</li>
-        <li>You'll see <strong>NO requests</strong> during generation — keys are created locally</li>
-      </ol>
-    ),
+    id: 'tron',
+    n: '05',
+    label: 'Tron',
+    items: [
+      {
+        question: 'What do I get from the Tron forge?',
+        answer: (
+          <p>
+            Mainnet Base58Check <code className="font-mono text-ink">T…</code> addresses from
+            secp256k1 keys — wallet or CREATE (nonce 0). Leading{' '}
+            <code className="font-mono text-ink">T</code> is added automatically for prefixes.
+          </p>
+        ),
+      },
+      {
+        question: 'Why does a lowercase case-sensitive prefix never find?',
+        answer: (
+          <p>
+            After <code className="font-mono text-ink">T</code>, the next character is almost always
+            uppercase or a digit. Leave case sensitivity off unless you need an exact case match.
+            Base58 also excludes O, I, l.
+          </p>
+        ),
+      },
+    ],
   },
   {
-    category: 'Security',
-    question: 'How can I verify the keys aren\'t being sent somewhere?',
-    answer: (
-      <ol className="list-decimal list-inside space-y-1">
-        <li>Open your browser's Developer Tools (F12)</li>
-        <li>Go to the <strong>Network</strong> tab</li>
-        <li>Generate an address — no outgoing requests will appear</li>
-        <li>You can also disconnect from the internet and the tool will still work</li>
-      </ol>
-    ),
+    id: 'aptos-sui',
+    n: '06',
+    label: 'Aptos & Sui',
+    items: [
+      {
+        question: 'How do Aptos and Sui differ?',
+        answer: (
+          <p>
+            Both use Ed25519 and hex addresses, but hashing differs: Aptos uses{' '}
+            <code className="font-mono text-sm text-ink">sha3-256(pubkey ‖ 0x00)</code>; Sui uses{' '}
+            <code className="font-mono text-sm text-ink">blake2b-256(0x00 ‖ pubkey)</code>. Keys are
+            not interchangeable across ecosystems.
+          </p>
+        ),
+      },
+      {
+        question: 'Which wallets can import them?',
+        answer: (
+          <p>
+            Aptos: Petra, Martian, and similar. Sui: Sui Wallet, Suiet, and others that accept hex
+            private keys.
+          </p>
+        ),
+      },
+    ],
   },
   {
-    category: 'Security',
-    question: 'Is the code open source?',
-    answer: 'Yes. The complete source code is available on GitHub at vanitas.fun. You can audit the code yourself or have someone you trust review it.',
+    id: 'ton-cardano-xrp',
+    n: '07',
+    label: 'TON · Cardano · XRP',
+    items: [
+      {
+        question: 'TON UQ vs EQ?',
+        answer: (
+          <p>
+            Non-bounceable (<code className="font-mono text-ink">UQ…</code>) vs bounceable (
+            <code className="font-mono text-ink">EQ…</code>) user-friendly forms of Wallet v4R2.
+            Matching is case-sensitive.
+          </p>
+        ),
+      },
+      {
+        question: 'What Cardano address type is forged?',
+        answer: (
+          <p>
+            Enterprise mainnet <code className="font-mono text-ink">addr1…</code> (CIP-19 type 6 —
+            payment key only, no stake delegation in the address).
+          </p>
+        ),
+      },
+      {
+        question: 'Is XRP the same Base58 as Bitcoin?',
+        answer: (
+          <p>
+            No. XRPL classic addresses use a different Base58 alphabet. Vanitas encodes{' '}
+            <code className="font-mono text-ink">r…</code> classics from secp256k1 keys.
+          </p>
+        ),
+      },
+    ],
   },
   {
-    category: 'Security',
-    question: 'What is the Live Audit page?',
-    answer: (
-      <div className="space-y-2">
-        <p>
-          The <a href="/audit" className="text-accent hover:underline">Live Audit</a> runs 8 real security checks directly in your browser — no server involved. It tests things like:
-        </p>
-        <ul className="list-disc list-inside space-y-1 text-muted">
-          <li>Whether your random number generator works correctly</li>
-          <li>Whether any data leaves your browser during key generation</li>
-          <li>Whether the code running here matches the open-source version on GitHub</li>
-          <li>Whether your browser can securely create keys for the forges</li>
-        </ul>
-        <p>Every test runs locally on your device. Green = good. Red = something needs attention.</p>
-      </div>
-    ),
+    id: 'security',
+    n: '08',
+    label: 'Security',
+    items: [
+      {
+        question: 'Do you store my private keys?',
+        answer: (
+          <p>
+            No. Keys never leave the browser memory of your session. See the{' '}
+            <a href="/security" className="text-accent hover:underline">
+              Security
+            </a>{' '}
+            page for architecture and threat model.
+          </p>
+        ),
+      },
+      {
+        question: 'How do I verify that?',
+        answer: (
+          <ol className="list-decimal list-inside space-y-1">
+            <li>DevTools → Network while mining — no key traffic</li>
+            <li>Airplane mode after load</li>
+            <li>
+              <a href="/audit" className="text-accent hover:underline">
+                Live audit
+              </a>{' '}
+              + worker hash compare
+            </li>
+          </ol>
+        ),
+      },
+      {
+        question: 'Are vanity keys weaker?',
+        answer: (
+          <p>
+            No. Private keys still have full CSPRNG entropy. Only the public encoding is filtered.
+          </p>
+        ),
+      },
+      {
+        question: 'What about browser extensions?',
+        answer: (
+          <p>
+            Extensions can still snoop on a page. For high-value keys use a clean profile, the CLI,
+            or an offline machine. Details:{' '}
+            <a href="/security#browser" className="text-accent hover:underline">
+              Security → Browser
+            </a>
+            .
+          </p>
+        ),
+      },
+      {
+        question: 'Where do I report vulnerabilities?',
+        answer: (
+          <p>
+            Private GitHub Security Advisories — never public issues. See{' '}
+            <a href="/security#disclose" className="text-accent hover:underline">
+              Security → Disclose
+            </a>
+            .
+          </p>
+        ),
+      },
+    ],
   },
   {
-    category: 'Security',
-    question: 'Can I use this offline?',
-    answer: 'Yes. Once the page is loaded, you can disconnect from the internet and continue generating addresses. This is another way to ensure your keys never leave your device.',
+    id: 'proof-cli',
+    n: '09',
+    label: 'Proof & CLI',
+    items: [
+      {
+        question: 'What is Proof of find?',
+        answer: (
+          <p>
+            A shareable <a href="/proof" className="text-accent hover:underline">/proof</a> link
+            with address + pattern (and optional stats). Anyone can verify the match client-side.
+            Private keys are never included.
+          </p>
+        ),
+      },
+      {
+        question: 'How do I run the CLI?',
+        answer: (
+          <p>
+            <code className="font-mono text-ink">npx vanitas</code> for a wizard, or flags like{' '}
+            <code className="font-mono text-sm text-ink">
+              npx vanitas sol --prefix Ace --threads 8
+            </code>
+            . Supports the same deploy modes as the web app (mint, CREATE, CREATE2 flags).
+          </p>
+        ),
+      },
+    ],
   },
   {
-    category: 'Security',
-    question: 'Are vanity addresses less secure than random addresses?',
-    answer: 'No. The cryptographic security is identical. The private key is still generated randomly using secure methods (Web Crypto API). Only the public key is filtered for your pattern.',
-  },
-  {
-    category: 'Security',
-    question: 'What is the Key Security Check?',
-    answer: 'After generating a key, we perform a real-time security analysis: checking entropy level (256 bits), verifying CSPRNG support, running a random sample test with 10,000 bytes, and performing a Chi-Square statistical test. This proves your browser uses proper cryptographic random number generation.',
-  },
-  {
-    category: 'Security',
-    question: 'What does the Chi-Square test measure?',
-    answer: 'The Chi-Square test verifies that random numbers are uniformly distributed. We generate 10,000 random bytes and check if all 256 possible values (0-255) appear with roughly equal frequency. A Chi-Square value below 293 means excellent randomness (p > 0.05).',
-  },
-  {
-    category: 'Security',
-    question: 'What is CSPRNG?',
-    answer: 'CSPRNG stands for Cryptographically Secure Pseudo-Random Number Generator. It\'s a special type of random number generator designed for security applications. Your browser\'s Web Crypto API provides hardware-backed CSPRNG, which is the gold standard for key generation.',
-  },
-  {
-    category: 'Security',
-    question: 'Where can I report a security issue?',
-    answer: 'Please use GitHub Security Advisories on our repository to report vulnerabilities privately. Do not open public issues for security problems. You can also check our SECURITY.md file for our complete security policy.',
-  },
-
-  // Technical
-  {
-    category: 'Technical',
-    question: 'How does the generation work?',
-    answer:
-      'Workers generate random keypairs for the selected forge, encode the public address, and check your pattern until a match is found. Solana uses Ed25519 (native Web Crypto when available). EVM, Bitcoin, and Tron use secp256k1 paths. All cores run in parallel so the UI stays responsive.',
-  },
-  {
-    category: 'Technical',
-    question: 'Why is this so fast?',
-    answer:
-      'Solana benefits from native Web Crypto Ed25519 (SubtleCrypto.generateKey) in modern browsers — often ~125× faster than pure JS. Other forges use optimized @noble cryptography with the same multi-worker parallelism. Chrome 113+, Firefox 129+, and Safari 17+ have the strongest Solana path.',
-  },
-  {
-    category: 'Technical',
-    question: 'What are Web Workers?',
-    answer: 'Web Workers are a browser feature that allows JavaScript to run in parallel background threads. This lets us use multiple CPU cores simultaneously without freezing your browser\'s interface.',
-  },
-  {
-    category: 'Technical',
-    question: 'Why does the speed vary?',
-    answer:
-      'Speed depends on CPU cores, browser crypto support (especially native Ed25519 on Solana), which forge you use, and what else the machine is doing.',
-  },
-  {
-    category: 'Technical',
-    question: 'What cryptographic algorithms are used?',
-    answer:
-      'Solana: Ed25519. EVM and Tron: secp256k1 + keccak-256 for address derivation. Bitcoin: secp256k1 with legacy, SegWit, and Taproot encoding. Aptos and Sui: Ed25519 with chain-specific hashing. All private keys use crypto.getRandomValues() for CSPRNG entropy.',
-  },
-  {
-    category: 'Technical',
-    question: 'What if my browser doesn\'t support native Ed25519?',
-    answer: 'For older browsers without native Ed25519 support, the Solana forge falls back to watsign (WebAssembly). This is still fast (~22,000 keys/sec) but about 5x slower than native. The Key Security Check will show which method your browser uses.',
-  },
-
-  // Usage
-  {
-    category: 'Usage',
-    question: 'How do I import the generated key into Phantom?',
-    answer: (
-      <>
-        <p className="mb-2">On the Solana forge, download the JSON file, then in Phantom:</p>
-        <ol className="list-decimal list-inside space-y-1 mb-2">
-          <li>Settings → Manage Accounts</li>
-          <li>Add/Connect Wallet → Import Private Key</li>
-          <li>Select your downloaded JSON file</li>
-        </ol>
-        <p>Alternatively, you can copy the private key directly and paste it. EVM / Bitcoin / Tron keys use their own export formats (hex, WIF, etc.).</p>
-      </>
-    ),
-  },
-  {
-    category: 'Usage',
-    question: 'What\'s the difference between TXT and JSON download?',
-    answer:
-      'TXT is human-readable storage. On Solana, JSON follows Solana CLI format for Phantom / Solflare / CLI import. Other forges export formats appropriate to that chain (for example WIF on Bitcoin).',
-  },
-  {
-    category: 'Usage',
-    question: 'Can I search for both prefix and suffix at the same time?',
-    answer: 'Yes! Enter your desired prefix and suffix, and the tool will find an address matching both. Note that this exponentially increases the difficulty.',
-  },
-  {
-    category: 'Usage',
-    question: 'What does "case sensitive" mean?',
-    answer: 'When enabled, the pattern must match exactly (e.g., "Sol" won\'t match "SOL" or "sol"). When disabled, any capitalization will match, making it faster to find addresses. Availability depends on the forge alphabet.',
-  },
-  {
-    category: 'Usage',
-    question: 'Can I pause and resume generation?',
-    answer: 'You can stop generation at any time, but you cannot resume from where you left off. Each start begins a fresh search.',
-  },
-
-  // Troubleshooting
-  {
-    category: 'Troubleshooting',
-    question: 'Why is the "Start Crunching" button disabled?',
-    answer:
-      'Usually because no pattern is entered, the pattern has characters invalid for that forge, or it is too long. Solana Base58 rejects 0, O, I, and l; EVM expects hex; Bitcoin/Tron validate against their alphabets.',
-  },
-  {
-    category: 'Troubleshooting',
-    question: 'My browser is freezing during generation',
-    answer: 'Try reducing the number of threads/workers. Using too many on an older device can cause slowdowns. The tool should remain responsive, but reducing threads helps on lower-end hardware.',
-  },
-  {
-    category: 'Troubleshooting',
-    question: 'The generated key doesn\'t work in my wallet',
-    answer: 'Make sure you\'re downloading the JSON format for wallet imports. The TXT file is for human reading. If issues persist, try copying the private key directly from the reveal option.',
-  },
-  {
-    category: 'Troubleshooting',
-    question: 'Sound notification isn\'t playing',
-    answer: 'Ensure sound is enabled (toggle in the controls section). Your browser may also be blocking audio—try clicking anywhere on the page first, as browsers require user interaction before playing sounds.',
+    id: 'usage',
+    n: '10',
+    label: 'Usage',
+    items: [
+      {
+        question: 'How do I import into Phantom / MetaMask / etc.?',
+        answer: (
+          <p>
+            Use the export format for that forge: Solana JSON for Phantom/Solflare, hex for most EVM
+            wallets, WIF for many Bitcoin wallets, chain-specific hex/Base58 elsewhere. Always do a
+            tiny test transfer first.
+          </p>
+        ),
+      },
+      {
+        question: 'Can I pause and resume?',
+        answer: (
+          <p>
+            You can stop anytime; resume is a fresh search (no checkpoint of prior attempts).
+          </p>
+        ),
+      },
+      {
+        question: 'Why is Start disabled?',
+        answer: (
+          <p>
+            Empty pattern, invalid characters for that alphabet, or pattern too long. Fix the
+            validation message under the inputs.
+          </p>
+        ),
+      },
+      {
+        question: 'UI freezes while mining?',
+        answer: (
+          <p>
+            Lower the thread count. Workers should keep the UI alive, but saturating every core on a
+            small laptop can still feel sluggish.
+          </p>
+        ),
+      },
+    ],
   },
 ];
 
-// Group FAQs by category
-const categories = [...new Set(faqs.map((faq) => faq.category))];
+const toc = categories.map((c) => ({ id: c.id, label: c.label, n: c.n }));
+
+function FaqAccordion({ items }: { items: FAQItem[] }) {
+  const [open, setOpen] = useState<number | null>(0);
+
+  return (
+    <div>
+      {items.map((faq, i) => {
+        const isOpen = open === i;
+        return (
+          <div key={faq.question} className="border-b border-ink/15">
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(isOpen ? null : i);
+              }}
+              className="w-full py-5 flex items-start justify-between text-left gap-4 group"
+            >
+              <h3 className="text-lg font-medium text-ink group-hover:text-accent transition-colors">
+                {faq.question}
+              </h3>
+              <span
+                className={`text-xl text-muted transition-transform duration-300 shrink-0 ${
+                  isOpen ? 'rotate-45' : ''
+                }`}
+              >
+                +
+              </span>
+            </button>
+            <div
+              className="overflow-hidden transition-all duration-300 ease-in-out"
+              style={{
+                maxHeight: isOpen ? '640px' : '0',
+                opacity: isOpen ? 1 : 0,
+              }}
+            >
+              <div className="pb-5 pr-4 sm:pr-8 text-muted leading-relaxed">{faq.answer}</div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function FAQPage() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const [activeCategory, setActiveCategory] = useState<string>('All');
-
-  const filteredFaqs = activeCategory === 'All' 
-    ? faqs 
-    : faqs.filter((faq) => faq.category === activeCategory);
-
   return (
     <div className="min-h-screen flex flex-col">
       <PageIntro
         imageSrc="/ascii/page-faq-wide.webp"
-        eyebrow="Help"
+        eyebrow="Docs"
         title="FAQ"
-        description="Vanitas across Solana, EVM, Bitcoin, and Tron — security, formats, and usage."
+        description="Answers across every forge — patterns, modes, security, proof links, CLI, and day-to-day usage. Use the submenu to jump by topic."
       />
 
-      <main className="flex-1 px-4 sm:px-8 lg:px-8 xl:px-12 pb-16">
+      <main className="flex-1 px-4 sm:px-8 lg:px-8 xl:px-12 pb-20">
         <ContentWithSide imageSrc="/ascii/side-landscape.webp" caption="Fig. IV — Landscape">
-          <FadeIn>
-            <div className="flex flex-wrap gap-x-5 gap-y-2 mb-10 pb-6 border-b border-ink/15 text-micro uppercase tracking-[0.16em]">
-              <button
-                type="button"
-                onClick={() => { setActiveCategory('All'); }}
-                className={activeCategory === 'All' ? 'text-ink' : 'text-muted hover:text-ink'}
-              >
-                All ({faqs.length})
-              </button>
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  type="button"
-                  onClick={() => { setActiveCategory(category); }}
-                  className={activeCategory === category ? 'text-ink' : 'text-muted hover:text-ink'}
-                >
-                  {category} ({faqs.filter((f) => f.category === category).length})
-                </button>
-              ))}
-            </div>
-          </FadeIn>
+          <DocsToc items={toc} label="Topics" />
 
-          <div>
-            {filteredFaqs.map((faq) => {
-              const globalIndex = faqs.indexOf(faq);
-              const isOpen = openIndex === globalIndex;
-
+          <div className="space-y-2">
+            {categories.map((cat) => {
+              const glyph = FAQ_GLYPHS[cat.id];
               return (
-                <div key={globalIndex} className="border-b border-ink/15">
-                  <button
-                    type="button"
-                    onClick={() => { setOpenIndex(isOpen ? null : globalIndex); }}
-                    className="w-full py-5 flex items-start justify-between text-left gap-4 group"
-                  >
-                    <div>
-                      <span className="text-micro text-muted uppercase tracking-[0.16em]">
-                        {faq.category}
-                      </span>
-                      <h3 className="text-lg font-medium mt-1 text-ink group-hover:text-accent transition-colors">
-                        {faq.question}
-                      </h3>
+              <FadeIn key={cat.id}>
+                <section id={cat.id} className={`border-t border-ink/15 pt-10 ${DOC_SECTION_SCROLL_MT}`}>
+                  {glyph ? (
+                    <div className="relative z-[1] flex flex-col items-center text-center mb-8 sm:mb-10">
+                      <DocGlyph
+                        id={glyph.id}
+                        label={glyph.label}
+                        variant="band"
+                        className="w-[7rem] sm:w-[8.5rem] md:w-[9.5rem] mb-5 sm:mb-6"
+                      />
+                      <p className="text-micro uppercase tracking-[0.2em] text-muted mb-2">
+                        {cat.n} — {cat.label}
+                      </p>
+                      <h2 className="font-display text-xl sm:text-2xl font-semibold tracking-tight text-ink normal-case">
+                        {cat.label}
+                      </h2>
                     </div>
-                    <span className={`text-xl text-muted transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}>
-                      +
-                    </span>
-                  </button>
-                  <div
-                    className="overflow-hidden transition-all duration-300 ease-in-out"
-                    style={{
-                      maxHeight: isOpen ? '500px' : '0',
-                      opacity: isOpen ? 1 : 0,
-                    }}
-                  >
-                    <div className="pb-5 pr-8 text-muted leading-relaxed">
-                      {typeof faq.answer === 'string' ? <p>{faq.answer}</p> : faq.answer}
-                    </div>
-                  </div>
-                </div>
+                  ) : (
+                    <>
+                      <p className="text-micro uppercase tracking-[0.2em] text-muted mb-2">
+                        {cat.n} — {cat.label}
+                      </p>
+                      <h2 className="font-display text-xl sm:text-2xl font-semibold tracking-tight text-ink normal-case mb-2">
+                        {cat.label}
+                      </h2>
+                    </>
+                  )}
+                  {cat.id === 'general' ? (
+                    <>
+                      <DocVanityAnatomy />
+                      <DocDifficultyScale />
+                    </>
+                  ) : null}
+                  <FaqAccordion items={cat.items} />
+                </section>
+              </FadeIn>
               );
             })}
-          </div>
 
-          <FadeIn className="mt-14 border-t border-ink/15 pt-10">
-            <p className="text-micro uppercase tracking-[0.2em] text-muted mb-3">Still stuck?</p>
-            <h2 className="text-xl font-bold text-ink normal-case mb-3">Keep reading</h2>
-            <p className="text-muted mb-6 max-w-xl">
-              Technical detail lives in How it Works. Integrity checks live on the audit page.
-            </p>
-            <div className="flex flex-wrap gap-x-8 gap-y-2 text-micro uppercase tracking-[0.16em]">
-              <a href="/how-it-works" className="text-ink border-b border-ink pb-0.5 hover:text-accent hover:border-accent">
-                How it works
-              </a>
-              <a href="/audit" className="text-muted hover:text-ink">
-                Live audit
-              </a>
-              <a href="/security" className="text-muted hover:text-ink">
-                Security
-              </a>
-            </div>
-          </FadeIn>
+            <FadeIn>
+              <section className="border-t border-ink/15 pt-10 pb-4">
+                <p className="text-micro uppercase tracking-[0.2em] text-muted mb-3">Still stuck?</p>
+                <p className="text-muted mb-6 max-w-xl leading-relaxed">
+                  Deep technical detail lives in How it works. Trust model and threat notes live on
+                  Security. Integrity checks live on Audit.
+                </p>
+                <div className="flex flex-wrap gap-x-8 gap-y-2 text-micro uppercase tracking-[0.16em]">
+                  <a
+                    href="/how-it-works"
+                    className="text-ink border-b border-ink pb-0.5 hover:text-accent hover:border-accent"
+                  >
+                    How it works
+                  </a>
+                  <a href="/security" className="text-muted hover:text-ink">
+                    Security
+                  </a>
+                  <a href="/audit" className="text-muted hover:text-ink">
+                    Live audit
+                  </a>
+                </div>
+              </section>
+            </FadeIn>
+          </div>
         </ContentWithSide>
       </main>
 

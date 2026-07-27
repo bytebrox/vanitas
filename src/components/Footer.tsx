@@ -1,23 +1,59 @@
 'use client';
 
+import { useState } from 'react';
+
+/** Solana tip jar — Bytebrox */
+export const DONATE_SOL = '3ZgrgEADJJtjyWYag6XfYd7zoD7LEwFhsoEpj7FFWUPo';
+
 interface FooterProps {
   /** Tighter padding for single-viewport landing */
   compact?: boolean;
 }
 
+function shortAddr(addr: string) {
+  return `${addr.slice(0, 4)}…${addr.slice(-4)}`;
+}
+
 export function Footer({ compact = false }: FooterProps) {
   const year = new Date().getFullYear();
+  const [copied, setCopied] = useState(false);
+
+  const copyDonate = async () => {
+    try {
+      await navigator.clipboard.writeText(DONATE_SOL);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1600);
+    } catch {
+      /* ignore */
+    }
+  };
 
   return (
     <footer
-      className={`px-4 sm:px-8 lg:px-12 border-t border-ink/15 ${
+      className={`relative overflow-hidden px-4 sm:px-8 lg:px-12 border-t border-ink/15 ${
         compact
           ? 'py-3 sm:py-5 border-t-0'
           : 'mt-14 sm:mt-20 py-8 sm:py-10 pb-[max(2rem,env(safe-area-inset-bottom))]'
       }`}
     >
+      {/* Full-bleed ASCII stone structure background */}
+      {!compact && (
+        <div className="footer-stone" aria-hidden>
+          <img
+            src="/ascii/footer-stele.webp?v=2"
+            alt=""
+            className="footer-stone__img"
+            loading="lazy"
+            decoding="async"
+            draggable={false}
+          />
+          <span className="footer-stone__grain" />
+          <span className="footer-stone__veil" />
+        </div>
+      )}
+
       <div
-        className={`flex flex-col md:flex-row md:items-end md:justify-between ${
+        className={`relative z-[1] flex flex-col md:flex-row md:items-end md:justify-between ${
           compact ? 'gap-2.5 sm:gap-3' : 'gap-5 sm:gap-6'
         }`}
       >
@@ -42,6 +78,28 @@ export function Footer({ compact = false }: FooterProps) {
             </a>
             .
           </p>
+
+          <div className={`flex flex-wrap items-baseline gap-x-3 gap-y-1 ${compact ? 'mt-2' : 'mt-3.5'}`}>
+            <span className="text-micro uppercase tracking-[0.16em] text-muted">Donate SOL</span>
+            <button
+              type="button"
+              onClick={() => {
+                void copyDonate();
+              }}
+              title={DONATE_SOL}
+              className="font-mono text-[0.7rem] sm:text-micro text-ink/80 hover:text-accent tracking-normal normal-case transition-colors"
+            >
+              {copied ? 'Copied' : shortAddr(DONATE_SOL)}
+            </button>
+            <a
+              href={`https://solscan.io/account/${DONATE_SOL}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-micro uppercase tracking-[0.14em] text-muted hover:text-ink"
+            >
+              Solscan
+            </a>
+          </div>
         </div>
         <div className="flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-1.5 text-micro uppercase tracking-[0.14em] sm:tracking-[0.16em] text-muted">
           {!compact && (
@@ -78,6 +136,12 @@ export function Footer({ compact = false }: FooterProps) {
               </a>
               <a href="/proof" className="hover:text-ink py-1">
                 Proof
+              </a>
+              <a href="/lab" className="hover:text-ink py-1">
+                Lab
+              </a>
+              <a href="/brand" className="hover:text-ink py-1">
+                Brand
               </a>
             </>
           )}
