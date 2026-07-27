@@ -14,10 +14,9 @@ Vanitas takes security seriously. We designed this tool with a security-first mi
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 1.1.x   | :white_check_mark: |
-| 1.0.x   | :white_check_mark: |
-| 0.9.x   | :x:                |
-| < 0.9   | :x:                |
+| 1.8.x   | :white_check_mark: |
+| 1.7.x   | :white_check_mark: |
+| < 1.7   | :x:                |
 
 ## Reporting a Vulnerability
 
@@ -64,9 +63,10 @@ We appreciate responsible disclosure of security vulnerabilities.
 | Component | Implementation | Notes |
 |-----------|----------------|-------|
 | Solana | Ed25519 (Web Crypto / WASM fallback) | Base58 addresses |
-| EVM | secp256k1 + keccak-256 | `0x` hex; wallet + CREATE nonce 0 |
-| Bitcoin | secp256k1 | Legacy P2PKH + SegWit bech32; WIF export |
-| Tron | secp256k1 + keccak-256 | Base58Check `T…` |
+| EVM | secp256k1 + keccak-256 | `0x` hex; wallet, CREATE nonce 0, CREATE2 |
+| Bitcoin | secp256k1 | Legacy / SegWit / Taproot; WIF export |
+| Tron | secp256k1 + keccak-256 | Base58Check `T…`; wallet + CREATE nonce 0 |
+| Aptos / Sui / TON / Cardano / XRP | Ed25519 or secp256k1 | See README forges table |
 | Random Numbers | `crypto.getRandomValues()` | Hardware-backed CSPRNG |
 | Entropy | 256-bit private keys | Industry standard |
 

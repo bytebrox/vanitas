@@ -1,6 +1,6 @@
 ﻿# Vanitas
 
-[![Version: 1.7.0](https://img.shields.io/badge/Version-1.7.0-8B7355.svg)](https://vanitas.fun)
+[![Version: 1.8.0](https://img.shields.io/badge/Version-1.8.0-8B7355.svg)](https://vanitas.fun)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Live Audit](https://img.shields.io/badge/Live_Audit-vanitas.fun%2Faudit-8B7355.svg)](https://vanitas.fun/audit)
 

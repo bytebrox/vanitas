@@ -20,6 +20,9 @@ function parseArgs(argv: string[]) {
     out?: string;
     yes?: boolean;
     help?: boolean;
+    create2Salt?: string;
+    create2InitCodeHash?: string;
+    create2DeployerKey?: string;
   } = {};
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
@@ -30,6 +33,9 @@ function parseArgs(argv: string[]) {
     else if (a === '--mode') out.mode = argv[++i];
     else if (a === '--threads') out.threads = Number(argv[++i]);
     else if (a === '--out') out.out = argv[++i];
+    else if (a === '--salt') out.create2Salt = argv[++i];
+    else if (a === '--init-code-hash') out.create2InitCodeHash = argv[++i];
+    else if (a === '--deployer-key') out.create2DeployerKey = argv[++i];
     else if (!a.startsWith('-') && !out.chain) out.chain = a;
   }
   return out;
@@ -42,19 +48,34 @@ ${pc.bold('vanitas')} ${pc.dim('cli')} · vanity forge
 ${pc.bold('Usage')}
   npx vanitas                 Interactive wizard (recommended)
   npx vanitas sol --prefix Ace
+  npx vanitas sol --mode mint --prefix Ace
+  npx vanitas evm --mode contract --prefix cafe
+  npx vanitas evm --mode create2-salt --prefix cafe --deployer-key 0x… --init-code-hash 0x…
+  npx vanitas evm --mode create2-deployer --prefix cafe --salt 0x… --init-code-hash 0x…
+  npx vanitas tron --mode contract --prefix RON
   npx vanitas ton --mode non-bounceable --prefix UQ --threads 8
 
 ${pc.bold('Chains')}
   sol  evm  btc  tron  aptos  sui  ton  cardano  xrp
 
 ${pc.bold('Options')}
-  --prefix <str>    Address prefix
-  --suffix <str>    Address suffix
-  --mode <str>      Chain-specific mode (btc: legacy|segwit|taproot · ton: non-bounceable|bounceable)
-  --threads <n>     Worker threads (default: CPU cores - 1)
-  --out <file>      Write JSON result to file
-  -y, --yes         Skip confirm
-  -h, --help        Show help
+  --prefix <str>           Address prefix
+  --suffix <str>           Address suffix
+  --mode <str>             Chain mode (see below)
+  --threads <n>            Worker threads (default: CPU cores - 1)
+  --out <file>             Write JSON result to file
+  --salt <hex>             CREATE2 fixed salt (create2-deployer)
+  --init-code-hash <hex>   CREATE2 keccak(init code)
+  --deployer-key <hex>     CREATE2 fixed deployer key (create2-salt)
+  -y, --yes                Skip confirm
+  -h, --help               Show help
+
+${pc.bold('Modes')}
+  sol:   wallet | mint
+  evm:   wallet | contract | create2-salt | create2-deployer
+  btc:   legacy | segwit | taproot
+  tron:  wallet | contract
+  ton:   non-bounceable | bounceable
 
 ${pc.dim('Keys never leave this machine. vanitas.fun')}
 `);
@@ -93,7 +114,26 @@ function saveHit(hit: MineHit, outPath?: string): string {
   return file;
 }
 
-async function wizard(partial: ReturnType<typeof parseArgs>): Promise<MineConfig & { threads: number; out?: string }> {
+async function promptHex32(message: string, initial?: string): Promise<string> {
+  const v = await p.text({
+    message,
+    initialValue: initial || '',
+    placeholder: '0x… (64 hex chars)',
+    validate: (raw) => {
+      const clean = (raw || '').replace(/^0x/i, '');
+      if (!/^[0-9a-fA-F]{64}$/.test(clean)) return 'Need 32-byte hex (64 chars, optional 0x)';
+    },
+  });
+  if (p.isCancel(v)) {
+    p.cancel('Stopped.');
+    process.exit(0);
+  }
+  return String(v);
+}
+
+type WizardResult = MineConfig & { threads: number; out?: string };
+
+async function wizard(partial: ReturnType<typeof parseArgs>): Promise<WizardResult> {
   p.intro(`${pc.bgYellow(pc.black(' vanitas '))} ${pc.dim('local vanity forge')}`);
 
   const chain = (partial.chain ||
@@ -123,6 +163,22 @@ async function wizard(partial: ReturnType<typeof parseArgs>): Promise<MineConfig
       process.exit(0);
     }
     mode = picked as string;
+  }
+
+  let create2Salt = partial.create2Salt;
+  let create2InitCodeHash = partial.create2InitCodeHash;
+  let create2DeployerKey = partial.create2DeployerKey;
+
+  if (chain === 'evm' && (mode === 'create2-salt' || mode === 'create2-deployer')) {
+    if (!create2InitCodeHash) {
+      create2InitCodeHash = await promptHex32('CREATE2 init code hash (keccak256 of init code)');
+    }
+    if (mode === 'create2-deployer' && !create2Salt) {
+      create2Salt = await promptHex32('Fixed CREATE2 salt');
+    }
+    if (mode === 'create2-salt' && !create2DeployerKey) {
+      create2DeployerKey = await promptHex32('Fixed deployer private key');
+    }
   }
 
   let prefix = partial.prefix ?? '';
@@ -187,7 +243,22 @@ async function wizard(partial: ReturnType<typeof parseArgs>): Promise<MineConfig
     caseSensitive,
     threads,
     out: partial.out,
+    create2Salt,
+    create2InitCodeHash,
+    create2DeployerKey,
   };
+}
+
+function validateCreate2Flags(cfg: MineConfig) {
+  if (cfg.chain !== 'evm') return;
+  if (cfg.mode === 'create2-salt') {
+    if (!cfg.create2InitCodeHash) throw new Error('--init-code-hash required for create2-salt');
+    if (!cfg.create2DeployerKey) throw new Error('--deployer-key required for create2-salt');
+  }
+  if (cfg.mode === 'create2-deployer') {
+    if (!cfg.create2InitCodeHash) throw new Error('--init-code-hash required for create2-deployer');
+    if (!cfg.create2Salt) throw new Error('--salt required for create2-deployer');
+  }
 }
 
 async function run() {
@@ -198,7 +269,7 @@ async function run() {
   }
 
   const fullyFlagged = Boolean(args.chain && (args.prefix || args.suffix));
-  const cfg = fullyFlagged
+  const cfg: WizardResult = fullyFlagged
     ? {
         chain: args.chain as CliChain,
         mode:
@@ -210,11 +281,21 @@ async function run() {
         caseSensitive: args.chain === 'ton',
         threads: args.threads ?? defaultThreads(),
         out: args.out,
+        create2Salt: args.create2Salt,
+        create2InitCodeHash: args.create2InitCodeHash,
+        create2DeployerKey: args.create2DeployerKey,
       }
     : await wizard(args);
 
   if (!CHAIN_META.some((c) => c.id === cfg.chain)) {
     console.error(`Unknown chain: ${cfg.chain}`);
+    process.exit(1);
+  }
+
+  try {
+    validateCreate2Flags(cfg);
+  } catch (err) {
+    console.error(err instanceof Error ? err.message : String(err));
     process.exit(1);
   }
 
@@ -244,6 +325,9 @@ async function run() {
         prefix: cfg.prefix,
         suffix: cfg.suffix,
         caseSensitive: cfg.caseSensitive,
+        create2Salt: cfg.create2Salt,
+        create2InitCodeHash: cfg.create2InitCodeHash,
+        create2DeployerKey: cfg.create2DeployerKey,
       },
       cfg.threads,
       (prog) => {
@@ -258,6 +342,10 @@ async function run() {
     p.note(
       [
         `${pc.bold('Address')}  ${hit.address}`,
+        hit.extra?.deployerAddress
+          ? `${pc.bold('Deployer')} ${hit.extra.deployerAddress}`
+          : '',
+        hit.extra?.create2Salt ? `${pc.bold('Salt')}     ${hit.extra.create2Salt.slice(0, 18)}…` : '',
         `${pc.bold('Key')}      ${hit.privateKey.slice(0, 18)}…`,
         hit.extra?.wif ? `${pc.bold('WIF')}      ${hit.extra.wif.slice(0, 18)}…` : '',
         `${pc.bold('Stats')}    ${hit.attempts.toLocaleString()} attempts · ${(hit.durationMs / 1000).toFixed(1)}s`,

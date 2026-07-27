@@ -39,3 +39,6 @@ next-env.d.ts
 .vscode/
 *.swp
 *.swo
+
+# Maintainer-only (npm token / GitHub secret setup — not for public clone)
+cli/PUBLISH.md

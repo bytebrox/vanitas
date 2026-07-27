@@ -3,13 +3,15 @@
  */
 
 import { parentPort, workerData } from 'worker_threads';
-import { tryOnce, type MineConfig } from './chains';
+import { tryOnce, prepareEvmCreate2, type MineConfig } from './chains';
 
 const cfg = workerData as MineConfig & { workerId: number };
 const batch = 64;
 let attempts = 0;
 const t0 = Date.now();
 let lastReport = t0;
+
+const preparedCreate2 = cfg.chain === 'evm' ? prepareEvmCreate2(cfg) : null;
 
 function report() {
   const now = Date.now();
@@ -26,7 +28,7 @@ function report() {
 while (true) {
   for (let i = 0; i < batch; i++) {
     attempts++;
-    const hit = tryOnce(cfg);
+    const hit = tryOnce(cfg, preparedCreate2);
     if (hit) {
       parentPort?.postMessage({
         type: 'found',
