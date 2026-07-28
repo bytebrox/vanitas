@@ -78,7 +78,7 @@ export default function LookalikePage() {
   return (
     <div className="min-h-screen flex flex-col">
       <PageIntro
-        imageSrc="/ascii/page-how-wide.webp"
+        imageSrc="/ascii/page-lookalike-wide.webp"
         eyebrow={t('eyebrow')}
         title={t('title')}
         description={t('description')}

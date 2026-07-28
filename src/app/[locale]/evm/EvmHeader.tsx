@@ -1,7 +1,5 @@
-'use client';
-
 import { Header } from '@/components/Header';
 
 export function EvmHeader() {
-  return <Header imageSrc="/ascii/hero-wallet-wide.webp" mode="evm" />;
+  return <Header imageSrc="/ascii/hero-evm-wide.webp" mode="evm" />;
 }

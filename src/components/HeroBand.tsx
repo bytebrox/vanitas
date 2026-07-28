@@ -83,6 +83,7 @@ export function HeroBand({
               transition: 'opacity 60ms linear, transform 60ms linear',
             }}
           >
+            <div className="hero-text-veil flex flex-col items-center px-6 py-5 sm:px-10 sm:py-7">
             {eyebrow && (
               <p className="text-[0.65rem] sm:text-micro uppercase tracking-[0.2em] sm:tracking-[0.22em] text-ink/80 mb-2 sm:mb-4">
                 {eyebrow}
@@ -149,6 +150,7 @@ export function HeroBand({
                 ↓
               </span>
             </a>
+            </div>
           </div>
         )}
       </div>

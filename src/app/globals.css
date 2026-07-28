@@ -540,4 +540,43 @@
       rgb(var(--paper) / 1) 100%
     );
   }
+
+  /**
+   * Soft paper veil behind hero copy — lifts type off busy ASCII without a hard box.
+   * Uses --paper so light/dark stay in sync with the theme.
+   */
+  .hero-text-veil {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .hero-text-veil::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    top: 42%;
+    transform: translate(-50%, -50%);
+    width: min(34rem, 96vw);
+    height: min(16rem, 52vw);
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse 70% 55% at 50% 48%,
+      rgb(var(--paper) / 0.78) 0%,
+      rgb(var(--paper) / 0.45) 38%,
+      rgb(var(--paper) / 0.16) 62%,
+      transparent 78%
+    );
+  }
+
+  html.dark .hero-text-veil::before {
+    background: radial-gradient(
+      ellipse 70% 55% at 50% 48%,
+      rgb(var(--paper) / 0.88) 0%,
+      rgb(var(--paper) / 0.55) 40%,
+      rgb(var(--paper) / 0.2) 64%,
+      transparent 80%
+    );
+  }
 }

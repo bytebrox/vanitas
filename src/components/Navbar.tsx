@@ -191,10 +191,33 @@ export function Navbar() {
       <div className="relative flex items-center justify-between gap-3 min-h-[2.75rem]">
         <Link
           href="/"
-          className="pointer-events-auto font-display font-semibold normal-case text-ink leading-none tracking-tight drop-shadow-sm hover:text-accent transition-colors"
-          style={{ fontSize: 'clamp(1.25rem, 5vw, 2.35rem)' }}
+          className="pointer-events-auto inline-flex items-center text-ink leading-none tracking-tight drop-shadow-sm hover:text-accent transition-colors"
+          aria-label="Vanitas"
         >
-          Vanitas
+          <span className="md:hidden inline-flex items-center" aria-hidden>
+            <img
+              src="/logo-light.png"
+              alt=""
+              width={40}
+              height={40}
+              className="h-9 w-9 object-contain dark:hidden"
+              draggable={false}
+            />
+            <img
+              src="/logo.png"
+              alt=""
+              width={40}
+              height={40}
+              className="hidden h-9 w-9 object-contain dark:block"
+              draggable={false}
+            />
+          </span>
+          <span
+            className="hidden md:inline font-display font-semibold normal-case"
+            style={{ fontSize: 'clamp(1.25rem, 5vw, 2.35rem)' }}
+          >
+            Vanitas
+          </span>
         </Link>
 
         <nav className="pointer-events-auto absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block">

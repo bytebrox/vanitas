@@ -59,7 +59,7 @@ export default function Create2Page() {
   return (
     <div className="min-h-screen flex flex-col">
       <PageIntro
-        imageSrc="/ascii/page-security-wide.webp"
+        imageSrc="/ascii/page-create2-wide.webp"
         eyebrow={t('eyebrow')}
         title={t('title')}
         description={t('description')}

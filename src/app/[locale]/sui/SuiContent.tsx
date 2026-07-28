@@ -102,7 +102,7 @@ export function SuiContent() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header mode="sui" />
+      <Header mode="sui" imageSrc="/ascii/hero-sui-wide.webp" />
 
       <main id="forge" className="flex-1 px-4 sm:px-8 lg:px-8 xl:px-12 pb-16 scroll-mt-24">
         <ContentWithSide imageSrc="/ascii/side-forum.webp" caption={tSide('sui')}>

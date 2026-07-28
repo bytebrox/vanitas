@@ -116,7 +116,7 @@ export function BtcContent() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header mode="btc" />
+      <Header mode="btc" imageSrc="/ascii/hero-btc-wide.webp" />
 
       <main id="forge" className="flex-1 px-4 sm:px-8 lg:px-8 xl:px-12 pb-16 scroll-mt-24">
         <ContentWithSide imageSrc="/ascii/side-forum.webp" caption={tSide('btc')}>

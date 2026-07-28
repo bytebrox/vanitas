@@ -111,7 +111,7 @@ export default function BrandPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <PageIntro
-        imageSrc="/ascii/page-security-wide.webp"
+        imageSrc="/ascii/page-brand-wide.webp"
         eyebrow={t('eyebrow')}
         title={t('title')}
         description={t('description')}

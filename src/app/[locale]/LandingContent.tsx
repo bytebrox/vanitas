@@ -67,7 +67,7 @@ export function LandingContent() {
       <main className="relative flex-1 flex flex-col">
         <div className="absolute inset-0 overflow-hidden" aria-hidden>
           <img
-            src="/ascii/hero-wallet-wide.webp"
+            src="/ascii/hero-landing-wide.webp"
             alt=""
             className="absolute inset-0 w-full h-full object-cover object-[center_28%] sm:object-center select-none ascii-hero"
             draggable={false}
@@ -77,14 +77,34 @@ export function LandingContent() {
 
         <div className="relative z-10 flex-1 flex flex-col px-4 sm:px-8 lg:px-12 pt-[max(4.75rem,calc(env(safe-area-inset-top)+3.75rem))] pb-6 sm:pb-8">
           <div className="w-full max-w-5xl mx-auto flex-1 flex flex-col sm:justify-center py-2 sm:py-4">
-            <header className="mb-5 sm:mb-7 sm:text-center animate-fade-in-up">
+            <header className="mb-5 sm:mb-7 text-center animate-fade-in-up">
               <p className="text-[0.65rem] sm:text-micro uppercase tracking-[0.18em] sm:tracking-[0.2em] text-ink/70 mb-2 sm:mb-3">
                 {t('eyebrow')}
               </p>
-              <h1 className="font-display text-[1.75rem] sm:text-4xl md:text-5xl font-semibold tracking-tight text-ink normal-case leading-tight drop-shadow-sm mb-1.5 sm:mb-2">
-                {t('title')}
-              </h1>
-              <p className="text-sm sm:text-base text-ink/75 leading-relaxed normal-case tracking-normal max-w-md sm:mx-auto">
+              <h1 className="sr-only">{t('title')}</h1>
+              {/* Desktop/tablet: brand mark in hero. Mobile uses logo in the navbar instead. */}
+              <div
+                className="mb-2 sm:mb-3 hidden md:flex justify-center"
+                aria-hidden
+              >
+                <img
+                  src="/logo-light.png"
+                  alt=""
+                  width={256}
+                  height={256}
+                  className="h-[4.5rem] w-[4.5rem] md:h-20 md:w-20 object-contain drop-shadow-sm select-none dark:hidden"
+                  draggable={false}
+                />
+                <img
+                  src="/logo.png"
+                  alt=""
+                  width={256}
+                  height={256}
+                  className="hidden h-[4.5rem] w-[4.5rem] md:h-20 md:w-20 object-contain drop-shadow-sm select-none dark:block"
+                  draggable={false}
+                />
+              </div>
+              <p className="text-sm sm:text-base text-ink/75 leading-relaxed normal-case tracking-normal max-w-md mx-auto">
                 {t('subtitle')}
               </p>
             </header>
