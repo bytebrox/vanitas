@@ -1,6 +1,6 @@
 {
   "name": "vanitas",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "private": true,
   "scripts": {
     "build:worker": "node scripts/build-worker.js",
@@ -20,6 +20,7 @@
     "@ton/ton": "^16.3.0",
     "buffer": "^6.0.3",
     "next": "^16.2.1",
+    "next-intl": "^4.13.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tweetnacl": "^1.0.3",

@@ -5,7 +5,9 @@
  */
 
 import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { validatePrefix, validateSuffix } from '@/lib/validation';
+import { RichParagraph } from '@/lib/rich-text';
 
 interface PatternInputProps {
   prefix: string;
@@ -26,6 +28,8 @@ export function PatternInput({
   onCaseSensitiveChange,
   disabled = false,
 }: PatternInputProps) {
+  const t = useTranslations('common');
+  const tForge = useTranslations('forge.pattern');
   const [prefixError, setPrefixError] = useState<string | null>(null);
   const [suffixError, setSuffixError] = useState<string | null>(null);
 
@@ -42,47 +46,47 @@ export function PatternInput({
   return (
     <div className="space-y-0 divide-y divide-ink/15 border-y border-ink/15">
       <label className="grid grid-cols-1 sm:grid-cols-[7rem_1fr] gap-2 sm:gap-6 py-4 sm:py-5 items-start cursor-text">
-        <span className="text-micro uppercase tracking-[0.18em] text-muted sm:pt-3">Prefix</span>
+        <span className="text-micro uppercase tracking-[0.18em] text-muted sm:pt-3">{t('prefix')}</span>
         <div>
           <input
             id="prefix"
             type="text"
             value={prefix}
             onChange={(e) => { onPrefixChange(e.target.value); }}
-            placeholder="SOL"
+            placeholder={tForge('solPrefixPh')}
             maxLength={8}
             disabled={disabled}
             className={`w-full bg-transparent border-0 border-b border-ink/25 rounded-none px-0 py-2.5 sm:py-2 text-xl sm:text-2xl font-mono tracking-wide
               placeholder:text-ink/20 focus:outline-none focus:border-accent
               ${prefixError ? 'border-accent' : ''} ${disabled ? 'opacity-50' : ''}`}
           />
-          <p className="text-micro text-muted mt-2">Starts the address</p>
+          <p className="text-micro text-muted mt-2">{t('startsAddress')}</p>
           {prefixError && <p className="text-micro text-accent mt-1">{prefixError}</p>}
         </div>
       </label>
 
       <label className="grid grid-cols-1 sm:grid-cols-[7rem_1fr] gap-2 sm:gap-6 py-4 sm:py-5 items-start cursor-text">
-        <span className="text-micro uppercase tracking-[0.18em] text-muted sm:pt-3">Suffix</span>
+        <span className="text-micro uppercase tracking-[0.18em] text-muted sm:pt-3">{t('suffix')}</span>
         <div>
           <input
             id="suffix"
             type="text"
             value={suffix}
             onChange={(e) => { onSuffixChange(e.target.value); }}
-            placeholder="xyz"
+            placeholder={tForge('solSuffixPh')}
             maxLength={8}
             disabled={disabled}
             className={`w-full bg-transparent border-0 border-b border-ink/25 rounded-none px-0 py-2.5 sm:py-2 text-xl sm:text-2xl font-mono tracking-wide
               placeholder:text-ink/20 focus:outline-none focus:border-accent
               ${suffixError ? 'border-accent' : ''} ${disabled ? 'opacity-50' : ''}`}
           />
-          <p className="text-micro text-muted mt-2">Ends the address</p>
+          <p className="text-micro text-muted mt-2">{t('endsAddress')}</p>
           {suffixError && <p className="text-micro text-accent mt-1">{suffixError}</p>}
         </div>
       </label>
 
       <div className="grid grid-cols-1 sm:grid-cols-[7rem_1fr] gap-2 sm:gap-6 py-4 sm:py-5 items-center">
-        <span className="text-micro uppercase tracking-[0.18em] text-muted">Match</span>
+        <span className="text-micro uppercase tracking-[0.18em] text-muted">{t('match')}</span>
         <label className={`flex items-center gap-3 min-h-11 ${disabled ? 'opacity-50' : 'cursor-pointer'}`}>
           <input
             id="caseSensitive"
@@ -92,14 +96,11 @@ export function PatternInput({
             disabled={disabled}
             className="w-5 h-5 sm:w-4 sm:h-4 accent-ink"
           />
-          <span className="text-sm text-ink">Case sensitive</span>
+          <span className="text-sm text-ink">{t('caseSensitive')}</span>
         </label>
       </div>
 
-      <p className="py-4 text-micro text-muted">
-        Base58 only — no <span className="text-accent">0 O I</span>. Alphabet:{' '}
-        <span className="font-mono text-ink/70">1-9 A-H J-N P-Z a-k m-z</span>
-      </p>
+      <RichParagraph text={tForge('solAlphabet')} className="py-4 text-micro text-muted" />
     </div>
   );
 }

@@ -4,6 +4,7 @@
  * Controls as a single action strip — no panel chrome
  */
 
+import { useTranslations } from 'next-intl';
 import { GeneratorStatus } from '@/types';
 
 interface GeneratorControlsProps {
@@ -29,6 +30,7 @@ export function GeneratorControls({
   soundEnabled = true,
   onSoundToggle,
 }: GeneratorControlsProps) {
+  const t = useTranslations('common');
   const isRunning = status === 'running';
   const canStart = !disabled && (status === 'idle' || status === 'stopped' || status === 'found');
 
@@ -36,29 +38,35 @@ export function GeneratorControls({
     <div className="flex flex-col gap-6 sm:gap-8">
       <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-10">
         <div className="flex items-center gap-4">
-          <span className="text-micro uppercase tracking-[0.18em] text-muted w-16 shrink-0">Cores</span>
+          <span className="text-micro uppercase tracking-[0.18em] text-muted w-16 shrink-0">
+            {t('cores')}
+          </span>
           <div className="flex items-center gap-3">
             <button
               type="button"
-              onClick={() => { onThreadsChange(Math.max(1, threads - 1)); }}
+              onClick={() => {
+                onThreadsChange(Math.max(1, threads - 1));
+              }}
               disabled={isRunning || threads <= 1}
               className="min-h-11 min-w-11 text-lg text-ink disabled:opacity-30 hover:text-accent"
-              aria-label="Fewer cores"
+              aria-label={t('fewerCores')}
             >
               −
             </button>
             <span className="font-mono text-2xl tabular-nums w-8 text-center">{threads}</span>
             <button
               type="button"
-              onClick={() => { onThreadsChange(Math.min(maxThreads, threads + 1)); }}
+              onClick={() => {
+                onThreadsChange(Math.min(maxThreads, threads + 1));
+              }}
               disabled={isRunning || threads >= maxThreads}
               className="min-h-11 min-w-11 text-lg text-ink disabled:opacity-30 hover:text-accent"
-              aria-label="More cores"
+              aria-label={t('moreCores')}
             >
               +
             </button>
           </div>
-          <span className="text-micro text-muted">of {maxThreads}</span>
+          <span className="text-micro text-muted">{t('of', { max: maxThreads })}</span>
         </div>
 
         {onSoundToggle && (
@@ -67,7 +75,7 @@ export function GeneratorControls({
             onClick={onSoundToggle}
             className="text-micro uppercase tracking-[0.18em] text-muted hover:text-ink text-left min-h-11"
           >
-            Sound {soundEnabled ? 'on' : 'off'}
+            {soundEnabled ? t('soundOn') : t('soundOff')}
           </button>
         )}
       </div>
@@ -75,7 +83,7 @@ export function GeneratorControls({
       <div className="w-full sm:w-auto">
         {isRunning ? (
           <button type="button" onClick={onStop} className="btn-danger w-full sm:w-auto sm:min-w-[12rem]">
-            Stop
+            {t('stop')}
           </button>
         ) : (
           <button
@@ -84,7 +92,7 @@ export function GeneratorControls({
             disabled={!canStart}
             className={`btn-primary w-full sm:w-auto sm:min-w-[12rem] ${!canStart ? 'opacity-40 cursor-not-allowed' : ''}`}
           >
-            Forge
+            {t('forge')}
           </button>
         )}
       </div>

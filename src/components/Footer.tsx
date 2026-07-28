@@ -1,6 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
+import { RichText } from '@/lib/rich-text';
 
 /** Solana tip jar — Bytebrox */
 export const DONATE_SOL = '3ZgrgEADJJtjyWYag6XfYd7zoD7LEwFhsoEpj7FFWUPo';
@@ -15,6 +18,8 @@ function shortAddr(addr: string) {
 }
 
 export function Footer({ compact = false }: FooterProps) {
+  const t = useTranslations('footer');
+  const tc = useTranslations('common');
   const year = new Date().getFullYear();
   const [copied, setCopied] = useState(false);
 
@@ -36,7 +41,6 @@ export function Footer({ compact = false }: FooterProps) {
           : 'mt-14 sm:mt-20 py-8 sm:py-10 pb-[max(2rem,env(safe-area-inset-bottom))]'
       }`}
     >
-      {/* Full-bleed ASCII stone structure background */}
       {!compact && (
         <div className="footer-stone" aria-hidden>
           <img
@@ -66,21 +70,11 @@ export function Footer({ compact = false }: FooterProps) {
               compact ? 'line-clamp-2 sm:line-clamp-none' : ''
             }`}
           >
-            Client-side vanity tooling for Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano & XRP. No project token. No key leaves this
-            device. Dev’d by{' '}
-            <a
-              href="https://x.com/bytebrox"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-ink underline underline-offset-2 decoration-ink/30 hover:decoration-ink"
-            >
-              Bytebrox
-            </a>
-            .
+            <RichText text={t('blurb')} />
           </p>
 
           <div className={`flex flex-wrap items-baseline gap-x-3 gap-y-1 ${compact ? 'mt-2' : 'mt-3.5'}`}>
-            <span className="text-micro uppercase tracking-[0.16em] text-muted">Donate SOL</span>
+            <span className="text-micro uppercase tracking-[0.16em] text-muted">{t('donateSol')}</span>
             <button
               type="button"
               onClick={() => {
@@ -89,7 +83,7 @@ export function Footer({ compact = false }: FooterProps) {
               title={DONATE_SOL}
               className="font-mono text-[0.7rem] sm:text-micro text-ink/80 hover:text-accent tracking-normal normal-case transition-colors"
             >
-              {copied ? 'Copied' : shortAddr(DONATE_SOL)}
+              {copied ? tc('copied') : shortAddr(DONATE_SOL)}
             </button>
             <a
               href={`https://solscan.io/account/${DONATE_SOL}`}
@@ -97,73 +91,79 @@ export function Footer({ compact = false }: FooterProps) {
               rel="noopener noreferrer"
               className="text-micro uppercase tracking-[0.14em] text-muted hover:text-ink"
             >
-              Solscan
+              {t('solscan')}
             </a>
           </div>
         </div>
         <div className="flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-1.5 text-micro uppercase tracking-[0.14em] sm:tracking-[0.16em] text-muted">
           {!compact && (
             <>
-              <a href="/" className="hover:text-ink py-1">
-                Home
-              </a>
-              <a href="/sol" className="hover:text-ink py-1">
+              <Link href="/" className="hover:text-ink py-1">
+                {t('home')}
+              </Link>
+              <Link href="/sol" className="hover:text-ink py-1">
                 SOL
-              </a>
-              <a href="/evm" className="hover:text-ink py-1">
+              </Link>
+              <Link href="/evm" className="hover:text-ink py-1">
                 EVM
-              </a>
-              <a href="/btc" className="hover:text-ink py-1">
+              </Link>
+              <Link href="/btc" className="hover:text-ink py-1">
                 BTC
-              </a>
-              <a href="/tron" className="hover:text-ink py-1">
+              </Link>
+              <Link href="/tron" className="hover:text-ink py-1">
                 TRON
-              </a>
-              <a href="/aptos" className="hover:text-ink py-1">
+              </Link>
+              <Link href="/aptos" className="hover:text-ink py-1">
                 APTOS
-              </a>
-              <a href="/sui" className="hover:text-ink py-1">
+              </Link>
+              <Link href="/sui" className="hover:text-ink py-1">
                 SUI
-              </a>
-              <a href="/ton" className="hover:text-ink py-1">
+              </Link>
+              <Link href="/ton" className="hover:text-ink py-1">
                 TON
-              </a>
-              <a href="/cardano" className="hover:text-ink py-1">
+              </Link>
+              <Link href="/cardano" className="hover:text-ink py-1">
                 ADA
-              </a>
-              <a href="/xrp" className="hover:text-ink py-1">
+              </Link>
+              <Link href="/xrp" className="hover:text-ink py-1">
                 XRP
-              </a>
-              <a href="/proof" className="hover:text-ink py-1">
-                Proof
-              </a>
-              <a href="/lab" className="hover:text-ink py-1">
-                Lab
-              </a>
-              <a href="/brand" className="hover:text-ink py-1">
-                Brand
-              </a>
+              </Link>
+              <Link href="/proof" className="hover:text-ink py-1">
+                {t('proof')}
+              </Link>
+              <Link href="/lab" className="hover:text-ink py-1">
+                {t('lab')}
+              </Link>
+              <Link href="/lookalike" className="hover:text-ink py-1">
+                {t('lookalike')}
+              </Link>
+              <Link href="/create2" className="hover:text-ink py-1">
+                {t('create2')}
+              </Link>
+              <Link href="/brand" className="hover:text-ink py-1">
+                {t('brand')}
+              </Link>
             </>
           )}
-          <a href="/security" className="hover:text-ink py-1">
-            Security
-          </a>
-          <a href="/audit" className="hover:text-ink py-1">
-            Audit
-          </a>
-          <a href="/faq" className="hover:text-ink py-1">
-            FAQ
-          </a>
-          <a href="/how-it-works" className="hover:text-ink py-1">
-            How
-          </a>
+          <Link href="/security" className="hover:text-ink py-1">
+            {t('security')}
+          </Link>
+          <Link href="/audit" className="hover:text-ink py-1">
+            {t('audit')}
+          </Link>
+          <Link href="/faq" className="hover:text-ink py-1">
+            {t('faq')}
+          </Link>
+          <Link href="/how-it-works" className="hover:text-ink py-1">
+            {t('how')}
+          </Link>
           <a
             href="https://www.npmjs.com/package/vanitas"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-ink py-1"
           >
-            CLI
+            {t('cli')}
           </a>
           <a
             href="https://github.com/bytebrox/vanitas"
@@ -171,7 +171,7 @@ export function Footer({ compact = false }: FooterProps) {
             rel="noopener noreferrer"
             className="hover:text-ink py-1"
           >
-            GitHub
+            {t('github')}
           </a>
           <span className="py-1">© {year}</span>
         </div>

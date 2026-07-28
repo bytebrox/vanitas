@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
+  darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -9,45 +10,30 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: [
-          'IBM Plex Sans',
-          'ui-sans-serif',
-          'system-ui',
-          'sans-serif',
-        ],
-        display: [
-          'EB Garamond',
-          'Georgia',
-          'Times New Roman',
-          'serif',
-        ],
-        mono: [
-          'IBM Plex Mono',
-          'Menlo',
-          'Monaco',
-          'monospace',
-        ],
+        sans: ['IBM Plex Sans', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['EB Garamond', 'Georgia', 'Times New Roman', 'serif'],
+        mono: ['IBM Plex Mono', 'Menlo', 'Monaco', 'monospace'],
       },
       colors: {
-        paper: '#F5F0E8',
-        beige: '#E8DFD0',
-        surface: '#FFFEFB',
-        ink: '#2C2A27',
-        accent: '#8B7355',
-        muted: '#6B6560',
-        border: '#C8C2B8',
+        paper: 'rgb(var(--paper) / <alpha-value>)',
+        beige: 'rgb(var(--beige) / <alpha-value>)',
+        surface: 'rgb(var(--surface) / <alpha-value>)',
+        ink: 'rgb(var(--ink) / <alpha-value>)',
+        accent: 'rgb(var(--accent) / <alpha-value>)',
+        muted: 'rgb(var(--muted) / <alpha-value>)',
+        border: 'rgb(var(--border) / <alpha-value>)',
       },
       fontSize: {
-        'display': ['4.5rem', { lineHeight: '1', letterSpacing: '-0.02em' }],
-        'headline': ['2.5rem', { lineHeight: '1.15', letterSpacing: '-0.015em' }],
-        'title': ['1.5rem', { lineHeight: '1.25', letterSpacing: '-0.01em' }],
-        'body': ['1rem', { lineHeight: '1.6', letterSpacing: '0' }],
-        'caption': ['0.875rem', { lineHeight: '1.4', letterSpacing: '0.01em' }],
-        'micro': ['0.75rem', { lineHeight: '1.4', letterSpacing: '0.02em' }],
+        display: ['4.5rem', { lineHeight: '1', letterSpacing: '-0.02em' }],
+        headline: ['2.5rem', { lineHeight: '1.15', letterSpacing: '-0.015em' }],
+        title: ['1.5rem', { lineHeight: '1.25', letterSpacing: '-0.01em' }],
+        body: ['1rem', { lineHeight: '1.6', letterSpacing: '0' }],
+        caption: ['0.875rem', { lineHeight: '1.4', letterSpacing: '0.01em' }],
+        micro: ['0.75rem', { lineHeight: '1.4', letterSpacing: '0.02em' }],
       },
       spacing: {
-        'grid': '1.5rem',
-        'section': '4rem',
+        grid: '1.5rem',
+        section: '4rem',
       },
       borderWidth: {
         '1': '1px',

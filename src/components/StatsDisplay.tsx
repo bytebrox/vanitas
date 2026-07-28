@@ -4,6 +4,7 @@
  * Live stats as a running line — not a dark dashboard box
  */
 
+import { useTranslations } from 'next-intl';
 import { GeneratorStats, GeneratorStatus } from '@/types';
 import { formatNumber, formatRate, formatDuration } from '@/lib/format';
 
@@ -14,6 +15,7 @@ interface StatsDisplayProps {
 }
 
 export function StatsDisplay({ stats, status, expectedDifficulty = 1 }: StatsDisplayProps) {
+  const t = useTranslations('common');
   const { totalAttempts, attemptsPerSecond, elapsedTime, activeWorkers } = stats;
   const isActive = status !== 'idle';
   const progressRaw = expectedDifficulty > 1 ? (totalAttempts / expectedDifficulty) * 100 : 0;
@@ -22,7 +24,7 @@ export function StatsDisplay({ stats, status, expectedDifficulty = 1 }: StatsDis
   if (!isActive) {
     return (
       <p className="text-micro uppercase tracking-[0.18em] text-ink/30">
-        Waiting — enter a pattern and forge
+        {t('waiting')}
       </p>
     );
   }
@@ -31,23 +33,23 @@ export function StatsDisplay({ stats, status, expectedDifficulty = 1 }: StatsDis
     <div className="space-y-4">
       <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm font-mono">
         <span>
-          <span className="text-muted mr-2 text-micro uppercase tracking-[0.14em]">keys</span>
+          <span className="text-muted mr-2 text-micro uppercase tracking-[0.14em]">{t('keys')}</span>
           {formatNumber(totalAttempts)}
         </span>
         <span>
-          <span className="text-muted mr-2 text-micro uppercase tracking-[0.14em]">rate</span>
+          <span className="text-muted mr-2 text-micro uppercase tracking-[0.14em]">{t('rate')}</span>
           {formatRate(attemptsPerSecond)}
         </span>
         <span>
-          <span className="text-muted mr-2 text-micro uppercase tracking-[0.14em]">time</span>
+          <span className="text-muted mr-2 text-micro uppercase tracking-[0.14em]">{t('time')}</span>
           {formatDuration(elapsedTime)}
         </span>
         <span>
-          <span className="text-muted mr-2 text-micro uppercase tracking-[0.14em]">workers</span>
+          <span className="text-muted mr-2 text-micro uppercase tracking-[0.14em]">{t('workers')}</span>
           {activeWorkers}
         </span>
         <span className="text-accent uppercase tracking-[0.14em] text-micro">
-          {status === 'running' ? '● running' : status}
+          {status === 'running' ? t('running') : status}
         </span>
       </div>
 
@@ -59,7 +61,9 @@ export function StatsDisplay({ stats, status, expectedDifficulty = 1 }: StatsDis
               style={{ width: `${progressDisplay}%` }}
             />
           </div>
-          <p className="text-micro text-muted mt-2">{progressRaw.toFixed(1)}% of expected search</p>
+          <p className="text-micro text-muted mt-2">
+            {t('progressExpected', { pct: progressRaw.toFixed(1) })}
+          </p>
         </div>
       )}
     </div>

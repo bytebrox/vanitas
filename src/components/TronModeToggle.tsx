@@ -1,5 +1,7 @@
 'use client';
 
+import { useMemo } from 'react';
+import { useTranslations } from 'next-intl';
 import type { TronMode } from '@/types/tron';
 
 interface TronModeToggleProps {
@@ -8,29 +10,36 @@ interface TronModeToggleProps {
   disabled?: boolean;
 }
 
-const MODES: { id: TronMode; label: string; blurb: string }[] = [
-  { id: 'wallet', label: 'Wallet', blurb: 'Account Base58 address (T…).' },
-  {
-    id: 'contract',
-    label: 'CREATE',
-    blurb: 'First-deploy contract address (CREATE nonce 0).',
-  },
-];
+const MODE_IDS: TronMode[] = ['wallet', 'contract'];
 
 export function TronModeToggle({ mode, onChange, disabled = false }: TronModeToggleProps) {
-  const current = MODES.find((m) => m.id === mode) || MODES[0];
+  const tModes = useTranslations('forge.modes');
+  const tTron = useTranslations('forge.tron.mode');
+  const tTarget = useTranslations('forge.eth.mode');
+
+  const modes = useMemo(
+    () =>
+      MODE_IDS.map((id) => ({
+        id,
+        label: id === 'wallet' ? tModes('wallet') : tModes('create'),
+        blurb: id === 'wallet' ? tTron('walletBlurb') : tTron('createBlurb'),
+      })),
+    [tModes, tTron]
+  );
+
+  const current = modes.find((m) => m.id === mode) || modes[0];
 
   return (
     <div className="border-y border-ink/15 py-5">
       <div className="flex flex-col gap-1 mb-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-        <p className="text-micro uppercase tracking-[0.18em] text-muted">Target</p>
+        <p className="text-micro uppercase tracking-[0.18em] text-muted">{tTarget('target')}</p>
         <p className="text-micro text-muted normal-case tracking-normal">{current.blurb}</p>
       </div>
 
       <div
         className={`grid grid-cols-2 gap-2 ${disabled ? 'opacity-50 pointer-events-none' : ''}`}
       >
-        {MODES.map((m) => (
+        {modes.map((m) => (
           <button
             key={m.id}
             type="button"

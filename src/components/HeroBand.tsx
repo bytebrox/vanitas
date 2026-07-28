@@ -2,7 +2,17 @@
 
 import { Navbar } from './Navbar';
 import { useHeroScrollFade } from '@/hooks/useHeroScrollFade';
-import { SolanaLogo, EvmChainLogos, BitcoinLogo, TronLogo, AptosLogo, SuiLogo, TonLogo, CardanoLogo, XrpLogo } from './ChainLogos';
+import {
+  SolanaLogo,
+  EvmChainLogos,
+  BitcoinLogo,
+  TronLogo,
+  AptosLogo,
+  SuiLogo,
+  TonLogo,
+  CardanoLogo,
+  XrpLogo,
+} from './ChainLogos';
 
 interface HeroBandProps {
   imageSrc: string;
@@ -16,12 +26,9 @@ interface HeroBandProps {
   scrollLabel?: string;
 }
 
-/** Exact page paper — must match tailwind `paper` / body base */
-const PAPER = '#F5F0E8';
-
 /**
  * Full-width hero — image keeps its natural aspect (fully visible).
- * Optional centered page title + scroll cue sit over the image.
+ * Paper fades use CSS vars so dark mode applies on first paint (no light flash).
  */
 export function HeroBand({
   imageSrc,
@@ -37,7 +44,7 @@ export function HeroBand({
   return (
     <>
       <Navbar />
-      <div ref={ref} className="relative w-full overflow-hidden" style={{ backgroundColor: PAPER }}>
+      <div ref={ref} className="relative w-full overflow-hidden bg-paper">
         <div
           className="will-change-[opacity,transform] relative"
           style={{
@@ -53,35 +60,19 @@ export function HeroBand({
           <img
             src={imageSrc}
             alt=""
-            className="block w-full h-auto select-none"
+            className="block w-full h-auto select-none ascii-hero"
             draggable={false}
           />
         </div>
 
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-[48%] sm:h-[42%]"
-          style={{
-            background: `linear-gradient(to bottom,
-              ${PAPER}00 0%,
-              ${PAPER}33 28%,
-              ${PAPER}99 62%,
-              ${PAPER} 100%)`,
-          }}
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-[48%] sm:h-[42%] hero-fade-bottom"
           aria-hidden
         />
 
-        {showOverlay && (
-          <div
-            className="pointer-events-none absolute inset-0 z-[5]"
-            style={{
-              background: `linear-gradient(to bottom,
-                ${PAPER}55 0%,
-                ${PAPER}22 28%,
-                transparent 55%)`,
-            }}
-            aria-hidden
-          />
-        )}
+        {showOverlay ? (
+          <div className="pointer-events-none absolute inset-0 z-[5] hero-fade-top" aria-hidden />
+        ) : null}
 
         {showOverlay && (
           <div

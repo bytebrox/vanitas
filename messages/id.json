@@ -1,0 +1,1641 @@
+{
+  "common": {
+    "copy": "Salin",
+    "copied": "Disalin",
+    "hide": "Sembunyikan",
+    "reveal": "Mengungkap",
+    "downloadTxt": "Unduh txt",
+    "downloadJson": "Unduh json",
+    "forge": "Forge",
+    "stop": "Stop",
+    "reset": "Mengatur ulang",
+    "loading": "Memuat…",
+    "scrollDown": "Gulir ke bawah",
+    "cores": "Inti",
+    "of": "dari {max}",
+    "fewerCores": "Lebih sedikit inti",
+    "moreCores": "Lebih banyak inti",
+    "soundOn": "Nyalakan suara",
+    "soundOff": "Memperdengarkan",
+    "found": "Ditemukan",
+    "addressReady": "Alamat sudah siap",
+    "publicAddress": "Alamat publik",
+    "privateKey": "Kunci pribadi",
+    "keepSafe": "Tetap aman",
+    "keepSafe1": "Simpan kunci pribadi sebelum meninggalkan halaman ini",
+    "keepSafe2": "Jangan pernah membagikannya — siapa pun yang memilikinya mengontrol dompet",
+    "keepSafe3": "Dihasilkan secara lokal; tidak ada yang disimpan di server",
+    "attempts": "upaya",
+    "pattern": "Pola",
+    "estTime": "Perkiraan. waktu",
+    "keys": "kunci",
+    "rate": "kecepatan",
+    "time": "waktu",
+    "workers": "Worker",
+    "tryPattern": "Cobalah sebuah pola",
+    "recentFinds": "Temuan terbaru",
+    "keySecurity": "Keamanan kunci",
+    "entropy": "Entropi",
+    "source": "Sumber",
+    "csprng": "CSPRNG",
+    "browser": "Peramban",
+    "prefix": "Awalan",
+    "suffix": "Akhiran",
+    "caseSensitive": "Peka huruf besar-kecil",
+    "optional": "Opsional",
+    "brand": "Vanitas",
+    "sharePattern": "Bagikan pola",
+    "shareProof": "Bagikan bukti",
+    "proofLinkCopied": "Tautan bukti disalin",
+    "forgeAnother": "Tempa yang lain",
+    "scrollToForge": "Gulir untuk menempa",
+    "waiting": "Menunggu — masukkan pola dan tempa",
+    "running": "● berjalan",
+    "progressExpected": "{pct}% dari penelusuran yang diharapkan",
+    "difficultyGuide": "Panduan: 3 karakter <5dtk · 4 karakter ~1m · 5 karakter ~30m · 6+ jam",
+    "match": "Cocok",
+    "startsAddress": "Memulai alamatnya",
+    "endsAddress": "Berakhir alamatnya",
+    "howItWorks": "Bagaimana cara kerjanya",
+    "liveAudit": "Audit langsung",
+    "evmForge": "Penempaan EVM",
+    "exportHintSol": "TXT untuk membaca · JSON untuk Solana CLI / Phantom / Solflare · Bukti berbagi tidak pernah menyertakan kunci",
+    "stepMode": "01 — Modus",
+    "stepPattern": "02 — Pola",
+    "stepMintPattern": "02 — Pola mint",
+    "stepType": "01 — Ketik",
+    "stepEstimate": "03 — Perkiraan",
+    "stepForge": "04 — Menempa",
+    "stepLive": "05 — Langsung",
+    "topics": "Topik",
+    "verified": "Terverifikasi",
+    "mismatch": "Ketidakcocokan",
+    "chain": "Rantai",
+    "stats": "Statistik",
+    "statsDisclaimer": "Jumlah percobaan dilaporkan sendiri oleh pemalsu dan tidak terbukti secara kriptografis.",
+    "copyProofLink": "Salin tautan bukti",
+    "openForge": "Buka forge",
+    "github": "GitHub",
+    "x": "X",
+    "attemptsLabel": "Upaya",
+    "charsDays": "{n} karakter dapat memakan waktu berhari-hari atau berminggu-minggu.",
+    "charsHours": "{n} karakter mungkin memerlukan waktu berjam-jam.",
+    "considerSuffix": "Pertimbangkan hanya akhiran atau peka huruf besar-kecil."
+  },
+  "nav": {
+    "language": "Bahasa",
+    "home": "Beranda",
+    "chains": "CHAINS",
+    "docs": "DOCS",
+    "tools": "TOOLS",
+    "menu": "Menu",
+    "close": "Tutup",
+    "themeToLight": "Beralih ke mode terang",
+    "themeToDark": "Beralih ke mode gelap",
+    "themeLight": "Terang",
+    "themeDark": "Gelap",
+    "themeMobileDarkToLight": "Gelap → Terang",
+    "themeMobileLightToDark": "Terang → Gelap",
+    "docsHow": "Bagaimana",
+    "docsHowHint": "Bagaimana cara kerjanya",
+    "docsFaq": "FAQ",
+    "docsFaqHint": "Pertanyaan",
+    "docsSecurity": "Keamanan",
+    "docsSecurityHint": "Model kepercayaan",
+    "toolsAudit": "Audit",
+    "toolsAuditHint": "Cek langsung",
+    "toolsProof": "Bukti",
+    "toolsProofHint": "Verifikasi temuan",
+    "toolsLab": "Laboratorium",
+    "toolsLabHint": "Laboratorium pola",
+    "toolsLookalike": "Mirip",
+    "toolsLookalikeHint": "Perangkap alfabet",
+    "toolsCreate2": "CREATE2",
+    "toolsCreate2Hint": "Init hash + pratinjau",
+    "toolsBrand": "Brand",
+    "toolsBrandHint": "Sematkan + kit",
+    "brand": "Vanitas",
+    "githubAria": "Repositori GitHub",
+    "xAria": "Bytebrox di X",
+    "evmSubline": "Ethereum · BNB · Base · Arbitrum · Optimism · + EVM",
+    "chainItems": {
+      "sol": {
+        "label": "Solana",
+        "short": "SOL"
+      },
+      "evm": {
+        "label": "EVM",
+        "short": "EVM"
+      },
+      "btc": {
+        "label": "Bitcoin",
+        "short": "BTC"
+      },
+      "tron": {
+        "label": "Tron",
+        "short": "TRON"
+      },
+      "aptos": {
+        "label": "Aptos",
+        "short": "APTOS"
+      },
+      "sui": {
+        "label": "Sui",
+        "short": "SUI"
+      },
+      "ton": {
+        "label": "TON",
+        "short": "TON"
+      },
+      "cardano": {
+        "label": "Cardano",
+        "short": "ADA"
+      },
+      "xrp": {
+        "label": "XRP",
+        "short": "XRP"
+      }
+    }
+  },
+  "footer": {
+    "blurb": "Peralatan rias sisi klien untuk Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano & XRP. Tidak ada token proyek. Tidak ada kunci yang keluar dari perangkat ini. Dikembangkan oleh [Bytebrox](https://x.com/bytebrox).",
+    "donateSol": "Donasi SOL",
+    "solscan": "Pemindaian titik balik matahari",
+    "home": "Beranda",
+    "security": "Keamanan",
+    "audit": "Audit",
+    "faq": "FAQ",
+    "how": "Bagaimana",
+    "cli": "CLI",
+    "github": "GitHub",
+    "proof": "Bukti",
+    "lab": "Laboratorium",
+    "lookalike": "Mirip",
+    "create2": "CREATE2",
+    "brand": "Brand",
+    "sol": "SOL",
+    "evm": "EVM",
+    "btc": "BTC",
+    "tron": "TRON",
+    "aptos": "APTOS",
+    "sui": "SUI",
+    "ton": "TON",
+    "ada": "ADA",
+    "xrp": "XRP",
+    "copyright": "© {year}"
+  },
+  "landing": {
+    "eyebrow": "Penempaan kesombongan sisi klien",
+    "title": "kesombongan",
+    "subtitle": "Pilih rantai. Kunci tetap berada di browser ini.",
+    "enterForge": "Masuk ke bengkel →",
+    "preferTerminal": "Lebih suka terminal?",
+    "forges": {
+      "sol": {
+        "name": "Solana",
+        "title": "Dompet & mint",
+        "blurb": "Dompet rias Base58 dan permen token."
+      },
+      "evm": {
+        "name": "EVM",
+        "title": "Dompet & kontrak",
+        "blurb": "Satu kunci 0x untuk setiap rantai EVM.",
+        "aria": "Ethereum, BNB, Basis, Arbitrum, Optimisme"
+      },
+      "btc": {
+        "name": "Bitcoin",
+        "title": "Warisan · SegWit · Akar Tunggang",
+        "blurb": "Alamat Vanity 1…, bc1q…, dan bc1p…."
+      },
+      "tron": {
+        "name": "Tron",
+        "title": "Dompet & BUAT",
+        "blurb": "Vanity T… alamat untuk TronLink."
+      },
+      "aptos": {
+        "name": "Aptos",
+        "title": "Ed25519 0x",
+        "blurb": "Kesombongan hex untuk Petra & Mars."
+      },
+      "sui": {
+        "name": "Sui",
+        "title": "Ed25519 0x",
+        "blurb": "Kesombongan hex untuk Sui Wallet & Suiet."
+      },
+      "ton": {
+        "name": "TON",
+        "title": "Dompet v4R2",
+        "blurb": "Alamat Vanity UQ… / EQ…."
+      },
+      "cardano": {
+        "name": "Cardano",
+        "title": "Alamat perusahaan1",
+        "blurb": "Alamat pembayaran rias Bech32."
+      },
+      "xrp": {
+        "name": "XRP",
+        "title": "Klasik…",
+        "blurb": "Alamat cantik XRPL Base58."
+      }
+    },
+    "npxVanitas": "npx vanitas"
+  },
+  "forge": {
+    "header": {
+      "wallet": {
+        "eyebrow": "Penempaan dompet",
+        "title": "Solana",
+        "headline": "Sebutkan alamatnya. Simpan kuncinya.",
+        "blurb": "Hasilkan alamat dompet Solana yang cantik, seluruhnya di browser ini, di CPU Anda."
+      },
+      "mint": {
+        "eyebrow": "penempaan mint",
+        "title": "Solana",
+        "headline": "Beri nama mintnya. Luncurkan dengan kehadiran.",
+        "blurb": "Hasilkan Solana mint yang cantik untuk landasan peluncuran apa pun, seluruhnya di browser ini."
+      },
+      "evm": {
+        "eyebrow": "0x menempa",
+        "title": "EVM",
+        "headline": "Beri nama 0x. Kunci yang sama di mana-mana.",
+        "blurb": "Hasilkan dompet cantik atau alamat kontrak, sepenuhnya di browser ini. Satu kunci berfungsi di Ethereum, BNB Smart Chain, Base, Arbitrum, Optimism, dan setiap rantai EVM lainnya."
+      },
+      "btc": {
+        "eyebrow": "bengkel UTXO",
+        "title": "Bitcoin",
+        "headline": "Beri nama koinnya. Pemilik alamatnya.",
+        "blurb": "Hasilkan alamat Bitcoin cantik (lama, SegWit, Taproot), sepenuhnya di browser ini. Kunci tidak pernah lepas dari perangkat ini."
+      },
+      "tron": {
+        "eyebrow": "T menempa",
+        "title": "Tron",
+        "headline": "Beri nama T. Simpan kuncinya.",
+        "blurb": "Hasilkan alamat kesombongan Tron Base58, seluruhnya di browser ini. Impor ke TronLink dan dompet Tron lainnya."
+      },
+      "aptos": {
+        "eyebrow": "0x menempa",
+        "title": "Aptos",
+        "headline": "Beri nama 0x. Simpan kuncinya.",
+        "blurb": "Hasilkan alamat cantik Aptos Ed25519, sepenuhnya di browser ini. Impor ke dompet Petra, Martian, dan Aptos lainnya."
+      },
+      "sui": {
+        "eyebrow": "0x menempa",
+        "title": "Sui",
+        "headline": "Beri nama 0x. Simpan kuncinya.",
+        "blurb": "Hasilkan alamat cantik Sui Ed25519, sepenuhnya di browser ini. Impor ke Dompet Sui, Suiet, dan dompet Sui lainnya."
+      },
+      "ton": {
+        "eyebrow": "bengkel UQ",
+        "title": "TON",
+        "headline": "Beri nama UQ. Simpan kuncinya.",
+        "blurb": "Hasilkan alamat vanity TON Wallet v4R2 (UQ / EQ), sepenuhnya di browser ini. Impor ke Tonkeeper dan MyTonWallet."
+      },
+      "cardano": {
+        "eyebrow": "addr1 menempa",
+        "title": "Cardano",
+        "headline": "Beri nama alamatnya. Simpan kuncinya.",
+        "blurb": "Hasilkan alamat perusahaan Cardano yang cantik (addr1…), seluruhnya di browser ini. Kunci pembayaran saja."
+      },
+      "xrp": {
+        "eyebrow": "aku menempa",
+        "title": "XRP",
+        "headline": "Beri nama r. Simpan kuncinya.",
+        "blurb": "Hasilkan alamat klasik Vanity XRP Ledger (r…), seluruhnya di browser ini. Impor ke Xaman dan dompet XRPL lainnya."
+      }
+    },
+    "modes": {
+      "wallet": "Dompet",
+      "mint": "daun mint",
+      "create": "CREATE",
+      "create2": "CREATE2",
+      "legacy": "Warisan",
+      "segwit": "SegWit",
+      "taproot": "Akar tunggang",
+      "uq": "UQ",
+      "eq": "EQ"
+    },
+    "evmChainsNote": "Ethereum · BNB · Basis · Arbitrum · Optimisme · + EVM",
+    "solDownloadTxtTitle": "VANITAS - SOLANA KEYPAIR",
+    "solDownloadImportant": "PENTING:\n- Jangan pernah membagikan kunci pribadi Anda\n- Simpan file ini dengan aman\n- Pasangan kunci ini dibuat secara lokal di browser Anda",
+    "scrollToForge": "Gulir untuk menempa",
+    "sideCaptions": {
+      "solWallet": "Gambar I — Amfiteater",
+      "solMint": "Gambar II — Kuil",
+      "evm": "Gambar VII — Forum",
+      "btc": "Gambar VIII — Koin",
+      "tron": "Gambar IX - Sirkuit",
+      "aptos": "Gambar XI - Kisi",
+      "sui": "Gambar XII — Arus",
+      "ton": "Gambar XIII — Sinyal",
+      "cardano": "Gambar XII — Buku Besar",
+      "xrp": "Gambar XIV — Buku Besar"
+    },
+    "steps": {
+      "mode": "01 — Modus",
+      "pattern": "02 — Pola",
+      "estimate": "03 — Perkiraan",
+      "forge": "04 — Menempa",
+      "live": "05 — Langsung"
+    },
+    "stepsCompact": {
+      "pattern": "01 — Pola",
+      "estimate": "02 — Perkiraan",
+      "forge": "03 — Menempa",
+      "live": "04 — Langsung"
+    },
+    "links": {
+      "sharePattern": "Bagikan pola",
+      "howItWorks": "Bagaimana cara kerjanya",
+      "liveAudit": "Audit langsung",
+      "evmForge": "Penempaan EVM",
+      "proofOfFind": "Bukti penemuan"
+    },
+    "sol": {
+      "mintAfterForge": "Setelah menempa: salin kunci pribadi ke bidang mint khusus landasan peluncuran Anda (pump.fun, Raydium, Meteora,…).",
+      "mode": {
+        "target": "Target",
+        "walletTarget": "Alamat dompet",
+        "mintTarget": "Alamat pembuatan token",
+        "toggleAria": "Alihkan dompet atau alamat mint",
+        "mintHelp": "Menempa pasangan kunci Solana mint yang cantik untuk landasan peluncuran (pump.fun, Raydium, Meteora,…). Tempelkan kunci pribadi ke dalam bidang custom-mint.",
+        "walletHelp": "Membuat pasangan kunci dompet Solana yang cantik — Alamat Base58, sepenuhnya di browser ini."
+      }
+    },
+    "eth": {
+      "create2Params": "parameter BUAT2",
+      "initHash": "Ini hashnya",
+      "initHashPh": "keccak256(initCode) — 64 heksa",
+      "salt": "Garam",
+      "saltPh": "garam 32-byte — 64 heksa",
+      "deployerKey": "Kunci penyebar",
+      "deployerKeyPh": "Kunci pribadi penyebar — 64 hex",
+      "footnote": "Kunci 0x yang sama pada Ethereum, BNB Smart Chain, Base, Arbitrum, Optimism, Polygon, dan setiap jaringan EVM lainnya. Penempaan Solana langsung di [SOL](/sol).",
+      "mode": {
+        "target": "Target",
+        "walletBlurb": "Alamat EOA 0x di setiap rantai EVM.",
+        "createBlurb": "Alamat kontrak penerapan pertama (nonce 0).",
+        "c2SaltBlurb": "Memperbaiki penyebar + initCodeHash; menggiling garam.",
+        "c2KeyBlurb": "Memperbaiki garam + initCodeHash; menggiling kunci penyebar.",
+        "c2Salt": "C2 Garam",
+        "c2Key": "Kunci C2"
+      }
+    },
+    "btc": {
+      "stepType": "01 — Ketik",
+      "mode": {
+        "addressType": "Jenis alamat",
+        "legacyBlurb": "Klasik 1… P2PKH (Base58).",
+        "segwitBlurb": "Asli bc1q… P2WPKH (Bech32).",
+        "taprootBlurb": "Asli bc1p… P2TR (Bech32m)."
+      },
+      "pattern": {
+        "legacyHint": "Alamat lama dimulai dengan 1 — ketik BTC untuk mencari 1BTC… (1 di depan ditambahkan secara otomatis).",
+        "segwitHint": "Alamat SegWit dimulai dengan bc1q — ketik isi seperti “cafe”, atau awalan bc1q… lengkap.",
+        "taprootHint": "Alamat akar tunggang dimulai dengan bc1p — ketik isi seperti “cafe”, atau awalan bc1p… lengkap.",
+        "caseNote": "Mati (disarankan untuk pola huruf kecil): setelah 1, huruf kecil sangat jarang terjadi jika Peka huruf besar-kecil aktif."
+      }
+    },
+    "tron": {
+      "mode": {
+        "walletBlurb": "Alamat Akun Base58 (T…).",
+        "createBlurb": "Alamat kontrak penerapan pertama (CREATE nonce 0)."
+      }
+    },
+    "ton": {
+      "mode": {
+        "addressForm": "Formulir alamat",
+        "uqWallet": "Dompet UQ",
+        "uqBlurb": "Alamat dompet yang tidak dapat terpental (disarankan).",
+        "eqBlurb": "Bentuk bouncing dari akun Wallet v4R2 yang sama."
+      }
+    },
+    "pattern": {
+      "solPrefixPh": "SOL",
+      "solSuffixPh": "xyz",
+      "solAlphabet": "Hanya Base58 — tidak ada `0 O I`. Alfabet: `1-9 A-H J-N P-Z a-k m-z`",
+      "ethHexNote": "Alamat EVM hanya berupa hex — angka `0–9` dan huruf `a–f`. Huruf `g–z` (dan karakter lainnya) tidak dapat muncul di alamat dan diabaikan saat Anda mengetiknya.",
+      "ethIgnored": "Diabaikan: {chars}",
+      "ethPrefixPh": "mati",
+      "ethSuffixPh": "daging sapi",
+      "ethAfter0x": "Dimulai setelah 0x",
+      "ethCaseNote": "Pencocokan tidak peka huruf besar-kecil. Pola yang lebih panjang membutuhkan waktu lebih lama secara eksponensial (16 kemungkinan per karakter)."
+    },
+    "cardano": {
+      "headerBlurb": "Hasilkan alamat perusahaan Cardano yang cantik (addr1…), seluruhnya di browser ini. Kunci pembayaran saja."
+    },
+    "xrp": {
+      "headerBlurb": "Hasilkan alamat klasik Vanity XRP Ledger (r…), seluruhnya di browser ini. Impor ke Xaman dan dompet XRPL lainnya."
+    }
+  },
+  "tools": {
+    "lab": {
+      "title": "Laboratorium pola",
+      "description": "Lihat betapa langkanya suatu pola sebelum Anda menambang — lalu antri pekerjaan dan buka bengkel.",
+      "eyebrow": "Peralatan",
+      "caption": "Gambar — Lab",
+      "toc": {
+        "composer": "Komposer",
+        "matrix": "Matriks",
+        "queue": "Antre"
+      },
+      "sectionPattern": "Pola",
+      "sectionRarity": "Keanehan",
+      "sectionBatch": "Kelompok",
+      "addQueue": "Tambahkan ke antrean",
+      "openForge": "Buka {chain} menempa →",
+      "queueEmpty": "Kosong",
+      "queueEmptyHint": "Tambahkan pola di atas untuk membandingkan pekerjaan.",
+      "remove": "Menghapus",
+      "exportJson": "Ekspor JSON",
+      "clear": "Jernih",
+      "prefixPh": "Kartu as",
+      "suffixPh": "opsional",
+      "composerN": "01 — Komposer",
+      "matrixN": "02 — Matriks",
+      "queueN": "03 — Antrian",
+      "forge": "Menempa",
+      "exportWarning": "Hanya pola — tidak ada kunci pribadi."
+    },
+    "lookalike": {
+      "title": "Cek serupa",
+      "description": "Tangkap mesin terbang Base58 terlarang, jebakan kotak Tron, ketidakcocokan alfabet XRPL, dan kemiripan manusia sebelum Anda membakar CPU dengan pola yang mustahil.",
+      "eyebrow": "Peralatan",
+      "caption": "Gambar — Mesin terbang",
+      "toc": {
+        "check": "Memeriksa",
+        "findings": "Temuan",
+        "alphabets": "Abjad"
+      },
+      "sectionCheckN": "01 — Periksa",
+      "sectionFindingsN": "02 — Temuan",
+      "sectionAlphabetsN": "03 — Abjad",
+      "sectionPatternForge": "Pola & tempa",
+      "pattern": "Pola",
+      "patternPh": "awalan atau fragmen",
+      "sectionSpotted": "Apa yang kami temukan",
+      "findingsEmptyTitle": "Masukkan sebuah pola",
+      "findingsEmptyDetail": "Tempelkan awalan, akhiran, atau fragmen cantik lengkap untuk memeriksa.",
+      "readyGrind": "Siap untuk menggiling? Buka [Pattern Lab](/lab) atau bengkel yang cocok.",
+      "sectionCharset": "Lembar contekan Charset",
+      "tocCheck": "Memeriksa",
+      "tocFindings": "Temuan",
+      "tocAlphabets": "Abjad",
+      "sectionCheckTitle": "Pola & tempa",
+      "sectionFindingsTitle": "Apa yang kami temukan",
+      "sectionAlphabetsTitle": "Lembar contekan Charset",
+      "patternLabel": "Pola",
+      "severity": {
+        "error": "Kesalahan",
+        "warn": "Peringatan",
+        "info": "Informasi"
+      },
+      "chains": {
+        "sol": {
+          "label": "Solana",
+          "notes": "Base58 bergaya Bitcoin — no 0, O, I, l"
+        },
+        "evm": {
+          "label": "EVM",
+          "notes": "Hanya hex (0-9, a-f), peka huruf besar-kecil"
+        },
+        "btc-legacy": {
+          "label": "Warisan Bitcoin",
+          "notes": "Base58 P2PKH/P2SH"
+        },
+        "btc-bech32": {
+          "label": "Bitcoin Bech32",
+          "notes": "rangkaian karakter tubuh bc1q / bc1p"
+        },
+        "tron": {
+          "label": "Tron",
+          "notes": "Base58 T… — peka huruf besar-kecil; karakter awal biasanya huruf besar"
+        },
+        "aptos": {
+          "label": "Aptos",
+          "notes": "0x + 64 heksa"
+        },
+        "sui": {
+          "label": "Sui",
+          "notes": "0x + 64 heksa"
+        },
+        "ton": {
+          "label": "TON",
+          "notes": "Base64url — peka huruf besar-kecil"
+        },
+        "cardano": {
+          "label": "Cardano",
+          "notes": "addr1… badan bech32"
+        },
+        "xrp": {
+          "label": "XRP",
+          "notes": "XRPL Base58 — berbeda dari Bitcoin/Solana"
+        }
+      },
+      "pairNotes": {
+        "zeroO": "nol vs modal O",
+        "zeroo": "nol vs huruf kecil o",
+        "oneL": "satu vs huruf kecil L",
+        "oneI": "satu vs modal i",
+        "onei": "satu vs huruf kecil i",
+        "fiveS": "lima vs S",
+        "eightB": "delapan vs B"
+      },
+      "findings": {
+        "empty": {
+          "title": "Masukkan sebuah pola",
+          "detail": "Tempelkan awalan, akhiran, atau fragmen cantik lengkap untuk memeriksa."
+        },
+        "invalidAlphabet": {
+          "title": "Karakter tidak ada dalam alfabet ini",
+          "detail": "Tidak valid: {chars}. {notes}"
+        },
+        "base58Banned": {
+          "title": "Base58 tidak pernah menggunakan 0, O, I, atau l",
+          "detail": "Mesin terbang ini telah dihapus dari Base58 bergaya Bitcoin untuk menghindari kemiripan. Pola ini tidak bisa dicocokkan."
+        },
+        "xrplVsBtc": {
+          "title": "Karakter Bitcoin Base58 digunakan pada alfabet XRPL",
+          "detail": "Alamat klasik XRPL menggunakan alfabet Base58 yang berbeda. Menyinggung: {chars}"
+        },
+        "xrplCharset": {
+          "title": "Karakter khusus XRPL",
+          "detail": "Ini muncul di XRPL Base58 tetapi tidak di Bitcoin Base58: {chars}"
+        },
+        "sharedGlyphs": {
+          "title": "Mesin terbang ada di kedua alfabet Base58",
+          "detail": "Karakternya tumpang tindih, namun pengkodeannya tetap berbeda. Jangan menggunakan kembali string cantik Solana/BTC di XRP tanpa memeriksa ulang."
+        },
+        "notXrpl": {
+          "title": "Tidak akan berfungsi pada XRPL apa adanya",
+          "detail": "Pola Bitcoin/Solana Base58 ini menggunakan mesin terbang yang hilang dari alfabet XRPL."
+        },
+        "tronCase": {
+          "title": "Pola awal huruf kecil di Tron",
+          "detail": "Alamat Tron dimulai dengan T dan karakter berikutnya biasanya huruf besar Base58. Awalan huruf kecil yang pendek sering kali tidak pernah cocok — coba huruf besar atau akhiran yang lebih panjang."
+        },
+        "tronLeadingT": {
+          "title": "Huruf kecil terkemuka t",
+          "detail": "Alamat Tron klasik dimulai dengan huruf kapital T. Lebih suka T… atau hilangkan T jika bengkel menanganinya secara otomatis."
+        },
+        "pair": {
+          "title": "Campuran yang mirip: {a} dan {b}",
+          "detail": "{note}. Mudah salah ketik saat membagikan alamat dengan lantang atau di tangkapan layar."
+        },
+        "safe": {
+          "title": "{present} dalam alfabet; {absent} tidak",
+          "detail": "{note}. Penerima masih membingungkan mereka secara visual — mengejanya dengan hati-hati saat berbagi."
+        },
+        "hexCase": {
+          "title": "Kotak hex campuran",
+          "detail": "Pencocokan tidak peka huruf besar-kecil. Kasing campuran baik untuk tampilan (checksum) tetapi tidak diperlukan untuk penggilingan."
+        },
+        "tonCase": {
+          "title": "Pola TON peka huruf besar-kecil",
+          "detail": "Base64url membedakan A dan a. Kasus campuran melipatgandakan kesulitan dan mudah salah ketik."
+        },
+        "clean": {
+          "title": "Tidak ada tabrakan alfabet yang terdeteksi",
+          "detail": "Semua karakter cocok {label}. Masih periksa kembali peringatan live forge sebelum melakukan pekerjaan yang panjang."
+        }
+      }
+    },
+    "create2": {
+      "title": "CREATE2 pembantu",
+      "description": "Turunkan initCodeHash dari bytecode penerapan, pratinjau alamat CREATE2 untuk deployer dan salt, lalu masuk ke bengkel EVM. Kunci tetap bersifat lokal.",
+      "eyebrow": "Peralatan",
+      "caption": "Gambar — BUAT2",
+      "toc": {
+        "hash": "hash",
+        "preview": "Pratinjau",
+        "forge": "Menempa"
+      },
+      "sectionHashN": "01 — Hash",
+      "sectionHashTitle": "Bytecode → initCodeHash",
+      "sectionPreviewN": "02 — Pratinjau",
+      "sectionPreviewTitle": "Pratinjau alamat",
+      "sectionForgeN": "03 — Menempa",
+      "sectionForgeTitle": "Buka bengkel EVM",
+      "hashIntro": "Tempelkan bytecode pembuatan (kode init) yang akan di-deploy. Kami menghitung `keccak256(initCode)` di browser ini.",
+      "initCodeLabel": "Kode init (hex)",
+      "initCodePh": "0x6080604052…",
+      "initCodeHashLabel": "Hash kode init (32 byte)",
+      "initCodeHashPh": "0x…",
+      "initCodeHashResult": "Hash kode init · {bytes} byte",
+      "deployerLabel": "Penyebar",
+      "deployerPh": "0x…",
+      "saltLabel": "Garam",
+      "saltPh": "0x… atau kosong = nol garam",
+      "create2Address": "alamat BUAT2",
+      "wantedPrefix": "Awalan yang diinginkan",
+      "wantedSuffix": "Akhiran yang diinginkan",
+      "prefixPh": "kafe",
+      "suffixPh": "opsional",
+      "patternMatch": "Pencocokan pola",
+      "patternMismatch": "Alamat pratinjau tidak cocok dengan pola ini — tetap gunakan garam atau penyebar.",
+      "useInPreview": "Gunakan dalam pratinjau",
+      "forgeIntro": "Tautan dalam ke bengkel EVM dengan hash dan pola Anda. InitCodeHash yang salah berarti alamat on-chain yang salah.",
+      "grindSalt": "Giling garam",
+      "grindDeployer": "Giling penyebar",
+      "evmForge": "Penempaan EVM",
+      "tocHash": "hash",
+      "tocPreview": "Pratinjau",
+      "tocForge": "Menempa",
+      "prefixLabel": "Awalan",
+      "suffixLabel": "Akhiran",
+      "predictedAddress": "Alamat yang diprediksi",
+      "patternMiss": "Ketidakcocokan pola",
+      "invalidDeployer": "Penyebar atau hash tidak valid",
+      "openSaltForge": "Giling garam di bengkel",
+      "openDeployerForge": "Giling deployer di bengkel"
+    },
+    "brand": {
+      "title": "Merek",
+      "description": "Sematkan kartu bukti di landasan peluncuran dan dokumen, ditambah kit pencitraan merek yang ringan — tanda kata, warna, dan salinan. Tidak pernah menyertakan kunci pribadi.",
+      "eyebrow": "Peralatan",
+      "embedIntro": "Tempel rantai, alamat, dan pola (dari temuan atau demo). Kami membuat iframe yang memverifikasi kecocokan di sisi klien — aturan yang sama seperti [/proof](/proof).",
+      "badgeLine": "Bukti terverifikasi di sisi klien · vanitas.fun",
+      "caption": "Gambar — Merek",
+      "toc": {
+        "embed": "Menanamkan",
+        "preview": "Pratinjau",
+        "kit": "Perlengkapan",
+        "copy": "Menyalin"
+      },
+      "sectionEmbedN": "01 — Sematkan",
+      "sectionEmbedTitle": "Widget bukti",
+      "address": "Alamat",
+      "prefix": "Awalan",
+      "suffix": "Akhiran",
+      "paperTheme": "Tema kertas",
+      "inkTheme": "Tema tinta",
+      "compact": "Kompak",
+      "iframeSnippet": "Cuplikan iframe",
+      "copyIframe": "Salin iframe",
+      "copyEmbedUrl": "Salin URL penyematan",
+      "copyProofUrl": "Salin URL bukti lengkap",
+      "sectionPreviewN": "02 — Pratinjau",
+      "sectionPreviewTitle": "Kartu hidup",
+      "previewBody": "Pratinjau berbingkai `/embed/proof`. Alamat demo mungkin menunjukkan ketidakcocokan sampai Anda menempelkan temuan sebenarnya.",
+      "iframeTitle": "Bukti vanitas",
+      "previewIframeTitle": "Pratinjau bukti vanitas",
+      "sectionKitN": "03 — Perlengkapan",
+      "sectionKitTitle": "Perlengkapan merek",
+      "kitIntro": "Gunakan tanda Vanitas saat menghubungkan bukti atau pemalsuan. Jangan menyiratkan hak asuh, kemitraan, atau diaudit oleh Vanitas kecuali benar.",
+      "wordmark": "Tanda Kata",
+      "wordmarkNote": "Tampilan / serif berat — tingkat pahlawan saat dicap sendiri",
+      "paper": "Kertas",
+      "paperNote": "Tanah primer",
+      "ink": "Tinta",
+      "inkNote": "Bodi + krom",
+      "accent": "Aksen",
+      "accentValue": "token aksen situs",
+      "accentNote": "Tautan / status terverifikasi — tetap hemat",
+      "site": "Lokasi",
+      "siteNote": "Lebih suka www.vanitas.fun untuk tautan kanonik",
+      "badgeHeading": "Garis lencana",
+      "copyBadge": "Salin baris lencana",
+      "sectionCopyN": "04 — Salin",
+      "sectionCopyTitle": "Uraian singkat yang disarankan",
+      "shortLabel": "Pendek",
+      "shortBlurb": "Alamat cantik dipalsukan secara lokal dengan Vanitas — kunci tidak pernah meninggalkan perangkat. Pencocokan pola terverifikasi di sisi klien.",
+      "launchpadLabel": "landasan peluncuran",
+      "launchpadBlurb": "Dompet mint / vanity khusus dibuat di browser melalui vanitas.fun. Bagikan tautan bukti agar siapa pun dapat memverifikasi polanya — kunci pribadi tidak disertakan dalam halaman.",
+      "linkProof": "Halaman bukti",
+      "linkLab": "Laboratorium pola",
+      "linkSecurity": "Keamanan"
+    },
+    "proof": {
+      "title": "Pemeriksaan pertandingan publik",
+      "description": "Verifikasi sisi klien yang cocok dengan meja rias — kunci tidak pernah disertakan.",
+      "eyebrow": "Bukti penemuan",
+      "intro": "Halaman ini memverifikasi bahwa suatu alamat cocok dengan pola yang diklaim. Itu tidak pernah berisi kunci pribadi. Siapa pun dapat membuka tautan dan memeriksa ulang sisi klien.",
+      "emptyIntro": "Tidak ada data bukti di URL. Setelah Anda memalsukan alamat, gunakan **Bagikan bukti** di layar hasil. Atau menempa dulu:",
+      "address": "Alamat",
+      "pattern": "Pola"
+    },
+    "embedProof": {
+      "eyebrow": "Bukti vanitas",
+      "brand": "kesombongan",
+      "missingParams": "Parameter bukti tidak ada.",
+      "openProof": "Bukti terbuka",
+      "site": "vanitas.menyenangkan"
+    },
+    "audit": {
+      "title": "Audit",
+      "description": "Pemeriksaan runtime dan perbandingan hash pekerja.",
+      "eyebrow": "Cek langsung",
+      "caption": "Gambar VI — Forum",
+      "descriptionIdle": "Delapan pemeriksaan lokal. Tidak ada yang dipalsukan, tidak ada yang dikirim ke server. Hijau berarti baik.",
+      "descriptionPass": "Delapan pemeriksaan lokal — selesai. Tidak ada yang dipalsukan, tidak ada yang dikirim ke server.",
+      "descriptionFail": "Delapan pemeriksaan lokal — {failed} masalah. Hijau berarti baik.",
+      "checksTotal": "{total} memeriksa",
+      "passedSummary": "{passed}/{total} lulus",
+      "buildIntegrity": "Membangun integritas",
+      "workerFingerprintIntro": "Setiap pekerja bengkel memiliki sidik jari SHA-256 yang diterbitkan di `worker-hash.json`. Tes integritas di atas memverifikasi Solana, EVM, Bitcoin, dan Tron terhadap daftar ini.",
+      "verifyYourself": "Verifikasikan diri Anda",
+      "verifyStep1": "1. Tinjau sumber yang ditautkan dari [vanitas.fun](https://vanitas.fun)",
+      "verifyStep2": "2. Pekerja bangunan: `npm run build:worker`",
+      "verifyStep3": "3. Bandingkan `public/worker-hash.json` dengan hash di atas",
+      "hashLoading": "Memuat…",
+      "hashUnavailable": "tidak tersedia",
+      "start": "Mulai audit",
+      "runAgain": "Jalankan lagi",
+      "running": "Berlari…",
+      "whatIsThis": "Apa ini?",
+      "whatIsThisBody": "Saat Anda menggunakan Vanitas, kunci pribadi dibuat di perangkat Anda. **8 pemeriksaan otomatis** ini membuktikan bahwa pembangkitan tetap bersifat lokal, keacakan adalah nyata, dan tidak ada yang tersisa di jaringan.",
+      "workerFingerprint": "Sidik jari pekerja",
+      "networkMonitor": "Monitor jaringan langsung",
+      "monitor": {
+        "transparency": "Transparansi",
+        "intro": "Setiap permintaan jaringan yang dibuat halaman ini. Jika data penting hilang, Anda akan melihatnya di sini.",
+        "stop": "● Berhenti",
+        "restart": "Mulai ulang",
+        "startMonitoring": "Mulai memantau",
+        "requests": "{count} permintaan",
+        "requestSingular": "1 permintaan",
+        "noSuspicious": "Tidak ada permintaan eksternal yang mencurigakan",
+        "externalCount": "{count} eksternal",
+        "colType": "Jenis",
+        "colUrl": "URL",
+        "colSize": "Ukuran",
+        "colTime": "Waktu",
+        "footerSafe": "Semua permintaan masuk ke domain ini atau Google Fonts (untuk tipografi). Tidak ada data yang dikirim ke server pihak ketiga.",
+        "footerWarning": "Peringatan: Permintaan eksternal tak terduga terdeteksi. Hal ini dapat mengindikasikan adanya masalah keamanan.",
+        "emptyHint": "Klik \"Mulai Pemantauan\" untuk melihat setiap permintaan jaringan yang dibuat halaman ini.",
+        "emptySubhint": "Bernavigasi di sekitar situs dengan pemantauan aktif — Anda akan melihat dengan tepat apa yang dimuat.",
+        "activeHint": "Pemantauan aktif — menunggu permintaan jaringan..."
+      },
+      "tests": {
+        "webcrypto": {
+          "name": "API Kripto Web",
+          "description": "Dukungan asli Ed25519 di browser Anda",
+          "why": "Ini adalah teknologi yang menciptakan kunci Anda. Jika browser Anda mendukungnya secara asli, pembuatan alamat 125x lebih cepat dibandingkan alternatif lainnya."
+        },
+        "csprng": {
+          "name": "Penghasil Angka Acak",
+          "description": "Generator nomor acak yang aman secara kriptografis",
+          "why": "Kunci pribadi Anda pada dasarnya adalah angka acak yang sangat besar. Jika keacakannya lemah atau dapat diprediksi, seseorang dapat menebak kunci Anda. Tes ini memastikan generator acak berfungsi dengan benar."
+        },
+        "entropy": {
+          "name": "Kualitas Keacakan",
+          "description": "Uji statistik pada 10.000 byte acak",
+          "why": "Kami menghasilkan 10.000 angka acak dan memeriksa apakah angka tersebut terdistribusi secara merata — seperti melempar dadu yang adil ribuan kali. Jika beberapa angka lebih sering muncul, berarti ada sesuatu yang salah."
+        },
+        "network": {
+          "name": "Lalu Lintas Jaringan Nol",
+          "description": "Tidak ada data yang keluar dari browser Anda selama pembuatan kunci",
+          "why": "Pemeriksaan yang paling penting: kami memverifikasi bahwa sama sekali tidak ada yang dikirim ke internet saat kunci sedang dibuat. Kunci pribadi Anda tidak boleh meninggalkan perangkat Anda."
+        },
+        "csp": {
+          "name": "Header Keamanan",
+          "description": "Kebijakan Keamanan Konten membatasi eksfiltrasi data",
+          "why": "Bahkan jika kode berbahaya disuntikkan, aturan tingkat browser ini memblokir pengiriman data ke mana pun. Anggap saja sebagai firewall yang terpasang di situs web itu sendiri."
+        },
+        "worker": {
+          "name": "Isolasi Pekerja",
+          "description": "Pembuatan kunci berjalan di thread latar belakang yang terisolasi",
+          "why": "Kunci Anda dibuat di \"pekerja\" terpisah — program mini terisolasi yang berjalan di latar belakang. Mereka tidak dapat mengakses halaman utama dan tidak dapat dirusak oleh ekstensi browser."
+        },
+        "integrity": {
+          "name": "Integritas Kode",
+          "description": "Sidik jari SHA-256 cocok dengan semua pekerja bengkel yang diterbitkan",
+          "why": "Kami melakukan hash pada setiap pekerja penghasil kunci (Solana, EVM, Bitcoin, Tron, Aptos, Sui) dan membandingkan masing-masing dengan pekerja-hash.json dari versi terbuka. Jika cocok, berarti kodenya belum diubah."
+        },
+        "keygen": {
+          "name": "Tes Pembuatan Kunci",
+          "description": "Hasilkan dan validasi pasangan kunci Ed25519 yang sebenarnya",
+          "why": "Bukti terakhir: kita membuat kunci asli, menandatangani pesan dengannya, lalu memverifikasi tanda tangan. Jika ini berhasil, browser Anda dapat menghasilkan alamat Solana dengan aman."
+        }
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "dokumen",
+    "title": "FAQ",
+    "description": "Jawaban di setiap bengkel — pola, mode, keamanan, tautan bukti, CLI, dan penggunaan sehari-hari. Gunakan submenu untuk melompat berdasarkan topik.",
+    "categories": {
+      "general": {
+        "label": "Umum",
+        "n": "01",
+        "items": {
+          "what": {
+            "q": "Apa itu alamat rias?",
+            "a": "Alamat mata uang kripto yang berisi pola yang Anda pilih — misalnya dimulai dengan `VANI` di Solana atau `0xcafe` di EVM. Ini adalah branding kosmetik di atas pasangan kunci biasa."
+          },
+          "fake": {
+            "q": "Apakah Vanitas membuat alamat “palsu”?",
+            "a": "Tidak. Setiap bengkel menghasilkan kunci standar untuk rantai itu. Impor ke dompet yang cocok dan alamat tersebut berfungsi seperti alamat apa pun yang dibuat secara acak — alamat tersebut terlihat disengaja."
+          },
+          "which": {
+            "q": "Penempaan apa yang ada?",
+            "a": "Sembilan web forge — Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano, XRP — plus `npx vanitas` untuk terminal. Lihat [How it works → Chains](/how-it-works#chains)."
+          },
+          "howLong": {
+            "q": "Berapa lama pola saya akan bertahan?",
+            "a": "Upaya yang diharapkan tumbuh secara eksponensial seiring dengan panjang dan ukuran alfabet. Hex (16 karakter) lebih padat dari Base58 (~58). Gunakan perkiraan tingkat kesulitan di halaman; mulailah dengan 3–4 karakter sebelum mengejar merek yang panjang."
+          },
+          "prefixSuffix": {
+            "q": "Bisakah saya menggunakan awalan dan akhiran secara bersamaan?",
+            "a": "Ya — kedua kendala tersebut melipatgandakan kesulitan. Lebih suka satu sisi yang kuat (awalan atau akhiran) kecuali Anda punya waktu dan tingkat hash yang tersisa."
+          }
+        }
+      },
+      "solana": {
+        "label": "Solana",
+        "n": "02",
+        "items": {
+          "produce": {
+            "q": "Apa yang dihasilkan oleh bengkel Solana?",
+            "a": "Pasangan kunci Ed25519 sebagai alamat Base58 (keluarga yang sama dengan Phantom / Solflare). Ekspor sebagai array byte Solana CLI JSON untuk kemudahan impor."
+          },
+          "walletMint": {
+            "q": "Mode dompet vs mint?",
+            "a": "Kriptografi yang sama. **Dompet** untuk alamat pribadi; **Mint** diberi label untuk kolom custom-mint landasan peluncuran (pump.fun, Raydium, Meteora,…). Buka [/sol?mode=mint](/sol?mode=mint)."
+          },
+          "base58": {
+            "q": "Mengapa saya tidak bisa menggunakan 0, O, I, atau l?",
+            "a": "Base58 mengecualikan karakter yang mirip. Pola yang memuatnya tidak akan pernah muncul di alamat Solana yang sebenarnya."
+          },
+          "pump": {
+            "q": "Apakah permen mint harus diakhiri dengan “pompa”?",
+            "a": "Tidak. Akhiran itu adalah pemasaran, bukan aturan protokol. Pola rias Base58 apa pun yang valid berfungsi jika landasan peluncuran menerima pasangan kunci mint khusus."
+          }
+        }
+      },
+      "evm": {
+        "label": "EVM",
+        "n": "03",
+        "items": {
+          "networks": {
+            "q": "Di jaringan manakah kunci rias EVM berfungsi?",
+            "a": "Semua rantai yang kompatibel dengan EVM berbagi derivasi alamat yang sama. Satu kunci → satu alamat `0x` di Ethereum, Base, Arbitrum, Optimism, BSC, Polygon, Avalanche C-Chain, dan lainnya."
+          },
+          "modes": {
+            "q": "Apa itu mode dompet, CREATE, dan CREATE2?",
+            "a": "**Dompet** — alamat EOA cantik.\n**CREATE** — alamat cantik kontrak pertama dari kunci itu (bukan 0).\n**CREATE2** — garam giling (penyebar tetap) atau penyebar giling (garam tetap) diberi hash kode init."
+          },
+          "bnb": {
+            "q": "Apakah saya memerlukan generator BNB terpisah?",
+            "a": "Tidak untuk BNB Smart Chain (EVM). Alamat Beacon Chain `bnb1` bech32 lama berada di luar cakupan."
+          }
+        }
+      },
+      "bitcoin": {
+        "label": "Bitcoin",
+        "n": "04",
+        "items": {
+          "types": {
+            "q": "Jenis alamat apa yang didukung?",
+            "a": "Warisan Mainnet `1…`, SegWit `bc1q…`, dan Akar Tunggang `bc1p…`. Ekspor termasuk WIF terkompresi."
+          },
+          "leading": {
+            "q": "Apakah saya sendiri yang mengetik 1 / bc1q di depan?",
+            "a": "Opsional. UI secara otomatis menambahkan versi tetap/HRP ketika awalan Anda belum menyertakannya."
+          },
+          "lightning": {
+            "q": "Faktur kilat?",
+            "a": "Di luar cakupan — memalsukan alamat, bukan BOLT."
+          }
+        }
+      },
+      "tron": {
+        "label": "Tron",
+        "n": "05",
+        "items": {
+          "get": {
+            "q": "Apa yang saya dapatkan dari bengkel Tron?",
+            "a": "Mainnet Base58Periksa alamat `T…` dari kunci secp256k1 — dompet atau CREATE (nonce 0). `T` awalan ditambahkan secara otomatis untuk awalan."
+          },
+          "case": {
+            "q": "Mengapa awalan peka huruf kecil tidak pernah ditemukan?",
+            "a": "Setelah `T`, karakter berikutnya hampir selalu berupa huruf besar atau angka. Matikan sensitivitas huruf besar-kecil kecuali Anda memerlukan huruf besar yang sama persis. Base58 juga tidak termasuk O, I, l."
+          }
+        }
+      },
+      "aptos-sui": {
+        "label": "Aptos & Sui",
+        "n": "06",
+        "items": {
+          "differ": {
+            "q": "Apa perbedaan Aptos dan Sui?",
+            "a": "Keduanya menggunakan alamat Ed25519 dan hex, tetapi hashingnya berbeda: Aptos menggunakan `sha3-256(pubkey ‖ 0x00)`; Sui menggunakan `blake2b-256(0x00 ‖ pubkey)`. Kunci tidak dapat dipertukarkan antar ekosistem."
+          },
+          "wallets": {
+            "q": "Dompet mana yang bisa mengimpornya?",
+            "a": "Aptos: Petra, Mars, dan sejenisnya. Sui: Sui Wallet, Suiet, dan lainnya yang menerima kunci pribadi hex."
+          }
+        }
+      },
+      "ton-cardano-xrp": {
+        "label": "TON · Cardano · XRP",
+        "n": "07",
+        "items": {
+          "ton": {
+            "q": "TON UQ vs EQ?",
+            "a": "Bentuk Wallet v4R2 yang tidak dapat terpental (`UQ…`) vs dapat terpental (`EQ…`). Pencocokannya peka huruf besar-kecil."
+          },
+          "cardano": {
+            "q": "Jenis alamat Cardano apa yang dipalsukan?",
+            "a": "Jaringan utama perusahaan `addr1…` (CIP-19 tipe 6 — hanya kunci pembayaran, tidak ada delegasi kepemilikan di alamat)."
+          },
+          "xrp": {
+            "q": "Apakah XRP sama dengan Base58 seperti Bitcoin?",
+            "a": "Tidak. Alamat klasik XRPL menggunakan alfabet Base58 yang berbeda. Vanitas mengkodekan `r…` klasik dari kunci secp256k1."
+          }
+        }
+      },
+      "security": {
+        "label": "Keamanan",
+        "n": "08",
+        "items": {
+          "store": {
+            "q": "Apakah Anda menyimpan kunci pribadi saya?",
+            "a": "Tidak. Kunci tidak pernah meninggalkan memori browser sesi Anda. Lihat halaman [Security](/security) untuk arsitektur dan model ancaman."
+          },
+          "verify": {
+            "q": "Bagaimana cara memverifikasinya?",
+            "a": "1. DevTools → Jaringan saat menambang — tidak ada lalu lintas utama\n2. Mode pesawat setelah memuat\n3. [Live audit](/audit) + perbandingan hash pekerja"
+          },
+          "weaker": {
+            "q": "Apakah kunci rias lebih lemah?",
+            "a": "Tidak. Kunci pribadi masih memiliki entropi CSPRNG penuh. Hanya pengkodean publik yang difilter."
+          },
+          "extensions": {
+            "q": "Bagaimana dengan ekstensi browser?",
+            "a": "Ekstensi masih dapat mengintip halaman. Untuk kunci bernilai tinggi gunakan profil bersih, CLI, atau mesin offline. Detail: [Security → Browser](/security#browser)."
+          },
+          "report": {
+            "q": "Di mana saya melaporkan kerentanan?",
+            "a": "Penasihat Keamanan GitHub Pribadi — tidak pernah menjadi masalah publik. Lihat [Security → Disclose](/security#disclose)."
+          }
+        }
+      },
+      "proof-cli": {
+        "label": "Bukti & CLI",
+        "n": "09",
+        "items": {
+          "proof": {
+            "q": "Apa itu Bukti Penemuan?",
+            "a": "Tautan [/proof](/proof) yang dapat dibagikan dengan alamat + pola (dan statistik opsional). Siapa pun dapat memverifikasi kecocokan di sisi klien. Kunci pribadi tidak pernah disertakan."
+          },
+          "cli": {
+            "q": "Bagaimana cara menjalankan CLI?",
+            "a": "`npx vanitas` untuk wizard, atau flag seperti `npx vanitas sol --prefix Ace --threads 8`. Mendukung mode penerapan yang sama seperti aplikasi web (flag mint, CREATE, CREATE2)."
+          }
+        }
+      },
+      "usage": {
+        "label": "Penggunaan",
+        "n": "10",
+        "items": {
+          "import": {
+            "q": "Bagaimana cara mengimpor ke Phantom/MetaMask/dll?",
+            "a": "Gunakan format ekspor untuk bengkel tersebut: Solana JSON untuk Phantom/Solflare, hex untuk sebagian besar dompet EVM, WIF untuk banyak dompet Bitcoin, hex/Base58 khusus rantai di tempat lain. Selalu lakukan transfer tes kecil terlebih dahulu."
+          },
+          "pause": {
+            "q": "Bisakah saya menjeda dan melanjutkan?",
+            "a": "Anda bisa berhenti kapan saja; resume adalah pencarian baru (tidak ada pos pemeriksaan dari upaya sebelumnya)."
+          },
+          "disabled": {
+            "q": "Mengapa Mulai dinonaktifkan?",
+            "a": "Pola kosong, karakter untuk alfabet tersebut tidak valid, atau pola terlalu panjang. Perbaiki pesan validasi di bawah input."
+          },
+          "freeze": {
+            "q": "UI macet saat menambang?",
+            "a": "Turunkan jumlah thread. Pekerja harus menjaga UI tetap hidup, tetapi memenuhi setiap inti pada laptop kecil masih terasa lamban."
+          }
+        }
+      }
+    },
+    "sideCaption": "Gambar IV — Pemandangan",
+    "topics": "Topik",
+    "stillStuck": "Masih macet?",
+    "stillStuckBody": "Detail teknis yang mendalam terdapat dalam Cara kerjanya. Model kepercayaan dan catatan ancaman aktif di Keamanan. Pemeriksaan integritas langsung di Audit.",
+    "linkHow": "Bagaimana cara kerjanya",
+    "linkSecurity": "Keamanan",
+    "linkAudit": "Audit langsung",
+    "glyphs": {
+      "general": "Gambar — Gulir",
+      "solana": "Gambar — Barisan tiang",
+      "evm": "Gambar — Mode",
+      "bitcoin": "Gambar — Kunci",
+      "tron": "Gambar — Menempa",
+      "aptos-sui": "Gambar — Lingkaran",
+      "ton-cardano-xrp": "Gambar — Prasasti",
+      "security": "Gambar — Perisai",
+      "proof-cli": "Gambar — Segel",
+      "usage": "Gambar — Waktu"
+    }
+  },
+  "docs": {
+    "howItWorks": {
+      "eyebrow": "dokumen",
+      "title": "Bagaimana cara kerjanya",
+      "description": "Tur lengkap tentang Vanitas: cara kerja penambangan batil, apa yang dihasilkan setiap bengkel, cara pekerja mencari secara paralel, dan cara memverifikasi bahwa tidak ada yang meninggalkan mesin Anda.",
+      "sideCaption": "Gambar III — Orator",
+      "overview": {
+        "title": "Apa itu Vanitas",
+        "p1": "**Vanitas** adalah bengkel alamat rias multi-rantai sisi klien. Anda memilih awalan dan/atau akhiran; aplikasi mencari pasangan kunci yang alamat publiknya cocok dengan pola tersebut. Pembuatan berjalan di **Web Worker di CPU Anda**. Kunci pribadi dibuat di memori perangkat Anda dan tidak pernah diunggah.",
+        "p2": "Alamat cantik masih merupakan alamat kriptografi biasa. Kunci pribadinya acak; hanya pengkodean publik yang difilter hingga terlihat seperti yang Anda inginkan — berguna untuk pencitraan merek, donasi, pencetakan uang, dan dompet publik yang mudah diingat."
+      },
+      "pipeline": {
+        "title": "Lingkaran pencarian",
+        "intro": "Setiap bengkel mengikuti putaran tingkat tinggi yang sama, diulangi jutaan kali:",
+        "whySecure": "Mencari alamat cantik **tidak** melemahkan kunci pribadi. Anda menolak kandidat sampai alamat publiknya terlihat benar — proses yang sama seperti membuat kunci acak dan menyimpan kunci yang beruntung."
+      },
+      "reminder": {
+        "label": "Pengingat",
+        "body": "Simpan kunci pribadi Anda sebelum menutup tab. Kunci yang hilang tidak dapat dipulihkan. Untuk saldo besar: uji dengan transfer kecil terlebih dahulu, pilih dompet perangkat keras untuk penyimpanan jangka panjang, dan jangan pernah menempelkan kunci ke situs yang tidak tepercaya."
+      },
+      "toc": {
+        "overview": "Ringkasan",
+        "pipeline": "Saluran pipa",
+        "patterns": "Pola",
+        "chains": "Rantai",
+        "modes": "Mode",
+        "workers": "Pekerja",
+        "proof": "Bukti",
+        "cli": "CLI",
+        "verify": "Memeriksa"
+      },
+      "sections": {
+        "overview": {
+          "n": "01 — Ikhtisar",
+          "title": "Apa itu Vanitas",
+          "glyph": "Gambar A — Kunci",
+          "ledger": {
+            "where": {
+              "label": "Di mana",
+              "value": "Browser Anda · CPU Anda",
+              "note": "Hanya hosting statis; penambangan tidak membuat panggilan jaringan"
+            },
+            "forges": {
+              "label": "menempa",
+              "value": "9 rantai + terminal CLI",
+              "note": "Solana · EVM · Bitcoin · Tron · Aptos · Sui · TON · Cardano · XRP"
+            },
+            "output": {
+              "label": "Keluaran",
+              "value": "Alamat + kunci pribadi",
+              "note": "Format ekspor bergantung pada bengkel (JSON, hex, WIF,…)"
+            }
+          }
+        },
+        "pipeline": {
+          "n": "02 — Saluran Pipa",
+          "title": "Lingkaran pencarian",
+          "glyph": "Gambar B — Lingkaran",
+          "steps": [
+            "Gambarkan kunci pribadi acak yang aman secara kriptografis (`crypto.getRandomValues`).",
+            "Turunkan kunci publik dengan kurva rantai (Ed25519 atau secp256k1).",
+            "Encode alamat seperti yang diharapkan oleh rantai (Base58, hex, bech32,…).",
+            "Bandingkan dengan awalan/akhiran Anda (dan aturan mode).",
+            "Saat pertandingan: hentikan pekerja, tunjukkan hasilnya, suara / bukti / ekspor opsional."
+          ],
+          "workersNote": "Pekerja menjalankan loop ini secara paralel di seluruh inti CPU. Thread UI tetap responsif; kemajuan (upaya, laju, ETA) dikumpulkan dari pesan pekerja. Ketika salah satu pekerja menemukan hit, pool dihentikan.",
+          "whySecureTitle": "Mengapa ini aman"
+        },
+        "patterns": {
+          "n": "03 — Pola",
+          "title": "Kesulitan, huruf, peringatan",
+          "glyph": "Gambar C — Waktu",
+          "intro": "Skala waktu yang diharapkan dengan panjang pola dan ukuran alfabet. Setiap karakter tambahan mengalikan ruang pencarian. UI bengkel menunjukkan perkiraan kesulitan langsung berdasarkan pola Anda dan tingkat hash yang diukur atau diasumsikan.",
+          "ledger": {
+            "base58": {
+              "label": "Basis58",
+              "value": "~58 simbol",
+              "note": "Solana, Tron, XRP (alfabet XRPL), warisan Bitcoin"
+            },
+            "hex": {
+              "label": "kutukan",
+              "value": "16 simbol (0–9, a–f)",
+              "note": "EVM, Aptos, Sui — peka huruf besar-kecil untuk pencocokan"
+            },
+            "bech32": {
+              "label": "Bech32",
+              "value": "bc1q / bc1p / addr1…",
+              "note": "Bitcoin SegWit/Taproot, Cardano — memperbaiki HRP, lalu charset"
+            },
+            "ton": {
+              "label": "TON",
+              "value": "Url dasar64",
+              "note": "UQ… / EQ… — peka huruf besar-kecil"
+            }
+          },
+          "trapsTitle": "Perangkap alfabet",
+          "traps": [
+            "**Solana / Bitcoin Base58** — tanpa `0`, `O`, `I`, atau `l` (penolakan yang mirip).",
+            "**EVM** — hanya hex setelah `0x`. Huruf di luar `a–f` tidak valid.",
+            "**Tron** — alamat dimulai dengan `T`; karakter berikutnya biasanya huruf besar. Awalan huruf kecil yang peka huruf besar-kecil sering kali tidak pernah cocok.",
+            "**Awalan + akhiran** — kedua batasan melipatgandakan kesulitan. Mulailah dengan singkat; kembangkan polanya setelah Anda mengetahui tarif Anda."
+          ]
+        },
+        "chains": {
+          "n": "04 — Rantai",
+          "title": "Setiap bengkel, jelasnya",
+          "glyph": "Gambar D — Menempa",
+          "intro": "Sembilan bengkel memiliki pola UX yang sama — pilih mode, tetapkan pola, mulai pekerja — tetapi setiap rantai menggunakan kurva, hash, dan pengkodean alamat yang berbeda.",
+          "sol": "Pasangan kunci Ed25519 dikodekan sebagai Base58 (kunci publik 32 byte). Native Web Crypto Ed25519 digunakan ketika browser mendukungnya; jika tidak, cadangan WASM (`watsign`). Mode: **dompet** dan **mint** — perhitungan kunci yang sama; pembingkaian mint adalah untuk aliran mint khusus landasan peluncuran. Ekspor: array byte Solana CLI JSON.",
+          "evm": "secp256k1 → kunci pub tidak terkompresi → keccak-256 → 20 byte terakhir → alamat `0x…`. Satu kunci pribadi menghasilkan alamat yang sama di Ethereum, Base, Arbitrum, Optimism, BSC, Polygon, dan setiap jaringan EVM lainnya. Mode: dompet (EOA), CREATE di nonce 0, CREATE2 (menggiling garam atau menggiling deployer). Lihat Mode di bawah.",
+          "btc": "detik256k1. Tiga jenis alamat: P2PKH lama (`1…`), SegWit P2WPKH asli (`bc1q…`), P2TR Akar Tunggang (`bc1p…`). Ekspor termasuk WIF (terkompresi) untuk impor dompet. HRP / byte versi terdepan ditangani untuk Anda saat mengetikkan awalan.",
+          "tron": "Jalur secp256k1 + keccak yang sama dengan EVM untuk ID akun 20 byte, lalu Base58Check dengan versi byte `0x41` → `T…`. Mode: dompet dan CREATE (nonce 0), menggunakan tata letak RLP yang sama dengan EVM lalu pengkodean Tron.",
+          "aptos": "Ed25519. Alamat = `sha3-256(pubkey ‖ 0x00)` sebagai hex. Kompatibel dengan dompet Petra, Martian, dan Aptos lainnya yang mengimpor rahasia hex.",
+          "sui": "Ed25519. Alamat = `blake2b-256(0x00 ‖ pubkey)` sebagai hex (byte bendera menandai skema). Impor ke Sui Wallet / Suiet dengan kunci pribadi hex.",
+          "ton": "Ed25519 + Kontrak dompet v4R2. Alamat adalah bentuk Url Base64 yang mudah digunakan: `UQ…` (tidak dapat terpental) dan `EQ…` (dapat terpental). Pencocokannya peka huruf besar-kecil. Impor ke Tonkeeper / MyTonWallet.",
+          "cardano": "Alamat perusahaan Ed25519 (CIP-19 tipe 6, hanya kunci pembayaran): header `0x61` + hash pembayaran Blake2b-224, bech32 dengan HRP `addr` → `addr1…`.",
+          "xrp": "kunci pub terkompresi secp256k1 → ID akun RIPEMD160(SHA256) → Pemeriksaan XRPL klasik Base58 → `r…`. Catatan: XRPL menggunakan alfabet Base58 yang berbeda dari Bitcoin.",
+          "links": {
+            "sol": "[Solana](/sol)",
+            "evm": "[EVM](/evm)",
+            "btc": "[Bitcoin](/btc)",
+            "tron": "[Tron](/tron)",
+            "aptos": "[Aptos](/aptos)",
+            "sui": "[Sui](/sui)",
+            "ton": "[TON](/ton)",
+            "cardano": "[Cardano](/cardano)",
+            "xrp": "[XRP](/xrp)"
+          }
+        },
+        "modes": {
+          "n": "05 — Mode",
+          "title": "Dompet, mint, BUAT, BUAT2",
+          "glyph": "Gambar E — Mode",
+          "solMint": "Secara kriptografis identik dengan pasangan kunci dompet. Launchpad meminta pasangan kunci mint khusus/kunci pribadi; Vanitas memberi label hasilnya sebagai mint sehingga ekspornya cocok dengan alur kerja tersebut. Buka [/sol?mode=mint](/sol?mode=mint), temukan polanya, tempelkan kuncinya ke pump.fun, Raydium, Meteora, dll.",
+          "create": "Kontrak pertama yang diterapkan dari EOA dengan nonce 0 memiliki alamat deterministik: `keccak256(RLP([sender, 0]))[12:]`. Vanitas mengerjakan EOA hingga alamat kontrak turunannya sesuai dengan pola Anda. Anda menerima kunci pribadi penyebar — disebarkan satu kali dari akun nonce-0 baru.",
+          "create2Intro": "Alamat = `keccak256(0xff ‖ deployer ‖ salt ‖ initCodeHash)[12:]`. Dua strategi penggilingan:",
+          "create2Salt": "**create2-salt** — memperbaiki kunci penerapan + hash kode init; mencari garam yang menghasilkan alamat rias.",
+          "create2Deployer": "**create2-deployer** — memperbaiki garam + hash kode init; cari kunci penyebar yang alamat CREATE2nya cocok.",
+          "create2Hash": "Anda harus memberikan `initCodeHash` (keccak bytecode penerapan) yang benar. Hash salah → alamat on-chain salah."
+        },
+        "workers": {
+          "n": "06 — Pekerja",
+          "title": "Arsitektur kinerja",
+          "glyph": "Gambar F — Menempa",
+          "intro": "Sumber pekerja berada di bawah `src/workers/*.worker.source.ts` dan digabungkan dengan esbuild ke dalam `public/*-worker.js`. Setiap build menulis intisari SHA-256 ke `public/worker-hash.json` untuk [live audit](/audit).",
+          "ledger": {
+            "parallelism": {
+              "label": "Paralelisme",
+              "value": "Inti CPU − 1 (default)",
+              "note": "Sesuaikan thread jika mesin memanas atau UI tersendat"
+            },
+            "solSpeed": {
+              "label": "Kecepatan Solana",
+              "value": "Asli Ed25519 bila tersedia",
+              "note": "Chrome 113+ · Firefox 129+ · Safari 17+; lain WASM"
+            },
+            "libraries": {
+              "label": "Perpustakaan",
+              "value": "@mulia · tweetnacl · tanda tangan · @ton/*",
+              "note": "Kripto JS / WASM murni yang diaudit di browser"
+            }
+          },
+          "postFind": "Setelah ditemukan, **pemeriksaan keamanan kunci** opsional memeriksa entropi, ketersediaan CSPRNG, dan uji keseragaman chi-kuadrat pada byte acak — memastikan jalur RNG browser terlihat sehat."
+        },
+        "proof": {
+          "n": "07 — Bukti",
+          "title": "Bukti penemuan",
+          "glyph": "Gambar G — Segel",
+          "p1": "**Bagikan bukti** membuat tautan publik ke [/proof](/proof) hanya dengan rantai, alamat, dan pola — **bukan kunci pribadi**. Siapa pun dapat membuka tautan dan memverifikasi alamat yang cocok dengan awalan/akhiran yang diklaim di sisi klien.",
+          "session": "Temuan terbaru di UI menggunakan `sessionStorage` hanya untuk metadata alamat + pola. Menutup tab akan menghapus riwayat itu; kunci tidak disimpan di sana."
+        },
+        "cli": {
+          "n": "08 — CLI",
+          "title": "Penempaan terminal",
+          "glyph": "Gambar H — Prasasti",
+          "p1": "Ide yang sama di luar browser: `npx vanitas` membuka wizard, atau meneruskan flag untuk parameter rantai, mode, awalan, utas, dan CREATE2. Hasil menulis file JSON dengan mode `0600` ketika OS mendukungnya. Paket: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
+          "example": "npx vanitas evm --mode contract --prefix cafe --threads 8"
+        },
+        "verify": {
+          "n": "09 — Verifikasi",
+          "title": "Konfirmasikan sendiri",
+          "glyph": "Gambar. I — Mata",
+          "steps": [
+            "Buka DevTools → Jaringan, hapus log, mulai menempa — Anda akan melihat **tidak ada permintaan** saat menambang.",
+            "Muat halaman, offline, buat lagi — masih berfungsi.",
+            "Jalankan [live audit](/audit) dan bandingkan hash pekerja dengan `worker-hash.json`.",
+            "Baca sumbernya di [GitHub](https://github.com/bytebrox/vanitas) — khususnya `src/workers/`."
+          ]
+        }
+      },
+      "footer": {
+        "security": "Keamanan",
+        "faq": "FAQ",
+        "audit": "Audit langsung"
+      }
+    },
+    "security": {
+      "eyebrow": "dokumen",
+      "title": "Keamanan",
+      "description": "Kunci dibuat di browser Anda, tidak pernah di server kami. Halaman ini adalah model kepercayaan: arsitektur, ancaman, kripto, header, dan cara memverifikasi sendiri setiap klaim.",
+      "sideCaption": "Gambar V — Saluran Air",
+      "principles": {
+        "title": "Tidak bisa dinegosiasikan",
+        "marketing": "Klaim pemasaran tidak ada gunanya tanpa pemeriksaan. Gunakan bagian [live audit](/audit) dan Verifikasi di bawah."
+      },
+      "architecture": {
+        "title": "Dimana kuncinya tinggal",
+        "keysRam": "Kunci pribadi hanya ada di sini — RAM di perangkat Anda"
+      },
+      "next": {
+        "label": "Berikutnya",
+        "audit": "Audit langsung",
+        "how": "Bagaimana cara kerjanya",
+        "faq": "FAQ"
+      },
+      "toc": {
+        "principles": "Prinsip",
+        "architecture": "Arsitektur",
+        "threats": "Ancaman",
+        "storage": "Penyimpanan",
+        "crypto": "kripto",
+        "integrity": "Integritas",
+        "headers": "Header",
+        "browser": "Peramban",
+        "workflow": "Alur kerja",
+        "verify": "Memeriksa",
+        "disclose": "Membuka"
+      },
+      "sections": {
+        "principles": {
+          "n": "01 — Prinsip",
+          "title": "Tidak bisa dinegosiasikan",
+          "glyph": "Gambar A — Perisai",
+          "items": [
+            "**Pembuatan sisi klien** — Pekerja Web di CPU Anda membuat setiap pasangan kunci.",
+            "**Transit kunci nol** — tidak ada API yang menerima atau mengembalikan kunci pribadi.",
+            "**Tanpa penyimpanan kunci** — tanpa basis data, tanpa log rahasia, tanpa analisis pola atau alamat.",
+            "**Dapat Diverifikasi** — sumber terbuka, audit langsung, pengujian offline, panel Jaringan.",
+            "**Bukti tanpa paparan** — bukti yang dapat dibagikan hanya berisi alamat + pola."
+          ]
+        },
+        "architecture": {
+          "n": "02 — Arsitektur",
+          "title": "Dimana kuncinya tinggal",
+          "glyph": "Gambar B — Lokus",
+          "intro": "Vanitas adalah situs Next.js statis. Host (mis. Vercel) menyajikan paket pekerja HTML, CSS, JS, dan bawaan. Kriptografi tidak pernah berjalan pada host tersebut untuk kunci Anda.",
+          "browserLabel": "Peramban Anda",
+          "mainThread": "Utas utama",
+          "mainThreadNote": "UI · Bereaksi · kontrol",
+          "webWorkers": "Pekerja Web",
+          "webWorkersNote": "W1…Wn — menggiling · mencocokkan · postMessage",
+          "networkLabel": "Jaringan selama penambangan",
+          "networkBody": "Tidak ada yang diperlukan. Setelah aset dimuat, mode pesawat masih berfungsi. Satu-satunya rute API pihak pertama (`/api/domains`) menyarankan tautan domain Solana — rute ini tidak menghasilkan atau menerima kunci.",
+          "serversLabel": "Server kami",
+          "serversBody": "Kirim file. Tidak dapat membaca memori Pekerja Anda. Tidak dapat mencegat pasangan kunci yang sudah selesai. Asal yang disusupi dapat menyajikan JS yang berbahaya — itulah sebabnya pemeriksaan integritas dan sumber terbuka penting (lihat Integritas & Browser)."
+        },
+        "threats": {
+          "n": "03 — Ancaman",
+          "title": "Model ancaman (jujur)",
+          "glyph": "Gambar C — Timbangan",
+          "inScopeTitle": "Dalam cakupannya - kami merancangnya",
+          "inScope": [
+            "Pencurian kunci di sisi server (tidak ada kunci di server).",
+            "Sniffing jaringan biasa selama penambangan (tidak ada lalu lintas utama).",
+            "Clickjacking aplikasi utama (penolakan bingkai pada rute utama).",
+            "Jalur eksfiltrasi XSS yang jelas (CSP; masih belum menjadi solusi terbaik)."
+          ],
+          "outScopeTitle": "Di luar ruang lingkup/tanggung jawab bersama",
+          "outScope": [
+            "**Ekstensi browser berbahaya** yang membaca memori halaman atau papan klip — nonaktifkan ekstensi tersebut pada profil bersih saat memalsukan kunci bernilai tinggi.",
+            "**Perangkat/malware yang disusupi** — keylogger tingkat OS mengalahkan situs web mana pun.",
+            "**Anda menempelkan kunci ke Discord / phishing** — keamanan operasional adalah milik Anda.",
+            "**Rantai pasokan ketergantungan** — kami menyematkan dan mengaudit; Anda dapat memverifikasi hash pekerja dan membangun kembali dari sumber."
+          ],
+          "vanityNote": "Penambangan kesombongan tidak menciptakan kunci yang “lebih lemah”. Pola yang panjang hanya membutuhkan lebih banyak CPU — pola tersebut tidak mengurangi entropi kunci pribadi."
+        },
+        "storage": {
+          "n": "04 — Penyimpanan",
+          "title": "Apa yang kami simpan",
+          "glyph": "Gambar D — Gudang",
+          "intro": "**Tidak ada apa pun tentang kunci Anda di server kami.** Tidak ada database alamat, pola, IP untuk penambangan, atau SDK analitik di jalur pemalsuan.",
+          "items": [
+            "Tidak ada kunci pribadi pada disk atau server",
+            "Tidak ada kunci/alamat publik yang dikumpulkan dari jarak jauh",
+            "Tidak ada telemetri pola",
+            "Tidak ada sistem akun",
+            "Tidak ada analisis pihak ketiga dalam janji produk",
+            "sessionStorage temuan terbaru = alamat + pola saja, sesi browser ini",
+            "Tautan bukti = parameter kueri yang Anda pilih untuk dibagikan (tanpa kunci)"
+          ]
+        },
+        "crypto": {
+          "n": "05 — Kripto",
+          "title": "Algoritma per tempa",
+          "intro": "Keacakan selalu datang dari browser CSPRNG (`crypto.getRandomValues`). Kurva dan derivasi alamat berbeda berdasarkan rantai:",
+          "rows": {
+            "sol": {
+              "label": "Solana",
+              "value": "Ed25519 → Basis58",
+              "note": "Web Crypto asli atau cadangan WASM · dompet / mint"
+            },
+            "evm": {
+              "label": "EVM",
+              "value": "secp256k1 + keccak-256",
+              "note": "0x EOA · BUAT · BUAT2"
+            },
+            "btc": {
+              "label": "Bitcoin",
+              "value": "detik256k1",
+              "note": "Warisan · SegWit · Akar Tunggang · Ekspor WIF"
+            },
+            "tron": {
+              "label": "Tron",
+              "value": "secp256k1 + keccak → Base58Check",
+              "note": "T… dompet / BUAT"
+            },
+            "aptos": {
+              "label": "Aptos",
+              "value": "Ed25519 + SHA3-256",
+              "note": "0x alamat akun"
+            },
+            "sui": {
+              "label": "Sui",
+              "value": "Ed25519 + Blake2b-256",
+              "note": "0x dengan bendera skema"
+            },
+            "ton": {
+              "label": "TON",
+              "value": "Ed25519 · Dompet v4R2",
+              "note": "UQ / EQ Base64url"
+            },
+            "cardano": {
+              "label": "Cardano",
+              "value": "Ed25519 · Perusahaan CIP-19",
+              "note": "addr1… hanya kunci pembayaran"
+            },
+            "xrp": {
+              "label": "XRP",
+              "value": "secp256k1 · XRPL Base58",
+              "note": "Alamat r… klasik"
+            }
+          },
+          "postFind": "Pemeriksaan pasca-penemuan dapat memvalidasi ukuran entropi, keberadaan CSPRNG, dan keseragaman chi-kuadrat pada sampel acak — pemeriksaan kesehatan jalur RNG, bukan pengganti kebersihan perangkat."
+        },
+        "integrity": {
+          "n": "06 — Integritas",
+          "title": "Pekerja & hash yang diterbitkan",
+          "glyph": "Gambar E — Hash",
+          "p1": "Kode penambangan dikirimkan sebagai file `public/*-worker.js` statis yang dibuat dari sumber TypeScript. Setiap build produksi mencatat intisari SHA-256 di `worker-hash.json`. Halaman audit meng-hash ulang pekerja yang dimuat browser Anda dan membandingkannya dengan file tersebut.",
+          "p2": "Jika hash berbeda, perlakukan halaman tersebut sebagai tidak tepercaya — hentikan, jangan gunakan kunci, dan selidiki (penerapan yang salah, cache, atau gangguan). Membangun kembali dari repo terbuka harus mereproduksi byte pekerja yang sama untuk penerapan tertentu."
+        },
+        "headers": {
+          "n": "07 — Tajuk",
+          "title": "Header keamanan HTTP",
+          "intro": "Responsnya mencakup header yang mengurangi dampak XSS, memaksa HTTPS, dan memblokir pembingkaian aplikasi utama. CSP masih mengizinkan apa yang dibutuhkan Next.js (termasuk beberapa pengorbanan inline/eval) — bantuan header; mereka tidak menggantikan tinjauan kode.",
+          "rows": {
+            "csp": {
+              "label": "CSP",
+              "value": "Kebijakan-Keamanan-Konten",
+              "note": "Batasi skrip, pekerja, connect-src"
+            },
+            "hsts": {
+              "label": "HSTS",
+              "value": "Keamanan Transportasi yang Ketat",
+              "note": "usia maksimal=31536000"
+            },
+            "frame": {
+              "label": "Bingkai",
+              "value": "Opsi Bingkai-X: TOLAK",
+              "note": "Aplikasi utama tidak dapat disematkan"
+            },
+            "mime": {
+              "label": "MIME",
+              "value": "Opsi Tipe Konten X: nosniff",
+              "note": "Tidak ada MIME yang mengendus"
+            },
+            "referrer": {
+              "label": "Perujuk",
+              "value": "asal-asal-ketat-saat-lintas-asal",
+              "note": "Membatasi kebocoran perujuk"
+            }
+          }
+        },
+        "browser": {
+          "n": "08 — Peramban",
+          "title": "Apa yang masih bisa dilakukan browser",
+          "intro": "Apa pun yang berjalan dengan hak istimewa halaman, secara teori, dapat membaca pesan DOM dan Pekerja. Itu termasuk:",
+          "items": [
+            "Ekstensi browser dengan akses situs yang luas",
+            "DevTools terbuka di mesin bersama",
+            "Skrip berbahaya yang disuntikkan jika XSS ada",
+            "Sniffer clipboard setelah Anda menyalin kunci"
+          ],
+          "mitigations": "Mitigasi: bersihkan profil browser, tidak ada ekstensi yang tidak perlu, lebih suka mengunduh file daripada clipboard untuk kunci bernilai tinggi, menghapus clipboard setelah menempel ke dompet, pertimbangkan terminal CLI atau mesin celah udara untuk perbendaharaan besar."
+        },
+        "workflow": {
+          "n": "09 — Alur Kerja",
+          "title": "Prosedur pengoperasian yang aman",
+          "steps": [
+            "Muat vanitas.fun (atau jalankan dari build lokal terverifikasi).",
+            "Opsional: buka Jaringan, offline, jalankan audit.",
+            "Pilih pola pendek terlebih dahulu; menambah panjang setelah Anda memercayai pengaturannya.",
+            "Saat ditemukan: ekspor, simpan secara offline, jangan pernah mengambil tangkapan layar kunci ke dalam aplikasi obrolan.",
+            "Impor ke dompet yang benar untuk rantai itu; kirim transfer uji debu.",
+            "Untuk kepemilikan jangka panjang, pindahkan dana ke dompet perangkat keras — Vanitas adalah bengkel, bukan brankas."
+          ]
+        },
+        "verify": {
+          "n": "10 — Verifikasi",
+          "title": "Tiga pemeriksaan yang dapat dijalankan siapa pun",
+          "glyph": "Gambar F — Audit",
+          "network": {
+            "n": "01 — Jaringan",
+            "title": "Pemantau jaringan",
+            "steps": [
+              "DevTools → Jaringan → hapus",
+              "Mulai menghasilkan",
+              "Konfirmasikan **nol** permintaan saat menambang"
+            ]
+          },
+          "offline": {
+            "n": "02 — Luring",
+            "title": "Mode pesawat",
+            "steps": [
+              "Muat aplikasinya",
+              "Memutuskan",
+              "Hasilkan — kesuksesan membuktikan tidak ada ketergantungan server langsung"
+            ]
+          },
+          "audit": {
+            "n": "03 — Audit",
+            "title": "Audit langsung + sumber",
+            "steps": [
+              "Jalankan [/audit](/audit)",
+              "Bandingkan hash pekerja dengan JSON yang dipublikasikan",
+              "Tinjau [GitHub](https://github.com/bytebrox/vanitas) pekerja dan SECURITY.md"
+            ]
+          }
+        },
+        "disclose": {
+          "n": "11 — Mengungkapkan",
+          "title": "Masalah pelaporan",
+          "glyph": "Gambar G — Laporan",
+          "intro": "Jangan **jangan** membuka masalah GitHub publik untuk mengetahui kerentanan keamanan. Lebih suka Penasihat Keamanan GitHub pribadi di [bytebrox/vanitas](https://github.com/bytebrox/vanitas/security/advisories/new). Sertakan langkah-langkah reproduksi, dampak, dan saran perbaikan jika Anda memilikinya.",
+          "faq": {
+            "steal": {
+              "q": "Bisakah kamu mencuri kunciku?",
+              "a": "Kami tidak memiliki jalur sisi server yang menerimanya. Bangunan atau ekstensi yang berbahaya dapat — memverifikasi hash dan menggunakan lingkungan yang bersih untuk mendapatkan nilai tinggi."
+            },
+            "host": {
+              "q": "Bagaimana jika hostnya diretas?",
+              "a": "Penyerang dapat menyajikan JavaScript yang diubah. Itulah sebabnya open source, pemeriksaan hash pekerja, dan lebih memilih komitmen yang diketahui baik itu penting. Host masih belum pernah menerima kunci Anda yang sudah selesai dari build yang bersih."
+            },
+            "weaker": {
+              "q": "Apakah alamat cantik kurang aman?",
+              "a": "Tidak. Entropi kunci pribadi tidak berubah. Hanya alamat publik yang difilter tampilannya."
+            },
+            "cold": {
+              "q": "Haruskah saya memalsukan kunci penyimpanan dingin di browser sehari-hari?",
+              "a": "Untuk dana yang signifikan: profil bersih atau offline/CLI, transfer uji kecil, lalu penyimpanan dompet perangkat keras."
+            }
+          }
+        }
+      }
+    }
+  },
+  "meta": {
+    "home": {
+      "title": "Solana, EVM, Bitcoin & Tron Vanity Forge",
+      "description": "Alamat cantik sisi klien dibuat untuk Solana, EVM, Bitcoin, dan Tron. Dompet, permen, dan kontrak — kunci tidak pernah lepas dari browser ini.",
+      "ogAlt": "Penempaan kesombongan multi-rantai Vanitas"
+    },
+    "sol": {
+      "title": "Generator Alamat Kesombongan Solana",
+      "description": "Ciptakan dompet Solana cantik dan alamat token mint seluruhnya di browser Anda. Sumber terbuka, sisi klien, tidak ada kunci yang keluar dari perangkat ini.",
+      "ogAlt": "Vanitas — Penempaan kesombongan Solana",
+      "ogTitle": "Generator Alamat Kesombongan Solana | kesombongan",
+      "ogDescription": "Bentuk dompet Solana yang cantik dan alamat mint di sisi klien. Tidak ada kunci yang keluar dari perangkat ini.",
+      "twitterDescription": "Bentuk dompet Solana yang cantik dan alamat mint di sisi klien."
+    },
+    "evm": {
+      "title": "Generator Alamat Kesombongan EVM",
+      "description": "Menempa dompet EVM kesombongan dan alamat kontrak di sisi klien. Satu kunci untuk Ethereum, Base, Arbitrum, Optimism, BSC, dan banyak lagi.",
+      "ogTitle": "Generator Alamat Kesombongan EVM | kesombongan",
+      "ogDescription": "Tempa dompet vanity 0x dan alamat kontrak di sisi klien. Kunci yang sama pada Ethereum, BNB, Base, Arbitrum, dan setiap rantai EVM.",
+      "twitterDescription": "Tempa dompet vanity 0x dan alamat kontrak di sisi klien. Kunci yang sama di setiap rantai EVM.",
+      "ogAlt": "Vanitas — Dompet kesombongan & generator kontrak EVM"
+    },
+    "btc": {
+      "title": "Generator Alamat Kesombongan Bitcoin",
+      "description": "Tempa alamat Bitcoin cantik (lama, SegWit, Taproot) seluruhnya di browser Anda."
+    },
+    "tron": {
+      "title": "Generator Alamat Tron Vanity",
+      "description": "Forge vanity Tron Base58 mengalamatkan sisi klien untuk TronLink dan dompet lainnya."
+    },
+    "aptos": {
+      "title": "Generator Alamat Kesombongan Aptos",
+      "description": "Tempa alamat kesombongan Aptos Ed25519 sepenuhnya di browser Anda."
+    },
+    "sui": {
+      "title": "Generator Alamat Kesombongan Sui",
+      "description": "Tempa alamat kesombongan Sui Ed25519 seluruhnya di browser Anda."
+    },
+    "ton": {
+      "title": "Generator Alamat Kesombongan TON",
+      "description": "Menempa alamat sisi klien Vanity TON Wallet v4R2 (UQ / EQ)."
+    },
+    "cardano": {
+      "title": "Generator Alamat Kesombongan Cardano",
+      "description": "Tempa alamat addr1 perusahaan Cardano yang cantik seluruhnya di browser Anda."
+    },
+    "xrp": {
+      "title": "Generator Alamat Kesombongan XRP",
+      "description": "Forge vanity XRPL classic r… alamat sepenuhnya di browser Anda."
+    },
+    "faq": {
+      "title": "FAQ",
+      "description": "Jawaban di setiap bengkel Vanitas — pola, mode, keamanan, bukti, dan CLI.",
+      "ogTitle": "Pertanyaan Umum | kesombongan",
+      "ogDescription": "Jawaban berdasarkan topik — setiap rantai, keamanan, bukti, CLI, dan penggunaan.",
+      "ogAlt": "Pertanyaan Umum Vanitas"
+    },
+    "how-it-works": {
+      "title": "Cara Kerjanya",
+      "description": "Bagaimana Vanitas memalsukan alamat cantik di Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano, dan XRP: pekerja, mode (mint, CREATE, CREATE2), bukti penemuan, CLI, dan cara memverifikasi keamanan sisi klien.",
+      "ogTitle": "Cara Kerja | kesombongan",
+      "ogDescription": "Tur lengkap tentang setiap bengkel, arsitektur pekerja, mode penerapan, dan verifikasi.",
+      "ogAlt": "Vanitas — cara kerja pembuatan alamat kesombongan"
+    },
+    "security": {
+      "title": "Keamanan",
+      "description": "Model kepercayaan Vanitas — kunci tetap ada di browser Anda. Batasan ancaman dan verifikasi.",
+      "ogTitle": "Keamanan | kesombongan",
+      "ogDescription": "Arsitektur, ancaman, kripto, header, dan verifikasi — kunci tetap ada di browser Anda.",
+      "ogAlt": "Keamanan Vanitas — kunci tetap ada di browser Anda"
+    },
+    "lab": {
+      "title": "Lab Pola",
+      "description": "Matriks tingkat kesulitan, perkiraan kelangkaan, dan antrean pola batch untuk setiap bengkel Vanitas — sebelum Anda menambang.",
+      "ogTitle": "Lab Pola | kesombongan",
+      "ogDescription": "Matriks tingkat kesulitan, perkiraan kelangkaan, dan antrean pola batch — sebelum Anda menambang."
+    },
+    "lookalike": {
+      "title": "Periksa Mirip",
+      "description": "Tangkap mesin terbang Base58 terlarang, jebakan kotak Tron, dan ketidakcocokan alfabet sebelum Anda mengerjakan pola rias.",
+      "ogTitle": "Periksa Mirip | kesombongan",
+      "ogDescription": "Tangkap ketidakcocokan 0/O, I/l, Tron case, dan alfabet sebelum Anda mengerjakannya."
+    },
+    "create2": {
+      "title": "CREATE2 Pembantu",
+      "description": "Hash bytecode penerapan ke initCodeHash, pratinjau alamat CREATE2 dari deployer + salt, dan tautan dalam ke bengkel EVM — semuanya di sisi klien.",
+      "ogTitle": "CREATE2 Pembantu | kesombongan",
+      "ogDescription": "initCodeHash dari bytecode, pratinjau garam, pemeriksaan alamat sebelum Anda mengerjakannya."
+    },
+    "brand": {
+      "title": "Merek",
+      "description": "Widget bukti yang dapat disematkan dan kit branding ringan untuk Vanitas — tanda kata, warna, cuplikan iframe. Tidak ada kunci pribadi.",
+      "ogTitle": "merek | kesombongan",
+      "ogDescription": "Widget bukti yang dapat disematkan dan kit branding ringan."
+    },
+    "proof": {
+      "title": "Bukti penemuan",
+      "description": "Verifikasi alamat cantik yang cocok dengan sisi klien tanpa kunci pribadi."
+    },
+    "audit": {
+      "title": "Audit Langsung",
+      "description": "Jalankan delapan pemeriksaan lokal di Vanitas: Kripto Web, kualitas RNG, jaringan nol selama pembuatan, CSP, isolasi pekerja, dan integritas pembangunan.",
+      "ogTitle": "Audit Langsung | kesombongan",
+      "ogDescription": "Delapan pemeriksaan otomatis di browser Anda. Tidak ada yang dipalsukan, tidak ada yang dikirim.",
+      "ogAlt": "Audit keamanan langsung Vanitas"
+    },
+    "token": {
+      "title": "Token",
+      "description": "Vanitas tidak memiliki token proyek."
+    },
+    "embed-proof": {
+      "title": "Penyematan bukti",
+      "description": "Bukti widget pencarian yang dapat disematkan."
+    },
+    "siteName": "Vanitas",
+    "notFound": {
+      "title": "404 — Tidak ditemukan",
+      "description": "Halaman ini tidak ada di Vanitas."
+    },
+    "eth": {
+      "title": "Generator Alamat Kesombongan ETH",
+      "description": "Pengalihan ke bengkel kesombongan EVM."
+    }
+  },
+  "notFound": {
+    "title": "Halaman tidak ditemukan",
+    "body": "Halaman yang Anda minta tidak ada di Vanitas. Mungkin sudah berpindah, atau tidak pernah ada.",
+    "home": "Beranda",
+    "sol": "Penempaan Solana",
+    "evm": "Penempaan EVM",
+    "metaTitle": "404 — Tidak ditemukan",
+    "metaDescription": "Halaman ini tidak ada di Vanitas.",
+    "figAbsent": "Gambar — Tidak ada",
+    "errorLabel": "Kesalahan 404",
+    "heading": "Alamat ini tidak pernah di-forge",
+    "links": {
+      "sol": "bengkel SOL",
+      "evm": "Penempaan EVM",
+      "btc": "pemalsuan BTC",
+      "tron": "Penempaan TRON",
+      "how": "Bagaimana cara kerjanya",
+      "faq": "FAQ"
+    },
+    "homeForge": "Atau kembali ke [forge beranda](/)."
+  }
+}

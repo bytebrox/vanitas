@@ -1,5 +1,7 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 interface PatternTemplate {
   label: string;
   prefix: string;
@@ -13,24 +15,25 @@ interface PatternTemplatesProps {
 }
 
 export function PatternTemplates({ templates, disabled = false, onSelect }: PatternTemplatesProps) {
+  const t = useTranslations('common');
   if (templates.length === 0) return null;
 
   return (
     <div className="py-4 border-b border-ink/15">
-      <p className="text-micro uppercase tracking-[0.18em] text-muted mb-3">Try a pattern</p>
+      <p className="text-micro uppercase tracking-[0.18em] text-muted mb-3">{t('tryPattern')}</p>
       <div className="flex flex-wrap gap-2">
-        {templates.map((t) => (
+        {templates.map((item) => (
           <button
-            key={t.label}
+            key={item.label}
             type="button"
             disabled={disabled}
-            title={t.hint}
-            onClick={() => { onSelect(t.prefix); }}
+            title={item.hint}
+            onClick={() => { onSelect(item.prefix); }}
             className={`text-micro uppercase tracking-[0.12em] px-3 py-2 border border-ink/25
               hover:border-ink hover:text-ink text-muted transition-colors
               ${disabled ? 'opacity-50 pointer-events-none' : ''}`}
           >
-            {t.label}
+            {item.label}
           </button>
         ))}
       </div>

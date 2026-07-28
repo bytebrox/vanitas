@@ -1,0 +1,1641 @@
+{
+  "common": {
+    "copy": "Copy",
+    "copied": "Copied",
+    "hide": "Hide",
+    "reveal": "Reveal",
+    "downloadTxt": "Download txt",
+    "downloadJson": "Download json",
+    "forge": "Forge",
+    "stop": "Stop",
+    "reset": "Reset",
+    "loading": "Loading…",
+    "scrollDown": "Scroll down",
+    "cores": "Cores",
+    "of": "of {max}",
+    "fewerCores": "Fewer cores",
+    "moreCores": "More cores",
+    "soundOn": "Sound on",
+    "soundOff": "Sound off",
+    "found": "Found",
+    "addressReady": "Address ready",
+    "publicAddress": "Public address",
+    "privateKey": "Private key",
+    "keepSafe": "Keep safe",
+    "keepSafe1": "Save the private key before leaving this page",
+    "keepSafe2": "Never share it — anyone with it controls the wallet",
+    "keepSafe3": "Generated locally; nothing was stored on a server",
+    "attempts": "attempts",
+    "pattern": "Pattern",
+    "estTime": "Est. time",
+    "keys": "keys",
+    "rate": "rate",
+    "time": "time",
+    "workers": "workers",
+    "tryPattern": "Try a pattern",
+    "recentFinds": "Recent finds",
+    "keySecurity": "Key security",
+    "entropy": "Entropy",
+    "source": "Source",
+    "csprng": "CSPRNG",
+    "browser": "Browser",
+    "prefix": "Prefix",
+    "suffix": "Suffix",
+    "caseSensitive": "Case sensitive",
+    "optional": "Optional",
+    "brand": "Vanitas",
+    "sharePattern": "Share pattern",
+    "shareProof": "Share proof",
+    "proofLinkCopied": "Proof link copied",
+    "forgeAnother": "Forge another",
+    "scrollToForge": "Scroll to forge",
+    "waiting": "Waiting — enter a pattern and forge",
+    "running": "● running",
+    "progressExpected": "{pct}% of expected search",
+    "difficultyGuide": "Guide: 3 chars <5s · 4 chars ~1m · 5 chars ~30m · 6+ hours",
+    "match": "Match",
+    "startsAddress": "Starts the address",
+    "endsAddress": "Ends the address",
+    "howItWorks": "How it works",
+    "liveAudit": "Live audit",
+    "evmForge": "EVM forge",
+    "exportHintSol": "TXT for reading · JSON for Solana CLI / Phantom / Solflare · Share proof never includes keys",
+    "stepMode": "01 — Mode",
+    "stepPattern": "02 — Pattern",
+    "stepMintPattern": "02 — Mint pattern",
+    "stepType": "01 — Type",
+    "stepEstimate": "03 — Estimate",
+    "stepForge": "04 — Forge",
+    "stepLive": "05 — Live",
+    "topics": "Topics",
+    "verified": "Verified",
+    "mismatch": "Mismatch",
+    "chain": "Chain",
+    "stats": "Stats",
+    "statsDisclaimer": "Attempt counts are self-reported by the forger and not cryptographically proven.",
+    "copyProofLink": "Copy proof link",
+    "openForge": "Open forge",
+    "github": "GitHub",
+    "x": "X",
+    "attemptsLabel": "Attempts",
+    "charsDays": "{n} characters can take days or weeks.",
+    "charsHours": "{n} characters may take hours.",
+    "considerSuffix": "Consider suffix-only or case-insensitive."
+  },
+  "nav": {
+    "language": "Language",
+    "home": "Home",
+    "chains": "CHAINS",
+    "docs": "DOCS",
+    "tools": "TOOLS",
+    "menu": "Menu",
+    "close": "Close",
+    "themeToLight": "Switch to light mode",
+    "themeToDark": "Switch to dark mode",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeMobileDarkToLight": "Dark → Light",
+    "themeMobileLightToDark": "Light → Dark",
+    "docsHow": "How",
+    "docsHowHint": "How it works",
+    "docsFaq": "FAQ",
+    "docsFaqHint": "Questions",
+    "docsSecurity": "Security",
+    "docsSecurityHint": "Trust model",
+    "toolsAudit": "Audit",
+    "toolsAuditHint": "Live checks",
+    "toolsProof": "Proof",
+    "toolsProofHint": "Verify a find",
+    "toolsLab": "Lab",
+    "toolsLabHint": "Pattern lab",
+    "toolsLookalike": "Lookalike",
+    "toolsLookalikeHint": "Alphabet traps",
+    "toolsCreate2": "CREATE2",
+    "toolsCreate2Hint": "Init hash + preview",
+    "toolsBrand": "Brand",
+    "toolsBrandHint": "Embed + kit",
+    "brand": "Vanitas",
+    "githubAria": "GitHub repository",
+    "xAria": "Bytebrox on X",
+    "evmSubline": "Ethereum · BNB · Base · Arbitrum · Optimism · + EVM",
+    "chainItems": {
+      "sol": {
+        "label": "Solana",
+        "short": "SOL"
+      },
+      "evm": {
+        "label": "EVM",
+        "short": "EVM"
+      },
+      "btc": {
+        "label": "Bitcoin",
+        "short": "BTC"
+      },
+      "tron": {
+        "label": "Tron",
+        "short": "TRON"
+      },
+      "aptos": {
+        "label": "Aptos",
+        "short": "APTOS"
+      },
+      "sui": {
+        "label": "Sui",
+        "short": "SUI"
+      },
+      "ton": {
+        "label": "TON",
+        "short": "TON"
+      },
+      "cardano": {
+        "label": "Cardano",
+        "short": "ADA"
+      },
+      "xrp": {
+        "label": "XRP",
+        "short": "XRP"
+      }
+    }
+  },
+  "footer": {
+    "blurb": "Client-side vanity tooling for Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano & XRP. No project token. No key leaves this device. Dev’d by [Bytebrox](https://x.com/bytebrox).",
+    "donateSol": "Donate SOL",
+    "solscan": "Solscan",
+    "home": "Home",
+    "security": "Security",
+    "audit": "Audit",
+    "faq": "FAQ",
+    "how": "How",
+    "cli": "CLI",
+    "github": "GitHub",
+    "proof": "Proof",
+    "lab": "Lab",
+    "lookalike": "Lookalike",
+    "create2": "CREATE2",
+    "brand": "Brand",
+    "sol": "SOL",
+    "evm": "EVM",
+    "btc": "BTC",
+    "tron": "TRON",
+    "aptos": "APTOS",
+    "sui": "SUI",
+    "ton": "TON",
+    "ada": "ADA",
+    "xrp": "XRP",
+    "copyright": "© {year}"
+  },
+  "landing": {
+    "eyebrow": "Client-side vanity forge",
+    "title": "Vanitas",
+    "subtitle": "Pick a chain. Keys stay in this browser.",
+    "enterForge": "Enter forge →",
+    "preferTerminal": "Prefer the terminal?",
+    "forges": {
+      "sol": {
+        "name": "Solana",
+        "title": "Wallet & mint",
+        "blurb": "Base58 vanity wallets and token mints."
+      },
+      "evm": {
+        "name": "EVM",
+        "title": "Wallet & contract",
+        "blurb": "One 0x key for every EVM chain.",
+        "aria": "Ethereum, BNB, Base, Arbitrum, Optimism"
+      },
+      "btc": {
+        "name": "Bitcoin",
+        "title": "Legacy · SegWit · Taproot",
+        "blurb": "Vanity 1…, bc1q…, and bc1p… addresses."
+      },
+      "tron": {
+        "name": "Tron",
+        "title": "Wallet & CREATE",
+        "blurb": "Vanity T… addresses for TronLink."
+      },
+      "aptos": {
+        "name": "Aptos",
+        "title": "Ed25519 0x",
+        "blurb": "Hex vanity for Petra & Martian."
+      },
+      "sui": {
+        "name": "Sui",
+        "title": "Ed25519 0x",
+        "blurb": "Hex vanity for Sui Wallet & Suiet."
+      },
+      "ton": {
+        "name": "TON",
+        "title": "Wallet v4R2",
+        "blurb": "Vanity UQ… / EQ… addresses."
+      },
+      "cardano": {
+        "name": "Cardano",
+        "title": "Enterprise addr1",
+        "blurb": "Bech32 vanity payment addresses."
+      },
+      "xrp": {
+        "name": "XRP",
+        "title": "Classic r…",
+        "blurb": "XRPL Base58 vanity addresses."
+      }
+    },
+    "npxVanitas": "npx vanitas"
+  },
+  "forge": {
+    "header": {
+      "wallet": {
+        "eyebrow": "Wallet forge",
+        "title": "Solana",
+        "headline": "Name the address. Keep the key.",
+        "blurb": "Generate a vanity Solana wallet address, entirely in this browser, on your CPU."
+      },
+      "mint": {
+        "eyebrow": "Mint forge",
+        "title": "Solana",
+        "headline": "Name the mint. Launch with presence.",
+        "blurb": "Generate a vanity Solana mint for any launchpad, entirely in this browser."
+      },
+      "evm": {
+        "eyebrow": "0x forge",
+        "title": "EVM",
+        "headline": "Name the 0x. Same key everywhere.",
+        "blurb": "Generate vanity wallet or contract addresses, entirely in this browser. One key works on Ethereum, BNB Smart Chain, Base, Arbitrum, Optimism, and every other EVM chain."
+      },
+      "btc": {
+        "eyebrow": "UTXO forge",
+        "title": "Bitcoin",
+        "headline": "Name the coin. Own the address.",
+        "blurb": "Generate vanity Bitcoin addresses (legacy, SegWit, Taproot), entirely in this browser. Keys never leave this device."
+      },
+      "tron": {
+        "eyebrow": "T forge",
+        "title": "Tron",
+        "headline": "Name the T. Keep the key.",
+        "blurb": "Generate vanity Tron Base58 addresses, entirely in this browser. Import into TronLink and other Tron wallets."
+      },
+      "aptos": {
+        "eyebrow": "0x forge",
+        "title": "Aptos",
+        "headline": "Name the 0x. Keep the key.",
+        "blurb": "Generate vanity Aptos Ed25519 addresses, entirely in this browser. Import into Petra, Martian, and other Aptos wallets."
+      },
+      "sui": {
+        "eyebrow": "0x forge",
+        "title": "Sui",
+        "headline": "Name the 0x. Keep the key.",
+        "blurb": "Generate vanity Sui Ed25519 addresses, entirely in this browser. Import into Sui Wallet, Suiet, and other Sui wallets."
+      },
+      "ton": {
+        "eyebrow": "UQ forge",
+        "title": "TON",
+        "headline": "Name the UQ. Keep the key.",
+        "blurb": "Generate vanity TON Wallet v4R2 addresses (UQ / EQ), entirely in this browser. Import into Tonkeeper and MyTonWallet."
+      },
+      "cardano": {
+        "eyebrow": "addr1 forge",
+        "title": "Cardano",
+        "headline": "Name the addr. Keep the key.",
+        "blurb": "Generate vanity Cardano enterprise addresses (addr1…), entirely in this browser. Payment key only."
+      },
+      "xrp": {
+        "eyebrow": "r forge",
+        "title": "XRP",
+        "headline": "Name the r. Keep the key.",
+        "blurb": "Generate vanity XRP Ledger classic addresses (r…), entirely in this browser. Import into Xaman and other XRPL wallets."
+      }
+    },
+    "modes": {
+      "wallet": "Wallet",
+      "mint": "Mint",
+      "create": "CREATE",
+      "create2": "CREATE2",
+      "legacy": "Legacy",
+      "segwit": "SegWit",
+      "taproot": "Taproot",
+      "uq": "UQ",
+      "eq": "EQ"
+    },
+    "evmChainsNote": "Ethereum · BNB · Base · Arbitrum · Optimism · + EVM",
+    "solDownloadTxtTitle": "VANITAS - SOLANA KEYPAIR",
+    "solDownloadImportant": "IMPORTANT:\n- Never share your private key\n- Store this file securely\n- This keypair was generated locally in your browser",
+    "scrollToForge": "Scroll to forge",
+    "sideCaptions": {
+      "solWallet": "Fig. I — Amphitheatre",
+      "solMint": "Fig. II — Temple",
+      "evm": "Fig. VII — Forum",
+      "btc": "Fig. VIII — Coin",
+      "tron": "Fig. IX — Circuit",
+      "aptos": "Fig. XI — Lattice",
+      "sui": "Fig. XII — Current",
+      "ton": "Fig. XIII — Signal",
+      "cardano": "Fig. XII — Ledger",
+      "xrp": "Fig. XIV — Ledger"
+    },
+    "steps": {
+      "mode": "01 — Mode",
+      "pattern": "02 — Pattern",
+      "estimate": "03 — Estimate",
+      "forge": "04 — Forge",
+      "live": "05 — Live"
+    },
+    "stepsCompact": {
+      "pattern": "01 — Pattern",
+      "estimate": "02 — Estimate",
+      "forge": "03 — Forge",
+      "live": "04 — Live"
+    },
+    "links": {
+      "sharePattern": "Share pattern",
+      "howItWorks": "How it works",
+      "liveAudit": "Live audit",
+      "evmForge": "EVM forge",
+      "proofOfFind": "Proof of find"
+    },
+    "sol": {
+      "mintAfterForge": "After forging: copy the private key into your launchpad's custom mint field (pump.fun, Raydium, Meteora, …).",
+      "mode": {
+        "target": "Target",
+        "walletTarget": "Wallet address",
+        "mintTarget": "Token mint address",
+        "toggleAria": "Toggle wallet or mint address",
+        "mintHelp": "Forges a vanity Solana mint keypair for launchpads (pump.fun, Raydium, Meteora, …). Paste the private key into the custom-mint field.",
+        "walletHelp": "Forges a vanity Solana wallet keypair — Base58 address, entirely in this browser."
+      }
+    },
+    "eth": {
+      "create2Params": "CREATE2 parameters",
+      "initHash": "Init hash",
+      "initHashPh": "keccak256(initCode) — 64 hex",
+      "salt": "Salt",
+      "saltPh": "32-byte salt — 64 hex",
+      "deployerKey": "Deployer key",
+      "deployerKeyPh": "Deployer private key — 64 hex",
+      "footnote": "Same 0x key on Ethereum, BNB Smart Chain, Base, Arbitrum, Optimism, Polygon, and every other EVM network. Solana forges live on [SOL](/sol).",
+      "mode": {
+        "target": "Target",
+        "walletBlurb": "EOA 0x address on every EVM chain.",
+        "createBlurb": "First deploy (nonce 0) contract address.",
+        "c2SaltBlurb": "Fixed deployer + initCodeHash; grind salt.",
+        "c2KeyBlurb": "Fixed salt + initCodeHash; grind deployer key.",
+        "c2Salt": "C2 Salt",
+        "c2Key": "C2 Key"
+      }
+    },
+    "btc": {
+      "stepType": "01 — Type",
+      "mode": {
+        "addressType": "Address type",
+        "legacyBlurb": "Classic 1… P2PKH (Base58).",
+        "segwitBlurb": "Native bc1q… P2WPKH (Bech32).",
+        "taprootBlurb": "Native bc1p… P2TR (Bech32m)."
+      },
+      "pattern": {
+        "legacyHint": "Legacy addresses start with 1 — type BTC to search for 1BTC… (the leading 1 is added automatically).",
+        "segwitHint": "SegWit addresses start with bc1q — type a body like “cafe”, or the full bc1q… prefix.",
+        "taprootHint": "Taproot addresses start with bc1p — type a body like “cafe”, or the full bc1p… prefix.",
+        "caseNote": "Off (recommended for lowercase patterns): after 1, lowercase is extremely rare when Case sensitive is on."
+      }
+    },
+    "tron": {
+      "mode": {
+        "walletBlurb": "Account Base58 address (T…).",
+        "createBlurb": "First-deploy contract address (CREATE nonce 0)."
+      }
+    },
+    "ton": {
+      "mode": {
+        "addressForm": "Address form",
+        "uqWallet": "UQ Wallet",
+        "uqBlurb": "Non-bounceable wallet address (recommended).",
+        "eqBlurb": "Bounceable form of the same Wallet v4R2 account."
+      }
+    },
+    "pattern": {
+      "solPrefixPh": "SOL",
+      "solSuffixPh": "xyz",
+      "solAlphabet": "Base58 only — no `0 O I`. Alphabet: `1-9 A-H J-N P-Z a-k m-z`",
+      "ethHexNote": "EVM addresses are hex only — digits `0–9` and letters `a–f`. Letters `g–z` (and any other characters) cannot appear in an address and are ignored when you type them.",
+      "ethIgnored": "Ignored: {chars}",
+      "ethPrefixPh": "dead",
+      "ethSuffixPh": "beef",
+      "ethAfter0x": "Starts after 0x",
+      "ethCaseNote": "Matching is case-insensitive. Longer patterns take exponentially longer (16 possibilities per character)."
+    },
+    "cardano": {
+      "headerBlurb": "Generate vanity Cardano enterprise addresses (addr1…), entirely in this browser. Payment key only."
+    },
+    "xrp": {
+      "headerBlurb": "Generate vanity XRP Ledger classic addresses (r…), entirely in this browser. Import into Xaman and other XRPL wallets."
+    }
+  },
+  "tools": {
+    "lab": {
+      "title": "Pattern lab",
+      "description": "See how rare a pattern is before you mine — then queue jobs and open the forge.",
+      "eyebrow": "Tools",
+      "caption": "Fig. — Lab",
+      "toc": {
+        "composer": "Composer",
+        "matrix": "Matrix",
+        "queue": "Queue"
+      },
+      "sectionPattern": "Pattern",
+      "sectionRarity": "Rarity",
+      "sectionBatch": "Batch",
+      "addQueue": "Add to queue",
+      "openForge": "Open {chain} forge →",
+      "queueEmpty": "Empty",
+      "queueEmptyHint": "Add a pattern above to compare jobs.",
+      "remove": "Remove",
+      "exportJson": "Export JSON",
+      "clear": "Clear",
+      "prefixPh": "Ace",
+      "suffixPh": "optional",
+      "composerN": "01 — Composer",
+      "matrixN": "02 — Matrix",
+      "queueN": "03 — Queue",
+      "forge": "Forge",
+      "exportWarning": "Patterns only — no private keys."
+    },
+    "lookalike": {
+      "title": "Lookalike check",
+      "description": "Catch forbidden Base58 glyphs, Tron case traps, XRPL alphabet mismatches, and human lookalikes before you burn CPU on an impossible pattern.",
+      "eyebrow": "Tools",
+      "caption": "Fig. — Glyphs",
+      "toc": {
+        "check": "Check",
+        "findings": "Findings",
+        "alphabets": "Alphabets"
+      },
+      "sectionCheckN": "01 — Check",
+      "sectionFindingsN": "02 — Findings",
+      "sectionAlphabetsN": "03 — Alphabets",
+      "sectionPatternForge": "Pattern & forge",
+      "pattern": "Pattern",
+      "patternPh": "prefix or fragment",
+      "sectionSpotted": "What we spotted",
+      "findingsEmptyTitle": "Enter a pattern",
+      "findingsEmptyDetail": "Paste a prefix, suffix, or full vanity fragment to check.",
+      "readyGrind": "Ready to grind? Open [Pattern Lab](/lab) or the matching forge.",
+      "sectionCharset": "Charset cheat sheet",
+      "tocCheck": "Check",
+      "tocFindings": "Findings",
+      "tocAlphabets": "Alphabets",
+      "sectionCheckTitle": "Pattern & forge",
+      "sectionFindingsTitle": "What we spotted",
+      "sectionAlphabetsTitle": "Charset cheat sheet",
+      "patternLabel": "Pattern",
+      "severity": {
+        "error": "Error",
+        "warn": "Warning",
+        "info": "Info"
+      },
+      "chains": {
+        "sol": {
+          "label": "Solana",
+          "notes": "Bitcoin-style Base58 — no 0, O, I, l"
+        },
+        "evm": {
+          "label": "EVM",
+          "notes": "Hex only (0-9, a-f), case-insensitive"
+        },
+        "btc-legacy": {
+          "label": "Bitcoin Legacy",
+          "notes": "Base58 P2PKH / P2SH"
+        },
+        "btc-bech32": {
+          "label": "Bitcoin Bech32",
+          "notes": "bc1q / bc1p body charset"
+        },
+        "tron": {
+          "label": "Tron",
+          "notes": "Base58 T… — case-sensitive; early chars usually uppercase"
+        },
+        "aptos": {
+          "label": "Aptos",
+          "notes": "0x + 64 hex"
+        },
+        "sui": {
+          "label": "Sui",
+          "notes": "0x + 64 hex"
+        },
+        "ton": {
+          "label": "TON",
+          "notes": "Base64url — case-sensitive"
+        },
+        "cardano": {
+          "label": "Cardano",
+          "notes": "addr1… bech32 body"
+        },
+        "xrp": {
+          "label": "XRP",
+          "notes": "XRPL Base58 — different from Bitcoin/Solana"
+        }
+      },
+      "pairNotes": {
+        "zeroO": "zero vs capital O",
+        "zeroo": "zero vs lowercase o",
+        "oneL": "one vs lowercase L",
+        "oneI": "one vs capital i",
+        "onei": "one vs lowercase i",
+        "fiveS": "five vs S",
+        "eightB": "eight vs B"
+      },
+      "findings": {
+        "empty": {
+          "title": "Enter a pattern",
+          "detail": "Paste a prefix, suffix, or full vanity fragment to check."
+        },
+        "invalidAlphabet": {
+          "title": "Characters not in this alphabet",
+          "detail": "Invalid: {chars}. {notes}"
+        },
+        "base58Banned": {
+          "title": "Base58 never uses 0, O, I, or l",
+          "detail": "These glyphs were removed from Bitcoin-style Base58 to avoid lookalikes. This pattern cannot match."
+        },
+        "xrplVsBtc": {
+          "title": "Bitcoin Base58 chars used on XRPL alphabet",
+          "detail": "XRPL classic addresses use a different Base58 alphabet. Offending: {chars}"
+        },
+        "xrplCharset": {
+          "title": "XRPL-specific characters",
+          "detail": "These appear in XRPL Base58 but not Bitcoin Base58: {chars}"
+        },
+        "sharedGlyphs": {
+          "title": "Glyphs exist in both Base58 alphabets",
+          "detail": "Characters overlap, but encodings still differ. Do not reuse a Solana/BTC vanity string on XRP without re-checking."
+        },
+        "notXrpl": {
+          "title": "Would not work on XRPL as-is",
+          "detail": "This Bitcoin/Solana Base58 pattern uses glyphs missing from the XRPL alphabet."
+        },
+        "tronCase": {
+          "title": "Lowercase early pattern on Tron",
+          "detail": "Tron addresses start with T and the next characters are usually uppercase Base58. Short lowercase prefixes often never match — try uppercase or a longer suffix."
+        },
+        "tronLeadingT": {
+          "title": "Leading lowercase t",
+          "detail": "Classic Tron addresses start with capital T. Prefer T… or omit the T if the forge auto-handles it."
+        },
+        "pair": {
+          "title": "Mixed lookalikes: {a} and {b}",
+          "detail": "{note}. Easy to mistype when sharing the address aloud or in screenshots."
+        },
+        "safe": {
+          "title": "{present} is in-alphabet; {absent} is not",
+          "detail": "{note}. Recipients still confuse them visually — spell carefully when sharing."
+        },
+        "hexCase": {
+          "title": "Mixed hex case",
+          "detail": "Matching is case-insensitive. Mixed case is fine for display (checksum) but not required for grinding."
+        },
+        "tonCase": {
+          "title": "TON patterns are case-sensitive",
+          "detail": "Base64url distinguishes A and a. Mixed case multiplies difficulty and is easy to mistype."
+        },
+        "clean": {
+          "title": "No alphabet collisions detected",
+          "detail": "All characters fit {label}. Still double-check the live forge warnings before a long grind."
+        }
+      }
+    },
+    "create2": {
+      "title": "CREATE2 helper",
+      "description": "Derive initCodeHash from deployment bytecode, preview the CREATE2 address for a deployer and salt, then jump into the EVM forge. Keys stay local.",
+      "eyebrow": "Tools",
+      "caption": "Fig. — CREATE2",
+      "toc": {
+        "hash": "Hash",
+        "preview": "Preview",
+        "forge": "Forge"
+      },
+      "sectionHashN": "01 — Hash",
+      "sectionHashTitle": "Bytecode → initCodeHash",
+      "sectionPreviewN": "02 — Preview",
+      "sectionPreviewTitle": "Address preview",
+      "sectionForgeN": "03 — Forge",
+      "sectionForgeTitle": "Open EVM forge",
+      "hashIntro": "Paste the creation bytecode (init code) that will be deployed. We compute `keccak256(initCode)` in this browser.",
+      "initCodeLabel": "Init code (hex)",
+      "initCodePh": "0x6080604052…",
+      "initCodeHashLabel": "Init code hash (32 bytes)",
+      "initCodeHashPh": "0x…",
+      "initCodeHashResult": "Init code hash · {bytes} bytes",
+      "deployerLabel": "Deployer",
+      "deployerPh": "0x…",
+      "saltLabel": "Salt",
+      "saltPh": "0x… or empty = zero salt",
+      "create2Address": "CREATE2 address",
+      "wantedPrefix": "Wanted prefix",
+      "wantedSuffix": "Wanted suffix",
+      "prefixPh": "cafe",
+      "suffixPh": "optional",
+      "patternMatch": "Pattern match",
+      "patternMismatch": "Preview address does not match this pattern — keep grinding salt or deployer.",
+      "useInPreview": "Use in preview",
+      "forgeIntro": "Deep-link into the EVM forge with your hash and pattern. Wrong initCodeHash means a wrong on-chain address.",
+      "grindSalt": "Grind salt",
+      "grindDeployer": "Grind deployer",
+      "evmForge": "EVM forge",
+      "tocHash": "Hash",
+      "tocPreview": "Preview",
+      "tocForge": "Forge",
+      "prefixLabel": "Prefix",
+      "suffixLabel": "Suffix",
+      "predictedAddress": "Predicted address",
+      "patternMiss": "Pattern mismatch",
+      "invalidDeployer": "Invalid deployer or hash",
+      "openSaltForge": "Grind salt in forge",
+      "openDeployerForge": "Grind deployer in forge"
+    },
+    "brand": {
+      "title": "Brand",
+      "description": "Embed proof cards on launchpads and docs, plus a light branding kit — wordmark, colors, and copy. Never includes private keys.",
+      "eyebrow": "Tools",
+      "embedIntro": "Paste chain, address, and pattern (from a find or a demo). We build an iframe that verifies the match client-side — same rules as [/proof](/proof).",
+      "badgeLine": "Proof verified client-side · vanitas.fun",
+      "caption": "Fig. — Brand",
+      "toc": {
+        "embed": "Embed",
+        "preview": "Preview",
+        "kit": "Kit",
+        "copy": "Copy"
+      },
+      "sectionEmbedN": "01 — Embed",
+      "sectionEmbedTitle": "Proof widget",
+      "address": "Address",
+      "prefix": "Prefix",
+      "suffix": "Suffix",
+      "paperTheme": "Paper theme",
+      "inkTheme": "Ink theme",
+      "compact": "Compact",
+      "iframeSnippet": "Iframe snippet",
+      "copyIframe": "Copy iframe",
+      "copyEmbedUrl": "Copy embed URL",
+      "copyProofUrl": "Copy full proof URL",
+      "sectionPreviewN": "02 — Preview",
+      "sectionPreviewTitle": "Live card",
+      "previewBody": "Framed preview of `/embed/proof`. Demo address may show mismatch until you paste a real find.",
+      "iframeTitle": "Vanitas proof",
+      "previewIframeTitle": "Vanitas proof preview",
+      "sectionKitN": "03 — Kit",
+      "sectionKitTitle": "Branding kit",
+      "kitIntro": "Use Vanitas marks when linking proofs or forges. Do not imply custody, partnership, or audited-by-Vanitas unless true.",
+      "wordmark": "Wordmark",
+      "wordmarkNote": "Display / serif weight — hero-level when branded alone",
+      "paper": "Paper",
+      "paperNote": "Primary ground",
+      "ink": "Ink",
+      "inkNote": "Body + chrome",
+      "accent": "Accent",
+      "accentValue": "site accent token",
+      "accentNote": "Links / verified states — keep sparing",
+      "site": "Site",
+      "siteNote": "Prefer www.vanitas.fun for canonical links",
+      "badgeHeading": "Badge line",
+      "copyBadge": "Copy badge line",
+      "sectionCopyN": "04 — Copy",
+      "sectionCopyTitle": "Suggested blurbs",
+      "shortLabel": "Short",
+      "shortBlurb": "Vanity address forged locally with Vanitas — keys never leave the device. Pattern match verified client-side.",
+      "launchpadLabel": "Launchpad",
+      "launchpadBlurb": "Custom mint / vanity wallet generated in-browser via vanitas.fun. Share the proof link to let anyone verify the pattern — private keys stay off the page.",
+      "linkProof": "Proof page",
+      "linkLab": "Pattern lab",
+      "linkSecurity": "Security"
+    },
+    "proof": {
+      "title": "Public match check",
+      "description": "Verify a vanity match client-side — keys never included.",
+      "eyebrow": "Proof of find",
+      "intro": "This page verifies that an address matches a claimed pattern. It never contains private keys. Anyone can open the link and re-check client-side.",
+      "emptyIntro": "No proof data in the URL. After you forge an address, use **Share proof** on the result screen. Or forge first:",
+      "address": "Address",
+      "pattern": "Pattern"
+    },
+    "embedProof": {
+      "eyebrow": "Vanitas proof",
+      "brand": "Vanitas",
+      "missingParams": "Missing proof parameters.",
+      "openProof": "Open proof",
+      "site": "vanitas.fun"
+    },
+    "audit": {
+      "title": "Audit",
+      "description": "Runtime checks and worker hash compare.",
+      "eyebrow": "Live checks",
+      "caption": "Fig. VI — Forum",
+      "descriptionIdle": "Eight local checks. Nothing is faked, nothing is sent to a server. Green means good.",
+      "descriptionPass": "Eight local checks — clear. Nothing is faked, nothing is sent to a server.",
+      "descriptionFail": "Eight local checks — {failed} issue(s). Green means good.",
+      "checksTotal": "{total} checks",
+      "passedSummary": "{passed}/{total} passed",
+      "buildIntegrity": "Build integrity",
+      "workerFingerprintIntro": "Each forge worker has a SHA-256 fingerprint published in `worker-hash.json`. The integrity test above verifies Solana, EVM, Bitcoin, and Tron against this list.",
+      "verifyYourself": "Verify yourself",
+      "verifyStep1": "1. Review source linked from [vanitas.fun](https://vanitas.fun)",
+      "verifyStep2": "2. Build worker: `npm run build:worker`",
+      "verifyStep3": "3. Compare `public/worker-hash.json` with the hash above",
+      "hashLoading": "Loading…",
+      "hashUnavailable": "unavailable",
+      "start": "Start audit",
+      "runAgain": "Run again",
+      "running": "Running…",
+      "whatIsThis": "What is this?",
+      "whatIsThisBody": "When you use Vanitas, a private key is created on your device. These **8 automated checks** prove generation stays local, randomness is real, and nothing leaves for the network.",
+      "workerFingerprint": "Worker fingerprint",
+      "networkMonitor": "Live network monitor",
+      "monitor": {
+        "transparency": "Transparency",
+        "intro": "Every network request this page makes. If key data were leaving, you would see it here.",
+        "stop": "● Stop",
+        "restart": "Restart",
+        "startMonitoring": "Start monitoring",
+        "requests": "{count} requests",
+        "requestSingular": "1 request",
+        "noSuspicious": "No suspicious external requests",
+        "externalCount": "{count} external",
+        "colType": "Type",
+        "colUrl": "URL",
+        "colSize": "Size",
+        "colTime": "Time",
+        "footerSafe": "All requests go to this domain or Google Fonts (for typography). No data is sent to third-party servers.",
+        "footerWarning": "Warning: Unexpected external requests detected. This could indicate a security issue.",
+        "emptyHint": "Click \"Start Monitoring\" to see every network request this page makes.",
+        "emptySubhint": "Navigate around the site with monitoring on — you'll see exactly what gets loaded.",
+        "activeHint": "Monitoring active — waiting for network requests..."
+      },
+      "tests": {
+        "webcrypto": {
+          "name": "Web Crypto API",
+          "description": "Native Ed25519 support in your browser",
+          "why": "This is the technology that creates your keys. If your browser supports it natively, address generation is up to 125x faster than alternatives."
+        },
+        "csprng": {
+          "name": "Random Number Generator",
+          "description": "Cryptographically secure random number generator",
+          "why": "Your private key is essentially a giant random number. If the randomness is weak or predictable, someone could guess your key. This test makes sure the random generator works correctly."
+        },
+        "entropy": {
+          "name": "Randomness Quality",
+          "description": "Statistical test on 10,000 random bytes",
+          "why": "We generate 10,000 random numbers and check if they're evenly distributed — like rolling a fair dice thousands of times. If some numbers come up way more often, something is wrong."
+        },
+        "network": {
+          "name": "Zero Network Traffic",
+          "description": "No data leaves your browser during key generation",
+          "why": "The most important check: we verify that absolutely nothing is sent to the internet while keys are being generated. Your private key should never leave your device."
+        },
+        "csp": {
+          "name": "Security Headers",
+          "description": "Content Security Policy restricts data exfiltration",
+          "why": "Even if malicious code were injected, these browser-level rules block it from sending data anywhere. Think of it as a firewall built into the website itself."
+        },
+        "worker": {
+          "name": "Worker Isolation",
+          "description": "Key generation runs in isolated background threads",
+          "why": "Your keys are created in separate \"workers\" — isolated mini-programs that run in the background. They can't access the main page and can't be tampered with by browser extensions."
+        },
+        "integrity": {
+          "name": "Code Integrity",
+          "description": "SHA-256 fingerprints match all published forge workers",
+          "why": "We hash every key-generation worker (Solana, EVM, Bitcoin, Tron, Aptos, Sui) and compare each to worker-hash.json from the open build. If they match, the code hasn't been tampered with."
+        },
+        "keygen": {
+          "name": "Key Generation Test",
+          "description": "Generate and validate an actual Ed25519 keypair",
+          "why": "The final proof: we create a real key, sign a message with it, then verify the signature. If this works, your browser can securely generate Solana addresses."
+        }
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "Docs",
+    "title": "FAQ",
+    "description": "Answers across every forge — patterns, modes, security, proof links, CLI, and day-to-day usage. Use the submenu to jump by topic.",
+    "categories": {
+      "general": {
+        "label": "General",
+        "n": "01",
+        "items": {
+          "what": {
+            "q": "What is a vanity address?",
+            "a": "A cryptocurrency address that contains a pattern you choose — for example starting with `VANI` on Solana or `0xcafe` on EVM. It is cosmetic branding on top of a normal keypair."
+          },
+          "fake": {
+            "q": "Does Vanitas create “fake” addresses?",
+            "a": "No. Every forge produces standard keys for that chain. Import into a matching wallet and they work like any randomly generated address — they just look intentional."
+          },
+          "which": {
+            "q": "Which forges exist?",
+            "a": "Nine web forges — Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano, XRP — plus `npx vanitas` for the terminal. See [How it works → Chains](/how-it-works#chains)."
+          },
+          "howLong": {
+            "q": "How long will my pattern take?",
+            "a": "Expected attempts grow exponentially with length and alphabet size. Hex (16 chars) is denser than Base58 (~58). Use the on-page difficulty estimate; start with 3–4 characters before chasing long brands."
+          },
+          "prefixSuffix": {
+            "q": "Can I use prefix and suffix together?",
+            "a": "Yes — both constraints multiply difficulty. Prefer one strong side (prefix or suffix) unless you have time and hash rate to spare."
+          }
+        }
+      },
+      "solana": {
+        "label": "Solana",
+        "n": "02",
+        "items": {
+          "produce": {
+            "q": "What does the Solana forge produce?",
+            "a": "Ed25519 keypairs as Base58 addresses (same family as Phantom / Solflare). Export as Solana CLI JSON byte arrays for easy import."
+          },
+          "walletMint": {
+            "q": "Wallet vs mint mode?",
+            "a": "Same cryptography. **Wallet** is for personal addresses; **Mint** is labeled for launchpad custom-mint fields (pump.fun, Raydium, Meteora, …). Open [/sol?mode=mint](/sol?mode=mint)."
+          },
+          "base58": {
+            "q": "Why can’t I use 0, O, I, or l?",
+            "a": "Base58 excludes look-alike characters. Patterns containing them can never appear in a real Solana address."
+          },
+          "pump": {
+            "q": "Do mints need to end with “pump”?",
+            "a": "No. That suffix is marketing, not a protocol rule. Any valid Base58 vanity pattern works if the launchpad accepts a custom mint keypair."
+          }
+        }
+      },
+      "evm": {
+        "label": "EVM",
+        "n": "03",
+        "items": {
+          "networks": {
+            "q": "Which networks does an EVM vanity key work on?",
+            "a": "All EVM-compatible chains share the same address derivation. One key → one `0x` address on Ethereum, Base, Arbitrum, Optimism, BSC, Polygon, Avalanche C-Chain, and others."
+          },
+          "modes": {
+            "q": "What are wallet, CREATE, and CREATE2 modes?",
+            "a": "**Wallet** — vanity EOA address.\n**CREATE** — vanity address of the first contract from that key (nonce 0).\n**CREATE2** — grind salt (fixed deployer) or grind deployer (fixed salt) given an init code hash."
+          },
+          "bnb": {
+            "q": "Do I need a separate BNB generator?",
+            "a": "No for BNB Smart Chain (EVM). Old Beacon Chain `bnb1` bech32 addresses are out of scope."
+          }
+        }
+      },
+      "bitcoin": {
+        "label": "Bitcoin",
+        "n": "04",
+        "items": {
+          "types": {
+            "q": "Which address types are supported?",
+            "a": "Mainnet legacy `1…`, SegWit `bc1q…`, and Taproot `bc1p…`. Export includes compressed WIF."
+          },
+          "leading": {
+            "q": "Do I type the leading 1 / bc1q myself?",
+            "a": "Optional. The UI auto-prepends the fixed version / HRP when your prefix does not already include it."
+          },
+          "lightning": {
+            "q": "Lightning invoices?",
+            "a": "Out of scope — forge addresses, not BOLTs."
+          }
+        }
+      },
+      "tron": {
+        "label": "Tron",
+        "n": "05",
+        "items": {
+          "get": {
+            "q": "What do I get from the Tron forge?",
+            "a": "Mainnet Base58Check `T…` addresses from secp256k1 keys — wallet or CREATE (nonce 0). Leading `T` is added automatically for prefixes."
+          },
+          "case": {
+            "q": "Why does a lowercase case-sensitive prefix never find?",
+            "a": "After `T`, the next character is almost always uppercase or a digit. Leave case sensitivity off unless you need an exact case match. Base58 also excludes O, I, l."
+          }
+        }
+      },
+      "aptos-sui": {
+        "label": "Aptos & Sui",
+        "n": "06",
+        "items": {
+          "differ": {
+            "q": "How do Aptos and Sui differ?",
+            "a": "Both use Ed25519 and hex addresses, but hashing differs: Aptos uses `sha3-256(pubkey ‖ 0x00)`; Sui uses `blake2b-256(0x00 ‖ pubkey)`. Keys are not interchangeable across ecosystems."
+          },
+          "wallets": {
+            "q": "Which wallets can import them?",
+            "a": "Aptos: Petra, Martian, and similar. Sui: Sui Wallet, Suiet, and others that accept hex private keys."
+          }
+        }
+      },
+      "ton-cardano-xrp": {
+        "label": "TON · Cardano · XRP",
+        "n": "07",
+        "items": {
+          "ton": {
+            "q": "TON UQ vs EQ?",
+            "a": "Non-bounceable (`UQ…`) vs bounceable (`EQ…`) user-friendly forms of Wallet v4R2. Matching is case-sensitive."
+          },
+          "cardano": {
+            "q": "What Cardano address type is forged?",
+            "a": "Enterprise mainnet `addr1…` (CIP-19 type 6 — payment key only, no stake delegation in the address)."
+          },
+          "xrp": {
+            "q": "Is XRP the same Base58 as Bitcoin?",
+            "a": "No. XRPL classic addresses use a different Base58 alphabet. Vanitas encodes `r…` classics from secp256k1 keys."
+          }
+        }
+      },
+      "security": {
+        "label": "Security",
+        "n": "08",
+        "items": {
+          "store": {
+            "q": "Do you store my private keys?",
+            "a": "No. Keys never leave the browser memory of your session. See the [Security](/security) page for architecture and threat model."
+          },
+          "verify": {
+            "q": "How do I verify that?",
+            "a": "1. DevTools → Network while mining — no key traffic\n2. Airplane mode after load\n3. [Live audit](/audit) + worker hash compare"
+          },
+          "weaker": {
+            "q": "Are vanity keys weaker?",
+            "a": "No. Private keys still have full CSPRNG entropy. Only the public encoding is filtered."
+          },
+          "extensions": {
+            "q": "What about browser extensions?",
+            "a": "Extensions can still snoop on a page. For high-value keys use a clean profile, the CLI, or an offline machine. Details: [Security → Browser](/security#browser)."
+          },
+          "report": {
+            "q": "Where do I report vulnerabilities?",
+            "a": "Private GitHub Security Advisories — never public issues. See [Security → Disclose](/security#disclose)."
+          }
+        }
+      },
+      "proof-cli": {
+        "label": "Proof & CLI",
+        "n": "09",
+        "items": {
+          "proof": {
+            "q": "What is Proof of find?",
+            "a": "A shareable [/proof](/proof) link with address + pattern (and optional stats). Anyone can verify the match client-side. Private keys are never included."
+          },
+          "cli": {
+            "q": "How do I run the CLI?",
+            "a": "`npx vanitas` for a wizard, or flags like `npx vanitas sol --prefix Ace --threads 8`. Supports the same deploy modes as the web app (mint, CREATE, CREATE2 flags)."
+          }
+        }
+      },
+      "usage": {
+        "label": "Usage",
+        "n": "10",
+        "items": {
+          "import": {
+            "q": "How do I import into Phantom / MetaMask / etc.?",
+            "a": "Use the export format for that forge: Solana JSON for Phantom/Solflare, hex for most EVM wallets, WIF for many Bitcoin wallets, chain-specific hex/Base58 elsewhere. Always do a tiny test transfer first."
+          },
+          "pause": {
+            "q": "Can I pause and resume?",
+            "a": "You can stop anytime; resume is a fresh search (no checkpoint of prior attempts)."
+          },
+          "disabled": {
+            "q": "Why is Start disabled?",
+            "a": "Empty pattern, invalid characters for that alphabet, or pattern too long. Fix the validation message under the inputs."
+          },
+          "freeze": {
+            "q": "UI freezes while mining?",
+            "a": "Lower the thread count. Workers should keep the UI alive, but saturating every core on a small laptop can still feel sluggish."
+          }
+        }
+      }
+    },
+    "sideCaption": "Fig. IV — Landscape",
+    "topics": "Topics",
+    "stillStuck": "Still stuck?",
+    "stillStuckBody": "Deep technical detail lives in How it works. Trust model and threat notes live on Security. Integrity checks live on Audit.",
+    "linkHow": "How it works",
+    "linkSecurity": "Security",
+    "linkAudit": "Live audit",
+    "glyphs": {
+      "general": "Fig. — Scroll",
+      "solana": "Fig. — Colonnade",
+      "evm": "Fig. — Modes",
+      "bitcoin": "Fig. — Key",
+      "tron": "Fig. — Forge",
+      "aptos-sui": "Fig. — Loop",
+      "ton-cardano-xrp": "Fig. — Stele",
+      "security": "Fig. — Shield",
+      "proof-cli": "Fig. — Seal",
+      "usage": "Fig. — Time"
+    }
+  },
+  "docs": {
+    "howItWorks": {
+      "eyebrow": "Docs",
+      "title": "How it works",
+      "description": "A full tour of Vanitas: how vanity mining works, what each forge produces, how workers search in parallel, and how to verify that nothing leaves your machine.",
+      "sideCaption": "Fig. III — Orator",
+      "overview": {
+        "title": "What Vanitas is",
+        "p1": "**Vanitas** is a client-side multi-chain vanity address forge. You choose a prefix and/or suffix; the app searches for a keypair whose public address matches that pattern. Generation runs in **Web Workers on your CPU**. Private keys are created in memory on your device and are never uploaded.",
+        "p2": "A vanity address is still a normal cryptographic address. The private key is random; only the public encoding is filtered until it looks the way you want — useful for branding, donations, mints, and memorable public wallets."
+      },
+      "pipeline": {
+        "title": "The search loop",
+        "intro": "Every forge follows the same high-level loop, repeated millions of times:",
+        "whySecure": "Searching for a vanity address does **not** weaken the private key. You are rejecting candidates until the public address looks right — the same process as generating random keys and keeping the lucky one."
+      },
+      "reminder": {
+        "label": "Reminder",
+        "body": "Save your private key before closing the tab. Lost keys cannot be recovered. For large balances: test with a small transfer first, prefer hardware wallets for long-term custody, and never paste keys into untrusted sites."
+      },
+      "toc": {
+        "overview": "Overview",
+        "pipeline": "Pipeline",
+        "patterns": "Patterns",
+        "chains": "Chains",
+        "modes": "Modes",
+        "workers": "Workers",
+        "proof": "Proof",
+        "cli": "CLI",
+        "verify": "Verify"
+      },
+      "sections": {
+        "overview": {
+          "n": "01 — Overview",
+          "title": "What Vanitas is",
+          "glyph": "Fig. A — Key",
+          "ledger": {
+            "where": {
+              "label": "Where",
+              "value": "Your browser · your CPU",
+              "note": "Static hosting only; mining makes no network calls"
+            },
+            "forges": {
+              "label": "Forges",
+              "value": "9 chains + terminal CLI",
+              "note": "Solana · EVM · Bitcoin · Tron · Aptos · Sui · TON · Cardano · XRP"
+            },
+            "output": {
+              "label": "Output",
+              "value": "Address + private key",
+              "note": "Export formats depend on the forge (JSON, hex, WIF, …)"
+            }
+          }
+        },
+        "pipeline": {
+          "n": "02 — Pipeline",
+          "title": "The search loop",
+          "glyph": "Fig. B — Loop",
+          "steps": [
+            "Draw a cryptographically secure random private key (`crypto.getRandomValues`).",
+            "Derive the public key with the chain's curve (Ed25519 or secp256k1).",
+            "Encode the address the way that chain expects (Base58, hex, bech32, …).",
+            "Compare against your prefix / suffix (and mode rules).",
+            "On match: stop workers, show the result, optional sound / proof / export."
+          ],
+          "workersNote": "Workers run this loop in parallel across CPU cores. The UI thread stays responsive; progress (attempts, rate, ETA) is aggregated from worker messages. When one worker finds a hit, the pool is terminated.",
+          "whySecureTitle": "Why this is secure"
+        },
+        "patterns": {
+          "n": "03 — Patterns",
+          "title": "Difficulty, alphabets, warnings",
+          "glyph": "Fig. C — Time",
+          "intro": "Expected time scales with pattern length and alphabet size. Each extra character multiplies the search space. The forge UI shows a live difficulty estimate based on your pattern and a measured or assumed hash rate.",
+          "ledger": {
+            "base58": {
+              "label": "Base58",
+              "value": "~58 symbols",
+              "note": "Solana, Tron, XRP (XRPL alphabet), Bitcoin legacy"
+            },
+            "hex": {
+              "label": "Hex",
+              "value": "16 symbols (0–9, a–f)",
+              "note": "EVM, Aptos, Sui — case-insensitive for matching"
+            },
+            "bech32": {
+              "label": "Bech32",
+              "value": "bc1q / bc1p / addr1…",
+              "note": "Bitcoin SegWit/Taproot, Cardano — fixed HRP, then charset"
+            },
+            "ton": {
+              "label": "TON",
+              "value": "Base64url",
+              "note": "UQ… / EQ… — case-sensitive"
+            }
+          },
+          "trapsTitle": "Alphabet traps",
+          "traps": [
+            "**Solana / Bitcoin Base58** — no `0`, `O`, `I`, or `l` (look-alike rejection).",
+            "**EVM** — only hex after `0x`. Letters beyond `a–f` are invalid.",
+            "**Tron** — addresses start with `T`; the next character is usually uppercase. Case-sensitive lowercase prefixes often never match.",
+            "**Prefix + suffix** — both constraints multiply difficulty. Start short; grow the pattern once you know your rate."
+          ]
+        },
+        "chains": {
+          "n": "04 — Chains",
+          "title": "Every forge, explained",
+          "glyph": "Fig. D — Forges",
+          "intro": "Nine forges share the same UX pattern — pick a mode, set a pattern, start workers — but each chain uses different curves, hashes, and address encodings.",
+          "sol": "Ed25519 keypairs encoded as Base58 (32-byte public key). Native Web Crypto Ed25519 is used when the browser supports it; otherwise a WASM fallback (`watsign`). Modes: **wallet** and **mint** — same key math; mint framing is for launchpad custom-mint flows. Export: Solana CLI JSON byte array.",
+          "evm": "secp256k1 → uncompressed pubkey → keccak-256 → last 20 bytes → `0x…` address. One private key yields the same address on Ethereum, Base, Arbitrum, Optimism, BSC, Polygon, and every other EVM network. Modes: wallet (EOA), CREATE at nonce 0, CREATE2 (grind salt or grind deployer). See Modes below.",
+          "btc": "secp256k1. Three address types: legacy P2PKH (`1…`), native SegWit P2WPKH (`bc1q…`), Taproot P2TR (`bc1p…`). Export includes WIF (compressed) for wallet import. Leading HRP / version byte is handled for you when typing prefixes.",
+          "tron": "Same secp256k1 + keccak path as EVM for the 20-byte account ID, then Base58Check with version byte `0x41` → `T…`. Modes: wallet and CREATE (nonce 0), using the same RLP layout as EVM then Tron encoding.",
+          "aptos": "Ed25519. Address = `sha3-256(pubkey ‖ 0x00)` as hex. Compatible with Petra, Martian, and other Aptos wallets that import hex secrets.",
+          "sui": "Ed25519. Address = `blake2b-256(0x00 ‖ pubkey)` as hex (flag byte marks the scheme). Import into Sui Wallet / Suiet with the hex private key.",
+          "ton": "Ed25519 + Wallet contract v4R2. Addresses are user-friendly Base64url forms: `UQ…` (non-bounceable) and `EQ…` (bounceable). Matching is case-sensitive. Import into Tonkeeper / MyTonWallet.",
+          "cardano": "Ed25519 enterprise address (CIP-19 type 6, payment key only): header `0x61` + Blake2b-224 payment hash, bech32 with HRP `addr` → `addr1…`.",
+          "xrp": "secp256k1 compressed pubkey → RIPEMD160(SHA256) account ID → XRPL classic Base58 Check → `r…`. Note: XRPL uses a different Base58 alphabet than Bitcoin.",
+          "links": {
+            "sol": "[Solana](/sol)",
+            "evm": "[EVM](/evm)",
+            "btc": "[Bitcoin](/btc)",
+            "tron": "[Tron](/tron)",
+            "aptos": "[Aptos](/aptos)",
+            "sui": "[Sui](/sui)",
+            "ton": "[TON](/ton)",
+            "cardano": "[Cardano](/cardano)",
+            "xrp": "[XRP](/xrp)"
+          }
+        },
+        "modes": {
+          "n": "05 — Modes",
+          "title": "Wallet, mint, CREATE, CREATE2",
+          "glyph": "Fig. E — Modes",
+          "solMint": "Cryptographically identical to a wallet keypair. Launchpads ask for a custom mint keypair / private key; Vanitas labels the result as mint so the export matches that workflow. Open [/sol?mode=mint](/sol?mode=mint), find a pattern, paste the key into pump.fun, Raydium, Meteora, etc.",
+          "create": "The first contract deployed from an EOA with nonce 0 has a deterministic address: `keccak256(RLP([sender, 0]))[12:]`. Vanitas grinds EOAs until that derived contract address matches your pattern. You receive the deployer private key — deploy once from a fresh nonce-0 account.",
+          "create2Intro": "Address = `keccak256(0xff ‖ deployer ‖ salt ‖ initCodeHash)[12:]`. Two grind strategies:",
+          "create2Salt": "**create2-salt** — fix deployer key + init code hash; search for a salt that yields the vanity address.",
+          "create2Deployer": "**create2-deployer** — fix salt + init code hash; search for a deployer key whose CREATE2 address matches.",
+          "create2Hash": "You must supply a correct `initCodeHash` (keccak of the deployment bytecode). Wrong hash → wrong on-chain address."
+        },
+        "workers": {
+          "n": "06 — Workers",
+          "title": "Performance architecture",
+          "glyph": "Fig. F — Forge",
+          "intro": "Worker sources live under `src/workers/*.worker.source.ts` and are bundled with esbuild into `public/*-worker.js`. Each build writes SHA-256 digests to `public/worker-hash.json` for the [live audit](/audit).",
+          "ledger": {
+            "parallelism": {
+              "label": "Parallelism",
+              "value": "CPU cores − 1 (default)",
+              "note": "Adjust threads if the machine heats up or the UI stutters"
+            },
+            "solSpeed": {
+              "label": "Solana speed",
+              "value": "Native Ed25519 when available",
+              "note": "Chrome 113+ · Firefox 129+ · Safari 17+; else WASM"
+            },
+            "libraries": {
+              "label": "Libraries",
+              "value": "@noble · tweetnacl · watsign · @ton/*",
+              "note": "Audited pure-JS / WASM crypto in the browser"
+            }
+          },
+          "postFind": "After a find, optional **key security checks** probe entropy, CSPRNG availability, and a chi-square uniformity test on random bytes — confirming the browser RNG path looks healthy."
+        },
+        "proof": {
+          "n": "07 — Proof",
+          "title": "Proof of find",
+          "glyph": "Fig. G — Seal",
+          "p1": "**Share proof** builds a public link to [/proof](/proof) with chain, address, and pattern only — **never the private key**. Anyone can open the link and verify the address matches the claimed prefix/suffix client-side.",
+          "session": "Recent finds in the UI use `sessionStorage` for address + pattern metadata only. Closing the tab clears that history; keys are not stored there."
+        },
+        "cli": {
+          "n": "08 — CLI",
+          "title": "Terminal forge",
+          "glyph": "Fig. H — Stele",
+          "p1": "Same idea outside the browser: `npx vanitas` opens a wizard, or pass flags for chain, mode, prefix, threads, and CREATE2 parameters. Results write a JSON file with mode `0600` when the OS supports it. Package: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
+          "example": "npx vanitas evm --mode contract --prefix cafe --threads 8"
+        },
+        "verify": {
+          "n": "09 — Verify",
+          "title": "Confirm it yourself",
+          "glyph": "Fig. I — Eye",
+          "steps": [
+            "Open DevTools → Network, clear the log, start a forge — you should see **no requests** while mining.",
+            "Load the page, go offline, generate again — it still works.",
+            "Run the [live audit](/audit) and compare worker hashes to `worker-hash.json`.",
+            "Read the source on [GitHub](https://github.com/bytebrox/vanitas) — especially `src/workers/`."
+          ]
+        }
+      },
+      "footer": {
+        "security": "Security",
+        "faq": "FAQ",
+        "audit": "Live audit"
+      }
+    },
+    "security": {
+      "eyebrow": "Docs",
+      "title": "Security",
+      "description": "Keys are generated in your browser, never on our servers. This page is the trust model: architecture, threats, crypto, headers, and how to verify every claim yourself.",
+      "sideCaption": "Fig. V — Aqueduct",
+      "principles": {
+        "title": "Non-negotiables",
+        "marketing": "Marketing claims are worthless without checks. Use the [live audit](/audit) and the Verify section below."
+      },
+      "architecture": {
+        "title": "Where keys live",
+        "keysRam": "Private keys exist only here — RAM on your device"
+      },
+      "next": {
+        "label": "Next",
+        "audit": "Live audit",
+        "how": "How it works",
+        "faq": "FAQ"
+      },
+      "toc": {
+        "principles": "Principles",
+        "architecture": "Architecture",
+        "threats": "Threats",
+        "storage": "Storage",
+        "crypto": "Crypto",
+        "integrity": "Integrity",
+        "headers": "Headers",
+        "browser": "Browser",
+        "workflow": "Workflow",
+        "verify": "Verify",
+        "disclose": "Disclose"
+      },
+      "sections": {
+        "principles": {
+          "n": "01 — Principles",
+          "title": "Non-negotiables",
+          "glyph": "Fig. A — Shield",
+          "items": [
+            "**Client-side generation** — Web Workers on your CPU create every keypair.",
+            "**Zero key transit** — there is no API that accepts or returns private keys.",
+            "**Zero key storage** — no database, no logs of secrets, no analytics of patterns or addresses.",
+            "**Verifiable** — open source, live audit, offline test, Network panel.",
+            "**Proof without exposure** — shareable proofs carry address + pattern only."
+          ]
+        },
+        "architecture": {
+          "n": "02 — Architecture",
+          "title": "Where keys live",
+          "glyph": "Fig. B — Locus",
+          "intro": "Vanitas is a static Next.js site. The host (e.g. Vercel) serves HTML, CSS, JS, and prebuilt worker bundles. Cryptography never runs on that host for your keys.",
+          "browserLabel": "Your browser",
+          "mainThread": "Main thread",
+          "mainThreadNote": "UI · React · controls",
+          "webWorkers": "Web Workers",
+          "webWorkersNote": "W1…Wn — grind · match · postMessage",
+          "networkLabel": "Network during mining",
+          "networkBody": "None required. After assets load, airplane mode still works. The only first-party API route (`/api/domains`) suggests Solana domain links — it does not generate or receive keys.",
+          "serversLabel": "Our servers",
+          "serversBody": "Deliver files. Cannot read your Worker memory. Cannot intercept a finished keypair. A compromised origin could serve malicious JS — that is why integrity checks and open source matter (see Integrity & Browser)."
+        },
+        "threats": {
+          "n": "03 — Threats",
+          "title": "Threat model (honest)",
+          "glyph": "Fig. C — Scales",
+          "inScopeTitle": "In scope — we design against",
+          "inScope": [
+            "Server-side key theft (no keys on server).",
+            "Casual network sniffing during mining (no key traffic).",
+            "Clickjacking of the main app (frame deny on primary routes).",
+            "Obvious XSS exfiltration paths (CSP; still not a silver bullet)."
+          ],
+          "outScopeTitle": "Out of scope / shared responsibility",
+          "outScope": [
+            "**Malicious browser extensions** that read page memory or clipboard — disable them on a clean profile when forging high-value keys.",
+            "**Compromised device / malware** — OS-level keyloggers beat any website.",
+            "**You pasting keys into Discord / phishing** — operational security is yours.",
+            "**Supply-chain of dependencies** — we pin and audit; you can verify worker hashes and rebuild from source."
+          ],
+          "vanityNote": "Vanity mining does not create a “weaker” key. Long patterns only cost more CPU — they do not reduce private-key entropy."
+        },
+        "storage": {
+          "n": "04 — Storage",
+          "title": "What we store",
+          "glyph": "Fig. D — Vault",
+          "intro": "**Nothing about your keys on our servers.** No database of addresses, patterns, IPs for mining, or analytics SDKs in the forge path.",
+          "items": [
+            "No private keys on disk or server",
+            "No public keys / addresses collected remotely",
+            "No pattern telemetry",
+            "No account system",
+            "No third-party analytics in the product promise",
+            "sessionStorage recent finds = address + pattern only, this browser session",
+            "Proof links = query params you choose to share (no keys)"
+          ]
+        },
+        "crypto": {
+          "n": "05 — Crypto",
+          "title": "Algorithms per forge",
+          "intro": "Randomness always comes from the browser CSPRNG (`crypto.getRandomValues`). Curves and address derivation differ by chain:",
+          "rows": {
+            "sol": {
+              "label": "Solana",
+              "value": "Ed25519 → Base58",
+              "note": "Web Crypto native or WASM fallback · wallet / mint"
+            },
+            "evm": {
+              "label": "EVM",
+              "value": "secp256k1 + keccak-256",
+              "note": "0x EOA · CREATE · CREATE2"
+            },
+            "btc": {
+              "label": "Bitcoin",
+              "value": "secp256k1",
+              "note": "Legacy · SegWit · Taproot · WIF export"
+            },
+            "tron": {
+              "label": "Tron",
+              "value": "secp256k1 + keccak → Base58Check",
+              "note": "T… wallet / CREATE"
+            },
+            "aptos": {
+              "label": "Aptos",
+              "value": "Ed25519 + SHA3-256",
+              "note": "0x account address"
+            },
+            "sui": {
+              "label": "Sui",
+              "value": "Ed25519 + Blake2b-256",
+              "note": "0x with scheme flag"
+            },
+            "ton": {
+              "label": "TON",
+              "value": "Ed25519 · Wallet v4R2",
+              "note": "UQ / EQ Base64url"
+            },
+            "cardano": {
+              "label": "Cardano",
+              "value": "Ed25519 · CIP-19 enterprise",
+              "note": "addr1… payment-key only"
+            },
+            "xrp": {
+              "label": "XRP",
+              "value": "secp256k1 · XRPL Base58",
+              "note": "Classic r… addresses"
+            }
+          },
+          "postFind": "Post-find checks can validate entropy size, CSPRNG presence, and chi-square uniformity on a random sample — a health check of the RNG path, not a substitute for device hygiene."
+        },
+        "integrity": {
+          "n": "06 — Integrity",
+          "title": "Workers & published hashes",
+          "glyph": "Fig. E — Hash",
+          "p1": "Mining code ships as static `public/*-worker.js` files built from TypeScript sources. Each production build records SHA-256 digests in `worker-hash.json`. The audit page re-hashes the workers your browser loaded and compares them to that file.",
+          "p2": "If hashes diverge, treat the page as untrusted — stop, do not use keys, and investigate (wrong deploy, cache, or tampering). Rebuilding from the open repo should reproduce the same worker bytes for a given commit."
+        },
+        "headers": {
+          "n": "07 — Headers",
+          "title": "HTTP security headers",
+          "intro": "Responses include headers that reduce XSS impact, force HTTPS, and block framing of the main app. CSP still allows what Next.js needs (including some inline / eval tradeoffs) — headers help; they do not replace code review.",
+          "rows": {
+            "csp": {
+              "label": "CSP",
+              "value": "Content-Security-Policy",
+              "note": "Limits scripts, workers, connect-src"
+            },
+            "hsts": {
+              "label": "HSTS",
+              "value": "Strict-Transport-Security",
+              "note": "max-age=31536000"
+            },
+            "frame": {
+              "label": "Frame",
+              "value": "X-Frame-Options: DENY",
+              "note": "Primary app not embeddable"
+            },
+            "mime": {
+              "label": "MIME",
+              "value": "X-Content-Type-Options: nosniff",
+              "note": "No MIME sniffing"
+            },
+            "referrer": {
+              "label": "Referrer",
+              "value": "strict-origin-when-cross-origin",
+              "note": "Limits referrer leakage"
+            }
+          }
+        },
+        "browser": {
+          "n": "08 — Browser",
+          "title": "What the browser can still do",
+          "intro": "Anything that runs with page privileges can, in theory, read the DOM and Worker messages. That includes:",
+          "items": [
+            "Browser extensions with broad site access",
+            "DevTools open on a shared machine",
+            "Malicious injected scripts if XSS exists",
+            "Clipboard sniffers after you copy a key"
+          ],
+          "mitigations": "Mitigations: clean browser profile, no unnecessary extensions, prefer download files over clipboard for high-value keys, wipe clipboard after paste into a wallet, consider the terminal CLI or an air-gapped machine for large treasuries."
+        },
+        "workflow": {
+          "n": "09 — Workflow",
+          "title": "Safe operating procedure",
+          "steps": [
+            "Load vanitas.fun (or run from a verified local build).",
+            "Optional: open Network, go offline, run audit.",
+            "Choose a short pattern first; increase length once you trust the setup.",
+            "On find: export, store offline, never screenshot keys into chat apps.",
+            "Import into the correct wallet for that chain; send a dust test transfer.",
+            "For long-term holdings, move funds to a hardware wallet — Vanitas is a forge, not a vault."
+          ]
+        },
+        "verify": {
+          "n": "10 — Verify",
+          "title": "Three checks anyone can run",
+          "glyph": "Fig. F — Audit",
+          "network": {
+            "n": "01 — Network",
+            "title": "Network monitor",
+            "steps": [
+              "DevTools → Network → clear",
+              "Start generating",
+              "Confirm **zero** requests while mining"
+            ]
+          },
+          "offline": {
+            "n": "02 — Offline",
+            "title": "Airplane mode",
+            "steps": [
+              "Load the app",
+              "Disconnect",
+              "Generate — success proves no live server dependency"
+            ]
+          },
+          "audit": {
+            "n": "03 — Audit",
+            "title": "Live audit + source",
+            "steps": [
+              "Run [/audit](/audit)",
+              "Compare worker hashes to published JSON",
+              "Review [GitHub](https://github.com/bytebrox/vanitas) workers and SECURITY.md"
+            ]
+          }
+        },
+        "disclose": {
+          "n": "11 — Disclose",
+          "title": "Reporting issues",
+          "glyph": "Fig. G — Report",
+          "intro": "Do **not** open public GitHub issues for security vulnerabilities. Prefer private GitHub Security Advisories on [bytebrox/vanitas](https://github.com/bytebrox/vanitas/security/advisories/new). Include reproduction steps, impact, and a suggested fix if you have one.",
+          "faq": {
+            "steal": {
+              "q": "Can you steal my keys?",
+              "a": "We have no server-side path that receives them. A malicious build or extension could — verify hashes and use a clean environment for high value."
+            },
+            "host": {
+              "q": "What if the host is hacked?",
+              "a": "Attackers could serve altered JavaScript. That is why open source, worker-hash checks, and preferring a known-good commit matter. The host still never receives your finished keys from a clean build."
+            },
+            "weaker": {
+              "q": "Are vanity addresses less secure?",
+              "a": "No. Private-key entropy is unchanged. Only the public address is filtered for appearance."
+            },
+            "cold": {
+              "q": "Should I forge cold-storage keys in a daily browser?",
+              "a": "For significant funds: clean profile or offline/CLI, small test transfer, then hardware wallet custody."
+            }
+          }
+        }
+      }
+    }
+  },
+  "meta": {
+    "home": {
+      "title": "Solana, EVM, Bitcoin & Tron Vanity Forge",
+      "description": "Client-side vanity address forge for Solana, EVM, Bitcoin, and Tron. Wallets, mints, and contracts — keys never leave this browser.",
+      "ogAlt": "Vanitas multi-chain vanity forge"
+    },
+    "sol": {
+      "title": "Solana Vanity Address Generator",
+      "description": "Forge vanity Solana wallet and token mint addresses entirely in your browser. Open source, client-side, no keys leave this device.",
+      "ogAlt": "Vanitas — Solana vanity forge",
+      "ogTitle": "Solana Vanity Address Generator | Vanitas",
+      "ogDescription": "Forge vanity Solana wallet and mint addresses client-side. No keys leave this device.",
+      "twitterDescription": "Forge vanity Solana wallet and mint addresses client-side."
+    },
+    "evm": {
+      "title": "EVM Vanity Address Generator",
+      "description": "Forge vanity EVM wallet and contract addresses client-side. One key for Ethereum, Base, Arbitrum, Optimism, BSC, and more.",
+      "ogTitle": "EVM Vanity Address Generator | Vanitas",
+      "ogDescription": "Forge vanity 0x wallet and contract addresses client-side. Same key on Ethereum, BNB, Base, Arbitrum, and every EVM chain.",
+      "twitterDescription": "Forge vanity 0x wallet and contract addresses client-side. Same key on every EVM chain.",
+      "ogAlt": "Vanitas — EVM vanity wallet & contract generator"
+    },
+    "btc": {
+      "title": "Bitcoin Vanity Address Generator",
+      "description": "Forge vanity Bitcoin addresses (legacy, SegWit, Taproot) entirely in your browser."
+    },
+    "tron": {
+      "title": "Tron Vanity Address Generator",
+      "description": "Forge vanity Tron Base58 addresses client-side for TronLink and other wallets."
+    },
+    "aptos": {
+      "title": "Aptos Vanity Address Generator",
+      "description": "Forge vanity Aptos Ed25519 addresses entirely in your browser."
+    },
+    "sui": {
+      "title": "Sui Vanity Address Generator",
+      "description": "Forge vanity Sui Ed25519 addresses entirely in your browser."
+    },
+    "ton": {
+      "title": "TON Vanity Address Generator",
+      "description": "Forge vanity TON Wallet v4R2 addresses (UQ / EQ) client-side."
+    },
+    "cardano": {
+      "title": "Cardano Vanity Address Generator",
+      "description": "Forge vanity Cardano enterprise addr1 addresses entirely in your browser."
+    },
+    "xrp": {
+      "title": "XRP Vanity Address Generator",
+      "description": "Forge vanity XRPL classic r… addresses entirely in your browser."
+    },
+    "faq": {
+      "title": "FAQ",
+      "description": "Answers across every Vanitas forge — patterns, modes, security, proof, and CLI.",
+      "ogTitle": "FAQ | Vanitas",
+      "ogDescription": "Answers by topic — every chain, security, proof, CLI, and usage.",
+      "ogAlt": "Vanitas FAQ"
+    },
+    "how-it-works": {
+      "title": "How it Works",
+      "description": "How Vanitas forges vanity addresses across Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano, and XRP: workers, modes (mint, CREATE, CREATE2), proof of find, CLI, and how to verify client-side security.",
+      "ogTitle": "How it Works | Vanitas",
+      "ogDescription": "Full tour of every forge, worker architecture, deploy modes, and verification.",
+      "ogAlt": "Vanitas — how vanity address generation works"
+    },
+    "security": {
+      "title": "Security",
+      "description": "Vanitas trust model — keys stay in your browser. Threat boundaries and verification.",
+      "ogTitle": "Security | Vanitas",
+      "ogDescription": "Architecture, threats, crypto, headers, and verification — keys stay in your browser.",
+      "ogAlt": "Vanitas security — keys stay in your browser"
+    },
+    "lab": {
+      "title": "Pattern Lab",
+      "description": "Difficulty matrix, rarity estimates, and batch pattern queue for every Vanitas forge — before you mine.",
+      "ogTitle": "Pattern Lab | Vanitas",
+      "ogDescription": "Difficulty matrix, rarity estimates, and batch pattern queue — before you mine."
+    },
+    "lookalike": {
+      "title": "Lookalike Check",
+      "description": "Catch forbidden Base58 glyphs, Tron case traps, and alphabet mismatches before you grind vanity patterns.",
+      "ogTitle": "Lookalike Check | Vanitas",
+      "ogDescription": "Catch 0/O, I/l, Tron case, and alphabet mismatches before you grind."
+    },
+    "create2": {
+      "title": "CREATE2 Helper",
+      "description": "Hash deployment bytecode to initCodeHash, preview CREATE2 addresses from deployer + salt, and deep-link into the EVM forge — all client-side.",
+      "ogTitle": "CREATE2 Helper | Vanitas",
+      "ogDescription": "initCodeHash from bytecode, salt preview, address check before you grind."
+    },
+    "brand": {
+      "title": "Brand",
+      "description": "Embeddable proof widget and light branding kit for Vanitas — wordmark, colors, iframe snippets. No private keys.",
+      "ogTitle": "Brand | Vanitas",
+      "ogDescription": "Embeddable proof widget and light branding kit."
+    },
+    "proof": {
+      "title": "Proof of find",
+      "description": "Verify a vanity address match client-side without private keys."
+    },
+    "audit": {
+      "title": "Live Audit",
+      "description": "Run eight local checks on Vanitas: Web Crypto, RNG quality, zero network during generation, CSP, worker isolation, and build integrity.",
+      "ogTitle": "Live Audit | Vanitas",
+      "ogDescription": "Eight automated checks in your browser. Nothing is faked, nothing is sent.",
+      "ogAlt": "Vanitas live security audit"
+    },
+    "token": {
+      "title": "Token",
+      "description": "Vanitas has no project token."
+    },
+    "embed-proof": {
+      "title": "Proof embed",
+      "description": "Embeddable proof of find widget."
+    },
+    "siteName": "Vanitas",
+    "notFound": {
+      "title": "404 — Not found",
+      "description": "This page does not exist on Vanitas."
+    },
+    "eth": {
+      "title": "ETH Vanity Address Generator",
+      "description": "Redirects to the EVM vanity forge."
+    }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you asked for is not on Vanitas. It may have moved, or it never existed.",
+    "home": "Home",
+    "sol": "Solana forge",
+    "evm": "EVM forge",
+    "metaTitle": "404 — Not found",
+    "metaDescription": "This page does not exist on Vanitas.",
+    "figAbsent": "Fig. — Absent",
+    "errorLabel": "Error 404",
+    "heading": "This address was never forged",
+    "links": {
+      "sol": "SOL forge",
+      "evm": "EVM forge",
+      "btc": "BTC forge",
+      "tron": "TRON forge",
+      "how": "How it works",
+      "faq": "FAQ"
+    },
+    "homeForge": "Or return to the [home forge](/)."
+  }
+}

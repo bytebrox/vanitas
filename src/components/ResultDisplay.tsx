@@ -5,6 +5,7 @@
  */
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { GeneratedKeypair } from '@/types';
 import { formatNumber, formatDuration } from '@/lib/format';
 import { DomainSuggestions } from './DomainSuggestions';
@@ -17,6 +18,7 @@ interface ResultDisplayProps {
 }
 
 export function ResultDisplay({ result, onReset }: ResultDisplayProps) {
+  const t = useTranslations('common');
   const [showPrivateKey, setShowPrivateKey] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
 
@@ -24,7 +26,9 @@ export function ResultDisplay({ result, onReset }: ResultDisplayProps) {
     try {
       await navigator.clipboard.writeText(text);
       setCopiedField(field);
-      setTimeout(() => { setCopiedField(null); }, 2000);
+      setTimeout(() => {
+        setCopiedField(null);
+      }, 2000);
     } catch (err) {
       console.error('Failed to copy:', err);
     }
@@ -77,25 +81,27 @@ IMPORTANT:
   return (
     <div className="space-y-10">
       <header className="border-b border-ink/15 pb-6">
-        <p className="text-micro uppercase tracking-[0.2em] text-accent mb-2">Found</p>
+        <p className="text-micro uppercase tracking-[0.2em] text-accent mb-2">{t('found')}</p>
         <h2 className="text-2xl sm:text-3xl font-bold text-ink normal-case tracking-tight mb-2">
-          Address ready
+          {t('addressReady')}
         </h2>
         <p className="text-sm text-muted font-mono">
-          {formatNumber(result.attempts)} attempts · {formatDuration(result.duration)}
+          {formatNumber(result.attempts)} {t('attempts')} · {formatDuration(result.duration)}
         </p>
       </header>
 
       <section className="border-y border-ink/15 divide-y divide-ink/15">
         <div className="py-5">
           <div className="flex items-center justify-between gap-4 mb-3">
-            <p className="text-micro uppercase tracking-[0.18em] text-muted">Public address</p>
+            <p className="text-micro uppercase tracking-[0.18em] text-muted">{t('publicAddress')}</p>
             <button
               type="button"
-              onClick={() => { void copyToClipboard(result.publicKey, 'public'); }}
+              onClick={() => {
+                void copyToClipboard(result.publicKey, 'public');
+              }}
               className="text-micro uppercase tracking-[0.14em] text-muted hover:text-ink"
             >
-              {copiedField === 'public' ? 'Copied' : 'Copy'}
+              {copiedField === 'public' ? t('copied') : t('copy')}
             </button>
           </div>
           <p className="font-mono text-base sm:text-lg break-all leading-relaxed text-ink">
@@ -105,22 +111,26 @@ IMPORTANT:
 
         <div className="py-5">
           <div className="flex items-center justify-between gap-4 mb-3">
-            <p className="text-micro uppercase tracking-[0.18em] text-muted">Private key</p>
+            <p className="text-micro uppercase tracking-[0.18em] text-muted">{t('privateKey')}</p>
             <div className="flex items-center gap-4">
               <button
                 type="button"
-                onClick={() => { setShowPrivateKey(!showPrivateKey); }}
+                onClick={() => {
+                  setShowPrivateKey(!showPrivateKey);
+                }}
                 className="text-micro uppercase tracking-[0.14em] text-muted hover:text-ink"
               >
-                {showPrivateKey ? 'Hide' : 'Reveal'}
+                {showPrivateKey ? t('hide') : t('reveal')}
               </button>
               {showPrivateKey && (
                 <button
                   type="button"
-                  onClick={() => { void copyToClipboard(result.privateKey, 'private'); }}
+                  onClick={() => {
+                    void copyToClipboard(result.privateKey, 'private');
+                  }}
                   className="text-micro uppercase tracking-[0.14em] text-muted hover:text-ink"
                 >
-                  {copiedField === 'private' ? 'Copied' : 'Copy'}
+                  {copiedField === 'private' ? t('copied') : t('copy')}
                 </button>
               )}
             </div>
@@ -136,11 +146,11 @@ IMPORTANT:
       </section>
 
       <section>
-        <p className="text-micro uppercase tracking-[0.18em] text-accent mb-3">Keep safe</p>
+        <p className="text-micro uppercase tracking-[0.18em] text-accent mb-3">{t('keepSafe')}</p>
         <ul className="text-sm text-muted space-y-2 leading-relaxed">
-          <li>Save the private key before leaving this page</li>
-          <li>Never share it — anyone with it controls the wallet</li>
-          <li>Generated locally; nothing was stored on a server</li>
+          <li>{t('keepSafe1')}</li>
+          <li>{t('keepSafe2')}</li>
+          <li>{t('keepSafe3')}</li>
         </ul>
       </section>
 
@@ -149,11 +159,15 @@ IMPORTANT:
 
       <section className="border-t border-ink/15 pt-8 space-y-5">
         <div className="flex flex-wrap gap-x-8 gap-y-3 text-micro uppercase tracking-[0.16em]">
-          <button type="button" onClick={downloadTxt} className="text-ink border-b border-ink pb-0.5 hover:text-accent hover:border-accent">
-            Download txt
+          <button
+            type="button"
+            onClick={downloadTxt}
+            className="text-ink border-b border-ink pb-0.5 hover:text-accent hover:border-accent"
+          >
+            {t('downloadTxt')}
           </button>
           <button type="button" onClick={downloadJson} className="text-muted hover:text-ink">
-            Download json
+            {t('downloadJson')}
           </button>
           <ShareProofButton
             chain="sol"
@@ -163,12 +177,10 @@ IMPORTANT:
             duration={result.duration}
           />
           <button type="button" onClick={onReset} className="text-muted hover:text-ink">
-            Forge another
+            {t('forgeAnother')}
           </button>
         </div>
-        <p className="text-micro text-muted">
-          TXT for reading · JSON for Solana CLI / Phantom / Solflare · Share proof never includes keys
-        </p>
+        <p className="text-micro text-muted">{t('exportHintSol')}</p>
       </section>
     </div>
   );

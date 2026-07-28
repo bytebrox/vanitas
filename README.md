@@ -1,8 +1,8 @@
 ﻿# Vanitas
 
-[![Version: 1.9.0](https://img.shields.io/badge/Version-1.9.0-8B7355.svg)](https://vanitas.fun)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Live Audit](https://img.shields.io/badge/Live_Audit-vanitas.fun%2Faudit-8B7355.svg)](https://vanitas.fun/audit)
+[Version: 1.9.1](https://vanitas.fun)
+[License: MIT](https://opensource.org/licenses/MIT)
+[Live Audit](https://vanitas.fun/audit)
 
 **Forge vanity addresses for Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano, and XRP, entirely in your browser.**
 
@@ -20,17 +20,19 @@ Same forges, wizard or flags. See [cli/README.md](cli/README.md).
 
 ## Forges
 
-| | Forge | Use Case | URL |
-|---|-------|----------|-----|
-| <img src="public/chains/solana.svg" width="20" height="20" alt="Solana" /> | **Solana** | Wallet + token mint (Base58 Ed25519) | `/sol` |
-| <img src="public/chains/ethereum.svg" width="20" height="20" alt="Ethereum" /> | **EVM** | Wallet, CREATE nonce 0, CREATE2 salt / deployer | `/evm` |
-| <img src="public/chains/bitcoin.svg" width="20" height="20" alt="Bitcoin" /> | **Bitcoin** | Legacy `1…`, SegWit `bc1q…`, Taproot `bc1p…` (WIF) | `/btc` |
-| <img src="public/chains/tron.svg" width="20" height="20" alt="Tron" /> | **Tron** | Wallet + CREATE nonce 0 (`T…` Base58Check) | `/tron` |
-| <img src="public/chains/aptos.svg" width="20" height="20" alt="Aptos" /> | **Aptos** | Hex account addresses (Ed25519) | `/aptos` |
-| <img src="public/chains/sui.svg" width="20" height="20" alt="Sui" /> | **Sui** | Hex account addresses (Ed25519) | `/sui` |
-| <img src="public/chains/ton.svg" width="20" height="20" alt="TON" /> | **TON** | Wallet v4R2 (`UQ…` / `EQ…`) | `/ton` |
-| <img src="public/chains/cardano.svg" width="20" height="20" alt="Cardano" /> | **Cardano** | Enterprise `addr1…` (CIP-19 type 6) | `/cardano` |
-| <img src="public/chains/xrp.svg" width="20" height="20" alt="XRP" /> | **XRP** | Classic XRPL `r…` (secp256k1) | `/xrp` |
+
+|     | Forge         | Use Case                                           | URL        |
+| --- | ------------- | -------------------------------------------------- | ---------- |
+|     | **Solana**    | Wallet + token mint (Base58 Ed25519)               | `/sol`     |
+|     | **EVM**       | Wallet, CREATE nonce 0, CREATE2 salt / deployer    | `/evm`     |
+|     | **Bitcoin**   | Legacy `1…`, SegWit `bc1q…`, Taproot `bc1p…` (WIF) | `/btc`     |
+|     | **Tron**      | Wallet + CREATE nonce 0 (`T…` Base58Check)         | `/tron`    |
+|     | **Aptos**     | Hex account addresses (Ed25519)                    | `/aptos`   |
+|     | **Sui**       | Hex account addresses (Ed25519)                    | `/sui`     |
+|     | **TON**       | *Wallet v4R2 (*`UQ…` */* `EQ…`*)*                  | `/ton`     |
+|     | ***Cardano*** | *Enterprise* `addr1…` (CIP-19 type 6)              | `/cardano` |
+|     | **XRP**       | Classic XRPL `r…` (secp256k1)                      | `/xrp`     |
+
 
 Legacy `/token` redirects to `/sol?mode=mint`. `/eth` redirects to `/evm`.
 
@@ -59,6 +61,8 @@ A vanity address contains a recognizable pattern instead of looking fully random
 - **Works Offline** – No network required after the page loads
 - **Mobile Optimized** – Responsive UI with touch-friendly controls
 
+
+
 ## Security
 
 Vanitas is designed with one principle: **your private keys should never leave your device**.
@@ -67,6 +71,8 @@ Vanitas is designed with one principle: **your private keys should never leave y
 2. **Open Source** – Auditable codebase
 3. **Live Audit** – [vanitas.fun/audit](https://vanitas.fun/audit) for in-browser checks
 4. **Offline Capable** – Works without internet after initial load
+
+
 
 ## Disclaimer
 

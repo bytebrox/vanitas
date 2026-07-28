@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
+const createNextIntlPlugin = require('next-intl/plugin');
+
+const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
+
 const securityHeaders = [
   {
     key: 'Strict-Transport-Security',
@@ -70,10 +74,11 @@ const embedHeaders = [
   },
 ];
 
+const localeOpt = ':locale(en|de|es|pt|zh|ja)?';
+
 const nextConfig = {
   async headers() {
     return [
-      // Share images: crawlable, no CSP (X ignores / fails cards when CSP is on the asset)
       {
         source: '/og.jpg',
         headers: [
@@ -94,15 +99,24 @@ const nextConfig = {
           { key: 'Access-Control-Allow-Origin', value: '*' },
         ],
       },
-      // Embed routes must be framed (before catch-all DENY)
+      // Embed (with optional locale prefix)
       { source: '/embed', headers: embedHeaders },
       { source: '/embed/:path*', headers: embedHeaders },
-      // HTML pages only — exclude /embed so X-Frame-Options DENY is not merged in
+      { source: `/${localeOpt}/embed`, headers: embedHeaders },
+      { source: `/${localeOpt}/embed/:path*`, headers: embedHeaders },
+      // HTML pages
       { source: '/', headers: pageHeaders },
-      { source: '/:page((?!embed$)[\\w-]+)', headers: pageHeaders },
-      { source: '/:page((?!embed$)[\\w-]+)/:rest*', headers: pageHeaders },
+      { source: `/${localeOpt}`, headers: pageHeaders },
+      {
+        source: `/${localeOpt}/:page((?!embed$)[\\w-]+)`,
+        headers: pageHeaders,
+      },
+      {
+        source: `/${localeOpt}/:page((?!embed$)[\\w-]+)/:rest*`,
+        headers: pageHeaders,
+      },
     ];
   },
 };
 
-module.exports = nextConfig;
+module.exports = withNextIntl(nextConfig);

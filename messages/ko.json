@@ -1,0 +1,1641 @@
+{
+  "common": {
+    "copy": "복사",
+    "copied": "복사됨",
+    "hide": "숨기기",
+    "reveal": "표시",
+    "downloadTxt": "txt 다운로드",
+    "downloadJson": "JSON 다운로드",
+    "forge": "포지",
+    "stop": "중지",
+    "reset": "초기화",
+    "loading": "로드 중…",
+    "scrollDown": "아래로 스크롤",
+    "cores": "코어",
+    "of": "{max}의",
+    "fewerCores": "코어 수가 적음",
+    "moreCores": "더 많은 코어",
+    "soundOn": "소리 켜짐",
+    "soundOff": "소리 끄기",
+    "found": "발견",
+    "addressReady": "주소 준비됨",
+    "publicAddress": "공개 주소",
+    "privateKey": "개인 키",
+    "keepSafe": "안전하게 보관",
+    "keepSafe1": "이 페이지를 떠나기 전에 개인 키를 저장하세요.",
+    "keepSafe2": "공유하지 마십시오. 이를 가진 사람은 누구나 지갑을 제어할 수 있습니다.",
+    "keepSafe3": "로컬에서 생성됨 서버에 아무것도 저장되지 않았습니다",
+    "attempts": "시도",
+    "pattern": "패턴",
+    "estTime": "예상 시간",
+    "keys": "키",
+    "rate": "비율",
+    "time": "시간",
+    "workers": "워커",
+    "tryPattern": "패턴 시도",
+    "recentFinds": "최근 발견",
+    "keySecurity": "키 보안",
+    "entropy": "엔트로피",
+    "source": "소스",
+    "csprng": "CSPRNG",
+    "browser": "브라우저",
+    "prefix": "접두사",
+    "suffix": "접미사",
+    "caseSensitive": "대소문자 구분",
+    "optional": "선택",
+    "brand": "Vanitas",
+    "sharePattern": "패턴 공유",
+    "shareProof": "증거 공유",
+    "proofLinkCopied": "증명 링크 복사됨",
+    "forgeAnother": "다시 포지",
+    "scrollToForge": "포지로 스크롤",
+    "waiting": "대기 중 — 패턴을 입력하고 포지하세요",
+    "running": "● 실행 중",
+    "progressExpected": "예상 검색량의 {pct}%",
+    "difficultyGuide": "가이드: 5초 미만 3자 · 4자 ~1분 · 5자 ~30분 · 6시간 이상",
+    "match": "일치",
+    "startsAddress": "주소를 시작합니다",
+    "endsAddress": "주소 끝",
+    "howItWorks": "작동 원리",
+    "liveAudit": "실시간 감사",
+    "evmForge": "EVM 포지",
+    "exportHintSol": "읽기용 TXT · Solana CLI / Phantom / Solflare용 JSON · 공유 증명에는 키가 포함되지 않습니다.",
+    "stepMode": "01 - 모드",
+    "stepPattern": "02 - 패턴",
+    "stepMintPattern": "02 — 민트 패턴",
+    "stepType": "01 — 유형",
+    "stepEstimate": "03 — 견적",
+    "stepForge": "04 — 포지",
+    "stepLive": "05 — 라이브",
+    "topics": "주제",
+    "verified": "확인됨",
+    "mismatch": "불일치",
+    "chain": "체인",
+    "stats": "통계",
+    "statsDisclaimer": "시도 횟수는 포저가 자체 보고한 값이며 암호학적으로 증명되지 않습니다.",
+    "copyProofLink": "증명 링크 복사",
+    "openForge": "포지 열기",
+    "github": "GitHub",
+    "x": "X",
+    "attemptsLabel": "시도",
+    "charsDays": "{n} 문자는 며칠 또는 몇 주가 걸릴 수 있습니다.",
+    "charsHours": "{n} 문자에는 몇 시간이 걸릴 수 있습니다.",
+    "considerSuffix": "접미사만 사용하거나 대소문자를 구분하지 않는 것을 고려하세요."
+  },
+  "nav": {
+    "language": "언어",
+    "home": "홈",
+    "chains": "CHAINS",
+    "docs": "DOCS",
+    "tools": "TOOLS",
+    "menu": "메뉴",
+    "close": "닫기",
+    "themeToLight": "라이트 모드로 전환",
+    "themeToDark": "다크 모드로 전환",
+    "themeLight": "라이트",
+    "themeDark": "다크",
+    "themeMobileDarkToLight": "어두움 → 밝음",
+    "themeMobileLightToDark": "밝음 → 어두움",
+    "docsHow": "방법",
+    "docsHowHint": "작동 원리",
+    "docsFaq": "FAQ",
+    "docsFaqHint": "질문",
+    "docsSecurity": "보안",
+    "docsSecurityHint": "신뢰 모델",
+    "toolsAudit": "감사",
+    "toolsAuditHint": "실시간 확인",
+    "toolsProof": "증명",
+    "toolsProofHint": "찾기 확인",
+    "toolsLab": "랩",
+    "toolsLabHint": "패턴 연구실",
+    "toolsLookalike": "유사 문자",
+    "toolsLookalikeHint": "알파벳 트랩",
+    "toolsCreate2": "CREATE2",
+    "toolsCreate2Hint": "초기화 해시 + 미리보기",
+    "toolsBrand": "Brand",
+    "toolsBrandHint": "포함 + 키트",
+    "brand": "Vanitas",
+    "githubAria": "GitHub 저장소",
+    "xAria": "X의 바이트브록스",
+    "evmSubline": "Ethereum · BNB · Base · Arbitrum · Optimism · + EVM",
+    "chainItems": {
+      "sol": {
+        "label": "Solana",
+        "short": "SOL"
+      },
+      "evm": {
+        "label": "EVM",
+        "short": "EVM"
+      },
+      "btc": {
+        "label": "Bitcoin",
+        "short": "BTC"
+      },
+      "tron": {
+        "label": "Tron",
+        "short": "TRON"
+      },
+      "aptos": {
+        "label": "Aptos",
+        "short": "APTOS"
+      },
+      "sui": {
+        "label": "Sui",
+        "short": "SUI"
+      },
+      "ton": {
+        "label": "TON",
+        "short": "TON"
+      },
+      "cardano": {
+        "label": "Cardano",
+        "short": "ADA"
+      },
+      "xrp": {
+        "label": "XRP",
+        "short": "XRP"
+      }
+    }
+  },
+  "footer": {
+    "blurb": "Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano & XRP용 클라이언트 사이드 바니티 도구. 프로젝트 토큰 없음. 키가 이 기기를 떠나지 않습니다. [Bytebrox](https://x.com/bytebrox) 제작.",
+    "donateSol": "SOL 기부",
+    "solscan": "솔스캔",
+    "home": "홈",
+    "security": "보안",
+    "audit": "감사",
+    "faq": "FAQ",
+    "how": "방법",
+    "cli": "CLI",
+    "github": "GitHub",
+    "proof": "증명",
+    "lab": "랩",
+    "lookalike": "유사 문자",
+    "create2": "CREATE2",
+    "brand": "Brand",
+    "sol": "SOL",
+    "evm": "EVM",
+    "btc": "BTC",
+    "tron": "TRON",
+    "aptos": "APTOS",
+    "sui": "SUI",
+    "ton": "TON",
+    "ada": "ADA",
+    "xrp": "XRP",
+    "copyright": "© {year}"
+  },
+  "landing": {
+    "eyebrow": "클라이언트 측 허영 위조",
+    "title": "Vanitas",
+    "subtitle": "체인을 선택하세요. 키는 이 브라우저에 유지됩니다.",
+    "enterForge": "단조 진입 →",
+    "preferTerminal": "터미널을 선호하시나요?",
+    "forges": {
+      "sol": {
+        "name": "솔라나",
+        "title": "지갑 & 민트",
+        "blurb": "Base58 화장 지갑 및 토큰 민트."
+      },
+      "evm": {
+        "name": "EVM",
+        "title": "지갑 및 계약",
+        "blurb": "모든 EVM 체인에는 하나의 0x 키가 있습니다.",
+        "aria": "이더리움, BNB, 베이스, 중재, 낙천주의"
+      },
+      "btc": {
+        "name": "비트코인",
+        "title": "레거시 · SegWit · Taproot",
+        "blurb": "Vanity 1…, bc1q… 및 bc1p… 주소."
+      },
+      "tron": {
+        "name": "트론",
+        "title": "지갑 & 만들기",
+        "blurb": "TronLink용 Vanity T… 주소."
+      },
+      "aptos": {
+        "name": "앱토스",
+        "title": "Ed25519 0x",
+        "blurb": "페트라와 화성인을 위한 육각형 화장대."
+      },
+      "sui": {
+        "name": "수이",
+        "title": "Ed25519 0x",
+        "blurb": "Sui Wallet & Suiet용 육각 세면대."
+      },
+      "ton": {
+        "name": "TON",
+        "title": "지갑 v4R2",
+        "blurb": "Vanity UQ… / EQ… 주소."
+      },
+      "cardano": {
+        "name": "카르다노",
+        "title": "엔터프라이즈 주소1",
+        "blurb": "Bech32 허영 지불 주소."
+      },
+      "xrp": {
+        "name": "XRP",
+        "title": "클래식…",
+        "blurb": "XRPL Base58 허영 주소."
+      }
+    },
+    "npxVanitas": "npx Vanitas"
+  },
+  "forge": {
+    "header": {
+      "wallet": {
+        "eyebrow": "지갑 위조",
+        "title": "솔라나",
+        "headline": "주소의 이름을 지정하십시오. 열쇠를 보관하세요.",
+        "blurb": "이 브라우저에서 CPU에 허영 솔라나 지갑 주소를 생성하세요."
+      },
+      "mint": {
+        "eyebrow": "민트 포지",
+        "title": "솔라나",
+        "headline": "민트의 이름을 지정하십시오. 존재감 있게 시작하세요.",
+        "blurb": "이 브라우저에서 모든 런치패드에 대한 화장대 솔라나 민트를 생성하세요."
+      },
+      "evm": {
+        "eyebrow": "0x 포지",
+        "title": "EVM",
+        "headline": "0x의 이름을 지정합니다. 어디서나 같은 열쇠.",
+        "blurb": "이 브라우저에서 허영 지갑이나 계약 주소를 모두 생성하세요. 하나의 키는 Ethereum, BNB Smart Chain, Base, Arbitrum, Optimism 및 기타 모든 EVM 체인에서 작동합니다."
+      },
+      "btc": {
+        "eyebrow": "UTXO 단조",
+        "title": "비트코인",
+        "headline": "동전의 이름을 지정하십시오. 주소를 소유하세요.",
+        "blurb": "이 브라우저에서 완전히 가상 비트코인 ​​주소(레거시, SegWit, Taproot)를 생성하세요. 열쇠는 이 장치를 떠나지 않습니다."
+      },
+      "tron": {
+        "eyebrow": "T 포지",
+        "title": "트론",
+        "headline": "T의 이름을 지정하고 키를 보관하세요.",
+        "blurb": "이 브라우저에서 완전히 가상 Tron Base58 주소를 생성합니다. TronLink 및 기타 Tron 지갑으로 가져옵니다."
+      },
+      "aptos": {
+        "eyebrow": "0x 포지",
+        "title": "앱토스",
+        "headline": "0x의 이름을 지정합니다. 열쇠를 보관하세요.",
+        "blurb": "이 브라우저에서 완전히 허영 Aptos Ed25519 주소를 생성합니다. Petra, Martian 및 기타 Aptos 지갑으로 가져옵니다."
+      },
+      "sui": {
+        "eyebrow": "0x 포지",
+        "title": "수이",
+        "headline": "0x의 이름을 지정합니다. 열쇠를 보관하세요.",
+        "blurb": "이 브라우저에서 완전히 가상 Sui Ed25519 주소를 생성하세요. Sui Wallet, Suiet 및 기타 Sui 지갑으로 가져옵니다."
+      },
+      "ton": {
+        "eyebrow": "UQ 포지",
+        "title": "TON",
+        "headline": "UQ의 이름을 지정하세요. 열쇠를 보관하세요.",
+        "blurb": "이 브라우저에서 완전히 허영 TON 지갑 v4R2 주소(UQ/EQ)를 생성하세요. Tonkeeper 및 MyTonWallet으로 가져옵니다."
+      },
+      "cardano": {
+        "eyebrow": "주소1 위조",
+        "title": "카르다노",
+        "headline": "주소의 이름을 지정하세요. 열쇠를 보관하세요.",
+        "blurb": "이 브라우저에서 완전히 가상 Cardano 기업 주소(addr1…)를 생성하세요. 결제 키만 가능합니다."
+      },
+      "xrp": {
+        "eyebrow": "r 위조",
+        "title": "XRP",
+        "headline": "r의 이름을 지정하십시오. 열쇠를 보관하세요.",
+        "blurb": "이 브라우저에서 완전히 Vanity XRP Ledger 클래식 주소(r…)를 생성하세요. Xaman 및 기타 XRPL 지갑으로 가져옵니다."
+      }
+    },
+    "modes": {
+      "wallet": "지갑",
+      "mint": "박하",
+      "create": "CREATE",
+      "create2": "CREATE2",
+      "legacy": "유산",
+      "segwit": "세그윗",
+      "taproot": "직근",
+      "uq": "UQ",
+      "eq": "EQ"
+    },
+    "evmChainsNote": "이더리움 · BNB · 기본 · 중재 · 낙천주의 · + EVM",
+    "solDownloadTxtTitle": "VANITAS - SOLANA KEYPAIR",
+    "solDownloadImportant": "중요:\n- 개인 키를 절대 공유하지 마세요\n- 이 파일을 안전하게 저장하세요.\n- 이 키 쌍은 브라우저에서 로컬로 생성되었습니다.",
+    "scrollToForge": "위조하려면 스크롤하세요.",
+    "sideCaptions": {
+      "solWallet": "그림 I — 원형극장",
+      "solMint": "그림 II - 사원",
+      "evm": "그림 VII - 포럼",
+      "btc": "그림 VIII — 동전",
+      "tron": "그림 IX - 회로",
+      "aptos": "그림 XI - 격자",
+      "sui": "그림 XII — 전류",
+      "ton": "그림 XIII - 신호",
+      "cardano": "그림 XII — 원장",
+      "xrp": "그림 14 - 원장"
+    },
+    "steps": {
+      "mode": "01 - 모드",
+      "pattern": "02 - 패턴",
+      "estimate": "03 — 견적",
+      "forge": "04 — 포지",
+      "live": "05 — 라이브"
+    },
+    "stepsCompact": {
+      "pattern": "01 - 패턴",
+      "estimate": "02 — 견적",
+      "forge": "03 — 포지",
+      "live": "04 — 라이브"
+    },
+    "links": {
+      "sharePattern": "패턴 공유",
+      "howItWorks": "작동 원리",
+      "liveAudit": "실시간 감사",
+      "evmForge": "EVM 포지",
+      "proofOfFind": "발견 증거"
+    },
+    "sol": {
+      "mintAfterForge": "위조 후: 개인 키를 런치패드의 사용자 정의 민트 필드(pump.fun, Raydium, Meteora, …)에 복사합니다.",
+      "mode": {
+        "target": "목표",
+        "walletTarget": "지갑 주소",
+        "mintTarget": "토큰 민트 주소",
+        "toggleAria": "지갑 또는 민트 주소 전환",
+        "mintHelp": "발사대(pump.fun, Raydium, Meteora, …)용 화장대 Solana 민트 키 쌍을 제작합니다. 개인 키를 custom-mint 필드에 붙여넣습니다.",
+        "walletHelp": "이 브라우저에서 Vanity Solana 지갑 키 쌍(Base58 주소)을 위조합니다."
+      }
+    },
+    "eth": {
+      "create2Params": "CREATE2 매개변수",
+      "initHash": "해시 초기화",
+      "initHashPh": "keccak256(initCode) — 64 16진수",
+      "salt": "소금",
+      "saltPh": "32바이트 솔트 - 6416진수",
+      "deployerKey": "배포자 키",
+      "deployerKeyPh": "배포자 개인 키 — 64 16진수",
+      "footnote": "Ethereum, BNB 스마트 체인, Base, Arbitrum, Optimism, Polygon 및 기타 모든 EVM 네트워크에서 동일한 0x 키입니다. Solana는 [SOL](/sol)에서 라이브로 위조됩니다.",
+      "mode": {
+        "target": "목표",
+        "walletBlurb": "모든 EVM 체인의 EOA 0x 주소.",
+        "createBlurb": "먼저 배포(nonce 0) 계약 주소입니다.",
+        "c2SaltBlurb": "고정 배포자 + initCodeHash; 소금을 갈다.",
+        "c2KeyBlurb": "소금 + initCodeHash를 수정했습니다. 배포자 키를 갈기.",
+        "c2Salt": "C2 소금",
+        "c2Key": "C2 키"
+      }
+    },
+    "btc": {
+      "stepType": "01 — 유형",
+      "mode": {
+        "addressType": "주소 유형",
+        "legacyBlurb": "클래식 1… P2PKH(Base58).",
+        "segwitBlurb": "네이티브 bc1q… P2WPKH(Bech32).",
+        "taprootBlurb": "기본 bc1p… P2TR(Bech32m)."
+      },
+      "pattern": {
+        "legacyHint": "기존 주소는 1로 시작합니다. BTC를 입력하여 1BTC를 검색합니다… (앞의 1이 자동으로 추가됩니다).",
+        "segwitHint": "SegWit 주소는 bc1q로 시작합니다. \"cafe\"와 같은 본문을 입력하거나 전체 bc1q… 접두사를 입력하세요.",
+        "taprootHint": "탭루트 주소는 bc1p로 시작합니다. \"cafe\"와 같은 본문을 입력하거나 전체 bc1p… 접두사를 입력하세요.",
+        "caseNote": "끄기(소문자 패턴에 권장): 1 이후에는 대소문자 구분이 켜져 있으면 소문자는 극히 드뭅니다."
+      }
+    },
+    "tron": {
+      "mode": {
+        "walletBlurb": "계정 Base58 주소(T…).",
+        "createBlurb": "첫 번째 배포 계약 주소(CREATE nonce 0)."
+      }
+    },
+    "ton": {
+      "mode": {
+        "addressForm": "주소 양식",
+        "uqWallet": "UQ 지갑",
+        "uqBlurb": "반송 불가능한 지갑 주소(권장)",
+        "eqBlurb": "동일한 Wallet v4R2 계정의 반송 가능한 형태입니다."
+      }
+    },
+    "pattern": {
+      "solPrefixPh": "SOL",
+      "solSuffixPh": "xyz",
+      "solAlphabet": "Base58 전용 — `0 O I` 없음. 알파벳: `1-9 A-H J-N P-Z a-k m-z`",
+      "ethHexNote": "EVM 주소는 16진수로만 구성됩니다(숫자 `0–9` 및 문자 `a–f`). 문자 `g–z`(및 기타 문자)는 주소에 나타날 수 없으며 입력할 때 무시됩니다.",
+      "ethIgnored": "무시됨: {chars}",
+      "ethPrefixPh": "죽은",
+      "ethSuffixPh": "소고기",
+      "ethAfter0x": "0x 이후에 시작",
+      "ethCaseNote": "일치는 대소문자를 구분하지 않습니다. 패턴이 길수록 기하급수적으로 시간이 더 걸립니다(문자당 16개 가능)."
+    },
+    "cardano": {
+      "headerBlurb": "이 브라우저에서 완전히 가상 Cardano 기업 주소(addr1…)를 생성하세요. 결제 키만 가능합니다."
+    },
+    "xrp": {
+      "headerBlurb": "이 브라우저에서 완전히 Vanity XRP Ledger 클래식 주소(r…)를 생성하세요. Xaman 및 기타 XRPL 지갑으로 가져옵니다."
+    }
+  },
+  "tools": {
+    "lab": {
+      "title": "패턴 연구실",
+      "description": "채굴하기 전에 패턴이 얼마나 희귀한지 확인한 다음 작업을 대기열에 추가하고 대장간을 열어보세요.",
+      "eyebrow": "도구",
+      "caption": "그림 — 실험실",
+      "toc": {
+        "composer": "작곡가",
+        "matrix": "행렬",
+        "queue": "대기줄"
+      },
+      "sectionPattern": "무늬",
+      "sectionRarity": "희박",
+      "sectionBatch": "일괄",
+      "addQueue": "대기열에 추가",
+      "openForge": "{chain} 포지 열기 →",
+      "queueEmpty": "비어 있는",
+      "queueEmptyHint": "작업을 비교하려면 위의 패턴을 추가하세요.",
+      "remove": "제거하다",
+      "exportJson": "JSON 내보내기",
+      "clear": "분명한",
+      "prefixPh": "에이스",
+      "suffixPh": "선택 과목",
+      "composerN": "01 — 작곡가",
+      "matrixN": "02 - 매트릭스",
+      "queueN": "03 — 대기열",
+      "forge": "노",
+      "exportWarning": "패턴만 — 개인 키가 없습니다."
+    },
+    "lookalike": {
+      "title": "유사 체크",
+      "description": "불가능한 패턴으로 CPU를 소모하기 전에 금지된 Base58 글리프, Tron 케이스 트랩, XRPL 알파벳 불일치 및 사람과 유사한 문자를 잡아보세요.",
+      "eyebrow": "도구",
+      "caption": "그림 — 글리프",
+      "toc": {
+        "check": "확인하다",
+        "findings": "조사 결과",
+        "alphabets": "알파벳"
+      },
+      "sectionCheckN": "01 — 확인",
+      "sectionFindingsN": "02 — 조사 결과",
+      "sectionAlphabetsN": "03 - 알파벳",
+      "sectionPatternForge": "패턴 및 단조",
+      "pattern": "무늬",
+      "patternPh": "접두사 또는 조각",
+      "sectionSpotted": "우리가 발견한 것",
+      "findingsEmptyTitle": "패턴을 입력하세요",
+      "findingsEmptyDetail": "확인하려면 접두사, 접미사 또는 전체 허영 조각을 붙여넣으세요.",
+      "readyGrind": "갈 준비가 되셨나요? [Pattern Lab](/lab) 또는 일치하는 Forge를 엽니다.",
+      "sectionCharset": "문자셋 치트 시트",
+      "tocCheck": "확인하다",
+      "tocFindings": "조사 결과",
+      "tocAlphabets": "알파벳",
+      "sectionCheckTitle": "패턴 및 단조",
+      "sectionFindingsTitle": "우리가 발견한 것",
+      "sectionAlphabetsTitle": "문자셋 치트 시트",
+      "patternLabel": "무늬",
+      "severity": {
+        "error": "오류",
+        "warn": "경고",
+        "info": "정보"
+      },
+      "chains": {
+        "sol": {
+          "label": "솔라나",
+          "notes": "비트코인 스타일 Base58 — 0, O, I, l 없음"
+        },
+        "evm": {
+          "label": "EVM",
+          "notes": "16진수만(0-9, a-f), 대소문자를 구분하지 않음"
+        },
+        "btc-legacy": {
+          "label": "비트코인 레거시",
+          "notes": "베이스58 P2PKH / P2SH"
+        },
+        "btc-bech32": {
+          "label": "비트코인 Bech32",
+          "notes": "bc1q / bc1p 본문 문자 집합"
+        },
+        "tron": {
+          "label": "트론",
+          "notes": "Base58 T… — 대소문자를 구분합니다. 초기 문자는 일반적으로 대문자"
+        },
+        "aptos": {
+          "label": "앱토스",
+          "notes": "0x + 64 16진수"
+        },
+        "sui": {
+          "label": "수이",
+          "notes": "0x + 64 16진수"
+        },
+        "ton": {
+          "label": "TON",
+          "notes": "Base64url — 대소문자를 구분합니다."
+        },
+        "cardano": {
+          "label": "카르다노",
+          "notes": "addr1… bech32 본체"
+        },
+        "xrp": {
+          "label": "XRP",
+          "notes": "XRPL Base58 — 비트코인/솔라나와 다름"
+        }
+      },
+      "pairNotes": {
+        "zeroO": "0 대 자본 O",
+        "zeroo": "0 대 소문자 o",
+        "oneL": "1 대 소문자 L",
+        "oneI": "1 대 자본 i",
+        "onei": "1 대 소문자 i",
+        "fiveS": "5 대 S",
+        "eightB": "8 대 B"
+      },
+      "findings": {
+        "empty": {
+          "title": "패턴을 입력하세요",
+          "detail": "확인하려면 접두사, 접미사 또는 전체 허영 조각을 붙여넣으세요."
+        },
+        "invalidAlphabet": {
+          "title": "이 알파벳에 없는 문자",
+          "detail": "유효하지 않음: {chars}. {notes}"
+        },
+        "base58Banned": {
+          "title": "Base58은 0, O, I 또는 l을 사용하지 않습니다.",
+          "detail": "이러한 글리프는 유사성을 피하기 위해 비트코인 ​​스타일 Base58에서 제거되었습니다. 이 패턴은 일치할 수 없습니다."
+        },
+        "xrplVsBtc": {
+          "title": "XRPL 알파벳에 사용되는 Bitcoin Base58 문자",
+          "detail": "XRPL 클래식 주소는 다른 Base58 알파벳을 사용합니다. 위반: {chars}"
+        },
+        "xrplCharset": {
+          "title": "XRPL 특정 문자",
+          "detail": "이는 XRPL Base58에는 나타나지만 Bitcoin Base58에는 나타나지 않습니다: {chars}"
+        },
+        "sharedGlyphs": {
+          "title": "글리프는 Base58 알파벳 모두에 존재합니다.",
+          "detail": "문자는 겹치지만 인코딩은 여전히 ​​다릅니다. 다시 확인하지 않고 XRP에서 Solana/BTC 가상 문자열을 재사용하지 마세요."
+        },
+        "notXrpl": {
+          "title": "XRPL에서는 있는 그대로 작동하지 않습니다.",
+          "detail": "이 비트코인/솔라나 Base58 패턴은 XRPL 알파벳에서 누락된 글리프를 사용합니다."
+        },
+        "tronCase": {
+          "title": "Tron의 소문자 초기 패턴",
+          "detail": "Tron 주소는 T로 시작하고 다음 문자는 일반적으로 대문자 Base58입니다. 짧은 소문자 접두사는 일치하지 않는 경우가 많습니다. 대문자나 더 긴 접미사를 사용해 보세요."
+        },
+        "tronLeadingT": {
+          "title": "선행 소문자 t",
+          "detail": "Classic Tron 주소는 대문자 T로 시작합니다. T를 선호하거나 Forge가 자동 처리하는 경우 T를 생략합니다."
+        },
+        "pair": {
+          "title": "혼합 유사 항목: {a} 및 {b}",
+          "detail": "{note}. 주소를 소리내어 공유하거나 스크린샷으로 공유할 때 실수하기 쉽습니다."
+        },
+        "safe": {
+          "title": "{present}은 알파벳으로 되어 있습니다. {absent}은(는) 아닙니다",
+          "detail": "{note}. 수신자는 여전히 시각적으로 혼란스럽습니다. 공유할 때 철자를 주의 깊게 입력하세요."
+        },
+        "hexCase": {
+          "title": "혼합 육각형 케이스",
+          "detail": "일치는 대소문자를 구분하지 않습니다. 혼합 케이스는 표시(체크섬)에는 적합하지만 연삭에는 필요하지 않습니다."
+        },
+        "tonCase": {
+          "title": "TON 패턴은 대소문자를 구분합니다.",
+          "detail": "Base64url은 A와 a를 구별합니다. 대소문자를 혼합하면 난이도가 높아지고 잘못 입력하기 쉽습니다."
+        },
+        "clean": {
+          "title": "알파벳 충돌이 감지되지 않았습니다.",
+          "detail": "모든 문자는 {label}에 맞습니다. 긴 갈기 전에 라이브 단조 경고를 다시 확인하십시오."
+        }
+      }
+    },
+    "create2": {
+      "title": "CREATE2 도우미",
+      "description": "배포 바이트코드에서 initCodeHash를 파생시키고 배포자 및 솔트의 CREATE2 주소를 미리 본 다음 EVM 포지로 이동합니다. 열쇠는 지역적으로 유지됩니다.",
+      "eyebrow": "도구",
+      "caption": "그림 — CREATE2",
+      "toc": {
+        "hash": "해시시",
+        "preview": "시사",
+        "forge": "노"
+      },
+      "sectionHashN": "01 - 해시",
+      "sectionHashTitle": "바이트코드 → initCodeHash",
+      "sectionPreviewN": "02 - 미리보기",
+      "sectionPreviewTitle": "주소 미리보기",
+      "sectionForgeN": "03 — 포지",
+      "sectionForgeTitle": "EVM 포지 열기",
+      "hashIntro": "배포할 생성 바이트 코드(초기 코드)를 붙여넣습니다. 우리는 이 브라우저에서 `keccak256(initCode)`을 계산합니다.",
+      "initCodeLabel": "초기화 코드(16진수)",
+      "initCodePh": "0x6080604052…",
+      "initCodeHashLabel": "초기화 코드 해시(32바이트)",
+      "initCodeHashPh": "0x…",
+      "initCodeHashResult": "초기화 코드 해시 · {bytes} 바이트",
+      "deployerLabel": "배포자",
+      "deployerPh": "0x…",
+      "saltLabel": "소금",
+      "saltPh": "0x… 또는 비어 있음 = 소금 없음",
+      "create2Address": "CREATE2 주소",
+      "wantedPrefix": "원하는 접두사",
+      "wantedSuffix": "원하는 접미사",
+      "prefixPh": "카페",
+      "suffixPh": "선택 과목",
+      "patternMatch": "패턴 일치",
+      "patternMismatch": "미리보기 주소가 이 패턴과 일치하지 않습니다. 소금이나 배포자를 계속 갈아주세요.",
+      "useInPreview": "미리보기에서 사용",
+      "forgeIntro": "해시와 패턴을 사용하여 EVM 위조에 딥 링크하세요. 잘못된 initCodeHash는 잘못된 온체인 주소를 의미합니다.",
+      "grindSalt": "소금을 갈아서",
+      "grindDeployer": "그라인드 디플로이터",
+      "evmForge": "EVM 포지",
+      "tocHash": "해시시",
+      "tocPreview": "시사",
+      "tocForge": "노",
+      "prefixLabel": "접두사",
+      "suffixLabel": "접미사",
+      "predictedAddress": "예상 주소",
+      "patternMiss": "패턴 불일치",
+      "invalidDeployer": "잘못된 배포자 또는 해시",
+      "openSaltForge": "단조에서 소금을 갈아서",
+      "openDeployerForge": "Forge에서 그라인드 디플로이터"
+    },
+    "brand": {
+      "title": "상표",
+      "description": "런치패드와 문서에 증명 카드를 삽입하고 간단한 브랜딩 키트(워드마크, 색상, 문구)를 포함하세요. 개인 키를 포함하지 않습니다.",
+      "eyebrow": "도구",
+      "embedIntro": "체인, 주소 및 패턴(찾기 또는 데모에서)을 붙여넣습니다. 우리는 [/proof](/proof)과 동일한 규칙인 클라이언트측 일치를 확인하는 iframe을 구축합니다.",
+      "badgeLine": "클라이언트 측 증명 확인 · vanitas.fun",
+      "caption": "그림 — 브랜드",
+      "toc": {
+        "embed": "포함시키다",
+        "preview": "시사",
+        "kit": "전부",
+        "copy": "복사"
+      },
+      "sectionEmbedN": "01 - 삽입",
+      "sectionEmbedTitle": "증명 위젯",
+      "address": "주소",
+      "prefix": "접두사",
+      "suffix": "접미사",
+      "paperTheme": "종이 테마",
+      "inkTheme": "잉크 테마",
+      "compact": "콤팩트",
+      "iframeSnippet": "Iframe 스니펫",
+      "copyIframe": "아이프레임 복사",
+      "copyEmbedUrl": "삽입 URL 복사",
+      "copyProofUrl": "전체 증거 URL 복사",
+      "sectionPreviewN": "02 - 미리보기",
+      "sectionPreviewTitle": "라이브 카드",
+      "previewBody": "`/embed/proof`의 액자 미리보기. 데모 주소는 실제 찾은 내용을 붙여넣을 때까지 불일치로 표시될 수 있습니다.",
+      "iframeTitle": "Vanitas 프루프",
+      "previewIframeTitle": "Vanitas 프루프 미리보기",
+      "sectionKitN": "03 - 키트",
+      "sectionKitTitle": "브랜딩 키트",
+      "kitIntro": "교정본이나 위조본을 연결할 때 Vanitas 마크를 사용하세요. 사실이 아닌 한 양육권, 파트너십 또는 Vanitas의 감사를 암시하지 마십시오.",
+      "wordmark": "워드마크",
+      "wordmarkNote": "디스플레이/세리프체 무게 - 브랜드만 표시되면 영웅 수준",
+      "paper": "종이",
+      "paperNote": "1차 접지",
+      "ink": "잉크",
+      "inkNote": "본체 + 크롬",
+      "accent": "악센트",
+      "accentValue": "사이트 악센트 토큰",
+      "accentNote": "링크/확인된 상태 — 계속해서 아껴두세요",
+      "site": "대지",
+      "siteNote": "표준 링크의 경우 www.vanitas.fun을 선호합니다.",
+      "badgeHeading": "뱃지라인",
+      "copyBadge": "배지 라인 복사",
+      "sectionCopyN": "04 — 복사",
+      "sectionCopyTitle": "추천광고",
+      "shortLabel": "짧은",
+      "shortBlurb": "Vanitas를 통해 로컬로 위조된 가상 주소 - 키가 장치 외부로 유출되지 않습니다. 패턴 일치가 클라이언트 측에서 확인되었습니다.",
+      "launchpadLabel": "런치패드",
+      "launchpadBlurb": "vanitas.fun을 통해 브라우저 내에서 생성된 맞춤형 민트/허영 지갑. 누구든지 패턴을 확인할 수 있도록 증명 링크를 공유하세요. 개인 키는 페이지에 표시되지 않습니다.",
+      "linkProof": "증명 페이지",
+      "linkLab": "패턴 연구실",
+      "linkSecurity": "보안"
+    },
+    "proof": {
+      "title": "공개 일치 확인",
+      "description": "클라이언트측에서 허영 일치를 확인합니다. 키는 포함되지 않습니다.",
+      "eyebrow": "발견 증거",
+      "intro": "이 페이지에서는 주소가 요청된 패턴과 일치하는지 확인합니다. 개인 키는 포함되지 않습니다. 누구나 링크를 열고 클라이언트 측을 다시 확인할 수 있습니다.",
+      "emptyIntro": "URL에 증거 데이터가 없습니다. 주소를 위조한 후 결과 화면에서 **증명 공유**를 사용하세요. 아니면 먼저 위조하세요:",
+      "address": "주소",
+      "pattern": "무늬"
+    },
+    "embedProof": {
+      "eyebrow": "Vanitas 프루프",
+      "brand": "Vanitas",
+      "missingParams": "증명 매개변수가 누락되었습니다.",
+      "openProof": "공개 증거",
+      "site": "vanitas.fun"
+    },
+    "audit": {
+      "title": "심사",
+      "description": "런타임 확인 및 작업자 해시 비교.",
+      "eyebrow": "실시간 확인",
+      "caption": "그림 VI - 포럼",
+      "descriptionIdle": "8개의 현지 점검. 아무것도 위조되지 않으며 서버로 전송되는 것도 없습니다. 녹색은 좋음을 의미합니다.",
+      "descriptionPass": "8번의 현지 점검 — 클리어. 아무것도 위조되지 않으며 서버로 전송되는 것도 없습니다.",
+      "descriptionFail": "8개의 로컬 점검 — {failed} 문제. 녹색은 좋음을 의미합니다.",
+      "checksTotal": "{total} 확인",
+      "passedSummary": "{passed}/{total} 통과됨",
+      "buildIntegrity": "무결성 구축",
+      "workerFingerprintIntro": "각 단조 작업자는 `worker-hash.json`에 게시된 SHA-256 지문을 가지고 있습니다. 위의 무결성 테스트는 이 목록에 대해 Solana, EVM, Bitcoin 및 Tron을 확인합니다.",
+      "verifyYourself": "본인 인증",
+      "verifyStep1": "1. [vanitas.fun](https://vanitas.fun)에 링크된 소스 검토",
+      "verifyStep2": "2. 빌드 작업자: `npm run build:worker`",
+      "verifyStep3": "3. `public/worker-hash.json`을 위의 해시와 비교",
+      "hashLoading": "로드 중…",
+      "hashUnavailable": "없는",
+      "start": "감사 시작",
+      "runAgain": "다시 실행",
+      "running": "달리기…",
+      "whatIsThis": "이게 뭔가요?",
+      "whatIsThisBody": "Vanitas를 사용하면 기기에 개인 키가 생성됩니다. 이러한 **8개의 자동 검사**는 생성이 로컬에 유지되고 임의성이 실제이며 네트워크에 아무 것도 남지 않음을 입증합니다.",
+      "workerFingerprint": "작업자 지문",
+      "networkMonitor": "라이브 네트워크 모니터",
+      "monitor": {
+        "transparency": "투명도",
+        "intro": "이 페이지에서 발생하는 모든 네트워크 요청입니다. 주요 데이터가 나가면 여기에서 볼 수 있습니다.",
+        "stop": "● 중지",
+        "restart": "다시 시작",
+        "startMonitoring": "모니터링 시작",
+        "requests": "{count} 요청",
+        "requestSingular": "요청 1개",
+        "noSuspicious": "의심스러운 외부 요청 없음",
+        "externalCount": "{count} 외부",
+        "colType": "유형",
+        "colUrl": "URL",
+        "colSize": "크기",
+        "colTime": "시간",
+        "footerSafe": "모든 요청은 이 도메인이나 Google Fonts(타이포그래피용)로 이동됩니다. 데이터는 타사 서버로 전송되지 않습니다.",
+        "footerWarning": "경고: 예상치 못한 외부 요청이 감지되었습니다. 이는 보안 문제를 나타낼 수 있습니다.",
+        "emptyHint": "이 페이지에서 생성된 모든 네트워크 요청을 보려면 \"모니터링 시작\"을 클릭하세요.",
+        "emptySubhint": "모니터링을 켠 상태에서 사이트를 탐색하면 로드되는 내용을 정확히 확인할 수 있습니다.",
+        "activeHint": "모니터링 활성 — 네트워크 요청을 기다리는 중..."
+      },
+      "tests": {
+        "webcrypto": {
+          "name": "웹 암호화 API",
+          "description": "브라우저에서 기본 Ed25519 지원",
+          "why": "이것이 바로 열쇠를 생성하는 기술입니다. 브라우저가 기본적으로 이를 지원하는 경우 주소 생성은 다른 브라우저보다 최대 125배 빠릅니다."
+        },
+        "csprng": {
+          "name": "난수 생성기",
+          "description": "암호화 방식으로 안전한 난수 생성기",
+          "why": "귀하의 개인 키는 본질적으로 거대한 난수입니다. 무작위성이 약하거나 예측 가능한 경우 누군가가 키를 추측할 수 있습니다. 이 테스트는 무작위 생성기가 올바르게 작동하는지 확인합니다."
+        },
+        "entropy": {
+          "name": "무작위성 품질",
+          "description": "10,000 랜덤 바이트에 대한 통계 테스트",
+          "why": "우리는 10,000개의 난수를 생성하고 그것이 균등하게 분포되어 있는지 확인합니다. 마치 공정한 주사위를 수천 번 굴리는 것과 같습니다. 어떤 숫자가 더 자주 나타나면 뭔가 잘못된 것입니다."
+        },
+        "network": {
+          "name": "네트워크 트래픽 제로",
+          "description": "키 생성 중에는 데이터가 브라우저를 떠나지 않습니다.",
+          "why": "가장 중요한 확인: 키가 생성되는 동안 인터넷으로 아무 것도 전송되지 않는지 확인합니다. 개인 키는 절대로 장치를 떠나서는 안 됩니다."
+        },
+        "csp": {
+          "name": "보안 헤더",
+          "description": "콘텐츠 보안 정책으로 데이터 유출을 제한합니다.",
+          "why": "이러한 브라우저 수준의 규칙은 악성 코드가 삽입되더라도 어디로든 데이터를 보낼 수 없도록 차단합니다. 웹사이트 자체에 내장된 방화벽이라고 생각하세요."
+        },
+        "worker": {
+          "name": "작업자 격리",
+          "description": "키 생성은 격리된 백그라운드 스레드에서 실행됩니다.",
+          "why": "키는 별도의 \"작업자\", 즉 백그라운드에서 실행되는 격리된 미니 프로그램에서 생성됩니다. 그들은 메인 페이지에 접근할 수 없으며 브라우저 확장 프로그램에 의해 조작될 수 없습니다."
+        },
+        "integrity": {
+          "name": "코드 무결성",
+          "description": "SHA-256 지문은 게시된 모든 단조 작업자와 일치합니다.",
+          "why": "우리는 모든 키 생성 작업자(Solana, EVM, Bitcoin, Tron, Aptos, Sui)를 해시하고 각각을 오픈 빌드의 Worker-hash.json과 비교합니다. 일치하면 코드가 변조되지 않은 것입니다."
+        },
+        "keygen": {
+          "name": "키 생성 테스트",
+          "description": "실제 Ed25519 키 쌍 생성 및 검증",
+          "why": "최종 증명: 실제 키를 생성하고 이를 사용하여 메시지에 서명한 다음 서명을 확인합니다. 이것이 작동한다면 귀하의 브라우저는 안전하게 Solana 주소를 생성할 수 있습니다."
+        }
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "문서",
+    "title": "FAQ",
+    "description": "패턴, 모드, 보안, 증명 링크, CLI 및 일상적인 사용 등 모든 위조에 대한 답변입니다. 주제별로 이동하려면 하위 메뉴를 사용하세요.",
+    "categories": {
+      "general": {
+        "label": "일반적인",
+        "n": "01",
+        "items": {
+          "what": {
+            "q": "가상 주소란 무엇인가요?",
+            "a": "선택한 패턴이 포함된 암호화폐 주소입니다. 예를 들어 Solana에서는 `VANI`로 시작하고 EVM에서는 `0xcafe`로 시작합니다. 일반 키페어 위에 화장품 브랜딩을 추가한 것입니다."
+          },
+          "fake": {
+            "q": "Vanitas는 \"가짜\" 주소를 생성합니까?",
+            "a": "아니요. 모든 단조업체는 해당 체인에 대한 표준 키를 생성합니다. 일치하는 지갑으로 가져오면 무작위로 생성된 주소처럼 작동합니다. 단지 의도적인 것처럼 보입니다."
+          },
+          "which": {
+            "q": "어떤 단조품이 존재합니까?",
+            "a": "9개의 웹 위조(Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano, XRP) 및 터미널용 `npx vanitas`. [How it works → Chains](/how-it-works#chains)을 참조하세요."
+          },
+          "howLong": {
+            "q": "내 패턴은 얼마나 걸리나요?",
+            "a": "예상 시도 횟수는 길이와 알파벳 크기에 따라 기하급수적으로 늘어납니다. 16진수(16자)는 Base58(~58)보다 밀도가 높습니다. 페이지의 난이도 추정치를 사용하세요. 긴 브랜드를 추적하기 전에 3~4자로 시작하세요."
+          },
+          "prefixSuffix": {
+            "q": "접두사와 접미사를 함께 사용할 수 있나요?",
+            "a": "그렇습니다. 두 가지 제약 조건 모두 어려움을 배가시킵니다. 여유 시간과 해시 비율이 없다면 하나의 강력한 측면(접두사 또는 접미사)을 선호하세요."
+          }
+        }
+      },
+      "solana": {
+        "label": "솔라나",
+        "n": "02",
+        "items": {
+          "produce": {
+            "q": "솔라나 대장간에서는 무엇을 생산하나요?",
+            "a": "Base58 주소인 Ed25519 키 쌍(Phantom/Solflare와 동일한 제품군). 쉽게 가져올 수 있도록 Solana CLI JSON 바이트 배열로 내보냅니다."
+          },
+          "walletMint": {
+            "q": "월렛 모드와 민트 모드?",
+            "a": "동일한 암호화. **지갑**은 개인 주소용입니다. **Mint**는 런치패드 사용자 정의 필드(pump.fun, Raydium, Meteora 등)에 대해 라벨이 지정되어 있습니다. [/sol?mode=mint](/sol?mode=mint)을 엽니다."
+          },
+          "base58": {
+            "q": "왜 0, O, I, l을 사용할 수 없나요?",
+            "a": "Base58은 유사한 문자를 제외합니다. 이를 포함하는 패턴은 실제 솔라나 주소에 나타날 수 없습니다."
+          },
+          "pump": {
+            "q": "민트는 \"펌프\"로 끝나야 하나요?",
+            "a": "아니요. 해당 접미사는 프로토콜 규칙이 아니라 마케팅입니다. 런치패드가 사용자 정의 민트 키 쌍을 허용하는 경우 유효한 Base58 배니티 패턴이 작동합니다."
+          }
+        }
+      },
+      "evm": {
+        "label": "EVM",
+        "n": "03",
+        "items": {
+          "networks": {
+            "q": "EVM 세면 키는 어떤 네트워크에서 작동하나요?",
+            "a": "모든 EVM 호환 체인은 동일한 주소 파생을 공유합니다. Ethereum, Base, Arbitrum, Optimism, BSC, Polygon, Avalanche C-Chain 등에서 하나의 키 → 하나의 `0x` 주소."
+          },
+          "modes": {
+            "q": "지갑, CREATE, CREATE2 모드란 무엇인가요?",
+            "a": "**지갑** — 가상 EOA 주소.\n**CREATE** — 해당 키의 첫 번째 계약의 허영 주소(nonce 0).\n**CREATE2** — 초기화 코드 해시가 주어지면 그라인드 솔트(고정 배포자) 또는 그라인드 배포자(고정 솔트)입니다."
+          },
+          "bnb": {
+            "q": "별도의 BNB 생성기가 필요합니까?",
+            "a": "BNB 스마트 체인(EVM)에는 아니요. 이전 비콘 체인 `bnb1` bech32 주소는 범위를 벗어납니다."
+          }
+        }
+      },
+      "bitcoin": {
+        "label": "비트코인",
+        "n": "04",
+        "items": {
+          "types": {
+            "q": "어떤 주소 유형이 지원되나요?",
+            "a": "메인넷 레거시 `1…`, SegWit `bc1q…` 및 Taproot `bc1p…`. 내보내기에는 압축된 WIF가 포함됩니다."
+          },
+          "leading": {
+            "q": "맨 앞의 1 / bc1q를 직접 입력합니까?",
+            "a": "선택 과목. 접두사에 아직 고정 버전/HRP가 포함되어 있지 않은 경우 UI는 고정 버전/HRP를 자동으로 추가합니다."
+          },
+          "lightning": {
+            "q": "라이트닝 송장?",
+            "a": "범위 밖 - BOLT가 아닌 주소를 위조합니다."
+          }
+        }
+      },
+      "tron": {
+        "label": "트론",
+        "n": "05",
+        "items": {
+          "get": {
+            "q": "트론 포지에서 무엇을 얻을 수 있나요?",
+            "a": "Mainnet Base58secp256k1 키의 `T…` 주소를 확인하세요 — 지갑 또는 CREATE(nonce 0). 접두사에는 선행 `T`이 자동으로 추가됩니다."
+          },
+          "case": {
+            "q": "소문자를 구분하는 접두어가 검색되지 않는 이유는 무엇입니까?",
+            "a": "`T` 다음의 문자는 거의 항상 대문자이거나 숫자입니다. 대소문자가 정확히 일치해야 하는 경우가 아니면 대소문자 구분을 꺼두세요. Base58은 O, I, l도 제외합니다."
+          }
+        }
+      },
+      "aptos-sui": {
+        "label": "앱토스 & 수이",
+        "n": "06",
+        "items": {
+          "differ": {
+            "q": "Aptos와 Sui는 어떻게 다른가요?",
+            "a": "둘 다 Ed25519와 16진수 주소를 사용하지만 해싱은 다릅니다. Aptos는 `sha3-256(pubkey ‖ 0x00)`을 사용합니다. Sui는 `blake2b-256(0x00 ‖ pubkey)`을 사용합니다. 키는 생태계 전체에서 상호 교환이 불가능합니다."
+          },
+          "wallets": {
+            "q": "어떤 지갑에서 가져올 수 있나요?",
+            "a": "Aptos: Petra, Martian 등. Sui: Sui Wallet, Suiet 및 16진수 개인 키를 허용하는 기타 제품입니다."
+          }
+        }
+      },
+      "ton-cardano-xrp": {
+        "label": "TON · 카르다노 · XRP",
+        "n": "07",
+        "items": {
+          "ton": {
+            "q": "TON UQ 대 EQ?",
+            "a": "반송할 수 없는(`UQ…`) 대 반송할 수 있는(`EQ…`) 사용자 친화적인 형태의 Wallet v4R2입니다. 일치는 대소문자를 구분합니다."
+          },
+          "cardano": {
+            "q": "어떤 Cardano 주소 유형이 위조되었나요?",
+            "a": "엔터프라이즈 메인넷 `addr1…` (CIP-19 유형 6 — 결제 키만, 주소에 지분 위임 없음)."
+          },
+          "xrp": {
+            "q": "XRP는 비트코인과 동일한 Base58인가요?",
+            "a": "아니요. XRPL 클래식 주소는 다른 Base58 알파벳을 사용합니다. Vanitas는 secp256k1 키의 `r…` 클래식을 인코딩합니다."
+          }
+        }
+      },
+      "security": {
+        "label": "보안",
+        "n": "08",
+        "items": {
+          "store": {
+            "q": "내 개인 키를 저장하나요?",
+            "a": "아니요. 키는 세션의 브라우저 메모리를 떠나지 않습니다. 아키텍처 및 위협 모델은 [Security](/security) 페이지를 참조하세요."
+          },
+          "verify": {
+            "q": "어떻게 확인하나요?",
+            "a": "1. DevTools → 채굴 중 네트워크 — 주요 트래픽 없음\n2. 로드 후 비행기 모드\n3. [Live audit](/audit) + 작업자 해시 비교"
+          },
+          "weaker": {
+            "q": "화장대 열쇠가 약합니까?",
+            "a": "아니요. 개인 키에는 여전히 완전한 CSPRNG 엔트로피가 있습니다. 공개 인코딩만 필터링됩니다."
+          },
+          "extensions": {
+            "q": "브라우저 확장은 어떻습니까?",
+            "a": "확장 프로그램은 여전히 ​​페이지를 스누핑할 수 있습니다. 높은 값의 키의 경우 클린 프로필, CLI 또는 오프라인 머신을 사용하세요. 세부정보: [Security → Browser](/security#browser)."
+          },
+          "report": {
+            "q": "취약점은 어디에 보고하나요?",
+            "a": "비공개 GitHub 보안 권고 - 공개 문제가 아닙니다. [Security → Disclose](/security#disclose)을 참조하세요."
+          }
+        }
+      },
+      "proof-cli": {
+        "label": "증명 및 CLI",
+        "n": "09",
+        "items": {
+          "proof": {
+            "q": "발견 증명이란 무엇입니까?",
+            "a": "주소 + 패턴(및 선택적 통계)이 포함된 공유 가능한 [/proof](/proof) 링크입니다. 누구나 클라이언트측에서 일치 여부를 확인할 수 있습니다. 개인 키는 포함되지 않습니다."
+          },
+          "cli": {
+            "q": "CLI를 어떻게 실행하나요?",
+            "a": "마법사의 경우 `npx vanitas` 또는 `npx vanitas sol --prefix Ace --threads 8`과 같은 플래그입니다. 웹 앱과 동일한 배포 모드를 지원합니다(mint, CREATE, CREATE2 플래그)."
+          }
+        }
+      },
+      "usage": {
+        "label": "용법",
+        "n": "10",
+        "items": {
+          "import": {
+            "q": "Phantom/MetaMask 등으로 어떻게 가져오나요?",
+            "a": "해당 위조에 대한 내보내기 형식을 사용하십시오: Phantom/Solfrere의 경우 Solana JSON, 대부분의 EVM 지갑의 경우 hex, 많은 비트코인 ​​지갑의 경우 WIF, 다른 곳에서는 체인별 hex/Base58입니다. 항상 작은 테스트 전송을 먼저 수행하십시오."
+          },
+          "pause": {
+            "q": "일시중지했다가 다시 시작할 수 있나요?",
+            "a": "언제든지 멈출 수 있습니다. 이력서는 새로운 검색입니다(이전 시도에 대한 체크포인트 없음)."
+          },
+          "disabled": {
+            "q": "시작이 비활성화된 이유는 무엇입니까?",
+            "a": "패턴이 비어 있거나 해당 알파벳에 잘못된 문자가 있거나 패턴이 너무 깁니다. 입력 아래의 유효성 검사 메시지를 수정합니다."
+          },
+          "freeze": {
+            "q": "채굴하는 동안 UI가 정지되나요?",
+            "a": "스레드 수를 줄이세요. 작업자는 UI를 활성 상태로 유지해야 하지만 작은 노트북의 모든 코어를 포화시키는 것은 여전히 ​​느리게 느껴질 수 있습니다."
+          }
+        }
+      }
+    },
+    "sideCaption": "그림 IV — 풍경",
+    "topics": "주제",
+    "stillStuck": "아직도 붙어있나요?",
+    "stillStuckBody": "작동 방식에 깊은 기술적 세부 사항이 적용됩니다. 신뢰 모델 및 위협 메모는 보안에 적용됩니다. 무결성 검사는 감사를 통해 진행됩니다.",
+    "linkHow": "작동 원리",
+    "linkSecurity": "보안",
+    "linkAudit": "실시간 감사",
+    "glyphs": {
+      "general": "그림 - 스크롤",
+      "solana": "그림 - 열주",
+      "evm": "그림 — 모드",
+      "bitcoin": "그림 - 키",
+      "tron": "그림 - 포지",
+      "aptos-sui": "그림 - 루프",
+      "ton-cardano-xrp": "그림 - 비석",
+      "security": "그림 - 방패",
+      "proof-cli": "그림 - 씰",
+      "usage": "그림 - 시간"
+    }
+  },
+  "docs": {
+    "howItWorks": {
+      "eyebrow": "문서",
+      "title": "작동 원리",
+      "description": "Vanitas에 대한 전체 둘러보기: 허영 채굴이 작동하는 방식, 각 단조에서 생산되는 것, 작업자가 병렬로 검색하는 방법, 기계에 아무 것도 남지 않았는지 확인하는 방법.",
+      "sideCaption": "그림 III — 연사",
+      "overview": {
+        "title": "Vanitas는 무엇인가",
+        "p1": "**Vanitas**는 클라이언트 측 다중 체인 가상 주소 위조입니다. 접두사 및/또는 접미사를 선택합니다. 앱은 공개 주소가 해당 패턴과 일치하는 키 쌍을 검색합니다. 생성은 **CPU의 웹 워커**에서 실행됩니다. 개인 키는 장치의 메모리에 생성되며 절대 업로드되지 않습니다.",
+        "p2": "가상 주소는 여전히 일반적인 암호화 주소입니다. 개인 키는 무작위입니다. 원하는 대로 보일 때까지 공개 인코딩만 필터링됩니다. 이는 브랜딩, 기부, 조폐국 및 기억에 남는 공개 지갑에 유용합니다."
+      },
+      "pipeline": {
+        "title": "검색 루프",
+        "intro": "모든 단조는 수백만 번 반복되는 동일한 상위 수준 루프를 따릅니다.",
+        "whySecure": "가상 주소를 검색해도 개인 키가 약화되지 **않습니다**. 공개 주소가 올바르게 보일 때까지 후보자를 거부합니다. 이는 무작위 키를 생성하고 행운의 키를 유지하는 것과 동일한 프로세스입니다."
+      },
+      "reminder": {
+        "label": "알림",
+        "body": "탭을 닫기 전에 개인 키를 저장하세요. 분실된 키는 복구할 수 없습니다. 잔고가 큰 경우: 먼저 소액 전송으로 테스트하고, 장기 보관을 위해 하드웨어 지갑을 선호하고, 신뢰할 수 없는 사이트에 키를 붙여넣지 마세요."
+      },
+      "toc": {
+        "overview": "개요",
+        "pipeline": "관로",
+        "patterns": "패턴",
+        "chains": "쇠사슬",
+        "modes": "모드",
+        "workers": "노동자",
+        "proof": "증거",
+        "cli": "CLI",
+        "verify": "확인하다"
+      },
+      "sections": {
+        "overview": {
+          "n": "01 — 개요",
+          "title": "Vanitas는 무엇인가",
+          "glyph": "그림 A — 키",
+          "ledger": {
+            "where": {
+              "label": "어디",
+              "value": "귀하의 브라우저 · 귀하의 CPU",
+              "note": "정적 호스팅만 해당. 채굴은 네트워크 호출을 하지 않습니다."
+            },
+            "forges": {
+              "label": "단조",
+              "value": "9개 체인 + 터미널 CLI",
+              "note": "솔라나 · EVM · 비트코인 ​​· 트론 · 앱토스 · 수이 · TON · 카르다노 · XRP"
+            },
+            "output": {
+              "label": "산출",
+              "value": "주소 + 개인 키",
+              "note": "내보내기 형식은 Forge에 따라 다릅니다(JSON, hex, WIF 등)."
+            }
+          }
+        },
+        "pipeline": {
+          "n": "02 - 파이프라인",
+          "title": "검색 루프",
+          "glyph": "그림 B - 루프",
+          "steps": [
+            "암호화된 보안 임의 개인 키(`crypto.getRandomValues`)를 그립니다.",
+            "체인 곡선(Ed25519 또는 secp256k1)을 사용하여 공개 키를 파생합니다.",
+            "체인이 예상하는 방식으로 주소를 인코딩합니다(Base58, hex, bech32, …).",
+            "접두사/접미사(및 모드 규칙)와 비교하세요.",
+            "일치 시: 작업자 중지, 결과 표시, 선택적으로 소리/증명/내보내기."
+          ],
+          "workersNote": "작업자는 이 루프를 CPU 코어 전체에 걸쳐 병렬로 실행합니다. UI 스레드는 계속 응답합니다. 진행률(시도 횟수, 비율, ETA)은 작업자 메시지에서 집계됩니다. 한 작업자가 적중을 발견하면 풀이 종료됩니다.",
+          "whySecureTitle": "이것이 안전한 이유"
+        },
+        "patterns": {
+          "n": "03 — 패턴",
+          "title": "난이도, 알파벳, 경고",
+          "glyph": "그림 C - 시간",
+          "intro": "예상 시간은 패턴 길이와 알파벳 크기에 따라 달라집니다. 각각의 추가 문자는 검색 공간을 증가시킵니다. Forge UI는 패턴과 측정되거나 가정된 해시 비율을 기반으로 실시간 난이도 추정치를 표시합니다.",
+          "ledger": {
+            "base58": {
+              "label": "베이스58",
+              "value": "~58개 기호",
+              "note": "솔라나, 트론, XRP(XRPL 알파벳), 비트코인 ​​레거시"
+            },
+            "hex": {
+              "label": "마녀",
+              "value": "기호 16개(0~9, a~f)",
+              "note": "EVM, Aptos, Sui — 일치 시 대소문자를 구분하지 않음"
+            },
+            "bech32": {
+              "label": "Bech32",
+              "value": "bc1q / bc1p / addr1…",
+              "note": "Bitcoin SegWit/Taproot, Cardano — 고정 HRP, 그 다음 문자 집합"
+            },
+            "ton": {
+              "label": "TON",
+              "value": "Base64url",
+              "note": "UQ… / EQ… — 대소문자 구분"
+            }
+          },
+          "trapsTitle": "알파벳 트랩",
+          "traps": [
+            "**Solana / Bitcoin Base58** — `0`, `O`, `I` 또는 `l`(유사 거부)가 없습니다.",
+            "**EVM** — `0x` 뒤에는 16진수만 있습니다. `a–f` 이외의 문자는 유효하지 않습니다.",
+            "**Tron** — 주소는 `T`으로 시작합니다. 다음 문자는 일반적으로 대문자입니다. 대소문자를 구분하는 소문자 접두사는 종종 일치하지 않습니다.",
+            "**접두사 + 접미사** — 두 제약 조건 모두 난이도를 증가시킵니다. 짧게 시작하세요. 요율을 알고 나면 패턴을 성장시키세요."
+          ]
+        },
+        "chains": {
+          "n": "04 - 체인",
+          "title": "모든 대장간, 설명",
+          "glyph": "그림 D - 단조",
+          "intro": "9개의 포지는 모드 선택, 패턴 설정, 작업자 시작 등 동일한 UX 패턴을 공유하지만 각 체인은 서로 다른 곡선, 해시 및 주소 인코딩을 사용합니다.",
+          "sol": "Base58(32바이트 공개 키)로 인코딩된 Ed25519 키 쌍. 기본 웹 암호화 Ed25519는 브라우저가 지원할 때 사용됩니다. 그렇지 않으면 WASM 대체(`watsign`)입니다. 모드: **지갑** 및 **민트** — 동일한 키 계산; 민트 프레이밍은 런치패드 맞춤형 민트 흐름을 위한 것입니다. 내보내기: Solana CLI JSON 바이트 배열.",
+          "evm": "secp256k1 → 압축되지 않은 pubkey → keccak-256 → 마지막 20바이트 → `0x…` 주소. 하나의 개인 키는 Ethereum, Base, Arbitrum, Optimism, BSC, Polygon 및 기타 모든 EVM 네트워크에서 동일한 주소를 생성합니다. 모드: 지갑(EOA), nonce 0에서 CREATE, CREATE2(그라인드 솔트 또는 그라인드 배포자). 아래 모드를 참조하세요.",
+          "btc": "secp256k1. 세 가지 주소 유형: 레거시 P2PKH(`1…`), 기본 SegWit P2WPKH(`bc1q…`), Taproot P2TR(`bc1p…`). 내보내기에는 지갑 가져오기를 위한 WIF(압축)가 포함됩니다. 접두사를 입력하면 선행 HRP/버전 바이트가 자동으로 처리됩니다.",
+          "tron": "20바이트 계정 ID에 대해 EVM과 동일한 secp256k1 + keccak 경로, 버전 바이트 `0x41` → `T…`의 Base58Check. 모드: 지갑 및 CREATE(nonce 0), EVM과 동일한 RLP 레이아웃을 사용하고 Tron 인코딩을 사용합니다.",
+          "aptos": "Ed25519. 주소 = `sha3-256(pubkey ‖ 0x00)`(16진수) Hex Secret을 가져오는 Petra, Martian 및 기타 Aptos 지갑과 호환됩니다.",
+          "sui": "Ed25519. 주소 = `blake2b-256(0x00 ‖ pubkey)`(16진수)(플래그 바이트가 구성표를 표시함) Hex 개인키를 이용해 Sui Wallet/Suiet으로 가져옵니다.",
+          "ton": "Ed25519 + 지갑 계약 v4R2. 주소는 사용자에게 친숙한 Base64url 형식입니다: `UQ…`(반송 불가) 및 `EQ…`(반송 가능). 일치는 대소문자를 구분합니다. Tonkeeper / MyTonWallet으로 가져옵니다.",
+          "cardano": "Ed25519 기업 주소(CIP-19 유형 6, 결제 키만): 헤더 `0x61` + Blake2b-224 결제 해시, bech32 with HRP `addr` → `addr1…`.",
+          "xrp": "secp256k1 압축된 pubkey → RIPEMD160(SHA256) 계정 ID → XRPL classic Base58 확인 → `r…`. 참고: XRPL은 비트코인과 다른 Base58 알파벳을 사용합니다.",
+          "links": {
+            "sol": "[Solana](/sol)",
+            "evm": "[EVM](/evm)",
+            "btc": "[Bitcoin](/btc)",
+            "tron": "[Tron](/tron)",
+            "aptos": "[Aptos](/aptos)",
+            "sui": "[Sui](/sui)",
+            "ton": "[TON](/ton)",
+            "cardano": "[Cardano](/cardano)",
+            "xrp": "[XRP](/xrp)"
+          }
+        },
+        "modes": {
+          "n": "05 — 모드",
+          "title": "지갑, 민트, CREATE, CREATE2",
+          "glyph": "그림 E — 모드",
+          "solMint": "암호화 방식으로 지갑 키 쌍과 동일합니다. 런치패드는 맞춤형 민트 키 쌍/개인 키를 요청합니다. Vanitas는 내보내기가 해당 워크플로우와 일치하도록 결과를 mint로 표시합니다. [/sol?mode=mint](/sol?mode=mint)을 열고 패턴을 찾은 후 키를 Pump.fun, Raydium, Meteora 등에 붙여넣으세요.",
+          "create": "nonce가 0인 EOA에서 배포된 첫 번째 계약에는 결정적 주소가 있습니다: `keccak256(RLP([sender, 0]))[12:]`. Vanitas는 파생된 계약 주소가 귀하의 패턴과 일치할 때까지 EOA를 분쇄합니다. 배포자 개인 키를 받습니다. 새로운 nonce-0 계정에서 한 번 배포합니다.",
+          "create2Intro": "주소 = `keccak256(0xff ‖ deployer ‖ salt ‖ initCodeHash)[12:]`. 두 가지 분쇄 전략:",
+          "create2Salt": "**create2-salt** — 배포자 키 + 초기화 코드 해시 수정; 허영 주소를 생성하는 솔트를 검색합니다.",
+          "create2Deployer": "**create2-deployer** — 솔트 + 초기화 코드 해시 수정; CREATE2 주소가 일치하는 배포자 키를 검색하세요.",
+          "create2Hash": "올바른 `initCodeHash`(배포 바이트코드의 keccak)을 제공해야 합니다. 잘못된 해시 → 잘못된 온체인 주소."
+        },
+        "workers": {
+          "n": "06 — 노동자",
+          "title": "성능 아키텍처",
+          "glyph": "그림 F - 단조",
+          "intro": "작업자 소스는 `src/workers/*.worker.source.ts`에 있으며 esbuild와 함께 `public/*-worker.js`에 번들로 제공됩니다. 각 빌드는 [live audit](/audit)의 `public/worker-hash.json`에 SHA-256 다이제스트를 씁니다.",
+          "ledger": {
+            "parallelism": {
+              "label": "병행",
+              "value": "CPU 코어 − 1(기본값)",
+              "note": "컴퓨터가 뜨거워지거나 UI가 끊기는 경우 스레드를 조정하세요."
+            },
+            "solSpeed": {
+              "label": "솔라나 속도",
+              "value": "사용 가능한 경우 기본 Ed25519",
+              "note": "Chrome 113+ · Firefox 129+ · Safari 17+; 그렇지 않으면 WASM"
+            },
+            "libraries": {
+              "label": "도서관",
+              "value": "@noble · tweetnacl · watsign · @ton/*",
+              "note": "브라우저에서 순수 JS/WASM 암호화를 감사했습니다."
+            }
+          },
+          "postFind": "찾은 후 선택적 **주요 보안 검사**를 통해 엔트로피, CSPRNG 가용성 및 임의 바이트에 대한 카이제곱 균일성 테스트를 수행하여 브라우저 RNG 경로가 정상인지 확인합니다."
+        },
+        "proof": {
+          "n": "07 — 증명",
+          "title": "발견 증거",
+          "glyph": "그림 G - 씰",
+          "p1": "**공유 증명**은 체인, 주소 및 패턴만 사용하여 [/proof](/proof)에 대한 공개 링크를 구축합니다. **개인 키는 절대 사용하지 않습니다**. 누구나 링크를 열고 주소가 클라이언트 측에서 요청한 접두사/접미사와 일치하는지 확인할 수 있습니다.",
+          "session": "UI의 최근 발견 항목은 주소 + 패턴 메타데이터에만 `sessionStorage`을 사용합니다. 탭을 닫으면 해당 기록이 지워집니다. 키는 거기에 저장되지 않습니다."
+        },
+        "cli": {
+          "n": "08 - CLI",
+          "title": "터미널 단조",
+          "glyph": "그림 H - 비석",
+          "p1": "브라우저 외부에서도 동일한 아이디어: `npx vanitas`은 마법사를 열거나 체인, 모드, 접두사, 스레드 및 CREATE2 매개변수에 대한 플래그를 전달합니다. 결과는 OS가 지원하는 경우 `0600` 모드로 JSON 파일을 작성합니다. 패키지: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
+          "example": "npx vanitas evm --mode contract --prefix 카페 --threads 8"
+        },
+        "verify": {
+          "n": "09 — 확인",
+          "title": "직접 확인하세요",
+          "glyph": "그림 I - 눈",
+          "steps": [
+            "DevTools → 네트워크를 열고, 로그를 지우고, 단조를 시작하세요. 채굴하는 동안 **요청 없음**이 표시되어야 합니다.",
+            "페이지를 로드하고, 오프라인으로 전환하고, 다시 생성하세요. 여전히 작동합니다.",
+            "[live audit](/audit)을 실행하고 작업자 해시를 `worker-hash.json`과 비교합니다.",
+            "[GitHub](https://github.com/bytebrox/vanitas), 특히 `src/workers/`의 소스를 읽어보세요."
+          ]
+        }
+      },
+      "footer": {
+        "security": "보안",
+        "faq": "FAQ",
+        "audit": "실시간 감사"
+      }
+    },
+    "security": {
+      "eyebrow": "문서",
+      "title": "보안",
+      "description": "키는 귀하의 브라우저에서 생성되며 당사 서버에서는 생성되지 않습니다. 이 페이지는 아키텍처, 위협, 암호화, 헤더 및 모든 주장을 직접 확인하는 방법 등 신뢰 모델입니다.",
+      "sideCaption": "그림 V - 수로",
+      "principles": {
+        "title": "협상 불가능한 사항",
+        "marketing": "마케팅 주장은 확인 없이는 가치가 없습니다. 아래의 [live audit](/audit) 및 확인 섹션을 사용하세요."
+      },
+      "architecture": {
+        "title": "열쇠가 사는 곳",
+        "keysRam": "개인 키는 여기에만 존재합니다 — 기기의 RAM"
+      },
+      "next": {
+        "label": "다음",
+        "audit": "실시간 감사",
+        "how": "작동 원리",
+        "faq": "FAQ"
+      },
+      "toc": {
+        "principles": "원칙",
+        "architecture": "건축학",
+        "threats": "위협",
+        "storage": "저장",
+        "crypto": "암호화폐",
+        "integrity": "진실성",
+        "headers": "헤더",
+        "browser": "브라우저",
+        "workflow": "작업 흐름",
+        "verify": "확인하다",
+        "disclose": "드러내다"
+      },
+      "sections": {
+        "principles": {
+          "n": "01 — 원칙",
+          "title": "협상 불가능한 사항",
+          "glyph": "그림 A — 쉴드",
+          "items": [
+            "**클라이언트 측 생성** — CPU의 웹 작업자가 모든 키 쌍을 생성합니다.",
+            "**제로 키 전송** — 개인 키를 허용하거나 반환하는 API가 없습니다.",
+            "**제로 키 스토리지** — 데이터베이스가 없고 비밀 로그가 없으며 패턴이나 주소에 대한 분석이 없습니다.",
+            "**검증 가능** — 오픈 소스, 실시간 감사, 오프라인 테스트, 네트워크 패널.",
+            "**노출 없는 증명** — 공유 가능한 증명에는 주소 + 패턴만 포함됩니다."
+          ]
+        },
+        "architecture": {
+          "n": "02 — 아키텍처",
+          "title": "열쇠가 사는 곳",
+          "glyph": "그림 B - 궤적",
+          "intro": "Vanitas는 정적 Next.js 사이트입니다. 호스트(예: Vercel)는 HTML, CSS, JS 및 사전 구축된 작업자 번들을 제공합니다. 해당 호스트에서는 키에 대한 암호화가 실행되지 않습니다.",
+          "browserLabel": "귀하의 브라우저",
+          "mainThread": "메인 스레드",
+          "mainThreadNote": "UI · 반응 · 컨트롤",
+          "webWorkers": "웹 작업자",
+          "webWorkersNote": "W1…Wn — 그라인드 · 매치 · postMessage",
+          "networkLabel": "채굴 중 네트워크",
+          "networkBody": "필요하지 않습니다. 자산을 로드한 후에도 비행기 모드는 계속 작동합니다. 유일한 자사 API 경로(`/api/domains`)는 Solana 도메인 링크를 제안하며 키를 생성하거나 수신하지 않습니다.",
+          "serversLabel": "우리 서버",
+          "serversBody": "파일을 전달하세요. 작업자 메모리를 읽을 수 없습니다. 완성된 키 쌍을 가로챌 수 없습니다. 손상된 원본은 악성 JS를 제공할 수 있습니다. 이것이 바로 무결성 검사와 오픈 소스가 중요한 이유입니다(무결성 및 브라우저 참조)."
+        },
+        "threats": {
+          "n": "03 - 위협",
+          "title": "위협 모델(정직함)",
+          "glyph": "그림 C - 저울",
+          "inScopeTitle": "범위 내에서 — 우리는 다음을 기준으로 디자인합니다.",
+          "inScope": [
+            "서버 측 키 도난(서버에 키가 없음)",
+            "채굴 중 캐주얼한 네트워크 스니핑(주요 트래픽 없음)",
+            "기본 앱의 클릭재킹(기본 경로의 프레임 거부)",
+            "명백한 XSS 유출 경로(CSP, 여전히 만능은 아님)."
+          ],
+          "outScopeTitle": "범위 외/책임 공유",
+          "outScope": [
+            "페이지 메모리나 클립보드를 읽는 **악성 브라우저 확장** — 중요한 키를 위조할 때 클린 프로필에서 해당 확장 프로그램을 비활성화하세요.",
+            "**손상된 기기/맬웨어** — OS 수준 키로거는 모든 웹사이트를 능가합니다.",
+            "**Discord/피싱에 키를 붙여넣는 경우** — 운영 보안은 귀하의 것입니다.",
+            "**의존성 공급망** — 고정하고 감사합니다. 작업자 해시를 확인하고 소스에서 다시 빌드할 수 있습니다."
+          ],
+          "vanityNote": "허영 마이닝은 \"약한\" 키를 생성하지 않습니다. 긴 패턴은 CPU 비용만 더 많이 들 뿐이며 개인 키 엔트로피를 줄이지 않습니다."
+        },
+        "storage": {
+          "n": "04 — 저장",
+          "title": "우리가 저장하는 것",
+          "glyph": "그림 D — 금고",
+          "intro": "**저희 서버에 있는 귀하의 키에 관한 정보는 없습니다.** 단조 경로에는 주소, 패턴, 채굴용 IP 데이터베이스 또는 분석 SDK가 없습니다.",
+          "items": [
+            "디스크나 서버에 개인 키가 없음",
+            "원격으로 수집되는 공개 키/주소 없음",
+            "패턴 원격 측정 없음",
+            "계정 시스템 없음",
+            "제품 약속에는 제3자 분석이 없습니다.",
+            "sessionStorage 최근 발견 = 주소 + 패턴만, 이 브라우저 세션",
+            "증명 링크 = 공유하기로 선택한 쿼리 매개변수(키 없음)"
+          ]
+        },
+        "crypto": {
+          "n": "05 — 암호화폐",
+          "title": "단조별 알고리즘",
+          "intro": "무작위성은 항상 브라우저 CSPRNG(`crypto.getRandomValues`)에서 발생합니다. 곡선과 주소 파생은 체인에 따라 다릅니다.",
+          "rows": {
+            "sol": {
+              "label": "솔라나",
+              "value": "Ed25519 → Base58",
+              "note": "웹 암호화 네이티브 또는 WASM 폴백 · 지갑/민트"
+            },
+            "evm": {
+              "label": "EVM",
+              "value": "secp256k1 + keccak-256",
+              "note": "0x EOA · 생성 · 생성2"
+            },
+            "btc": {
+              "label": "비트코인",
+              "value": "secp256k1",
+              "note": "레거시 · SegWit · Taproot · WIF 내보내기"
+            },
+            "tron": {
+              "label": "트론",
+              "value": "secp256k1 + keccak → Base58Check",
+              "note": "T… 지갑 / 생성"
+            },
+            "aptos": {
+              "label": "앱토스",
+              "value": "Ed25519 + SHA3-256",
+              "note": "0x 계정 주소"
+            },
+            "sui": {
+              "label": "수이",
+              "value": "Ed25519 + Blake2b-256",
+              "note": "구성표 플래그가 있는 0x"
+            },
+            "ton": {
+              "label": "TON",
+              "value": "Ed25519 · 지갑 v4R2",
+              "note": "UQ / EQ Base64url"
+            },
+            "cardano": {
+              "label": "카르다노",
+              "value": "Ed25519 · CIP-19 기업",
+              "note": "addr1… 결제 키만"
+            },
+            "xrp": {
+              "label": "XRP",
+              "value": "secp256k1 · XRPL Base58",
+              "note": "클래식 R… 주소"
+            }
+          },
+          "postFind": "검색 후 검사는 무작위 샘플의 엔트로피 크기, CSPRNG 존재 및 카이제곱 균일성을 검증할 수 있습니다. 이는 장치 위생을 대체하는 것이 아닌 RNG 경로의 상태 검사입니다."
+        },
+        "integrity": {
+          "n": "06 — 무결성",
+          "title": "작업자 및 게시된 해시",
+          "glyph": "그림 E - 해시",
+          "p1": "마이닝 코드는 TypeScript 소스에서 빌드된 정적 `public/*-worker.js` 파일로 제공됩니다. 각 프로덕션 빌드는 `worker-hash.json`에 SHA-256 다이제스트를 기록합니다. 감사 페이지는 브라우저에 로드된 작업자를 다시 해시하고 해당 파일과 비교합니다.",
+          "p2": "해시가 갈라지면 페이지를 신뢰할 수 없는 페이지로 처리하십시오. 중지하고 키를 사용하지 말고 조사하십시오(잘못된 배포, 캐시 또는 변조). 공개 저장소에서 다시 빌드하면 특정 커밋에 대해 동일한 작업자 바이트를 재현해야 합니다."
+        },
+        "headers": {
+          "n": "07 - 헤더",
+          "title": "HTTP 보안 헤더",
+          "intro": "응답에는 XSS 영향을 줄이고, HTTPS를 강제하고, 기본 앱의 프레이밍을 차단하는 헤더가 포함됩니다. CSP는 여전히 Next.js에 필요한 것(일부 인라인/평가 절충 포함)을 허용합니다. — 헤더 도움말; 코드 검토를 대체하지 않습니다.",
+          "rows": {
+            "csp": {
+              "label": "CSP",
+              "value": "콘텐츠 보안 정책",
+              "note": "스크립트, 작업자, connect-src 제한"
+            },
+            "hsts": {
+              "label": "HSTS",
+              "value": "엄격한 운송 보안",
+              "note": "최대 연령=31536000"
+            },
+            "frame": {
+              "label": "액자",
+              "value": "X-프레임 옵션: 거부",
+              "note": "기본 앱을 삽입할 수 없음"
+            },
+            "mime": {
+              "label": "MIME",
+              "value": "X-Content-Type-옵션: nosniff",
+              "note": "MIME 스니핑 없음"
+            },
+            "referrer": {
+              "label": "추천인",
+              "value": "원본이 교차할 때 엄격한 원본",
+              "note": "리퍼러 누출 제한"
+            }
+          }
+        },
+        "browser": {
+          "n": "08 - 브라우저",
+          "title": "브라우저가 여전히 수행할 수 있는 작업",
+          "intro": "이론적으로 페이지 권한으로 실행되는 모든 항목은 DOM 및 작업자 메시지를 읽을 수 있습니다. 여기에는 다음이 포함됩니다.",
+          "items": [
+            "광범위한 사이트 액세스가 가능한 브라우저 확장",
+            "공유 컴퓨터에서 열리는 DevTools",
+            "XSS가 존재하는 경우 악성 스크립트 삽입",
+            "키를 복사한 후 클립보드가 스니퍼됩니다."
+          ],
+          "mitigations": "완화 방법: 깨끗한 브라우저 프로필, 불필요한 확장 없음, 높은 가치의 키를 위해 클립보드보다 파일 다운로드 선호, 지갑에 붙여넣은 후 클립보드 지우기, 대규모 재무를 위해 터미널 CLI 또는 에어 갭 머신을 고려하십시오."
+        },
+        "workflow": {
+          "n": "09 - 작업 흐름",
+          "title": "안전한 작동 절차",
+          "steps": [
+            "vanitas.fun을 로드합니다(또는 확인된 로컬 빌드에서 실행).",
+            "선택 사항: 네트워크를 열고 오프라인으로 전환하고 감사를 실행합니다.",
+            "먼저 짧은 패턴을 선택하세요. 설정을 신뢰하면 길이를 늘리십시오.",
+            "검색 시: 내보내기, 오프라인 저장, 스크린샷 키를 채팅 앱에 저장하지 마세요.",
+            "해당 체인에 맞는 지갑으로 가져옵니다. 먼지 테스트 전송을 보내십시오.",
+            "장기 보유의 경우 자금을 하드웨어 지갑으로 옮기십시오. Vanitas는 금고가 아닌 단조품입니다."
+          ]
+        },
+        "verify": {
+          "n": "10 — 확인",
+          "title": "누구나 실행할 수 있는 세 가지 검사",
+          "glyph": "그림 F - 감사",
+          "network": {
+            "n": "01 - 네트워크",
+            "title": "네트워크 모니터",
+            "steps": [
+              "DevTools → 네트워크 → 지우기",
+              "생성 시작",
+              "채굴 중 **0** 요청 확인"
+            ]
+          },
+          "offline": {
+            "n": "02 — 오프라인",
+            "title": "비행기 모드",
+            "steps": [
+              "앱 로드",
+              "연결 끊기",
+              "생성 - 성공하면 라이브 서버 종속성이 없음이 입증됩니다."
+            ]
+          },
+          "audit": {
+            "n": "03 — 감사",
+            "title": "실시간 감사 + 소스",
+            "steps": [
+              "[/audit](/audit) 실행",
+              "작업자 해시를 게시된 JSON과 비교",
+              "[GitHub](https://github.com/bytebrox/vanitas) 작업자 및 SECURITY.md를 검토하세요."
+            ]
+          }
+        },
+        "disclose": {
+          "n": "11 — 공개",
+          "title": "문제 보고",
+          "glyph": "그림 G - 보고서",
+          "intro": "보안 취약점이 있는 공개 GitHub 문제를 공개하지 **마세요**. [bytebrox/vanitas](https://github.com/bytebrox/vanitas/security/advisories/new)에 대한 비공개 GitHub 보안 권고를 선호하세요. 재현 단계, 영향 및 제안된 수정 사항이 있는 경우 이를 포함하세요.",
+          "faq": {
+            "steal": {
+              "q": "내 열쇠를 훔칠 수 있나요?",
+              "a": "이를 수신하는 서버 측 경로가 없습니다. 악의적인 빌드 또는 확장은 해시를 확인하고 높은 가치를 위해 깨끗한 환경을 사용할 수 있습니다."
+            },
+            "host": {
+              "q": "호스트가 해킹당하면 어떻게 되나요?",
+              "a": "공격자는 변경된 JavaScript를 제공할 수 있습니다. 그렇기 때문에 오픈 소스, 작업자 해시 확인 및 알려진 양호한 커밋을 선호하는 것이 중요합니다. 호스트는 여전히 클린 빌드에서 완성된 키를 받지 않습니다."
+            },
+            "weaker": {
+              "q": "가상 주소는 덜 안전합니까?",
+              "a": "아니요. 개인 키 엔트로피는 변경되지 않습니다. 공개 주소만 표시되도록 필터링됩니다."
+            },
+            "cold": {
+              "q": "일일 브라우저에서 콜드 스토리지 키를 위조해야 합니까?",
+              "a": "상당한 자금의 경우: 깨끗한 프로필 또는 오프라인/CLI, 소규모 테스트 전송, 하드웨어 지갑 보관."
+            }
+          }
+        }
+      }
+    }
+  },
+  "meta": {
+    "home": {
+      "title": "솔라나, EVM, 비트코인 ​​및 트론 Vanity Forge",
+      "description": "Solana, EVM, Bitcoin 및 Tron에 대한 클라이언트 측 허영 주소 위조. 지갑, 조폐국, 계약서 등 열쇠는 이 브라우저를 떠나지 않습니다.",
+      "ogAlt": "Vanitas 멀티체인 화장대 대장간"
+    },
+    "sol": {
+      "title": "Solana 가상 주소 생성기",
+      "description": "허영 솔라나 지갑과 토큰 민트 주소를 브라우저에서 완전히 위조하세요. 오픈 소스, 클라이언트 측, 이 장치에 키가 남지 않습니다.",
+      "ogAlt": "Vanitas — 솔라나 허영 대장간",
+      "ogTitle": "Solana 가상 주소 생성기 | Vanitas",
+      "ogDescription": "Forge vanity Solana 지갑과 민트는 클라이언트측 주소를 지정합니다. 이 장치에는 열쇠가 없습니다.",
+      "twitterDescription": "Forge vanity Solana 지갑과 민트는 클라이언트측 주소를 지정합니다."
+    },
+    "evm": {
+      "title": "EVM 가상 주소 생성기",
+      "description": "Forge Vanity EVM 지갑 및 계약은 클라이언트 측을 처리합니다. Ethereum, Base, Arbitrum, Optimism, BSC 등을 위한 하나의 키입니다.",
+      "ogTitle": "EVM 가상 주소 생성기 | Vanitas",
+      "ogDescription": "Forge Vanity 0x 지갑과 계약은 클라이언트측 주소를 지정합니다. Ethereum, BNB, Base, Arbitrum 및 모든 EVM 체인에 동일한 키가 있습니다.",
+      "twitterDescription": "Forge Vanity 0x 지갑과 계약은 클라이언트측 주소를 지정합니다. 모든 EVM 체인에 동일한 키가 있습니다.",
+      "ogAlt": "Vanitas — EVM 화장대 지갑 및 계약 생성기"
+    },
+    "btc": {
+      "title": "비트코인 가상 주소 생성기",
+      "description": "브라우저에서 허영 비트코인 ​​주소(레거시, SegWit, Taproot)를 완전히 위조하세요."
+    },
+    "tron": {
+      "title": "Tron 허영 주소 생성기",
+      "description": "Forge vanity Tron Base58은 TronLink 및 기타 지갑의 클라이언트 측을 처리합니다."
+    },
+    "aptos": {
+      "title": "Aptos 가상 주소 생성기",
+      "description": "Forge vanity Aptos Ed25519는 브라우저에서 완전히 주소를 지정합니다."
+    },
+    "sui": {
+      "title": "Sui 허영 주소 생성기",
+      "description": "Forge vanity Sui Ed25519는 브라우저에서 완전히 주소를 지정합니다."
+    },
+    "ton": {
+      "title": "TON 가상 주소 생성기",
+      "description": "Forge vanity TON Wallet v4R2 주소(UQ/EQ) 클라이언트 측."
+    },
+    "cardano": {
+      "title": "Cardano 가상 주소 생성기",
+      "description": "Forge vanity Cardano enterprise addr1 주소는 전적으로 브라우저에 있습니다."
+    },
+    "xrp": {
+      "title": "XRP 가상 주소 생성기",
+      "description": "Forge vanity XRPL classic r… 주소는 브라우저에서 완전히 표시됩니다."
+    },
+    "faq": {
+      "title": "FAQ",
+      "description": "패턴, 모드, 보안, 증명, CLI 등 모든 Vanitas 위조에 대한 답변입니다.",
+      "ogTitle": "자주 묻는 질문 | Vanitas",
+      "ogDescription": "주제별 답변 — 모든 체인, 보안, 증명, CLI 및 사용법.",
+      "ogAlt": "Vanitas FAQ"
+    },
+    "how-it-works": {
+      "title": "작동 방식",
+      "description": "Vanitas가 Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano 및 XRP에서 허영 주소를 위조하는 방법: 작업자, 모드(mint, CREATE, CREATE2), 발견 증명, CLI 및 클라이언트 측 보안 확인 방법.",
+      "ogTitle": "작동 원리 | Vanitas",
+      "ogDescription": "모든 단조, 작업자 아키텍처, 배포 모드 및 검증에 대한 전체 둘러보기입니다.",
+      "ogAlt": "Vanitas — 허영 주소 생성 작동 방식"
+    },
+    "security": {
+      "title": "보안",
+      "description": "Vanitas 신뢰 모델 — 키는 브라우저에 유지됩니다. 위협 경계 및 검증.",
+      "ogTitle": "보안 | Vanitas",
+      "ogDescription": "아키텍처, 위협, 암호화, 헤더 및 확인 — 키는 브라우저에 유지됩니다.",
+      "ogAlt": "Vanitas 보안 — 키는 브라우저에 유지됩니다."
+    },
+    "lab": {
+      "title": "패턴 연구실",
+      "description": "채굴하기 전에 모든 Vanitas 단조에 대한 난이도 매트릭스, 희귀도 추정 및 배치 패턴 대기열을 확인하세요.",
+      "ogTitle": "패턴 연구실 | Vanitas",
+      "ogDescription": "채굴하기 전에 난이도 매트릭스, 희귀도 추정, 배치 패턴 대기열을 살펴보세요."
+    },
+    "lookalike": {
+      "title": "유사검사",
+      "description": "허영 패턴을 연마하기 전에 금지된 Base58 글리프, Tron 케이스 트랩 및 알파벳 불일치를 잡아보세요.",
+      "ogTitle": "유사검사 | Vanitas",
+      "ogDescription": "작업하기 전에 0/O, I/l, Tron 케이스 및 알파벳 불일치를 파악하세요."
+    },
+    "create2": {
+      "title": "CREATE2 도우미",
+      "description": "initCodeHash에 배포 바이트코드를 해시하고, 배포자 + 솔트에서 CREATE2 주소를 미리 보고, EVM 포지로의 딥 링크를 모두 클라이언트측에서 수행합니다.",
+      "ogTitle": "CREATE2 도우미 | Vanitas",
+      "ogDescription": "바이트코드의 initCodeHash, 솔트 미리보기, 주소 확인을 수행하기 전에 확인하세요."
+    },
+    "brand": {
+      "title": "상표",
+      "description": "Vanitas용 내장형 증명 위젯 및 라이트 브랜딩 키트 — 워드마크, 색상, iframe 스니펫. 개인 키가 없습니다.",
+      "ogTitle": "브랜드 | Vanitas",
+      "ogDescription": "내장형 증명 위젯 및 라이트 브랜딩 키트."
+    },
+    "proof": {
+      "title": "발견 증거",
+      "description": "개인 키 없이 가상 주소가 클라이언트 측과 일치하는지 확인합니다."
+    },
+    "audit": {
+      "title": "실시간 감사",
+      "description": "Vanitas에서 웹 암호화, RNG 품질, 생성 중 네트워크 제로, CSP, 작업자 격리 및 빌드 무결성 등 8가지 로컬 검사를 실행합니다.",
+      "ogTitle": "실시간 감사 | Vanitas",
+      "ogDescription": "브라우저에서 8번의 자동 검사가 이루어집니다. 위조된 것도 없고 전송된 것도 없습니다.",
+      "ogAlt": "Vanitas 실시간 보안 감사"
+    },
+    "token": {
+      "title": "토큰",
+      "description": "Vanitas에는 프로젝트 토큰이 없습니다."
+    },
+    "embed-proof": {
+      "title": "증거 삽입",
+      "description": "찾기 위젯에 대한 삽입 가능한 증거입니다."
+    },
+    "siteName": "Vanitas",
+    "notFound": {
+      "title": "404 — 찾을 수 없음",
+      "description": "이 페이지는 Vanitas에 존재하지 않습니다."
+    },
+    "eth": {
+      "title": "ETH 가상 주소 생성기",
+      "description": "EVM 허영 대장간으로 리디렉션됩니다."
+    }
+  },
+  "notFound": {
+    "title": "페이지를 찾을 수 없습니다",
+    "body": "요청하신 페이지는 Vanitas에 없습니다. 그것은 움직였을 수도 있고, 존재한 적이 없었을 수도 있습니다.",
+    "home": "홈",
+    "sol": "솔라나 포지",
+    "evm": "EVM 포지",
+    "metaTitle": "404 — 찾을 수 없음",
+    "metaDescription": "이 페이지는 Vanitas에 존재하지 않습니다.",
+    "figAbsent": "그림 - 결석",
+    "errorLabel": "오류 404",
+    "heading": "이 주소는 포지된 적이 없습니다",
+    "links": {
+      "sol": "SOL 포지",
+      "evm": "EVM 포지",
+      "btc": "BTC 포지",
+      "tron": "트론 포지",
+      "how": "작동 원리",
+      "faq": "FAQ"
+    },
+    "homeForge": "또는 [홈 포지](/)로 돌아가세요."
+  }
+}

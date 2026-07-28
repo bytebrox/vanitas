@@ -1,0 +1,1641 @@
+{
+  "common": {
+    "copy": "复制",
+    "copied": "已复制",
+    "hide": "隐藏",
+    "reveal": "揭示",
+    "downloadTxt": "下载txt",
+    "downloadJson": "下载json",
+    "forge": "锻造",
+    "stop": "停止",
+    "reset": "重置",
+    "loading": "加载中…",
+    "scrollDown": "向下滚动",
+    "cores": "核心",
+    "of": "{max} 的",
+    "fewerCores": "更少的核心",
+    "moreCores": "更多核心",
+    "soundOn": "声音打开",
+    "soundOff": "声音关闭",
+    "found": "成立",
+    "addressReady": "地址准备好",
+    "publicAddress": "公共广播",
+    "privateKey": "私钥",
+    "keepSafe": "确保安全",
+    "keepSafe1": "离开此页面前请保存私钥",
+    "keepSafe2": "永远不要分享它——任何拥有它的人都控制着钱包",
+    "keepSafe3": "本地生成；服务器上没有存储任何内容",
+    "attempts": "尝试",
+    "pattern": "图案",
+    "estTime": "预计。时间",
+    "keys": "键",
+    "rate": "速度",
+    "time": "时间",
+    "workers": "工人",
+    "tryPattern": "尝试一种模式",
+    "recentFinds": "最近的发现",
+    "keySecurity": "密钥安全",
+    "entropy": "熵",
+    "source": "来源",
+    "csprng": "CSPRNG",
+    "browser": "浏览器",
+    "prefix": "前缀",
+    "suffix": "后缀",
+    "caseSensitive": "区分大小写",
+    "optional": "选修的",
+    "brand": "瓦尼塔斯",
+    "sharePattern": "分享模式",
+    "shareProof": "分享证明",
+    "proofLinkCopied": "已复制证明链接",
+    "forgeAnother": "锻造另一个",
+    "scrollToForge": "滚动至锻造",
+    "waiting": "等待——输入模式并锻造",
+    "running": "● 跑步",
+    "progressExpected": "预期搜索的 {pct}%",
+    "difficultyGuide": "指南：3个字符<5s·4个字符~1m·5个字符~30m·6+小时",
+    "match": "匹配",
+    "startsAddress": "开始地址",
+    "endsAddress": "结束地址",
+    "howItWorks": "它是如何运作的",
+    "liveAudit": "现场审核",
+    "evmForge": "EVM锻造",
+    "exportHintSol": "用于阅读的 TXT · 用于 Solana CLI / Phantom / Solflare 的 JSON · 共享证明从不包含密钥",
+    "stepMode": "01 — 模式",
+    "stepPattern": "02 — 图案",
+    "stepMintPattern": "02 — 薄荷图案",
+    "stepType": "01 — 类型",
+    "stepEstimate": "03 — 估计",
+    "stepForge": "04 — 锻造",
+    "stepLive": "05 — 现场",
+    "topics": "主题",
+    "verified": "已验证",
+    "mismatch": "不匹配",
+    "chain": "链",
+    "stats": "统计数据",
+    "statsDisclaimer": "尝试计数由伪造者自行报告，未经加密证明。",
+    "copyProofLink": "复制证明链接",
+    "openForge": "开放锻造",
+    "github": "GitHub",
+    "x": "X",
+    "attemptsLabel": "尝试",
+    "charsDays": "{n} 字符可能需要几天或几周的时间。",
+    "charsHours": "{n} 字符可能需要几个小时。",
+    "considerSuffix": "考虑仅后缀或不区分大小写。"
+  },
+  "nav": {
+    "language": "语言",
+    "home": "首页",
+    "chains": "链",
+    "docs": "文档",
+    "tools": "工具",
+    "menu": "菜单",
+    "close": "关闭",
+    "themeToLight": "切换到灯光模式",
+    "themeToDark": "切换到深色模式",
+    "themeLight": "光",
+    "themeDark": "黑暗的",
+    "themeMobileDarkToLight": "黑暗 → 光明",
+    "themeMobileLightToDark": "浅色→深色",
+    "docsHow": "如何",
+    "docsHowHint": "它是如何运作的",
+    "docsFaq": "FAQ",
+    "docsFaqHint": "问题",
+    "docsSecurity": "安全",
+    "docsSecurityHint": "信任模型",
+    "toolsAudit": "审计",
+    "toolsAuditHint": "现场检查",
+    "toolsProof": "证明",
+    "toolsProofHint": "验证发现",
+    "toolsLab": "实验室",
+    "toolsLabHint": "模式实验室",
+    "toolsLookalike": "相似的",
+    "toolsLookalikeHint": "字母陷阱",
+    "toolsCreate2": "CREATE2",
+    "toolsCreate2Hint": "初始化哈希+预览",
+    "toolsBrand": "品牌",
+    "toolsBrandHint": "嵌入+套件",
+    "brand": "瓦尼塔斯",
+    "githubAria": "GitHub 存储库",
+    "xAria": "X 上的 Bytebrox",
+    "evmSubline": "以太坊·BNB·基础·仲裁·乐观·+EVM",
+    "chainItems": {
+      "sol": {
+        "label": "索拉纳",
+        "short": "SOL"
+      },
+      "evm": {
+        "label": "EVM",
+        "short": "EVM"
+      },
+      "btc": {
+        "label": "比特币",
+        "short": "BTC"
+      },
+      "tron": {
+        "label": "创",
+        "short": "TRON"
+      },
+      "aptos": {
+        "label": "阿普托斯",
+        "short": "APTOS"
+      },
+      "sui": {
+        "label": "隋",
+        "short": "SUI"
+      },
+      "ton": {
+        "label": "TON",
+        "short": "TON"
+      },
+      "cardano": {
+        "label": "卡尔达诺",
+        "short": "ADA"
+      },
+      "xrp": {
+        "label": "XRP",
+        "short": "XRP"
+      }
+    }
+  },
+  "footer": {
+    "blurb": "适用于 Solana、EVM、比特币、Tron、Aptos、Sui、TON、Cardano 和 XRP 的客户端虚荣工具。没有项目代币。没有钥匙离开该设备。由 [Bytebrox](https://x.com/bytebrox) 开发。",
+    "donateSol": "捐赠索尔",
+    "solscan": "索尔扫描",
+    "home": "家",
+    "security": "安全",
+    "audit": "审计",
+    "faq": "FAQ",
+    "how": "如何",
+    "cli": "CLI",
+    "github": "GitHub",
+    "proof": "证明",
+    "lab": "实验室",
+    "lookalike": "相似的",
+    "create2": "CREATE2",
+    "brand": "品牌",
+    "sol": "SOL",
+    "evm": "EVM",
+    "btc": "BTC",
+    "tron": "TRON",
+    "aptos": "APTOS",
+    "sui": "SUI",
+    "ton": "TON",
+    "ada": "ADA",
+    "xrp": "XRP",
+    "copyright": "©{year}"
+  },
+  "landing": {
+    "eyebrow": "客户端虚荣伪造",
+    "title": "瓦尼塔斯",
+    "subtitle": "选择一条链。密钥保留在该浏览器中。",
+    "enterForge": "进入锻造 →",
+    "preferTerminal": "更喜欢终端？",
+    "forges": {
+      "sol": {
+        "name": "索拉纳",
+        "title": "钱包和薄荷糖",
+        "blurb": "Base58 虚荣钱包和代币铸币厂。"
+      },
+      "evm": {
+        "name": "EVM",
+        "title": "钱包和合约",
+        "blurb": "每个 EVM 链都有一个 0x 密钥。",
+        "aria": "以太坊、BNB、基础、任意、乐观"
+      },
+      "btc": {
+        "name": "比特币",
+        "title": "遗产·SegWit·Taproot",
+        "blurb": "Vanity 1…、bc1q…和 bc1p…地址。"
+      },
+      "tron": {
+        "name": "创",
+        "title": "钱包和创建",
+        "blurb": "Vanity T…TronLink 的地址。"
+      },
+      "aptos": {
+        "name": "阿普托斯",
+        "title": "ed25519 0x",
+        "blurb": "佩特拉和火星的六角梳妆台。"
+      },
+      "sui": {
+        "name": "隋",
+        "title": "ed25519 0x",
+        "blurb": "适用于 Sui 钱包和 Suiet 的六角梳妆台。"
+      },
+      "ton": {
+        "name": "TON",
+        "title": "钱包 v4R2",
+        "blurb": "虚荣 UQ…/EQ…地址。"
+      },
+      "cardano": {
+        "name": "卡尔达诺",
+        "title": "企业地址1",
+        "blurb": "Bech32 虚荣付款地址。"
+      },
+      "xrp": {
+        "name": "XRP",
+        "title": "经典…",
+        "blurb": "XRPL Base58 虚荣地址。"
+      }
+    },
+    "npxVanitas": "npx虚空"
+  },
+  "forge": {
+    "header": {
+      "wallet": {
+        "eyebrow": "钱包锻造",
+        "title": "索拉纳",
+        "headline": "说出地址。保留钥匙。",
+        "blurb": "完全在该浏览器中、在您的 CPU 上生成一个虚荣的 Solana 钱包地址。"
+      },
+      "mint": {
+        "eyebrow": "薄荷锻造厂",
+        "title": "索拉纳",
+        "headline": "给薄荷命名。启动时要有存在感。",
+        "blurb": "完全在这个浏览器中为任何启动板生成一个虚荣的 Solana 薄荷。"
+      },
+      "evm": {
+        "eyebrow": "0x锻造",
+        "title": "EVM",
+        "headline": "命名为 0x。到处都是同一个钥匙。",
+        "blurb": "完全在这个浏览器中生成虚荣钱包或合约地址。一键适用于以太坊、BNB 智能链、Base、Arbitrum、Optimism 和所有其他 EVM 链。"
+      },
+      "btc": {
+        "eyebrow": "UTXO 锻造",
+        "title": "比特币",
+        "headline": "给硬币命名。拥有地址。",
+        "blurb": "完全在这个浏览器中生成虚荣比特币地址（传统、SegWit、Taproot）。钥匙永远不会离开该设备。"
+      },
+      "tron": {
+        "eyebrow": "T锻造",
+        "title": "创",
+        "headline": "给 T 命名。保留钥匙。",
+        "blurb": "完全在这个浏览器中生成虚荣的 Tron Base58 地址。导入 TronLink 和其他 Tron 钱包。"
+      },
+      "aptos": {
+        "eyebrow": "0x锻造",
+        "title": "阿普托斯",
+        "headline": "命名为 0x。保留钥匙。",
+        "blurb": "完全在此浏览器中生成虚荣 Aptos Ed25519 地址。导入 Petra、Martian 和其他 Aptos 钱包。"
+      },
+      "sui": {
+        "eyebrow": "0x锻造",
+        "title": "隋",
+        "headline": "命名为 0x。保留钥匙。",
+        "blurb": "完全在这个浏览器中生成虚荣 Sui Ed25519 地址。导入 Sui Wallet、Suiet 和其他 Sui 钱包。"
+      },
+      "ton": {
+        "eyebrow": "昆士兰大学锻造",
+        "title": "TON",
+        "headline": "命名昆士兰大学。保留钥匙。",
+        "blurb": "完全在此浏览器中生成虚荣 TON 钱包 v4R2 地址 (UQ / EQ)。导入到 Tonkeeper 和 MyTonWallet。"
+      },
+      "cardano": {
+        "eyebrow": "addr1 伪造",
+        "title": "卡尔达诺",
+        "headline": "命名地址。保留钥匙。",
+        "blurb": "完全在此浏览器中生成虚荣卡尔达诺企业地址（addr1…）。仅付款密钥。"
+      },
+      "xrp": {
+        "eyebrow": "锻造",
+        "title": "XRP",
+        "headline": "命名 r。保留钥匙。",
+        "blurb": "完全在这个浏览器中生成虚荣的 XRP Ledger 经典地址（r…）。导入 Xaman 和其他 XRPL 钱包。"
+      }
+    },
+    "modes": {
+      "wallet": "钱包",
+      "mint": "薄荷",
+      "create": "CREATE",
+      "create2": "CREATE2",
+      "legacy": "遗产",
+      "segwit": "隔离见证",
+      "taproot": "直根",
+      "uq": "UQ",
+      "eq": "EQ"
+    },
+    "evmChainsNote": "以太坊·BNB·基础·仲裁·乐观·+EVM",
+    "solDownloadTxtTitle": "VANITAS - SOLANA KEYPAIR",
+    "solDownloadImportant": "重要：\n- 切勿分享您的私钥\n- 安全地存储此文件\n- 该密钥对是在您的浏览器本地生成的",
+    "scrollToForge": "滚动至锻造",
+    "sideCaptions": {
+      "solWallet": "图一——圆形剧场",
+      "solMint": "图二——寺庙",
+      "evm": "图七——论坛",
+      "btc": "图 VIII — 硬币",
+      "tron": "图 IX — 电路",
+      "aptos": "图十一——晶格",
+      "sui": "图十二——电流",
+      "ton": "图十三——信号",
+      "cardano": "图十二——账本",
+      "xrp": "图十四——账本"
+    },
+    "steps": {
+      "mode": "01 — 模式",
+      "pattern": "02 — 图案",
+      "estimate": "03 — 估计",
+      "forge": "04 — 锻造",
+      "live": "05 — 现场"
+    },
+    "stepsCompact": {
+      "pattern": "01 — 图案",
+      "estimate": "02 — 估计",
+      "forge": "03 — 锻造",
+      "live": "04 — 现场"
+    },
+    "links": {
+      "sharePattern": "分享模式",
+      "howItWorks": "它是如何运作的",
+      "liveAudit": "现场审核",
+      "evmForge": "EVM锻造",
+      "proofOfFind": "发现证明"
+    },
+    "sol": {
+      "mintAfterForge": "锻造后：将私钥复制到启动板的自定义铸币字段中（pump.fun、Raydium、Meteora 等）。",
+      "mode": {
+        "target": "目标",
+        "walletTarget": "钱包地址",
+        "mintTarget": "代币铸造地址",
+        "toggleAria": "切换钱包或铸币地址",
+        "mintHelp": "为启动板打造一个虚荣的 Solana 薄荷密钥对（pump.fun、Raydium、Meteora 等）。将私钥粘贴到自定义铸币字段中。",
+        "walletHelp": "完全在这个浏览器中伪造一个虚荣的 Solana 钱包密钥对 — Base58 地址。"
+      }
+    },
+    "eth": {
+      "create2Params": "CREATE2参数",
+      "initHash": "初始化哈希值",
+      "initHashPh": "keccak256(initCode) — 64 十六进制",
+      "salt": "盐",
+      "saltPh": "32 字节盐 — 64 十六进制",
+      "deployerKey": "部署者密钥",
+      "deployerKeyPh": "部署者私钥 — 64 十六进制",
+      "footnote": "以太坊、BNB 智能链、Base、Arbitrum、Optimism、Polygon 和所有其他 EVM 网络上的 0x 密钥相同。 Solana 在 [SOL](/sol) 上进行锻造。",
+      "mode": {
+        "target": "目标",
+        "walletBlurb": "每个 EVM 链上的 EOA 0x 地址。",
+        "createBlurb": "首先部署（nonce 0）合约地址。",
+        "c2SaltBlurb": "固定部署者+ initCodeHash；磨盐。",
+        "c2KeyBlurb": "固定盐+initCodeHash；研磨部署器密钥。",
+        "c2Salt": "C2盐",
+        "c2Key": "C2键"
+      }
+    },
+    "btc": {
+      "stepType": "01 — 类型",
+      "mode": {
+        "addressType": "地址类型",
+        "legacyBlurb": "经典 1…P2PKH (Base58)。",
+        "segwitBlurb": "本机 bc1q…P2WPKH (Bech32)。",
+        "taprootBlurb": "原生 bc1p…P2TR (Bech32m)。"
+      },
+      "pattern": {
+        "legacyHint": "旧地址以 1 开头 — 输入 BTC 来搜索 1BTC…（前导 1 会自动添加）。",
+        "segwitHint": "SegWit 地址以 bc1q 开头 — 输入“cafe”等正文，或完整的 bc1q… 前缀。",
+        "taprootHint": "主根地址以 bc1p 开头 — 输入“cafe”等正文，或完整的 bc1p… 前缀。",
+        "caseNote": "关闭（建议用于小写模式）：1 之后，当区分大小写打开时，小写字母极其罕见。"
+      }
+    },
+    "tron": {
+      "mode": {
+        "walletBlurb": "账户Base58地址（T…）。",
+        "createBlurb": "首次部署合约地址（CREATE nonce 0）。"
+      }
+    },
+    "ton": {
+      "mode": {
+        "addressForm": "地址表",
+        "uqWallet": "昆士兰大学钱包",
+        "uqBlurb": "不可退回的钱包地址（推荐）。",
+        "eqBlurb": "同一电子钱包 v4R2 帐户的可退回形式。"
+      }
+    },
+    "pattern": {
+      "solPrefixPh": "SOL",
+      "solSuffixPh": "XYZ",
+      "solAlphabet": "仅 Base58 — 无 `0 O I`。字母：`1-9 A-H J-N P-Z a-k m-z`",
+      "ethHexNote": "EVM 地址仅为十六进制 — 数字 `0–9` 和字母 `a–f`。字母 `g–z`（以及任何其他字符）不能出现在地址中，并且在您键入时会被忽略。",
+      "ethIgnored": "忽略：{chars}",
+      "ethPrefixPh": "死的",
+      "ethSuffixPh": "牛肉",
+      "ethAfter0x": "从 0x 之后开始",
+      "ethCaseNote": "匹配不区分大小写。较长的模式需要的时间呈指数级增长（每个字符有 16 种可能性）。"
+    },
+    "cardano": {
+      "headerBlurb": "完全在此浏览器中生成虚荣卡尔达诺企业地址（addr1…）。仅付款密钥。"
+    },
+    "xrp": {
+      "headerBlurb": "完全在这个浏览器中生成虚荣的 XRP Ledger 经典地址（r…）。导入 Xaman 和其他 XRPL 钱包。"
+    }
+  },
+  "tools": {
+    "lab": {
+      "title": "模式实验室",
+      "description": "在挖掘之前先看看某个模式有多罕见，然后将作业排队并打开熔炉。",
+      "eyebrow": "工具",
+      "caption": "图 — 实验室",
+      "toc": {
+        "composer": "作曲家",
+        "matrix": "矩阵",
+        "queue": "队列"
+      },
+      "sectionPattern": "图案",
+      "sectionRarity": "稀有度",
+      "sectionBatch": "批",
+      "addQueue": "添加到队列",
+      "openForge": "打开 {chain} 锻造 →",
+      "queueEmpty": "空的",
+      "queueEmptyHint": "添加上面的模式来比较工作。",
+      "remove": "消除",
+      "exportJson": "导出 JSON",
+      "clear": "清除",
+      "prefixPh": "高手",
+      "suffixPh": "选修的",
+      "composerN": "01 — 作曲家",
+      "matrixN": "02 — 矩阵",
+      "queueN": "03 — 队列",
+      "forge": "锻造",
+      "exportWarning": "只有模式——没有私钥。"
+    },
+    "lookalike": {
+      "title": "相似检查",
+      "description": "在你用不可能的模式烧毁 CPU 之前，先捕获禁止的 Base58 字形、Tron 大小写陷阱、XRPL 字母不匹配和人类相似之处。",
+      "eyebrow": "工具",
+      "caption": "图 — 字形",
+      "toc": {
+        "check": "查看",
+        "findings": "发现",
+        "alphabets": "字母表"
+      },
+      "sectionCheckN": "01 — 检查",
+      "sectionFindingsN": "02 — 调查结果",
+      "sectionAlphabetsN": "03 — 字母表",
+      "sectionPatternForge": "模型和锻造",
+      "pattern": "图案",
+      "patternPh": "前缀或片段",
+      "sectionSpotted": "我们发现了什么",
+      "findingsEmptyTitle": "输入图案",
+      "findingsEmptyDetail": "粘贴前缀、后缀或完整的个性片段进行检查。",
+      "readyGrind": "准备好磨了吗？打开 [Pattern Lab](/lab) 或匹配的熔炉。",
+      "sectionCharset": "字符集备忘单",
+      "tocCheck": "查看",
+      "tocFindings": "发现",
+      "tocAlphabets": "字母表",
+      "sectionCheckTitle": "模型和锻造",
+      "sectionFindingsTitle": "我们发现了什么",
+      "sectionAlphabetsTitle": "字符集备忘单",
+      "patternLabel": "图案",
+      "severity": {
+        "error": "错误",
+        "warn": "警告",
+        "info": "信息"
+      },
+      "chains": {
+        "sol": {
+          "label": "索拉纳",
+          "notes": "比特币风格的 Base58 — 无 0、O、I、l"
+        },
+        "evm": {
+          "label": "评估值",
+          "notes": "仅十六进制（0-9、a-f），不区分大小写"
+        },
+        "btc-legacy": {
+          "label": "比特币遗产",
+          "notes": "Base58 P2PKH / P2SH"
+        },
+        "btc-bech32": {
+          "label": "比特币 Bech32",
+          "notes": "bc1q / bc1p 正文字符集"
+        },
+        "tron": {
+          "label": "创",
+          "notes": "Base58 T… — 区分大小写；早期字符通常大写"
+        },
+        "aptos": {
+          "label": "阿普托斯",
+          "notes": "0x + 64 十六进制"
+        },
+        "sui": {
+          "label": "隋",
+          "notes": "0x + 64 十六进制"
+        },
+        "ton": {
+          "label": "吨",
+          "notes": "Base64url — 区分大小写"
+        },
+        "cardano": {
+          "label": "卡尔达诺",
+          "notes": "addr1…bech32 主体"
+        },
+        "xrp": {
+          "label": "瑞波币",
+          "notes": "XRPL Base58 — 与比特币/Solana 不同"
+        }
+      },
+      "pairNotes": {
+        "zeroO": "零与大写 O",
+        "zeroo": "零与小写 o",
+        "oneL": "1 与小写 L",
+        "oneI": "一 vs 资本一",
+        "onei": "一与小写 i",
+        "fiveS": "五对S",
+        "eightB": "八对乙"
+      },
+      "findings": {
+        "empty": {
+          "title": "输入图案",
+          "detail": "粘贴前缀、后缀或完整的个性片段进行检查。"
+        },
+        "invalidAlphabet": {
+          "title": "不在这个字母表中的字符",
+          "detail": "无效：{chars}。 {notes}"
+        },
+        "base58Banned": {
+          "title": "Base58 从不使用 0、O、I 或 l",
+          "detail": "这些字形已从比特币风格的 Base58 中删除，以避免相似。该模式无法匹配。"
+        },
+        "xrplVsBtc": {
+          "title": "XRPL 字母表上使用的比特币 Base58 字符",
+          "detail": "XRPL 经典地址使用不同的 Base58 字母表。违规：{chars}"
+        },
+        "xrplCharset": {
+          "title": "XRPL 特定字符",
+          "detail": "这些出现在 XRPL Base58 中，但不在比特币 Base58 中：{chars}"
+        },
+        "sharedGlyphs": {
+          "title": "两种 Base58 字母表中都存在字形",
+          "detail": "字符重叠，但编码仍然不同。未经重新检查，请勿在 XRP 上重复使用 Solana/BTC 个性字符串。"
+        },
+        "notXrpl": {
+          "title": "无法按原样在 XRPL 上运行",
+          "detail": "此比特币/Solana Base58 模式使用 XRPL 字母表中缺失的字形。"
+        },
+        "tronCase": {
+          "title": "Tron 上的小写早期模式",
+          "detail": "Tron 地址以 T 开头，接下来的字符通常是大写 Base58。短小写前缀通常永远不会匹配 - 尝试大写或更长的后缀。"
+        },
+        "tronLeadingT": {
+          "title": "前导小写 t",
+          "detail": "经典 Tron 地址以大写 T 开头。更喜欢 T…或者如果伪造自动处理它，则省略 T。"
+        },
+        "pair": {
+          "title": "混合相似：{a} 和 {b}",
+          "detail": "{note}。大声分享地址或在屏幕截图中很容易输入错误。"
+        },
+        "safe": {
+          "title": "{present} 在字母表中； {absent} 不是",
+          "detail": "{note}。收件人在视觉上仍然会感到困惑——分享时要小心拼写。"
+        },
+        "hexCase": {
+          "title": "混合十六进制大小写",
+          "detail": "匹配不区分大小写。混合大小写适合显示（校验和），但磨削不需要。"
+        },
+        "tonCase": {
+          "title": "TON 模式区分大小写",
+          "detail": "Base64url区分A和a。混合大小写会增加难度并且很容易输错。"
+        },
+        "clean": {
+          "title": "未检测到字母冲突",
+          "detail": "所有字符都适合 {label}。在长时间的磨练之前，仍然要仔细检查实时伪造警告。"
+        }
+      }
+    },
+    "create2": {
+      "title": "创建2助手",
+      "description": "从部署字节码派生 initCodeHash，预览部署者的 CREATE2 地址和 salt，然后跳入 EVM forge。钥匙留在本地。",
+      "eyebrow": "工具",
+      "caption": "图 — CREATE2",
+      "toc": {
+        "hash": "哈希值",
+        "preview": "预览",
+        "forge": "锻造"
+      },
+      "sectionHashN": "01 — 哈希",
+      "sectionHashTitle": "字节码 → initCodeHash",
+      "sectionPreviewN": "02 — 预览",
+      "sectionPreviewTitle": "部署者地址 + salt",
+      "sectionForgeN": "03 — 锻造",
+      "sectionForgeTitle": "打开EVM研磨",
+      "hashIntro": "粘贴将要部署的创建字节码（初始化代码）。我们在此浏览器中计算 `keccak256(initCode)`。",
+      "initCodeLabel": "初始化代码（十六进制）",
+      "initCodePh": "0x6080604052…",
+      "initCodeHashLabel": "初始化代码哈希（32 字节）",
+      "initCodeHashPh": "0x…",
+      "initCodeHashResult": "初始化代码哈希 · {bytes} 字节",
+      "deployerLabel": "部署者（20 字节）",
+      "deployerPh": "0x…",
+      "saltLabel": "Salt（≤32字节，左填充）",
+      "saltPh": "0x…或空=零盐",
+      "create2Address": "创建2地址",
+      "wantedPrefix": "通缉前缀",
+      "wantedSuffix": "通缉后缀",
+      "prefixPh": "咖啡店",
+      "suffixPh": "选修的",
+      "patternMatch": "预览地址符合您的模式。",
+      "patternMismatch": "预览地址与此模式不匹配 - 继续磨盐或部署器。",
+      "useInPreview": "在预览中使用",
+      "forgeIntro": "使用您的哈希值和模式深度链接到 EVM forge。错误的initCodeHash意味着链上地址错误。",
+      "grindSalt": "磨盐",
+      "grindDeployer": "研磨部署器",
+      "evmForge": "EVM锻造",
+      "tocHash": "哈希值",
+      "tocPreview": "预览",
+      "tocForge": "锻造",
+      "prefixLabel": "前缀",
+      "suffixLabel": "后缀",
+      "predictedAddress": "预测地址",
+      "patternMiss": "模式不匹配",
+      "invalidDeployer": "无效的部署者或哈希值",
+      "openSaltForge": "在锻造厂磨盐",
+      "openDeployerForge": "在锻造中磨削部署器"
+    },
+    "brand": {
+      "title": "品牌",
+      "description": "在启动板和文档上嵌入校样卡，以及轻型品牌套件 - 文字标记、颜色和副本。从不包含私钥。",
+      "eyebrow": "工具",
+      "embedIntro": "粘贴链、地址和模式（来自查找或演示）。我们构建一个 iframe 来验证客户端的匹配 - 与 [/proof](/proof) 相同的规则。",
+      "badgeLine": "证明已验证的客户端 · vanitas.fun",
+      "caption": "图——品牌",
+      "toc": {
+        "embed": "嵌入",
+        "preview": "预览",
+        "kit": "成套工具",
+        "copy": "复制"
+      },
+      "sectionEmbedN": "01 — 嵌入",
+      "sectionEmbedTitle": "证明小部件",
+      "address": "地址",
+      "prefix": "前缀",
+      "suffix": "后缀",
+      "paperTheme": "纸主题",
+      "inkTheme": "水墨主题",
+      "compact": "袖珍的",
+      "iframeSnippet": "iframe 片段",
+      "copyIframe": "复制 iframe",
+      "copyEmbedUrl": "复制嵌入网址",
+      "copyProofUrl": "复制完整证明 URL",
+      "sectionPreviewN": "02 — 预览",
+      "sectionPreviewTitle": "活卡",
+      "previewBody": "`/embed/proof` 的框架预览。演示地址可能会显示不匹配，直到您粘贴真正的查找结果。",
+      "iframeTitle": "Vanitas 证明",
+      "previewIframeTitle": "Vanitas 证明预览",
+      "sectionKitN": "03 — 套件",
+      "sectionKitTitle": "品牌套件",
+      "kitIntro": "链接证明或伪造时使用 Vanitas 标记。除非属实，否则请勿暗示托管、合伙或由 Vanitas 审核。",
+      "wordmark": "文字商标",
+      "wordmarkNote": "显示/衬线重量——单独品牌时的英雄级别",
+      "paper": "纸",
+      "paperNote": "初级接地",
+      "ink": "墨水",
+      "inkNote": "机身+镀铬",
+      "accent": "口音",
+      "accentValue": "站点重音标记",
+      "accentNote": "链接/已验证状态 - 保持节约",
+      "site": "地点",
+      "siteNote": "更喜欢 www.vanitas.fun 的规范链接",
+      "badgeHeading": "徽章线",
+      "copyBadge": "复制徽章线",
+      "sectionCopyN": "04 — 复制",
+      "sectionCopyTitle": "建议的简介",
+      "shortLabel": "短的",
+      "shortBlurb": "使用 Vanitas 在本地伪造的个性化地址 - 密钥永远不会离开设备。模式匹配已验证客户端。",
+      "launchpadLabel": "Launchpad",
+      "launchpadBlurb": "通过 vanitas.fun 在浏览器中生成自定义薄荷/虚荣钱包。分享证明链接，让任何人验证该模式 - 私钥远离页面。",
+      "linkProof": "校样页",
+      "linkLab": "模式实验室",
+      "linkSecurity": "安全"
+    },
+    "proof": {
+      "title": "公开比赛检查",
+      "description": "验证客户端的虚荣匹配 - 从未包含密钥。",
+      "eyebrow": "发现证明",
+      "intro": "此页面验证地址是否与声明的模式匹配。它从不包含私钥。任何人都可以打开链接并重新检查客户端。",
+      "emptyIntro": "URL 中没有证明数据。伪造地址后，请在结果屏幕上使用**共享证明**。或者先锻造：",
+      "address": "地址",
+      "pattern": "图案"
+    },
+    "embedProof": {
+      "eyebrow": "虚荣证明",
+      "brand": "瓦尼塔斯",
+      "missingParams": "缺少证明参数。",
+      "openProof": "公开证明",
+      "site": "虚幻乐趣"
+    },
+    "audit": {
+      "title": "审计",
+      "description": "运行时检查和工作器哈希比较。",
+      "eyebrow": "现场检查",
+      "caption": "图六——论坛",
+      "descriptionIdle": "八个地方检查。没有任何内容是伪造的，也没有任何内容发送到服务器。绿色意味着好。",
+      "descriptionPass": "八项本地检查——明确。没有任何内容是伪造的，也没有任何内容发送到服务器。",
+      "descriptionFail": "八个本地检查 — {failed} 问题。绿色意味着好。",
+      "checksTotal": "{total} 检查",
+      "passedSummary": "{passed}/{total} 通过",
+      "buildIntegrity": "建立诚信",
+      "workerFingerprintIntro": "每个锻造工人​​都有一个在 `worker-hash.json` 中发布的 SHA-256 指纹。上述完整性测试根据此列表验证了 Solana、EVM、比特币和 Tron。",
+      "verifyYourself": "验证自己",
+      "verifyStep1": "1. 查看 [vanitas.fun](https://vanitas.fun) 链接的来源",
+      "verifyStep2": "2.构建工人：`npm run build:worker`",
+      "verifyStep3": "3. 将 `public/worker-hash.json` 与上面的哈希值进行比较",
+      "hashLoading": "加载中…",
+      "hashUnavailable": "不可用",
+      "start": "开始审核",
+      "runAgain": "再次运行",
+      "running": "跑步…",
+      "whatIsThis": "这是什么？",
+      "whatIsThisBody": "当您使用 Vanitas 时，会在您的设备上创建私钥。这些 **8 个自动检查** 证明生成保持在本地，随机性是真实的，并且没有任何东西留给网络。",
+      "workerFingerprint": "工人指纹",
+      "networkMonitor": "实时网络监控",
+      "monitor": {
+        "transparency": "透明度",
+        "intro": "该页面发出的每个网络请求。如果关键数据离开，您会在这里看到它。",
+        "stop": "● 停止",
+        "restart": "重新启动",
+        "startMonitoring": "开始监控",
+        "requests": "{count} 请求",
+        "requestSingular": "1 项请求",
+        "noSuspicious": "没有可疑的外部请求",
+        "externalCount": "{count} 外部",
+        "colType": "类型",
+        "colUrl": "网址",
+        "colSize": "尺寸",
+        "colTime": "时间",
+        "footerSafe": "所有请求都会发送到该域或 Google Fonts（用于排版）。不会将任何数据发送到第三方服务器。",
+        "footerWarning": "警告：检测到意外的外部请求。这可能表明存在安全问题。",
+        "emptyHint": "单击“开始监控”即可查看此页面发出的每个网络请求。",
+        "emptySubhint": "在打开监控的情况下浏览站点 - 您将准确地看到加载的内容。",
+        "activeHint": "监控活动 - 等待网络请求..."
+      },
+      "tests": {
+        "webcrypto": {
+          "name": "网络加密 API",
+          "description": "浏览器中的本机 Ed25519 支持",
+          "why": "这是创建您的密钥的技术。如果您的浏览器本身支持，地址生成速度比其他浏览器快 125 倍。"
+        },
+        "csprng": {
+          "name": "随机数生成器",
+          "description": "加密安全随机数生成器",
+          "why": "您的私钥本质上是一个巨大的随机数。如果随机性较弱或可预测，有人可能会猜到您的密钥。此测试可确保随机生成器正常工作。"
+        },
+        "entropy": {
+          "name": "随机性质量",
+          "description": "10000个随机字节的统计测试",
+          "why": "我们生成 10,000 个随机数并检查它们是否均匀分布 - 就像掷骰子数千次一样。如果某些数字出现的频率更高，则说明有问题。"
+        },
+        "network": {
+          "name": "零网络流量",
+          "description": "密钥生成期间不会有任何数据离开您的浏览器",
+          "why": "最重要的检查：我们验证在生成密钥时绝对没有任何内容发送到互联网。您的私钥永远不应该离开您的设备。"
+        },
+        "csp": {
+          "name": "安全标头",
+          "description": "内容安全策略限制数据泄露",
+          "why": "即使注入了恶意代码，这些浏览器级规则也会阻止其向任何地方发送数据。将其视为网站本身内置的防火墙。"
+        },
+        "worker": {
+          "name": "工人隔离",
+          "description": "密钥生成在隔离的后台线程中运行",
+          "why": "您的密钥是在单独的“工作人员”中创建的 - 在后台运行的独立小程序。它们无法访问主页，也不能被浏览器扩展程序篡改。"
+        },
+        "integrity": {
+          "name": "代码完整性",
+          "description": "SHA-256 指纹与所有已发布的锻造工人相匹配",
+          "why": "我们对每个密钥生成工作线程（Solana、EVM、Bitcoin、Tron、Aptos、Sui）进行哈希处理，并将每个密钥生成工作线程与开放版本中的worker-hash.json 进行比较。如果它们匹配，则代码没有被篡改。"
+        },
+        "keygen": {
+          "name": "密钥生成测试",
+          "description": "生成并验证实际的 Ed25519 密钥对",
+          "why": "最终证明：我们创建一个真实的密钥，用它签署一条消息，然后验证签名。如果可行，您的浏览器可以安全地生成 Solana 地址。"
+        }
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "文档",
+    "title": "FAQ",
+    "description": "每个锻造厂的答案 — 模式、模式、安全性、证明链接、CLI 和日常使用。使用子菜单按主题跳转。",
+    "categories": {
+      "general": {
+        "label": "一般的",
+        "n": "01",
+        "items": {
+          "what": {
+            "q": "什么是个性地址？",
+            "a": "包含您选择的模式的加密货币地址 - 例如，在 Solana 上以 `VANI` 开头，在 EVM 上以 `0xcafe` 开头。它是普通密钥对之上的装饰性品牌。"
+          },
+          "fake": {
+            "q": "Vanitas 会创建“假”地址吗？",
+            "a": "不会。每个锻造厂都会生产该链条的标准钥匙。导入到匹配的钱包中，它们的工作方式就像任何随机生成的地址一样——它们只是看起来是故意的。"
+          },
+          "which": {
+            "q": "存在哪些锻造厂？",
+            "a": "九个网络伪造品——Solana、EVM、Bitcoin、Tron、Aptos、Sui、TON、Cardano、XRP——加上终端的 `npx vanitas`。参见 [How it works → Chains](/how-it-works#chains)。"
+          },
+          "howLong": {
+            "q": "我的图案需要多长时间？",
+            "a": "预期的尝试随着长度和字母大小呈指数增长。 Hex（16 个字符）比 Base58（~58）更密集。使用页面上的难度估计；从 3-4 个字符开始，然后再追求长品牌。"
+          },
+          "prefixSuffix": {
+            "q": "前缀和后缀可以一起使用吗？",
+            "a": "是的——这两个限制都会增加难度。除非您有空闲时间和哈希率，否则优先选择强势一方（前缀或后缀）。"
+          }
+        }
+      },
+      "solana": {
+        "label": "索拉纳",
+        "n": "02",
+        "items": {
+          "produce": {
+            "q": "Solana 锻造厂生产什么？",
+            "a": "Ed25519 密钥对作为 Base58 地址（与 Phantom / Solflare 属于同一系列）。导出为 Solana CLI JSON 字节数组以便于导入。"
+          },
+          "walletMint": {
+            "q": "钱包模式与薄荷模式？",
+            "a": "相同的密码学。 **钱包**用于个人地址； **Mint** 标记为启动板自定义 Mint 字段（pump.fun、Raydium、Meteora 等）。打开[/sol?mode=mint](/sol?mode=mint)。"
+          },
+          "base58": {
+            "q": "为什么我不能使用 0、O、I 或 l？",
+            "a": "Base58 排除相似字符。包含它们的模式永远不会出现在真实的 Solana 地址中。"
+          },
+          "pump": {
+            "q": "薄荷糖需要以“pump”结尾吗？",
+            "a": "不。该后缀是营销手段，而不是协议规则。如果启动板接受自定义薄荷密钥对，则任何有效的 Base58 虚荣模式都有效。"
+          }
+        }
+      },
+      "evm": {
+        "label": "EVM",
+        "n": "03",
+        "items": {
+          "networks": {
+            "q": "EVM 个性化密钥适用于哪些网络？",
+            "a": "所有 EVM 兼容链共享相同的地址派生。以太坊、Base、Arbitrum、Optimism、BSC、Polygon、Avalanche C-Chain 等上的一键 → 一个 `0x` 地址。"
+          },
+          "modes": {
+            "q": "什么是钱包、CREATE 和 CREATE2 模式？",
+            "a": "**钱包** — 虚荣 EOA 地址。\n**CREATE** — 该密钥中第一个合约的虚荣地址（nonce 0）。\n**CREATE2** — 给定初始代码哈希值的grind salt（固定部署器）或grind部署器（固定salt）。"
+          },
+          "bnb": {
+            "q": "我需要单独的 BNB 生成器吗？",
+            "a": "BNB 智能链（EVM）否。旧信标链 `bnb1` bech32 地址超出范围。"
+          }
+        }
+      },
+      "bitcoin": {
+        "label": "比特币",
+        "n": "04",
+        "items": {
+          "types": {
+            "q": "支持哪些地址类型？",
+            "a": "主网遗留 `1…`、SegWit `bc1q…` 和 Taproot `bc1p…`。导出包括压缩的 WIF。"
+          },
+          "leading": {
+            "q": "我自己输入前导 1 / bc1q 吗？",
+            "a": "选修的。当您的前缀尚未包含固定版本/HRP 时，UI 会自动在其前面添加固定版本/HRP。"
+          },
+          "lightning": {
+            "q": "闪电发票？",
+            "a": "超出范围——伪造地址，而不是 BOLT。"
+          }
+        }
+      },
+      "tron": {
+        "label": "创",
+        "n": "05",
+        "items": {
+          "get": {
+            "q": "我可以从 Tron 熔炉得到什么？",
+            "a": "主网 Base58Check 来自 secp256k1 密钥的 `T…` 地址 — 钱包或 CREATE（随机数 0）。前缀前导 `T` 会自动添加。"
+          },
+          "case": {
+            "q": "为什么小写区分大小写的前缀永远找不到？",
+            "a": "在 `T` 之后，下一个字符几乎总是大写或数字。除非您需要精确的大小写匹配，否则请关闭区分大小写。 Base58 还排除 O、I、l。"
+          }
+        }
+      },
+      "aptos-sui": {
+        "label": "阿普托斯与隋",
+        "n": "06",
+        "items": {
+          "differ": {
+            "q": "Aptos 和 Sui 有什么不同？",
+            "a": "两者都使用 Ed25519 和十六进制地址，但散列不同：Aptos 使用 `sha3-256(pubkey ‖ 0x00)`； Sui 使用 `blake2b-256(0x00 ‖ pubkey)`。密钥在生态系统中不可互换。"
+          },
+          "wallets": {
+            "q": "哪些钱包可以导入它们？",
+            "a": "Aptos：佩特拉、火星等。 Sui：Sui 钱包、Suiet 以及其他接受十六进制私钥的钱包。"
+          }
+        }
+      },
+      "ton-cardano-xrp": {
+        "label": "TON · 卡尔达诺 · XRP",
+        "n": "07",
+        "items": {
+          "ton": {
+            "q": "TON UQ 与 EQ？",
+            "a": "不可退回 (`UQ…`) 与可退回 (`EQ…`) 用户友好形式的钱包 v4R2。匹配区分大小写。"
+          },
+          "cardano": {
+            "q": "什么卡尔达诺地址类型是伪造的？",
+            "a": "企业主网`addr1…`（CIP-19类型6——仅支付密钥，地址中无权益委托）。"
+          },
+          "xrp": {
+            "q": "XRP 与比特币相同的 Base58 吗？",
+            "a": "不会。XRPL 经典地址使用不同的 Base58 字母表。 Vanitas 从 secp256k1 键编码 `r…` 经典。"
+          }
+        }
+      },
+      "security": {
+        "label": "安全",
+        "n": "08",
+        "items": {
+          "store": {
+            "q": "你们存储我的私钥吗？",
+            "a": "不会。密钥永远不会离开会话的浏览器内存。有关架构和威胁模型，请参阅 [Security](/security) 页面。"
+          },
+          "verify": {
+            "q": "我如何验证这一点？",
+            "a": "1. DevTools → 挖矿时联网——无关键流量\n2.加载后的飞行模式\n3. [Live audit](/audit) +工人哈希比较"
+          },
+          "weaker": {
+            "q": "虚荣钥匙是否较弱？",
+            "a": "不会。私钥仍然具有完整的 CSPRNG 熵。仅过滤公共编码。"
+          },
+          "extensions": {
+            "q": "浏览器扩展怎么样？",
+            "a": "扩展程序仍然可以监听页面。对于高价值密钥，请使用干净的配置文件、CLI 或离线计算机。详细信息：[Security → Browser](/security#browser)。"
+          },
+          "report": {
+            "q": "我在哪里报告漏洞？",
+            "a": "私人 GitHub 安全公告 — 绝不是公开问题。参见 [Security → Disclose](/security#disclose)。"
+          }
+        }
+      },
+      "proof-cli": {
+        "label": "证明和 CLI",
+        "n": "09",
+        "items": {
+          "proof": {
+            "q": "什么是发现证明？",
+            "a": "带有地址 + 模式（和可选统计数据）的可共享 [/proof](/proof) 链接。任何人都可以在客户端验证匹配。私钥永远不会包含在内。"
+          },
+          "cli": {
+            "q": "如何运行 CLI？",
+            "a": "`npx vanitas` 表示向导，或类似 `npx vanitas sol --prefix Ace --threads 8` 的标志。支持与 Web 应用程序相同的部署模式（mint、CREATE、CREATE2 标志）。"
+          }
+        }
+      },
+      "usage": {
+        "label": "用法",
+        "n": "10",
+        "items": {
+          "import": {
+            "q": "如何导入 Phantom / MetaMask / 等？",
+            "a": "使用该伪造的导出格式：Phantom/Solflare 的 Solana JSON、大多数 EVM 钱包的十六进制、许多比特币钱包的 WIF、其他地方特定于链的十六进制/Base58。始终先进行微小的测试传输。"
+          },
+          "pause": {
+            "q": "我可以暂停并继续吗？",
+            "a": "你可以随时停下来；简历是一个新的搜索（没有先前尝试的检查点）。"
+          },
+          "disabled": {
+            "q": "为什么“开始”被禁用？",
+            "a": "空模式、该字母表的字符无效或模式太长。修复输入下的验证消息。"
+          },
+          "freeze": {
+            "q": "挖矿时 UI 冻结？",
+            "a": "减少线程数。工作人员应该保持用户界面的活力，但让小型笔记本电脑上的每个核心都饱和仍然会感觉迟缓。"
+          }
+        }
+      }
+    },
+    "sideCaption": "图四——景观",
+    "topics": "主题",
+    "stillStuck": "还卡住了吗？",
+    "stillStuckBody": "深入的技术细节在于它的工作原理。信任模型和威胁注释存在于安全性中。完整性检查通过 Audit 进行。",
+    "linkHow": "它是如何运作的",
+    "linkSecurity": "安全",
+    "linkAudit": "现场审核",
+    "glyphs": {
+      "general": "图 — 滚动",
+      "solana": "图——柱廊",
+      "evm": "图 — 模式",
+      "bitcoin": "图 — 关键",
+      "tron": "图——锻造",
+      "aptos-sui": "图 — 循环",
+      "ton-cardano-xrp": "图——石碑",
+      "security": "图——盾牌",
+      "proof-cli": "图 — 密封件",
+      "usage": "图——时间"
+    }
+  },
+  "docs": {
+    "howItWorks": {
+      "eyebrow": "文档",
+      "title": "它是如何运作的",
+      "description": "Vanitas 的完整介绍：虚荣采矿的工作原理、每个锻造厂生产什么、工人如何并行搜索以及如何验证没有任何东西离开您的机器。",
+      "sideCaption": "图三——演说家",
+      "overview": {
+        "title": "瓦尼塔斯是什么",
+        "p1": "**Vanitas** 是一个客户端多链虚荣地址锻造。您选择前缀和/或后缀；该应用程序搜索公共地址与该模式匹配的密钥对。 Generation 在您的 CPU 上的 **Web Workers** 中运行。私钥是在您设备的内存中创建的，并且永远不会上传。",
+        "p2": "虚荣地址仍然是普通的加密地址。私钥是随机的；只有公共编码会被过滤，直到它看起来像你想要的那样——对于品牌推广、捐赠、薄荷糖和令人难忘的公共钱包很有用。"
+      },
+      "pipeline": {
+        "title": "搜索循环",
+        "intro": "每个锻造都遵循相同的高级循环，重复数百万次：",
+        "whySecure": "搜索虚荣地址不会削弱私钥。您将拒绝候选人，直到公共地址看起来正确为止——这与生成随机密钥并保留幸运者的过程相同。"
+      },
+      "reminder": {
+        "label": "提醒",
+        "body": "在关闭选项卡之前保存您的私钥。丢失的钥匙无法恢复。对于大额余额：首先进行小额转账测试，首选硬件钱包进行长期保管，切勿将密钥粘贴到不受信任的网站。"
+      },
+      "toc": {
+        "overview": "概述",
+        "pipeline": "管道",
+        "patterns": "图案",
+        "chains": "链条",
+        "modes": "模式",
+        "workers": "工人",
+        "proof": "证明",
+        "cli": "CLI",
+        "verify": "核实"
+      },
+      "sections": {
+        "overview": {
+          "n": "01 — 概述",
+          "title": "瓦尼塔斯是什么",
+          "glyph": "图 A — 关键",
+          "ledger": {
+            "where": {
+              "label": "在哪里",
+              "value": "您的浏览器·您的CPU",
+              "note": "仅静态托管；挖矿不进行网络调用"
+            },
+            "forges": {
+              "label": "福吉斯",
+              "value": "9条链+终端CLI",
+              "note": "Solana · EVM · 比特币 · Tron · Aptos · Sui · TON · 卡尔达诺 · XRP"
+            },
+            "output": {
+              "label": "输出",
+              "value": "地址+私钥",
+              "note": "导出格式取决于伪造（JSON、十六进制、WIF，...）"
+            }
+          }
+        },
+        "pipeline": {
+          "n": "02 — 管道",
+          "title": "搜索循环",
+          "glyph": "图 B — 循环",
+          "steps": [
+            "绘制加密安全的随机私钥 (`crypto.getRandomValues`)。",
+            "使用链的曲线（Ed25519 或 secp256k1）导出公钥。",
+            "按照链期望的方式对地址进行编码（Base58、十六进制、bech32，...）。",
+            "与您的前缀/后缀（和模式规则）进行比较。",
+            "比赛时：停止工作人员，显示结果，可选声音/证明/导出。"
+          ],
+          "workersNote": "工作线程跨 CPU 核心并行运行此循环。 UI 线程保持响应；进度（尝试、速率、预计到达时间）是从工作人员消息中聚合的。当一名工作人员发现命中时，池就会终止。",
+          "whySecureTitle": "为什么这是安全的"
+        },
+        "patterns": {
+          "n": "03 — 图案",
+          "title": "难度、字母、警告",
+          "glyph": "图 C——时间",
+          "intro": "预期时间尺度与模式长度和字母大小有关。每个额外的字符都会增加搜索空间。 Forge UI 根据您的模式和测量或假设的哈希率显示实时难度估计。",
+          "ledger": {
+            "base58": {
+              "label": "Base58",
+              "value": "~58 个符号",
+              "note": "Solana、Tron、XRP（XRPL 字母表）、比特币遗产"
+            },
+            "hex": {
+              "label": "十六进制",
+              "value": "16 个符号（0–9、a–f）",
+              "note": "EVM、Aptos、Sui — 匹配时不区分大小写"
+            },
+            "bech32": {
+              "label": "贝奇32",
+              "value": "bc1q / bc1p / 地址1…",
+              "note": "比特币 SegWit/Taproot、Cardano — 修复了 HRP，然后是字符集"
+            },
+            "ton": {
+              "label": "TON",
+              "value": "Base64网址",
+              "note": "UQ… / EQ… — 区分大小写"
+            }
+          },
+          "trapsTitle": "字母陷阱",
+          "traps": [
+            "**Solana / Bitcoin Base58** — 无 `0`、`O`、`I` 或 `l`（相似拒绝）。",
+            "**EVM** — 仅在 `0x` 之后的十六进制。超过 `a–f` 的字母无效。",
+            "**Tron** — 地址以 `T` 开头；下一个字符通常是大写的。区分大小写的小写前缀通常永远不会匹配。",
+            "**前缀+后缀**——这两个限制都会增加难度。开始时短；一旦您知道了您的费率，就可以扩大模式。"
+          ]
+        },
+        "chains": {
+          "n": "04 — 链条",
+          "title": "每个锻造，解释",
+          "glyph": "图 D — 锻造",
+          "intro": "九个熔炉共享相同的用户体验模式——选择一个模式，设置一个模式，启动工人——但每个链使用不同的曲线、哈希值和地址编码。",
+          "sol": "Ed25519 密钥对编码为 Base58（32 字节公钥）。当浏览器支持时，使用 Native Web Crypto Ed25519；否则 WASM 回退 (`watsign`)。模式：**钱包**和**薄荷** - 相同的关键数学； mint 框架用于启动板自定义 mint 流程。导出：Solana CLI JSON 字节数组。",
+          "evm": "secp256k1 → 未压缩的公钥 → keccak-256 → 最后 20 个字节 → `0x…` 地址。一把私钥在以太坊、Base、Arbitrum、Optimism、BSC、Polygon 和所有其他 EVM 网络上生成相同的地址。模式：钱包（EOA）、CREATE at nonce 0、CREATE2（磨盐或磨部署器）。请参阅下面的模式。",
+          "btc": "secp256k1。三种地址类型：传统 P2PKH (`1…`)、本机 SegWit P2WPKH (`bc1q…`)、Taproot P2TR (`bc1p…`)。导出包括用于钱包导入的 WIF（压缩）。输入前缀时，会为您处理前导 HRP/版本字节。",
+          "tron": "与 20 字节帐户 ID 的 EVM 相同的 secp256k1 + keccak 路径，然后使用版本字节 `0x41` → `T…` 的 Base58Check。模式：钱包和 CREATE（nonce 0），使用与 EVM 相同的 RLP 布局，然后是 Tron 编码。",
+          "aptos": "Ed25519。地址 = `sha3-256(pubkey ‖ 0x00)` 作为十六进制。与 Petra、Martian 和其他导入十六进制秘密的 Aptos 钱包兼容。",
+          "sui": "Ed25519。地址 = `blake2b-256(0x00 ‖ pubkey)` 作为十六进制（标志字节标记方案）。使用十六进制私钥导入 Sui Wallet / Suiet。",
+          "ton": "Ed25519 + 钱包合约 v4R2。地址采用用户友好的 Base64url 形式：`UQ…`（不可退回）和 `EQ…`（可退回）。匹配区分大小写。导入到 Tonkeeper / MyTonWallet。",
+          "cardano": "Ed25519 企业地址（CIP-19 类型 6，仅限付款密钥）：标头 `0x61` + Blake2b-224 付款哈希，bech32 与 HRP `addr` → `addr1…`。",
+          "xrp": "secp256k1 压缩公钥 → RIPEMD160(SHA256) 帐户 ID → XRPL 经典 Base58 检查 → `r…`。注意：XRPL 使用与比特币不同的 Base58 字母表。",
+          "links": {
+            "sol": "[Solana](/sol)",
+            "evm": "[EVM](/evm)",
+            "btc": "[Bitcoin](/btc)",
+            "tron": "[Tron](/tron)",
+            "aptos": "[Aptos](/aptos)",
+            "sui": "[Sui](/sui)",
+            "ton": "[TON](/ton)",
+            "cardano": "[Cardano](/cardano)",
+            "xrp": "[XRP](/xrp)"
+          }
+        },
+        "modes": {
+          "n": "05 — 模式",
+          "title": "钱包，薄荷，CREATE，CREATE2",
+          "glyph": "图 E——模式",
+          "solMint": "加密方式与钱包密钥对相同。 Launchpad 要求提供自定义的薄荷密钥对/私钥； Vanitas 将结果标记为完好，因此导出与该工作流程相匹配。打开[/sol?mode=mint](/sol?mode=mint)，找到一个模式，将密钥粘贴到pump.fun、Raydium、Meteora等中。",
+          "create": "从 EOA 部署的第一个合约（随机数为 0）具有确定性地址：`keccak256(RLP([sender, 0]))[12:]`。 Vanitas 会研磨 EOA，直到派生的合约地址与您的模式匹配。您收到部署者私钥 — 从新的 nonce-0 帐户部署一次。",
+          "create2Intro": "地址 = `keccak256(0xff ‖ deployer ‖ salt ‖ initCodeHash)[12:]`。两种研磨策略：",
+          "create2Salt": "**create2-salt** — 修复部署者密钥 + 初始化代码哈希；搜索产生虚荣地址的盐。",
+          "create2Deployer": "**create2-deployer** — 修复 salt + init 代码哈希；搜索 CREATE2 地址匹配的部署者密钥。",
+          "create2Hash": "您必须提供正确的 `initCodeHash` （部署字节码的 keccak）。错误的哈希→错误的链上地址。"
+        },
+        "workers": {
+          "n": "06 — 工人",
+          "title": "性能架构",
+          "glyph": "图 F — 锻造",
+          "intro": "Worker 源位于 `src/workers/*.worker.source.ts` 下，并与 esbuild 捆绑到 `public/*-worker.js` 中。每个构建都会将 SHA-256 摘要写入 `public/worker-hash.json` 以获取 [live audit](/audit)。",
+          "ledger": {
+            "parallelism": {
+              "label": "并行性",
+              "value": "CPU 核心 - 1（默认）",
+              "note": "如果机器发热或用户界面卡顿，请调整线程"
+            },
+            "solSpeed": {
+              "label": "索拉纳速度",
+              "value": "本机 Ed25519（如有）",
+              "note": "Chrome 113+ · Firefox 129+ · Safari 17+；否则 WASM"
+            },
+            "libraries": {
+              "label": "图书馆",
+              "value": "@noble · tweetnacl · watsign · @ton/*",
+              "note": "在浏览器中审核纯 JS / WASM 加密"
+            }
+          },
+          "postFind": "找到后，可选的**关键安全检查**探测熵、CSPRNG 可用性以及随机字节的卡方均匀性测试 - 确认浏览器 RNG 路径看起来健康。"
+        },
+        "proof": {
+          "n": "07 — 证明",
+          "title": "发现证明",
+          "glyph": "图 G — 密封件",
+          "p1": "**共享证明**仅使用链、地址和模式构建到 [/proof](/proof) 的公共链接 - **绝不包含私钥**。任何人都可以打开链接并验证地址是否与客户端声明的前缀/后缀匹配。",
+          "session": "最近在 UI 中发现仅使用 `sessionStorage` 作为地址 + 模式元数据。关闭选项卡会清除该历史记录；密钥不存储在那里。"
+        },
+        "cli": {
+          "n": "08 — CLI",
+          "title": "端子锻造",
+          "glyph": "图 H——石碑",
+          "p1": "浏览器外的想法相同：`npx vanitas` 打开一个向导，或传递链、模式、前缀、线程和 CREATE2 参数的标志。当操作系统支持时，结果会写入模式为 `0600` 的 JSON 文件。封装：[npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas)。",
+          "example": "npx vanitas evm --模式合约 --前缀咖啡馆 --线程 8"
+        },
+        "verify": {
+          "n": "09 — 验证",
+          "title": "自己确认一下",
+          "glyph": "图一——眼睛",
+          "steps": [
+            "打开 DevTools → 网络，清除日志，启动锻造 - 挖矿时您应该看到 **没有请求**。",
+            "加载页面，离线，再次生成——它仍然有效。",
+            "运行 [live audit](/audit) 并将工作线程哈希值与 `worker-hash.json` 进行比较。",
+            "阅读 [GitHub](https://github.com/bytebrox/vanitas) 的源代码 — 尤其是 `src/workers/`。"
+          ]
+        }
+      },
+      "footer": {
+        "security": "安全",
+        "faq": "FAQ",
+        "audit": "现场审核"
+      }
+    },
+    "security": {
+      "eyebrow": "文档",
+      "title": "安全",
+      "description": "密钥是在您的浏览器中生成的，而不是在我们的服务器上生成的。此页面是信任模型：架构、威胁、加密、标头以及如何亲自验证每个声明。",
+      "sideCaption": "图五——渡槽",
+      "principles": {
+        "title": "不容谈判",
+        "marketing": "如果没有检查，营销宣传毫无价值。使用下面的 [live audit](/audit) 和验证部分。"
+      },
+      "architecture": {
+        "title": "钥匙所在的地方",
+        "keysRam": "私钥仅存在于此处 - 您设备上的 RAM"
+      },
+      "next": {
+        "label": "下一个",
+        "audit": "现场审核",
+        "how": "它是如何运作的",
+        "faq": "FAQ"
+      },
+      "toc": {
+        "principles": "原则",
+        "architecture": "建筑学",
+        "threats": "威胁",
+        "storage": "贮存",
+        "crypto": "加密货币",
+        "integrity": "正直",
+        "headers": "标头",
+        "browser": "浏览器",
+        "workflow": "工作流程",
+        "verify": "核实",
+        "disclose": "透露"
+      },
+      "sections": {
+        "principles": {
+          "n": "01 — 原则",
+          "title": "不容谈判",
+          "glyph": "图 A — 屏蔽",
+          "items": [
+            "**客户端生成** — CPU 上的 Web Worker 创建每个密钥对。",
+            "**零密钥传输** — 没有接受或返回私钥的 API。",
+            "**零密钥存储** - 没有数据库，没有秘密日志，没有模式或地址分析。",
+            "**可验证** — 开源、实时审核、离线测试、网络面板。",
+            "**不暴露的证明** - 可共享的证明仅包含地址+图案。"
+          ]
+        },
+        "architecture": {
+          "n": "02 — 建筑",
+          "title": "钥匙所在的地方",
+          "glyph": "图 B — 轨迹",
+          "intro": "Vanitas 是一个静态 Next.js 站点。主机（例如 Vercel）提供 HTML、CSS、JS 和预构建的工作包。加密技术永远不会在该主机上运行您的密钥。",
+          "browserLabel": "您的浏览器",
+          "mainThread": "主线程",
+          "mainThreadNote": "UI·反应·控件",
+          "webWorkers": "网络工作者",
+          "webWorkersNote": "W1…Wn — 磨练·匹配·postMessage",
+          "networkLabel": "挖矿时的网络",
+          "networkBody": "不需要。资产加载后，飞行模式仍然有效。唯一的第一方 API 路由 (`/api/domains`) 建议使用 Solana 域链接 — 它不会生成或接收密钥。",
+          "serversLabel": "我们的服务器",
+          "serversBody": "交付文件。无法读取您的 Worker 内存。无法拦截已完成的密钥对。受损的源可能会为恶意 JS 提供服务——这就是完整性检查和开源很重要的原因（请参阅完整性和浏览器）。"
+        },
+        "threats": {
+          "n": "03 — 威胁",
+          "title": "威胁模型（诚实）",
+          "glyph": "图 C — 秤",
+          "inScopeTitle": "在范围内——我们的设计目标是",
+          "inScope": [
+            "服务器端密钥被盗（服务器上没有密钥）。",
+            "挖矿期间的随意网络嗅探（无关键流量）。",
+            "主应用程序的点击劫持（主要路由上的帧拒绝）。",
+            "明显的 XSS 渗透路径（CSP；仍然不是灵丹妙药）。"
+          ],
+          "outScopeTitle": "超出范围/共同责任",
+          "outScope": [
+            "**读取页面内存或剪贴板的恶意浏览器扩展** - 在伪造高价值密钥时在干净的配置文件上禁​​用它们。",
+            "**受感染的设备/恶意软件** - 操作系统级键盘记录器击败任何网站。",
+            "**您将密钥粘贴到 Discord / 网络钓鱼** - 操作安全性是您的。",
+            "**依赖供应链** — 我们固定并审核；您可以验证工作哈希并从源重建。"
+          ],
+          "vanityNote": "虚荣挖掘不会创建“较弱”的密钥。长模式只会消耗更多的 CPU — 它们不会减少私钥熵。"
+        },
+        "storage": {
+          "n": "04 — 存储",
+          "title": "我们储存什么",
+          "glyph": "图 D — 避难所",
+          "intro": "**我们服务器上没有关于您的密钥的信息。** 伪造路径中没有地址、模式、用于挖掘的 IP 或分析 SDK 的数据库。",
+          "items": [
+            "磁盘或服务器上没有私钥",
+            "没有远程收集的公钥/地址",
+            "无模式遥测",
+            "无账户系统",
+            "产品承诺中没有第三方分析",
+            "sessionStorage 最近发现 = 仅地址 + 模式，此浏览器会话",
+            "证明链接 = 您选择共享的查询参数（无密钥）"
+          ]
+        },
+        "crypto": {
+          "n": "05 — 加密货币",
+          "title": "每个锻造的算法",
+          "intro": "随机性始终来自浏览器 CSPRNG (`crypto.getRandomValues`)。曲线和地址推导因链而异：",
+          "rows": {
+            "sol": {
+              "label": "索拉纳",
+              "value": "Ed25519 → Base58",
+              "note": "Web Crypto 原生或 WASM 后备·钱包/铸币厂"
+            },
+            "evm": {
+              "label": "EVM",
+              "value": "secp256k1 + keccak-256",
+              "note": "0x EOA·创建·创建2"
+            },
+            "btc": {
+              "label": "比特币",
+              "value": "secp256k1",
+              "note": "旧版 · SegWit · Taproot · WIF 导出"
+            },
+            "tron": {
+              "label": "创",
+              "value": "secp256k1 + keccak → Base58Check",
+              "note": "T…钱包/创建"
+            },
+            "aptos": {
+              "label": "阿普托斯",
+              "value": "Ed25519 + SHA3-256",
+              "note": "0x账户地址"
+            },
+            "sui": {
+              "label": "隋",
+              "value": "Ed25519 + Blake2b-256",
+              "note": "0x 带有方案标志"
+            },
+            "ton": {
+              "label": "TON",
+              "value": "Ed25519 · 钱包 v4R2",
+              "note": "UQ / EQ Base64url"
+            },
+            "cardano": {
+              "label": "卡尔达诺",
+              "value": "Ed25519 · CIP-19 企业",
+              "note": "addr1…仅限支付密钥"
+            },
+            "xrp": {
+              "label": "XRP",
+              "value": "secp256k1 · XRPL Base58",
+              "note": "经典 r… 地址"
+            }
+          },
+          "postFind": "查找后检查可以验证随机样本的熵大小、CSPRNG 存在和卡方均匀性 - RNG 路径的健康检查，不能替代设备卫生。"
+        },
+        "integrity": {
+          "n": "06 — 诚信",
+          "title": "工作人员和发布的哈希值",
+          "glyph": "图 E——哈希",
+          "p1": "挖掘代码以从 TypeScript 源构建的静态 `public/*-worker.js` 文件形式提供。每个生产版本都会在 `worker-hash.json` 中记录 SHA-256 摘要。审核页面重新散列浏览器加载的工作程序并将它们与该文件进行比较。",
+          "p2": "如果哈希值不同，则将该页面视为不受信任 - 停止，不要使用密钥，并进行调查（错误的部署、缓存或篡改）。从打开的存储库重建应该为给定的提交重现相同的工作字节。"
+        },
+        "headers": {
+          "n": "07 — 标题",
+          "title": "HTTP 安全标头",
+          "intro": "响应包括减少 XSS 影响、强制 HTTPS 和阻止主应用程序框架的标头。 CSP 仍然允许 Next.js 需要的东西（包括一些内联/评估权衡）——标题帮助；它们不会取代代码审查。",
+          "rows": {
+            "csp": {
+              "label": "CSP",
+              "value": "内容安全策略",
+              "note": "限制脚本、workers、connect-src"
+            },
+            "hsts": {
+              "label": "HSTS",
+              "value": "严格的运输安全",
+              "note": "最大年龄=31536000"
+            },
+            "frame": {
+              "label": "框架",
+              "value": "X 帧选项：拒绝",
+              "note": "主应用程序不可嵌入"
+            },
+            "mime": {
+              "label": "MIME",
+              "value": "X-内容类型-选项：nosniff",
+              "note": "没有 MIME 嗅探"
+            },
+            "referrer": {
+              "label": "推荐人",
+              "value": "跨源时严格源",
+              "note": "限制引荐来源网址泄漏"
+            }
+          }
+        },
+        "browser": {
+          "n": "08 — 浏览器",
+          "title": "浏览器还能做什么",
+          "intro": "理论上，任何以页面权限运行的东西都可以读取 DOM 和 Worker 消息。其中包括：",
+          "items": [
+            "具有广泛站点访问权限的浏览器扩展",
+            "DevTools 在共享计算机上打开",
+            "如果存在 XSS，则恶意注入脚本",
+            "复制密钥后剪贴板嗅探器"
+          ],
+          "mitigations": "缓解措施：干净的浏览器配置文件，没有不必要的扩展，对于高价值密钥，更喜欢下载文件而不是剪贴板，粘贴到钱包后擦除剪贴板，考虑使用终端 CLI 或用于大型金库的气隙机器。"
+        },
+        "workflow": {
+          "n": "09 — 工作流程",
+          "title": "安全操作流程",
+          "steps": [
+            "加载 vanitas.fun （或从经过验证的本地构建运行）。",
+            "可选：打开网络、离线、运行审核。",
+            "首先选择较短的图案；一旦您信任该设置，就增加长度。",
+            "查找时：导出、离线存储、切勿将按键截图到聊天应用程序中。",
+            "导入该链的正确钱包；发送灰尘测试传输。",
+            "对于长期持有，请将资金转移到硬件钱包中——Vanitas 是一个锻造厂，而不是金库。"
+          ]
+        },
+        "verify": {
+          "n": "10 — 验证",
+          "title": "任何人都可以运行的三项检查",
+          "glyph": "图 F——审计",
+          "network": {
+            "n": "01 — 网络",
+            "title": "网络监控",
+            "steps": [
+              "开发工具 → 网络 → 清除",
+              "开始生成",
+              "挖矿时确认**零**请求"
+            ]
+          },
+          "offline": {
+            "n": "02 — 离线",
+            "title": "飞行模式",
+            "steps": [
+              "加载应用程序",
+              "断开",
+              "生成 — 成功证明不存在实时服务器依赖性"
+            ]
+          },
+          "audit": {
+            "n": "03 — 审计",
+            "title": "现场审核+来源",
+            "steps": [
+              "运行[/audit](/audit)",
+              "将工作线程哈希值与发布的 JSON 进行比较",
+              "查看 [GitHub](https://github.com/bytebrox/vanitas) 工人和 SECURITY.md"
+            ]
+          }
+        },
+        "disclose": {
+          "n": "11 — 披露",
+          "title": "报告问题",
+          "glyph": "图 G — 报告",
+          "intro": "**不要**公开公开 GitHub 问题以查找安全漏洞。更喜欢 [bytebrox/vanitas](https://github.com/bytebrox/vanitas/security/advisories/new) 上的私有 GitHub 安全公告。包括重现步骤、影响以及建议的修复（如果有）。",
+          "faq": {
+            "steal": {
+              "q": "你能偷我的钥匙吗？",
+              "a": "我们没有接收它们的服务器端路径。恶意构建或扩展可以验证哈希值并使用干净的环境来获得高价值。"
+            },
+            "host": {
+              "q": "如果主机被黑了怎么办？",
+              "a": "攻击者可以提供经过修改的 JavaScript。这就是为什么开源、工作哈希检查以及更喜欢已知良好的提交很重要。主机仍然从未从干净的版本中收到您完成的密钥。"
+            },
+            "weaker": {
+              "q": "个性地址是否不太安全？",
+              "a": "不会。私钥熵没有改变。仅对公共地址进行外观过滤。"
+            },
+            "cold": {
+              "q": "我应该在日常浏览器中伪造冷存储密钥吗？",
+              "a": "对于重要资金：干净的配置文件或离线/CLI，小额测试转移，然后硬件钱包托管。"
+            }
+          }
+        }
+      }
+    }
+  },
+  "meta": {
+    "home": {
+      "title": "Solana、EVM、比特币和 Tron Vanity Forge",
+      "description": "Solana、EVM、比特币和 Tron 的客户端虚荣地址伪造。钱包、铸币厂和合约——密钥永远不会离开这个浏览器。",
+      "ogAlt": "Vanitas 多链虚荣锻造"
+    },
+    "sol": {
+      "title": "Solana 虚荣地址生成器",
+      "description": "完全在浏览器中伪造 Solana 钱包和代币铸造地址。开源、客户端，没有密钥离开该设备。",
+      "ogAlt": "Vanitas — Solana 虚荣锻造",
+      "ogTitle": "Solana 虚荣地址生成器 |瓦尼塔斯",
+      "ogDescription": "Forge 虚荣 Solana 钱包和铸币客户端地址。没有钥匙离开此设备。",
+      "twitterDescription": "Forge 虚荣 Solana 钱包和铸币客户端地址。"
+    },
+    "evm": {
+      "title": "EVM 虚荣地址生成器",
+      "description": "Forge 虚荣 EVM 钱包和合约地址客户端。以太坊、Base、Arbitrum、Optimism、BSC 等的一键。",
+      "ogTitle": "EVM 虚荣地址生成器 |瓦尼塔斯",
+      "ogDescription": "在客户端伪造虚荣 0x 钱包和合约地址。以太坊、BNB、Base、Arbitrum 和每个 EVM 链上的密钥相同。",
+      "twitterDescription": "在客户端伪造虚荣 0x 钱包和合约地址。每个 EVM 链上都有相同的密钥。",
+      "ogAlt": "Vanitas — EVM 虚荣钱包和合约生成器"
+    },
+    "btc": {
+      "title": "比特币虚荣地址生成器",
+      "description": "完全在浏览器中伪造虚荣的比特币地址（传统、SegWit、Taproot）。"
+    },
+    "tron": {
+      "title": "Tron 虚荣地址生成器",
+      "description": "Forge 虚荣 Tron Base58 为 TronLink 和其他钱包提供客户端地址。"
+    },
+    "aptos": {
+      "title": "Aptos 虚荣地址生成器",
+      "description": "Forge 虚荣 Aptos Ed25519 的地址完全在您的浏览器中。"
+    },
+    "sui": {
+      "title": "Sui 虚荣地址生成器",
+      "description": "Forge vanity Sui Ed25519 的地址完全在您的浏览器中。"
+    },
+    "ton": {
+      "title": "TON 虚荣地址生成器",
+      "description": "Forge 虚荣 TON 钱包 v4R2 地址 (UQ / EQ) 客户端。"
+    },
+    "cardano": {
+      "title": "卡尔达诺虚荣地址生成器",
+      "description": "Forge vanity Cardano enterprise addr1 地址完全在您的浏览器中。"
+    },
+    "xrp": {
+      "title": "XRP 虚荣地址生成器",
+      "description": "Forge vanity XRPL classic r…地址完全在您的浏览器中。"
+    },
+    "faq": {
+      "title": "FAQ",
+      "description": "每个 Vanitas 锻造的答案 - 模式、模式、安全性、证明和 CLI。",
+      "ogTitle": "常见问题 |瓦尼塔斯",
+      "ogDescription": "按主题回答 — 每条链、安全性、证明、CLI 和用法。",
+      "ogAlt": "瓦尼塔斯常见问题解答"
+    },
+    "how-it-works": {
+      "title": "它是如何运作的",
+      "description": "Vanitas 如何跨 Solana、EVM、比特币、Tron、Aptos、Sui、TON、Cardano 和 XRP 伪造虚荣地址：工作人员、模式（mint、CREATE、CREATE2）、发现证明、CLI 以及如何验证客户端安全性。",
+      "ogTitle": "它是如何运作的 |瓦尼塔斯",
+      "ogDescription": "全面了解每个锻造、工作人员架构、部署模式和验证。",
+      "ogAlt": "Vanitas — 虚荣地址生成的工作原理"
+    },
+    "security": {
+      "title": "安全",
+      "description": "Vanitas 信任模型 — 密钥保留在您的浏览器中。威胁边界和验证。",
+      "ogTitle": "安全|瓦尼塔斯",
+      "ogDescription": "架构、威胁、加密、标头和验证——密钥保留在您的浏览器中。",
+      "ogAlt": "Vanitas 安全性 — 密钥保留在您的浏览器中"
+    },
+    "lab": {
+      "title": "模式实验室",
+      "description": "每个 Vanitas 锻造厂的难度矩阵、稀有度估计和批量模式队列 - 在您挖矿之前。",
+      "ogTitle": "模式实验室|瓦尼塔斯",
+      "ogDescription": "难度矩阵、稀有度估计和批量模式队列 - 在您挖矿之前。"
+    },
+    "lookalike": {
+      "title": "相似检查",
+      "description": "在你打磨虚荣图案之前，先发现禁止的 Base58 字形、Tron 大小写陷阱和字母不匹配。",
+      "ogTitle": "相似检查 |瓦尼塔斯",
+      "ogDescription": "在进行研磨之前，先发现 0/O、I/l、Tron 大小写和字母不匹配的情况。"
+    },
+    "create2": {
+      "title": "创建2助手",
+      "description": "将部署字节码哈希为 initCodeHash，从部署程序 + salt 预览 CREATE2 地址，以及深入链接到 EVM forge — 所有客户端。",
+      "ogTitle": "创建2助手|瓦尼塔斯",
+      "ogDescription": "来自字节码的 initCodeHash、salt 预览、研磨前的地址检查。"
+    },
+    "brand": {
+      "title": "品牌",
+      "description": "Vanitas 的可嵌入证明小部件和轻型品牌套件 — 文字标记、颜色、iframe 片段。没有私钥。",
+      "ogTitle": "品牌 |瓦尼塔斯",
+      "ogDescription": "可嵌入的证明小部件和轻型品牌套件。"
+    },
+    "proof": {
+      "title": "发现证明",
+      "description": "验证虚荣地址是否与客户端匹配，无需私钥。"
+    },
+    "audit": {
+      "title": "现场审核",
+      "description": "在 Vanitas 上运行八项本地检查：Web Crypto、RNG 质量、生成期间的零网络、CSP、工作人员隔离和构建完整性。",
+      "ogTitle": "现场审核 |瓦尼塔斯",
+      "ogDescription": "浏览器中的八项自动检查。没有任何内容是伪造的，也没有任何内容被发送。",
+      "ogAlt": "Vanitas 现场安全审核"
+    },
+    "token": {
+      "title": "代币",
+      "description": "Vanitas 没有项目代币。"
+    },
+    "embed-proof": {
+      "title": "证明嵌入",
+      "description": "可嵌入的查找小部件证明。"
+    },
+    "siteName": "瓦尼塔斯",
+    "notFound": {
+      "title": "404——未找到",
+      "description": "Vanitas 上不存在此页面。"
+    },
+    "eth": {
+      "title": "ETH 虚荣地址生成器",
+      "description": "重定向至 EVM 虚荣锻造厂。"
+    }
+  },
+  "notFound": {
+    "title": "页面未找到",
+    "body": "您请求的页面不在 Vanitas 上。它可能已迁移，或从未存在。",
+    "home": "首页",
+    "sol": "Solana 锻造",
+    "evm": "EVM 锻造",
+    "metaTitle": "404——未找到",
+    "metaDescription": "Vanitas 上不存在此页面。",
+    "figAbsent": "图 — 缺席",
+    "errorLabel": "错误 404",
+    "heading": "此地址从未被锻造",
+    "links": {
+      "sol": "SOL 锻造",
+      "evm": "EVM 锻造",
+      "btc": "BTC 锻造",
+      "tron": "TRON 锻造",
+      "how": "工作原理",
+      "faq": "常见问题"
+    },
+    "homeForge": "或返回[首页锻造](/)。"
+  }
+}

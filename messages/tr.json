@@ -1,0 +1,1641 @@
+{
+  "common": {
+    "copy": "Kopyala",
+    "copied": "Kopyalandı",
+    "hide": "Gizle",
+    "reveal": "Ortaya çıkarmak",
+    "downloadTxt": "Metin dosyasını indir",
+    "downloadJson": "json'u indir",
+    "forge": "Forge",
+    "stop": "Durdur",
+    "reset": "Sıfırla",
+    "loading": "Yükleniyor…",
+    "scrollDown": "Aşağı kaydır",
+    "cores": "Çekirdekler",
+    "of": "{max}",
+    "fewerCores": "Daha az çekirdek",
+    "moreCores": "Daha fazla çekirdek",
+    "soundOn": "Ses açık",
+    "soundOff": "Ses kapalı",
+    "found": "Bulundu",
+    "addressReady": "Adres hazır",
+    "publicAddress": "Açık adres",
+    "privateKey": "Özel anahtar",
+    "keepSafe": "Güvende tutun",
+    "keepSafe1": "Bu sayfadan ayrılmadan önce özel anahtarı kaydedin",
+    "keepSafe2": "Asla paylaşmayın; ona sahip olan herkes cüzdanı kontrol eder",
+    "keepSafe3": "Yerel olarak oluşturulmuştur; sunucuda hiçbir şey saklanmadı",
+    "attempts": "girişimler",
+    "pattern": "Desen",
+    "estTime": "Avustralya, Brezilya ve Kuzey Amerika ülkelerinin kullandığı saat uygulaması. zaman",
+    "keys": "anahtarlar",
+    "rate": "oran",
+    "time": "zaman",
+    "workers": "Worker",
+    "tryPattern": "Bir desen deneyin",
+    "recentFinds": "Son buluntular",
+    "keySecurity": "Anahtar güvenliği",
+    "entropy": "Entropi",
+    "source": "Kaynak",
+    "csprng": "CSPRNG",
+    "browser": "Tarayıcı",
+    "prefix": "Önek",
+    "suffix": "son ek",
+    "caseSensitive": "Harfe duyarlı",
+    "optional": "İsteğe bağlı",
+    "brand": "Vanitas",
+    "sharePattern": "Paylaşım modeli",
+    "shareProof": "Kanıtı paylaş",
+    "proofLinkCopied": "Kanıt bağlantısı kopyalandı",
+    "forgeAnother": "Başka bir tane oluştur",
+    "scrollToForge": "Dövmek için ilerleyin",
+    "waiting": "Bekliyor — bir model girin ve oluşturun",
+    "running": "● koşu",
+    "progressExpected": "Beklenen aramanın %{pct}'si",
+    "difficultyGuide": "Kılavuz: 3 karakter <5s · 4 karakter ~1 dk · 5 karakter ~30 dk · 6+ saat",
+    "match": "Eşleşme",
+    "startsAddress": "Adresi başlatır",
+    "endsAddress": "Adresi sonlandır",
+    "howItWorks": "Nasıl çalışır?",
+    "liveAudit": "Canlı denetim",
+    "evmForge": "EVM dövme",
+    "exportHintSol": "Okumak için TXT · Solana CLI / Phantom / Solflare için JSON · Paylaşım kanıtı hiçbir zaman anahtarları içermez",
+    "stepMode": "01 — Mod",
+    "stepPattern": "02 — Desen",
+    "stepMintPattern": "02 — Nane deseni",
+    "stepType": "01 — Tip",
+    "stepEstimate": "03 — Tahmin",
+    "stepForge": "04 — Dövme",
+    "stepLive": "05 — Canlı",
+    "topics": "Konular",
+    "verified": "Doğrulandı",
+    "mismatch": "Uyumsuzluk",
+    "chain": "Zincir",
+    "stats": "İstatistikler",
+    "statsDisclaimer": "Girişim sayıları sahteci tarafından bizzat raporlanır ve kriptografik olarak kanıtlanmaz.",
+    "copyProofLink": "Kanıt bağlantısını kopyala",
+    "openForge": "Forge’u aç",
+    "github": "GitHub",
+    "x": "X",
+    "attemptsLabel": "denemeler",
+    "charsDays": "{n} karakterleri günler veya haftalar sürebilir.",
+    "charsHours": "{n} karakterleri saatler sürebilir.",
+    "considerSuffix": "Yalnızca son eki veya büyük/küçük harfe duyarlı olmayı düşünün."
+  },
+  "nav": {
+    "language": "Dil",
+    "home": "Ana sayfa",
+    "chains": "CHAINS",
+    "docs": "DOCS",
+    "tools": "TOOLS",
+    "menu": "Menü",
+    "close": "Kapat",
+    "themeToLight": "Işık moduna geç",
+    "themeToDark": "Karanlık moda geç",
+    "themeLight": "Açık",
+    "themeDark": "Koyu",
+    "themeMobileDarkToLight": "Koyu → Açık",
+    "themeMobileLightToDark": "Açık → Koyu",
+    "docsHow": "Nasıl",
+    "docsHowHint": "Nasıl çalışır?",
+    "docsFaq": "FAQ",
+    "docsFaqHint": "Sorular",
+    "docsSecurity": "Güvenlik",
+    "docsSecurityHint": "Güven modeli",
+    "toolsAudit": "Denetim",
+    "toolsAuditHint": "Canlı kontroller",
+    "toolsProof": "Kanıt",
+    "toolsProofHint": "Bir bulguyu doğrulama",
+    "toolsLab": "Laboratuvar",
+    "toolsLabHint": "Desen laboratuvarı",
+    "toolsLookalike": "benzer",
+    "toolsLookalikeHint": "Alfabe tuzakları",
+    "toolsCreate2": "CREATE2",
+    "toolsCreate2Hint": "Karma + önizlemeyi başlat",
+    "toolsBrand": "Brand",
+    "toolsBrandHint": "Yerleştirme + kit",
+    "brand": "Vanitas",
+    "githubAria": "GitHub deposu",
+    "xAria": "X'te Bytebrox",
+    "evmSubline": "Ethereum · BNB · Base · Arbitrum · Optimism · + EVM",
+    "chainItems": {
+      "sol": {
+        "label": "Solana",
+        "short": "SOL"
+      },
+      "evm": {
+        "label": "EVM",
+        "short": "EVM"
+      },
+      "btc": {
+        "label": "Bitcoin",
+        "short": "BTC"
+      },
+      "tron": {
+        "label": "Tron",
+        "short": "TRON"
+      },
+      "aptos": {
+        "label": "Aptos",
+        "short": "APTOS"
+      },
+      "sui": {
+        "label": "Sui",
+        "short": "SUI"
+      },
+      "ton": {
+        "label": "TON",
+        "short": "TON"
+      },
+      "cardano": {
+        "label": "Cardano",
+        "short": "ADA"
+      },
+      "xrp": {
+        "label": "XRP",
+        "short": "XRP"
+      }
+    }
+  },
+  "footer": {
+    "blurb": "Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano ve XRP için istemci tarafı makyaj araçları. Proje jetonu yok. Bu cihazdan hiçbir anahtar çıkmıyor. [Bytebrox](https://x.com/bytebrox) tarafından geliştirildi.",
+    "donateSol": "SOL'a Bağış Yapın",
+    "solscan": "Sol tarama",
+    "home": "Ana sayfa",
+    "security": "Güvenlik",
+    "audit": "Denetim",
+    "faq": "FAQ",
+    "how": "Nasıl",
+    "cli": "CLI",
+    "github": "GitHub",
+    "proof": "Kanıt",
+    "lab": "Laboratuvar",
+    "lookalike": "benzer",
+    "create2": "CREATE2",
+    "brand": "Brand",
+    "sol": "SOL",
+    "evm": "EVM",
+    "btc": "BTC",
+    "tron": "TRON",
+    "aptos": "APTOS",
+    "sui": "SUI",
+    "ton": "TON",
+    "ada": "ADA",
+    "xrp": "XRP",
+    "copyright": "© {year}"
+  },
+  "landing": {
+    "eyebrow": "Müşteri tarafı gösteriş dövmesi",
+    "title": "Vanitalar",
+    "subtitle": "Bir zincir seç. Anahtarlar bu tarayıcıda kalır.",
+    "enterForge": "Dövmeyi girin →",
+    "preferTerminal": "Terminali mi tercih edersiniz?",
+    "forges": {
+      "sol": {
+        "name": "Solana",
+        "title": "Cüzdan ve nane",
+        "blurb": "Base58 gösterişli cüzdanlar ve jetonlar."
+      },
+      "evm": {
+        "name": "EVM",
+        "title": "Cüzdan ve sözleşme",
+        "blurb": "Her EVM zinciri için bir 0x anahtarı.",
+        "aria": "Ethereum, BNB, Taban, Arbitrum, İyimserlik"
+      },
+      "btc": {
+        "name": "Bitcoin",
+        "title": "Eski · SegWit · Taproot",
+        "blurb": "Vanity 1…, bc1q… ve bc1p… adresleri."
+      },
+      "tron": {
+        "name": "Tron",
+        "title": "Cüzdan ve OLUŞTUR",
+        "blurb": "Vanity T… TronLink için adresler."
+      },
+      "aptos": {
+        "name": "Aptos",
+        "title": "Ed25519 0x",
+        "blurb": "Petra ve Marslı için büyü makyajı."
+      },
+      "sui": {
+        "name": "Sui",
+        "title": "Ed25519 0x",
+        "blurb": "Sui Wallet & Suite için altıgen makyaj masası."
+      },
+      "ton": {
+        "name": "TON",
+        "title": "Cüzdan v4R2",
+        "blurb": "Vanity UQ… / EQ… adresleri."
+      },
+      "cardano": {
+        "name": "Cardano",
+        "title": "Kurumsal adres1",
+        "blurb": "Bech32 özel ödeme adresleri."
+      },
+      "xrp": {
+        "name": "XRP",
+        "title": "Klasik…",
+        "blurb": "XRPL Base58 özel adresleri."
+      }
+    },
+    "npxVanitas": "npx vanitas"
+  },
+  "forge": {
+    "header": {
+      "wallet": {
+        "eyebrow": "Cüzdan dövmesi",
+        "title": "Solana",
+        "headline": "Adresi belirtin. Anahtarı sakla.",
+        "blurb": "Tamamen bu tarayıcıda, CPU'nuzda gösterişli bir Solana cüzdan adresi oluşturun."
+      },
+      "mint": {
+        "eyebrow": "Darphane demirhanesi",
+        "title": "Solana",
+        "headline": "Nane adını verin. Varlıkla başlatın.",
+        "blurb": "Tamamen bu tarayıcıda, herhangi bir başlatma paneli için gösterişli bir Solana nanesi oluşturun."
+      },
+      "evm": {
+        "eyebrow": "0x dövme",
+        "title": "EVM",
+        "headline": "0x'i adlandırın. Her yerde aynı anahtar.",
+        "blurb": "Tamamen bu tarayıcıda özel cüzdan veya sözleşme adresleri oluşturun. Anahtarlardan biri Ethereum, BNB Akıllı Zincir, Base, Arbitrum, Optimism ve diğer tüm EVM zincirlerinde çalışır."
+      },
+      "btc": {
+        "eyebrow": "UTXO dövme",
+        "title": "Bitcoin",
+        "headline": "Paraya isim verin. Adresin sahibi.",
+        "blurb": "Tamamen bu tarayıcıda özel Bitcoin adresleri (eski, SegWit, Taproot) oluşturun. Anahtarlar bu cihazın dışına asla çıkmaz."
+      },
+      "tron": {
+        "eyebrow": "T dövme",
+        "title": "Tron",
+        "headline": "T'ye isim verin. Anahtarı saklayın.",
+        "blurb": "Tamamen bu tarayıcıda gösterişli Tron Base58 adresleri oluşturun. TronLink'e ve diğer Tron cüzdanlarına aktarın."
+      },
+      "aptos": {
+        "eyebrow": "0x dövme",
+        "title": "Aptos",
+        "headline": "0x'i adlandırın. Anahtarı sakla.",
+        "blurb": "Tamamen bu tarayıcıda gösterişli Aptos Ed25519 adresleri oluşturun. Petra, Martian ve diğer Aptos cüzdanlarına aktarın."
+      },
+      "sui": {
+        "eyebrow": "0x dövme",
+        "title": "Sui",
+        "headline": "0x'i adlandırın. Anahtarı sakla.",
+        "blurb": "Tamamen bu tarayıcıda gösterişli Sui Ed25519 adresleri oluşturun. Sui Wallet, Suiet ve diğer Sui cüzdanlarına aktarın."
+      },
+      "ton": {
+        "eyebrow": "UQ demirhanesi",
+        "title": "TON",
+        "headline": "UQ'yu adlandırın. Anahtarı sakla.",
+        "blurb": "Tamamen bu tarayıcıda vanity TON Wallet v4R2 adresleri (UQ / EQ) oluşturun. Tonkeeper ve MyTonWallet'a aktarın."
+      },
+      "cardano": {
+        "eyebrow": "adres1 dövme",
+        "title": "Cardano",
+        "headline": "Adresi adlandırın. Anahtarı sakla.",
+        "blurb": "Tamamen bu tarayıcıda gösterişli Cardano kurumsal adresleri (addr1…) oluşturun. Yalnızca ödeme anahtarı."
+      },
+      "xrp": {
+        "eyebrow": "dövmek",
+        "title": "XRP",
+        "headline": "R'yi adlandırın. Anahtarı sakla.",
+        "blurb": "Tamamen bu tarayıcıda gösterişli XRP Ledger klasik adresleri (r…) oluşturun. Xaman ve diğer XRPL cüzdanlarına aktarın."
+      }
+    },
+    "modes": {
+      "wallet": "Cüzdan",
+      "mint": "Nane",
+      "create": "CREATE",
+      "create2": "CREATE2",
+      "legacy": "Miras",
+      "segwit": "SegWit",
+      "taproot": "Kazık kök",
+      "uq": "UQ",
+      "eq": "EQ"
+    },
+    "evmChainsNote": "Ethereum · BNB · Taban · Arbitrum · İyimserlik · + EVM",
+    "solDownloadTxtTitle": "VANITAS - SOLANA KEYPAIR",
+    "solDownloadImportant": "ÖNEMLİ:\n- Özel anahtarınızı asla paylaşmayın\n- Bu dosyayı güvenli bir şekilde saklayın\n- Bu anahtar çifti tarayıcınızda yerel olarak oluşturuldu",
+    "scrollToForge": "Dövmek için ilerleyin",
+    "sideCaptions": {
+      "solWallet": "Şekil I - Amfitiyatro",
+      "solMint": "Şekil II - Tapınak",
+      "evm": "Şekil VII — Forum",
+      "btc": "Şekil VIII - Madeni para",
+      "tron": "Şekil IX - Devre",
+      "aptos": "Şekil XI – Kafes",
+      "sui": "Şekil XII - Güncel",
+      "ton": "Şekil XIII - Sinyal",
+      "cardano": "Şekil XII - Defter",
+      "xrp": "Şekil XIV - Defter"
+    },
+    "steps": {
+      "mode": "01 — Mod",
+      "pattern": "02 — Desen",
+      "estimate": "03 — Tahmin",
+      "forge": "04 — Dövme",
+      "live": "05 — Canlı"
+    },
+    "stepsCompact": {
+      "pattern": "01 — Desen",
+      "estimate": "02 — Tahmin",
+      "forge": "03 — Dövme",
+      "live": "04 — Canlı"
+    },
+    "links": {
+      "sharePattern": "Paylaşım modeli",
+      "howItWorks": "Nasıl çalışır?",
+      "liveAudit": "Canlı denetim",
+      "evmForge": "EVM dövme",
+      "proofOfFind": "Bulmanın kanıtı"
+    },
+    "sol": {
+      "mintAfterForge": "Dövme işleminden sonra: özel anahtarı launchpad'inizin özel nane alanına (pump.fun, Raydium, Meteora,…) kopyalayın.",
+      "mode": {
+        "target": "Hedef",
+        "walletTarget": "Cüzdan adresi",
+        "mintTarget": "Token nane adresi",
+        "toggleAria": "Cüzdan veya nane adresini değiştir",
+        "mintHelp": "Başlatma rampaları için gösterişli bir Solana nane anahtar çifti oluşturur (pump.fun, Raydium, Meteora,…). Özel anahtarı özel nane alanına yapıştırın.",
+        "walletHelp": "Tamamen bu tarayıcıda gösterişli bir Solana cüzdan anahtar çifti oluşturur - Base58 adresi."
+      }
+    },
+    "eth": {
+      "create2Params": "CREATE2 parametreleri",
+      "initHash": "Karmayı başlat",
+      "initHashPh": "keccak256(initCode) — 64 onaltılık",
+      "salt": "Tuz",
+      "saltPh": "32 bayt tuz — 64 altıgen",
+      "deployerKey": "Dağıtıcı anahtarı",
+      "deployerKeyPh": "Dağıtıcı özel anahtarı — 64 onaltılık",
+      "footnote": "Ethereum, BNB Akıllı Zincir, Base, Arbitrum, Optimism, Polygon ve diğer tüm EVM ağlarında aynı 0x anahtarı. Solana [SOL](/sol)'da canlı olarak çalışıyor.",
+      "mode": {
+        "target": "Hedef",
+        "walletBlurb": "Her EVM zincirinde EOA 0x adresi.",
+        "createBlurb": "İlk dağıtım (0 olmadan) sözleşme adresi.",
+        "c2SaltBlurb": "Sabit dağıtıcı + initCodeHash; tuzu öğütün.",
+        "c2KeyBlurb": "Sabit tuz + initCodeHash; dağıtıcı anahtarını öğütün.",
+        "c2Salt": "C2 Tuz",
+        "c2Key": "C2 Anahtarı"
+      }
+    },
+    "btc": {
+      "stepType": "01 — Tip",
+      "mode": {
+        "addressType": "Adres türü",
+        "legacyBlurb": "Klasik 1… P2PKH (Baz58).",
+        "segwitBlurb": "Yerel bc1q… P2WPKH (Bech32).",
+        "taprootBlurb": "Yerel bc1p… P2TR (Bech32m)."
+      },
+      "pattern": {
+        "legacyHint": "Eski adresler 1 ile başlar; 1BTC'yi aramak için BTC yazın… (baştaki 1 otomatik olarak eklenir).",
+        "segwitHint": "SegWit adresleri bc1q ile başlar; \"cafe\" gibi bir gövde veya tam bc1q… önekini yazın.",
+        "taprootHint": "Taproot adresleri bc1p ile başlar; “cafe” gibi bir gövde veya tam bc1p… önekini yazın.",
+        "caseNote": "Kapalı (küçük harf desenleri için önerilir): 1'den sonra, Büyük/Küçük Harfe duyarlı açıkken küçük harf son derece nadirdir."
+      }
+    },
+    "tron": {
+      "mode": {
+        "walletBlurb": "Hesap Base58 adresi (T…).",
+        "createBlurb": "İlk dağıtım sözleşmesi adresi (CREATE nonce 0)."
+      }
+    },
+    "ton": {
+      "mode": {
+        "addressForm": "Adres formu",
+        "uqWallet": "UQ Cüzdanı",
+        "uqBlurb": "Geri atılamayan cüzdan adresi (önerilir).",
+        "eqBlurb": "Aynı Cüzdan v4R2 hesabının geri döndürülebilir formu."
+      }
+    },
+    "pattern": {
+      "solPrefixPh": "SOL",
+      "solSuffixPh": "xyz",
+      "solAlphabet": "Yalnızca Base58 — `0 O I` yok. Alfabe: `1-9 A-H J-N P-Z a-k m-z`",
+      "ethHexNote": "EVM adresleri yalnızca onaltılıktır; rakamlar `0–9` ve harfler `a–f`. `g–z` harfleri (ve diğer karakterler) bir adreste görünemez ve bunları yazarken dikkate alınmaz.",
+      "ethIgnored": "Yoksayıldı: {chars}",
+      "ethPrefixPh": "ölü",
+      "ethSuffixPh": "biftek",
+      "ethAfter0x": "0x'ten sonra başlar",
+      "ethCaseNote": "Eşleştirme büyük/küçük harfe duyarlı değildir. Daha uzun desenler katlanarak daha uzun sürer (karakter başına 16 olasılık)."
+    },
+    "cardano": {
+      "headerBlurb": "Tamamen bu tarayıcıda gösterişli Cardano kurumsal adresleri (addr1…) oluşturun. Yalnızca ödeme anahtarı."
+    },
+    "xrp": {
+      "headerBlurb": "Tamamen bu tarayıcıda gösterişli XRP Ledger klasik adresleri (r…) oluşturun. Xaman ve diğer XRPL cüzdanlarına aktarın."
+    }
+  },
+  "tools": {
+    "lab": {
+      "title": "Desen laboratuvarı",
+      "description": "Madencilik yapmadan önce bir modelin ne kadar nadir olduğunu görün; ardından işleri kuyruğa alın ve demirhaneyi açın.",
+      "eyebrow": "Aletler",
+      "caption": "Şekil — Laboratuar",
+      "toc": {
+        "composer": "Besteci",
+        "matrix": "Matris",
+        "queue": "Sıra"
+      },
+      "sectionPattern": "Model",
+      "sectionRarity": "Nadirlik",
+      "sectionBatch": "Grup",
+      "addQueue": "Kuyruğa ekle",
+      "openForge": "{chain} forge'yi açın →",
+      "queueEmpty": "Boş",
+      "queueEmptyHint": "İşleri karşılaştırmak için yukarıya bir model ekleyin.",
+      "remove": "Kaldırmak",
+      "exportJson": "JSON'u dışa aktar",
+      "clear": "Temizlemek",
+      "prefixPh": "As",
+      "suffixPh": "isteğe bağlı",
+      "composerN": "01 — Besteci",
+      "matrixN": "02 — Matris",
+      "queueN": "03 — Sıra",
+      "forge": "Dövmek",
+      "exportWarning": "Yalnızca desenler; özel anahtar yok."
+    },
+    "lookalike": {
+      "title": "Benzerlik kontrolü",
+      "description": "CPU'yu imkansız bir düzende yakmadan önce yasak Base58 gliflerini, Tron vaka tuzaklarını, XRPL alfabe uyumsuzluklarını ve insana benzeyenleri yakalayın.",
+      "eyebrow": "Aletler",
+      "caption": "Şekil — Glifler",
+      "toc": {
+        "check": "Kontrol etmek",
+        "findings": "Bulgular",
+        "alphabets": "Alfabeler"
+      },
+      "sectionCheckN": "01 — Kontrol et",
+      "sectionFindingsN": "02 — Bulgular",
+      "sectionAlphabetsN": "03 — Alfabeler",
+      "sectionPatternForge": "Desen ve dövme",
+      "pattern": "Model",
+      "patternPh": "önek veya parça",
+      "sectionSpotted": "Ne tespit ettik",
+      "findingsEmptyTitle": "Bir desen girin",
+      "findingsEmptyDetail": "Kontrol etmek için bir önek, sonek veya tam özel parça yapıştırın.",
+      "readyGrind": "Öğütmeye hazır mısın? [Pattern Lab](/lab) veya eşleşen dövmeyi açın.",
+      "sectionCharset": "Karakter kümesi hile sayfası",
+      "tocCheck": "Kontrol etmek",
+      "tocFindings": "Bulgular",
+      "tocAlphabets": "Alfabeler",
+      "sectionCheckTitle": "Desen ve dövme",
+      "sectionFindingsTitle": "Ne tespit ettik",
+      "sectionAlphabetsTitle": "Karakter kümesi hile sayfası",
+      "patternLabel": "Model",
+      "severity": {
+        "error": "Hata",
+        "warn": "Uyarı",
+        "info": "Bilgi"
+      },
+      "chains": {
+        "sol": {
+          "label": "Solana",
+          "notes": "Bitcoin tarzı Base58 — hayır 0, O, I, l"
+        },
+        "evm": {
+          "label": "EVM",
+          "notes": "Yalnızca onaltılı (0-9, a-f), büyük/küçük harfe duyarlı değil"
+        },
+        "btc-legacy": {
+          "label": "Bitcoin Mirası",
+          "notes": "Base58 P2PKH / P2SH"
+        },
+        "btc-bech32": {
+          "label": "Bitcoin Bech32",
+          "notes": "bc1q / bc1p gövde karakter kümesi"
+        },
+        "tron": {
+          "label": "Tron",
+          "notes": "Base58 T… — büyük/küçük harfe duyarlı; İlk karakterler genellikle büyük harf"
+        },
+        "aptos": {
+          "label": "Aptos",
+          "notes": "0x + 64 altıgen"
+        },
+        "sui": {
+          "label": "Sui",
+          "notes": "0x + 64 altıgen"
+        },
+        "ton": {
+          "label": "TON",
+          "notes": "Base64url — büyük/küçük harfe duyarlı"
+        },
+        "cardano": {
+          "label": "Cardano",
+          "notes": "addr1… bech32 gövdesi"
+        },
+        "xrp": {
+          "label": "XRP",
+          "notes": "XRPL Base58 — Bitcoin/Solana'dan farklı"
+        }
+      },
+      "pairNotes": {
+        "zeroO": "Sıfır ve büyük harf O",
+        "zeroo": "sıfır ve küçük harf o",
+        "oneL": "bir ve küçük harf L",
+        "oneI": "bire karşı sermaye i",
+        "onei": "bir ve küçük harf i",
+        "fiveS": "beşe karşı S",
+        "eightB": "sekiz vs B"
+      },
+      "findings": {
+        "empty": {
+          "title": "Bir desen girin",
+          "detail": "Kontrol etmek için bir önek, sonek veya tam özel parça yapıştırın."
+        },
+        "invalidAlphabet": {
+          "title": "Bu alfabede olmayan karakterler",
+          "detail": "Geçersiz: {chars}. {notes}"
+        },
+        "base58Banned": {
+          "title": "Base58 hiçbir zaman 0, O, I veya l kullanmaz",
+          "detail": "Bu glifler, benzerlikleri önlemek için Bitcoin tarzı Base58'den kaldırıldı. Bu model eşleşemez."
+        },
+        "xrplVsBtc": {
+          "title": "XRPL alfabesinde kullanılan Bitcoin Base58 karakterleri",
+          "detail": "XRPL klasik adresleri farklı bir Base58 alfabesi kullanır. Suçlu: {chars}"
+        },
+        "xrplCharset": {
+          "title": "XRPL'ye özgü karakterler",
+          "detail": "Bunlar XRPL Base58'de görünüyor ancak Bitcoin Base58'de görünmüyor: {chars}"
+        },
+        "sharedGlyphs": {
+          "title": "Glifler her iki Base58 alfabesinde de mevcuttur",
+          "detail": "Karakterler çakışıyor ancak kodlamalar hâlâ farklı. XRP'de bir Solana/BTC özel dizesini yeniden kontrol etmeden yeniden kullanmayın."
+        },
+        "notXrpl": {
+          "title": "XRPL üzerinde olduğu gibi çalışmaz",
+          "detail": "Bu Bitcoin/Solana Base58 modeli, XRPL alfabesinde eksik olan glifleri kullanıyor."
+        },
+        "tronCase": {
+          "title": "Tron'da küçük harfli erken desen",
+          "detail": "Tron adresleri T ile başlar ve sonraki karakterler genellikle büyük Base58 harfidir. Kısa küçük harf önekleri çoğu zaman eşleşmez; büyük harf veya daha uzun bir son ek deneyin."
+        },
+        "tronLeadingT": {
+          "title": "Baştaki küçük harf t",
+          "detail": "Klasik Tron adresleri büyük T ile başlar. T'yi tercih edin… veya eğer şirket bunu otomatik olarak yönetiyorsa T'yi atlayın."
+        },
+        "pair": {
+          "title": "Karışık benzerler: {a} ve {b}",
+          "detail": "{note}. Adresi yüksek sesle veya ekran görüntülerinde paylaşırken yanlış yazmak kolaydır."
+        },
+        "safe": {
+          "title": "{present} alfabe içindedir; {absent} değil",
+          "detail": "{note}. Alıcılar hâlâ görsel olarak kafalarını karıştırıyor; paylaşırken dikkatli yazın."
+        },
+        "hexCase": {
+          "title": "Karışık altıgen kasa",
+          "detail": "Eşleştirme büyük/küçük harfe duyarlı değildir. Karışık durum görüntüleme için uygundur (sağlama toplamı) ancak taşlama için gerekli değildir."
+        },
+        "tonCase": {
+          "title": "TON desenleri büyük/küçük harfe duyarlıdır",
+          "detail": "Base64url, A ve a'yı birbirinden ayırır. Büyük/küçük harf karışıklığı zorluğu artırır ve yanlış yazılması kolaydır."
+        },
+        "clean": {
+          "title": "Alfabe çarpışması algılanmadı",
+          "detail": "Tüm karakterler {label}'a uygundur. Uzun bir eziyetten önce canlı dövme uyarılarını yine de iki kez kontrol edin."
+        }
+      }
+    },
+    "create2": {
+      "title": "CREATE2 yardımcısı",
+      "description": "Dağıtım bayt kodundan initCodeHash'ı türetin, bir dağıtımcı ve tuz için CREATE2 adresini önizleyin, ardından EVM platformuna geçin. Anahtarlar yerel kalır.",
+      "eyebrow": "Aletler",
+      "caption": "Şekil — CREATE2",
+      "toc": {
+        "hash": "Doğramak",
+        "preview": "Önizleme",
+        "forge": "Dövmek"
+      },
+      "sectionHashN": "01 — Haş",
+      "sectionHashTitle": "Bayt kodu → initCodeHash",
+      "sectionPreviewN": "02 — Önizleme",
+      "sectionPreviewTitle": "Adres önizlemesi",
+      "sectionForgeN": "03 — Dövme",
+      "sectionForgeTitle": "EVM demirhanesini aç",
+      "hashIntro": "Dağıtılacak oluşturma bayt kodunu (başlangıç ​​kodu) yapıştırın. Bu tarayıcıda `keccak256(initCode)` değerini hesaplıyoruz.",
+      "initCodeLabel": "Başlangıç ​​kodu (hex)",
+      "initCodePh": "0x6080604052…",
+      "initCodeHashLabel": "Başlangıç ​​kodu karması (32 bayt)",
+      "initCodeHashPh": "0x…",
+      "initCodeHashResult": "Başlangıç ​​kodu karması · {bytes} bayt",
+      "deployerLabel": "Dağıtıcı",
+      "deployerPh": "0x…",
+      "saltLabel": "Tuz",
+      "saltPh": "0x… veya boş = sıfır tuz",
+      "create2Address": "CREATE2 adresi",
+      "wantedPrefix": "Aranan önek",
+      "wantedSuffix": "Aranan sonek",
+      "prefixPh": "kafe",
+      "suffixPh": "isteğe bağlı",
+      "patternMatch": "Desen eşleşmesi",
+      "patternMismatch": "Önizleme adresi bu modelle eşleşmiyor; tuzu veya dağıtıcıyı öğütmeye devam edin.",
+      "useInPreview": "Önizlemede kullan",
+      "forgeIntro": "Karma ve deseninizle EVM'ye derin bağlantı kurun. Yanlış initCodeHash, yanlış zincir içi adres anlamına gelir.",
+      "grindSalt": "Tuz öğütme",
+      "grindDeployer": "Taşlama dağıtıcısı",
+      "evmForge": "EVM dövme",
+      "tocHash": "Doğramak",
+      "tocPreview": "Önizleme",
+      "tocForge": "Dövmek",
+      "prefixLabel": "Önek",
+      "suffixLabel": "son ek",
+      "predictedAddress": "Tahmini adres",
+      "patternMiss": "Desen uyuşmazlığı",
+      "invalidDeployer": "Geçersiz dağıtıcı veya karma",
+      "openSaltForge": "Demircide tuzu öğüt",
+      "openDeployerForge": "Taşlama dağıtıcısı iş başında"
+    },
+    "brand": {
+      "title": "Marka",
+      "description": "Başlatma panellerine ve belgelere prova kartları ve ayrıca hafif bir markalama kiti (marka, renkler ve kopya) ekleyin. Hiçbir zaman özel anahtarlar içermez.",
+      "eyebrow": "Aletler",
+      "embedIntro": "Zinciri, adresi ve modeli yapıştırın (bir bulma veya demodan). İstemci tarafındaki eşleşmeyi doğrulayan bir iframe oluşturuyoruz; [/proof](/proof) ile aynı kurallar.",
+      "badgeLine": "Müşteri tarafında kanıtları doğrulanmış · vanitas.fun",
+      "caption": "Şekil — Marka",
+      "toc": {
+        "embed": "Göm",
+        "preview": "Önizleme",
+        "kit": "Kit",
+        "copy": "Kopyala"
+      },
+      "sectionEmbedN": "01 — Göm",
+      "sectionEmbedTitle": "Kanıt widget'ı",
+      "address": "Adres",
+      "prefix": "Önek",
+      "suffix": "son ek",
+      "paperTheme": "Kağıt teması",
+      "inkTheme": "Mürekkep teması",
+      "compact": "Kompakt",
+      "iframeSnippet": "Iframe snippet'i",
+      "copyIframe": "iframe'i kopyala",
+      "copyEmbedUrl": "Yerleştirme URL'sini kopyala",
+      "copyProofUrl": "Tam prova URL'sini kopyala",
+      "sectionPreviewN": "02 — Önizleme",
+      "sectionPreviewTitle": "Canlı kart",
+      "previewBody": "`/embed/proof`'nin çerçeveli önizlemesi. Gerçek bir bulguyu yapıştırana kadar demo adresi uyumsuzluk gösterebilir.",
+      "iframeTitle": "Vanita kanıtı",
+      "previewIframeTitle": "Vanitas kanıtı önizlemesi",
+      "sectionKitN": "03 — Takım",
+      "sectionKitTitle": "Markalama kiti",
+      "kitIntro": "Kanıtları veya sahteleri birbirine bağlarken Vanitas işaretlerini kullanın. Doğru olmadığı sürece velayet, ortaklık veya Vanitas tarafından denetlendiğini ima etmeyin.",
+      "wordmark": "Marka İşareti",
+      "wordmarkNote": "Ekran / serif ağırlığı — tek başına markalandığında kahraman düzeyinde",
+      "paper": "Kağıt",
+      "paperNote": "Birincil zemin",
+      "ink": "Mürekkep",
+      "inkNote": "Gövde + krom",
+      "accent": "Aksan",
+      "accentValue": "site vurgu belirteci",
+      "accentNote": "Bağlantılar / doğrulanmış durumlar — tasarruflu olun",
+      "site": "Alan",
+      "siteNote": "Kanonik bağlantılar için www.vanitas.fun'u tercih edin",
+      "badgeHeading": "Rozet çizgisi",
+      "copyBadge": "Rozet satırını kopyala",
+      "sectionCopyN": "04 — Kopyala",
+      "sectionCopyTitle": "Önerilen tanıtıcı yazılar",
+      "shortLabel": "Kısa",
+      "shortBlurb": "Vanitas ile yerel olarak oluşturulan özel adres; anahtarlar asla cihazdan ayrılmaz. Desen eşleşmesi istemci tarafında doğrulandı.",
+      "launchpadLabel": "Başlatma Çubuğu",
+      "launchpadBlurb": "Vanitas.fun aracılığıyla tarayıcıda oluşturulan özel nane / makyaj cüzdanı. Herkesin modeli doğrulamasını sağlamak için kanıt bağlantısını paylaşın; özel anahtarlar sayfanın dışında kalır.",
+      "linkProof": "Prova sayfası",
+      "linkLab": "Desen laboratuvarı",
+      "linkSecurity": "Güvenlik"
+    },
+    "proof": {
+      "title": "Herkese açık maç kontrolü",
+      "description": "İstemci tarafında özel bir eşleşme olduğunu doğrulayın; anahtarlar hiçbir zaman dahil değildir.",
+      "eyebrow": "Bulmanın kanıtı",
+      "intro": "Bu sayfa, bir adresin talep edilen bir kalıpla eşleştiğini doğrular. Hiçbir zaman özel anahtarlar içermez. Herkes bağlantıyı açabilir ve istemci tarafını yeniden kontrol edebilir.",
+      "emptyIntro": "URL'de kanıt verisi yok. Bir adresi taklit ettikten sonra sonuç ekranında **Kanıtı paylaş** seçeneğini kullanın. Veya önce dövün:",
+      "address": "Adres",
+      "pattern": "Model"
+    },
+    "embedProof": {
+      "eyebrow": "Vanita kanıtı",
+      "brand": "Vanitalar",
+      "missingParams": "Eksik kanıt parametreleri.",
+      "openProof": "Açık kanıt",
+      "site": "Vanitas.fun"
+    },
+    "audit": {
+      "title": "Denetim",
+      "description": "Çalışma zamanı kontrolleri ve çalışan karma karşılaştırması.",
+      "eyebrow": "Canlı kontroller",
+      "caption": "Şekil VI — Forum",
+      "descriptionIdle": "Sekiz yerel kontrol. Hiçbir şey sahte değildir, hiçbir şey bir sunucuya gönderilmez. Yeşil iyi demektir.",
+      "descriptionPass": "Sekiz yerel kontrol - temiz. Hiçbir şey sahte değildir, hiçbir şey bir sunucuya gönderilmez.",
+      "descriptionFail": "Sekiz yerel kontrol — {failed} sorun(lar). Yeşil iyi demektir.",
+      "checksTotal": "{total} kontrol eder",
+      "passedSummary": "{passed}/{total} geçti",
+      "buildIntegrity": "Bütünlük oluşturun",
+      "workerFingerprintIntro": "Her demirhane çalışanının `worker-hash.json`'da yayınlanan bir SHA-256 parmak izi vardır. Yukarıdaki bütünlük testi Solana, EVM, Bitcoin ve Tron'u bu listeye göre doğrular.",
+      "verifyYourself": "Kendinizi doğrulayın",
+      "verifyStep1": "1. [vanitas.fun](https://vanitas.fun) adresinden bağlantı verilen kaynağı inceleyin",
+      "verifyStep2": "2. Derleme çalışanı: `npm run build:worker`",
+      "verifyStep3": "3. `public/worker-hash.json` değerini yukarıdaki karma ile karşılaştırın",
+      "hashLoading": "Yükleniyor…",
+      "hashUnavailable": "müsait değil",
+      "start": "Denetimi başlat",
+      "runAgain": "Tekrar koş",
+      "running": "Koşma…",
+      "whatIsThis": "Bu nedir?",
+      "whatIsThisBody": "Vanitas'ı kullandığınızda cihazınızda özel bir anahtar oluşturulur. Bu **8 otomatik kontrol**, üretimin yerel kaldığını, rastgeleliğin gerçek olduğunu ve ağa hiçbir şey bırakmadığını kanıtlar.",
+      "workerFingerprint": "İşçi parmak izi",
+      "networkMonitor": "Canlı ağ monitörü",
+      "monitor": {
+        "transparency": "Şeffaflık",
+        "intro": "Bu sayfanın yaptığı her ağ isteği. Eğer önemli veriler ayrılıyor olsaydı, onu burada görürdünüz.",
+        "stop": "● Durdur",
+        "restart": "Tekrar başlat",
+        "startMonitoring": "İzlemeye başla",
+        "requests": "{count} istekler",
+        "requestSingular": "1 istek",
+        "noSuspicious": "Şüpheli harici istek yok",
+        "externalCount": "{count} harici",
+        "colType": "Tip",
+        "colUrl": "URL",
+        "colSize": "Boyut",
+        "colTime": "Zaman",
+        "footerSafe": "Tüm istekler bu alana veya Google Fonts'a (tipografi için) gider. Üçüncü taraf sunuculara hiçbir veri gönderilmez.",
+        "footerWarning": "Uyarı: Beklenmeyen harici istekler algılandı. Bu bir güvenlik sorununa işaret edebilir.",
+        "emptyHint": "Bu sayfanın yaptığı her ağ isteğini görmek için \"İzlemeyi Başlat\"ı tıklayın.",
+        "emptySubhint": "İzleme açıkken sitede gezinin; tam olarak neyin yüklendiğini göreceksiniz.",
+        "activeHint": "İzleme etkin — ağ istekleri bekleniyor..."
+      },
+      "tests": {
+        "webcrypto": {
+          "name": "Web Kripto API'si",
+          "description": "Tarayıcınızda yerel Ed25519 desteği",
+          "why": "Anahtarlarınızı yaratan teknoloji budur. Tarayıcınız bunu yerel olarak destekliyorsa, adres oluşturma alternatiflere göre 125 kata kadar daha hızlıdır."
+        },
+        "csprng": {
+          "name": "Rastgele Sayı Üreteci",
+          "description": "Kriptografik olarak güvenli rasgele sayı üreteci",
+          "why": "Özel anahtarınız aslında devasa bir rastgele sayıdır. Rastgelelik zayıf veya tahmin edilebilirse birisi anahtarınızı tahmin edebilir. Bu test, rastgele oluşturucunun doğru şekilde çalıştığından emin olunmasını sağlar."
+        },
+        "entropy": {
+          "name": "Rastgelelik Kalitesi",
+          "description": "10.000 rastgele bayt üzerinde istatistiksel test",
+          "why": "10.000 rastgele sayı üretiyoruz ve bunların eşit şekilde dağılıp dağılmadığını kontrol ediyoruz; tıpkı adil bir zarın binlerce kez atılması gibi. Bazı rakamlar çok daha sık ortaya çıkıyorsa bir şeyler ters gidiyor demektir."
+        },
+        "network": {
+          "name": "Sıfır Ağ Trafiği",
+          "description": "Anahtar oluşturma sırasında tarayıcınızdan hiçbir veri çıkmıyor",
+          "why": "En önemli kontrol: Anahtarlar oluşturulurken internete kesinlikle hiçbir şey gönderilmediğini doğrularız. Özel anahtarınız asla cihazınızdan çıkmamalıdır."
+        },
+        "csp": {
+          "name": "Güvenlik Başlıkları",
+          "description": "İçerik Güvenliği Politikası veri sızıntısını kısıtlıyor",
+          "why": "Kötü amaçlı kod enjekte edilmiş olsa bile, tarayıcı düzeyindeki bu kurallar, kodun herhangi bir yere veri göndermesini engeller. Bunu web sitesinin içine yerleştirilmiş bir güvenlik duvarı olarak düşünün."
+        },
+        "worker": {
+          "name": "İşçi İzolasyonu",
+          "description": "Anahtar oluşturma, yalıtılmış arka plan iş parçacıklarında çalışır",
+          "why": "Anahtarlarınız, arka planda çalışan ayrı \"işçiler\", yalıtılmış mini programlarda oluşturulur. Ana sayfaya erişemezler ve tarayıcı uzantıları tarafından değiştirilemezler."
+        },
+        "integrity": {
+          "name": "Kod Bütünlüğü",
+          "description": "SHA-256 parmak izleri yayınlanmış tüm demirci işçileriyle eşleşiyor",
+          "why": "Her anahtar nesil çalışanın (Solana, EVM, Bitcoin, Tron, Aptos, Sui) hashini alıyoruz ve her birini açık yapıdaki Worker-hash.json ile karşılaştırıyoruz. Eşleşiyorlarsa kod değiştirilmemiştir."
+        },
+        "keygen": {
+          "name": "Anahtar Oluşturma Testi",
+          "description": "Gerçek bir Ed25519 anahtar çifti oluşturun ve doğrulayın",
+          "why": "Son kanıt: Gerçek bir anahtar oluşturuyoruz, onunla bir mesaj imzalıyoruz ve ardından imzayı doğruluyoruz. Bu işe yararsa tarayıcınız güvenli bir şekilde Solana adresleri oluşturabilir."
+        }
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "Dokümanlar",
+    "title": "FAQ",
+    "description": "Kalıplar, modlar, güvenlik, kanıt bağlantıları, CLI ve günlük kullanım gibi her formadaki yanıtlar. Konuya göre atlamak için alt menüyü kullanın.",
+    "categories": {
+      "general": {
+        "label": "Genel",
+        "n": "01",
+        "items": {
+          "what": {
+            "q": "Özel adres nedir?",
+            "a": "Seçtiğiniz bir modeli içeren bir kripto para birimi adresi; örneğin Solana'da `VANI` veya EVM'de `0xcafe` ile başlayan. Normal bir anahtar çiftinin üzerindeki kozmetik markalamadır."
+          },
+          "fake": {
+            "q": "Vanitas \"sahte\" adresler yaratıyor mu?",
+            "a": "Hayır. Her demirci o zincir için standart anahtarlar üretir. Eşleşen bir cüzdana aktardığınızda rastgele oluşturulmuş herhangi bir adres gibi çalışırlar; yalnızca kasıtlı görünürler."
+          },
+          "which": {
+            "q": "Hangi demirhaneler var?",
+            "a": "Dokuz web forge'u (Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano, XRP) artı terminal için `npx vanitas`. Bakınız [How it works → Chains](/how-it-works#chains)."
+          },
+          "howLong": {
+            "q": "Desenim ne kadar sürecek?",
+            "a": "Beklenen denemeler uzunluk ve alfabe boyutuyla birlikte katlanarak artar. Hex (16 karakter), Base58'den (~58) daha yoğundur. Sayfadaki zorluk tahminini kullanın; Uzun markaların peşinde koşmadan önce 3-4 karakterle başlayın."
+          },
+          "prefixSuffix": {
+            "q": "Ön ek ve son eki birlikte kullanabilir miyim?",
+            "a": "Evet - her iki kısıtlama da zorluğu artırıyor. Boş zamanınız ve hash oranınız olmadığı sürece güçlü bir tarafı (ön ek veya son ek) tercih edin."
+          }
+        }
+      },
+      "solana": {
+        "label": "Solana",
+        "n": "02",
+        "items": {
+          "produce": {
+            "q": "Solana demirhanesi ne üretiyor?",
+            "a": "Base58 adresleriyle Ed25519 anahtar çiftleri (Phantom/Solflare ile aynı aile). Kolay içe aktarma için Solana CLI JSON bayt dizileri olarak dışa aktarın."
+          },
+          "walletMint": {
+            "q": "Cüzdan ve nane modu mu?",
+            "a": "Aynı kriptografi. **Cüzdan** kişisel adresler içindir; **Mint**, launchpad özel nane alanları (pump.fun, Raydium, Meteora, …) için etiketlenmiştir. [/sol?mode=mint](/sol?mode=mint)'yi açın."
+          },
+          "base58": {
+            "q": "Neden 0, O, I veya l'yi kullanamıyorum?",
+            "a": "Base58, benzer karakterleri hariç tutar. Bunları içeren kalıplar hiçbir zaman gerçek bir Solana adresinde bulunamaz."
+          },
+          "pump": {
+            "q": "Darphanelerin “pompa” ile bitmesi gerekiyor mu?",
+            "a": "Hayır. Bu son ek bir protokol kuralı değil, pazarlamadır. Başlatma paneli özel bir nane anahtar çiftini kabul ederse geçerli herhangi bir Base58 makyaj modeli çalışır."
+          }
+        }
+      },
+      "evm": {
+        "label": "EVM",
+        "n": "03",
+        "items": {
+          "networks": {
+            "q": "EVM makyaj anahtarı hangi ağlarda çalışır?",
+            "a": "Tüm EVM uyumlu zincirler aynı adres türetmeyi paylaşır. Ethereum, Base, Arbitrum, Optimism, BSC, Polygon, Avalanche C-Chain ve diğerlerinde bir anahtar → bir `0x` adresi."
+          },
+          "modes": {
+            "q": "M-cüzdan, CREATE ve CREATE2 modları nelerdir?",
+            "a": "**Cüzdan** — özel EOA adresi.\n**CREATE** — bu anahtardaki ilk sözleşmenin özel adresi (bir kez 0).\n**CREATE2** — başlangıç ​​kodu karması verilen öğütme tuzu (sabit konuşlandırıcı) veya öğütücü (sabit tuz)."
+          },
+          "bnb": {
+            "q": "Ayrı bir BNB oluşturucuya ihtiyacım var mı?",
+            "a": "BNB Akıllı Zincir (EVM) için hayır. Eski Beacon Zinciri `bnb1` bech32 adresleri kapsam dışında."
+          }
+        }
+      },
+      "bitcoin": {
+        "label": "Bitcoin",
+        "n": "04",
+        "items": {
+          "types": {
+            "q": "Hangi adres türleri destekleniyor?",
+            "a": "Ana ağ mirası `1…`, SegWit `bc1q…` ve Taproot `bc1p…`. Dışa aktarma, sıkıştırılmış WIF'yi içerir."
+          },
+          "leading": {
+            "q": "Baştaki 1 / bc1q'yi kendim mi yazacağım?",
+            "a": "İsteğe bağlı. Kullanıcı arayüzü, önekiniz zaten içermediğinde sabit sürümü / HRP'yi otomatik olarak başına ekler."
+          },
+          "lightning": {
+            "q": "Yıldırım faturaları mı?",
+            "a": "Kapsam dışı — BOLT'lar değil sahte adresler."
+          }
+        }
+      },
+      "tron": {
+        "label": "Tron",
+        "n": "05",
+        "items": {
+          "get": {
+            "q": "Tron ocağından ne alacağım?",
+            "a": "Mainnet Base58Secp256k1 anahtarlarından `T…` adreslerini kontrol edin — cüzdan veya CREATE (bir kez 0). Ön ekler için otomatik olarak önek `T` eklenir."
+          },
+          "case": {
+            "q": "Küçük harfe duyarlı bir önek neden hiçbir zaman bulunamıyor?",
+            "a": "`T`'dan sonraki karakter neredeyse her zaman büyük harf veya rakamdır. Tam bir büyük/küçük harf eşleşmesine ihtiyacınız olmadığı sürece büyük/küçük harf duyarlılığını kapalı bırakın. Base58 aynı zamanda O, I, l'yi de hariç tutar."
+          }
+        }
+      },
+      "aptos-sui": {
+        "label": "Aptos ve Sui",
+        "n": "06",
+        "items": {
+          "differ": {
+            "q": "Aptos ve Sui'nin farkı nedir?",
+            "a": "Her ikisi de Ed25519 ve hex adreslerini kullanır, ancak karma oluşturma farklıdır: Aptos `sha3-256(pubkey ‖ 0x00)` kullanır; Sui `blake2b-256(0x00 ‖ pubkey)` kullanıyor. Anahtarlar ekosistemler arasında değiştirilemez."
+          },
+          "wallets": {
+            "q": "Hangi cüzdanlar bunları içe aktarabilir?",
+            "a": "Aptos: Petra, Marslı ve benzeri. Sui: Sui Wallet, Suiet ve onaltılık özel anahtarları kabul eden diğerleri."
+          }
+        }
+      },
+      "ton-cardano-xrp": {
+        "label": "TON · Cardano · XRP",
+        "n": "07",
+        "items": {
+          "ton": {
+            "q": "TON UQ ve EQ mu?",
+            "a": "Cüzdan v4R2'nin geri çevrilemeyen (`UQ…`) ve geri döndürülebilir (`EQ…`) kullanıcı dostu formları. Eşleştirme büyük/küçük harfe duyarlıdır."
+          },
+          "cardano": {
+            "q": "Hangi Cardano adres türü sahte?",
+            "a": "Kurumsal ana ağ `addr1…` (CIP-19 tip 6 — yalnızca ödeme anahtarı, adreste pay delegasyonu yok)."
+          },
+          "xrp": {
+            "q": "XRP, Bitcoin ile Base58 ile aynı mı?",
+            "a": "Hayır. XRPL klasik adresleri farklı bir Base58 alfabesi kullanır. Vanitas secp256k1 anahtarlarından `r…` klasiklerini kodlar."
+          }
+        }
+      },
+      "security": {
+        "label": "Güvenlik",
+        "n": "08",
+        "items": {
+          "store": {
+            "q": "Özel anahtarlarımı saklıyor musunuz?",
+            "a": "Hayır. Anahtarlar hiçbir zaman oturumunuzun tarayıcı belleğinden ayrılmaz. Mimari ve tehdit modeli için [Security](/security) sayfasına bakın."
+          },
+          "verify": {
+            "q": "Bunu nasıl doğrularım?",
+            "a": "1. DevTools → Madencilik sırasında ağ — önemli trafik yok\n2. Yük sonrası uçak modu\n3. [Live audit](/audit) + çalışan karma karşılaştırması"
+          },
+          "weaker": {
+            "q": "Gösteriş anahtarları daha mı zayıf?",
+            "a": "Hayır. Özel anahtarlar hala tam CSPRNG entropisine sahiptir. Yalnızca genel kodlama filtrelenir."
+          },
+          "extensions": {
+            "q": "Peki ya tarayıcı uzantıları?",
+            "a": "Uzantılar yine de bir sayfayı gözetleyebilir. Yüksek değerli anahtarlar için temiz bir profil, CLI veya çevrimdışı bir makine kullanın. Ayrıntılar: [Security → Browser](/security#browser)."
+          },
+          "report": {
+            "q": "Güvenlik açıklarını nereye bildirebilirim?",
+            "a": "Özel GitHub Güvenlik Önerileri — asla kamuya açık konular değildir. Bakınız [Security → Disclose](/security#disclose)."
+          }
+        }
+      },
+      "proof-cli": {
+        "label": "Kanıt ve CLI",
+        "n": "09",
+        "items": {
+          "proof": {
+            "q": "Buluntu Kanıtı Nedir?",
+            "a": "Adres + desen (ve isteğe bağlı istatistikler) içeren paylaşılabilir bir [/proof](/proof) bağlantısı. Herkes eşleşmeyi istemci tarafında doğrulayabilir. Özel anahtarlar hiçbir zaman dahil edilmez."
+          },
+          "cli": {
+            "q": "CLI'yi nasıl çalıştırırım?",
+            "a": "Bir sihirbaz için `npx vanitas` veya `npx vanitas sol --prefix Ace --threads 8` gibi işaretler. Web uygulamasıyla aynı dağıtım modlarını destekler (mint, CREATE, CREATE2 bayrakları)."
+          }
+        }
+      },
+      "usage": {
+        "label": "Kullanım",
+        "n": "10",
+        "items": {
+          "import": {
+            "q": "Phantom/MetaMask/vb.'ye nasıl aktarırım?",
+            "a": "Bu forge için dışa aktarma formatını kullanın: Phantom/Solflare için Solana JSON, çoğu EVM cüzdanı için hex, birçok Bitcoin cüzdanı için WIF, başka yerlerde zincire özgü hex/Base58. Her zaman önce küçük bir test aktarımı yapın."
+          },
+          "pause": {
+            "q": "Duraklatıp devam ettirebilir miyim?",
+            "a": "İstediğiniz zaman durabilirsiniz; özgeçmiş yeni bir aramadır (önceki denemelerin kontrol noktası yoktur)."
+          },
+          "disabled": {
+            "q": "Başlat neden devre dışı bırakıldı?",
+            "a": "Boş desen, söz konusu alfabe için geçersiz karakterler veya desen çok uzun. Girişlerin altındaki doğrulama mesajını düzeltin."
+          },
+          "freeze": {
+            "q": "Madencilik sırasında kullanıcı arayüzü donuyor mu?",
+            "a": "İplik sayısını azaltın. Çalışanlar kullanıcı arayüzünü canlı tutmalı ancak küçük bir dizüstü bilgisayarda her çekirdeğin doyurulması yine de yavaş gelebilir."
+          }
+        }
+      }
+    },
+    "sideCaption": "Şekil IV – Manzara",
+    "topics": "Konular",
+    "stillStuck": "Hala sıkıştınız mı?",
+    "stillStuckBody": "Derin teknik ayrıntılar, nasıl çalıştığında yaşar. Güven modeli ve tehdit notları Güvenlik'te yayında. Dürüstlük kontrolleri Audit'te canlı olarak yapılıyor.",
+    "linkHow": "Nasıl çalışır?",
+    "linkSecurity": "Güvenlik",
+    "linkAudit": "Canlı denetim",
+    "glyphs": {
+      "general": "Şekil — Kaydırma",
+      "solana": "Şekil – Sütunlu",
+      "evm": "Şekil — Modlar",
+      "bitcoin": "Şekil — Anahtar",
+      "tron": "Şekil — Dövme",
+      "aptos-sui": "Şekil — Döngü",
+      "ton-cardano-xrp": "Şekil – Stel",
+      "security": "Şekil — Kalkan",
+      "proof-cli": "Şekil — Mühür",
+      "usage": "Şekil — Zaman"
+    }
+  },
+  "docs": {
+    "howItWorks": {
+      "eyebrow": "Dokümanlar",
+      "title": "Nasıl çalışır?",
+      "description": "Tam bir Vanitas turu: gösterişli madencilik nasıl çalışır, her demirhane ne üretir, işçiler paralel olarak nasıl arama yapar ve makinenizden hiçbir şeyin çıkmadığını nasıl doğrulayabilirsiniz.",
+      "sideCaption": "Şekil III - Hatip",
+      "overview": {
+        "title": "Vanitas nedir?",
+        "p1": "**Vanitas**, istemci tarafında çok zincirli bir özel adres düzenidir. Bir önek ve/veya sonek seçersiniz; uygulama, genel adresi bu kalıpla eşleşen bir anahtar çiftini arar. Nesil **CPU'nuzdaki Web Workers**'ta çalışır. Özel anahtarlar cihazınızın hafızasında oluşturulur ve hiçbir zaman yüklenmez.",
+        "p2": "Özel adres hâlâ normal bir kriptografik adrestir. Özel anahtar rastgeledir; yalnızca genel kodlama, istediğiniz gibi görünene kadar filtrelenir; markalama, bağışlar, darphaneler ve unutulmaz halka açık cüzdanlar için kullanışlıdır."
+      },
+      "pipeline": {
+        "title": "Arama döngüsü",
+        "intro": "Her forge, milyonlarca kez tekrarlanan aynı yüksek seviyeli döngüyü takip eder:",
+        "whySecure": "Özel bir adres aramak özel anahtarı zayıflatmaz**. Genel adres doğru görünene kadar adayları reddediyorsunuz; bu, rastgele anahtarlar oluşturup şanslı olanı elinizde tutmakla aynı süreçtir."
+      },
+      "reminder": {
+        "label": "Hatırlatma",
+        "body": "Sekmeyi kapatmadan önce özel anahtarınızı kaydedin. Kayıp anahtarlar kurtarılamaz. Büyük bakiyeler için: Önce küçük bir transferle test edin, uzun vadeli saklama için donanım cüzdanlarını tercih edin ve anahtarları asla güvenilmeyen sitelere yapıştırmayın."
+      },
+      "toc": {
+        "overview": "Genel Bakış",
+        "pipeline": "Boru hattı",
+        "patterns": "Desenler",
+        "chains": "Zincirler",
+        "modes": "Modlar",
+        "workers": "İşçiler",
+        "proof": "Kanıt",
+        "cli": "CLI",
+        "verify": "Doğrulamak"
+      },
+      "sections": {
+        "overview": {
+          "n": "01 — Genel Bakış",
+          "title": "Vanitas nedir?",
+          "glyph": "Şekil A – Anahtar",
+          "ledger": {
+            "where": {
+              "label": "Nerede",
+              "value": "Tarayıcınız · CPU'nuz",
+              "note": "Yalnızca statik barındırma; madencilik ağ araması yapmıyor"
+            },
+            "forges": {
+              "label": "Demirhaneler",
+              "value": "9 zincir + terminal CLI",
+              "note": "Solana · EVM · Bitcoin · Tron · Aptos · Sui · TON · Cardano · XRP"
+            },
+            "output": {
+              "label": "Çıkış",
+              "value": "Adres + özel anahtar",
+              "note": "Dışa aktarma formatları forge'a bağlıdır (JSON, hex, WIF,…)"
+            }
+          }
+        },
+        "pipeline": {
+          "n": "02 — Boru hattı",
+          "title": "Arama döngüsü",
+          "glyph": "Şekil B – Döngü",
+          "steps": [
+            "Kriptografik olarak güvenli bir rastgele özel anahtar (`crypto.getRandomValues`) çizin.",
+            "Genel anahtarı zincirin eğrisiyle (Ed25519 veya secp256k1) türetin.",
+            "Adresi zincirin beklediği şekilde kodlayın (Base58, hex, bech32,…).",
+            "Ön ekiniz/son ekiniz (ve mod kuralları) ile karşılaştırın.",
+            "Maçta: işçileri durdurun, sonucu gösterin, isteğe bağlı ses / prova / dışa aktarma."
+          ],
+          "workersNote": "Çalışanlar bu döngüyü CPU çekirdekleri arasında paralel olarak çalıştırırlar. Kullanıcı arayüzü iş parçacığı duyarlı kalır; ilerleme (girişimler, oran, ETA) çalışan mesajlarından toplanır. Bir çalışan bir isabet bulduğunda havuz sonlandırılır.",
+          "whySecureTitle": "Bu neden güvenli?"
+        },
+        "patterns": {
+          "n": "03 — Desenler",
+          "title": "Zorluk, alfabeler, uyarılar",
+          "glyph": "Şekil C — Zaman",
+          "intro": "Desen uzunluğu ve alfabe boyutuyla birlikte beklenen zaman ölçekleri. Her ekstra karakter, arama alanını çoğaltır. Forge kullanıcı arayüzü, modelinize ve ölçülen veya varsayılan karma oranına dayalı bir canlı zorluk tahmini gösterir.",
+          "ledger": {
+            "base58": {
+              "label": "Temel58",
+              "value": "~58 sembol",
+              "note": "Solana, Tron, XRP (XRPL alfabesi), Bitcoin mirası"
+            },
+            "hex": {
+              "label": "Altıgen",
+              "value": "16 sembol (0–9, a–f)",
+              "note": "EVM, Aptos, Sui — eşleştirme için büyük/küçük harfe duyarsız"
+            },
+            "bech32": {
+              "label": "Bech32",
+              "value": "bc1q / bc1p / addr1…",
+              "note": "Bitcoin SegWit/Taproot, Cardano — HRP düzeltildi, ardından karakter seti"
+            },
+            "ton": {
+              "label": "TON",
+              "value": "Base64url",
+              "note": "UQ… / EQ… — büyük/küçük harfe duyarlı"
+            }
+          },
+          "trapsTitle": "Alfabe tuzakları",
+          "traps": [
+            "**Solana / Bitcoin Base58** — `0`, `O`, `I` veya `l` (benzer reddi) yok.",
+            "**EVM** — `0x`'dan sonra yalnızca onaltılı. `a–f` ötesindeki harfler geçersizdir.",
+            "**Tron** — adresler `T` ile başlar; sonraki karakter genellikle büyük harftir. Büyük/küçük harfe duyarlı küçük harf önekleri çoğu zaman eşleşmez.",
+            "**Önek + sonek** — her iki kısıtlama da zorluğu artırır. Kısa başlayın; Hızınızı öğrendikten sonra modeli büyütün."
+          ]
+        },
+        "chains": {
+          "n": "04 — Zincirler",
+          "title": "Her demirhane açıklandı",
+          "glyph": "Şekil D - Demirhaneler",
+          "intro": "Dokuz dövme aynı UX modelini paylaşıyor - bir mod seçin, bir model belirleyin, çalışanları başlatın - ancak her zincir farklı eğriler, karmalar ve adres kodlamaları kullanır.",
+          "sol": "Base58 (32 bayt genel anahtar) olarak kodlanmış Ed25519 anahtar çiftleri. Yerel Web Kripto Ed25519, tarayıcı desteklediğinde kullanılır; aksi takdirde bir WASM geri dönüşü (`watsign`). Modlar: **cüzdan** ve **nane** — aynı temel matematik; nane çerçevelemesi launchpad özel nane akışları içindir. Dışa aktar: Solana CLI JSON bayt dizisi.",
+          "evm": "secp256k1 → sıkıştırılmamış pubkey → keccak-256 → son 20 bayt → `0x…` adresi. Bir özel anahtar, Ethereum, Base, Arbitrum, Optimism, BSC, Polygon ve diğer tüm EVM ağlarında aynı adresi verir. Modlar: cüzdan (EOA), hemen CREATE 0, CREATE2 (tuz öğütme veya öğütme dağıtıcısı). Aşağıdaki Modlara bakın.",
+          "btc": "secp256k1. Üç adres türü: eski P2PKH (`1…`), yerel SegWit P2WPKH (`bc1q…`), Taproot P2TR (`bc1p…`). Dışa aktarma, cüzdan içe aktarma için WIF'yi (sıkıştırılmış) içerir. Önekleri yazarken önde gelen HRP / sürüm baytı sizin için işlenir.",
+          "tron": "20 baytlık hesap kimliği için EVM ile aynı secp256k1 + keccak yolu, ardından sürüm baytı `0x41` → `T…` ile Base58Check. Modlar: cüzdan ve CREATE (bir kez 0), EVM ile aynı RLP düzenini ve ardından Tron kodlamasını kullanır.",
+          "aptos": "Ed25519. Adres = `sha3-256(pubkey ‖ 0x00)` hex olarak. Onaltılı sırları içe aktaran Petra, Martian ve diğer Aptos cüzdanlarıyla uyumludur.",
+          "sui": "Ed25519. Adres = `blake2b-256(0x00 ‖ pubkey)` onaltılık olarak (bayt baytı düzeni işaretler). Onaltılı özel anahtarla Sui Wallet / Suite'e aktarın.",
+          "ton": "Ed25519 + Cüzdan sözleşmesi v4R2. Adresler kullanıcı dostu Base64url formlarıdır: `UQ…` (sıçrayamaz) ve `EQ…` (sıçrayabilir). Eşleştirme büyük/küçük harfe duyarlıdır. Tonkeeper / MyTonWallet'a aktarın.",
+          "cardano": "Ed25519 kurumsal adresi (CIP-19 tip 6, yalnızca ödeme anahtarı): başlık `0x61` + Blake2b-224 ödeme karması, HRP `addr` → `addr1…` ile bech32.",
+          "xrp": "secp256k1 sıkıştırılmış pubkey → RIPEMD160(SHA256) hesap kimliği → XRPL classic Base58 Check → `r…`. Not: XRPL, Bitcoin'den farklı bir Base58 alfabesi kullanır.",
+          "links": {
+            "sol": "[Solana](/sol)",
+            "evm": "[EVM](/evm)",
+            "btc": "[Bitcoin](/btc)",
+            "tron": "[Tron](/tron)",
+            "aptos": "[Aptos](/aptos)",
+            "sui": "[Sui](/sui)",
+            "ton": "[TON](/ton)",
+            "cardano": "[Cardano](/cardano)",
+            "xrp": "[XRP](/xrp)"
+          }
+        },
+        "modes": {
+          "n": "05 — Modlar",
+          "title": "Cüzdan, nane, CREATE, CREATE2",
+          "glyph": "Şekil E — Modlar",
+          "solMint": "Kriptografik olarak cüzdan anahtar çiftiyle aynıdır. Başlatma panelleri özel bir nane anahtar çifti/özel anahtar ister; Vanitas, dışa aktarmanın bu iş akışıyla eşleşmesi için sonucu mükemmel olarak etiketler. [/sol?mode=mint](/sol?mode=mint) dosyasını açın, bir desen bulun, anahtarı Pump.fun, Raydium, Meteora vb.'ye yapıştırın.",
+          "create": "Nonce 0 ile bir EOA'dan dağıtılan ilk sözleşmenin deterministik bir adresi vardır: `keccak256(RLP([sender, 0]))[12:]`. Vanitas, türetilen sözleşme adresi sizin modelinizle eşleşene kadar EOA'ları öğütür. Dağıtıcı özel anahtarını alırsınız; 0 olmayan yeni bir hesaptan bir kez dağıtın.",
+          "create2Intro": "Adres = `keccak256(0xff ‖ deployer ‖ salt ‖ initCodeHash)[12:]`. İki öğütme stratejisi:",
+          "create2Salt": "**create2-salt** — dağıtıcı anahtarını + başlangıç ​​kodu karmasını düzeltin; gösteriş adresini veren bir tuz arayın.",
+          "create2Deployer": "**create2-deployer** — tuz + başlangıç ​​kodu karmasını düzeltin; CREATE2 adresi eşleşen bir dağıtımcı anahtarını arayın.",
+          "create2Hash": "Doğru bir `initCodeHash` (dağıtım bayt kodunun keccak'ı) sağlamanız gerekir. Yanlış karma → yanlış zincir içi adres."
+        },
+        "workers": {
+          "n": "06 — İşçiler",
+          "title": "Performans mimarisi",
+          "glyph": "Şekil F - Dövme",
+          "intro": "Çalışan kaynakları `src/workers/*.worker.source.ts` altında bulunur ve esbuild ile `public/*-worker.js` içinde paketlenir. Her yapı, [live audit](/audit) için SHA-256 özetlerini `public/worker-hash.json`'ye yazar.",
+          "ledger": {
+            "parallelism": {
+              "label": "Paralellik",
+              "value": "CPU çekirdekleri – 1 (varsayılan)",
+              "note": "Makine ısınırsa veya kullanıcı arayüzü takılırsa iplikleri ayarlayın"
+            },
+            "solSpeed": {
+              "label": "solana hızı",
+              "value": "Yerel Ed25519 mevcut olduğunda",
+              "note": "Chrome 113+ · Firefox 129+ · Safari 17+; başka WASM"
+            },
+            "libraries": {
+              "label": "Kütüphaneler",
+              "value": "@noble · tweetnacl · watsign · @ton/*",
+              "note": "Tarayıcıda denetlenen saf JS / WASM kriptosu"
+            }
+          },
+          "postFind": "Bulmanın ardından isteğe bağlı **anahtar güvenlik kontrolleri** entropi, CSPRNG kullanılabilirliği ve rastgele baytlar üzerinde ki-kare tekdüzelik testi ile tarayıcı RNG yolunun sağlıklı göründüğünü doğrular."
+        },
+        "proof": {
+          "n": "07 — Kanıt",
+          "title": "Bulmanın kanıtı",
+          "glyph": "Şekil G – Mühür",
+          "p1": "**Paylaşım kanıtı** yalnızca zincir, adres ve modelle [/proof](/proof)'ye genel bir bağlantı oluşturur — **asla özel anahtarla değil**. Herkes bağlantıyı açabilir ve adresin istemci tarafında talep edilen önek/sonek ile eşleştiğini doğrulayabilir.",
+          "session": "Kullanıcı arayüzündeki son bulgular, yalnızca adres + kalıp meta verileri için `sessionStorage` kullanır. Sekmeyi kapatmak bu geçmişi temizler; anahtarlar orada saklanmaz."
+        },
+        "cli": {
+          "n": "08 — CLI",
+          "title": "Terminal demirhanesi",
+          "glyph": "Şekil H - Stel",
+          "p1": "Tarayıcının dışında da aynı fikir: `npx vanitas` bir sihirbaz açar veya zincir, mod, önek, iş parçacıkları ve CREATE2 parametreleri için bayrakları iletir. Sonuçlar, işletim sistemi desteklediğinde `0600` moduna sahip bir JSON dosyası yazar. Paket: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
+          "example": "npx vanitas evm --mode sözleşmesi --prefix cafe --threads 8"
+        },
+        "verify": {
+          "n": "09 — Doğrula",
+          "title": "Kendiniz onaylayın",
+          "glyph": "Şekil I – Göz",
+          "steps": [
+            "DevTools → Ağı açın, günlüğü temizleyin, bir forge başlatın; madencilik sırasında **istek yok** görmeniz gerekir.",
+            "Sayfayı yükleyin, çevrimdışı olun, tekrar oluşturun; hâlâ çalışıyor.",
+            "[live audit](/audit) komutunu çalıştırın ve çalışan karmalarını `worker-hash.json` ile karşılaştırın.",
+            "[GitHub](https://github.com/bytebrox/vanitas)'deki kaynağı okuyun — özellikle `src/workers/`."
+          ]
+        }
+      },
+      "footer": {
+        "security": "Güvenlik",
+        "faq": "FAQ",
+        "audit": "Canlı denetim"
+      }
+    },
+    "security": {
+      "eyebrow": "Dokümanlar",
+      "title": "Güvenlik",
+      "description": "Anahtarlar tarayıcınızda oluşturulur, asla sunucularımızda oluşturulmaz. Bu sayfa güven modelidir: mimari, tehditler, kripto, başlıklar ve her iddiayı kendiniz nasıl doğrulayacağınız.",
+      "sideCaption": "Şekil V – Su Kemeri",
+      "principles": {
+        "title": "Pazarlığa açık olmayanlar",
+        "marketing": "Pazarlama talepleri çek olmadan değersizdir. Aşağıdaki [live audit](/audit) ve Doğrula bölümünü kullanın."
+      },
+      "architecture": {
+        "title": "Anahtarların yaşadığı yer",
+        "keysRam": "Özel anahtarlar yalnızca burada bulunur; cihazınızdaki RAM"
+      },
+      "next": {
+        "label": "Sonraki",
+        "audit": "Canlı denetim",
+        "how": "Nasıl çalışır?",
+        "faq": "FAQ"
+      },
+      "toc": {
+        "principles": "İlkeler",
+        "architecture": "Mimarlık",
+        "threats": "Tehditler",
+        "storage": "Depolamak",
+        "crypto": "Kripto",
+        "integrity": "Bütünlük",
+        "headers": "Başlıklar",
+        "browser": "Tarayıcı",
+        "workflow": "İş akışı",
+        "verify": "Doğrulamak",
+        "disclose": "Açıkla"
+      },
+      "sections": {
+        "principles": {
+          "n": "01 — İlkeler",
+          "title": "Pazarlığa açık olmayanlar",
+          "glyph": "Şekil A - Kalkan",
+          "items": [
+            "**İstemci tarafı oluşturma** — CPU'nuzdaki Web Çalışanları her anahtar çiftini oluşturur.",
+            "**Sıfır anahtar geçişi** — Özel anahtarları kabul eden veya döndüren bir API yoktur.",
+            "**Sıfır anahtar depolama** — veritabanı yok, sır kayıtları yok, kalıp veya adres analizi yok.",
+            "**Doğrulanabilir** — açık kaynak, canlı denetim, çevrimdışı test, Ağ paneli.",
+            "**Teşhir edilmeyen kanıt** — paylaşılabilir kanıtlar yalnızca adres + desen taşır."
+          ]
+        },
+        "architecture": {
+          "n": "02 — Mimarlık",
+          "title": "Anahtarların yaşadığı yer",
+          "glyph": "Şekil B – Lokus",
+          "intro": "Vanitas statik bir Next.js sitesidir. Ana makine (örn. Vercel) HTML, CSS, JS ve önceden oluşturulmuş çalışan paketlerine hizmet eder. Kriptografi, anahtarlarınız için o ana bilgisayarda asla çalışmaz.",
+          "browserLabel": "Tarayıcınız",
+          "mainThread": "Ana konu",
+          "mainThreadNote": "Kullanıcı Arayüzü · Tepki · kontroller",
+          "webWorkers": "Web Çalışanları",
+          "webWorkersNote": "W1…Wn — eziyet · eşleştir · mesaj gönder",
+          "networkLabel": "Madencilik sırasında ağ",
+          "networkBody": "Hiçbiri gerekli değil. Varlıklar yüklendikten sonra uçak modu çalışmaya devam eder. Tek birinci taraf API yolu (`/api/domains`), Solana etki alanı bağlantılarını önerir; anahtar oluşturmaz veya almaz.",
+          "serversLabel": "Sunucularımız",
+          "serversBody": "Dosyaları teslim edin. İşçi hafızanız okunamıyor. Bitmiş bir anahtar çiftine müdahale edilemiyor. Güvenliği ihlal edilmiş bir kaynak, kötü amaçlı JS'ye hizmet edebilir; bu nedenle bütünlük kontrolleri ve açık kaynak önemlidir (bkz. Bütünlük ve Tarayıcı)."
+        },
+        "threats": {
+          "n": "03 — Tehditler",
+          "title": "Tehdit modeli (dürüst)",
+          "glyph": "Şekil C - Ölçekler",
+          "inScopeTitle": "Kapsam dahilinde — buna göre tasarlıyoruz",
+          "inScope": [
+            "Sunucu tarafı anahtar hırsızlığı (sunucuda anahtar yok).",
+            "Madencilik sırasında sıradan ağ koklama (anahtar trafik yok).",
+            "Ana uygulamanın tıklatılması (birincil rotalarda çerçeve reddi).",
+            "Açıkça görülen XSS sızma yolları (CSP; hala sihirli bir değnek değil)."
+          ],
+          "outScopeTitle": "Kapsam dışı / paylaşılan sorumluluk",
+          "outScope": [
+            "Sayfa belleğini veya panoyu okuyan **kötü amaçlı tarayıcı uzantıları**; yüksek değerli anahtarlar oluştururken bunları temiz bir profilde devre dışı bırakın.",
+            "**Güvenliği ihlal edilmiş cihaz/kötü amaçlı yazılım** — İşletim sistemi düzeyindeki tuş kaydediciler tüm web sitelerini yener.",
+            "**Anahtarları Discord'a / kimlik avına yapıştırırsınız** — operasyonel güvenlik sizindir.",
+            "**Bağımlılıkların tedarik zinciri** — tespit edip denetliyoruz; çalışan karmalarını doğrulayabilir ve kaynaktan yeniden oluşturabilirsiniz."
+          ],
+          "vanityNote": "Gösteriş madenciliği “daha ​​zayıf” bir anahtar yaratmaz. Uzun modeller yalnızca daha fazla CPU'ya mal olur; özel anahtar entropisini azaltmaz."
+        },
+        "storage": {
+          "n": "04 — Depolama",
+          "title": "Ne saklıyoruz",
+          "glyph": "Şekil D – Kasa",
+          "intro": "**Sunucularımızdaki anahtarlarınız hakkında hiçbir şey yok.** Sahte yol üzerinde adresler, modeller, madencilik için IP'ler veya analiz SDK'larından oluşan veritabanı yok.",
+          "items": [
+            "Diskte veya sunucuda özel anahtar yok",
+            "Uzaktan genel anahtar/adres toplanmadı",
+            "Desen telemetrisi yok",
+            "Hesap sistemi yok",
+            "Ürün vaadinde üçüncü taraf analitiği yok",
+            "sessionStorage son buluntuları = yalnızca adres + kalıp, bu tarayıcı oturumu",
+            "Kanıt bağlantıları = paylaşmayı seçtiğiniz sorgu parametreleri (anahtar yok)"
+          ]
+        },
+        "crypto": {
+          "n": "05 — Kripto",
+          "title": "Dövme başına algoritmalar",
+          "intro": "Rastgelelik her zaman CSPRNG (`crypto.getRandomValues`) tarayıcısından gelir. Eğriler ve adres türetme zincire göre farklılık gösterir:",
+          "rows": {
+            "sol": {
+              "label": "Solana",
+              "value": "Ed25519 → Base58",
+              "note": "Web Crypto yerel veya WASM yedek · cüzdan / nane"
+            },
+            "evm": {
+              "label": "EVM",
+              "value": "secp256k1 + keccak-256",
+              "note": "0x EOA · OLUŞTUR · OLUŞTUR2"
+            },
+            "btc": {
+              "label": "Bitcoin",
+              "value": "secp256k1",
+              "note": "Eski · SegWit · Taproot · WIF dışa aktarımı"
+            },
+            "tron": {
+              "label": "Tron",
+              "value": "secp256k1 + keccak → Base58Check",
+              "note": "T… cüzdan / CREATE"
+            },
+            "aptos": {
+              "label": "Aptos",
+              "value": "Ed25519 + SHA3-256",
+              "note": "0x hesap adresi"
+            },
+            "sui": {
+              "label": "Sui",
+              "value": "Ed25519 + Blake2b-256",
+              "note": "0x şema bayrağıyla"
+            },
+            "ton": {
+              "label": "TON",
+              "value": "Ed25519 · Cüzdan v4R2",
+              "note": "UQ / EQ Base64url"
+            },
+            "cardano": {
+              "label": "Cardano",
+              "value": "Ed25519 · CIP-19 kuruluşu",
+              "note": "adres1… yalnızca ödeme anahtarı"
+            },
+            "xrp": {
+              "label": "XRP",
+              "value": "secp256k1 · XRPL Base58",
+              "note": "Klasik r… adresleri"
+            }
+          },
+          "postFind": "Bulgu sonrası kontroller, rastgele bir örnek üzerinde entropi boyutunu, CSPRNG varlığını ve ki-kare tekdüzeliğini doğrulayabilir; RNG yolunun sağlık kontrolüdür, cihaz hijyeninin yerine geçmez."
+        },
+        "integrity": {
+          "n": "06 — Dürüstlük",
+          "title": "Çalışanlar ve yayınlanan karmalar",
+          "glyph": "Şekil E – Hash",
+          "p1": "Madencilik kodu, TypeScript kaynaklarından oluşturulmuş statik `public/*-worker.js` dosyaları olarak gönderilir. Her üretim yapısı, `worker-hash.json` içindeki SHA-256 özetlerini kaydeder. Denetim sayfası, tarayıcınızın yüklediği çalışanları yeniden karma hale getirir ve bunları söz konusu dosyayla karşılaştırır.",
+          "p2": "Karma değerler birbirinden farklıysa sayfayı güvenilmez olarak değerlendirin; durdurun, anahtarları kullanmayın ve araştırın (yanlış dağıtım, önbellek veya değişiklik). Açık depodan yeniden oluşturma, belirli bir taahhüt için aynı çalışan baytları yeniden oluşturmalıdır."
+        },
+        "headers": {
+          "n": "07 — Başlıklar",
+          "title": "HTTP güvenlik başlıkları",
+          "intro": "Yanıtlar, XSS etkisini azaltan, HTTPS'yi zorlayan ve ana uygulamanın çerçevelenmesini engelleyen başlıklar içerir. CSP hala Next.js'nin ihtiyaç duyduğu şeylere izin veriyor (bazı satır içi/değerlendirme değişiklikleri dahil) - başlıklar yardımı; kod incelemesinin yerini almazlar.",
+          "rows": {
+            "csp": {
+              "label": "CSP",
+              "value": "İçerik Güvenliği Politikası",
+              "note": "Komut dosyalarını, çalışanları, connect-src'yi sınırlar"
+            },
+            "hsts": {
+              "label": "HSTS",
+              "value": "Sıkı Taşıma Güvenliği",
+              "note": "maksimum yaş=31536000"
+            },
+            "frame": {
+              "label": "Çerçeve",
+              "value": "X-Frame Seçenekleri: DENY",
+              "note": "Birincil uygulama gömülemez"
+            },
+            "mime": {
+              "label": "MIME",
+              "value": "X-İçerik-Türü-Seçenekleri: nosniff",
+              "note": "MIME koklaması yok"
+            },
+            "referrer": {
+              "label": "Yönlendiren",
+              "value": "katı menşeli-zaman-çapraz menşeli",
+              "note": "Yönlendirici sızıntısını sınırlar"
+            }
+          }
+        },
+        "browser": {
+          "n": "08 — Tarayıcı",
+          "title": "Tarayıcının hâlâ yapabilecekleri",
+          "intro": "Sayfa ayrıcalıklarıyla çalışan her şey teorik olarak DOM ve Çalışan mesajlarını okuyabilir. Bu şunları içerir:",
+          "items": [
+            "Geniş site erişimine sahip tarayıcı uzantıları",
+            "DevTools paylaşılan bir makinede açılıyor",
+            "XSS mevcutsa kötü amaçlı olarak enjekte edilen komut dosyaları",
+            "Bir anahtarı kopyaladıktan sonra pano algılıyor"
+          ],
+          "mitigations": "Azaltıcı önlemler: Temiz tarayıcı profili, gereksiz uzantıların olmaması, yüksek değerli anahtarlar için dosyaları pano yerine indirmeyi tercih edin, cüzdana yapıştırdıktan sonra panoyu silin, büyük hazineler için terminal CLI'yi veya hava boşluklu bir makineyi düşünün."
+        },
+        "workflow": {
+          "n": "09 — İş Akışı",
+          "title": "Güvenli çalıştırma prosedürü",
+          "steps": [
+            "Vanitas.fun'u yükleyin (veya doğrulanmış bir yerel yapıdan çalıştırın).",
+            "İsteğe bağlı: Ağı açın, çevrimdışı olun, denetimi çalıştırın.",
+            "Önce kısa bir desen seçin; Kuruluma güvendikten sonra uzunluğu artırın.",
+            "Bulduğunda: dışa aktarın, çevrimdışı olarak saklayın, anahtarların ekran görüntüsünü asla sohbet uygulamalarına aktarmayın.",
+            "Söz konusu zincir için doğru cüzdana aktarın; toz testi aktarımı gönderin.",
+            "Uzun vadeli holdingler için fonları bir donanım cüzdanına taşıyın; Vanitas bir kasa değil, demirhanedir."
+          ]
+        },
+        "verify": {
+          "n": "10 — Doğrula",
+          "title": "Herkesin yapabileceği üç kontrol",
+          "glyph": "Şekil F — Denetim",
+          "network": {
+            "n": "01 — Ağ",
+            "title": "Ağ monitörü",
+            "steps": [
+              "Geliştirici Araçları → Ağ → temizle",
+              "Oluşturmaya başla",
+              "Madencilik sırasında **sıfır** isteği onaylayın"
+            ]
+          },
+          "offline": {
+            "n": "02 — Çevrimdışı",
+            "title": "Uçak modu",
+            "steps": [
+              "Uygulamayı yükle",
+              "Bağlantıyı kes",
+              "Oluştur – başarı, canlı sunucu bağımlılığının olmadığını kanıtlar"
+            ]
+          },
+          "audit": {
+            "n": "03 — Denetim",
+            "title": "Canlı denetim + kaynak",
+            "steps": [
+              "[/audit](/audit) komutunu çalıştırın",
+              "Çalışan karmalarını yayınlanan JSON ile karşılaştırın",
+              "[GitHub](https://github.com/bytebrox/vanitas) çalışanlarını ve SECURITY.md'yi inceleyin"
+            ]
+          }
+        },
+        "disclose": {
+          "n": "11 — Açıklamak",
+          "title": "Raporlama sorunları",
+          "glyph": "Şekil G — Rapor",
+          "intro": "Güvenlik açıkları nedeniyle herkese açık GitHub sorunlarını **açmayın**. [bytebrox/vanitas](https://github.com/bytebrox/vanitas/security/advisories/new) üzerindeki özel GitHub Güvenlik Önerilerini tercih edin. Çoğaltma adımlarını, etkiyi ve varsa önerilen düzeltmeyi ekleyin.",
+          "faq": {
+            "steal": {
+              "q": "Anahtarlarımı çalabilir misin?",
+              "a": "Bunları alan sunucu tarafı yolumuz yok. Kötü amaçlı bir yapı veya uzantı, karmaları doğrulayabilir ve yüksek değer için temiz bir ortam kullanabilir."
+            },
+            "host": {
+              "q": "Peki ya sunucu saldırıya uğrarsa?",
+              "a": "Saldırganlar değiştirilmiş JavaScript sunabilir. Bu nedenle açık kaynak, çalışan karma kontrolleri ve iyi olduğu bilinen bir işlemin tercih edilmesi önemlidir. Ana bilgisayar, temiz bir yapıdan bitmiş anahtarlarınızı hâlâ asla almaz."
+            },
+            "weaker": {
+              "q": "Özel adresler daha mı az güvenli?",
+              "a": "Hayır. Özel anahtar entropisi değişmez. Yalnızca genel adres görünüm açısından filtrelenir."
+            },
+            "cold": {
+              "q": "Günlük bir tarayıcıda soğuk depolama anahtarları oluşturmalı mıyım?",
+              "a": "Önemli miktarda fon için: temiz profil veya çevrimdışı/CLI, küçük test aktarımı, ardından donanım cüzdanı saklama."
+            }
+          }
+        }
+      }
+    }
+  },
+  "meta": {
+    "home": {
+      "title": "Solana, EVM, Bitcoin ve Tron Vanity Forge",
+      "description": "Solana, EVM, Bitcoin ve Tron için istemci tarafı özel adresler oluşturuldu. Cüzdanlar, darphaneler ve sözleşmeler; anahtarlar bu tarayıcıdan asla ayrılmaz.",
+      "ogAlt": "Vanitas çok zincirli makyaj demirhanesi"
+    },
+    "sol": {
+      "title": "Solana Vanity Adres Oluşturucu",
+      "description": "Tamamen tarayıcınızda gösterişli Solana cüzdanı ve token nane adresleri oluşturun. Açık kaynak, istemci tarafı, bu cihazdan hiçbir anahtar çıkmıyor.",
+      "ogAlt": "Vanitas - Solana makyaj demirhanesi",
+      "ogTitle": "Solana Vanity Adres Oluşturucu | Vanitalar",
+      "ogDescription": "Forge gösterişli Solana cüzdanı ve nane istemci tarafı adresleri. Bu cihazdan hiçbir anahtar çıkmıyor.",
+      "twitterDescription": "Forge gösterişli Solana cüzdanı ve nane istemci tarafı adresleri."
+    },
+    "evm": {
+      "title": "EVM Özel Adres Oluşturucu",
+      "description": "Forge vanity EVM cüzdanı ve sözleşmesi müşteri tarafına yöneliktir. Ethereum, Base, Arbitrum, Optimism, BSC ve daha fazlası için tek anahtar.",
+      "ogTitle": "EVM Özel Adres Oluşturucu | Vanitalar",
+      "ogDescription": "Forge vanity 0x cüzdan ve sözleşme istemci tarafı adresleri. Ethereum, BNB, Base, Arbitrum ve her EVM zincirinde aynı anahtar.",
+      "twitterDescription": "Forge vanity 0x cüzdan ve sözleşme istemci tarafı adresleri. Her EVM zincirinde aynı anahtar.",
+      "ogAlt": "Vanitas — EVM özel cüzdan ve sözleşme oluşturucu"
+    },
+    "btc": {
+      "title": "Bitcoin Özel Adres Oluşturucu",
+      "description": "Tamamen tarayıcınızda gösterişli Bitcoin adresleri (eski, SegWit, Taproot) oluşturun."
+    },
+    "tron": {
+      "title": "Tron Vanity Adres Oluşturucu",
+      "description": "Forge vanity Tron Base58, TronLink ve diğer cüzdanlar için istemci tarafına yöneliktir."
+    },
+    "aptos": {
+      "title": "Aptos Özel Adres Oluşturucu",
+      "description": "Vanity Aptos Ed25519 adreslerini tamamen tarayıcınızda oluşturun."
+    },
+    "sui": {
+      "title": "Sui Vanity Adres Oluşturucu",
+      "description": "Vanity Sui Ed25519 adreslerini tamamen tarayıcınızda oluşturun."
+    },
+    "ton": {
+      "title": "TON Vanity Adres Oluşturucu",
+      "description": "Forge vanity TON Wallet v4R2 adresleri (UQ / EQ) istemci tarafı."
+    },
+    "cardano": {
+      "title": "Cardano Vanity Adres Oluşturucu",
+      "description": "Tamamen tarayıcınızda gösterişli Cardano kurumsal addr1 adreslerini oluşturun."
+    },
+    "xrp": {
+      "title": "XRP Özel Adres Oluşturucu",
+      "description": "Vanity XRPL classic r… adreslerini tamamen tarayıcınızda oluşturun."
+    },
+    "faq": {
+      "title": "FAQ",
+      "description": "Her Vanitas dövmesinde cevaplar: kalıplar, modlar, güvenlik, kanıt ve CLI.",
+      "ogTitle": "SSS | Vanitalar",
+      "ogDescription": "Konuya göre yanıtlar — her zincir, güvenlik, kanıt, CLI ve kullanım.",
+      "ogAlt": "Vanitalar SSS"
+    },
+    "how-it-works": {
+      "title": "Nasıl Çalışır?",
+      "description": "Vanitas, Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano ve XRP'de özel adresleri nasıl oluşturuyor: çalışanlar, modlar (mint, CREATE, CREATE2), bulma kanıtı, CLI ve istemci tarafı güvenliğinin nasıl doğrulanacağı.",
+      "ogTitle": "Nasıl Çalışır | Vanitalar",
+      "ogDescription": "Her demirhanenin, çalışan mimarisinin, konuşlandırma modlarının ve doğrulamanın tam turu.",
+      "ogAlt": "Vanitas — gösterişli adres oluşturma nasıl çalışır?"
+    },
+    "security": {
+      "title": "Güvenlik",
+      "description": "Vanitas güven modeli — anahtarlar tarayıcınızda kalır. Tehdit sınırları ve doğrulama.",
+      "ogTitle": "Güvenlik | Vanitalar",
+      "ogDescription": "Mimari, tehditler, kripto, başlıklar ve doğrulama; anahtarlar tarayıcınızda kalır.",
+      "ogAlt": "Vanitas güvenliği — anahtarlar tarayıcınızda kalır"
+    },
+    "lab": {
+      "title": "Desen Laboratuvarı",
+      "description": "Madencilik yapmadan önce her Vanitas demirhanesi için zorluk matrisi, nadirlik tahminleri ve toplu model kuyruğu.",
+      "ogTitle": "Desen Laboratuvarı | Vanitalar",
+      "ogDescription": "Zorluk matrisi, nadirlik tahminleri ve toplu model kuyruğu — madencilik yapmadan önce."
+    },
+    "lookalike": {
+      "title": "Benzerlik Kontrolü",
+      "description": "Gösteriş kalıplarını işlemeden önce yasak Base58 gliflerini, Tron harf tuzaklarını ve alfabe uyumsuzluklarını yakalayın.",
+      "ogTitle": "Benzerlik Kontrolü | Vanitalar",
+      "ogDescription": "Öğütmeden önce 0/O, I/l, Tron harfi ve alfabe uyumsuzluklarını yakalayın."
+    },
+    "create2": {
+      "title": "CREATE2 Yardımcısı",
+      "description": "initCodeHash'a karma dağıtım bayt kodu, konuşlandırıcı + salt'tan CREATE2 adreslerini önizleyin ve EVM forge'a derin bağlantı — tamamı istemci tarafında.",
+      "ogTitle": "CREATE2 Yardımcısı | Vanitalar",
+      "ogDescription": "Bayt kodundan initCodeHash, tuz önizlemesi, öğütmeden önce adres kontrolü."
+    },
+    "brand": {
+      "title": "Marka",
+      "description": "Vanitas için yerleştirilebilir prova widget'ı ve hafif markalama kiti — marka işareti, renkler, iframe parçacıkları. Özel anahtar yok.",
+      "ogTitle": "Marka | Vanitalar",
+      "ogDescription": "Yerleştirilebilir prova widget'ı ve hafif markalama kiti."
+    },
+    "proof": {
+      "title": "Bulmanın kanıtı",
+      "description": "Özel anahtarlar olmadan istemci tarafıyla özel bir adresin eşleştiğini doğrulayın."
+    },
+    "audit": {
+      "title": "Canlı Denetim",
+      "description": "Vanitas'ta sekiz yerel kontrol çalıştırın: Web Kripto, RNG kalitesi, üretim sırasında sıfır ağ, CSP, çalışan izolasyonu ve yapı bütünlüğü.",
+      "ogTitle": "Canlı Denetim | Vanitalar",
+      "ogDescription": "Tarayıcınızda sekiz otomatik kontrol. Hiçbir şey sahte değil, hiçbir şey gönderilmiyor.",
+      "ogAlt": "Vanitas canlı güvenlik denetimi"
+    },
+    "token": {
+      "title": "Jeton",
+      "description": "Vanitas'ın proje jetonu yok."
+    },
+    "embed-proof": {
+      "title": "Kanıt yerleştirme",
+      "description": "Bulma widget'ının yerleştirilebilir kanıtı."
+    },
+    "siteName": "Vanitas",
+    "notFound": {
+      "title": "404 — Bulunamadı",
+      "description": "Bu sayfa Vanitas'ta mevcut değil."
+    },
+    "eth": {
+      "title": "ETH Özel Adres Oluşturucu",
+      "description": "EVM makyaj demirhanesine yönlendirir."
+    }
+  },
+  "notFound": {
+    "title": "Sayfa bulunamadı",
+    "body": "İstediğiniz sayfa Vanitas'ta değil. Taşınmış olabilir ya da hiç var olmamış olabilir.",
+    "home": "Ana sayfa",
+    "sol": "Solana demirhanesi",
+    "evm": "EVM dövme",
+    "metaTitle": "404 — Bulunamadı",
+    "metaDescription": "Bu sayfa Vanitas'ta mevcut değil.",
+    "figAbsent": "Şekil — Yok",
+    "errorLabel": "Hata 404",
+    "heading": "Bu adres hiç forge edilmedi",
+    "links": {
+      "sol": "SOL dövme",
+      "evm": "EVM dövme",
+      "btc": "BTC dövme",
+      "tron": "TRON demirhanesi",
+      "how": "Nasıl çalışır?",
+      "faq": "FAQ"
+    },
+    "homeForge": "Veya [ana forge](/) sayfasına dönün."
+  }
+}

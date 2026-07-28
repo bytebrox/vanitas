@@ -1,5 +1,7 @@
 'use client';
 
+import { useMemo } from 'react';
+import { useTranslations } from 'next-intl';
 import type { BtcMode } from '@/types/btc';
 
 interface BtcModeToggleProps {
@@ -8,26 +10,45 @@ interface BtcModeToggleProps {
   disabled?: boolean;
 }
 
-const MODES: { id: BtcMode; label: string; blurb: string }[] = [
-  { id: 'legacy', label: 'Legacy', blurb: 'Classic 1… P2PKH (Base58).' },
-  { id: 'segwit', label: 'SegWit', blurb: 'Native bc1q… P2WPKH (Bech32).' },
-  { id: 'taproot', label: 'Taproot', blurb: 'Native bc1p… P2TR (Bech32m).' },
-];
+const MODE_IDS: BtcMode[] = ['legacy', 'segwit', 'taproot'];
 
 export function BtcModeToggle({ mode, onChange, disabled = false }: BtcModeToggleProps) {
-  const current = MODES.find((m) => m.id === mode) || MODES[0];
+  const tModes = useTranslations('forge.modes');
+  const tBtc = useTranslations('forge.btc.mode');
+
+  const modes = useMemo(
+    () =>
+      MODE_IDS.map((id) => ({
+        id,
+        label:
+          id === 'legacy'
+            ? tModes('legacy')
+            : id === 'segwit'
+              ? tModes('segwit')
+              : tModes('taproot'),
+        blurb:
+          id === 'legacy'
+            ? tBtc('legacyBlurb')
+            : id === 'segwit'
+              ? tBtc('segwitBlurb')
+              : tBtc('taprootBlurb'),
+      })),
+    [tModes, tBtc]
+  );
+
+  const current = modes.find((m) => m.id === mode) || modes[0];
 
   return (
     <div className="border-y border-ink/15 py-5">
       <div className="flex flex-col gap-1 mb-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-        <p className="text-micro uppercase tracking-[0.18em] text-muted">Address type</p>
+        <p className="text-micro uppercase tracking-[0.18em] text-muted">{tBtc('addressType')}</p>
         <p className="text-micro text-muted normal-case tracking-normal">{current.blurb}</p>
       </div>
 
       <div
         className={`grid grid-cols-3 gap-2 ${disabled ? 'opacity-50 pointer-events-none' : ''}`}
       >
-        {MODES.map((m) => (
+        {modes.map((m) => (
           <button
             key={m.id}
             type="button"

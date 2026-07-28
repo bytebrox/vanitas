@@ -5,6 +5,7 @@
  */
 
 import { useMemo } from 'react';
+import { useTranslations } from 'next-intl';
 import {
   estimateEthDifficulty,
   formatEthDifficulty,
@@ -22,6 +23,7 @@ export function EthDifficultyDisplay({
   suffix,
   currentRate,
 }: EthDifficultyDisplayProps) {
+  const t = useTranslations('common');
   const estimatedRate = useMemo(() => {
     if (currentRate > 0) return currentRate;
     const cores = typeof navigator !== 'undefined' ? navigator.hardwareConcurrency || 4 : 4;
@@ -48,7 +50,7 @@ export function EthDifficultyDisplay({
     <div className="space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4">
         <div>
-          <p className="text-micro uppercase tracking-[0.18em] text-muted mb-2">Pattern</p>
+          <p className="text-micro uppercase tracking-[0.18em] text-muted mb-2">{t('pattern')}</p>
           <p className="font-mono text-lg sm:text-xl tracking-wide">
             <span className="text-ink/35">0x</span>
             <span className={prefix ? 'text-accent' : 'text-ink/25'}>{prefix || '····'}</span>
@@ -57,11 +59,11 @@ export function EthDifficultyDisplay({
           </p>
         </div>
         <div>
-          <p className="text-micro uppercase tracking-[0.18em] text-muted mb-2">Attempts</p>
+          <p className="text-micro uppercase tracking-[0.18em] text-muted mb-2">{t('attempts')}</p>
           <p className="font-mono text-lg sm:text-xl">{hasPattern ? difficultyLabel : '—'}</p>
         </div>
         <div>
-          <p className="text-micro uppercase tracking-[0.18em] text-muted mb-2">Est. time</p>
+          <p className="text-micro uppercase tracking-[0.18em] text-muted mb-2">{t('estTime')}</p>
           <p className="font-mono text-lg sm:text-xl">
             {hasPattern ? timeEstimate : '—'}
             <span className="text-micro text-muted ml-2 normal-case tracking-normal block sm:inline mt-1 sm:mt-0">

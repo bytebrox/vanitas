@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useState, type ReactNode } from 'react';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 import {
   SolanaLogo,
   EthereumLogo,
@@ -12,90 +14,27 @@ import {
   CardanoLogo,
   XrpLogo,
 } from './ChainLogos';
+import { useTheme } from './ThemeProvider';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 const GITHUB_URL = 'https://github.com/bytebrox/vanitas';
 const X_URL = 'https://x.com/bytebrox';
 
-const chains: { href: string; label: string; short: string; logo: ReactNode }[] = [
-  {
-    href: '/sol',
-    label: 'Solana',
-    short: 'SOL',
-    logo: <SolanaLogo className="w-4 h-4" />,
-  },
-  {
-    href: '/evm',
-    label: 'EVM',
-    short: 'EVM',
-    logo: <EthereumLogo className="w-4 h-4" />,
-  },
-  {
-    href: '/btc',
-    label: 'Bitcoin',
-    short: 'BTC',
-    logo: <BitcoinLogo className="w-4 h-4" />,
-  },
-  {
-    href: '/tron',
-    label: 'Tron',
-    short: 'TRON',
-    logo: <TronLogo className="w-4 h-4" />,
-  },
-  {
-    href: '/aptos',
-    label: 'Aptos',
-    short: 'APTOS',
-    logo: <AptosLogo className="w-4 h-4" />,
-  },
-  {
-    href: '/sui',
-    label: 'Sui',
-    short: 'SUI',
-    logo: <SuiLogo className="w-4 h-4" />,
-  },
-  {
-    href: '/ton',
-    label: 'TON',
-    short: 'TON',
-    logo: <TonLogo className="w-4 h-4" />,
-  },
-  {
-    href: '/cardano',
-    label: 'Cardano',
-    short: 'ADA',
-    logo: <CardanoLogo className="w-4 h-4" />,
-  },
-  {
-    href: '/xrp',
-    label: 'XRP',
-    short: 'XRP',
-    logo: <XrpLogo className="w-4 h-4" />,
-  },
-];
-
-const docsLinks = [
-  { href: '/how-it-works', label: 'How', hint: 'How it works' },
-  { href: '/faq', label: 'FAQ', hint: 'Questions' },
-  { href: '/security', label: 'Security', hint: 'Trust model' },
-];
-
-const toolsLinks = [
-  { href: '/audit', label: 'Audit', hint: 'Live checks' },
-  { href: '/proof', label: 'Proof', hint: 'Verify a find' },
-  { href: '/lab', label: 'Lab', hint: 'Pattern lab' },
-  { href: '/brand', label: 'Brand', hint: 'Embed + kit' },
+const chainDefs: { href: '/sol' | '/evm' | '/btc' | '/tron' | '/aptos' | '/sui' | '/ton' | '/cardano' | '/xrp'; label: string; short: string; logo: ReactNode }[] = [
+  { href: '/sol', label: 'Solana', short: 'SOL', logo: <SolanaLogo className="w-4 h-4" /> },
+  { href: '/evm', label: 'EVM', short: 'EVM', logo: <EthereumLogo className="w-4 h-4" /> },
+  { href: '/btc', label: 'Bitcoin', short: 'BTC', logo: <BitcoinLogo className="w-4 h-4" /> },
+  { href: '/tron', label: 'Tron', short: 'TRON', logo: <TronLogo className="w-4 h-4" /> },
+  { href: '/aptos', label: 'Aptos', short: 'APTOS', logo: <AptosLogo className="w-4 h-4" /> },
+  { href: '/sui', label: 'Sui', short: 'SUI', logo: <SuiLogo className="w-4 h-4" /> },
+  { href: '/ton', label: 'TON', short: 'TON', logo: <TonLogo className="w-4 h-4" /> },
+  { href: '/cardano', label: 'Cardano', short: 'ADA', logo: <CardanoLogo className="w-4 h-4" /> },
+  { href: '/xrp', label: 'XRP', short: 'XRP', logo: <XrpLogo className="w-4 h-4" /> },
 ];
 
 function GitHubIcon({ className = '' }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 16 16"
-      width="18"
-      height="18"
-      fill="currentColor"
-      aria-hidden="true"
-      className={className}
-    >
+    <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor" aria-hidden="true" className={className}>
       <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
     </svg>
   );
@@ -103,16 +42,35 @@ function GitHubIcon({ className = '' }: { className?: string }) {
 
 function XIcon({ className = '' }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      width="16"
-      height="16"
-      fill="currentColor"
-      aria-hidden="true"
-      className={className}
-    >
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true" className={className}>
       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
     </svg>
+  );
+}
+
+function ThemeToggleButton({ className = '' }: { className?: string }) {
+  const { theme, toggleTheme } = useTheme();
+  const t = useTranslations('nav');
+  const isDark = theme === 'dark';
+  return (
+    <button
+      type="button"
+      onClick={toggleTheme}
+      className={className}
+      aria-label={isDark ? t('themeToLight') : t('themeToDark')}
+      title={isDark ? t('themeLight') : t('themeDark')}
+    >
+      {isDark ? (
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden>
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+        </svg>
+      ) : (
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden>
+          <path d="M21 14.3A9 9 0 1 1 9.7 3a7 7 0 1 0 11.3 11.3Z" />
+        </svg>
+      )}
+    </button>
   );
 }
 
@@ -146,9 +104,9 @@ function DesktopDropdown({
       <div className="invisible opacity-0 pointer-events-none group-hover:visible group-hover:opacity-100 group-hover:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100 group-focus-within:pointer-events-auto absolute left-1/2 -translate-x-1/2 top-full pt-2 transition-opacity duration-150 z-50">
         <div className="min-w-[13.5rem] border border-ink/15 bg-paper shadow-[0_8px_24px_rgba(0,0,0,0.08)] py-1">
           {items.map((item) => (
-            <a
+            <Link
               key={item.href}
-              href={item.href}
+              href={item.href as '/'}
               className="flex items-center justify-between gap-6 px-3.5 py-2.5 text-micro uppercase tracking-[0.14em] text-ink/75 hover:text-ink hover:bg-ink/[0.04] transition-colors"
             >
               <span className="shrink-0">{item.label}</span>
@@ -157,7 +115,7 @@ function DesktopDropdown({
                   {item.hint}
                 </span>
               ) : null}
-            </a>
+            </Link>
           ))}
         </div>
       </div>
@@ -165,16 +123,29 @@ function DesktopDropdown({
   );
 }
 
-/**
- * Fixed top chrome — stays visible while scrolling.
- * Soft over the hero; solid paper once you leave it.
- */
 export function Navbar() {
+  const t = useTranslations('nav');
   const [open, setOpen] = useState(false);
   const [chainsOpen, setChainsOpen] = useState(false);
   const [docsOpen, setDocsOpen] = useState(false);
   const [toolsOpen, setToolsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+
+  const docsLinks = [
+    { href: '/how-it-works', label: t('docsHow'), hint: t('docsHowHint') },
+    { href: '/faq', label: t('docsFaq'), hint: t('docsFaqHint') },
+    { href: '/security', label: t('docsSecurity'), hint: t('docsSecurityHint') },
+  ];
+
+  const toolsLinks = [
+    { href: '/audit', label: t('toolsAudit'), hint: t('toolsAuditHint') },
+    { href: '/proof', label: t('toolsProof'), hint: t('toolsProofHint') },
+    { href: '/lab', label: t('toolsLab'), hint: t('toolsLabHint') },
+    { href: '/lookalike', label: t('toolsLookalike'), hint: t('toolsLookalikeHint') },
+    { href: '/create2', label: t('toolsCreate2'), hint: t('toolsCreate2Hint') },
+    { href: '/brand', label: t('toolsBrand'), hint: t('toolsBrandHint') },
+  ];
 
   useEffect(() => {
     const onScroll = () => {
@@ -208,6 +179,8 @@ export function Navbar() {
     setOpen(false);
   };
 
+  const softBtn = scrolled || open ? '' : 'md:bg-paper/50 md:backdrop-blur-sm';
+
   return (
     <div
       className={`pointer-events-none fixed inset-x-0 top-0 z-50 px-4 sm:px-6 lg:px-8 pt-[max(0.75rem,env(safe-area-inset-top))] sm:pt-5 pb-3 transition-[background-color,backdrop-filter,border-color] duration-300 ${
@@ -217,13 +190,13 @@ export function Navbar() {
       }`}
     >
       <div className="relative flex items-center justify-between gap-3 min-h-[2.75rem]">
-        <a
+        <Link
           href="/"
           className="pointer-events-auto font-display font-semibold normal-case text-ink leading-none tracking-tight drop-shadow-sm hover:text-accent transition-colors"
           style={{ fontSize: 'clamp(1.25rem, 5vw, 2.35rem)' }}
         >
           Vanitas
-        </a>
+        </Link>
 
         <nav className="pointer-events-auto absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block">
           <div
@@ -231,9 +204,9 @@ export function Navbar() {
               scrolled ? 'bg-transparent' : 'bg-paper/50 backdrop-blur-sm'
             }`}
           >
-            <a href="/" className="px-1.5 py-0.5 hover:text-ink transition-colors whitespace-nowrap">
-              Home
-            </a>
+            <Link href="/" className="px-1.5 py-0.5 hover:text-ink transition-colors whitespace-nowrap">
+              {t('home')}
+            </Link>
             <NavDot />
 
             <div className="relative group">
@@ -242,15 +215,15 @@ export function Navbar() {
                 className="px-1.5 py-0.5 hover:text-ink transition-colors whitespace-nowrap inline-flex items-center gap-1"
                 aria-haspopup="true"
               >
-                CHAINS
+                {t('chains')}
                 <span className="text-[0.65em] text-ink/40 group-hover:text-ink/70" aria-hidden>
                   ▾
                 </span>
               </button>
               <div className="invisible opacity-0 pointer-events-none group-hover:visible group-hover:opacity-100 group-hover:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100 group-focus-within:pointer-events-auto absolute left-1/2 -translate-x-1/2 top-full pt-2 transition-opacity duration-150 z-50">
                 <div className="min-w-[12rem] border border-ink/15 bg-paper shadow-[0_8px_24px_rgba(0,0,0,0.08)] py-1">
-                  {chains.map((c) => (
-                    <a
+                  {chainDefs.map((c) => (
+                    <Link
                       key={c.href}
                       href={c.href}
                       className="flex items-center justify-between gap-6 px-3.5 py-2.5 text-micro uppercase tracking-[0.14em] text-ink/75 hover:text-ink hover:bg-ink/[0.04] transition-colors"
@@ -261,30 +234,30 @@ export function Navbar() {
                         </span>
                         <span>{c.label}</span>
                       </span>
-                      <span className="text-ink/35 normal-case tracking-normal text-[0.7rem]">
-                        {c.short}
-                      </span>
-                    </a>
+                      <span className="text-ink/35 normal-case tracking-normal text-[0.7rem]">{c.short}</span>
+                    </Link>
                   ))}
                 </div>
               </div>
             </div>
 
             <NavDot />
-            <DesktopDropdown label="DOCS" items={docsLinks} />
+            <DesktopDropdown label={t('docs')} items={docsLinks} />
             <NavDot />
-            <DesktopDropdown label="TOOLS" items={toolsLinks} />
+            <DesktopDropdown label={t('tools')} items={toolsLinks} />
           </div>
         </nav>
 
-        <div className="pointer-events-auto flex items-center gap-1 sm:gap-2">
+        <div className="pointer-events-auto flex items-center gap-0.5 sm:gap-1">
+          <LanguageSwitcher className={softBtn} />
+          <ThemeToggleButton
+            className={`inline-flex items-center justify-center min-h-11 min-w-11 text-ink/70 hover:text-ink transition-colors ${softBtn}`}
+          />
           <a
             href={X_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className={`inline-flex items-center justify-center min-h-11 min-w-11 text-ink/70 hover:text-ink transition-colors ${
-              scrolled || open ? '' : 'md:bg-paper/50 md:backdrop-blur-sm'
-            }`}
+            className={`inline-flex items-center justify-center min-h-11 min-w-11 text-ink/70 hover:text-ink transition-colors ${softBtn}`}
             aria-label="Bytebrox on X"
             title="X"
           >
@@ -294,9 +267,7 @@ export function Navbar() {
             href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className={`inline-flex items-center justify-center min-h-11 min-w-11 text-ink/70 hover:text-ink transition-colors ${
-              scrolled || open ? '' : 'md:bg-paper/50 md:backdrop-blur-sm'
-            }`}
+            className={`inline-flex items-center justify-center min-h-11 min-w-11 text-ink/70 hover:text-ink transition-colors ${softBtn}`}
             aria-label="GitHub repository"
             title="GitHub"
           >
@@ -314,7 +285,7 @@ export function Navbar() {
             aria-expanded={open}
             aria-controls="mobile-nav"
           >
-            {open ? 'Close' : 'Menu'}
+            {open ? t('close') : t('menu')}
           </button>
         </div>
       </div>
@@ -326,16 +297,16 @@ export function Navbar() {
         >
           <ul className="flex flex-col divide-y divide-ink/10">
             <li>
-              <a
+              <Link
                 href="/"
                 className="flex items-center justify-between px-5 py-3.5 text-sm uppercase tracking-[0.16em] text-ink/85 hover:text-ink hover:bg-ink/[0.03] active:bg-ink/[0.05]"
                 onClick={closeMobile}
               >
-                <span>Home</span>
+                <span>{t('home')}</span>
                 <span className="text-muted" aria-hidden>
                   →
                 </span>
-              </a>
+              </Link>
             </li>
             <li>
               <button
@@ -346,16 +317,16 @@ export function Navbar() {
                   setChainsOpen((v) => !v);
                 }}
               >
-                <span>CHAINS</span>
+                <span>{t('chains')}</span>
                 <span className="text-muted" aria-hidden>
                   {chainsOpen ? '▴' : '▾'}
                 </span>
               </button>
               {chainsOpen && (
                 <ul className="border-t border-ink/10 bg-ink/[0.02]">
-                  {chains.map((c) => (
+                  {chainDefs.map((c) => (
                     <li key={c.href}>
-                      <a
+                      <Link
                         href={c.href}
                         className="flex items-center justify-between px-5 pl-8 py-3 text-sm uppercase tracking-[0.16em] text-ink/75 hover:text-ink hover:bg-ink/[0.03]"
                         onClick={closeMobile}
@@ -367,7 +338,7 @@ export function Navbar() {
                           <span>{c.label}</span>
                         </span>
                         <span className="text-muted text-micro tracking-[0.12em]">{c.short}</span>
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -382,7 +353,7 @@ export function Navbar() {
                   setDocsOpen((v) => !v);
                 }}
               >
-                <span>DOCS</span>
+                <span>{t('docs')}</span>
                 <span className="text-muted" aria-hidden>
                   {docsOpen ? '▴' : '▾'}
                 </span>
@@ -391,16 +362,14 @@ export function Navbar() {
                 <ul className="border-t border-ink/10 bg-ink/[0.02]">
                   {docsLinks.map((l) => (
                     <li key={l.href}>
-                      <a
-                        href={l.href}
+                      <Link
+                        href={l.href as '/'}
                         className="flex items-center justify-between px-5 pl-8 py-3 text-sm uppercase tracking-[0.16em] text-ink/75 hover:text-ink hover:bg-ink/[0.03]"
                         onClick={closeMobile}
                       >
                         <span>{l.label}</span>
-                        <span className="text-muted text-micro tracking-[0.12em] normal-case">
-                          {l.hint}
-                        </span>
-                      </a>
+                        <span className="text-muted text-micro tracking-[0.12em] normal-case">{l.hint}</span>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -415,7 +384,7 @@ export function Navbar() {
                   setToolsOpen((v) => !v);
                 }}
               >
-                <span>TOOLS</span>
+                <span>{t('tools')}</span>
                 <span className="text-muted" aria-hidden>
                   {toolsOpen ? '▴' : '▾'}
                 </span>
@@ -424,20 +393,36 @@ export function Navbar() {
                 <ul className="border-t border-ink/10 bg-ink/[0.02]">
                   {toolsLinks.map((l) => (
                     <li key={l.href}>
-                      <a
-                        href={l.href}
+                      <Link
+                        href={l.href as '/'}
                         className="flex items-center justify-between px-5 pl-8 py-3 text-sm uppercase tracking-[0.16em] text-ink/75 hover:text-ink hover:bg-ink/[0.03]"
                         onClick={closeMobile}
                       >
                         <span>{l.label}</span>
-                        <span className="text-muted text-micro tracking-[0.12em] normal-case">
-                          {l.hint}
-                        </span>
-                      </a>
+                        <span className="text-muted text-micro tracking-[0.12em] normal-case">{l.hint}</span>
+                      </Link>
                     </li>
                   ))}
                 </ul>
               )}
+            </li>
+            <li className="px-5 py-2">
+              <LanguageSwitcher />
+            </li>
+            <li>
+              <button
+                type="button"
+                className="flex w-full items-center justify-between px-5 py-3.5 text-sm uppercase tracking-[0.16em] text-ink/85 hover:text-ink hover:bg-ink/[0.03]"
+                onClick={() => {
+                  toggleTheme();
+                  closeMobile();
+                }}
+              >
+                <span>Theme</span>
+                <span className="text-muted normal-case tracking-normal text-micro">
+                  {theme === 'dark' ? t('themeMobileDarkToLight') : t('themeMobileLightToDark')}
+                </span>
+              </button>
             </li>
             <li>
               <a
@@ -448,8 +433,7 @@ export function Navbar() {
                 onClick={closeMobile}
               >
                 <span className="inline-flex items-center gap-2">
-                  <XIcon />
-                  X
+                  <XIcon />X
                 </span>
                 <span className="text-muted" aria-hidden>
                   ↗

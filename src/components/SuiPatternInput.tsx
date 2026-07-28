@@ -5,8 +5,10 @@
  */
 
 import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { validateSuiPrefix, validateSuiSuffix } from '@/lib/sui-validation';
 import { PatternTemplates, HEX_TEMPLATES } from './PatternTemplates';
+import { RichParagraph } from '@/lib/rich-text';
 
 interface SuiPatternInputProps {
   prefix: string;
@@ -23,6 +25,8 @@ export function SuiPatternInput({
   onSuffixChange,
   disabled = false,
 }: SuiPatternInputProps) {
+  const t = useTranslations('common');
+  const tForge = useTranslations('forge.pattern');
   const [prefixError, setPrefixError] = useState<string | null>(null);
   const [suffixError, setSuffixError] = useState<string | null>(null);
   const [strippedHint, setStrippedHint] = useState<string | null>(null);
@@ -53,15 +57,15 @@ export function SuiPatternInput({
   return (
     <div className="space-y-0 divide-y divide-ink/15 border-y border-ink/15">
       <div className="py-4">
-        <p className="text-micro leading-relaxed" style={{ color: '#B42318' }}>
-          Sui addresses are hex only — digits <span className="font-mono">0–9</span> and letters{' '}
-          <span className="font-mono">a–f</span>. Letters{' '}
-          <span className="font-mono font-bold">g–z</span> (and any other characters) cannot appear
-          in an address and are ignored when you type them.
-        </p>
+        <RichParagraph
+          text={tForge('ethHexNote')}
+          className="text-micro leading-relaxed"
+          codeClassName="font-mono"
+          boldClassName="font-mono font-bold text-ink"
+        />
         {strippedHint && (
           <p className="text-micro mt-2 font-mono" style={{ color: '#B42318' }}>
-            Ignored: {strippedHint}
+            {tForge('ethIgnored', { chars: strippedHint })}
           </p>
         )}
       </div>
@@ -75,7 +79,7 @@ export function SuiPatternInput({
       />
 
       <label className="grid grid-cols-1 sm:grid-cols-[7rem_1fr] gap-2 sm:gap-6 py-4 sm:py-5 items-start cursor-text">
-        <span className="text-micro uppercase tracking-[0.18em] text-muted sm:pt-3">Prefix</span>
+        <span className="text-micro uppercase tracking-[0.18em] text-muted sm:pt-3">{t('prefix')}</span>
         <div>
           <div className="flex items-baseline gap-1">
             <span className="font-mono text-xl text-ink/35 select-none">0x</span>
@@ -86,7 +90,7 @@ export function SuiPatternInput({
               onChange={(e) => {
                 onPrefixChange(sanitize(e.target.value));
               }}
-              placeholder="cafe"
+              placeholder={tForge('ethPrefixPh')}
               maxLength={8}
               spellCheck={false}
               autoCapitalize="off"
@@ -96,13 +100,13 @@ export function SuiPatternInput({
                 ${prefixError ? 'border-accent' : ''} ${disabled ? 'opacity-50' : ''}`}
             />
           </div>
-          <p className="text-micro text-muted mt-2">Starts after 0x</p>
+          <p className="text-micro text-muted mt-2">{tForge('ethAfter0x')}</p>
           {prefixError && <p className="text-micro text-accent mt-1">{prefixError}</p>}
         </div>
       </label>
 
       <label className="grid grid-cols-1 sm:grid-cols-[7rem_1fr] gap-2 sm:gap-6 py-4 sm:py-5 items-start cursor-text">
-        <span className="text-micro uppercase tracking-[0.18em] text-muted sm:pt-3">Suffix</span>
+        <span className="text-micro uppercase tracking-[0.18em] text-muted sm:pt-3">{t('suffix')}</span>
         <div>
           <input
             id="sui-suffix"
@@ -111,7 +115,7 @@ export function SuiPatternInput({
             onChange={(e) => {
               onSuffixChange(sanitize(e.target.value));
             }}
-            placeholder="dead"
+            placeholder={tForge('ethSuffixPh')}
             maxLength={8}
             spellCheck={false}
             autoCapitalize="off"
@@ -120,15 +124,12 @@ export function SuiPatternInput({
               placeholder:text-ink/20 focus:outline-none focus:border-accent
               ${suffixError ? 'border-accent' : ''} ${disabled ? 'opacity-50' : ''}`}
           />
-          <p className="text-micro text-muted mt-2">Ends the address</p>
+          <p className="text-micro text-muted mt-2">{t('endsAddress')}</p>
           {suffixError && <p className="text-micro text-accent mt-1">{suffixError}</p>}
         </div>
       </label>
 
-      <p className="py-4 text-micro text-muted">
-        Matching is case-insensitive. Longer patterns take exponentially longer (16 possibilities per
-        character).
-      </p>
+      <RichParagraph text={tForge('ethCaseNote')} className="py-4 text-micro text-muted" />
     </div>
   );
 }

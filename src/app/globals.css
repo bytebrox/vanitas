@@ -6,6 +6,28 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --paper: 245 240 232;
+    --beige: 232 223 208;
+    --surface: 255 254 251;
+    --ink: 44 42 39;
+    --accent: 139 115 85;
+    --muted: 107 101 96;
+    --border: 200 194 184;
+    --paper-hex: #f5f0e8;
+  }
+
+  html.dark {
+    --paper: 28 26 24;
+    --beige: 42 39 36;
+    --surface: 36 34 32;
+    --ink: 232 226 218;
+    --accent: 168 144 112;
+    --muted: 154 148 140;
+    --border: 74 69 64;
+    --paper-hex: #1c1a18;
+  }
+
   html {
     @apply antialiased;
     font-feature-settings: 'kern' 1, 'liga' 1;
@@ -13,11 +35,15 @@
 
   body {
     @apply bg-paper text-ink font-sans;
-    background-color: #F5F0E8;
+    background-color: rgb(var(--paper));
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
     background-attachment: fixed;
     -webkit-tap-highlight-color: transparent;
     text-size-adjust: 100%;
+  }
+
+  html.dark body {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.07'/%3E%3C/svg%3E");
   }
 
   h1 {
@@ -136,17 +162,21 @@
   /* Landing forge choice boxes — soft radius + paper grain */
   .landing-forge-box {
     @apply relative overflow-hidden rounded-xl border border-ink/20 transition-colors;
-    background-color: rgba(245, 240, 232, 0.9);
+    background-color: rgb(var(--paper) / 0.9);
     backdrop-filter: blur(8px);
     background-image:
       url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E"),
-      linear-gradient(155deg, rgba(255, 252, 247, 0.55) 0%, rgba(245, 240, 232, 0.2) 48%, rgba(232, 224, 212, 0.45) 100%);
+      linear-gradient(155deg, rgb(var(--surface) / 0.55) 0%, rgb(var(--paper) / 0.2) 48%, rgb(var(--beige) / 0.45) 100%);
     background-blend-mode: multiply, normal;
+  }
+
+  html.dark .landing-forge-box {
+    background-blend-mode: soft-light, normal;
   }
 
   .landing-forge-box:hover {
     @apply border-ink/45;
-    background-color: rgba(245, 240, 232, 0.97);
+    background-color: rgb(var(--paper) / 0.97);
   }
 
   .stat {
@@ -226,8 +256,8 @@
     background: linear-gradient(
       to bottom,
       transparent 0%,
-      rgba(44, 42, 39, 0.22) 8%,
-      rgba(44, 42, 39, 0.22) 100%
+      rgb(var(--ink) / 0.22) 8%,
+      rgb(var(--ink) / 0.22) 100%
     );
   }
 
@@ -237,10 +267,10 @@
     font-size: 0.6rem;
     letter-spacing: 0.26em;
     text-transform: uppercase;
-    color: rgba(44, 42, 39, 0.34);
+    color: rgb(var(--ink) / 0.34);
     white-space: nowrap;
     line-height: 1;
-    background: #F5F0E8;
+    background: rgb(var(--paper));
     padding-block: 0.5rem;
   }
 
@@ -279,6 +309,13 @@
     mix-blend-mode: multiply;
   }
 
+  /* Dark ink-on-cream plates → invert so linework reads on dark paper */
+  html.dark .side-plate__img {
+    filter: invert(1) hue-rotate(180deg) contrast(1.08) brightness(1.05) saturate(0.75);
+    mix-blend-mode: soft-light;
+    opacity: 0.72;
+  }
+
   .side-plate__grain {
     position: absolute;
     inset: 0;
@@ -286,6 +323,11 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     opacity: 0.08;
     mix-blend-mode: soft-light;
+  }
+
+  html.dark .side-plate__grain {
+    opacity: 0.12;
+    mix-blend-mode: overlay;
   }
 
   /* Docs section ASCII glyphs — multiply + soft edge fade into paper */
@@ -320,6 +362,12 @@
     opacity: 0.62;
   }
 
+  html.dark .doc-glyph__img {
+    filter: invert(1) hue-rotate(180deg) contrast(1.1) brightness(1.08) saturate(0.7);
+    mix-blend-mode: soft-light;
+    opacity: 0.7;
+  }
+
   .doc-glyph__grain {
     position: absolute;
     inset: 0;
@@ -334,7 +382,7 @@
     font-size: 0.6rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(44, 42, 39, 0.38);
+    color: rgb(var(--ink) / 0.4);
     text-align: center;
   }
 
@@ -416,6 +464,12 @@
     opacity: 0.22;
   }
 
+  html.dark .footer-stone__img {
+    filter: invert(1) hue-rotate(180deg) contrast(1.05) brightness(1.1) saturate(0.65);
+    mix-blend-mode: soft-light;
+    opacity: 0.35;
+  }
+
   .footer-stone__grain {
     position: absolute;
     inset: 0;
@@ -430,9 +484,9 @@
     inset: 0;
     background: linear-gradient(
       to bottom,
-      rgba(245, 240, 232, 0.55) 0%,
-      rgba(245, 240, 232, 0.28) 45%,
-      rgba(245, 240, 232, 0.45) 100%
+      rgb(var(--paper) / 0.55) 0%,
+      rgb(var(--paper) / 0.28) 45%,
+      rgb(var(--paper) / 0.45) 100%
     );
   }
 
@@ -440,5 +494,50 @@
     .footer-stone__img {
       opacity: 0.26;
     }
+
+    html.dark .footer-stone__img {
+      opacity: 0.4;
+    }
+  }
+
+  /* Wide ASCII heroes (PageIntro / landing) */
+  .ascii-hero {
+    filter: none;
+  }
+
+  html.dark .ascii-hero {
+    filter: invert(1) hue-rotate(180deg) contrast(1.06) brightness(1.02) saturate(0.8);
+    opacity: 0.88;
+  }
+
+  /* Hero paper fades — CSS vars, no JS delay / light flash */
+  .hero-fade-bottom {
+    background: linear-gradient(
+      to bottom,
+      rgb(var(--paper) / 0) 0%,
+      rgb(var(--paper) / 0.2) 28%,
+      rgb(var(--paper) / 0.6) 62%,
+      rgb(var(--paper) / 1) 100%
+    );
+  }
+
+  .hero-fade-top {
+    background: linear-gradient(
+      to bottom,
+      rgb(var(--paper) / 0.33) 0%,
+      rgb(var(--paper) / 0.13) 28%,
+      transparent 55%
+    );
+  }
+
+  .hero-fade-landing {
+    background: linear-gradient(
+      to bottom,
+      rgb(var(--paper) / 0.9) 0%,
+      rgb(var(--paper) / 0.6) 22%,
+      rgb(var(--paper) / 0.53) 55%,
+      rgb(var(--paper) / 0.95) 82%,
+      rgb(var(--paper) / 1) 100%
+    );
   }
 }

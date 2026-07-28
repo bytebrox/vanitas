@@ -1,0 +1,1641 @@
+{
+  "common": {
+    "copy": "Sao chép",
+    "copied": "Đã sao chép",
+    "hide": "Ẩn",
+    "reveal": "Tiết lộ",
+    "downloadTxt": "Tải xuống txt",
+    "downloadJson": "Tải xuống json",
+    "forge": "Forge",
+    "stop": "Dừng",
+    "reset": "Cài lại",
+    "loading": "Đang tải…",
+    "scrollDown": "Cuộn xuống",
+    "cores": "lõi",
+    "of": "của {max}",
+    "fewerCores": "Ít lõi hơn",
+    "moreCores": "Nhiều lõi hơn",
+    "soundOn": "Bật âm thanh",
+    "soundOff": "Tắt âm thanh",
+    "found": "Đã tìm thấy",
+    "addressReady": "Địa chỉ đã sẵn sàng",
+    "publicAddress": "Địa chỉ công khai",
+    "privateKey": "Khóa riêng",
+    "keepSafe": "Giữ an toàn",
+    "keepSafe1": "Lưu khóa riêng trước khi rời khỏi trang này",
+    "keepSafe2": "Không bao giờ chia sẻ nó - bất kỳ ai có nó sẽ kiểm soát ví",
+    "keepSafe3": "Được tạo tại địa phương; không có gì được lưu trữ trên máy chủ",
+    "attempts": "nỗ lực",
+    "pattern": "Mẫu",
+    "estTime": "Ước tính. thời gian",
+    "keys": "phím",
+    "rate": "tỷ lệ",
+    "time": "thời gian",
+    "workers": "Worker",
+    "tryPattern": "Hãy thử một mẫu",
+    "recentFinds": "Những phát hiện gần đây",
+    "keySecurity": "Bảo mật khóa",
+    "entropy": "Entropy",
+    "source": "Nguồn",
+    "csprng": "CSPRNG",
+    "browser": "Trình duyệt",
+    "prefix": "Tiền tố",
+    "suffix": "Hậu tố",
+    "caseSensitive": "Phân biệt chữ hoa chữ thường",
+    "optional": "Không bắt buộc",
+    "brand": "Vanitas",
+    "sharePattern": "Chia sẻ mẫu",
+    "shareProof": "Chia sẻ bằng chứng",
+    "proofLinkCopied": "Đã sao chép liên kết bằng chứng",
+    "forgeAnother": "Giả mạo cái khác",
+    "scrollToForge": "Cuộn để rèn",
+    "waiting": "Chờ đợi - nhập mẫu và rèn",
+    "running": "● đang chạy",
+    "progressExpected": "{pct}% lượng tìm kiếm dự kiến",
+    "difficultyGuide": "Hướng dẫn: 3 ký tự <5s · 4 ký tự ~1m · 5 ký tự ~30m · 6+ giờ",
+    "match": "Khớp",
+    "startsAddress": "Bắt đầu địa chỉ",
+    "endsAddress": "Kết thúc địa chỉ",
+    "howItWorks": "Nó hoạt động như thế nào",
+    "liveAudit": "Kiểm toán trực tiếp",
+    "evmForge": "lò rèn EVM",
+    "exportHintSol": "TXT để đọc · JSON cho Solana CLI / Phantom / Solflare · Bằng chứng chia sẻ không bao giờ bao gồm khóa",
+    "stepMode": "01 - Chế độ",
+    "stepPattern": "02 — Mẫu",
+    "stepMintPattern": "02 — Họa tiết bạc hà",
+    "stepType": "01 — Loại",
+    "stepEstimate": "03 - Ước tính",
+    "stepForge": "04 — Lò rèn",
+    "stepLive": "05 — Trực tiếp",
+    "topics": "chủ đề",
+    "verified": "Đã xác minh",
+    "mismatch": "Không khớp",
+    "chain": "Xích",
+    "stats": "Thống kê",
+    "statsDisclaimer": "Số lần thử được người giả mạo tự báo cáo và không được chứng minh bằng mật mã.",
+    "copyProofLink": "Sao chép liên kết bằng chứng",
+    "openForge": "Mở forge",
+    "github": "GitHub",
+    "x": "X",
+    "attemptsLabel": "Nỗ lực",
+    "charsDays": "{n} ký tự có thể mất vài ngày hoặc vài tuần.",
+    "charsHours": "{n} ký tự có thể mất hàng giờ.",
+    "considerSuffix": "Chỉ xem xét hậu tố hoặc không phân biệt chữ hoa chữ thường."
+  },
+  "nav": {
+    "language": "Ngôn ngữ",
+    "home": "Trang chủ",
+    "chains": "CHAINS",
+    "docs": "DOCS",
+    "tools": "TOOLS",
+    "menu": "Thực đơn",
+    "close": "Đóng",
+    "themeToLight": "Chuyển sang chế độ ánh sáng",
+    "themeToDark": "Chuyển sang chế độ tối",
+    "themeLight": "Sáng",
+    "themeDark": "Tối",
+    "themeMobileDarkToLight": "Tối → Sáng",
+    "themeMobileLightToDark": "Sáng → Tối",
+    "docsHow": "Làm sao",
+    "docsHowHint": "Nó hoạt động như thế nào",
+    "docsFaq": "FAQ",
+    "docsFaqHint": "Câu hỏi",
+    "docsSecurity": "Bảo vệ",
+    "docsSecurityHint": "Mô hình ủy thác",
+    "toolsAudit": "Kiểm toán",
+    "toolsAuditHint": "Kiểm tra trực tiếp",
+    "toolsProof": "Bằng chứng",
+    "toolsProofHint": "Xác minh một phát hiện",
+    "toolsLab": "phòng thí nghiệm",
+    "toolsLabHint": "Phòng thí nghiệm mẫu",
+    "toolsLookalike": "Trông giống nhau",
+    "toolsLookalikeHint": "Bẫy bảng chữ cái",
+    "toolsCreate2": "CREATE2",
+    "toolsCreate2Hint": "Băm ban đầu + xem trước",
+    "toolsBrand": "Brand",
+    "toolsBrandHint": "Nhúng + bộ",
+    "brand": "Vanitas",
+    "githubAria": "Kho lưu trữ GitHub",
+    "xAria": "Bytebrox trên X",
+    "evmSubline": "Ethereum · BNB · Base · Arbitrum · Optimism · + EVM",
+    "chainItems": {
+      "sol": {
+        "label": "Solana",
+        "short": "SOL"
+      },
+      "evm": {
+        "label": "EVM",
+        "short": "EVM"
+      },
+      "btc": {
+        "label": "Bitcoin",
+        "short": "BTC"
+      },
+      "tron": {
+        "label": "Tron",
+        "short": "TRON"
+      },
+      "aptos": {
+        "label": "Aptos",
+        "short": "APTOS"
+      },
+      "sui": {
+        "label": "Sui",
+        "short": "SUI"
+      },
+      "ton": {
+        "label": "TON",
+        "short": "TON"
+      },
+      "cardano": {
+        "label": "Cardano",
+        "short": "ADA"
+      },
+      "xrp": {
+        "label": "XRP",
+        "short": "XRP"
+      }
+    }
+  },
+  "footer": {
+    "blurb": "Công cụ trang điểm phía khách hàng dành cho Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano & XRP. Không có mã thông báo dự án. Không có chìa khóa nào rời khỏi thiết bị này. Được phát triển bởi [Bytebrox](https://x.com/bytebrox).",
+    "donateSol": "Đóng góp SOL",
+    "solscan": "Solscan",
+    "home": "Trang chủ",
+    "security": "Bảo vệ",
+    "audit": "Kiểm toán",
+    "faq": "FAQ",
+    "how": "Làm sao",
+    "cli": "CLI",
+    "github": "GitHub",
+    "proof": "Bằng chứng",
+    "lab": "phòng thí nghiệm",
+    "lookalike": "Trông giống nhau",
+    "create2": "CREATE2",
+    "brand": "Brand",
+    "sol": "SOL",
+    "evm": "EVM",
+    "btc": "BTC",
+    "tron": "TRON",
+    "aptos": "APTOS",
+    "sui": "SUI",
+    "ton": "TON",
+    "ada": "ADA",
+    "xrp": "XRP",
+    "copyright": "© {year}"
+  },
+  "landing": {
+    "eyebrow": "Lò rèn trang điểm phía khách hàng",
+    "title": "Vanitas",
+    "subtitle": "Chọn một chuỗi. Chìa khóa vẫn ở trong trình duyệt này.",
+    "enterForge": "Nhập lò rèn →",
+    "preferTerminal": "Thích thiết bị đầu cuối?",
+    "forges": {
+      "sol": {
+        "name": "Solana",
+        "title": "Ví & bạc hà",
+        "blurb": "Ví trang điểm Base58 và token đúc tiền."
+      },
+      "evm": {
+        "name": "EVM",
+        "title": "Ví & hợp đồng",
+        "blurb": "Một khóa 0x cho mỗi chuỗi EVM.",
+        "aria": "Ethereum, BNB, Base, Arbitrum, Sự lạc quan"
+      },
+      "btc": {
+        "name": "bitcoin",
+        "title": "Di sản · SegWit · Taproot",
+        "blurb": "Các địa chỉ Vanity 1…, bc1q…, và bc1p…."
+      },
+      "tron": {
+        "name": "Tron",
+        "title": "Ví & TẠO",
+        "blurb": "Vanity T… địa chỉ cho TronLink."
+      },
+      "aptos": {
+        "name": "Aptos",
+        "title": "Ed25519 0x",
+        "blurb": "Bàn trang điểm hình lục giác cho Petra & Martian."
+      },
+      "sui": {
+        "name": "Tùy",
+        "title": "Ed25519 0x",
+        "blurb": "Bàn trang điểm hình lục giác dành cho Sui Wallet & Suiet."
+      },
+      "ton": {
+        "name": "TON",
+        "title": "Ví v4R2",
+        "blurb": "Địa chỉ Vanity UQ… / EQ…."
+      },
+      "cardano": {
+        "name": "Cardano",
+        "title": "Địa chỉ doanh nghiệp1",
+        "blurb": "Địa chỉ thanh toán phù phiếm Bech32."
+      },
+      "xrp": {
+        "name": "XRP",
+        "title": "Cổ điển…",
+        "blurb": "Địa chỉ ảo XRPL Base58."
+      }
+    },
+    "npxVanitas": "npx vanitas"
+  },
+  "forge": {
+    "header": {
+      "wallet": {
+        "eyebrow": "lò rèn ví",
+        "title": "Solana",
+        "headline": "Đặt tên cho địa chỉ. Giữ chìa khóa.",
+        "blurb": "Tạo địa chỉ ví Solana ảo, hoàn toàn trong trình duyệt này, trên CPU của bạn."
+      },
+      "mint": {
+        "eyebrow": "lò rèn bạc hà",
+        "title": "Solana",
+        "headline": "Đặt tên cho cây bạc hà. Khởi động với sự hiện diện.",
+        "blurb": "Tạo một loại tiền Solana phù hợp cho bất kỳ bệ phóng nào, hoàn toàn trong trình duyệt này."
+      },
+      "evm": {
+        "eyebrow": "lò rèn 0x",
+        "title": "EVM",
+        "headline": "Đặt tên cho 0x. Cùng một chìa khóa ở mọi nơi.",
+        "blurb": "Tạo ví ảo hoặc địa chỉ hợp đồng, hoàn toàn trong trình duyệt này. Một khóa hoạt động trên Ethereum, Chuỗi thông minh BNB, Base, Arbitrum, Optimism và mọi chuỗi EVM khác."
+      },
+      "btc": {
+        "eyebrow": "lò rèn UTXO",
+        "title": "bitcoin",
+        "headline": "Đặt tên cho đồng tiền. Sở hữu địa chỉ.",
+        "blurb": "Tạo địa chỉ Bitcoin ảo (cũ, SegWit, Taproot), hoàn toàn trong trình duyệt này. Chìa khóa không bao giờ rời khỏi thiết bị này."
+      },
+      "tron": {
+        "eyebrow": "lò rèn T",
+        "title": "Tron",
+        "headline": "Đặt tên là T. Giữ chìa khóa.",
+        "blurb": "Tạo địa chỉ Tron Base58 ảo, hoàn toàn trong trình duyệt này. Nhập vào TronLink và các ví Tron khác."
+      },
+      "aptos": {
+        "eyebrow": "lò rèn 0x",
+        "title": "Aptos",
+        "headline": "Đặt tên cho 0x. Giữ chìa khóa.",
+        "blurb": "Tạo địa chỉ ảo Aptos Ed25519, hoàn toàn trong trình duyệt này. Nhập vào ví Petra, Martian và các ví Aptos khác."
+      },
+      "sui": {
+        "eyebrow": "lò rèn 0x",
+        "title": "Tùy",
+        "headline": "Đặt tên cho 0x. Giữ chìa khóa.",
+        "blurb": "Tạo địa chỉ phù phiếm Sui Ed25519, hoàn toàn trong trình duyệt này. Nhập vào Ví Sui, Suiet và các ví Sui khác."
+      },
+      "ton": {
+        "eyebrow": "lò rèn UQ",
+        "title": "TON",
+        "headline": "Đặt tên cho UQ. Giữ chìa khóa.",
+        "blurb": "Tạo địa chỉ TON Wallet v4R2 ảo (UQ / EQ), hoàn toàn trong trình duyệt này. Nhập vào Tonkeeper và MyTonWallet."
+      },
+      "cardano": {
+        "eyebrow": "lò rèn addr1",
+        "title": "Cardano",
+        "headline": "Đặt tên cho địa chỉ. Giữ chìa khóa.",
+        "blurb": "Tạo địa chỉ doanh nghiệp Cardano ảo (addr1…), hoàn toàn trong trình duyệt này. Chỉ có chìa khóa thanh toán."
+      },
+      "xrp": {
+        "eyebrow": "lò rèn",
+        "title": "XRP",
+        "headline": "Đặt tên cho r. Giữ chìa khóa.",
+        "blurb": "Tạo các địa chỉ cổ điển XRP Ledger phù hợp (r…), hoàn toàn trong trình duyệt này. Nhập vào Xaman và các ví XRPL khác."
+      }
+    },
+    "modes": {
+      "wallet": "Cái ví",
+      "mint": "bạc hà",
+      "create": "CREATE",
+      "create2": "CREATE2",
+      "legacy": "Di sản",
+      "segwit": "SegWit",
+      "taproot": "Rễ cái",
+      "uq": "UQ",
+      "eq": "EQ"
+    },
+    "evmChainsNote": "Ethereum · BNB · Cơ sở · Trọng tài · Lạc quan · + EVM",
+    "solDownloadTxtTitle": "VANITAS - SOLANA KEYPAIR",
+    "solDownloadImportant": "QUAN TRỌNG:\n- Không bao giờ chia sẻ khóa riêng của bạn\n- Lưu trữ tập tin này một cách an toàn\n- Cặp khóa này được tạo cục bộ trong trình duyệt của bạn",
+    "scrollToForge": "Cuộn để rèn",
+    "sideCaptions": {
+      "solWallet": "Hình I - Nhà hát vòng tròn",
+      "solMint": "Hình II - Đền thờ",
+      "evm": "Hình VII - Diễn đàn",
+      "btc": "Hình VIII - Đồng xu",
+      "tron": "Hình IX - Mạch điện",
+      "aptos": "Hình XI - Lưới",
+      "sui": "Hình XII - Hiện tại",
+      "ton": "Hình XIII - Tín hiệu",
+      "cardano": "Hình XII - Sổ cái",
+      "xrp": "Hình XIV - Sổ cái"
+    },
+    "steps": {
+      "mode": "01 - Chế độ",
+      "pattern": "02 — Mẫu",
+      "estimate": "03 - Ước tính",
+      "forge": "04 — Lò rèn",
+      "live": "05 — Trực tiếp"
+    },
+    "stepsCompact": {
+      "pattern": "01 - Mẫu",
+      "estimate": "02 - Ước tính",
+      "forge": "03 — Lò rèn",
+      "live": "04 — Trực tiếp"
+    },
+    "links": {
+      "sharePattern": "Chia sẻ mẫu",
+      "howItWorks": "Nó hoạt động như thế nào",
+      "liveAudit": "Kiểm toán trực tiếp",
+      "evmForge": "lò rèn EVM",
+      "proofOfFind": "Bằng chứng tìm thấy"
+    },
+    "sol": {
+      "mintAfterForge": "Sau khi giả mạo: sao chép khóa riêng vào trường đúc tùy chỉnh trên bảng khởi chạy của bạn (pump.fun, Raydium, Meteora, …).",
+      "mode": {
+        "target": "Mục tiêu",
+        "walletTarget": "Địa chỉ ví",
+        "mintTarget": "Địa chỉ đúc tiền token",
+        "toggleAria": "Chuyển đổi ví hoặc địa chỉ đúc tiền",
+        "mintHelp": "Tạo ra một cặp khóa bạc hà Solana phù hợp cho các bệ phóng (pump.fun, Raydium, Meteora, …). Dán khóa riêng vào trường tùy chỉnh.",
+        "walletHelp": "Tạo cặp khóa ví Solana phù phiếm — địa chỉ Base58, hoàn toàn trong trình duyệt này."
+      }
+    },
+    "eth": {
+      "create2Params": "tham số CREATE2",
+      "initHash": "Băm ban đầu",
+      "initHashPh": "keccak256(initCode) — 64 hex",
+      "salt": "Muối",
+      "saltPh": "Muối 32 byte - 64 hex",
+      "deployerKey": "Khóa triển khai",
+      "deployerKeyPh": "Khóa riêng của người triển khai - 64 hex",
+      "footnote": "Khóa 0x tương tự trên Ethereum, BNB Smart Chain, Base, Arbitrum, Optimism, Polygon và mọi mạng EVM khác. Lò rèn Solana trực tiếp trên [SOL](/sol).",
+      "mode": {
+        "target": "Mục tiêu",
+        "walletBlurb": "Địa chỉ EOA 0x trên mỗi chuỗi EVM.",
+        "createBlurb": "Địa chỉ hợp đồng triển khai đầu tiên (không phải 0).",
+        "c2SaltBlurb": "Đã sửa lỗi trình triển khai + initCodeHash; xay muối.",
+        "c2KeyBlurb": "Đã sửa lỗi muối + initCodeHash; mài chìa khóa triển khai.",
+        "c2Salt": "Muối C2",
+        "c2Key": "Chìa khóa C2"
+      }
+    },
+    "btc": {
+      "stepType": "01 — Loại",
+      "mode": {
+        "addressType": "Loại địa chỉ",
+        "legacyBlurb": "Cổ điển 1… P2PKH (Base58).",
+        "segwitBlurb": "Bản địa bc1q… P2WPKH (Bech32).",
+        "taprootBlurb": "Bản địa bc1p… P2TR (Bech32m)."
+      },
+      "pattern": {
+        "legacyHint": "Các địa chỉ kế thừa bắt đầu bằng 1 — nhập BTC để tìm kiếm 1BTC… (số 1 ở đầu được tự động thêm vào).",
+        "segwitHint": "Địa chỉ SegWit bắt đầu bằng bc1q — nhập nội dung như “cafe” hoặc tiền tố bc1q… đầy đủ.",
+        "taprootHint": "Địa chỉ Taproot bắt đầu bằng bc1p — nhập nội dung như “cafe” hoặc tiền tố bc1p… đầy đủ.",
+        "caseNote": "Tắt (được khuyến nghị cho các mẫu chữ thường): sau 1, chữ thường cực kỳ hiếm khi bật Phân biệt chữ hoa chữ thường."
+      }
+    },
+    "tron": {
+      "mode": {
+        "walletBlurb": "Địa chỉ tài khoản Base58 (T…).",
+        "createBlurb": "Địa chỉ hợp đồng triển khai lần đầu (TẠO nonce 0)."
+      }
+    },
+    "ton": {
+      "mode": {
+        "addressForm": "Mẫu địa chỉ",
+        "uqWallet": "Ví UQ",
+        "uqBlurb": "Địa chỉ ví không thể trả lại (được khuyến nghị).",
+        "eqBlurb": "Hình thức có thể trả lại của cùng một tài khoản Wallet v4R2."
+      }
+    },
+    "pattern": {
+      "solPrefixPh": "SOL",
+      "solSuffixPh": "xyz",
+      "solAlphabet": "Chỉ Base58 — không `0 O I`. Bảng chữ cái: `1-9 A-H J-N P-Z a-k m-z`",
+      "ethHexNote": "Địa chỉ EVM chỉ có dạng hex - chữ số `0–9` và chữ cái `a–f`. Các chữ cái `g–z` (và bất kỳ ký tự nào khác) không thể xuất hiện trong địa chỉ và bị bỏ qua khi bạn nhập chúng.",
+      "ethIgnored": "Đã bỏ qua: {chars}",
+      "ethPrefixPh": "chết",
+      "ethSuffixPh": "thịt bò",
+      "ethAfter0x": "Bắt đầu sau 0x",
+      "ethCaseNote": "Kết hợp không phân biệt chữ hoa chữ thường. Các mẫu dài hơn sẽ mất nhiều thời gian hơn theo cấp số nhân (16 khả năng cho mỗi ký tự)."
+    },
+    "cardano": {
+      "headerBlurb": "Tạo địa chỉ doanh nghiệp Cardano ảo (addr1…), hoàn toàn trong trình duyệt này. Chỉ có chìa khóa thanh toán."
+    },
+    "xrp": {
+      "headerBlurb": "Tạo các địa chỉ cổ điển XRP Ledger phù hợp (r…), hoàn toàn trong trình duyệt này. Nhập vào Xaman và các ví XRPL khác."
+    }
+  },
+  "tools": {
+    "lab": {
+      "title": "Phòng thí nghiệm mẫu",
+      "description": "Xem mức độ hiếm của một mẫu trước khi bạn khai thác - sau đó xếp hàng công việc và mở lò rèn.",
+      "eyebrow": "Công cụ",
+      "caption": "Hình - Phòng thí nghiệm",
+      "toc": {
+        "composer": "nhà soạn nhạc",
+        "matrix": "Ma trận",
+        "queue": "Hàng đợi"
+      },
+      "sectionPattern": "Mẫu",
+      "sectionRarity": "Độ hiếm",
+      "sectionBatch": "Lô",
+      "addQueue": "Thêm vào hàng đợi",
+      "openForge": "Mở lò rèn {chain} →",
+      "queueEmpty": "Trống",
+      "queueEmptyHint": "Thêm mẫu ở trên để so sánh công việc.",
+      "remove": "Di dời",
+      "exportJson": "Xuất JSON",
+      "clear": "Thông thoáng",
+      "prefixPh": "Át",
+      "suffixPh": "không bắt buộc",
+      "composerN": "01 — Nhà soạn nhạc",
+      "matrixN": "02 — Ma trận",
+      "queueN": "03 — Hàng đợi",
+      "forge": "lò rèn",
+      "exportWarning": "Chỉ các mẫu - không có khóa riêng."
+    },
+    "lookalike": {
+      "title": "Kiểm tra tương tự",
+      "description": "Nắm bắt các ký tự Base58 bị cấm, bẫy chữ Tron, bảng chữ cái XRPL không khớp và hình dáng giống con người trước khi bạn ghi CPU theo một kiểu không thể.",
+      "eyebrow": "Công cụ",
+      "caption": "Hình. - Glyphs",
+      "toc": {
+        "check": "Kiểm tra",
+        "findings": "Những phát hiện",
+        "alphabets": "bảng chữ cái"
+      },
+      "sectionCheckN": "01 - Kiểm tra",
+      "sectionFindingsN": "02 - Những phát hiện",
+      "sectionAlphabetsN": "03 — Bảng chữ cái",
+      "sectionPatternForge": "Hoa văn & rèn",
+      "pattern": "Mẫu",
+      "patternPh": "tiền tố hoặc đoạn",
+      "sectionSpotted": "Những gì chúng tôi phát hiện",
+      "findingsEmptyTitle": "Nhập một mẫu",
+      "findingsEmptyDetail": "Dán tiền tố, hậu tố hoặc đoạn phù phiếm đầy đủ để kiểm tra.",
+      "readyGrind": "Sẵn sàng để xay? Mở [Pattern Lab](/lab) hoặc lò rèn phù hợp.",
+      "sectionCharset": "Bảng cheat bộ ký tự",
+      "tocCheck": "Kiểm tra",
+      "tocFindings": "Những phát hiện",
+      "tocAlphabets": "bảng chữ cái",
+      "sectionCheckTitle": "Hoa văn & rèn",
+      "sectionFindingsTitle": "Những gì chúng tôi phát hiện",
+      "sectionAlphabetsTitle": "Bảng cheat bộ ký tự",
+      "patternLabel": "Mẫu",
+      "severity": {
+        "error": "Lỗi",
+        "warn": "Cảnh báo",
+        "info": "Thông tin"
+      },
+      "chains": {
+        "sol": {
+          "label": "Solana",
+          "notes": "Base58 theo phong cách Bitcoin — không 0, O, I, l"
+        },
+        "evm": {
+          "label": "EVM",
+          "notes": "Chỉ hex (0-9, a-f), không phân biệt chữ hoa chữ thường"
+        },
+        "btc-legacy": {
+          "label": "Di sản bitcoin",
+          "notes": "Base58 P2PKH / P2SH"
+        },
+        "btc-bech32": {
+          "label": "Bitcoin Bech32",
+          "notes": "bộ ký tự nội dung bc1q / bc1p"
+        },
+        "tron": {
+          "label": "Tron",
+          "notes": "Base58 T… — phân biệt chữ hoa chữ thường; ký tự đầu thường viết hoa"
+        },
+        "aptos": {
+          "label": "Aptos",
+          "notes": "0x + 64 thập lục phân"
+        },
+        "sui": {
+          "label": "Tùy",
+          "notes": "0x + 64 thập lục phân"
+        },
+        "ton": {
+          "label": "TON",
+          "notes": "Base64url - phân biệt chữ hoa chữ thường"
+        },
+        "cardano": {
+          "label": "Cardano",
+          "notes": "addr1… cơ thể bech32"
+        },
+        "xrp": {
+          "label": "XRP",
+          "notes": "XRPL Base58 — khác với Bitcoin/Solana"
+        }
+      },
+      "pairNotes": {
+        "zeroO": "số không so với vốn O",
+        "zeroo": "số không và chữ thường o",
+        "oneL": "một so với chữ thường L",
+        "oneI": "một vs vốn tôi",
+        "onei": "một vs chữ thường tôi",
+        "fiveS": "năm vs S",
+        "eightB": "tám vs B"
+      },
+      "findings": {
+        "empty": {
+          "title": "Nhập một mẫu",
+          "detail": "Dán tiền tố, hậu tố hoặc đoạn phù phiếm đầy đủ để kiểm tra."
+        },
+        "invalidAlphabet": {
+          "title": "Các ký tự không có trong bảng chữ cái này",
+          "detail": "Không hợp lệ: {chars}. {notes}"
+        },
+        "base58Banned": {
+          "title": "Base58 không bao giờ sử dụng 0, O, I hoặc l",
+          "detail": "Những glyph này đã bị xóa khỏi Base58 theo phong cách Bitcoin để tránh sự giống nhau. Mẫu này không thể phù hợp."
+        },
+        "xrplVsBtc": {
+          "title": "Ký tự Bitcoin Base58 được sử dụng trên bảng chữ cái XRPL",
+          "detail": "Địa chỉ cổ điển XRPL sử dụng bảng chữ cái Base58 khác. Vi phạm: {chars}"
+        },
+        "xrplCharset": {
+          "title": "Các ký tự dành riêng cho XRPL",
+          "detail": "Chúng xuất hiện trong XRPL Base58 nhưng không xuất hiện trong Bitcoin Base58: {chars}"
+        },
+        "sharedGlyphs": {
+          "title": "Glyph tồn tại trong cả hai bảng chữ cái Base58",
+          "detail": "Các ký tự chồng lên nhau nhưng cách mã hóa vẫn khác nhau. Không sử dụng lại chuỗi ảo Solana/BTC trên XRP mà không kiểm tra lại."
+        },
+        "notXrpl": {
+          "title": "Sẽ không hoạt động trên XRPL nguyên trạng",
+          "detail": "Mẫu Bitcoin/Solana Base58 này sử dụng glyphs bị thiếu trong bảng chữ cái XRPL."
+        },
+        "tronCase": {
+          "title": "Mẫu chữ thường đầu tiên trên Tron",
+          "detail": "Địa chỉ Tron bắt đầu bằng T và các ký tự tiếp theo thường là chữ hoa Base58. Tiền tố chữ thường ngắn thường không bao giờ khớp - hãy thử viết hoa hoặc hậu tố dài hơn."
+        },
+        "tronLeadingT": {
+          "title": "Chữ thường đứng đầu t",
+          "detail": "Địa chỉ Tron cổ điển bắt đầu bằng T viết hoa. Ưu tiên T… hoặc bỏ qua T nếu lò rèn tự động xử lý nó."
+        },
+        "pair": {
+          "title": "Hình dạng hỗn hợp: {a} và {b}",
+          "detail": "{note}. Dễ gõ nhầm khi chia sẻ to địa chỉ hoặc trong ảnh chụp màn hình."
+        },
+        "safe": {
+          "title": "{present} nằm trong bảng chữ cái; {absent} không phải",
+          "detail": "{note}. Người nhận vẫn nhầm lẫn về mặt trực quan — đánh vần cẩn thận khi chia sẻ."
+        },
+        "hexCase": {
+          "title": "Hộp lục giác hỗn hợp",
+          "detail": "Kết hợp không phân biệt chữ hoa chữ thường. Trường hợp hỗn hợp có thể dùng để hiển thị (tổng kiểm tra) nhưng không cần thiết để mài."
+        },
+        "tonCase": {
+          "title": "Các mẫu TON phân biệt chữ hoa chữ thường",
+          "detail": "Base64url phân biệt A và a. Kiểu chữ hỗn hợp làm tăng độ khó và dễ gõ nhầm."
+        },
+        "clean": {
+          "title": "Không phát hiện thấy xung đột bảng chữ cái",
+          "detail": "Tất cả các ký tự đều phù hợp với {label}. Vẫn kiểm tra kỹ các cảnh báo về lò rèn trực tiếp trước khi nghiền lâu."
+        }
+      }
+    },
+    "create2": {
+      "title": "Người trợ giúp CREATE2",
+      "description": "Bắt nguồn initCodeHash từ mã byte triển khai, xem trước địa chỉ CREATE2 cho trình triển khai và muối, sau đó chuyển sang lò rèn EVM. Chìa khóa vẫn ở địa phương.",
+      "eyebrow": "Công cụ",
+      "caption": "Hình. - TẠO2",
+      "toc": {
+        "hash": "Băm",
+        "preview": "Xem trước",
+        "forge": "lò rèn"
+      },
+      "sectionHashN": "01 - Băm",
+      "sectionHashTitle": "Mã byte → initCodeHash",
+      "sectionPreviewN": "02 — Xem trước",
+      "sectionPreviewTitle": "xem trước địa chỉ",
+      "sectionForgeN": "03 — Lò rèn",
+      "sectionForgeTitle": "Mở lò rèn EVM",
+      "hashIntro": "Dán mã byte tạo (mã init) sẽ được triển khai. Chúng tôi tính toán `keccak256(initCode)` trong trình duyệt này.",
+      "initCodeLabel": "Mã ban đầu (hex)",
+      "initCodePh": "0x6080604052…",
+      "initCodeHashLabel": "Mã băm ban đầu (32 byte)",
+      "initCodeHashPh": "0x…",
+      "initCodeHashResult": "Băm mã khởi tạo · {bytes} byte",
+      "deployerLabel": "Người triển khai",
+      "deployerPh": "0x…",
+      "saltLabel": "Muối",
+      "saltPh": "0x… hoặc trống = không có muối",
+      "create2Address": "TẠO2 địa chỉ",
+      "wantedPrefix": "Tiền tố truy nã",
+      "wantedSuffix": "Hậu tố truy nã",
+      "prefixPh": "quán cà phê",
+      "suffixPh": "không bắt buộc",
+      "patternMatch": "Khớp mẫu",
+      "patternMismatch": "Địa chỉ xem trước không khớp với mẫu này - hãy tiếp tục nghiền muối hoặc người triển khai.",
+      "useInPreview": "Sử dụng trong bản xem trước",
+      "forgeIntro": "Liên kết sâu vào lò rèn EVM bằng hàm băm và mẫu của bạn. initCodeHash sai có nghĩa là địa chỉ trên chuỗi sai.",
+      "grindSalt": "Xay muối",
+      "grindDeployer": "Nhà triển khai xay",
+      "evmForge": "lò rèn EVM",
+      "tocHash": "Băm",
+      "tocPreview": "Xem trước",
+      "tocForge": "lò rèn",
+      "prefixLabel": "Tiền tố",
+      "suffixLabel": "Hậu tố",
+      "predictedAddress": "Địa chỉ dự đoán",
+      "patternMiss": "Mẫu không khớp",
+      "invalidDeployer": "Trình triển khai hoặc hàm băm không hợp lệ",
+      "openSaltForge": "Nghiền muối trong lò rèn",
+      "openDeployerForge": "Nghiền người triển khai trong lò rèn"
+    },
+    "brand": {
+      "title": "Thương hiệu",
+      "description": "Nhúng thẻ chứng minh vào bảng khởi chạy và tài liệu, cùng với bộ nhãn hiệu nhẹ — nhãn từ, màu sắc và bản sao. Không bao giờ bao gồm các khóa riêng.",
+      "eyebrow": "Công cụ",
+      "embedIntro": "Dán chuỗi, địa chỉ và mẫu (từ tìm kiếm hoặc bản demo). Chúng tôi xây dựng iframe để xác minh phía máy khách phù hợp — các quy tắc tương tự như [/proof](/proof).",
+      "badgeLine": "Bằng chứng đã được xác minh từ phía khách hàng · vanitas.fun",
+      "caption": "Hình. - Thương hiệu",
+      "toc": {
+        "embed": "Nhúng",
+        "preview": "Xem trước",
+        "kit": "Bộ",
+        "copy": "Sao chép"
+      },
+      "sectionEmbedN": "01 — Nhúng",
+      "sectionEmbedTitle": "Tiện ích bằng chứng",
+      "address": "Địa chỉ",
+      "prefix": "Tiền tố",
+      "suffix": "Hậu tố",
+      "paperTheme": "Chủ đề giấy",
+      "inkTheme": "Chủ đề mực",
+      "compact": "Nhỏ gọn",
+      "iframeSnippet": "Đoạn mã khung nội tuyến",
+      "copyIframe": "Sao chép khung nội tuyến",
+      "copyEmbedUrl": "Sao chép URL nhúng",
+      "copyProofUrl": "Sao chép URL bằng chứng đầy đủ",
+      "sectionPreviewN": "02 — Xem trước",
+      "sectionPreviewTitle": "Thẻ trực tiếp",
+      "previewBody": "Bản xem trước được đóng khung của `/embed/proof`. Địa chỉ demo có thể hiển thị không khớp cho đến khi bạn dán kết quả tìm thấy thực sự.",
+      "iframeTitle": "Bằng chứng Vanitas",
+      "previewIframeTitle": "Xem trước bằng chứng Vanitas",
+      "sectionKitN": "03 — Bộ sản phẩm",
+      "sectionKitTitle": "Bộ xây dựng thương hiệu",
+      "kitIntro": "Sử dụng dấu Vanitas khi liên kết các bằng chứng hoặc giả mạo. Không ngụ ý quyền giám hộ, quan hệ đối tác hoặc được Vanitas kiểm toán trừ khi đúng.",
+      "wordmark": "Dấu từ",
+      "wordmarkNote": "Trọng lượng hiển thị / serif - cấp độ anh hùng khi chỉ có thương hiệu",
+      "paper": "Giấy",
+      "paperNote": "Mặt bằng sơ cấp",
+      "ink": "Mực",
+      "inkNote": "Thân + crom",
+      "accent": "Giọng",
+      "accentValue": "mã thông báo nhấn trang web",
+      "accentNote": "Liên kết / trạng thái đã được xác minh - hãy tiết kiệm",
+      "site": "Địa điểm",
+      "siteNote": "Thích www.vanitas.fun cho các liên kết chuẩn",
+      "badgeHeading": "Dòng huy hiệu",
+      "copyBadge": "Sao chép dòng huy hiệu",
+      "sectionCopyN": "04 — Sao chép",
+      "sectionCopyTitle": "Lời giới thiệu được đề xuất",
+      "shortLabel": "Ngắn",
+      "shortBlurb": "Địa chỉ ảo được giả mạo cục bộ bằng Vanitas — chìa khóa không bao giờ rời khỏi thiết bị. Đối sánh mẫu đã được xác minh phía khách hàng.",
+      "launchpadLabel": "Bệ phóng",
+      "launchpadBlurb": "Ví bạc hà / ví trang điểm tùy chỉnh được tạo trong trình duyệt thông qua vanitas.fun. Chia sẻ liên kết bằng chứng để cho phép mọi người xác minh mẫu - các khóa riêng tư sẽ không xuất hiện trên trang.",
+      "linkProof": "Trang chứng minh",
+      "linkLab": "Phòng thí nghiệm mẫu",
+      "linkSecurity": "Bảo vệ"
+    },
+    "proof": {
+      "title": "Kiểm tra trận đấu công khai",
+      "description": "Xác minh phía khách hàng phù hợp - không bao giờ bao gồm các khóa.",
+      "eyebrow": "Bằng chứng tìm thấy",
+      "intro": "Trang này xác minh rằng địa chỉ phù hợp với mẫu được xác nhận quyền sở hữu. Nó không bao giờ chứa khóa riêng. Bất cứ ai cũng có thể mở liên kết và kiểm tra lại phía khách hàng.",
+      "emptyIntro": "Không có dữ liệu bằng chứng trong URL. Sau khi bạn giả mạo địa chỉ, hãy sử dụng **Chia sẻ bằng chứng** trên màn hình kết quả. Hoặc giả mạo trước:",
+      "address": "Địa chỉ",
+      "pattern": "Mẫu"
+    },
+    "embedProof": {
+      "eyebrow": "Bằng chứng Vanitas",
+      "brand": "Vanitas",
+      "missingParams": "Thiếu thông số chứng minh.",
+      "openProof": "Bằng chứng mở",
+      "site": "vanitas.fun"
+    },
+    "audit": {
+      "title": "Kiểm toán",
+      "description": "Kiểm tra thời gian chạy và so sánh hàm băm của nhân viên.",
+      "eyebrow": "Kiểm tra trực tiếp",
+      "caption": "Hình VI - Diễn đàn",
+      "descriptionIdle": "Tám lần kiểm tra địa phương. Không có gì là giả mạo, không có gì được gửi đến máy chủ. Màu xanh lá cây có nghĩa là tốt.",
+      "descriptionPass": "Tám lần kiểm tra địa phương - rõ ràng. Không có gì là giả mạo, không có gì được gửi đến máy chủ.",
+      "descriptionFail": "Tám lần kiểm tra địa phương — {failed} vấn đề. Màu xanh lá cây có nghĩa là tốt.",
+      "checksTotal": "{total} kiểm tra",
+      "passedSummary": "{passed}/{total} đậu",
+      "buildIntegrity": "Xây dựng tính chính trực",
+      "workerFingerprintIntro": "Mỗi công nhân rèn có một dấu vân tay SHA-256 được xuất bản trong `worker-hash.json`. Bài kiểm tra tính toàn vẹn ở trên sẽ xác minh Solana, EVM, Bitcoin và Tron trong danh sách này.",
+      "verifyYourself": "Xác minh chính mình",
+      "verifyStep1": "1. Xem lại nguồn được liên kết từ [vanitas.fun](https://vanitas.fun)",
+      "verifyStep2": "2. Thợ xây: `npm run build:worker`",
+      "verifyStep3": "3. So sánh `public/worker-hash.json` với hàm băm ở trên",
+      "hashLoading": "Đang tải…",
+      "hashUnavailable": "không có sẵn",
+      "start": "Bắt đầu kiểm tra",
+      "runAgain": "Chạy lại",
+      "running": "Đang chạy…",
+      "whatIsThis": "Đây là cái gì?",
+      "whatIsThisBody": "Khi bạn sử dụng Vanitas, khóa riêng sẽ được tạo trên thiết bị của bạn. **8 lần kiểm tra tự động** này chứng tỏ việc tạo ra vẫn diễn ra cục bộ, tính ngẫu nhiên là có thật và không còn gì cho mạng.",
+      "workerFingerprint": "Dấu vân tay công nhân",
+      "networkMonitor": "Giám sát mạng trực tiếp",
+      "monitor": {
+        "transparency": "Minh bạch",
+        "intro": "Mọi yêu cầu mạng mà trang này thực hiện. Nếu dữ liệu quan trọng bị mất, bạn sẽ thấy nó ở đây.",
+        "stop": "● Dừng lại",
+        "restart": "Khởi động lại",
+        "startMonitoring": "Bắt đầu theo dõi",
+        "requests": "{count} yêu cầu",
+        "requestSingular": "1 yêu cầu",
+        "noSuspicious": "Không có yêu cầu bên ngoài đáng ngờ",
+        "externalCount": "{count} bên ngoài",
+        "colType": "Kiểu",
+        "colUrl": "URL",
+        "colSize": "Kích cỡ",
+        "colTime": "Thời gian",
+        "footerSafe": "Tất cả các yêu cầu đều chuyển đến miền này hoặc Google Fonts (đối với kiểu chữ). Không có dữ liệu được gửi đến máy chủ của bên thứ ba.",
+        "footerWarning": "Cảnh báo: Đã phát hiện thấy các yêu cầu bên ngoài không mong muốn. Điều này có thể chỉ ra một vấn đề bảo mật.",
+        "emptyHint": "Nhấp vào \"Bắt đầu giám sát\" để xem mọi yêu cầu mạng mà trang này thực hiện.",
+        "emptySubhint": "Điều hướng xung quanh trang web khi bật chức năng giám sát — bạn sẽ thấy chính xác những gì được tải.",
+        "activeHint": "Giám sát đang hoạt động - đang chờ yêu cầu mạng..."
+      },
+      "tests": {
+        "webcrypto": {
+          "name": "API tiền điện tử trên web",
+          "description": "Hỗ trợ Ed25519 gốc trong trình duyệt của bạn",
+          "why": "Đây là công nghệ tạo ra chìa khóa của bạn. Nếu trình duyệt của bạn hỗ trợ nó nguyên bản thì việc tạo địa chỉ nhanh hơn tới 125 lần so với các lựa chọn thay thế."
+        },
+        "csprng": {
+          "name": "Trình tạo số ngẫu nhiên",
+          "description": "Trình tạo số ngẫu nhiên được bảo mật bằng mật mã",
+          "why": "Khóa riêng của bạn về cơ bản là một số ngẫu nhiên khổng lồ. Nếu tính ngẫu nhiên yếu hoặc có thể đoán trước được thì ai đó có thể đoán được chìa khóa của bạn. Thử nghiệm này đảm bảo trình tạo ngẫu nhiên hoạt động chính xác."
+        },
+        "entropy": {
+          "name": "Chất lượng ngẫu nhiên",
+          "description": "Kiểm tra thống kê trên 10.000 byte ngẫu nhiên",
+          "why": "Chúng tôi tạo ra 10.000 số ngẫu nhiên và kiểm tra xem chúng có được phân bố đồng đều hay không - giống như tung xúc xắc công bằng hàng nghìn lần. Nếu một số con số xuất hiện thường xuyên hơn thì có điều gì đó không ổn."
+        },
+        "network": {
+          "name": "Lưu lượng mạng bằng không",
+          "description": "Không có dữ liệu nào rời khỏi trình duyệt của bạn trong quá trình tạo khóa",
+          "why": "Kiểm tra quan trọng nhất: chúng tôi xác minh rằng hoàn toàn không có gì được gửi tới internet trong khi khóa đang được tạo. Khóa riêng của bạn không bao giờ được rời khỏi thiết bị của bạn."
+        },
+        "csp": {
+          "name": "Tiêu đề bảo mật",
+          "description": "Chính sách bảo mật nội dung hạn chế việc trích xuất dữ liệu",
+          "why": "Ngay cả khi mã độc được tiêm vào, các quy tắc cấp trình duyệt này sẽ chặn mã độc gửi dữ liệu đi bất cứ đâu. Hãy nghĩ về nó như một bức tường lửa được tích hợp vào chính trang web."
+        },
+        "worker": {
+          "name": "Cách ly công nhân",
+          "description": "Tạo khóa chạy trong các luồng nền bị cô lập",
+          "why": "Khóa của bạn được tạo trong các \"công nhân\" riêng biệt — các chương trình nhỏ biệt lập chạy ở chế độ nền. Họ không thể truy cập trang chính và không thể bị các tiện ích mở rộng của trình duyệt giả mạo."
+        },
+        "integrity": {
+          "name": "Tính toàn vẹn của mã",
+          "description": "Dấu vân tay SHA-256 khớp với tất cả các công nhân rèn được công bố",
+          "why": "Chúng tôi băm mọi công nhân tạo khóa (Solana, EVM, Bitcoin, Tron, Aptos, Sui) và so sánh từng công nhân với worker-hash.json từ bản dựng mở. Nếu chúng khớp nhau thì mã đó không bị giả mạo."
+        },
+        "keygen": {
+          "name": "Kiểm tra tạo khóa",
+          "description": "Tạo và xác thực cặp khóa Ed25519 thực tế",
+          "why": "Bằng chứng cuối cùng: chúng ta tạo một khóa thực, ký tin nhắn bằng nó, sau đó xác minh chữ ký. Nếu cách này hiệu quả, trình duyệt của bạn có thể tạo địa chỉ Solana một cách an toàn."
+        }
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "Tài liệu",
+    "title": "FAQ",
+    "description": "Câu trả lời trên mọi lò rèn — mẫu, chế độ, bảo mật, liên kết bằng chứng, CLI và cách sử dụng hàng ngày. Sử dụng menu con để chuyển theo chủ đề.",
+    "categories": {
+      "general": {
+        "label": "Tổng quan",
+        "n": "01",
+        "items": {
+          "what": {
+            "q": "Địa chỉ phù phiếm là gì?",
+            "a": "Địa chỉ tiền điện tử chứa mẫu bạn chọn — ví dụ: bắt đầu bằng `VANI` trên Solana hoặc `0xcafe` trên EVM. Đó là nhãn hiệu mỹ phẩm bên trên một chiếc chìa khóa thông thường."
+          },
+          "fake": {
+            "q": "Vanitas có tạo địa chỉ “giả” không?",
+            "a": "Không. Mọi lò rèn đều tạo ra chìa khóa tiêu chuẩn cho chuỗi đó. Nhập vào một ví phù hợp và chúng hoạt động giống như bất kỳ địa chỉ nào được tạo ngẫu nhiên — chúng trông có vẻ có chủ ý."
+          },
+          "which": {
+            "q": "Những lò rèn nào tồn tại?",
+            "a": "Chín trang web giả mạo — Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano, XRP — cộng với `npx vanitas` cho thiết bị đầu cuối. Xem [How it works → Chains](/how-it-works#chains)."
+          },
+          "howLong": {
+            "q": "Mẫu của tôi sẽ mất bao lâu?",
+            "a": "Số lần thử dự kiến ​​sẽ tăng theo cấp số nhân theo độ dài và kích thước bảng chữ cái. Hex (16 ký tự) dày đặc hơn Base58 (~58). Sử dụng ước tính độ khó trên trang; bắt đầu với 3–4 ký tự trước khi theo đuổi các thương hiệu dài."
+          },
+          "prefixSuffix": {
+            "q": "Tôi có thể sử dụng tiền tố và hậu tố cùng nhau không?",
+            "a": "Có - cả hai ràng buộc đều nhân lên khó khăn. Ưu tiên một mặt mạnh (tiền tố hoặc hậu tố) trừ khi bạn có thời gian và tốc độ băm dự phòng."
+          }
+        }
+      },
+      "solana": {
+        "label": "Solana",
+        "n": "02",
+        "items": {
+          "produce": {
+            "q": "Lò rèn Solana sản xuất những gì?",
+            "a": "Cặp khóa Ed25519 làm địa chỉ Base58 (cùng họ với Phantom/Soflare). Xuất dưới dạng mảng byte Solana CLI JSON để dễ dàng nhập."
+          },
+          "walletMint": {
+            "q": "Ví và chế độ đúc tiền?",
+            "a": "Mật mã tương tự. **Ví** dành cho địa chỉ cá nhân; **Mint** được gắn nhãn cho các trường tùy chỉnh của launchpad (pump.fun, Raydium, Meteora, …). Mở [/sol?mode=mint](/sol?mode=mint)."
+          },
+          "base58": {
+            "q": "Tại sao tôi không thể sử dụng 0, O, I hoặc l?",
+            "a": "Base58 loại trừ các ký tự trông giống nhau. Các mẫu chứa chúng không bao giờ có thể xuất hiện trong địa chỉ Solana thực."
+          },
+          "pump": {
+            "q": "Mint có cần kết thúc bằng \"pump\" không?",
+            "a": "Không. Hậu tố đó là tiếp thị, không phải quy tắc giao thức. Mọi mẫu trang điểm Base58 hợp lệ đều hoạt động nếu bảng khởi chạy chấp nhận cặp khóa đúc tùy chỉnh."
+          }
+        }
+      },
+      "evm": {
+        "label": "EVM",
+        "n": "03",
+        "items": {
+          "networks": {
+            "q": "Khóa ảo EVM hoạt động trên những mạng nào?",
+            "a": "Tất cả các chuỗi tương thích với EVM đều có chung nguồn gốc địa chỉ. Một khóa → một địa chỉ `0x` trên Ethereum, Base, Arbitrum, Optimism, BSC, Polygon, Avalanche C-Chain và các địa chỉ khác."
+          },
+          "modes": {
+            "q": "Các chế độ ví, CREATE và CREATE2 là gì?",
+            "a": "**Ví** — địa chỉ EOA phù phiếm.\n**TẠO** — địa chỉ ảo của hợp đồng đầu tiên từ khóa đó (không phải 0).\n**CREATE2** — xay muối (bộ triển khai cố định) hoặc xay bộ triển khai (muối cố định) với mã băm init."
+          },
+          "bnb": {
+            "q": "Tôi có cần một trình tạo BNB riêng không?",
+            "a": "Không dành cho Chuỗi thông minh BNB (EVM). Các địa chỉ Beacon Chain cũ `bnb1` bech32 nằm ngoài phạm vi."
+          }
+        }
+      },
+      "bitcoin": {
+        "label": "bitcoin",
+        "n": "04",
+        "items": {
+          "types": {
+            "q": "Những loại địa chỉ nào được hỗ trợ?",
+            "a": "Di sản Mainnet `1…`, SegWit `bc1q…` và Taproot `bc1p…`. Xuất bao gồm WIF nén."
+          },
+          "leading": {
+            "q": "Tôi có tự gõ 1/bc1q đầu không?",
+            "a": "Không bắt buộc. Giao diện người dùng tự động thêm phiên bản cố định/HRP khi tiền tố của bạn chưa bao gồm nó."
+          },
+          "lightning": {
+            "q": "Hoá đơn chớp nhoáng?",
+            "a": "Ngoài phạm vi - giả mạo địa chỉ, không phải BOLT."
+          }
+        }
+      },
+      "tron": {
+        "label": "Tron",
+        "n": "05",
+        "items": {
+          "get": {
+            "q": "Tôi nhận được gì từ lò rèn Tron?",
+            "a": "Mainnet Base58Kiểm tra địa chỉ `T…` từ khóa secp256k1 - ví hoặc TẠO (không có 0). `T` hàng đầu được thêm tự động vào tiền tố."
+          },
+          "case": {
+            "q": "Tại sao tiền tố phân biệt chữ thường không bao giờ được tìm thấy?",
+            "a": "Sau `T`, ký tự tiếp theo hầu như luôn là chữ hoa hoặc chữ số. Tắt phân biệt chữ hoa chữ thường trừ khi bạn cần khớp chính xác chữ hoa chữ thường. Base58 cũng loại trừ O, I, l."
+          }
+        }
+      },
+      "aptos-sui": {
+        "label": "Aptos & Sui",
+        "n": "06",
+        "items": {
+          "differ": {
+            "q": "Aptos và Sui khác nhau như thế nào?",
+            "a": "Cả hai đều sử dụng địa chỉ Ed25519 và hex, nhưng cách băm khác nhau: Aptos sử dụng `sha3-256(pubkey ‖ 0x00)`; Tùy sử dụng `blake2b-256(0x00 ‖ pubkey)`. Các khóa không thể thay thế cho nhau trong các hệ sinh thái."
+          },
+          "wallets": {
+            "q": "Những ví nào có thể nhập chúng?",
+            "a": "Aptos: Petra, Martian, và tương tự. Sui: Sui Wallet, Suiet và những ví khác chấp nhận khóa riêng hex."
+          }
+        }
+      },
+      "ton-cardano-xrp": {
+        "label": "TON · Cardano · XRP",
+        "n": "07",
+        "items": {
+          "ton": {
+            "q": "TÔN UQ so với EQ?",
+            "a": "Các dạng Ví v4R2 không thể trả lại (`UQ…`) và có thể trả lại (`EQ…`). Kết hợp có phân biệt chữ hoa chữ thường."
+          },
+          "cardano": {
+            "q": "Loại địa chỉ Cardano nào bị giả mạo?",
+            "a": "Mạng chính doanh nghiệp `addr1…` (CIP-19 loại 6 - chỉ khóa thanh toán, không ủy quyền cổ phần trong địa chỉ)."
+          },
+          "xrp": {
+            "q": "XRP có giống Base58 với Bitcoin không?",
+            "a": "Không. Địa chỉ cổ điển XRPL sử dụng bảng chữ cái Base58 khác. Vanitas mã hóa `r…` kinh điển từ các khóa secp256k1."
+          }
+        }
+      },
+      "security": {
+        "label": "Bảo vệ",
+        "n": "08",
+        "items": {
+          "store": {
+            "q": "Bạn có lưu trữ khóa riêng của tôi không?",
+            "a": "Không. Khóa không bao giờ rời khỏi bộ nhớ trình duyệt trong phiên của bạn. Xem trang [Security](/security) để biết kiến ​​trúc và mô hình mối đe dọa."
+          },
+          "verify": {
+            "q": "Làm cách nào để xác minh điều đó?",
+            "a": "1. DevTools → Kết nối mạng trong khi khai thác — không có lưu lượng truy cập quan trọng\n2. Chế độ máy bay sau khi tải\n3. [Live audit](/audit) + so sánh hàm băm công nhân"
+          },
+          "weaker": {
+            "q": "Chìa khóa trang điểm có yếu hơn không?",
+            "a": "Không. Khóa riêng vẫn có entropy CSPRNG đầy đủ. Chỉ mã hóa công khai mới được lọc."
+          },
+          "extensions": {
+            "q": "Còn phần mở rộng của trình duyệt thì sao?",
+            "a": "Tiện ích mở rộng vẫn có thể rình mò trên một trang. Đối với các khóa có giá trị cao, hãy sử dụng cấu hình sạch, CLI hoặc máy ngoại tuyến. Chi tiết: [Security → Browser](/security#browser)."
+          },
+          "report": {
+            "q": "Tôi báo cáo lỗ hổng ở đâu?",
+            "a": "Tư vấn bảo mật GitHub riêng tư - không bao giờ là vấn đề công khai. Xem [Security → Disclose](/security#disclose)."
+          }
+        }
+      },
+      "proof-cli": {
+        "label": "Bằng chứng & CLI",
+        "n": "09",
+        "items": {
+          "proof": {
+            "q": "Bằng chứng tìm thấy là gì?",
+            "a": "Liên kết [/proof](/proof) có thể chia sẻ với địa chỉ + mẫu (và số liệu thống kê tùy chọn). Bất cứ ai cũng có thể xác minh phía khách hàng phù hợp. Khóa riêng không bao giờ được bao gồm."
+          },
+          "cli": {
+            "q": "Làm cách nào để chạy CLI?",
+            "a": "`npx vanitas` dành cho trình hướng dẫn hoặc các cờ như `npx vanitas sol --prefix Ace --threads 8`. Hỗ trợ các chế độ triển khai tương tự như ứng dụng web (cờ mint, CREATE, CREATE2)."
+          }
+        }
+      },
+      "usage": {
+        "label": "Cách sử dụng",
+        "n": "10",
+        "items": {
+          "import": {
+            "q": "Làm cách nào để nhập vào Phantom / MetaMask / v.v.?",
+            "a": "Sử dụng định dạng xuất cho lò rèn đó: Solana JSON cho Phantom/Solflare, hex cho hầu hết các ví EVM, WIF cho nhiều ví Bitcoin, hex/Base58 dành riêng cho chuỗi ở những nơi khác. Luôn thực hiện chuyển khoản thử nghiệm nhỏ trước."
+          },
+          "pause": {
+            "q": "Tôi có thể tạm dừng và tiếp tục không?",
+            "a": "Bạn có thể dừng lại bất cứ lúc nào; sơ yếu lý lịch là một tìm kiếm mới (không có điểm kiểm tra các lần thử trước)."
+          },
+          "disabled": {
+            "q": "Tại sao Bắt đầu bị vô hiệu hóa?",
+            "a": "Mẫu trống, ký tự không hợp lệ cho bảng chữ cái đó hoặc mẫu quá dài. Sửa thông báo xác thực dưới đầu vào."
+          },
+          "freeze": {
+            "q": "Giao diện người dùng bị đóng băng trong khi khai thác?",
+            "a": "Giảm số lượng chủ đề. Người lao động nên duy trì giao diện người dùng nhưng việc bão hòa mọi lõi trên máy tính xách tay nhỏ vẫn có thể cảm thấy chậm chạp."
+          }
+        }
+      }
+    },
+    "sideCaption": "Hình IV - Phong cảnh",
+    "topics": "chủ đề",
+    "stillStuck": "Vẫn bị mắc kẹt?",
+    "stillStuckBody": "Chi tiết kỹ thuật sâu sắc tồn tại trong Cách thức hoạt động. Mô hình tin cậy và ghi chú mối đe dọa trực tiếp trên Bảo mật. Kiểm tra tính toàn vẹn trực tiếp trên Audit.",
+    "linkHow": "Nó hoạt động như thế nào",
+    "linkSecurity": "Bảo vệ",
+    "linkAudit": "Kiểm toán trực tiếp",
+    "glyphs": {
+      "general": "Hình. - Cuộn",
+      "solana": "Hình. - Hàng cột",
+      "evm": "Hình. - Các chế độ",
+      "bitcoin": "Hình. - Chìa khóa",
+      "tron": "Hình. - Rèn",
+      "aptos-sui": "Hình. - Vòng lặp",
+      "ton-cardano-xrp": "Hình - Tấm bia",
+      "security": "Hình. - Khiên",
+      "proof-cli": "Hình. - Con dấu",
+      "usage": "Hình. - Thời gian"
+    }
+  },
+  "docs": {
+    "howItWorks": {
+      "eyebrow": "Tài liệu",
+      "title": "Nó hoạt động như thế nào",
+      "description": "Một chuyến tham quan đầy đủ về Vanitas: cách khai thác vô ích, mỗi lò rèn sản xuất gì, cách các công nhân tìm kiếm song song và cách xác minh rằng không có gì rời khỏi máy của bạn.",
+      "sideCaption": "Hình III - Nhà hùng biện",
+      "overview": {
+        "title": "Vanitas là gì",
+        "p1": "**Vanitas** là một lò rèn địa chỉ ảo đa chuỗi phía khách hàng. Bạn chọn tiền tố và/hoặc hậu tố; ứng dụng tìm kiếm cặp khóa có địa chỉ công khai khớp với mẫu đó. Thế hệ chạy trong **Web Workers trên CPU của bạn**. Khóa riêng được tạo trong bộ nhớ trên thiết bị của bạn và không bao giờ được tải lên.",
+        "p2": "Địa chỉ ảo vẫn là địa chỉ mật mã thông thường. Khóa riêng là ngẫu nhiên; chỉ mã hóa công khai mới được lọc cho đến khi nó trông giống như bạn muốn — hữu ích cho việc xây dựng thương hiệu, quyên góp, đúc tiền và ví công khai đáng nhớ."
+      },
+      "pipeline": {
+        "title": "Vòng lặp tìm kiếm",
+        "intro": "Mọi lò rèn đều tuân theo cùng một vòng lặp cấp cao, được lặp lại hàng triệu lần:",
+        "whySecure": "Việc tìm kiếm một địa chỉ ảo không **không** làm suy yếu khóa riêng. Bạn đang từ chối các ứng cử viên cho đến khi địa chỉ công khai có vẻ chính xác — quy trình tương tự như tạo khóa ngẫu nhiên và giữ khóa may mắn."
+      },
+      "reminder": {
+        "label": "Lời nhắc nhở",
+        "body": "Lưu khóa riêng của bạn trước khi đóng tab. Chìa khóa bị mất không thể lấy lại được. Đối với số dư lớn: trước tiên hãy kiểm tra bằng một khoản chuyển khoản nhỏ, ưu tiên ví phần cứng để lưu ký lâu dài và không bao giờ dán khóa vào các trang web không đáng tin cậy."
+      },
+      "toc": {
+        "overview": "Tổng quan",
+        "pipeline": "Đường ống",
+        "patterns": "mẫu",
+        "chains": "Dây chuyền",
+        "modes": "Chế độ",
+        "workers": "Công nhân",
+        "proof": "Bằng chứng",
+        "cli": "CLI",
+        "verify": "Xác minh"
+      },
+      "sections": {
+        "overview": {
+          "n": "01 – Tổng quan",
+          "title": "Vanitas là gì",
+          "glyph": "Hình A - Chìa khóa",
+          "ledger": {
+            "where": {
+              "label": "Ở đâu",
+              "value": "Trình duyệt của bạn · CPU của bạn",
+              "note": "Chỉ lưu trữ tĩnh; khai thác không thực hiện cuộc gọi mạng"
+            },
+            "forges": {
+              "label": "lò rèn",
+              "value": "9 dây chuyền + thiết bị đầu cuối CLI",
+              "note": "Solana · EVM · Bitcoin · Tron · Aptos · Sui · TON · Cardano · XRP"
+            },
+            "output": {
+              "label": "đầu ra",
+              "value": "Địa chỉ + khóa riêng",
+              "note": "Các định dạng xuất phụ thuộc vào giả mạo (JSON, hex, WIF, …)"
+            }
+          }
+        },
+        "pipeline": {
+          "n": "02 - Đường ống",
+          "title": "Vòng lặp tìm kiếm",
+          "glyph": "Hình B - Vòng lặp",
+          "steps": [
+            "Vẽ khóa riêng ngẫu nhiên được bảo mật bằng mật mã (`crypto.getRandomValues`).",
+            "Lấy khóa chung bằng đường cong của chuỗi (Ed25519 hoặc secp256k1).",
+            "Mã hóa địa chỉ theo cách mà chuỗi mong đợi (Base58, hex, bech32,…).",
+            "So sánh với tiền tố/hậu tố của bạn (và quy tắc chế độ).",
+            "Khi khớp: dừng công nhân, hiển thị kết quả, âm thanh / bằng chứng / xuất tùy chọn."
+          ],
+          "workersNote": "Công nhân chạy vòng lặp này song song trên các lõi CPU. Chuỗi giao diện người dùng vẫn phản hồi; tiến trình (số lần thử, tỷ lệ, ETA) được tổng hợp từ các tin nhắn của nhân viên. Khi một công nhân tìm thấy một cú đánh, nhóm sẽ bị chấm dứt.",
+          "whySecureTitle": "Tại sao điều này lại an toàn"
+        },
+        "patterns": {
+          "n": "03 — Hoa văn",
+          "title": "Độ khó, bảng chữ cái, cảnh báo",
+          "glyph": "Hình C - Thời gian",
+          "intro": "Thang thời gian dự kiến ​​​​với độ dài mẫu và kích thước bảng chữ cái. Mỗi ký tự phụ sẽ nhân không gian tìm kiếm. Giao diện người dùng giả mạo hiển thị ước tính độ khó trực tiếp dựa trên mẫu của bạn và tỷ lệ băm được đo hoặc giả định.",
+          "ledger": {
+            "base58": {
+              "label": "cơ sở58",
+              "value": "~58 ký hiệu",
+              "note": "Solana, Tron, XRP (bảng chữ cái XRPL), di sản Bitcoin"
+            },
+            "hex": {
+              "label": "lục giác",
+              "value": "16 ký hiệu (0–9, a–f)",
+              "note": "EVM, Aptos, Sui — không phân biệt chữ hoa chữ thường để khớp"
+            },
+            "bech32": {
+              "label": "Bech32",
+              "value": "bc1q/bc1p/addr1…",
+              "note": "Bitcoin SegWit/Taproot, Cardano — HRP cố định, sau đó là bộ ký tự"
+            },
+            "ton": {
+              "label": "TON",
+              "value": "cơ sở64url",
+              "note": "UQ… / EQ… — phân biệt chữ hoa chữ thường"
+            }
+          },
+          "trapsTitle": "Bẫy bảng chữ cái",
+          "traps": [
+            "**Solana / Bitcoin Base58** — không có `0`, `O`, `I` hoặc `l` (từ chối tương tự).",
+            "**EVM** — chỉ có dạng hex sau `0x`. Các chữ cái ngoài `a–f` đều không hợp lệ.",
+            "**Tron** — địa chỉ bắt đầu bằng `T`; ký tự tiếp theo thường là chữ hoa. Tiền tố chữ thường phân biệt chữ hoa chữ thường thường không bao giờ khớp.",
+            "**Tiền tố + hậu tố** — cả hai ràng buộc đều nhân lên độ khó. Bắt đầu ngắn gọn; phát triển mô hình một khi bạn biết tỷ lệ của mình."
+          ]
+        },
+        "chains": {
+          "n": "04 — Dây xích",
+          "title": "Mỗi lò rèn, giải thích",
+          "glyph": "Hình D - Lò rèn",
+          "intro": "Chín lò rèn chia sẻ cùng một mẫu UX — chọn một chế độ, đặt mẫu, bắt đầu công nhân — nhưng mỗi chuỗi sử dụng các đường cong, hàm băm và mã hóa địa chỉ khác nhau.",
+          "sol": "Cặp khóa Ed25519 được mã hóa dưới dạng Base58 (khóa chung 32 byte). Native Web Crypto Ed25519 được sử dụng khi trình duyệt hỗ trợ nó; nếu không thì sẽ là dự phòng WASM (`watsign`). Các chế độ: **ví** và **mint** — cùng một phép toán cơ bản; khung đúc tiền dành cho các luồng đúc tùy chỉnh trên launchpad. Xuất: Mảng byte JSON Solana CLI.",
+          "evm": "secp256k1 → pubkey không nén → keccak-256 → 20 byte cuối → địa chỉ `0x…`. Một khóa riêng mang lại cùng một địa chỉ trên Ethereum, Base, Arbitrum, Optimism, BSC, Polygon và mọi mạng EVM khác. Các chế độ: ví (EOA), CREATE at nonce 0, CREATE2 (xay muối hoặc xay người triển khai). Xem các chế độ bên dưới.",
+          "btc": "secp256k1. Ba loại địa chỉ: P2PKH kế thừa (`1…`), SegWit P2WPKH gốc (`bc1q…`), Taproot P2TR (`bc1p…`). Xuất bao gồm WIF (được nén) để nhập ví. Byte HRP/phiên bản hàng đầu được xử lý cho bạn khi nhập tiền tố.",
+          "tron": "Đường dẫn secp256k1 + keccak tương tự như EVM cho ID tài khoản 20 byte, sau đó Base58Check với byte phiên bản `0x41` → `T…`. Các chế độ: ví và TẠO (không phải 0), sử dụng bố cục RLP giống như EVM rồi mã hóa Tron.",
+          "aptos": "Ed25519. Địa chỉ = `sha3-256(pubkey ‖ 0x00)` dưới dạng hex. Tương thích với các ví Petra, Martian và các ví Aptos khác nhập bí mật hex.",
+          "sui": "Ed25519. Địa chỉ = `blake2b-256(0x00 ‖ pubkey)` dưới dạng hex (byte cờ đánh dấu lược đồ). Nhập vào Sui Wallet / Suit bằng khóa riêng hex.",
+          "ton": "Ed25519 + Hợp đồng ví v4R2. Địa chỉ là dạng Base64url thân thiện với người dùng: `UQ…` (không thể trả lại) và `EQ…` (có thể trả lại). Kết hợp có phân biệt chữ hoa chữ thường. Nhập vào Tonkeeper/MyTonWallet.",
+          "cardano": "Địa chỉ doanh nghiệp Ed25519 (CIP-19 loại 6, chỉ khóa thanh toán): tiêu đề `0x61` + hàm băm thanh toán Blake2b-224, bech32 với HRP `addr` → `addr1…`.",
+          "xrp": "secp256k1 nén pubkey → ID tài khoản RIPEMD160(SHA256) → Kiểm tra Base58 cổ điển XRPL → `r…`. Lưu ý: XRPL sử dụng bảng chữ cái Base58 khác với Bitcoin.",
+          "links": {
+            "sol": "[Solana](/sol)",
+            "evm": "[EVM](/evm)",
+            "btc": "[Bitcoin](/btc)",
+            "tron": "[Tron](/tron)",
+            "aptos": "[Aptos](/aptos)",
+            "sui": "[Sui](/sui)",
+            "ton": "[TON](/ton)",
+            "cardano": "[Cardano](/cardano)",
+            "xrp": "[XRP](/xrp)"
+          }
+        },
+        "modes": {
+          "n": "05 — Các chế độ",
+          "title": "Ví, đúc tiền, TẠO, TẠO2",
+          "glyph": "Hình E - Các chế độ",
+          "solMint": "Về mặt mật mã giống hệt với một cặp khóa ví. Bàn khởi chạy yêu cầu một cặp khóa/khóa riêng tùy chỉnh; Vanitas gắn nhãn kết quả là mint để quá trình xuất phù hợp với quy trình làm việc đó. Mở [/sol?mode=mint](/sol?mode=mint), tìm mẫu, dán khóa vào Pump.fun, Raydium, Meteora, v.v.",
+          "create": "Hợp đồng đầu tiên được triển khai từ EOA có số không bằng 0 có địa chỉ xác định: `keccak256(RLP([sender, 0]))[12:]`. Vanitas nghiền ngẫm EOA cho đến khi địa chỉ hợp đồng phái sinh phù hợp với mẫu của bạn. Bạn nhận được khóa riêng của người triển khai — triển khai một lần từ tài khoản nonce-0 mới.",
+          "create2Intro": "Địa chỉ = `keccak256(0xff ‖ deployer ‖ salt ‖ initCodeHash)[12:]`. Hai chiến lược xay:",
+          "create2Salt": "**create2-salt** — sửa khóa triển khai + mã băm init; tìm kiếm một loại muối mang lại địa chỉ phù phiếm.",
+          "create2Deployer": "**create2-deployer** — sửa lỗi salt + mã băm init; tìm kiếm khóa triển khai có địa chỉ CREATE2 khớp.",
+          "create2Hash": "Bạn phải cung cấp `initCodeHash` (keccak của mã byte triển khai) chính xác. Hàm băm sai → sai địa chỉ trên chuỗi."
+        },
+        "workers": {
+          "n": "06 — Công nhân",
+          "title": "Kiến trúc hiệu suất",
+          "glyph": "Hình F - Lò rèn",
+          "intro": "Nguồn công nhân nằm dưới `src/workers/*.worker.source.ts` và được đóng gói cùng với esbuild thành `public/*-worker.js`. Mỗi bản dựng ghi thông báo SHA-256 vào `public/worker-hash.json` cho [live audit](/audit).",
+          "ledger": {
+            "parallelism": {
+              "label": "Sự song song",
+              "value": "Số lõi CPU − 1 (mặc định)",
+              "note": "Điều chỉnh luồng nếu máy nóng lên hoặc giao diện người dùng bị giật"
+            },
+            "solSpeed": {
+              "label": "Tốc độ Solana",
+              "value": "Bản địa Ed25519 khi có sẵn",
+              "note": "Chrome 113+ · Firefox 129+ · Safari 17+; khác WASM"
+            },
+            "libraries": {
+              "label": "Thư viện",
+              "value": "@noble · tweetnacl · watsign · @ton/*",
+              "note": "Đã kiểm tra tiền điện tử JS / WASM thuần túy trong trình duyệt"
+            }
+          },
+          "postFind": "Sau khi tìm thấy, **kiểm tra bảo mật khóa** tùy chọn entropy thăm dò, tính sẵn có của CSPRNG và kiểm tra tính đồng nhất chi bình phương trên các byte ngẫu nhiên — xác nhận rằng đường dẫn RNG của trình duyệt có vẻ ổn."
+        },
+        "proof": {
+          "n": "07 – Bằng chứng",
+          "title": "Bằng chứng tìm thấy",
+          "glyph": "Hình G - Con dấu",
+          "p1": "**Chia sẻ bằng chứng** xây dựng một liên kết công khai tới [/proof](/proof) chỉ có chuỗi, địa chỉ và mẫu — **không bao giờ có khóa riêng tư**. Bất kỳ ai cũng có thể mở liên kết và xác minh địa chỉ khớp với tiền tố/hậu tố được xác nhận phía máy khách.",
+          "session": "Các phát hiện gần đây trong giao diện người dùng chỉ sử dụng `sessionStorage` cho siêu dữ liệu địa chỉ + mẫu. Đóng tab sẽ xóa lịch sử đó; chìa khóa không được lưu trữ ở đó."
+        },
+        "cli": {
+          "n": "08 — CLI",
+          "title": "lò rèn thiết bị đầu cuối",
+          "glyph": "Hình H - tấm bia",
+          "p1": "Ý tưởng tương tự bên ngoài trình duyệt: `npx vanitas` mở trình hướng dẫn hoặc chuyển cờ cho tham số chuỗi, chế độ, tiền tố, luồng và CREATE2. Kết quả ghi một tệp JSON với chế độ `0600` khi HĐH hỗ trợ. Đóng gói: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
+          "example": "npx vanitas evm --mode hợp đồng --prefix cafe --threads 8"
+        },
+        "verify": {
+          "n": "09 - Xác minh",
+          "title": "Hãy tự mình xác nhận điều đó",
+          "glyph": "Hình I - Mắt",
+          "steps": [
+            "Mở DevTools → Mạng, xóa nhật ký, bắt đầu rèn - bạn sẽ thấy **không có yêu cầu** trong khi khai thác.",
+            "Tải trang, ngoại tuyến, tạo lại - nó vẫn hoạt động.",
+            "Chạy [live audit](/audit) và so sánh giá trị băm của công nhân với `worker-hash.json`.",
+            "Đọc nguồn trên [GitHub](https://github.com/bytebrox/vanitas) — đặc biệt là `src/workers/`."
+          ]
+        }
+      },
+      "footer": {
+        "security": "Bảo vệ",
+        "faq": "FAQ",
+        "audit": "Kiểm toán trực tiếp"
+      }
+    },
+    "security": {
+      "eyebrow": "Tài liệu",
+      "title": "Bảo vệ",
+      "description": "Khóa được tạo trong trình duyệt của bạn, không bao giờ được tạo trên máy chủ của chúng tôi. Trang này là mô hình tin cậy: kiến ​​trúc, mối đe dọa, mật mã, tiêu đề và cách tự mình xác minh mọi khiếu nại.",
+      "sideCaption": "Hình V - Cống dẫn nước",
+      "principles": {
+        "title": "Không thể thương lượng",
+        "marketing": "Tuyên bố tiếp thị là vô giá trị nếu không có kiểm tra. Sử dụng [live audit](/audit) và phần Xác minh bên dưới."
+      },
+      "architecture": {
+        "title": "Chìa khóa sống ở đâu",
+        "keysRam": "Khóa riêng chỉ tồn tại ở đây — RAM trên thiết bị của bạn"
+      },
+      "next": {
+        "label": "Kế tiếp",
+        "audit": "Kiểm toán trực tiếp",
+        "how": "Nó hoạt động như thế nào",
+        "faq": "FAQ"
+      },
+      "toc": {
+        "principles": "Nguyên tắc",
+        "architecture": "Ngành kiến ​​​​trúc",
+        "threats": "Mối đe dọa",
+        "storage": "Kho",
+        "crypto": "tiền điện tử",
+        "integrity": "Chính trực",
+        "headers": "Tiêu đề",
+        "browser": "Trình duyệt",
+        "workflow": "Quy trình làm việc",
+        "verify": "Xác minh",
+        "disclose": "Tiết lộ"
+      },
+      "sections": {
+        "principles": {
+          "n": "01 – Nguyên tắc",
+          "title": "Không thể thương lượng",
+          "glyph": "Hình A - Tấm chắn",
+          "items": [
+            "**Tạo phía máy khách** — Web Workers trên CPU của bạn tạo ra mọi cặp khóa.",
+            "**Không chuyển tiếp khóa** — không có API nào chấp nhận hoặc trả về khóa riêng tư.",
+            "**Không lưu trữ khóa** — không có cơ sở dữ liệu, không có nhật ký bí mật, không có phân tích mẫu hoặc địa chỉ.",
+            "**Có thể xác minh** — nguồn mở, kiểm tra trực tiếp, kiểm tra ngoại tuyến, bảng điều khiển Mạng.",
+            "**Bằng chứng không bị lộ** — bằng chứng có thể chia sẻ chỉ chứa địa chỉ + mẫu."
+          ]
+        },
+        "architecture": {
+          "n": "02 — Kiến trúc",
+          "title": "Chìa khóa sống ở đâu",
+          "glyph": "Hình B - Quỹ tích",
+          "intro": "Vanitas là một trang Next.js tĩnh. Máy chủ (ví dụ: Vercel) phục vụ các gói HTML, CSS, JS và gói công nhân dựng sẵn. Mật mã không bao giờ chạy trên máy chủ đó để lấy chìa khóa của bạn.",
+          "browserLabel": "Trình duyệt của bạn",
+          "mainThread": "Chủ đề chính",
+          "mainThreadNote": "Giao diện người dùng · Phản ứng · điều khiển",
+          "webWorkers": "Nhân viên web",
+          "webWorkersNote": "W1…Wn — nghiền · trận đấu · postMessage",
+          "networkLabel": "Mạng trong quá trình khai thác",
+          "networkBody": "Không cần thiết. Sau khi tải tài sản, chế độ trên máy bay vẫn hoạt động. Tuyến API của bên thứ nhất duy nhất (`/api/domains`) đề xuất các liên kết miền Solana — tuyến này không tạo hoặc nhận khóa.",
+          "serversLabel": "Máy chủ của chúng tôi",
+          "serversBody": "Cung cấp các tập tin. Không thể đọc bộ nhớ Công nhân của bạn. Không thể chặn một cặp khóa đã hoàn thành. Nguồn gốc bị xâm phạm có thể phục vụ JS độc hại — đó là lý do tại sao việc kiểm tra tính toàn vẹn và nguồn mở lại là vấn đề quan trọng (xem Tính toàn vẹn & Trình duyệt)."
+        },
+        "threats": {
+          "n": "03 - Các mối đe dọa",
+          "title": "Mô hình đe dọa (trung thực)",
+          "glyph": "Hình C - Cái cân",
+          "inScopeTitle": "Trong phạm vi - chúng tôi thiết kế dựa trên",
+          "inScope": [
+            "Trộm khóa phía máy chủ (không có khóa trên máy chủ).",
+            "Đánh hơi mạng thông thường trong quá trình khai thác (không có lưu lượng truy cập chính).",
+            "Nhấp chuột vào ứng dụng chính (từ chối khung trên các tuyến chính).",
+            "Đường dẫn lọc XSS rõ ràng (CSP; vẫn chưa phải là viên đạn bạc)."
+          ],
+          "outScopeTitle": "Ngoài phạm vi/chia sẻ trách nhiệm",
+          "outScope": [
+            "**Tiện ích mở rộng trình duyệt độc hại** đọc bộ nhớ trang hoặc khay nhớ tạm — vô hiệu hóa chúng trên cấu hình sạch khi giả mạo khóa có giá trị cao.",
+            "**Thiết bị / phần mềm độc hại bị xâm nhập** — Keylogger cấp hệ điều hành có thể đánh bại bất kỳ trang web nào.",
+            "**Bạn dán khóa vào Discord / lừa đảo** — bảo mật hoạt động là của bạn.",
+            "**Chuỗi cung ứng phụ thuộc** — chúng tôi ghim và kiểm tra; bạn có thể xác minh băm công nhân và xây dựng lại từ nguồn."
+          ],
+          "vanityNote": "Khai thác ảo không tạo ra khóa “yếu hơn”. Các mẫu dài chỉ tốn nhiều CPU hơn — chúng không làm giảm entropy của khóa riêng."
+        },
+        "storage": {
+          "n": "04 — Lưu trữ",
+          "title": "Những gì chúng tôi lưu trữ",
+          "glyph": "Hình D - Vault",
+          "intro": "**Không có thông tin nào về khóa của bạn trên máy chủ của chúng tôi.** Không có cơ sở dữ liệu về địa chỉ, mẫu, IP để khai thác hoặc SDK phân tích trong đường dẫn giả mạo.",
+          "items": [
+            "Không có khóa riêng trên đĩa hoặc máy chủ",
+            "Không có khóa/địa chỉ công khai nào được thu thập từ xa",
+            "Không có mẫu đo từ xa",
+            "Không có hệ thống tài khoản",
+            "Không có phân tích của bên thứ ba trong lời hứa sản phẩm",
+            "sessionStorage tìm thấy gần đây = chỉ địa chỉ + mẫu, phiên trình duyệt này",
+            "Liên kết bằng chứng = thông số truy vấn bạn chọn chia sẻ (không có khóa)"
+          ]
+        },
+        "crypto": {
+          "n": "05 — Tiền điện tử",
+          "title": "Thuật toán cho mỗi lò rèn",
+          "intro": "Tính ngẫu nhiên luôn đến từ trình duyệt CSPRNG (`crypto.getRandomValues`). Đường cong và dẫn xuất địa chỉ khác nhau theo chuỗi:",
+          "rows": {
+            "sol": {
+              "label": "Solana",
+              "value": "Ed25519 → Base58",
+              "note": "Web Crypto gốc hoặc dự phòng WASM · ví / đúc tiền"
+            },
+            "evm": {
+              "label": "EVM",
+              "value": "secp256k1 + keccak-256",
+              "note": "0x EOA · TẠO · TẠO2"
+            },
+            "btc": {
+              "label": "bitcoin",
+              "value": "secp256k1",
+              "note": "Di sản · SegWit · Taproot · Xuất WIF"
+            },
+            "tron": {
+              "label": "Tron",
+              "value": "secp256k1 + keccak → Base58Check",
+              "note": "T… ví / TẠO"
+            },
+            "aptos": {
+              "label": "Aptos",
+              "value": "Ed25519 + SHA3-256",
+              "note": "địa chỉ tài khoản 0x"
+            },
+            "sui": {
+              "label": "Tùy",
+              "value": "Ed25519 + Blake2b-256",
+              "note": "0x với cờ lược đồ"
+            },
+            "ton": {
+              "label": "TON",
+              "value": "Ed25519 · Ví v4R2",
+              "note": "UQ / EQ Base64url"
+            },
+            "cardano": {
+              "label": "Cardano",
+              "value": "Ed25519 · Doanh nghiệp CIP-19",
+              "note": "addr1… chỉ có khóa thanh toán"
+            },
+            "xrp": {
+              "label": "XRP",
+              "value": "secp256k1 · XRPL Base58",
+              "note": "địa chỉ r… cổ điển"
+            }
+          },
+          "postFind": "Kiểm tra sau tìm thấy có thể xác thực kích thước entropy, sự hiện diện CSPRNG và tính đồng nhất chi bình phương trên một mẫu ngẫu nhiên — kiểm tra tình trạng đường dẫn RNG, không thay thế cho việc vệ sinh thiết bị."
+        },
+        "integrity": {
+          "n": "06 - Tính chính trực",
+          "title": "Công nhân và hàm băm được xuất bản",
+          "glyph": "Hình. E - Băm",
+          "p1": "Mã khai thác được gửi dưới dạng tệp `public/*-worker.js` tĩnh được tạo từ nguồn TypeScript. Mỗi bản dựng sản xuất ghi lại bản tóm tắt SHA-256 trong `worker-hash.json`. Trang kiểm tra băm lại các công nhân mà trình duyệt của bạn đã tải và so sánh chúng với tệp đó.",
+          "p2": "Nếu các giá trị băm khác nhau, hãy coi trang là không đáng tin cậy — dừng lại, không sử dụng khóa và điều tra (triển khai sai, lưu vào bộ đệm hoặc giả mạo). Việc xây dựng lại từ kho lưu trữ mở sẽ tạo lại cùng một byte công nhân cho một cam kết nhất định."
+        },
+        "headers": {
+          "n": "07 — Tiêu đề",
+          "title": "Tiêu đề bảo mật HTTP",
+          "intro": "Phản hồi bao gồm các tiêu đề làm giảm tác động XSS, buộc HTTPS và chặn việc đóng khung ứng dụng chính. CSP vẫn cho phép những gì Next.js cần (bao gồm một số cân bằng nội tuyến/eval) - trợ giúp tiêu đề; chúng không thay thế việc xem xét mã.",
+          "rows": {
+            "csp": {
+              "label": "CSP",
+              "value": "Chính sách-bảo mật nội dung",
+              "note": "Giới hạn tập lệnh, công nhân, kết nối-src"
+            },
+            "hsts": {
+              "label": "HSTS",
+              "value": "Nghiêm ngặt-Giao thông-An ninh",
+              "note": "tuổi tối đa=31536000"
+            },
+            "frame": {
+              "label": "Khung",
+              "value": "Tùy chọn khung X: TỪ CHỐI",
+              "note": "Ứng dụng chính không thể nhúng được"
+            },
+            "mime": {
+              "label": "MIME",
+              "value": "Tùy chọn loại nội dung X: nosniff",
+              "note": "Không đánh hơi MIME"
+            },
+            "referrer": {
+              "label": "Người giới thiệu",
+              "value": "nguồn gốc nghiêm ngặt khi-xuất xứ chéo",
+              "note": "Hạn chế rò rỉ liên kết giới thiệu"
+            }
+          }
+        },
+        "browser": {
+          "n": "08 — Trình duyệt",
+          "title": "Trình duyệt vẫn có thể làm gì",
+          "intro": "Về lý thuyết, bất kỳ thứ gì chạy với đặc quyền trang đều có thể đọc được thông báo DOM và Worker. Điều đó bao gồm:",
+          "items": [
+            "Tiện ích mở rộng trình duyệt với quyền truy cập trang web rộng rãi",
+            "DevTools mở trên máy dùng chung",
+            "Các tập lệnh được chèn độc hại nếu XSS tồn tại",
+            "Trình đánh hơi bảng tạm sau khi bạn sao chép khóa"
+          ],
+          "mitigations": "Biện pháp giảm thiểu: làm sạch hồ sơ trình duyệt, không có tiện ích mở rộng không cần thiết, ưu tiên tải xuống tệp qua khay nhớ tạm đối với các khóa có giá trị cao, xóa khay nhớ tạm sau khi dán vào ví, xem xét thiết bị đầu cuối CLI hoặc máy air-gapped dành cho kho bạc lớn."
+        },
+        "workflow": {
+          "n": "09 - Quy trình làm việc",
+          "title": "Quy trình vận hành an toàn",
+          "steps": [
+            "Tải vanitas.fun (hoặc chạy từ bản dựng cục bộ đã được xác minh).",
+            "Tùy chọn: mở Mạng, ngoại tuyến, chạy kiểm tra.",
+            "Trước tiên hãy chọn một mẫu ngắn; tăng độ dài khi bạn tin tưởng vào thiết lập.",
+            "Khi tìm thấy: xuất, lưu trữ ngoại tuyến, không bao giờ chụp màn hình khóa vào ứng dụng trò chuyện.",
+            "Nhập vào đúng ví cho chuỗi đó; gửi chuyển kiểm tra bụi.",
+            "Để nắm giữ lâu dài, hãy chuyển tiền sang ví phần cứng - Vanitas là một lò rèn chứ không phải kho tiền."
+          ]
+        },
+        "verify": {
+          "n": "10 - Xác minh",
+          "title": "Ba bước kiểm tra mà ai cũng có thể thực hiện",
+          "glyph": "Hình F - Kiểm toán",
+          "network": {
+            "n": "01 — Mạng",
+            "title": "Giám sát mạng",
+            "steps": [
+              "Công cụ dành cho nhà phát triển → Mạng → xóa",
+              "Bắt đầu tạo",
+              "Xác nhận các yêu cầu **không** trong khi khai thác"
+            ]
+          },
+          "offline": {
+            "n": "02 — Ngoại tuyến",
+            "title": "Chế độ trên máy bay",
+            "steps": [
+              "Tải ứng dụng",
+              "Ngắt kết nối",
+              "Tạo - thành công chứng tỏ không có sự phụ thuộc vào máy chủ trực tiếp"
+            ]
+          },
+          "audit": {
+            "n": "03 — Kiểm toán",
+            "title": "Kiểm tra trực tiếp + nguồn",
+            "steps": [
+              "Chạy [/audit](/audit)",
+              "So sánh giá trị băm của công nhân với JSON được xuất bản",
+              "Đánh giá công nhân [GitHub](https://github.com/bytebrox/vanitas) và SECURITY.md"
+            ]
+          }
+        },
+        "disclose": {
+          "n": "11 - Tiết lộ",
+          "title": "Báo cáo vấn đề",
+          "glyph": "Hình G - Báo cáo",
+          "intro": "**Không** mở các vấn đề GitHub công khai để tìm lỗ hổng bảo mật. Ưu tiên Tư vấn bảo mật GitHub riêng tư trên [bytebrox/vanitas](https://github.com/bytebrox/vanitas/security/advisories/new). Bao gồm các bước tái tạo, tác động và cách khắc phục được đề xuất nếu có.",
+          "faq": {
+            "steal": {
+              "q": "Bạn có thể lấy trộm chìa khóa của tôi không?",
+              "a": "Chúng tôi không có đường dẫn phía máy chủ nhận chúng. Bản dựng hoặc tiện ích mở rộng độc hại có thể — xác minh hàm băm và sử dụng môi trường sạch sẽ để có giá trị cao."
+            },
+            "host": {
+              "q": "Nếu máy chủ bị hack thì sao?",
+              "a": "Những kẻ tấn công có thể phục vụ JavaScript đã bị thay đổi. Đó là lý do tại sao mã nguồn mở, kiểm tra hàm băm công nhân và ưu tiên vấn đề cam kết đã biết rõ. Máy chủ vẫn không bao giờ nhận được khóa đã hoàn thành của bạn từ một bản dựng sạch."
+            },
+            "weaker": {
+              "q": "Địa chỉ ảo có kém an toàn hơn không?",
+              "a": "Không. Entropy của khóa riêng không thay đổi. Chỉ địa chỉ công cộng được lọc để xuất hiện."
+            },
+            "cold": {
+              "q": "Tôi có nên giả mạo khóa lưu trữ lạnh trong trình duyệt hàng ngày không?",
+              "a": "Đối với số tiền lớn: hồ sơ sạch hoặc ngoại tuyến/CLI, chuyển khoản thử nghiệm nhỏ, sau đó lưu ký ví phần cứng."
+            }
+          }
+        }
+      }
+    }
+  },
+  "meta": {
+    "home": {
+      "title": "Solana, EVM, Bitcoin & Tron Vanity Forge",
+      "description": "Giả mạo địa chỉ phù hợp phía khách hàng cho Solana, EVM, Bitcoin và Tron. Ví, tiền đúc và hợp đồng — chìa khóa không bao giờ rời khỏi trình duyệt này.",
+      "ogAlt": "Lò rèn bàn trang điểm đa dây chuyền Vanitas"
+    },
+    "sol": {
+      "title": "Trình tạo địa chỉ Solana Vanity",
+      "description": "Giả mạo ví Solana phù hợp và địa chỉ đúc tiền mã thông báo hoàn toàn trong trình duyệt của bạn. Mã nguồn mở, phía máy khách, không có chìa khóa nào rời khỏi thiết bị này.",
+      "ogAlt": "Vanitas — Lò rèn bàn trang điểm Solana",
+      "ogTitle": "Trình tạo địa chỉ Solana Vanity | Vanitas",
+      "ogDescription": "Giả mạo ví Solana phù hợp và địa chỉ đúc tiền phía khách hàng. Không có phím nào rời khỏi thiết bị này.",
+      "twitterDescription": "Giả mạo ví Solana phù hợp và địa chỉ đúc tiền phía khách hàng."
+    },
+    "evm": {
+      "title": "Trình tạo địa chỉ ảo EVM",
+      "description": "Giả mạo ví EVM phù hợp và địa chỉ hợp đồng phía khách hàng. Một chìa khóa cho Ethereum, Base, Arbitrum, Optimism, BSC, v.v.",
+      "ogTitle": "Trình tạo địa chỉ ảo EVM | Vanitas",
+      "ogDescription": "Giả mạo ví vanity 0x và địa chỉ hợp đồng phía khách hàng. Cùng một khóa trên Ethereum, BNB, Base, Arbitrum và mọi chuỗi EVM.",
+      "twitterDescription": "Giả mạo ví vanity 0x và địa chỉ hợp đồng phía khách hàng. Cùng một khóa trên mọi chuỗi EVM.",
+      "ogAlt": "Vanitas — Ví ảo và công cụ tạo hợp đồng EVM"
+    },
+    "btc": {
+      "title": "Trình tạo địa chỉ ảo Bitcoin",
+      "description": "Giả mạo các địa chỉ Bitcoin ảo (cũ, SegWit, Taproot) hoàn toàn trong trình duyệt của bạn."
+    },
+    "tron": {
+      "title": "Trình tạo địa chỉ Tron Vanity",
+      "description": "Forge vanity Tron Base58 giải quyết phía máy khách cho TronLink và các ví khác."
+    },
+    "aptos": {
+      "title": "Trình tạo địa chỉ Aptos Vanity",
+      "description": "Giả mạo địa chỉ trang điểm Aptos Ed25519 hoàn toàn trong trình duyệt của bạn."
+    },
+    "sui": {
+      "title": "Trình tạo địa chỉ Sui Vanity",
+      "description": "Giả mạo địa chỉ phù phiếm Sui Ed25519 hoàn toàn trong trình duyệt của bạn."
+    },
+    "ton": {
+      "title": "TON Trình tạo địa chỉ Vanity",
+      "description": "Giả mạo địa chỉ TON Wallet v4R2 (UQ / EQ) phía khách hàng."
+    },
+    "cardano": {
+      "title": "Trình tạo địa chỉ Cardano Vanity",
+      "description": "Giả mạo địa chỉ addr1 doanh nghiệp phù hợp Cardano hoàn toàn trong trình duyệt của bạn."
+    },
+    "xrp": {
+      "title": "Trình tạo địa chỉ ảo XRP",
+      "description": "Giả mạo hoàn toàn các địa chỉ r… cổ điển XRPL phù phiếm trong trình duyệt của bạn."
+    },
+    "faq": {
+      "title": "FAQ",
+      "description": "Câu trả lời trên mọi lò rèn của Vanitas — mẫu, chế độ, bảo mật, bằng chứng và CLI.",
+      "ogTitle": "Câu hỏi thường gặp | Vanitas",
+      "ogDescription": "Câu trả lời theo chủ đề — mọi chuỗi, bảo mật, bằng chứng, CLI và cách sử dụng.",
+      "ogAlt": "Câu hỏi thường gặp về Vanitas"
+    },
+    "how-it-works": {
+      "title": "Nó hoạt động như thế nào",
+      "description": "Cách Vanitas giả mạo các địa chỉ ảo trên Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano và XRP: công nhân, chế độ (mint, CREATE, CREATE2), bằng chứng tìm thấy, CLI và cách xác minh bảo mật phía khách hàng.",
+      "ogTitle": "Nó hoạt động như thế nào | Vanitas",
+      "ogDescription": "Tham quan đầy đủ mọi lò rèn, kiến ​​trúc công nhân, chế độ triển khai và xác minh.",
+      "ogAlt": "Vanitas - cách tạo địa chỉ ảo hoạt động"
+    },
+    "security": {
+      "title": "Bảo vệ",
+      "description": "Mô hình tin cậy của Vanitas — chìa khóa vẫn nằm trong trình duyệt của bạn. Ranh giới mối đe dọa và xác minh.",
+      "ogTitle": "An ninh | Vanitas",
+      "ogDescription": "Cấu trúc, mối đe dọa, mật mã, tiêu đề và xác minh — các khóa vẫn còn trong trình duyệt của bạn.",
+      "ogAlt": "Bảo mật Vanitas — khóa vẫn ở trong trình duyệt của bạn"
+    },
+    "lab": {
+      "title": "Phòng thí nghiệm mẫu",
+      "description": "Ma trận độ khó, ước tính độ hiếm và hàng mẫu hàng loạt cho mọi lò rèn của Vanitas — trước khi bạn khai thác.",
+      "ogTitle": "Phòng thí nghiệm mẫu | Vanitas",
+      "ogDescription": "Ma trận độ khó, ước tính độ hiếm và hàng đợi mẫu hàng loạt — trước khi bạn khai thác."
+    },
+    "lookalike": {
+      "title": "Kiểm tra tương tự",
+      "description": "Nắm bắt các ký tự Base58 bị cấm, bẫy chữ Tron và bảng chữ cái không khớp trước khi bạn mài giũa các mẫu phù phiếm.",
+      "ogTitle": "Kiểm tra tương tự | Vanitas",
+      "ogDescription": "Hãy nắm bắt các lỗi không khớp của 0/O, I/l, chữ Tron và bảng chữ cái trước khi bạn nghiền ngẫm."
+    },
+    "create2": {
+      "title": "Người trợ giúp CREATE2",
+      "description": "Băm mã byte triển khai vào initCodeHash, xem trước địa chỉ CREATE2 từ nhà triển khai + muối và liên kết sâu vào lò rèn EVM - tất cả phía máy khách.",
+      "ogTitle": "Người trợ giúp CREATE2 | Vanitas",
+      "ogDescription": "initCodeHash từ mã byte, xem trước muối, kiểm tra địa chỉ trước khi nghiền."
+    },
+    "brand": {
+      "title": "Thương hiệu",
+      "description": "Tiện ích bằng chứng có thể nhúng và bộ nhãn hiệu nhẹ dành cho Vanitas - nhãn từ, màu sắc, đoạn mã iframe. Không có khóa riêng.",
+      "ogTitle": "Thương hiệu | Vanitas",
+      "ogDescription": "Tiện ích bằng chứng có thể nhúng và bộ nhãn hiệu nhẹ."
+    },
+    "proof": {
+      "title": "Bằng chứng tìm thấy",
+      "description": "Xác minh địa chỉ ảo khớp với phía máy khách mà không cần khóa riêng."
+    },
+    "audit": {
+      "title": "Kiểm toán trực tiếp",
+      "description": "Chạy tám bước kiểm tra cục bộ trên Vanitas: Web Crypto, chất lượng RNG, không có mạng trong quá trình tạo, CSP, cách ly nhân viên và tính toàn vẹn của bản dựng.",
+      "ogTitle": "Kiểm toán trực tiếp | Vanitas",
+      "ogDescription": "Tám lần kiểm tra tự động trong trình duyệt của bạn. Không có gì là giả mạo, không có gì được gửi đi.",
+      "ogAlt": "Kiểm tra an ninh trực tiếp của Vanitas"
+    },
+    "token": {
+      "title": "Mã thông báo",
+      "description": "Vanitas không có mã thông báo dự án."
+    },
+    "embed-proof": {
+      "title": "Bằng chứng nhúng",
+      "description": "Bằng chứng có thể nhúng của tiện ích tìm kiếm."
+    },
+    "siteName": "Vanitas",
+    "notFound": {
+      "title": "404 — Không tìm thấy",
+      "description": "Trang này không tồn tại trên Vanitas."
+    },
+    "eth": {
+      "title": "Trình tạo địa chỉ ảo ETH",
+      "description": "Chuyển hướng đến lò rèn vanity EVM."
+    }
+  },
+  "notFound": {
+    "title": "Không tìm thấy trang",
+    "body": "Trang bạn yêu cầu không có trên Vanitas. Nó có thể đã di chuyển, hoặc nó chưa bao giờ tồn tại.",
+    "home": "Trang chủ",
+    "sol": "lò rèn Solana",
+    "evm": "lò rèn EVM",
+    "metaTitle": "404 — Không tìm thấy",
+    "metaDescription": "Trang này không tồn tại trên Vanitas.",
+    "figAbsent": "Hình. - Vắng mặt",
+    "errorLabel": "Lỗi 404",
+    "heading": "Địa chỉ này chưa từng được forge",
+    "links": {
+      "sol": "lò rèn SOL",
+      "evm": "lò rèn EVM",
+      "btc": "BTC giả mạo",
+      "tron": "lò rèn TRON",
+      "how": "Nó hoạt động như thế nào",
+      "faq": "FAQ"
+    },
+    "homeForge": "Hoặc quay lại [forge trang chủ](/)."
+  }
+}

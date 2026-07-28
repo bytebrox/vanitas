@@ -1,0 +1,1641 @@
+{
+  "common": {
+    "copy": "コピー",
+    "copied": "コピーされました",
+    "hide": "隠れる",
+    "reveal": "明らかにする",
+    "downloadTxt": "テキストをダウンロード",
+    "downloadJson": "jsonをダウンロード",
+    "forge": "フォージ",
+    "stop": "停止",
+    "reset": "リセット",
+    "loading": "読み込み中…",
+    "scrollDown": "下にスクロールします",
+    "cores": "コア",
+    "of": "{max}の",
+    "fewerCores": "コアの数が少ない",
+    "moreCores": "より多くのコア",
+    "soundOn": "サウンドオン",
+    "soundOff": "サウンドオフ",
+    "found": "見つかった",
+    "addressReady": "住所準備完了",
+    "publicAddress": "パブリックアドレス",
+    "privateKey": "秘密鍵",
+    "keepSafe": "安全に保管してください",
+    "keepSafe1": "このページを離れる前に秘密キーを保存してください",
+    "keepSafe2": "絶対に共有しないでください。これを持っている人がウォレットを制御します",
+    "keepSafe3": "ローカルで生成されます。サーバーには何も保存されていませんでした",
+    "attempts": "試み",
+    "pattern": "パターン",
+    "estTime": "EST（東部基準時。時間",
+    "keys": "キー",
+    "rate": "レート",
+    "time": "時間",
+    "workers": "労働者",
+    "tryPattern": "パターンを試してみる",
+    "recentFinds": "最近の発見",
+    "keySecurity": "鍵のセキュリティ",
+    "entropy": "エントロピ",
+    "source": "ソース",
+    "csprng": "CSPRNG",
+    "browser": "ブラウザ",
+    "prefix": "プレフィックス",
+    "suffix": "サフィックス",
+    "caseSensitive": "大文字と小文字を区別",
+    "optional": "オプション",
+    "brand": "ヴァニタス",
+    "sharePattern": "共有パターン",
+    "shareProof": "証拠を共有する",
+    "proofLinkCopied": "確認用リンクをコピーしました",
+    "forgeAnother": "別のものを鍛造する",
+    "scrollToForge": "スクロールして鍛造します",
+    "waiting": "待っています — パターンを入力して鍛造します",
+    "running": "●ランニング",
+    "progressExpected": "予想される検索の {pct}%",
+    "difficultyGuide": "ガイド: 3 文字 <5 秒 · 4 文字 ~1m · 5 文字 ~30m · 6 時間以上",
+    "match": "マッチ",
+    "startsAddress": "アドレスを開始します",
+    "endsAddress": "アドレスを終了します",
+    "howItWorks": "仕組み",
+    "liveAudit": "ライブ監査",
+    "evmForge": "EVMフォージ",
+    "exportHintSol": "読み取り用のTXT · Solana CLI / Phantom / Solflare用のJSON · 共有証明にはキーは含まれません",
+    "stepMode": "01 — モード",
+    "stepPattern": "02 — パターン",
+    "stepMintPattern": "02 — ミント柄",
+    "stepType": "01 — タイプ",
+    "stepEstimate": "03 — 見積もり",
+    "stepForge": "04 — 鍛冶",
+    "stepLive": "05 — ライブ",
+    "topics": "トピックス",
+    "verified": "確認済み",
+    "mismatch": "ミスマッチ",
+    "chain": "鎖",
+    "stats": "統計",
+    "statsDisclaimer": "試行回数は偽造者によって自己報告され、暗号的に証明されるものではありません。",
+    "copyProofLink": "証拠リンクをコピーする",
+    "openForge": "オープンフォージ",
+    "github": "GitHub",
+    "x": "X",
+    "attemptsLabel": "試み",
+    "charsDays": "{n} 文字には数日から数週間かかる場合があります。",
+    "charsHours": "{n} 文字には数時間かかる場合があります。",
+    "considerSuffix": "接尾辞のみ、または大文字と小文字を区別しないことを検討してください。"
+  },
+  "nav": {
+    "language": "言語",
+    "home": "ホーム",
+    "chains": "チェーン",
+    "docs": "ドキュメント",
+    "tools": "ツール",
+    "menu": "メニュー",
+    "close": "近い",
+    "themeToLight": "ライトモードに切り替える",
+    "themeToDark": "ダークモードに切り替える",
+    "themeLight": "ライト",
+    "themeDark": "暗い",
+    "themeMobileDarkToLight": "暗い→明るい",
+    "themeMobileLightToDark": "光→闇",
+    "docsHow": "どうやって",
+    "docsHowHint": "仕組み",
+    "docsFaq": "FAQ",
+    "docsFaqHint": "質問",
+    "docsSecurity": "安全",
+    "docsSecurityHint": "信頼モデル",
+    "toolsAudit": "監査",
+    "toolsAuditHint": "ライブチェック",
+    "toolsProof": "証拠",
+    "toolsProofHint": "検索結果を確認する",
+    "toolsLab": "研究室",
+    "toolsLabHint": "パターンラボ",
+    "toolsLookalike": "そっくりさん",
+    "toolsLookalikeHint": "アルファベットの罠",
+    "toolsCreate2": "CREATE2",
+    "toolsCreate2Hint": "初期化ハッシュ + プレビュー",
+    "toolsBrand": "ブランド",
+    "toolsBrandHint": "埋め込み + キット",
+    "brand": "ヴァニタス",
+    "githubAria": "GitHub リポジトリ",
+    "xAria": "X 上のバイトブロックス",
+    "evmSubline": "イーサリアム・BNB・ベース・アービトラム・オプティミズム・+EVM",
+    "chainItems": {
+      "sol": {
+        "label": "ソラナ",
+        "short": "SOL"
+      },
+      "evm": {
+        "label": "EVM",
+        "short": "EVM"
+      },
+      "btc": {
+        "label": "ビットコイン",
+        "short": "BTC"
+      },
+      "tron": {
+        "label": "トロン",
+        "short": "TRON"
+      },
+      "aptos": {
+        "label": "アプトス",
+        "short": "APTOS"
+      },
+      "sui": {
+        "label": "スイ",
+        "short": "SUI"
+      },
+      "ton": {
+        "label": "TON",
+        "short": "TON"
+      },
+      "cardano": {
+        "label": "カルダノ",
+        "short": "ADA"
+      },
+      "xrp": {
+        "label": "XRP",
+        "short": "XRP"
+      }
+    }
+  },
+  "footer": {
+    "blurb": "Solana、EVM、Bitcoin、Tron、Aptos、Sui、TON、Cardano、XRP 用のクライアント側バニティ ツール。プロジェクトトークンがありません。このデバイスからキーが離れることはありません。 [Bytebrox](https://x.com/bytebrox) によって開発されました。",
+    "donateSol": "SOLを寄付する",
+    "solscan": "ソルスキャン",
+    "home": "家",
+    "security": "安全",
+    "audit": "監査",
+    "faq": "FAQ",
+    "how": "どうやって",
+    "cli": "CLI",
+    "github": "GitHub",
+    "proof": "証拠",
+    "lab": "研究室",
+    "lookalike": "そっくりさん",
+    "create2": "CREATE2",
+    "brand": "ブランド",
+    "sol": "SOL",
+    "evm": "EVM",
+    "btc": "BTC",
+    "tron": "TRON",
+    "aptos": "APTOS",
+    "sui": "SUI",
+    "ton": "TON",
+    "ada": "ADA",
+    "xrp": "XRP",
+    "copyright": "© {year}"
+  },
+  "landing": {
+    "eyebrow": "クライアント側のバニティ フォージ",
+    "title": "ヴァニタス",
+    "subtitle": "チェーンを選択してください。キーはこのブラウザ内に残ります。",
+    "enterForge": "鍛冶場に入る→",
+    "preferTerminal": "ターミナルの方がいいですか？",
+    "forges": {
+      "sol": {
+        "name": "ソラナ",
+        "title": "ウォレット＆ミント",
+        "blurb": "Base58 バニティ ウォレットとトークン ミント。"
+      },
+      "evm": {
+        "name": "EVM",
+        "title": "財布と契約書",
+        "blurb": "EVM チェーンごとに 1 つの 0x キー。",
+        "aria": "イーサリアム、BNB、ベース、アービトラム、オプティミズム"
+      },
+      "btc": {
+        "name": "ビットコイン",
+        "title": "レガシー · SegWit · Taproot",
+        "blurb": "Vanity 1…、bc1q…、および bc1p… アドレス。"
+      },
+      "tron": {
+        "name": "トロン",
+        "title": "ウォレット＆クリエイト",
+        "blurb": "TronLink の Vanity T… アドレス。"
+      },
+      "aptos": {
+        "name": "アプトス",
+        "title": "Ed25519 0x",
+        "blurb": "ペトラと火星の六角バニティ。"
+      },
+      "sui": {
+        "name": "スイ",
+        "title": "Ed25519 0x",
+        "blurb": "スイウォレット＆スイート用六角バニティ。"
+      },
+      "ton": {
+        "name": "TON",
+        "title": "ウォレット v4R2",
+        "blurb": "バニティ UQ… / EQ… アドレス。"
+      },
+      "cardano": {
+        "name": "カルダノ",
+        "title": "エンタープライズアドレス1",
+        "blurb": "Bech32 バニティ支払いアドレス。"
+      },
+      "xrp": {
+        "name": "XRP",
+        "title": "クラシックレ…",
+        "blurb": "XRPL Base58 バニティ アドレス。"
+      }
+    },
+    "npxVanitas": "npxヴァニタス"
+  },
+  "forge": {
+    "header": {
+      "wallet": {
+        "eyebrow": "ウォレットフォージ",
+        "title": "ソラナ",
+        "headline": "アドレスに名前を付けます。鍵は保管しておいてください。",
+        "blurb": "CPU 上のこのブラウザ内でバニティ Solana ウォレット アドレスを完全に生成します。"
+      },
+      "mint": {
+        "eyebrow": "ミントフォージ",
+        "title": "ソラナ",
+        "headline": "ミントに名前を付けます。存在感のある打ち上げ。",
+        "blurb": "このブラウザ内で、あらゆるランチパッド用のバニティ Solana ミントを生成します。"
+      },
+      "evm": {
+        "eyebrow": "0x 鍛造",
+        "title": "EVM",
+        "headline": "0x に名前を付けます。どこでも同じキー。",
+        "blurb": "バニティ ウォレットまたはコントラクト アドレスをすべてこのブラウザ内で生成します。 1 つのキーは、イーサリアム、BNB スマート チェーン、Base、Arbitrum、Optimism、およびその他すべての EVM チェーンで動作します。"
+      },
+      "btc": {
+        "eyebrow": "UTXO フォージ",
+        "title": "ビットコイン",
+        "headline": "コインに名前を付けます。住所を所有しています。",
+        "blurb": "このブラウザ内でバニティ ビットコイン アドレス (レガシー、SegWit、Taproot) を完全に生成します。キーがこのデバイスから離れることはありません。"
+      },
+      "tron": {
+        "eyebrow": "Tフォージ",
+        "title": "トロン",
+        "headline": "T に名前を付けます。キーは保管しておいてください。",
+        "blurb": "バニティ Tron Base58 アドレスを完全にこのブラウザ内で生成します。 TronLink および他の Tron ウォレットにインポートします。"
+      },
+      "aptos": {
+        "eyebrow": "0x 鍛造",
+        "title": "アプトス",
+        "headline": "0x に名前を付けます。鍵は保管しておいてください。",
+        "blurb": "このブラウザ内でバニティ Aptos Ed25519 アドレスを完全に生成します。 Petra、Martian、その他の Aptos ウォレットにインポートします。"
+      },
+      "sui": {
+        "eyebrow": "0x 鍛造",
+        "title": "スイ",
+        "headline": "0x に名前を付けます。鍵は保管しておいてください。",
+        "blurb": "このブラウザ内でバニティ スイ Ed25519 アドレスを完全に生成します。スイウォレット、スイエット、その他のスイウォレットにインポートします。"
+      },
+      "ton": {
+        "eyebrow": "UQフォージ",
+        "title": "TON",
+        "headline": "UQ という名前を付けます。鍵は保管しておいてください。",
+        "blurb": "バニティ TON ウォレット v4R2 アドレス (UQ / EQ) をすべてこのブラウザーで生成します。 Tonkeeper と MyTonWallet にインポートします。"
+      },
+      "cardano": {
+        "eyebrow": "addr1 フォージ",
+        "title": "カルダノ",
+        "headline": "アドレスに名前を付けます。鍵は保管しておいてください。",
+        "blurb": "バニティ Cardano エンタープライズ アドレス (addr1…) をすべてこのブラウザ内で生成します。支払いキーのみ。"
+      },
+      "xrp": {
+        "eyebrow": "鍛造する",
+        "title": "XRP",
+        "headline": "r に名前を付けます。鍵は保管しておいてください。",
+        "blurb": "バニティ XRP Ledger のクラシック アドレス (r…) を完全にこのブラウザーで生成します。 Xaman およびその他の XRPL ウォレットにインポートします。"
+      }
+    },
+    "modes": {
+      "wallet": "財布",
+      "mint": "ミント",
+      "create": "CREATE",
+      "create2": "CREATE2",
+      "legacy": "遺産",
+      "segwit": "セグウィット",
+      "taproot": "主根",
+      "uq": "UQ",
+      "eq": "EQ"
+    },
+    "evmChainsNote": "イーサリアム・BNB・ベース・アービトラム・オプティミズム・+EVM",
+    "solDownloadTxtTitle": "VANITAS - SOLANA KEYPAIR",
+    "solDownloadImportant": "重要:\n- 秘密キーを決して共有しないでください\n- このファイルを安全に保管してください\n- このキーペアはブラウザでローカルに生成されました",
+    "scrollToForge": "スクロールして鍛造します",
+    "sideCaptions": {
+      "solWallet": "図 I — 円形劇場",
+      "solMint": "図 II — 神殿",
+      "evm": "図 VII — フォーラム",
+      "btc": "図 VIII — コイン",
+      "tron": "図 IX — 回路",
+      "aptos": "図 XI — 格子",
+      "sui": "図 XII — 電流",
+      "ton": "図 XIII — 信号",
+      "cardano": "図 XII — 元帳",
+      "xrp": "図 XIV — 元帳"
+    },
+    "steps": {
+      "mode": "01 — モード",
+      "pattern": "02 — パターン",
+      "estimate": "03 — 見積もり",
+      "forge": "04 — 鍛冶",
+      "live": "05 — ライブ"
+    },
+    "stepsCompact": {
+      "pattern": "01 — パターン",
+      "estimate": "02 — 見積もり",
+      "forge": "03 — 鍛造",
+      "live": "04 — ライブ"
+    },
+    "links": {
+      "sharePattern": "共有パターン",
+      "howItWorks": "仕組み",
+      "liveAudit": "ライブ監査",
+      "evmForge": "EVMフォージ",
+      "proofOfFind": "発見の証拠"
+    },
+    "sol": {
+      "mintAfterForge": "鍛造後: 秘密キーをランチパッドのカスタム ミント フィールド (pump.fun、Raydium、Meteora など) にコピーします。",
+      "mode": {
+        "target": "ターゲット",
+        "walletTarget": "ウォレットアドレス",
+        "mintTarget": "トークンミントアドレス",
+        "toggleAria": "ウォレットまたは造幣局のアドレスを切り替えます",
+        "mintHelp": "ランチパッド (pump.fun、Raydium、Meteora など) 用のバニティ Solana ミント キーペアを鍛造します。秘密キーをcustom-mintフィールドに貼り付けます。",
+        "walletHelp": "このブラウザ内で、バニティ Solana ウォレットのキーペア — Base58 アドレスを偽造します。"
+      }
+    },
+    "eth": {
+      "create2Params": "CREATE2パラメータ",
+      "initHash": "初期化ハッシュ",
+      "initHashPh": "keccak256(initCode) — 64 16 進数",
+      "salt": "塩",
+      "saltPh": "32 バイトのソルト — 64 16 進数",
+      "deployerKey": "デプロイヤーキー",
+      "deployerKeyPh": "デプロイヤーの秘密キー — 64 16 進数",
+      "footnote": "Ethereum、BNB Smart Chain、Base、Arbitrum、Optimism、Polygon、その他すべての EVM ネットワークで同じ 0x キー。 Solana は [SOL](/sol) でライブを行っています。",
+      "mode": {
+        "target": "ターゲット",
+        "walletBlurb": "すべての EVM チェーン上の EOA 0x アドレス。",
+        "createBlurb": "最初に (ノンス 0) コントラクト アドレスをデプロイします。",
+        "c2SaltBlurb": "デプロイヤ + initCodeHash を修正しました。塩を挽く。",
+        "c2KeyBlurb": "ソルト + initCodeHash を修正しました。デプロイヤキーを研削します。",
+        "c2Salt": "C2ソルト",
+        "c2Key": "C2キー"
+      }
+    },
+    "btc": {
+      "stepType": "01 — タイプ",
+      "mode": {
+        "addressType": "アドレスの種類",
+        "legacyBlurb": "クラシック 1… P2PKH (Base58)。",
+        "segwitBlurb": "ネイティブ bc1q… P2WPKH (Bech32)。",
+        "taprootBlurb": "ネイティブ bc1p…P2TR (Bech32m)。"
+      },
+      "pattern": {
+        "legacyHint": "レガシー アドレスは 1 で始まります。「BTC」と入力して 1BTC… を検索します (先頭の 1 は自動的に追加されます)。",
+        "segwitHint": "SegWit アドレスは bc1q で始まります。「cafe」のような本文、または完全な bc1q… プレフィックスを入力します。",
+        "taprootHint": "タップルート アドレスは bc1p で始まります。「cafe」のような本文、または完全な bc1p… プレフィックスを入力します。",
+        "caseNote": "オフ (小文字パターンに推奨): 1 以降、大文字と小文字の区別がオンの場合、小文字が使用されることは非常にまれです。"
+      }
+    },
+    "tron": {
+      "mode": {
+        "walletBlurb": "アカウントの Base58 アドレス (T…)。",
+        "createBlurb": "最初にデプロイするコントラクト アドレス (CREATE nonce 0)。"
+      }
+    },
+    "ton": {
+      "mode": {
+        "addressForm": "住所フォーム",
+        "uqWallet": "UQウォレット",
+        "uqBlurb": "バウンス不可能なウォレット アドレス (推奨)。",
+        "eqBlurb": "同じウォレット v4R2 アカウントのバウンス可能なフォーム。"
+      }
+    },
+    "pattern": {
+      "solPrefixPh": "SOL",
+      "solSuffixPh": "xyz",
+      "solAlphabet": "Base58 のみ — `0 O I` はありません。アルファベット: `1-9 A-H J-N P-Z a-k m-z`",
+      "ethHexNote": "EVM アドレスは 16 進数のみです (数字 `0–9` と文字 `a–f`)。文字 `g–z` (およびその他の文字) はアドレスに使用できず、入力しても無視されます。",
+      "ethIgnored": "無視されました: {chars}",
+      "ethPrefixPh": "死んだ",
+      "ethSuffixPh": "牛肉",
+      "ethAfter0x": "0x の後に開始",
+      "ethCaseNote": "照合では大文字と小文字が区別されません。パターンが長いと、指数関数的に時間がかかります (1 文字あたり 16 の可能性)。"
+    },
+    "cardano": {
+      "headerBlurb": "バニティ Cardano エンタープライズ アドレス (addr1…) をすべてこのブラウザ内で生成します。支払いキーのみ。"
+    },
+    "xrp": {
+      "headerBlurb": "バニティ XRP Ledger のクラシック アドレス (r…) を完全にこのブラウザーで生成します。 Xaman およびその他の XRPL ウォレットにインポートします。"
+    }
+  },
+  "tools": {
+    "lab": {
+      "title": "パターンラボ",
+      "description": "マイニングする前に、パターンがどれほど珍しいかを確認してから、ジョブをキューに入れてフォージを開きます。",
+      "eyebrow": "ツール",
+      "caption": "図 — 研究室",
+      "toc": {
+        "composer": "作曲家",
+        "matrix": "マトリックス",
+        "queue": "列"
+      },
+      "sectionPattern": "パターン",
+      "sectionRarity": "レアリティ",
+      "sectionBatch": "バッチ",
+      "addQueue": "キューに追加",
+      "openForge": "{chain} フォージを開く →",
+      "queueEmpty": "空の",
+      "queueEmptyHint": "ジョブを比較するには、上記のパターンを追加します。",
+      "remove": "取り除く",
+      "exportJson": "JSONのエクスポート",
+      "clear": "クリア",
+      "prefixPh": "エース",
+      "suffixPh": "オプション",
+      "composerN": "01 — 作曲家",
+      "matrixN": "02 — マトリックス",
+      "queueN": "03 — キュー",
+      "forge": "フォージ",
+      "exportWarning": "パターンのみ - 秘密キーはありません。"
+    },
+    "lookalike": {
+      "title": "類似チェック",
+      "description": "不可能なパターンで CPU を焼きつく前に、禁止されている Base58 グリフ、トロン ケース トラップ、XRPL アルファベットの不一致、および人間の類似物を捕捉します。",
+      "eyebrow": "ツール",
+      "caption": "図 — グリフ",
+      "toc": {
+        "check": "チェック",
+        "findings": "調査結果",
+        "alphabets": "アルファベット"
+      },
+      "sectionCheckN": "01 — チェック",
+      "sectionFindingsN": "02 — 調査結果",
+      "sectionAlphabetsN": "03 — アルファベット",
+      "sectionPatternForge": "パターンと鍛造",
+      "pattern": "パターン",
+      "patternPh": "プレフィックスまたはフラグメント",
+      "sectionSpotted": "私たちが発見したもの",
+      "findingsEmptyTitle": "パターンを入力してください",
+      "findingsEmptyDetail": "プレフィックス、サフィックス、または完全なバニティ フラグメントを貼り付けて確認します。",
+      "readyGrind": "研ぐ準備はできていますか? [Pattern Lab](/lab) または一致する Forge を開きます。",
+      "sectionCharset": "文字セットのチートシート",
+      "tocCheck": "チェック",
+      "tocFindings": "調査結果",
+      "tocAlphabets": "アルファベット",
+      "sectionCheckTitle": "パターンと鍛造",
+      "sectionFindingsTitle": "私たちが発見したもの",
+      "sectionAlphabetsTitle": "文字セットのチートシート",
+      "patternLabel": "パターン",
+      "severity": {
+        "error": "エラー",
+        "warn": "警告",
+        "info": "情報"
+      },
+      "chains": {
+        "sol": {
+          "label": "ソラナ",
+          "notes": "ビットコインスタイルの Base58 — 0、O、I、l なし"
+        },
+        "evm": {
+          "label": "EVM",
+          "notes": "16 進数のみ (0 ～ 9、a ～ f)、大文字と小文字は区別されません"
+        },
+        "btc-legacy": {
+          "label": "ビットコインレガシー",
+          "notes": "Base58 P2PKH / P2SH"
+        },
+        "btc-bech32": {
+          "label": "ビットコイン Bech32",
+          "notes": "bc1q / bc1p 本体文字セット"
+        },
+        "tron": {
+          "label": "トロン",
+          "notes": "Base58 T… — 大文字と小文字が区別されます。初期の文字は通常大文字"
+        },
+        "aptos": {
+          "label": "アプトス",
+          "notes": "0x + 64 16進数"
+        },
+        "sui": {
+          "label": "スイ",
+          "notes": "0x + 64 16進数"
+        },
+        "ton": {
+          "label": "トン",
+          "notes": "Base64url — 大文字と小文字が区別されます"
+        },
+        "cardano": {
+          "label": "カルダノ",
+          "notes": "addr1…bech32本体"
+        },
+        "xrp": {
+          "label": "XRP",
+          "notes": "XRPL Base58 — Bitcoin/Solana とは異なります"
+        }
+      },
+      "pairNotes": {
+        "zeroO": "ゼロと大文字の O",
+        "zeroo": "ゼロと小文字の o",
+        "oneL": "1 対小文字の L",
+        "oneI": "ワン vs キャピタル i",
+        "onei": "1 と小文字の i",
+        "fiveS": "ファイブ vs S",
+        "eightB": "エイト vs B"
+      },
+      "findings": {
+        "empty": {
+          "title": "パターンを入力してください",
+          "detail": "プレフィックス、サフィックス、または完全なバニティ フラグメントを貼り付けて確認します。"
+        },
+        "invalidAlphabet": {
+          "title": "このアルファベットにない文字",
+          "detail": "無効: {chars}。 {notes}"
+        },
+        "base58Banned": {
+          "title": "Base58 は 0、O、I、または l を使用しません。",
+          "detail": "これらのグリフは、類似物を避けるためにビットコイン スタイルの Base58 から削除されました。このパターンは一致しません。"
+        },
+        "xrplVsBtc": {
+          "title": "XRPL アルファベットで使用されるビットコイン Base58 文字",
+          "detail": "XRPL クラシック アドレスでは、異なる Base58 アルファベットが使用されます。違反者: {chars}"
+        },
+        "xrplCharset": {
+          "title": "XRPL 固有の文字",
+          "detail": "これらは XRPL Base58 には表示されますが、Bitcoin Base58 には表示されません: {chars}"
+        },
+        "sharedGlyphs": {
+          "title": "グリフは両方の Base58 アルファベットに存在します",
+          "detail": "文字は重複していますが、エンコーディングは依然として異なります。 Solana/BTC バニティ文字列を再確認せずに XRP で再利用しないでください。"
+        },
+        "notXrpl": {
+          "title": "XRPL ではそのままでは動作しません",
+          "detail": "この Bitcoin/Solana Base58 パターンは、XRPL アルファベットにないグリフを使用しています。"
+        },
+        "tronCase": {
+          "title": "Tron の小文字の初期パターン",
+          "detail": "Tron アドレスは T で始まり、次の文字は通常大文字の Base58 です。短い小文字の接頭辞は一致しないことがよくあります。大文字または長い接尾辞を試してください。"
+        },
+        "tronLeadingT": {
+          "title": "先頭の小文字の t",
+          "detail": "Classic Tron アドレスは大文字の T で始まります。T を優先します。または、Forge が自動処理する場合は T を省略します。"
+        },
+        "pair": {
+          "title": "混合類似品: {a} および {b}",
+          "detail": "{note}。アドレスを声に出して共有したり、スクリーンショットで共有したりするときに、タイプを間違えやすくなります。"
+        },
+        "safe": {
+          "title": "{present} はアルファベットです。 {absent} はそうではありません",
+          "detail": "{note}。受信者は依然として視覚的に混乱します。共有するときは慎重に綴ってください。"
+        },
+        "hexCase": {
+          "title": "混合ヘックスケース",
+          "detail": "照合では大文字と小文字が区別されません。大文字と小文字の混合は表示 (チェックサム) には問題ありませんが、研削には必要ありません。"
+        },
+        "tonCase": {
+          "title": "TON パターンでは大文字と小文字が区別されます",
+          "detail": "Base64url は A と a を区別します。大文字と小文字が混在すると難易度が倍増し、タイプミスが起こりやすくなります。"
+        },
+        "clean": {
+          "title": "アルファベットの衝突は検出されませんでした",
+          "detail": "すべての文字は {label} に適合します。長い作業の前に、ライブフォージの警告を再確認してください。"
+        }
+      }
+    },
+    "create2": {
+      "title": "CREATE2ヘルパー",
+      "description": "デプロイメント バイトコードから initCodeHash を派生し、デプロイヤーとソルトの CREATE2 アドレスをプレビューしてから、EVM Forge にジャンプします。キーはローカルに残ります。",
+      "eyebrow": "ツール",
+      "caption": "図 — CREATE2",
+      "toc": {
+        "hash": "ハッシュ",
+        "preview": "プレビュー",
+        "forge": "フォージ"
+      },
+      "sectionHashN": "01 — ハッシュ",
+      "sectionHashTitle": "バイトコード → initCodeHash",
+      "sectionPreviewN": "02 — プレビュー",
+      "sectionPreviewTitle": "デプロイヤからのアドレス + ソルト",
+      "sectionForgeN": "03 — 鍛造",
+      "sectionForgeTitle": "オープンEVMグラインド",
+      "hashIntro": "デプロイする作成バイトコード (初期コード) を貼り付けます。このブラウザで `keccak256(initCode)` を計算します。",
+      "initCodeLabel": "初期化コード (16 進数)",
+      "initCodePh": "0x6080604052…",
+      "initCodeHashLabel": "初期化コードハッシュ (32 バイト)",
+      "initCodeHashPh": "0x…",
+      "initCodeHashResult": "初期化コードのハッシュ · {bytes} バイト",
+      "deployerLabel": "デプロイヤー (20 バイト)",
+      "deployerPh": "0x…",
+      "saltLabel": "ソルト (≤32 バイト、左詰め)",
+      "saltPh": "0x… または空 = 塩分ゼロ",
+      "create2Address": "CREATE2アドレス",
+      "wantedPrefix": "必要なプレフィックス",
+      "wantedSuffix": "募集サフィックス",
+      "prefixPh": "カフェ",
+      "suffixPh": "オプション",
+      "patternMatch": "プレビューアドレスはパターンと一致します。",
+      "patternMismatch": "プレビュー アドレスはこのパターンと一致しません。ソルトまたはデプロイヤーを継続してください。",
+      "useInPreview": "プレビューで使用する",
+      "forgeIntro": "ハッシュとパターンを使用して EVM フォージにディープリンクします。間違った initCodeHash は、間違ったオンチェーン アドレスを意味します。",
+      "grindSalt": "塩を挽く",
+      "grindDeployer": "グラインドデプロイヤー",
+      "evmForge": "EVMフォージ",
+      "tocHash": "ハッシュ",
+      "tocPreview": "プレビュー",
+      "tocForge": "フォージ",
+      "prefixLabel": "プレフィックス",
+      "suffixLabel": "サフィックス",
+      "predictedAddress": "予測アドレス",
+      "patternMiss": "パターンの不一致",
+      "invalidDeployer": "無効なデプロイヤーまたはハッシュ",
+      "openSaltForge": "鍛冶場で塩を挽く",
+      "openDeployerForge": "鍛冶場でデプロイヤを研磨する"
+    },
+    "brand": {
+      "title": "ブランド",
+      "description": "ランチパッドやドキュメントにプルーフ カードを埋め込み、ワードマーク、カラー、コピーなどの簡単なブランディング キットを埋め込みます。秘密キーは決して含まれません。",
+      "eyebrow": "ツール",
+      "embedIntro": "チェーン、アドレス、パターン (検索またはデモから) を貼り付けます。 [/proof](/proof) と同じルールで、クライアント側で一致を検証する iframe を構築します。",
+      "badgeLine": "クライアント側で証明済み · vanitas.fun",
+      "caption": "図 — ブランド",
+      "toc": {
+        "embed": "埋め込む",
+        "preview": "プレビュー",
+        "kit": "キット",
+        "copy": "コピー"
+      },
+      "sectionEmbedN": "01 — 埋め込む",
+      "sectionEmbedTitle": "校正ウィジェット",
+      "address": "住所",
+      "prefix": "プレフィックス",
+      "suffix": "サフィックス",
+      "paperTheme": "紙のテーマ",
+      "inkTheme": "インクのテーマ",
+      "compact": "コンパクト",
+      "iframeSnippet": "Iframe スニペット",
+      "copyIframe": "iframe をコピー",
+      "copyEmbedUrl": "埋め込みURLをコピー",
+      "copyProofUrl": "完全な証拠の URL をコピーする",
+      "sectionPreviewN": "02 — プレビュー",
+      "sectionPreviewTitle": "ライブカード",
+      "previewBody": "`/embed/proof` のフレーム付きプレビュー。実際の検索結果を貼り付けるまで、デモ アドレスが不一致を示す場合があります。",
+      "iframeTitle": "Vanitas 証明",
+      "previewIframeTitle": "ヴァニタスのプルーフプレビュー",
+      "sectionKitN": "03 — キット",
+      "sectionKitTitle": "ブランディングキット",
+      "kitIntro": "証明や偽造をリンクする場合はヴァニタスのマークを使用します。真実でない限り、監護権、パートナーシップ、または Vanitas による監査を示唆しないでください。",
+      "wordmark": "ワードマーク",
+      "wordmarkNote": "表示/セリフの重み — 単独でブランド化された場合のヒーローレベル",
+      "paper": "紙",
+      "paperNote": "一次アース",
+      "ink": "インク",
+      "inkNote": "ボディ+クローム",
+      "accent": "アクセント",
+      "accentValue": "サイトアクセントトークン",
+      "accentNote": "リンク / 検証済みの状態 — 節約を続ける",
+      "site": "サイト",
+      "siteNote": "正規リンクには www.vanitas.fun を優先します",
+      "badgeHeading": "バッジライン",
+      "copyBadge": "バッジ行をコピーする",
+      "sectionCopyN": "04 — コピー",
+      "sectionCopyTitle": "提案された宣伝文",
+      "shortLabel": "短い",
+      "shortBlurb": "Vanitas を使用してローカルに偽造されたバニティ アドレス — キーがデバイスから離れることはありません。クライアント側でパターン一致が検証されました。",
+      "launchpadLabel": "Launchpad",
+      "launchpadBlurb": "vanitas.fun 経由でブラウザ内で生成されたカスタム mint / バニティ ウォレット。証明リンクを共有すると、誰でもパターンを検証できるようになります。秘密キーはページに表示されません。",
+      "linkProof": "校正ページ",
+      "linkLab": "パターンラボ",
+      "linkSecurity": "安全"
+    },
+    "proof": {
+      "title": "パブリックマッチチェック",
+      "description": "クライアント側のバニティ一致を確認します (キーは含まれていません)。",
+      "eyebrow": "発見の証拠",
+      "intro": "このページでは、アドレスが要求されたパターンと一致するかどうかを検証します。秘密キーが含まれることはありません。誰でもリンクを開いてクライアント側を再確認できます。",
+      "emptyIntro": "URLには証拠データがありません。住所を偽造した後、結果画面で **証明の共有** を使用します。または、最初に鍛造します。",
+      "address": "住所",
+      "pattern": "パターン"
+    },
+    "embedProof": {
+      "eyebrow": "ヴァニタスの証明",
+      "brand": "ヴァニタス",
+      "missingParams": "証明パラメータが欠落しています。",
+      "openProof": "オープンプルーフ",
+      "site": "ヴァニタス.ファン"
+    },
+    "audit": {
+      "title": "監査",
+      "description": "ランタイムチェックとワーカーハッシュの比較。",
+      "eyebrow": "ライブチェック",
+      "caption": "図 VI — フォーラム",
+      "descriptionIdle": "8 つのローカルチェック。何も偽造されず、サーバーに何も送信されません。緑は良いを意味します。",
+      "descriptionPass": "8 つのローカル チェック - クリア。何も偽造されず、サーバーに何も送信されません。",
+      "descriptionFail": "8 つのローカル チェック — {failed} の問題。緑は良いを意味します。",
+      "checksTotal": "{total} チェック",
+      "passedSummary": "{passed}/{total} が合格しました",
+      "buildIntegrity": "ビルドの整合性",
+      "workerFingerprintIntro": "各 Forge ワーカーには、`worker-hash.json` で公開された SHA-256 フィンガープリントがあります。上記の整合性テストでは、Solana、EVM、Bitcoin、および Tron をこのリストと照合して検証します。",
+      "verifyYourself": "本人確認をする",
+      "verifyStep1": "1. [vanitas.fun](https://vanitas.fun) からリンクされているソースを確認する",
+      "verifyStep2": "2. ビルド ワーカー: `npm run build:worker`",
+      "verifyStep3": "3. `public/worker-hash.json` を上記のハッシュと比較します",
+      "hashLoading": "読み込み中…",
+      "hashUnavailable": "利用不可",
+      "start": "監査の開始",
+      "runAgain": "もう一度実行します",
+      "running": "実行中…",
+      "whatIsThis": "これは何ですか？",
+      "whatIsThisBody": "Vanitas を使用すると、デバイス上に秘密キーが作成されます。これらの **8 つの自動チェック**は、生成がローカルに留まり、ランダム性が本物であり、ネットワークに何も残らないことを証明します。",
+      "workerFingerprint": "作業者の指紋",
+      "networkMonitor": "ライブネットワークモニター",
+      "monitor": {
+        "transparency": "透明性",
+        "intro": "このページが行うすべてのネットワーク リクエスト。重要なデータが送信される場合は、ここに表示されます。",
+        "stop": "● 停止",
+        "restart": "再起動",
+        "startMonitoring": "監視を開始する",
+        "requests": "{count} リクエスト",
+        "requestSingular": "1 件のリクエスト",
+        "noSuspicious": "不審な外部リクエストはありません",
+        "externalCount": "{count} 外部",
+        "colType": "タイプ",
+        "colUrl": "URL",
+        "colSize": "サイズ",
+        "colTime": "時間",
+        "footerSafe": "すべてのリクエストは、このドメインまたは Google Fonts (タイポグラフィ用) に送信されます。データはサードパーティのサーバーに送信されません。",
+        "footerWarning": "警告: 予期しない外部リクエストが検出されました。これはセキュリティ上の問題を示している可能性があります。",
+        "emptyHint": "[監視の開始] をクリックすると、このページで行われるすべてのネットワーク リクエストが表示されます。",
+        "emptySubhint": "監視をオンにしてサイト内を移動すると、何が読み込まれるかを正確に確認できます。",
+        "activeHint": "モニタリングがアクティブです - ネットワーク要求を待機しています..."
+      },
+      "tests": {
+        "webcrypto": {
+          "name": "ウェブ暗号化API",
+          "description": "ブラウザでのネイティブ Ed25519 サポート",
+          "why": "これはキーを作成するテクノロジーです。お使いのブラウザーがネイティブでサポートしている場合、アドレス生成は他のブラウザーよりも最大 125 倍高速になります。"
+        },
+        "csprng": {
+          "name": "乱数ジェネレーター",
+          "description": "暗号的に安全な乱数生成器",
+          "why": "秘密キーは本質的には巨大な乱数です。ランダム性が弱いか予測可能な場合、誰かがキーを推測する可能性があります。このテストでは、ランダム ジェネレーターが正しく動作することを確認します。"
+        },
+        "entropy": {
+          "name": "ランダム性の品質",
+          "description": "10,000 ランダムバイトの統計テスト",
+          "why": "10,000 個の乱数を生成し、それらが均等に分布しているかどうかをチェックします。これは、公平なサイコロを何千回も振るのと同じです。特定の数値が頻繁に表示される場合は、何かが間違っています。"
+        },
+        "network": {
+          "name": "ゼロネットワークトラフィック",
+          "description": "鍵の生成中にブラウザからデータが送信されることはありません",
+          "why": "最も重要なチェック: キーの生成中にインターネットに何も送信されないことを確認します。秘密キーは決してデバイスから出てはなりません。"
+        },
+        "csp": {
+          "name": "セキュリティヘッダー",
+          "description": "コンテンツ セキュリティ ポリシーはデータの漏洩を制限します",
+          "why": "たとえ悪意のあるコードが挿入されたとしても、これらのブラウザレベルのルールにより、どこへでもデータが送信されることがブロックされます。これは、Web サイト自体に組み込まれたファイアウォールと考えてください。"
+        },
+        "worker": {
+          "name": "労働者の隔離",
+          "description": "鍵の生成は分離されたバックグラウンド スレッドで実行されます",
+          "why": "キーは別個の「ワーカー」、つまりバックグラウンドで実行される分離されたミニプログラムで作成されます。メイン ページにアクセスできず、ブラウザ拡張機能によって改ざんされることもできません。"
+        },
+        "integrity": {
+          "name": "コードの整合性",
+          "description": "SHA-256 フィンガープリントは公開されているすべての Forge ワーカーと一致します",
+          "why": "すべてのキー生成ワーカー (Solana、EVM、Bitcoin、Tron、Aptos、Sui) をハッシュし、それぞれをオープン ビルドの worker-hash.json と比較します。それらが一致する場合、コードは改ざんされていません。"
+        },
+        "keygen": {
+          "name": "鍵生成テスト",
+          "description": "実際の Ed25519 キーペアを生成して検証する",
+          "why": "最後の証明: 本物の鍵を作成し、それを使ってメッセージに署名し、署名を検証します。これが機能すると、ブラウザは Solana アドレスを安全に生成できます。"
+        }
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "ドキュメント",
+    "title": "FAQ",
+    "description": "パターン、モード、セキュリティ、プルーフリンク、CLI、日常の使用法など、あらゆるフォージにわたる答え。サブメニューを使用してトピックごとに移動します。",
+    "categories": {
+      "general": {
+        "label": "一般的な",
+        "n": "01",
+        "items": {
+          "what": {
+            "q": "バニティアドレスとは何ですか?",
+            "a": "選択したパターンを含む暗号通貨アドレス。たとえば、Solana では `VANI`、EVM では `0xcafe` で始まります。これは、通常のキーペアの上に装飾的なブランドを追加したものです。"
+          },
+          "fake": {
+            "q": "Vanitas は「偽」アドレスを作成しますか?",
+            "a": "いいえ、すべての鍛冶場でそのチェーンの標準キーが生成されます。一致するウォレットにインポートすると、ランダムに生成されたアドレスと同じように機能します。意図的に見えるだけです。"
+          },
+          "which": {
+            "q": "どの鍛冶場が存在しますか?",
+            "a": "9 つの Web フォージ — Solana、EVM、Bitcoin、Tron、Aptos、Sui、TON、Cardano、XRP — に加えて、ターミナル用の `npx vanitas`。 [How it works → Chains](/how-it-works#chains)を参照してください。"
+          },
+          "howLong": {
+            "q": "私のパターンにはどのくらい時間がかかりますか?",
+            "a": "予想される試行回数は、長さとアルファベットのサイズに応じて指数関数的に増加します。 Hex (16 文字) は Base58 (~58) より密度が高くなります。ページ上の難易度の見積もりを使用してください。長いブランドを追いかける前に、3 ～ 4 文字から始めてください。"
+          },
+          "prefixSuffix": {
+            "q": "プレフィックスとサフィックスを一緒に使用できますか?",
+            "a": "はい、両方の制約により難易度が倍増します。時間とハッシュ レートに余裕がない限り、1 つの強い側 (プレフィックスまたはサフィックス) を優先します。"
+          }
+        }
+      },
+      "solana": {
+        "label": "ソラナ",
+        "n": "02",
+        "items": {
+          "produce": {
+            "q": "ソラナの鍛造品は何を生み出しますか?",
+            "a": "Base58 アドレスとしての Ed25519 キーペア (Phantom / Solflare と同じファミリー)。簡単にインポートできるように、Solana CLI JSON バイト配列としてエクスポートします。"
+          },
+          "walletMint": {
+            "q": "ウォレットモードとミントモード?",
+            "a": "同じ暗号です。 **ウォレット**は個人アドレス用です。 **Mint** は、Launchpad のカスタム Mint フィールド (pump.fun、Raydium、Meteora など) にラベル付けされます。 [/sol?mode=mint](/sol?mode=mint) を開きます。"
+          },
+          "base58": {
+            "q": "0、O、I、l を使用できないのはなぜですか?",
+            "a": "Base58 では、類似した文字は除外されます。これらを含むパターンは、実際の Solana アドレスには決して現れません。"
+          },
+          "pump": {
+            "q": "ミントは「ポンプ」で終わる必要がありますか?",
+            "a": "いいえ。そのサフィックスはマーケティングに関するものであり、プロトコルの規則ではありません。ランチパッドがカスタム mint キーペアを受け入れる場合、有効な Base58 バニティ パターンはすべて機能します。"
+          }
+        }
+      },
+      "evm": {
+        "label": "EVM",
+        "n": "03",
+        "items": {
+          "networks": {
+            "q": "EVM バニティ キーはどのネットワークで機能しますか?",
+            "a": "すべての EVM 互換チェーンは同じアドレス導出を共有します。 Ethereum、Base、Arbitrum、Optimism、BSC、Polygon、Avalanche C-Chain などの 1 つのキー → 1 つの `0x` アドレス。"
+          },
+          "modes": {
+            "q": "ウォレット、CREATE、CREATE2 モードとは何ですか?",
+            "a": "**ウォレット** — バニティ EOA アドレス。\n**CREATE** — そのキーからの最初のコントラクトのバニティ アドレス (ノンス 0)。\n**CREATE2** — 初期化コード ハッシュを指定して、グラインド ソルト (固定デプロイヤー) またはグラインド デプロイヤー (固定ソルト) を実行します。"
+          },
+          "bnb": {
+            "q": "別途BNBジェネレーターが必要ですか?",
+            "a": "BNB スマート チェーン (EVM) の場合はいいえ。古いビーコン チェーン `bnb1` bech32 アドレスは範囲外です。"
+          }
+        }
+      },
+      "bitcoin": {
+        "label": "ビットコイン",
+        "n": "04",
+        "items": {
+          "types": {
+            "q": "どのアドレスタイプがサポートされていますか?",
+            "a": "メインネットのレガシー `1…`、SegWit `bc1q…`、Taproot `bc1p…`。エクスポートには圧縮された WIF が含まれます。"
+          },
+          "leading": {
+            "q": "先頭の 1 / bc1q は自分で入力するのでしょうか?",
+            "a": "オプション。プレフィックスに修正バージョン / HRP が含まれていない場合、UI は自動的に修正バージョン / HRP を先頭に追加します。"
+          },
+          "lightning": {
+            "q": "雷の請求書?",
+            "a": "範囲外 — BOLT ではなく、アドレスを偽造します。"
+          }
+        }
+      },
+      "tron": {
+        "label": "トロン",
+        "n": "05",
+        "items": {
+          "get": {
+            "q": "トロンフォージからは何が得られますか?",
+            "a": "メインネット Base58 secp256k1 キーから `T…` アドレスをチェックします — ウォレットまたは CREATE (ノンス 0)。先頭の `T` がプレフィックスに自動的に追加されます。"
+          },
+          "case": {
+            "q": "大文字と小文字を区別する小文字のプレフィックスが見つからないのはなぜですか?",
+            "a": "`T` の後の次の文字は、ほとんどの場合大文字または数字です。大文字と小文字を正確に一致させる必要がない限り、大文字と小文字の区別はオフのままにしてください。 Base58 では O、I、l も除外されます。"
+          }
+        }
+      },
+      "aptos-sui": {
+        "label": "アプトス＆スイ",
+        "n": "06",
+        "items": {
+          "differ": {
+            "q": "アプトスとスイはどう違うのですか？",
+            "a": "どちらも Ed25519 と 16 進アドレスを使用しますが、ハッシュは異なります。Aptos は `sha3-256(pubkey ‖ 0x00)` を使用します。スイは`blake2b-256(0x00 ‖ pubkey)`を使用します。キーはエコシステム間で交換可能ではありません。"
+          },
+          "wallets": {
+            "q": "どのウォレットがそれらをインポートできますか?",
+            "a": "アプトス: ペトラ、火星など。 Sui: 16 進数の秘密キーを受け入れる、Sui Wallet、Suuiet、その他。"
+          }
+        }
+      },
+      "ton-cardano-xrp": {
+        "label": "TON・カルダノ・XRP",
+        "n": "07",
+        "items": {
+          "ton": {
+            "q": "TON UQ vs EQ?",
+            "a": "バウンス不可 (`UQ…`) とバウンス可能 (`EQ…`) のユーザーフレンドリーな形式のウォレット v4R2。一致では大文字と小文字が区別されます。"
+          },
+          "cardano": {
+            "q": "どのカルダノアドレスタイプが偽造されますか?",
+            "a": "エンタープライズメインネット `addr1…` (CIP-19 タイプ 6 — 支払いキーのみ、アドレスにステーク委任なし)。"
+          },
+          "xrp": {
+            "q": "XRPはビットコインと同じBase58ですか?",
+            "a": "いいえ、XRPL クラシック アドレスでは異なる Base58 アルファベットが使用されます。 Vanitas は `r…` クラシックを secp256k1 キーからエンコードします。"
+          }
+        }
+      },
+      "security": {
+        "label": "安全",
+        "n": "08",
+        "items": {
+          "store": {
+            "q": "私の秘密鍵を保管しますか?",
+            "a": "いいえ。キーがセッションのブラウザーのメモリから離れることはありません。アーキテクチャと脅威モデルについては、[Security](/security) ページを参照してください。"
+          },
+          "verify": {
+            "q": "それを確認するにはどうすればよいですか?",
+            "a": "1. DevTools → マイニング中のネットワーク — 主要なトラフィックなし\n2.ロード後の機内モード\n3. [Live audit](/audit) + ワーカーのハッシュ比較"
+          },
+          "weaker": {
+            "q": "バニティキーは弱いですか？",
+            "a": "いいえ、秘密キーには依然として完全な CSPRNG エントロピーが含まれています。パブリック エンコーディングのみがフィルタリングされます。"
+          },
+          "extensions": {
+            "q": "ブラウザ拡張機能についてはどうですか?",
+            "a": "拡張機能は引き続きページを覗き見ることができます。価値の高いキーの場合は、クリーンなプロファイル、CLI、またはオフライン マシンを使用してください。詳細: [Security → Browser](/security#browser)。"
+          },
+          "report": {
+            "q": "脆弱性はどこに報告すればよいですか?",
+            "a": "非公開の GitHub セキュリティ アドバイザリ — 決して公開される問題ではありません。 [Security → Disclose](/security#disclose)を参照してください。"
+          }
+        }
+      },
+      "proof-cli": {
+        "label": "プルーフと CLI",
+        "n": "09",
+        "items": {
+          "proof": {
+            "q": "発見の証拠とは何ですか?",
+            "a": "アドレス + パターン (およびオプションの統計) を含む共有可能な [/proof](/proof) リンク。誰でもクライアント側で一致を確認できます。秘密キーは決して含まれません。"
+          },
+          "cli": {
+            "q": "CLI を実行するにはどうすればよいですか?",
+            "a": "ウィザードの場合は `npx vanitas`、または `npx vanitas sol --prefix Ace --threads 8` のようなフラグ。 Web アプリと同じデプロイ モード (mint、CREATE、CREATE2 フラグ) をサポートします。"
+          }
+        }
+      },
+      "usage": {
+        "label": "使用法",
+        "n": "10",
+        "items": {
+          "import": {
+            "q": "Phantom / MetaMask / などにインポートするにはどうすればよいですか?",
+            "a": "そのフォージのエクスポート形式を使用します。Phantom/Solflare の場合は Solana JSON、ほとんどの EVM ウォレットの場合は 16 進数、多くのビットコイン ウォレットの場合は WIF、その他の場所ではチェーン固有の 16 進数/Base58 です。最初に必ず小さなテスト転送を行ってください。"
+          },
+          "pause": {
+            "q": "一時停止して再開できますか?",
+            "a": "いつでも停止できます。再開は新たな検索です (以前の試行のチェックポイントはありません)。"
+          },
+          "disabled": {
+            "q": "スタートが無効になっているのはなぜですか?",
+            "a": "空のパターン、そのアルファベットとして無効な文字、またはパターンが長すぎます。入力の下の検証メッセージを修正しました。"
+          },
+          "freeze": {
+            "q": "マイニング中に UI がフリーズしますか?",
+            "a": "スレッド数を減らします。作業者は UI を維持する必要がありますが、小型ラップトップのすべてのコアが飽和状態になると、依然として動作が遅く感じる可能性があります。"
+          }
+        }
+      }
+    },
+    "sideCaption": "図 IV — 風景",
+    "topics": "トピックス",
+    "stillStuck": "まだ行き詰まっていますか?",
+    "stillStuckBody": "技術的な詳細は「仕組み」に記載されています。信頼モデルと脅威のメモはセキュリティに保存されています。整合性チェックは Audit で実行されます。",
+    "linkHow": "仕組み",
+    "linkSecurity": "安全",
+    "linkAudit": "ライブ監査",
+    "glyphs": {
+      "general": "図 — スクロール",
+      "solana": "図 — 列柱",
+      "evm": "図 — モード",
+      "bitcoin": "図 — キー",
+      "tron": "図 — 鍛造",
+      "aptos-sui": "図 — ループ",
+      "ton-cardano-xrp": "図 — 石碑",
+      "security": "図 — シールド",
+      "proof-cli": "図 — シール",
+      "usage": "図 — 時間"
+    }
+  },
+  "docs": {
+    "howItWorks": {
+      "eyebrow": "ドキュメント",
+      "title": "仕組み",
+      "description": "Vanitas の完全なツアー: バニティ マイニングの仕組み、各鍛冶場で何が生成されるか、ワーカーがどのように並行して検索するか、マシンから何も出ていないことを確認する方法。",
+      "sideCaption": "図 III — 雄弁家",
+      "overview": {
+        "title": "ヴァニタスとは",
+        "p1": "**Vanitas** は、クライアント側のマルチチェーン バニティ アドレス フォージです。プレフィックスやサフィックスを選択します。アプリは、パブリック アドレスがそのパターンに一致するキーペアを検索します。生成は、**CPU 上の Web ワーカー** で実行されます。秘密キーはデバイスのメモリ内に作成され、アップロードされることはありません。",
+        "p2": "バニティ アドレスは通常の暗号化アドレスのままです。秘密キーはランダムです。パブリック エンコーディングのみが希望どおりになるまでフィルタリングされます。これは、ブランド化、寄付、造幣局、記憶に残るパブリック ウォレットに役立ちます。"
+      },
+      "pipeline": {
+        "title": "検索ループ",
+        "intro": "すべてのフォージは同じ高レベルのループに従い、何百万回も繰り返されます。",
+        "whySecure": "バニティ アドレスを検索しても、秘密キーは**弱くなりません**。公開アドレスが適切であると思われるまで、候補者を拒否することになります。これは、ランダムなキーを生成し、幸運なキーを保持するのと同じプロセスです。"
+      },
+      "reminder": {
+        "label": "リマインダー",
+        "body": "タブを閉じる前に秘密キーを保存してください。紛失したキーは回復できません。残高が大きい場合: 最初に少額の送金でテストし、長期保管にはハードウェア ウォレットを好み、信頼できないサイトにはキーを貼り付けないでください。"
+      },
+      "toc": {
+        "overview": "概要",
+        "pipeline": "パイプライン",
+        "patterns": "パターン",
+        "chains": "チェーン",
+        "modes": "モード",
+        "workers": "労働者",
+        "proof": "証拠",
+        "cli": "CLI",
+        "verify": "確認する"
+      },
+      "sections": {
+        "overview": {
+          "n": "01 — 概要",
+          "title": "ヴァニタスとは",
+          "glyph": "図 A — キー",
+          "ledger": {
+            "where": {
+              "label": "どこ",
+              "value": "あなたのブラウザ · あなたの CPU",
+              "note": "静的ホスティングのみ。マイニングではネットワーク呼び出しは行われません"
+            },
+            "forges": {
+              "label": "鍛造品",
+              "value": "9 チェーン + ターミナル CLI",
+              "note": "ソラナ・EVM・ビットコイン・トロン・アプトス・スイ・TON・カルダノ・XRP"
+            },
+            "output": {
+              "label": "出力",
+              "value": "アドレス + 秘密鍵",
+              "note": "エクスポート形式はフォージによって異なります (JSON、16 進数、WIF など)。"
+            }
+          }
+        },
+        "pipeline": {
+          "n": "02 — パイプライン",
+          "title": "検索ループ",
+          "glyph": "図B — ループ",
+          "steps": [
+            "暗号的に安全なランダム秘密キー (`crypto.getRandomValues`) を描画します。",
+            "チェーンのカーブ (Ed25519 または secp256k1) を使用して公開キーを導出します。",
+            "チェーンが予期する方法 (Base58、hex、bech32 など) でアドレスをエンコードします。",
+            "プレフィックス/サフィックス (およびモード ルール) と比較してください。",
+            "一致時: ワーカーを停止し、結果を表示します。オプションのサウンド/プルーフ/エクスポート。"
+          ],
+          "workersNote": "ワーカーはこのループを CPU コア間で並行して実行します。 UI スレッドは応答性を維持します。進捗状況 (試行回数、レート、ETA) はワーカー メッセージから集計されます。 1 つのワーカーがヒットを見つけると、プールは終了します。",
+          "whySecureTitle": "これが安全な理由"
+        },
+        "patterns": {
+          "n": "03 — パターン",
+          "title": "難易度、アルファベット、注意事項",
+          "glyph": "図C — 時間",
+          "intro": "予想される時間はパターンの長さとアルファベットのサイズに応じて変化します。余分な文字ごとに検索スペースが増加します。 Forge UI には、パターンと測定または想定されたハッシュ レートに基づいたライブ難易度の推定値が表示されます。",
+          "ledger": {
+            "base58": {
+              "label": "Base58",
+              "value": "~58 シンボル",
+              "note": "ソラナ、トロン、XRP (XRPL アルファベット)、ビットコインレガシー"
+            },
+            "hex": {
+              "label": "16進数",
+              "value": "16 個の記号 (0 ～ 9、a ～ f)",
+              "note": "EVM、Aptos、Sui — マッチングでは大文字と小文字を区別しない"
+            },
+            "bech32": {
+              "label": "ベック32",
+              "value": "bc1q / bc1p / addr1…",
+              "note": "ビットコイン SegWit/Taproot、Cardano — 固定 HRP、次に文字セット"
+            },
+            "ton": {
+              "label": "TON",
+              "value": "Base64url",
+              "note": "UQ… / EQ… — 大文字と小文字が区別されます"
+            }
+          },
+          "trapsTitle": "アルファベットの罠",
+          "traps": [
+            "**Solana / Bitcoin Base58** — `0`、`O`、`I`、または `l` (類似拒否) はありません。",
+            "**EVM** — `0x` 以降の 16 進数のみ。 `a–f` を超える文字は無効です。",
+            "**Tron** — アドレスは `T` で始まります。次の文字は通常大文字です。大文字と小文字が区別される小文字の接頭辞は一致しないことがよくあります。",
+            "**プレフィックス + サフィックス** — 両方の制約により難易度が倍増します。短く始めてください。自分のレートがわかったら、パターンを拡大してください。"
+          ]
+        },
+        "chains": {
+          "n": "04 — チェーン",
+          "title": "すべての鍛冶の説明",
+          "glyph": "図D — 鍛造品",
+          "intro": "9 つのフォージは同じ UX パターン (モードの選択、パターンの設定、ワーカーの開始) を共有しますが、各チェーンは異なるカーブ、ハッシュ、アドレス エンコーディングを使用します。",
+          "sol": "Ed25519 キーペアは Base58 (32 バイトの公開キー) としてエンコードされます。 Native Web Crypto Ed25519 は、ブラウザがサポートしている場合に使用されます。それ以外の場合は、WASM フォールバック (`watsign`)。モード: **wallet** と **mint** — 同じキー計算。 mint フレーミングは Launchpad のカスタム mint フロー用です。エクスポート: Solana CLI JSON バイト配列。",
+          "evm": "secp256k1 → 非圧縮公開鍵 → keccak-256 → 最後の 20 バイト → `0x…` アドレス。 1 つの秘密キーは、Ethereum、Base、Arbitrum、Optimism、BSC、Polygon、およびその他すべての EVM ネットワーク上で同じアドレスを生成します。モード: ウォレット (EOA)、ノンス 0 での作成、CREATE2 (グラインド ソルトまたはグラインド デプロイヤ)。以下のモードを参照してください。",
+          "btc": "secp256k1。 3 つのアドレス タイプ: レガシー P2PKH (`1…`)、ネイティブ SegWit P2WPKH (`bc1q…`)、Taproot P2TR (`bc1p…`)。エクスポートには、ウォレットのインポート用の WIF (圧縮) が含まれます。先頭の HRP / バージョン バイトは、プレフィックスを入力するときに処理されます。",
+          "tron": "20 バイトのアカウント ID の EVM と同じ secp256k1 + keccak パス、その後、バージョン バイト `0x41` → `T…` で Base58Check します。モード: ウォレットおよび CREATE (nonce 0)。EVM と同じ RLP レイアウトを使用し、次に Tron エンコーディングを使用します。",
+          "aptos": "Ed25519。アドレス = `sha3-256(pubkey ‖ 0x00)` (16 進数)。 Petra、Martian、および 16 進シークレットをインポートするその他の Aptos ウォレットと互換性があります。",
+          "sui": "Ed25519。アドレス = `blake2b-256(0x00 ‖ pubkey)` (16 進数) (フラグ バイトはスキームをマークします)。 16 進秘密キーを使用して、Sui Wallet / Suitet にインポートします。",
+          "ton": "Ed25519 + ウォレット コントラクト v4R2。アドレスはユーザーフレンドリーな Base64url 形式です: `UQ…` (バウンス不可) および `EQ…` (バウンス可能)。一致では大文字と小文字が区別されます。 Tonkeeper / MyTonWallet にインポートします。",
+          "cardano": "Ed25519 エンタープライズ アドレス (CIP-19 タイプ 6、支払いキーのみ): ヘッダー `0x61` + Blake2b-224 支払いハッシュ、HRP `addr` → `addr1…` の bech32。",
+          "xrp": "secp256k1 圧縮公開鍵 → RIPEMD160(SHA256) アカウント ID → XRPL クラシック Base58 チェック → `r…`。注: XRPL は、ビットコインとは異なる Base58 アルファベットを使用します。",
+          "links": {
+            "sol": "[Solana](/sol)",
+            "evm": "[EVM](/evm)",
+            "btc": "[Bitcoin](/btc)",
+            "tron": "[Tron](/tron)",
+            "aptos": "[Aptos](/aptos)",
+            "sui": "[Sui](/sui)",
+            "ton": "[TON](/ton)",
+            "cardano": "[Cardano](/cardano)",
+            "xrp": "[XRP](/xrp)"
+          }
+        },
+        "modes": {
+          "n": "05 — モード",
+          "title": "ウォレット、ミント、CREATE、CREATE2",
+          "glyph": "図 E — モード",
+          "solMint": "暗号的にはウォレットのキーペアと同一です。 Launchpad はカスタムのミント キーペア/秘密キーを要求します。 Vanitas は、エクスポートがそのワークフローと一致するように、結果に「ミント」というラベルを付けます。 [/sol?mode=mint](/sol?mode=mint) を開いてパターンを見つけ、そのキーを Pump.fun、Raydium、Meteora などに貼り付けます。",
+          "create": "nonce 0 の EOA からデプロイされた最初のコントラクトには、決定的なアドレス `keccak256(RLP([sender, 0]))[12:]` があります。 Vanitas は、派生したコントラクト アドレスがパターンと一致するまで EOA を粉砕します。デプロイヤーの秘密キーを受け取ります。新しい nonce-0 アカウントから 1 回デプロイします。",
+          "create2Intro": "アドレス = `keccak256(0xff ‖ deployer ‖ salt ‖ initCodeHash)[12:]`。 2 つのグラインド戦略:",
+          "create2Salt": "**create2-salt** — デプロイヤ キー + 初期化コード ハッシュを修正します。バニティ アドレスを生成するソルトを検索します。",
+          "create2Deployer": "**create2-deployer** — ソルト + 初期化コード ハッシュを修正します。 CREATE2 アドレスが一致するデプロイヤ キーを検索します。",
+          "create2Hash": "正しい `initCodeHash` (展開バイトコードの keccak) を指定する必要があります。間違ったハッシュ→間違ったオンチェーンアドレス。"
+        },
+        "workers": {
+          "n": "06 — 労働者",
+          "title": "パフォーマンスアーキテクチャ",
+          "glyph": "図 F — 鍛造",
+          "intro": "ワーカー ソースは `src/workers/*.worker.source.ts` の下に存在し、esbuild とともに `public/*-worker.js` にバンドルされます。各ビルドは、[live audit](/audit) の `public/worker-hash.json` に SHA-256 ダイジェストを書き込みます。",
+          "ledger": {
+            "parallelism": {
+              "label": "平行度",
+              "value": "CPU コア - 1 (デフォルト)",
+              "note": "マシンが熱くなったり、UI が途切れたりする場合はスレッドを調整します。"
+            },
+            "solSpeed": {
+              "label": "ソラナのスピード",
+              "value": "ネイティブ Ed25519 (利用可能な場合)",
+              "note": "Chrome 113 以降、Firefox 129 以降、Safari 17 以降。それ以外の場合は WASM"
+            },
+            "libraries": {
+              "label": "図書館",
+              "value": "@noble · tweetnacl · watsign · @ton/*",
+              "note": "ブラウザーで監査された pure-JS / WASM 暗号"
+            }
+          },
+          "postFind": "検索後、オプションの **重要なセキュリティ チェック** により、エントロピー、CSPRNG の可用性、およびランダム バイトのカイ 2 乗均一性テストが検査され、ブラウザーの RNG パスが正常であることが確認されます。"
+        },
+        "proof": {
+          "n": "07 — 証明",
+          "title": "発見の証拠",
+          "glyph": "図 G — シール",
+          "p1": "**証明の共有**は、チェーン、アドレス、パターンのみを使用して [/proof](/proof) へのパブリック リンクを構築します。**秘密キーは構築しません**。誰でもリンクを開いて、アドレスがクライアント側で要求されたプレフィックス/サフィックスと一致することを確認できます。",
+          "session": "UI で最近見つかったものでは、アドレスとパターンのメタデータのみに `sessionStorage` が使用されています。タブを閉じるとその履歴は消去されます。キーはそこに保存されません。"
+        },
+        "cli": {
+          "n": "08 — CLI",
+          "title": "端子鍛造",
+          "glyph": "図 H — 石碑",
+          "p1": "ブラウザの外でも同じ考え方です。`npx vanitas` はウィザードを開くか、チェーン、モード、プレフィックス、スレッド、および CREATE2 パラメーターのフラグを渡します。 OS がサポートしている場合、結果はモード `0600` で JSON ファイルを書き込みます。パッケージ: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas)。",
+          "example": "npx vanitas evm --mode Contract --prefix Cafe --threads 8"
+        },
+        "verify": {
+          "n": "09 — 確認する",
+          "title": "自分で確認してください",
+          "glyph": "図 I — 目",
+          "steps": [
+            "DevTools → Network を開き、ログをクリアし、Forge を開始します。マイニング中は **リクエストがない** ことが表示されます。",
+            "ページをロードし、オフラインにして、再度生成しても、引き続き機能します。",
+            "[live audit](/audit) を実行し、ワーカー ハッシュを `worker-hash.json` と比較します。",
+            "[GitHub](https://github.com/bytebrox/vanitas)、特に `src/workers/` のソースを読んでください。"
+          ]
+        }
+      },
+      "footer": {
+        "security": "安全",
+        "faq": "FAQ",
+        "audit": "ライブ監査"
+      }
+    },
+    "security": {
+      "eyebrow": "ドキュメント",
+      "title": "安全",
+      "description": "キーはブラウザ内で生成され、当社のサーバー上では生成されません。このページは信頼モデル: アーキテクチャ、脅威、暗号、ヘッダー、およびすべての主張を自分で検証する方法について説明します。",
+      "sideCaption": "図 V — 水道橋",
+      "principles": {
+        "title": "交渉不可",
+        "marketing": "マーケティング上の主張は、チェックがなければ価値がありません。 [live audit](/audit) と以下の「検証」セクションを使用してください。"
+      },
+      "architecture": {
+        "title": "鍵が存在する場所",
+        "keysRam": "秘密キーはここ (デバイス上の RAM) にのみ存在します。"
+      },
+      "next": {
+        "label": "次",
+        "audit": "ライブ監査",
+        "how": "仕組み",
+        "faq": "FAQ"
+      },
+      "toc": {
+        "principles": "原則",
+        "architecture": "建築",
+        "threats": "脅威",
+        "storage": "ストレージ",
+        "crypto": "暗号",
+        "integrity": "誠実さ",
+        "headers": "ヘッダー",
+        "browser": "ブラウザ",
+        "workflow": "ワークフロー",
+        "verify": "確認する",
+        "disclose": "開示する"
+      },
+      "sections": {
+        "principles": {
+          "n": "01 — 原則",
+          "title": "交渉不可",
+          "glyph": "図 A — シールド",
+          "items": [
+            "**クライアント側の生成** — CPU 上の Web ワーカーがすべてのキーペアを作成します。",
+            "**ゼロキー転送** — 秘密キーを受け入れたり返したりする API はありません。",
+            "**ゼロキーストレージ** — データベース、秘密のログ、パターンやアドレスの分析はありません。",
+            "**検証可能** — オープンソース、ライブ監査、オフライン テスト、ネットワーク パネル。",
+            "**露出のないプルーフ** — 共有可能なプルーフにはアドレスとパターンのみが含まれます。"
+          ]
+        },
+        "architecture": {
+          "n": "02 — アーキテクチャ",
+          "title": "鍵が存在する場所",
+          "glyph": "図B — 軌跡",
+          "intro": "Vanitas は静的な Next.js サイトです。ホスト (Vercel など) は、HTML、CSS、JS、および事前構築されたワーカー バンドルを提供します。キーのホスト上で暗号化が実行されることはありません。",
+          "browserLabel": "お使いのブラウザ",
+          "mainThread": "メインスレッド",
+          "mainThreadNote": "UI · 反応 · コントロール",
+          "webWorkers": "ウェブワーカー",
+          "webWorkersNote": "W1…Wn — グラインド、マッチ、ポストメッセージ",
+          "networkLabel": "マイニング中のネットワーク",
+          "networkBody": "何も必要ありません。アセットのロード後も、機内モードは引き続き機能します。唯一のファーストパーティ API ルート (`/api/domains`) は、Solana ドメイン リンクを示唆します。キーの生成や受信は行いません。",
+          "serversLabel": "当社のサーバー",
+          "serversBody": "ファイルを配信します。ワーカーのメモリを読み取れません。完成したキーペアを傍受することはできません。侵害されたオリジンは悪意のある JS を提供する可能性があります。だからこそ、整合性チェックとオープンソースが重要です (「整合性とブラウザ」を参照)。"
+        },
+        "threats": {
+          "n": "03 — 脅威",
+          "title": "脅威モデル (正直)",
+          "glyph": "図 C — スケール",
+          "inScopeTitle": "範囲内 — 私たちはそれに基づいて設計します",
+          "inScope": [
+            "サーバー側のキーの盗難 (サーバー上にキーがない)。",
+            "マイニング中のカジュアルなネットワーク スニッフィング (主要なトラフィックなし)。",
+            "メイン アプリのクリックジャッキング (プライマリ ルートでのフレーム拒否)。",
+            "明らかな XSS 抽出パス (CSP、まだ特効薬ではありません)。"
+          ],
+          "outScopeTitle": "範囲外 / 共同責任",
+          "outScope": [
+            "ページ メモリまたはクリップボードを読み取る **悪意のあるブラウザ拡張機能** - 高価なキーを偽造する場合は、クリーンなプロファイルでそれらを無効にします。",
+            "**侵害されたデバイス / マルウェア** — OS レベルのキーロガーはあらゆる Web サイトを打ち負かします。",
+            "**Discord / フィッシングにキーを貼り付ける** — 運用上のセキュリティはあなたのものです。",
+            "**依存関係のサプライチェーン** — 私たちは固定し、監査します。ワーカーのハッシュを検証し、ソースから再構築できます。"
+          ],
+          "vanityNote": "バニティ マイニングでは「弱い」キーは作成されません。長いパターンでは CPU のコストが増加するだけであり、秘密キーのエントロピーは減少しません。"
+        },
+        "storage": {
+          "n": "04 — ストレージ",
+          "title": "私たちが保管するもの",
+          "glyph": "図 D — 保管庫",
+          "intro": "**当社のサーバー上のキーについては何もありません。** フォージ パスにはアドレス、パターン、マイニング用の IP、または分析 SDK のデータベースはありません。",
+          "items": [
+            "ディスクまたはサーバー上に秘密キーがありません",
+            "公開キー/アドレスはリモートで収集されない",
+            "パターンテレメトリーなし",
+            "アカウントシステムなし",
+            "製品の約束にはサードパーティの分析は含まれていません",
+            "sessionStorage の最近の検索結果 = アドレス + パターンのみ、このブラウザー セッション",
+            "プルーフリンク = 共有することを選択したクエリパラメータ (キーなし)"
+          ]
+        },
+        "crypto": {
+          "n": "05 — 暗号",
+          "title": "フォージごとのアルゴリズム",
+          "intro": "ランダム性は常にブラウザー CSPRNG (`crypto.getRandomValues`) から得られます。カーブとアドレスの導出はチェーンによって異なります。",
+          "rows": {
+            "sol": {
+              "label": "ソラナ",
+              "value": "Ed25519 → Base58",
+              "note": "Web Crypto ネイティブまたは WASM フォールバック · ウォレット / ミント"
+            },
+            "evm": {
+              "label": "EVM",
+              "value": "secp256k1 + keccak-256",
+              "note": "0x EOA · CREATE · CREATE2"
+            },
+            "btc": {
+              "label": "ビットコイン",
+              "value": "secp256k1",
+              "note": "レガシー · SegWit · Taproot · WIF エクスポート"
+            },
+            "tron": {
+              "label": "トロン",
+              "value": "secp256k1 + keccak → Base58Check",
+              "note": "T…ウォレット / CREATE"
+            },
+            "aptos": {
+              "label": "アプトス",
+              "value": "Ed25519 + SHA3-256",
+              "note": "0x アカウントアドレス"
+            },
+            "sui": {
+              "label": "スイ",
+              "value": "Ed25519 + ブレイク2b-256",
+              "note": "0x スキームフラグあり"
+            },
+            "ton": {
+              "label": "TON",
+              "value": "Ed25519 · ウォレット v4R2",
+              "note": "UQ / EQ Base64url"
+            },
+            "cardano": {
+              "label": "カルダノ",
+              "value": "Ed25519 · CIP-19 エンタープライズ",
+              "note": "addr1…支払いキーのみ"
+            },
+            "xrp": {
+              "label": "XRP",
+              "value": "secp256k1 · XRPL Base58",
+              "note": "従来のアドレス…"
+            }
+          },
+          "postFind": "検索後のチェックでは、ランダム サンプルのエントロピー サイズ、CSPRNG の存在、カイ 2 乗均一性を検証できます。これは、RNG パスの健全性チェックであり、デバイスの健全性の代替ではありません。"
+        },
+        "integrity": {
+          "n": "06 — 誠実さ",
+          "title": "ワーカーと公開されたハッシュ",
+          "glyph": "図 E — ハッシュ",
+          "p1": "マイニング コードは、TypeScript ソースから構築された静的 `public/*-worker.js` ファイルとして出荷されます。各実稼働ビルドでは、SHA-256 ダイジェストが `worker-hash.json` に記録されます。監査ページは、ブラウザーがロードしたワーカーを再ハッシュし、そのファイルと比較します。",
+          "p2": "ハッシュが異なる場合は、ページを信頼できないものとして扱います。停止し、キーを使用せず、調査します (間違ったデプロイ、キャッシュ、または改ざん)。オープン リポジトリから再構築すると、特定のコミットに対して同じワーカー バイトが再現されるはずです。"
+        },
+        "headers": {
+          "n": "07 — ヘッダー",
+          "title": "HTTPセキュリティヘッダー",
+          "intro": "応答には、XSS の影響を軽減し、HTTPS を強制し、メイン アプリのフレーム化をブロックするヘッダーが含まれます。 CSP では、Next.js が必要とするもの (一部のインライン / eval トレードオフを含む) が引き続き許可されます。ヘッダーは役立ちます。コードレビューに代わるものではありません。",
+          "rows": {
+            "csp": {
+              "label": "CSP",
+              "value": "コンテンツセキュリティポリシー",
+              "note": "スクリプト、ワーカー、connect-src を制限します"
+            },
+            "hsts": {
+              "label": "HSTS",
+              "value": "厳格な輸送セキュリティ",
+              "note": "max-age=31536000"
+            },
+            "frame": {
+              "label": "フレーム",
+              "value": "X フレーム オプション: 拒否",
+              "note": "プライマリアプリは埋め込み可能ではありません"
+            },
+            "mime": {
+              "label": "MIME",
+              "value": "X-Content-Type-Options: nosniff",
+              "note": "MIME スニッフィングなし"
+            },
+            "referrer": {
+              "label": "参照元",
+              "value": "クロスオリジンの場合の厳密なオリジン",
+              "note": "リファラーの漏洩を制限する"
+            }
+          }
+        },
+        "browser": {
+          "n": "08 — ブラウザ",
+          "title": "ブラウザで引き続きできること",
+          "intro": "ページ権限で実行されるものは、理論上、DOM およびワーカー メッセージを読み取ることができます。これには以下が含まれます:",
+          "items": [
+            "広範囲のサイトにアクセスできるブラウザ拡張機能",
+            "共有マシン上で DevTools が開く",
+            "XSS が存在する場合、悪意のあるスクリプトが挿入される",
+            "キーをコピーした後にクリップボードがスニッファーする"
+          ],
+          "mitigations": "緩和策: クリーンなブラウザプロファイル、不要な拡張機能を使用しない、価値の高いキーについてはクリップボードよりもファイルのダウンロードを優先する、ウォレットに貼り付けた後にクリップボードを消去する、大規模な財務にはターミナル CLI またはエアギャップマシンを検討する。"
+        },
+        "workflow": {
+          "n": "09 — ワークフロー",
+          "title": "安全な操作手順",
+          "steps": [
+            "vanitas.fun をロードします (または検証済みのローカル ビルドから実行します)。",
+            "オプション: ネットワークを開き、オフラインにし、監査を実行します。",
+            "最初に短いパターンを選択します。セットアップが信頼できるようになったら、長さを増やしてください。",
+            "検索時: エクスポートしてオフラインで保存し、キーをチャット アプリにスクリーンショットすることはありません。",
+            "そのチェーンの正しいウォレットにインポートします。ダストテスト転送を送信します。",
+            "長期保有の場合は、資金をハードウェア ウォレットに移動してください。Vanitas は保管庫ではなく鍛冶場です。"
+          ]
+        },
+        "verify": {
+          "n": "10 — 確認する",
+          "title": "誰でも実行できる 3 つのチェック",
+          "glyph": "図 F — 監査",
+          "network": {
+            "n": "01 — ネットワーク",
+            "title": "ネットワークモニター",
+            "steps": [
+              "DevTools → ネットワーク → クリア",
+              "生成を開始する",
+              "マイニング中に **ゼロ** リクエストを確認する"
+            ]
+          },
+          "offline": {
+            "n": "02 — オフライン",
+            "title": "機内モード",
+            "steps": [
+              "アプリをロードする",
+              "切断する",
+              "生成 — 成功はライブサーバーの依存関係がないことを証明します"
+            ]
+          },
+          "audit": {
+            "n": "03 — 監査",
+            "title": "ライブ監査 + ソース",
+            "steps": [
+              "[/audit](/audit) を実行します",
+              "ワーカーのハッシュと公開された JSON を比較する",
+              "[GitHub](https://github.com/bytebrox/vanitas) ワーカーと SECURITY.md を確認する"
+            ]
+          }
+        },
+        "disclose": {
+          "n": "11 — 開示する",
+          "title": "問題の報告",
+          "glyph": "図 G — レポート",
+          "intro": "セキュリティの脆弱性に関する GitHub の公開問題を**公開しないでください**。 [bytebrox/vanitas](https://github.com/bytebrox/vanitas/security/advisories/new) のプライベート GitHub セキュリティ アドバイザリを優先します。再現手順、影響、および推奨される修正がある場合はそれも含めます。",
+          "faq": {
+            "steal": {
+              "q": "私の鍵を盗んでもらえますか？",
+              "a": "それらを受信するサーバー側のパスはありません。悪意のあるビルドまたは拡張機能は、ハッシュを検証し、高い価値を得るためにクリーンな環境を使用する可能性があります。"
+            },
+            "host": {
+              "q": "ホストがハッキングされた場合はどうなりますか?",
+              "a": "攻撃者は変更された JavaScript を提供する可能性があります。だからこそ、オープンソース、ワーカーハッシュチェック、既知の正常なコミットの優先が重要なのです。ホストは依然として、クリーン ビルドから完成したキーを受け取ることはありません。"
+            },
+            "weaker": {
+              "q": "バニティ アドレスの安全性は低いですか?",
+              "a": "いいえ、秘密鍵のエントロピーは変わりません。パブリック アドレスのみが表示のためにフィルタリングされます。"
+            },
+            "cold": {
+              "q": "毎日のブラウザでコールド ストレージ キーを偽造する必要がありますか?",
+              "a": "多額の資金の場合: クリーン プロファイルまたはオフライン/CLI、少額のテスト送金、その後ハードウェア ウォレットの保管。"
+            }
+          }
+        }
+      }
+    }
+  },
+  "meta": {
+    "home": {
+      "title": "ソラナ、EVM、ビットコイン、トロン バニティ フォージ",
+      "description": "Solana、EVM、Bitcoin、Tron のクライアント側バニティ アドレス偽造。ウォレット、造幣局、契約書など、鍵がこのブラウザから離れることはありません。",
+      "ogAlt": "ヴァニタス マルチチェーン バニティ フォージ"
+    },
+    "sol": {
+      "title": "Solana バニティ アドレス ジェネレーター",
+      "description": "ブラウザ内でバニティ Solana ウォレットとトークンのミント アドレスを完全に偽造します。オープン ソース、クライアント側、このデバイスからキーが離れることはありません。",
+      "ogAlt": "Vanitas — ソラナ・ヴァニティ・フォージ",
+      "ogTitle": "Solana バニティ アドレス ジェネレーター |ヴァニタス",
+      "ogDescription": "バニティ Solana ウォレットを作成し、クライアント側でアドレスをミントします。このデバイスからキーが離れることはありません。",
+      "twitterDescription": "バニティ Solana ウォレットを作成し、クライアント側でアドレスをミントします。"
+    },
+    "evm": {
+      "title": "EVM バニティ アドレス ジェネレータ",
+      "description": "バニティEVMウォレットとコントラクトアドレスをクライアント側で鍛造します。 Ethereum、Base、Arbitrum、Optimism、BSC などの 1 つのキー。",
+      "ogTitle": "EVM バニティ アドレス ジェネレータ |ヴァニタス",
+      "ogDescription": "vanity 0x ウォレットとコントラクト アドレスをクライアント側で鍛造します。 Ethereum、BNB、Base、Arbitrum、およびすべての EVM チェーンで同じキー。",
+      "twitterDescription": "vanity 0x ウォレットとコントラクト アドレスをクライアント側で鍛造します。すべての EVM チェーンで同じキー。",
+      "ogAlt": "Vanitas — EVM バニティ ウォレットおよびコントラクト ジェネレーター"
+    },
+    "btc": {
+      "title": "ビットコイン バニティ アドレス ジェネレーター",
+      "description": "ブラウザ内でバニティ ビットコイン アドレス (レガシー、SegWit、Taproot) を完全に偽造します。"
+    },
+    "tron": {
+      "title": "Tron バニティ アドレス ジェネレーター",
+      "description": "Forge vanity Tron Base58 は、TronLink およびその他のウォレットのクライアント側に対応します。"
+    },
+    "aptos": {
+      "title": "Aptos Vanity アドレス ジェネレーター",
+      "description": "vanity Aptos Ed25519 アドレスを完全にブラウザ内で作成します。"
+    },
+    "sui": {
+      "title": "スイ バニティ アドレス ジェネレーター",
+      "description": "vanity Sui Ed25519 アドレスを完全にブラウザ内で作成します。"
+    },
+    "ton": {
+      "title": "TON バニティ アドレス ジェネレーター",
+      "description": "クライアント側でバニティ TON ウォレット v4R2 アドレス (UQ / EQ) を鍛造します。"
+    },
+    "cardano": {
+      "title": "Cardano バニティ アドレス ジェネレーター",
+      "description": "バニティ Cardano エンタープライズ addr1 アドレスを完全にブラウザ内で作成します。"
+    },
+    "xrp": {
+      "title": "XRP バニティ アドレス ジェネレーター",
+      "description": "バニティ XRPL クラシック R… アドレスをブラウザ内で完全に構築します。"
+    },
+    "faq": {
+      "title": "FAQ",
+      "description": "パターン、モード、セキュリティ、証明、CLI など、Vanitas のすべての鍛造品にわたる答え。",
+      "ogTitle": "よくある質問 |ヴァニタス",
+      "ogDescription": "すべてのチェーン、セキュリティ、証明、CLI、使用法など、トピックごとに回答します。",
+      "ogAlt": "ヴァニタスのよくある質問"
+    },
+    "how-it-works": {
+      "title": "仕組み",
+      "description": "Vanitas が Solana、EVM、Bitcoin、Tron、Aptos、Sui、TON、Cardano、XRP 全体でバニティ アドレスを偽造する方法: ワーカー、モード (mint、CREATE、CREATE2)、Proof of Find、CLI、クライアント側のセキュリティを検証する方法。",
+      "ogTitle": "仕組み |ヴァニタス",
+      "ogDescription": "すべてのフォージ、ワーカー アーキテクチャ、デプロイ モード、検証の完全なツアー。",
+      "ogAlt": "Vanitas — バニティ アドレス生成の仕組み"
+    },
+    "security": {
+      "title": "安全",
+      "description": "Vanitas の信頼モデル — キーはブラウザー内に残ります。脅威の境界と検証。",
+      "ogTitle": "セキュリティ |ヴァニタス",
+      "ogDescription": "アーキテクチャ、脅威、暗号、ヘッダー、検証 — キーはブラウザー内に残ります。",
+      "ogAlt": "Vanitas のセキュリティ — キーはブラウザ内に残ります"
+    },
+    "lab": {
+      "title": "パターンラボ",
+      "description": "採掘する前に、すべての Vanitas 鍛冶の難易度マトリックス、希少性の推定、バッチ パターン キューを確認できます。",
+      "ogTitle": "パターンラボ |ヴァニタス",
+      "ogDescription": "マイニングする前に、難易度マトリックス、希少性の推定、バッチ パターン キューを確認します。"
+    },
+    "lookalike": {
+      "title": "類似チェック",
+      "description": "バニティ パターンを研削​​する前に、禁止されている Base58 グリフ、トロン大文字のトラップ、アルファベットの不一致を見つけてください。",
+      "ogTitle": "類似チェック |ヴァニタス",
+      "ogDescription": "粉砕する前に、0/O、I/l、Tron の大文字と小文字、およびアルファベットの不一致を見つけてください。"
+    },
+    "create2": {
+      "title": "CREATE2 ヘルパー",
+      "description": "デプロイメント バイトコードを initCodeHash にハッシュし、デプロイヤ + ソルトから CREATE2 アドレスをプレビューし、EVM フォージにディープリンクします。すべてクライアント側です。",
+      "ogTitle": "CREATE2 ヘルパー |ヴァニタス",
+      "ogDescription": "バイトコードからの initCodeHash、ソルト プレビュー、グラインド前のアドレス チェック。"
+    },
+    "brand": {
+      "title": "ブランド",
+      "description": "Vanitas 用の埋め込み可能なプルーフ ウィジェットとライト ブランディング キット - ワードマーク、色、iframe スニペット。秘密鍵はありません。",
+      "ogTitle": "ブランド |ヴァニタス",
+      "ogDescription": "埋め込み可能なプルーフ ウィジェットとライト ブランド キット。"
+    },
+    "proof": {
+      "title": "発見の証拠",
+      "description": "秘密キーを使用せずにバニティ アドレスがクライアント側と一致することを確認します。"
+    },
+    "audit": {
+      "title": "ライブ監査",
+      "description": "Vanitas で 8 つのローカル チェック (Web 暗号化、RNG 品質、生成中のゼロ ネットワーク、CSP、ワーカー分離、ビルドの整合性) を実行します。",
+      "ogTitle": "ライブ監査 |ヴァニタス",
+      "ogDescription": "ブラウザでの 8 つの自動チェック。何も偽造されず、何も送信されません。",
+      "ogAlt": "Vanitas のライブセキュリティ監査"
+    },
+    "token": {
+      "title": "トークン",
+      "description": "Vanitas にはプロジェクト トークンがありません。"
+    },
+    "embed-proof": {
+      "title": "証拠の埋め込み",
+      "description": "埋め込み可能な検索証明ウィジェット。"
+    },
+    "siteName": "ヴァニタス",
+    "notFound": {
+      "title": "404 — 見つかりません",
+      "description": "このページはヴァニタスには存在しません。"
+    },
+    "eth": {
+      "title": "ETH バニティ アドレス ジェネレーター",
+      "description": "EVM バニティ フォージにリダイレクトします。"
+    }
+  },
+  "notFound": {
+    "title": "ページが見つかりません",
+    "body": "お探しのページは Vanitas にありません。移動したか、もともと存在しなかった可能性があります。",
+    "home": "ホーム",
+    "sol": "Solana フォージ",
+    "evm": "EVM フォージ",
+    "metaTitle": "404 — 見つかりません",
+    "metaDescription": "このページは Vanitas には存在しません。",
+    "figAbsent": "図 — 不在",
+    "errorLabel": "エラー 404",
+    "heading": "このアドレスは鍛造されていません",
+    "links": {
+      "sol": "SOL フォージ",
+      "evm": "EVM フォージ",
+      "btc": "BTC フォージ",
+      "tron": "TRON フォージ",
+      "how": "仕組み",
+      "faq": "FAQ"
+    },
+    "homeForge": "または[ホームフォージ](/)に戻る。"
+  }
+}

@@ -1,5 +1,7 @@
 'use client';
 
+import { useMemo } from 'react';
+import { useTranslations } from 'next-intl';
 import type { TonMode } from '@/types/ton';
 
 interface Props {
@@ -8,29 +10,32 @@ interface Props {
   disabled?: boolean;
 }
 
-const MODES: { id: TonMode; label: string; blurb: string }[] = [
-  {
-    id: 'non-bounceable',
-    label: 'UQ Wallet',
-    blurb: 'Non-bounceable wallet address (recommended).',
-  },
-  {
-    id: 'bounceable',
-    label: 'EQ',
-    blurb: 'Bounceable form of the same Wallet v4R2 account.',
-  },
-];
+const MODE_IDS: TonMode[] = ['non-bounceable', 'bounceable'];
 
 export function TonModeToggle({ mode, onChange, disabled = false }: Props) {
-  const current = MODES.find((m) => m.id === mode) || MODES[0];
+  const tModes = useTranslations('forge.modes');
+  const tTon = useTranslations('forge.ton.mode');
+
+  const modes = useMemo(
+    () =>
+      MODE_IDS.map((id) => ({
+        id,
+        label: id === 'non-bounceable' ? tTon('uqWallet') : tModes('eq'),
+        blurb: id === 'non-bounceable' ? tTon('uqBlurb') : tTon('eqBlurb'),
+      })),
+    [tModes, tTon]
+  );
+
+  const current = modes.find((m) => m.id === mode) || modes[0];
+
   return (
     <div className="border-y border-ink/15 py-5">
       <div className="flex flex-col gap-1 mb-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-        <p className="text-micro uppercase tracking-[0.18em] text-muted">Address form</p>
+        <p className="text-micro uppercase tracking-[0.18em] text-muted">{tTon('addressForm')}</p>
         <p className="text-micro text-muted normal-case tracking-normal">{current.blurb}</p>
       </div>
       <div className={`grid grid-cols-2 gap-2 ${disabled ? 'opacity-50 pointer-events-none' : ''}`}>
-        {MODES.map((m) => (
+        {modes.map((m) => (
           <button
             key={m.id}
             type="button"

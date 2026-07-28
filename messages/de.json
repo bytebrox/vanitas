@@ -1,0 +1,1641 @@
+{
+  "common": {
+    "copy": "Kopie",
+    "copied": "Kopiert",
+    "hide": "Verstecken",
+    "reveal": "Aufdecken",
+    "downloadTxt": "TXT herunterladen",
+    "downloadJson": "JSON herunterladen",
+    "forge": "Schmiede",
+    "stop": "Stoppen",
+    "reset": "Zurücksetzen",
+    "loading": "Laden…",
+    "scrollDown": "Scrollen Sie nach unten",
+    "cores": "Kerne",
+    "of": "von {max}",
+    "fewerCores": "Weniger Kerne",
+    "moreCores": "Mehr Kerne",
+    "soundOn": "Ton an",
+    "soundOff": "Ton aus",
+    "found": "Gefunden",
+    "addressReady": "Adresse bereit",
+    "publicAddress": "Öffentliche Ansprache",
+    "privateKey": "Privater Schlüssel",
+    "keepSafe": "Verwahren",
+    "keepSafe1": "Speichern Sie den privaten Schlüssel, bevor Sie diese Seite verlassen",
+    "keepSafe2": "Geben Sie es niemals weiter – jeder, der es besitzt, kontrolliert die Brieftasche",
+    "keepSafe3": "Lokal generiert; nichts wurde auf einem Server gespeichert",
+    "attempts": "Versuche",
+    "pattern": "Muster",
+    "estTime": "Schätzung: Zeit",
+    "keys": "Schlüssel",
+    "rate": "Rate",
+    "time": "Zeit",
+    "workers": "Arbeiter",
+    "tryPattern": "Versuchen Sie es mit einem Muster",
+    "recentFinds": "Aktuelle Funde",
+    "keySecurity": "Schlüsselsicherheit",
+    "entropy": "Entropie",
+    "source": "Quelle",
+    "csprng": "CSPRNG",
+    "browser": "Browser",
+    "prefix": "Präfix",
+    "suffix": "Suffix",
+    "caseSensitive": "Groß- und Kleinschreibung beachten",
+    "optional": "Optional",
+    "brand": "Vanitas",
+    "sharePattern": "Muster teilen",
+    "shareProof": "Beweis teilen",
+    "proofLinkCopied": "Proof-Link kopiert",
+    "forgeAnother": "Einen anderen schmieden",
+    "scrollToForge": "Scrollen Sie zu Schmiede",
+    "waiting": "Warten – geben Sie ein Muster ein und schmieden Sie es",
+    "running": "● Laufen",
+    "progressExpected": "{pct} % der erwarteten Suche",
+    "difficultyGuide": "Anleitung: 3 Zeichen <5s · 4 Zeichen ~1m · 5 Zeichen ~30m · 6+ Stunden",
+    "match": "Übereinstimmen",
+    "startsAddress": "Startet die Adresse",
+    "endsAddress": "Beendet die Adresse",
+    "howItWorks": "Wie es funktioniert",
+    "liveAudit": "Live-Audit",
+    "evmForge": "EVM-Schmiede",
+    "exportHintSol": "TXT zum Lesen · JSON für Solana CLI / Phantom / Solflare · Share-Proof enthält niemals Schlüssel",
+    "stepMode": "01 – Modus",
+    "stepPattern": "02 – Muster",
+    "stepMintPattern": "02 – Mintfarbenes Muster",
+    "stepType": "01 – Typ",
+    "stepEstimate": "03 – Schätzung",
+    "stepForge": "04 – Schmiede",
+    "stepLive": "05 – Live",
+    "topics": "Themen",
+    "verified": "Verifiziert",
+    "mismatch": "Nichtübereinstimmung",
+    "chain": "Kette",
+    "stats": "Statistiken",
+    "statsDisclaimer": "Die Anzahl der Versuche wird vom Fälscher selbst gemeldet und nicht kryptografisch nachgewiesen.",
+    "copyProofLink": "Link zum Kopiernachweis",
+    "openForge": "Offene Schmiede",
+    "github": "GitHub",
+    "x": "X",
+    "attemptsLabel": "Versuche",
+    "charsDays": "{n}-Zeichen können Tage oder Wochen dauern.",
+    "charsHours": "{n} Zeichen können Stunden dauern.",
+    "considerSuffix": "Erwägen Sie, nur Suffixe oder Groß-/Kleinschreibung zu berücksichtigen."
+  },
+  "nav": {
+    "language": "Sprache",
+    "home": "Start",
+    "chains": "CHAINS",
+    "docs": "DOCS",
+    "tools": "TOOLS",
+    "menu": "Menü",
+    "close": "Schließen",
+    "themeToLight": "Wechseln Sie in den Lichtmodus",
+    "themeToDark": "Wechseln Sie in den Dunkelmodus",
+    "themeLight": "Licht",
+    "themeDark": "Dunkel",
+    "themeMobileDarkToLight": "Dunkel → Hell",
+    "themeMobileLightToDark": "Hell → Dunkel",
+    "docsHow": "Wie",
+    "docsHowHint": "Wie es funktioniert",
+    "docsFaq": "FAQ",
+    "docsFaqHint": "Fragen",
+    "docsSecurity": "Sicherheit",
+    "docsSecurityHint": "Vertrauensmodell",
+    "toolsAudit": "Prüfung",
+    "toolsAuditHint": "Live-Checks",
+    "toolsProof": "Nachweisen",
+    "toolsProofHint": "Einen Fund verifizieren",
+    "toolsLab": "Labor",
+    "toolsLabHint": "Musterlabor",
+    "toolsLookalike": "Doppelgänger",
+    "toolsLookalikeHint": "Alphabetfallen",
+    "toolsCreate2": "CREATE2",
+    "toolsCreate2Hint": "Init-Hash + Vorschau",
+    "toolsBrand": "Brand",
+    "toolsBrandHint": "Einbetten + Bausatz",
+    "brand": "Vanitas",
+    "githubAria": "GitHub-Repository",
+    "xAria": "Bytebrox auf X",
+    "evmSubline": "Ethereum · BNB · Basis · Arbitrum · Optimismus · + EVM",
+    "chainItems": {
+      "sol": {
+        "label": "Solana",
+        "short": "SOL"
+      },
+      "evm": {
+        "label": "EVM",
+        "short": "EVM"
+      },
+      "btc": {
+        "label": "Bitcoin",
+        "short": "BTC"
+      },
+      "tron": {
+        "label": "Tron",
+        "short": "TRON"
+      },
+      "aptos": {
+        "label": "Aptos",
+        "short": "APTOS"
+      },
+      "sui": {
+        "label": "Sui",
+        "short": "SUI"
+      },
+      "ton": {
+        "label": "TON",
+        "short": "TON"
+      },
+      "cardano": {
+        "label": "Cardano",
+        "short": "ADA"
+      },
+      "xrp": {
+        "label": "XRP",
+        "short": "XRP"
+      }
+    }
+  },
+  "footer": {
+    "blurb": "Clientseitiges Vanity-Tool für Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano und XRP. Kein Projekt-Token. Kein Schlüssel verlässt dieses Gerät. Entwickelt von [Bytebrox](https://x.com/bytebrox).",
+    "donateSol": "Spenden Sie SOL",
+    "solscan": "Solscan",
+    "home": "Heim",
+    "security": "Sicherheit",
+    "audit": "Prüfung",
+    "faq": "FAQ",
+    "how": "Wie",
+    "cli": "CLI",
+    "github": "GitHub",
+    "proof": "Nachweisen",
+    "lab": "Labor",
+    "lookalike": "Doppelgänger",
+    "create2": "CREATE2",
+    "brand": "Brand",
+    "sol": "SOL",
+    "evm": "EVM",
+    "btc": "BTC",
+    "tron": "TRON",
+    "aptos": "APTOS",
+    "sui": "SUI",
+    "ton": "TON",
+    "ada": "ADA",
+    "xrp": "XRP",
+    "copyright": "© {year}"
+  },
+  "landing": {
+    "eyebrow": "Kundenseitige Schminkschmiede",
+    "title": "Vanitas",
+    "subtitle": "Wählen Sie eine Kette. Schlüssel bleiben in diesem Browser.",
+    "enterForge": "Geben Sie Schmiede → ein",
+    "preferTerminal": "Bevorzugen Sie das Terminal?",
+    "forges": {
+      "sol": {
+        "name": "Solana",
+        "title": "Brieftasche und Minze",
+        "blurb": "Base58-Vanity-Wallets und Token-Mints."
+      },
+      "evm": {
+        "name": "EVM",
+        "title": "Wallet & Vertrag",
+        "blurb": "Ein 0x-Schlüssel für jede EVM-Kette.",
+        "aria": "Ethereum, BNB, Basis, Arbitrum, Optimismus"
+      },
+      "btc": {
+        "name": "Bitcoin",
+        "title": "Legacy · SegWit · Taproot",
+        "blurb": "Vanity 1…-, bc1q…- und bc1p…-Adressen."
+      },
+      "tron": {
+        "name": "Tron",
+        "title": "Brieftasche & ERSTELLEN",
+        "blurb": "Vanity T… Adressen für TronLink."
+      },
+      "aptos": {
+        "name": "Aptos",
+        "title": "Ed25519 0x",
+        "blurb": "Hex-Waschtisch für Petra und Martian."
+      },
+      "sui": {
+        "name": "Sui",
+        "title": "Ed25519 0x",
+        "blurb": "Hex-Waschtisch für Sui Wallet & Suiet."
+      },
+      "ton": {
+        "name": "TON",
+        "title": "Brieftasche v4R2",
+        "blurb": "Vanity UQ… / EQ… Adressen."
+      },
+      "cardano": {
+        "name": "Cardano",
+        "title": "Unternehmensadresse1",
+        "blurb": "Bech32 Vanity-Zahlungsadressen."
+      },
+      "xrp": {
+        "name": "XRP",
+        "title": "Klassischer …",
+        "blurb": "XRPL Base58-Vanity-Adressen."
+      }
+    },
+    "npxVanitas": "npx vanitas"
+  },
+  "forge": {
+    "header": {
+      "wallet": {
+        "eyebrow": "Geldbörsenschmiede",
+        "title": "Solana",
+        "headline": "Benennen Sie die Adresse. Behalten Sie den Schlüssel.",
+        "blurb": "Generieren Sie eine Vanity-Solana-Wallet-Adresse vollständig in diesem Browser auf Ihrer CPU."
+      },
+      "mint": {
+        "eyebrow": "Minzschmiede",
+        "title": "Solana",
+        "headline": "Nennen Sie die Minze. Starten Sie mit Präsenz.",
+        "blurb": "Erstellen Sie eine Vanity-Solana-Mint für jedes Launchpad, vollständig in diesem Browser."
+      },
+      "evm": {
+        "eyebrow": "0x Schmiede",
+        "title": "EVM",
+        "headline": "Benennen Sie das 0x. Überall der gleiche Schlüssel.",
+        "blurb": "Generieren Sie Vanity-Wallet- oder Vertragsadressen vollständig in diesem Browser. Ein Schlüssel funktioniert auf Ethereum, BNB Smart Chain, Base, Arbitrum, Optimism und jeder anderen EVM-Kette."
+      },
+      "btc": {
+        "eyebrow": "UTXO-Schmiede",
+        "title": "Bitcoin",
+        "headline": "Benennen Sie die Münze. Besitzen Sie die Adresse.",
+        "blurb": "Generieren Sie Vanity-Bitcoin-Adressen (Legacy, SegWit, Taproot) vollständig in diesem Browser. Schlüssel verlassen dieses Gerät niemals."
+      },
+      "tron": {
+        "eyebrow": "T-Schmiede",
+        "title": "Tron",
+        "headline": "Benennen Sie das T. Behalten Sie den Schlüssel.",
+        "blurb": "Generieren Sie Vanity Tron Base58-Adressen vollständig in diesem Browser. Importieren Sie in TronLink und andere Tron-Wallets."
+      },
+      "aptos": {
+        "eyebrow": "0x Schmiede",
+        "title": "Aptos",
+        "headline": "Benennen Sie das 0x. Behalten Sie den Schlüssel.",
+        "blurb": "Generieren Sie Vanity-Aptos-Ed25519-Adressen vollständig in diesem Browser. Importieren Sie in Petra-, Martian- und andere Aptos-Wallets."
+      },
+      "sui": {
+        "eyebrow": "0x Schmiede",
+        "title": "Sui",
+        "headline": "Benennen Sie das 0x. Behalten Sie den Schlüssel.",
+        "blurb": "Generieren Sie Vanity Sui Ed25519-Adressen vollständig in diesem Browser. Importieren Sie in Sui Wallet, Suiet und andere Sui-Wallets."
+      },
+      "ton": {
+        "eyebrow": "UQ-Schmiede",
+        "title": "TON",
+        "headline": "Benennen Sie die UQ. Behalten Sie den Schlüssel.",
+        "blurb": "Generieren Sie Vanity TON Wallet v4R2-Adressen (UQ/EQ) vollständig in diesem Browser. Import in Tonkeeper und MyTonWallet."
+      },
+      "cardano": {
+        "eyebrow": "Adresse1 Schmiede",
+        "title": "Cardano",
+        "headline": "Benennen Sie die Adresse. Behalten Sie den Schlüssel.",
+        "blurb": "Generieren Sie Vanity-Cardano-Unternehmensadressen (addr1…) vollständig in diesem Browser. Nur Zahlungsschlüssel."
+      },
+      "xrp": {
+        "eyebrow": "r Schmiede",
+        "title": "XRP",
+        "headline": "Nennen Sie das r. Behalten Sie den Schlüssel.",
+        "blurb": "Generieren Sie klassische Vanity-XRP-Ledger-Adressen (r…) vollständig in diesem Browser. Import in Xaman und andere XRPL-Wallets."
+      }
+    },
+    "modes": {
+      "wallet": "Geldbörse",
+      "mint": "Minze",
+      "create": "CREATE",
+      "create2": "CREATE2",
+      "legacy": "Vermächtnis",
+      "segwit": "SegWit",
+      "taproot": "Pfahlwurzel",
+      "uq": "UQ",
+      "eq": "EQ"
+    },
+    "evmChainsNote": "Ethereum · BNB · Basis · Arbitrum · Optimismus · + EVM",
+    "solDownloadTxtTitle": "VANITAS - SOLANA KEYPAIR",
+    "solDownloadImportant": "WICHTIG:\n- Geben Sie niemals Ihren privaten Schlüssel weiter\n- Bewahren Sie diese Datei sicher auf\n- Dieses Schlüsselpaar wurde lokal in Ihrem Browser generiert",
+    "scrollToForge": "Scrollen Sie zu Schmiede",
+    "sideCaptions": {
+      "solWallet": "Abb. I – Amphitheater",
+      "solMint": "Abb. II – Tempel",
+      "evm": "Abb. VII – Forum",
+      "btc": "Abb. VIII – Münze",
+      "tron": "Abb. IX – Schaltung",
+      "aptos": "Abb. XI – Gitter",
+      "sui": "Abb. XII – Strom",
+      "ton": "Abb. XIII – Signal",
+      "cardano": "Abb. XII – Hauptbuch",
+      "xrp": "Abb. XIV – Hauptbuch"
+    },
+    "steps": {
+      "mode": "01 – Modus",
+      "pattern": "02 – Muster",
+      "estimate": "03 – Schätzung",
+      "forge": "04 – Schmiede",
+      "live": "05 – Live"
+    },
+    "stepsCompact": {
+      "pattern": "01 – Muster",
+      "estimate": "02 – Schätzung",
+      "forge": "03 – Schmiede",
+      "live": "04 – Live"
+    },
+    "links": {
+      "sharePattern": "Muster teilen",
+      "howItWorks": "Wie es funktioniert",
+      "liveAudit": "Live-Audit",
+      "evmForge": "EVM-Schmiede",
+      "proofOfFind": "Fundnachweis"
+    },
+    "sol": {
+      "mintAfterForge": "Nach dem Fälschen: Kopieren Sie den privaten Schlüssel in das benutzerdefinierte Mint-Feld Ihres Launchpads (pump.fun, Raydium, Meteora, …).",
+      "mode": {
+        "target": "Ziel",
+        "walletTarget": "Wallet-Adresse",
+        "mintTarget": "Token-Mint-Adresse",
+        "toggleAria": "Wechseln Sie zwischen Wallet- und Mint-Adresse",
+        "mintHelp": "Schmiedet ein Vanity-Solana-Mint-Schlüsselpaar für Launchpads (pump.fun, Raydium, Meteora, …). Fügen Sie den privaten Schlüssel in das Feld „custom-mint“ ein.",
+        "walletHelp": "Fälscht ein Vanity-Solana-Wallet-Schlüsselpaar – Base58-Adresse, vollständig in diesem Browser."
+      }
+    },
+    "eth": {
+      "create2Params": "CREATE2-Parameter",
+      "initHash": "Init-Hash",
+      "initHashPh": "keccak256(initCode) – 64 hex",
+      "salt": "Salz",
+      "saltPh": "32-Byte-Salt – 64 Hex",
+      "deployerKey": "Bereitstellungsschlüssel",
+      "deployerKeyPh": "Privater Schlüssel des Bereitstellers – 64 Hex",
+      "footnote": "Gleicher 0x-Schlüssel für Ethereum, BNB Smart Chain, Base, Arbitrum, Optimism, Polygon und jedes andere EVM-Netzwerk. Solana schmiedet live auf [SOL](/sol).",
+      "mode": {
+        "target": "Ziel",
+        "walletBlurb": "EOA 0x-Adresse in jeder EVM-Kette.",
+        "createBlurb": "Stellen Sie zunächst die Vertragsadresse (Nonce 0) bereit.",
+        "c2SaltBlurb": "Deployer + initCodeHash behoben; Salz mahlen.",
+        "c2KeyBlurb": "Festes Salt + initCodeHash; Grind-Deployer-Schlüssel.",
+        "c2Salt": "C2-Salz",
+        "c2Key": "C2-Taste"
+      }
+    },
+    "btc": {
+      "stepType": "01 – Typ",
+      "mode": {
+        "addressType": "Adresstyp",
+        "legacyBlurb": "Klassisch 1… P2PKH (Base58).",
+        "segwitBlurb": "Native bc1q… P2WPKH (Bech32).",
+        "taprootBlurb": "Natives bc1p… P2TR (Bech32m)."
+      },
+      "pattern": {
+        "legacyHint": "Ältere Adressen beginnen mit 1 – geben Sie BTC ein, um nach 1BTC… zu suchen (die führende 1 wird automatisch hinzugefügt).",
+        "segwitHint": "SegWit-Adressen beginnen mit bc1q – geben Sie einen Text wie „cafe“ oder das vollständige Präfix bc1q… ein.",
+        "taprootHint": "Taproot-Adressen beginnen mit bc1p – geben Sie einen Text wie „cafe“ oder das vollständige bc1p…-Präfix ein.",
+        "caseNote": "Aus (empfohlen für Kleinbuchstabenmuster): Nach 1 werden Kleinbuchstaben äußerst selten verwendet, wenn die Groß-/Kleinschreibung aktiviert ist."
+      }
+    },
+    "tron": {
+      "mode": {
+        "walletBlurb": "Konto Base58-Adresse (T…).",
+        "createBlurb": "Vertragsadresse für die erste Bereitstellung (CREATE Nonce 0)."
+      }
+    },
+    "ton": {
+      "mode": {
+        "addressForm": "Adressformular",
+        "uqWallet": "UQ-Geldbörse",
+        "uqBlurb": "Nicht bouncebare Wallet-Adresse (empfohlen).",
+        "eqBlurb": "Bouncebare Form desselben Wallet v4R2-Kontos."
+      }
+    },
+    "pattern": {
+      "solPrefixPh": "SOL",
+      "solSuffixPh": "xyz",
+      "solAlphabet": "Nur Base58 – kein `0 O I`. Alphabet: `1-9 A-H J-N P-Z a-k m-z`",
+      "ethHexNote": "EVM-Adressen sind nur hexadezimal – Ziffern `0–9` und Buchstaben `a–f`. Die Buchstaben `g–z` (und alle anderen Zeichen) dürfen in einer Adresse nicht vorkommen und werden bei der Eingabe ignoriert.",
+      "ethIgnored": "Ignoriert: {chars}",
+      "ethPrefixPh": "tot",
+      "ethSuffixPh": "Rindfleisch",
+      "ethAfter0x": "Startet nach 0x",
+      "ethCaseNote": "Beim Matching wird die Groß-/Kleinschreibung nicht beachtet. Längere Muster dauern exponentiell länger (16 Möglichkeiten pro Zeichen)."
+    },
+    "cardano": {
+      "headerBlurb": "Generieren Sie Vanity-Cardano-Unternehmensadressen (addr1…) vollständig in diesem Browser. Nur Zahlungsschlüssel."
+    },
+    "xrp": {
+      "headerBlurb": "Generieren Sie klassische Vanity-XRP-Ledger-Adressen (r…) vollständig in diesem Browser. Import in Xaman und andere XRPL-Wallets."
+    }
+  },
+  "tools": {
+    "lab": {
+      "title": "Musterlabor",
+      "description": "Sehen Sie, wie selten ein Muster ist, bevor Sie es abbauen – stellen Sie dann Aufträge in die Warteschlange und öffnen Sie die Schmiede.",
+      "eyebrow": "Werkzeuge",
+      "caption": "Abb. – Labor",
+      "toc": {
+        "composer": "Komponist",
+        "matrix": "Matrix",
+        "queue": "Warteschlange"
+      },
+      "sectionPattern": "Muster",
+      "sectionRarity": "Seltenheit",
+      "sectionBatch": "Charge",
+      "addQueue": "Zur Warteschlange hinzufügen",
+      "openForge": "Öffnen Sie {chain} forge →",
+      "queueEmpty": "Leer",
+      "queueEmptyHint": "Fügen Sie oben ein Muster hinzu, um Jobs zu vergleichen.",
+      "remove": "Entfernen",
+      "exportJson": "JSON exportieren",
+      "clear": "Klar",
+      "prefixPh": "As",
+      "suffixPh": "optional",
+      "composerN": "01 – Komponist",
+      "matrixN": "02 – Matrix",
+      "queueN": "03 – Warteschlange",
+      "forge": "Schmiede",
+      "exportWarning": "Nur Muster – keine privaten Schlüssel."
+    },
+    "lookalike": {
+      "title": "Lookalike-Check",
+      "description": "Fangen Sie verbotene Base58-Glyphen, Tron-Fallfallen, nicht übereinstimmende XRPL-Alphabete und menschliche Doppelgänger ab, bevor Sie die CPU nach einem unmöglichen Muster belasten.",
+      "eyebrow": "Werkzeuge",
+      "caption": "Abb. – Glyphen",
+      "toc": {
+        "check": "Überprüfen",
+        "findings": "Erkenntnisse",
+        "alphabets": "Alphabete"
+      },
+      "sectionCheckN": "01 – Überprüfen",
+      "sectionFindingsN": "02 – Erkenntnisse",
+      "sectionAlphabetsN": "03 – Alphabete",
+      "sectionPatternForge": "Muster & Schmiede",
+      "pattern": "Muster",
+      "patternPh": "Präfix oder Fragment",
+      "sectionSpotted": "Was wir entdeckt haben",
+      "findingsEmptyTitle": "Geben Sie ein Muster ein",
+      "findingsEmptyDetail": "Fügen Sie zur Überprüfung ein Präfix, Suffix oder ein vollständiges Vanity-Fragment ein.",
+      "readyGrind": "Bereit zum Mahlen? Öffnen Sie [Pattern Lab](/lab) oder die passende Schmiede.",
+      "sectionCharset": "Spickzettel zum Zeichensatz",
+      "tocCheck": "Überprüfen",
+      "tocFindings": "Erkenntnisse",
+      "tocAlphabets": "Alphabete",
+      "sectionCheckTitle": "Muster & Schmiede",
+      "sectionFindingsTitle": "Was wir entdeckt haben",
+      "sectionAlphabetsTitle": "Spickzettel zum Zeichensatz",
+      "patternLabel": "Muster",
+      "severity": {
+        "error": "Fehler",
+        "warn": "Warnung",
+        "info": "Info"
+      },
+      "chains": {
+        "sol": {
+          "label": "Solana",
+          "notes": "Base58 im Bitcoin-Stil — ohne 0, O, I, l"
+        },
+        "evm": {
+          "label": "EVM",
+          "notes": "Nur Hex (0-9, a-f), ohne Groß-/Kleinschreibung"
+        },
+        "btc-legacy": {
+          "label": "Bitcoin-Erbe",
+          "notes": "Base58 P2PKH / P2SH"
+        },
+        "btc-bech32": {
+          "label": "Bitcoin Bech32",
+          "notes": "bc1q / bc1p Körper-Zeichensatz"
+        },
+        "tron": {
+          "label": "Tron",
+          "notes": "Base58 T… — Groß-/Kleinschreibung relevant; frühe Zeichen meist groß"
+        },
+        "aptos": {
+          "label": "Aptos",
+          "notes": "0x + 64 Hex"
+        },
+        "sui": {
+          "label": "Sui",
+          "notes": "0x + 64 Hex"
+        },
+        "ton": {
+          "label": "TONNE",
+          "notes": "Base64url — Groß-/Kleinschreibung relevant"
+        },
+        "cardano": {
+          "label": "Cardano",
+          "notes": "addr1… Bech32-Körper"
+        },
+        "xrp": {
+          "label": "XRP",
+          "notes": "XRPL-Base58 — anders als Bitcoin/Solana"
+        }
+      },
+      "pairNotes": {
+        "zeroO": "Null vs. großes O",
+        "zeroo": "Null vs. kleines o",
+        "oneL": "Eins vs. kleines L",
+        "oneI": "Eins vs. großes i (I)",
+        "onei": "Eins vs. kleines i",
+        "fiveS": "Fünf vs. S",
+        "eightB": "Acht vs. B"
+      },
+      "findings": {
+        "empty": {
+          "title": "Muster eingeben",
+          "detail": "Präfix, Suffix oder Vanity-Fragment zum Prüfen einfügen."
+        },
+        "invalidAlphabet": {
+          "title": "Zeichen nicht in diesem Alphabet",
+          "detail": "Ungültig: {chars}. {notes}"
+        },
+        "base58Banned": {
+          "title": "Base58 nutzt nie 0, O, I oder l",
+          "detail": "Diese Glyphen fehlen absichtlich im Bitcoin-Base58, um Verwechslungen zu vermeiden. Dieses Muster kann nicht matchen."
+        },
+        "xrplVsBtc": {
+          "title": "Bitcoin-Base58-Zeichen im XRPL-Alphabet",
+          "detail": "Klassische XRPL-Adressen nutzen ein anderes Base58-Alphabet. Problematisch: {chars}"
+        },
+        "xrplCharset": {
+          "title": "XRPL-spezifische Zeichen",
+          "detail": "In XRPL-Base58, aber nicht in Bitcoin-Base58: {chars}"
+        },
+        "sharedGlyphs": {
+          "title": "Glyphen in beiden Base58-Alphabeten",
+          "detail": "Zeichen überlappen sich, die Kodierungen unterscheiden sich trotzdem. Solana-/BTC-Vanity nicht ungeprüft auf XRP wiederverwenden."
+        },
+        "notXrpl": {
+          "title": "Würde so nicht auf XRPL funktionieren",
+          "detail": "Dieses Bitcoin-/Solana-Base58-Muster nutzt Glyphen, die im XRPL-Alphabet fehlen."
+        },
+        "tronCase": {
+          "title": "Frühes Kleinschreibungs-Muster auf Tron",
+          "detail": "Tron-Adressen starten mit T; die nächsten Zeichen sind meist Großbuchstaben-Base58. Kurze Kleinbuchstaben-Präfixe matchen oft nie — Großbuchstaben oder längeres Suffix versuchen."
+        },
+        "tronLeadingT": {
+          "title": "Führendes kleines t",
+          "detail": "Klassische Tron-Adressen beginnen mit großem T. Lieber T… oder das T weglassen, falls die Forge es automatisch setzt."
+        },
+        "pair": {
+          "title": "Gemischte Doppelgänger: {a} und {b}",
+          "detail": "{note}. Leicht zu vertippen, wenn man die Adresse laut sagt oder in Screenshots teilt."
+        },
+        "safe": {
+          "title": "{present} ist im Alphabet; {absent} nicht",
+          "detail": "{note}. Empfänger verwechseln sie trotzdem optisch — beim Teilen sorgfältig buchstabieren."
+        },
+        "hexCase": {
+          "title": "Gemischte Hex-Schreibweise",
+          "detail": "Der Match ist case-insensitive. Gemischte Schreibweise ist für die Anzeige (Checksum) ok, zum Grinden aber nicht nötig."
+        },
+        "tonCase": {
+          "title": "TON-Muster sind case-sensitive",
+          "detail": "Base64url unterscheidet A und a. Gemischte Schreibweise erhöht die Schwierigkeit und ist leicht zu vertippen."
+        },
+        "clean": {
+          "title": "Keine Alphabet-Kollisionen erkannt",
+          "detail": "Alle Zeichen passen zu {label}. Vor einem langen Grind trotzdem die Live-Warnungen der Forge prüfen."
+        }
+      }
+    },
+    "create2": {
+      "title": "CREATE2-Helfer",
+      "description": "Leiten Sie initCodeHash vom Bereitstellungsbytecode ab, zeigen Sie eine Vorschau der CREATE2-Adresse für einen Deployer und Salt an und springen Sie dann in die EVM-Schmiede. Schlüssel bleiben vor Ort.",
+      "eyebrow": "Werkzeuge",
+      "caption": "Abb. – CREATE2",
+      "toc": {
+        "hash": "Hash",
+        "preview": "Vorschau",
+        "forge": "Schmiede"
+      },
+      "sectionHashN": "01 – Hash",
+      "sectionHashTitle": "Bytecode → initCodeHash",
+      "sectionPreviewN": "02 – Vorschau",
+      "sectionPreviewTitle": "Adresse vom Deployer + Salt",
+      "sectionForgeN": "03 – Schmiede",
+      "sectionForgeTitle": "Öffnen Sie den EVM-Grind",
+      "hashIntro": "Fügen Sie den Erstellungsbytecode (Init-Code) ein, der bereitgestellt werden soll. Wir berechnen `keccak256(initCode)` in diesem Browser.",
+      "initCodeLabel": "Init-Code (hex)",
+      "initCodePh": "0x6080604052…",
+      "initCodeHashLabel": "Init-Code-Hash (32 Byte)",
+      "initCodeHashPh": "0x…",
+      "initCodeHashResult": "Init-Code-Hash · {bytes} Bytes",
+      "deployerLabel": "Deployer (20 Byte)",
+      "deployerPh": "0x…",
+      "saltLabel": "Salt (≤32 Byte, links aufgefüllt)",
+      "saltPh": "0x… oder leer = null Salz",
+      "create2Address": "CREATE2-Adresse",
+      "wantedPrefix": "Gesuchtes Präfix",
+      "wantedSuffix": "Gesuchtes Suffix",
+      "prefixPh": "Cafe",
+      "suffixPh": "optional",
+      "patternMatch": "Die Vorschauadresse entspricht Ihrem Muster.",
+      "patternMismatch": "Die Vorschauadresse stimmt nicht mit diesem Muster überein – mahlen Sie weiterhin Salt oder Deployer.",
+      "useInPreview": "In der Vorschau verwenden",
+      "forgeIntro": "Stellen Sie mit Ihrem Hash und Muster einen Deep-Link zur EVM-Schmiede her. Falscher initCodeHash bedeutet eine falsche Adresse in der Kette.",
+      "grindSalt": "Salz mahlen",
+      "grindDeployer": "Grind-Bereitsteller",
+      "evmForge": "EVM-Schmiede",
+      "tocHash": "Hash",
+      "tocPreview": "Vorschau",
+      "tocForge": "Schmiede",
+      "prefixLabel": "Präfix",
+      "suffixLabel": "Suffix",
+      "predictedAddress": "Voraussichtliche Adresse",
+      "patternMiss": "Musterkonflikt",
+      "invalidDeployer": "Ungültiger Deployer oder Hash",
+      "openSaltForge": "Salz in der Schmiede mahlen",
+      "openDeployerForge": "Grind-Deployer in Forge"
+    },
+    "brand": {
+      "title": "Brand",
+      "description": "Proof-Karten für Launchpads und Docs einbetten, plus leichtes Branding-Kit — Wordmark, Farben und Texte. Enthält nie Private Keys.",
+      "eyebrow": "Werkzeuge",
+      "embedIntro": "Chain, Adresse und Pattern einfügen (von einem Fund oder Demo). Wir bauen ein iframe, das den Match clientseitig prüft — dieselben Regeln wie [/proof](/proof).",
+      "badgeLine": "Proof clientseitig verifiziert · vanitas.fun",
+      "caption": "Abb. – Brand",
+      "toc": {
+        "embed": "Einbetten",
+        "preview": "Vorschau",
+        "kit": "Bausatz",
+        "copy": "Kopie"
+      },
+      "sectionEmbedN": "01 – Einbetten",
+      "sectionEmbedTitle": "Proof-Widget",
+      "address": "Adresse",
+      "prefix": "Präfix",
+      "suffix": "Suffix",
+      "paperTheme": "Paper-Theme",
+      "inkTheme": "Ink-Theme",
+      "compact": "Kompakt",
+      "iframeSnippet": "Iframe-Snippet",
+      "copyIframe": "Iframe kopieren",
+      "copyEmbedUrl": "Embed-URL kopieren",
+      "copyProofUrl": "Vollständige Proof-URL kopieren",
+      "sectionPreviewN": "02 – Vorschau",
+      "sectionPreviewTitle": "Live-Karte",
+      "previewBody": "Eingebettete Vorschau von /embed/proof. Die Demo-Adresse kann einen Mismatch zeigen, bis du einen echten Fund einfügst.",
+      "iframeTitle": "Vanitas Proof",
+      "previewIframeTitle": "Vanitas-Beweisvorschau",
+      "sectionKitN": "03 – Bausatz",
+      "sectionKitTitle": "Branding-Kit",
+      "kitIntro": "Nutze Vanitas-Marken, wenn du Proofs oder Forges verlinkst. Unterstelle keine Custody, Partnerschaft oder Audit-durch-Vanitas, sofern das nicht zutrifft.",
+      "wordmark": "Wortmarke",
+      "wordmarkNote": "Anzeige-/Serifenstärke – Hero-Level, wenn allein gebrandet",
+      "paper": "Papier",
+      "paperNote": "Primärer Boden",
+      "ink": "Tinte",
+      "inkNote": "Karosserie + Chrom",
+      "accent": "Akzent",
+      "accentValue": "Site-Akzent-Token",
+      "accentNote": "Links/verifizierte Zustände – bleiben Sie sparsam",
+      "site": "Website",
+      "siteNote": "Bevorzugen Sie www.vanitas.fun für kanonische Links",
+      "badgeHeading": "Abzeichenlinie",
+      "copyBadge": "Badge-Zeile kopieren",
+      "sectionCopyN": "04 – Kopieren",
+      "sectionCopyTitle": "Textvorschläge",
+      "shortLabel": "Kurz",
+      "shortBlurb": "Vanity-Adresse lokal mit Vanitas geschmiedet — Schlüssel verlassen das Gerät nicht. Pattern-Match clientseitig verifiziert.",
+      "launchpadLabel": "Launchpad",
+      "launchpadBlurb": "Custom Mint / Vanity-Wallet im Browser über vanitas.fun erzeugt. Teile den Proof-Link, damit jeder das Pattern prüfen kann — Private Keys bleiben von der Seite fern.",
+      "linkProof": "Proof-Seite",
+      "linkLab": "Pattern-Lab",
+      "linkSecurity": "Sicherheit"
+    },
+    "proof": {
+      "title": "Öffentlicher Spielcheck",
+      "description": "Stellen Sie sicher, dass die Vanity auf der Clientseite übereinstimmt – Schlüssel sind niemals enthalten.",
+      "eyebrow": "Fundnachweis",
+      "intro": "Auf dieser Seite wird überprüft, ob eine Adresse mit einem beanspruchten Muster übereinstimmt. Es enthält niemals private Schlüssel. Jeder kann den Link öffnen und clientseitig erneut prüfen.",
+      "emptyIntro": "Keine Beweisdaten in der URL. Nachdem Sie eine Adresse gefälscht haben, verwenden Sie **Beweis teilen** auf dem Ergebnisbildschirm. Oder zuerst schmieden:",
+      "address": "Adresse",
+      "pattern": "Muster"
+    },
+    "embedProof": {
+      "eyebrow": "Vanitas-Beweis",
+      "brand": "Vanitas",
+      "missingParams": "Fehlende Beweisparameter.",
+      "openProof": "Offener Beweis",
+      "site": "vanitas.fun"
+    },
+    "audit": {
+      "title": "Prüfung",
+      "description": "Laufzeitprüfungen und Worker-Hash-Vergleich.",
+      "eyebrow": "Live-Checks",
+      "caption": "Abb. VI – Forum",
+      "descriptionIdle": "Acht lokale Schecks. Nichts wird gefälscht, nichts wird an einen Server gesendet. Grün bedeutet gut.",
+      "descriptionPass": "Acht lokale Kontrollen – klar. Nichts wird gefälscht, nichts wird an einen Server gesendet.",
+      "descriptionFail": "Acht lokale Prüfungen – {failed} Problem(e). Grün bedeutet gut.",
+      "checksTotal": "{total} prüft",
+      "passedSummary": "{passed}/{total} bestanden",
+      "buildIntegrity": "Bauen Sie Integrität auf",
+      "workerFingerprintIntro": "Jeder Forge-Mitarbeiter verfügt über einen SHA-256-Fingerabdruck, der in `worker-hash.json` veröffentlicht wurde. Der obige Integritätstest verifiziert Solana, EVM, Bitcoin und Tron anhand dieser Liste.",
+      "verifyYourself": "Verifizieren Sie sich",
+      "verifyStep1": "1. Rezensionsquelle verlinkt von [vanitas.fun](https://vanitas.fun)",
+      "verifyStep2": "2. Bauarbeiter: `npm run build:worker`",
+      "verifyStep3": "3. Vergleichen Sie `public/worker-hash.json` mit dem Hash oben",
+      "hashLoading": "Laden…",
+      "hashUnavailable": "nicht verfügbar",
+      "start": "Prüfung starten",
+      "runAgain": "Noch einmal laufen",
+      "running": "Läuft…",
+      "whatIsThis": "Was ist das?",
+      "whatIsThisBody": "Wenn Sie Vanitas nutzen, wird auf Ihrem Gerät ein privater Schlüssel erstellt. Diese **8 automatisierten Prüfungen** beweisen, dass die Generierung lokal bleibt, der Zufall real ist und nichts ins Netzwerk gelangt.",
+      "workerFingerprint": "Fingerabdruck des Arbeiters",
+      "networkMonitor": "Live-Netzwerkmonitor",
+      "monitor": {
+        "transparency": "Transparenz",
+        "intro": "Jede Netzwerkanfrage, die diese Seite stellt. Wenn wichtige Daten vorhanden wären, würden Sie diese hier sehen.",
+        "stop": "● Stopp",
+        "restart": "Neustart",
+        "startMonitoring": "Beginnen Sie mit der Überwachung",
+        "requests": "{count} Anfragen",
+        "requestSingular": "1 Anfrage",
+        "noSuspicious": "Keine verdächtigen externen Anfragen",
+        "externalCount": "{count} extern",
+        "colType": "Typ",
+        "colUrl": "URL",
+        "colSize": "Größe",
+        "colTime": "Zeit",
+        "footerSafe": "Alle Anfragen gehen an diese Domain oder an Google Fonts (für Typografie). Es werden keine Daten an Server Dritter gesendet.",
+        "footerWarning": "Warnung: Unerwartete externe Anfragen erkannt. Dies könnte auf ein Sicherheitsproblem hinweisen.",
+        "emptyHint": "Klicken Sie auf „Überwachung starten“, um alle Netzwerkanfragen dieser Seite anzuzeigen.",
+        "emptySubhint": "Navigieren Sie mit aktivierter Überwachung auf der Website – Sie sehen genau, was geladen wird.",
+        "activeHint": "Überwachung aktiv – Warten auf Netzwerkanfragen..."
+      },
+      "tests": {
+        "webcrypto": {
+          "name": "Web-Krypto-API",
+          "description": "Native Ed25519-Unterstützung in Ihrem Browser",
+          "why": "Dies ist die Technologie, die Ihre Schlüssel erstellt. Wenn Ihr Browser dies nativ unterstützt, ist die Adressgenerierung bis zu 125-mal schneller als bei Alternativen."
+        },
+        "csprng": {
+          "name": "Zufallszahlengenerator",
+          "description": "Kryptografisch sicherer Zufallszahlengenerator",
+          "why": "Ihr privater Schlüssel ist im Wesentlichen eine riesige Zufallszahl. Wenn die Zufälligkeit schwach oder vorhersehbar ist, könnte jemand Ihren Schlüssel erraten. Dieser Test stellt sicher, dass der Zufallsgenerator ordnungsgemäß funktioniert."
+        },
+        "entropy": {
+          "name": "Zufälligkeitsqualität",
+          "description": "Statistischer Test mit 10.000 zufälligen Bytes",
+          "why": "Wir generieren 10.000 Zufallszahlen und prüfen, ob sie gleichmäßig verteilt sind – als würde man einen fairen Würfel tausende Male werfen. Wenn manche Zahlen viel häufiger auftauchen, stimmt etwas nicht."
+        },
+        "network": {
+          "name": "Kein Netzwerkverkehr",
+          "description": "Während der Schlüsselgenerierung verlassen keine Daten Ihren Browser",
+          "why": "Die wichtigste Prüfung: Wir stellen sicher, dass während der Schlüsselgenerierung absolut nichts ins Internet gesendet wird. Ihr privater Schlüssel sollte Ihr Gerät niemals verlassen."
+        },
+        "csp": {
+          "name": "Sicherheitsheader",
+          "description": "Die Inhaltssicherheitsrichtlinie schränkt die Datenexfiltration ein",
+          "why": "Selbst wenn bösartiger Code eingeschleust wurde, verhindern diese Regeln auf Browserebene, dass er Daten irgendwohin sendet. Betrachten Sie es als eine in die Website selbst integrierte Firewall."
+        },
+        "worker": {
+          "name": "Arbeiterisolation",
+          "description": "Die Schlüsselgenerierung läuft in isolierten Hintergrundthreads",
+          "why": "Ihre Schlüssel werden in separaten „Workern“ erstellt – isolierten Miniprogrammen, die im Hintergrund ausgeführt werden. Sie haben keinen Zugriff auf die Hauptseite und können nicht durch Browsererweiterungen manipuliert werden."
+        },
+        "integrity": {
+          "name": "Code-Integrität",
+          "description": "SHA-256-Fingerabdrücke stimmen mit allen veröffentlichten Fälschungsarbeitern überein",
+          "why": "Wir hashen jeden Worker der Schlüsselgenerierung (Solana, EVM, Bitcoin, Tron, Aptos, Sui) und vergleichen jeden mit worker-hash.json aus dem offenen Build. Wenn sie übereinstimmen, wurde der Code nicht manipuliert."
+        },
+        "keygen": {
+          "name": "Schlüsselgenerierungstest",
+          "description": "Generieren und validieren Sie ein tatsächliches Ed25519-Schlüsselpaar",
+          "why": "Der letzte Beweis: Wir erstellen einen echten Schlüssel, signieren damit eine Nachricht und überprüfen dann die Signatur. Wenn dies funktioniert, kann Ihr Browser Solana-Adressen sicher generieren."
+        }
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "Dokumente",
+    "title": "FAQ",
+    "description": "Antworten in allen Schmieden – Muster, Modi, Sicherheit, Proof-Links, CLI und alltägliche Nutzung. Verwenden Sie das Untermenü, um zum Thema zu springen.",
+    "categories": {
+      "general": {
+        "label": "Allgemein",
+        "n": "01",
+        "items": {
+          "what": {
+            "q": "Was ist eine Vanity-Adresse?",
+            "a": "Eine Kryptowährungsadresse, die ein von Ihnen gewähltes Muster enthält – zum Beispiel beginnend mit `VANI` bei Solana oder `0xcafe` bei EVM. It is cosmetic branding on top of a normal keypair."
+          },
+          "fake": {
+            "q": "Erstellt Vanitas „gefälschte“ Adressen?",
+            "a": "Nein. Jede Schmiede stellt Standardschlüssel für diese Kette her. Wenn Sie sie in ein passendes Wallet importieren, funktionieren sie wie jede zufällig generierte Adresse – sie sehen nur absichtlich aus."
+          },
+          "which": {
+            "q": "Welche Schmieden gibt es?",
+            "a": "Neun Webschmieden – Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano, XRP – plus `npx vanitas` für das Terminal. Siehe [How it works → Chains](/how-it-works#chains)."
+          },
+          "howLong": {
+            "q": "Wie lange dauert mein Schnittmuster?",
+            "a": "Die erwarteten Versuche wachsen exponentiell mit der Länge und der Alphabetgröße. Hex (16 Zeichen) ist dichter als Base58 (~58). Verwenden Sie die On-Page-Schwierigkeitsschätzung; Beginnen Sie mit 3–4 Zeichen, bevor Sie lange Marken verfolgen."
+          },
+          "prefixSuffix": {
+            "q": "Kann ich Präfix und Suffix zusammen verwenden?",
+            "a": "Ja – beide Einschränkungen vervielfachen die Schwierigkeit. Bevorzugen Sie eine starke Seite (Präfix oder Suffix), es sei denn, Sie haben Zeit und Hash-Rate übrig."
+          }
+        }
+      },
+      "solana": {
+        "label": "Solana",
+        "n": "02",
+        "items": {
+          "produce": {
+            "q": "Was produziert die Solana-Schmiede?",
+            "a": "Ed25519-Schlüsselpaare als Base58-Adressen (gleiche Familie wie Phantom / Solflare). Exportieren Sie als Solana CLI JSON-Byte-Arrays für einen einfachen Import."
+          },
+          "walletMint": {
+            "q": "Wallet vs. Mint-Modus?",
+            "a": "Gleiche Kryptographie. **Wallet** ist für persönliche Adressen; **Mint** ist für benutzerdefinierte Launchpad-Mint-Felder (pump.fun, Raydium, Meteora, …) gekennzeichnet. Öffnen Sie [/sol?mode=mint](/sol?mode=mint)."
+          },
+          "base58": {
+            "q": "Warum kann ich nicht 0, O, I oder l verwenden?",
+            "a": "Base58 schließt ähnliche Zeichen aus. Muster, die sie enthalten, können niemals in einer echten Solana-Adresse erscheinen."
+          },
+          "pump": {
+            "q": "Müssen Pfefferminzbonbons mit „pump“ enden?",
+            "a": "Nein. Bei diesem Suffix handelt es sich um Marketingzwecke und nicht um eine Protokollregel. Jedes gültige Base58-Vanity-Muster funktioniert, wenn das Launchpad ein benutzerdefiniertes Mint-Schlüsselpaar akzeptiert."
+          }
+        }
+      },
+      "evm": {
+        "label": "EVM",
+        "n": "03",
+        "items": {
+          "networks": {
+            "q": "In welchen Netzwerken funktioniert ein EVM-Vanity-Key?",
+            "a": "Alle EVM-kompatiblen Ketten nutzen die gleiche Adressableitung. Ein Schlüssel → eine `0x`-Adresse auf Ethereum, Base, Arbitrum, Optimism, BSC, Polygon, Avalanche C-Chain und anderen."
+          },
+          "modes": {
+            "q": "Was sind die Modi Wallet, CREATE und CREATE2?",
+            "a": "**Wallet** – Vanity-EOA-Adresse.\n**CREATE** – Vanity-Adresse des ersten Vertrags aus diesem Schlüssel (Nonce 0).\n**CREATE2** – Grind Salt (Fixed Deployer) oder Grind Deployer (Fixed Salt) mit einem Init-Code-Hash."
+          },
+          "bnb": {
+            "q": "Benötige ich einen separaten BNB-Generator?",
+            "a": "Nein für BNB Smart Chain (EVM). Alte Beacon Chain `bnb1` bech32-Adressen liegen außerhalb des Gültigkeitsbereichs."
+          }
+        }
+      },
+      "bitcoin": {
+        "label": "Bitcoin",
+        "n": "04",
+        "items": {
+          "types": {
+            "q": "Welche Adresstypen werden unterstützt?",
+            "a": "Mainnet-Legacy `1…`, SegWit `bc1q…` und Taproot `bc1p…`. Der Export umfasst komprimiertes WIF."
+          },
+          "leading": {
+            "q": "Muss ich das führende 1 / bc1q selbst eingeben?",
+            "a": "Optional. Die Benutzeroberfläche stellt die feste Version/HRP automatisch voran, wenn Ihr Präfix sie nicht bereits enthält."
+          },
+          "lightning": {
+            "q": "Blitzrechnungen?",
+            "a": "Außerhalb des Gültigkeitsbereichs – gefälschte Adressen, keine BOLTs."
+          }
+        }
+      },
+      "tron": {
+        "label": "Tron",
+        "n": "05",
+        "items": {
+          "get": {
+            "q": "Was bekomme ich von der Tron-Schmiede?",
+            "a": "Mainnet Base58Check `T…`-Adressen aus secp256k1-Schlüsseln – Wallet oder CREATE (Nonce 0). Bei Präfixen wird automatisch das führende `T` hinzugefügt."
+          },
+          "case": {
+            "q": "Warum wird ein Präfix, bei dem die Groß-/Kleinschreibung beachtet wird, nie gefunden?",
+            "a": "Nach `T` ist das nächste Zeichen fast immer ein Großbuchstabe oder eine Ziffer. Lassen Sie die Groß-/Kleinschreibung deaktiviert, es sei denn, Sie benötigen eine genaue Übereinstimmung der Groß-/Kleinschreibung. Base58 schließt auch O, I, l aus."
+          }
+        }
+      },
+      "aptos-sui": {
+        "label": "Aptos & Sui",
+        "n": "06",
+        "items": {
+          "differ": {
+            "q": "Wie unterscheiden sich Aptos und Sui?",
+            "a": "Beide verwenden Ed25519- und Hex-Adressen, das Hashing unterscheidet sich jedoch: Aptos verwendet `sha3-256(pubkey ‖ 0x00)`; Sui verwendet `blake2b-256(0x00 ‖ pubkey)`. Schlüssel sind nicht zwischen Ökosystemen austauschbar."
+          },
+          "wallets": {
+            "q": "Welche Wallets können sie importieren?",
+            "a": "Aptos: Petra, Marsmensch und ähnliche. Sui: Sui Wallet, Suiet und andere, die private Hex-Schlüssel akzeptieren."
+          }
+        }
+      },
+      "ton-cardano-xrp": {
+        "label": "TON · Cardano · XRP",
+        "n": "07",
+        "items": {
+          "ton": {
+            "q": "TON UQ vs. EQ?",
+            "a": "Nicht bouncebare (`UQ…`) vs. bouncebare (`EQ…`) benutzerfreundliche Formen von Wallet v4R2. Beim Matching wird die Groß-/Kleinschreibung beachtet."
+          },
+          "cardano": {
+            "q": "Welcher Cardano-Adresstyp ist gefälscht?",
+            "a": "Unternehmens-Mainnet `addr1…` (CIP-19 Typ 6 – nur Zahlungsschlüssel, keine Stake-Delegierung an der Adresse)."
+          },
+          "xrp": {
+            "q": "Ist XRP dasselbe Base58 wie Bitcoin?",
+            "a": "Nein. XRPL-Classic-Adressen verwenden ein anderes Base58-Alphabet. Vanitas kodiert `r…`-Klassiker aus secp256k1-Schlüsseln."
+          }
+        }
+      },
+      "security": {
+        "label": "Sicherheit",
+        "n": "08",
+        "items": {
+          "store": {
+            "q": "Speichern Sie meine privaten Schlüssel?",
+            "a": "Nein. Schlüssel verlassen niemals den Browserspeicher Ihrer Sitzung. Informationen zur Architektur und zum Bedrohungsmodell finden Sie auf der Seite [Security](/security)."
+          },
+          "verify": {
+            "q": "Wie kann ich das überprüfen?",
+            "a": "1. DevTools → Netzwerk während des Minings – kein wichtiger Datenverkehr\n2. Flugmodus nach dem Laden\n3. [Live audit](/audit) + Worker-Hash-Vergleich"
+          },
+          "weaker": {
+            "q": "Sind Kosmetikschlüssel schwächer?",
+            "a": "Nein. Private Schlüssel verfügen weiterhin über die volle CSPRNG-Entropie. Nur die öffentliche Kodierung wird gefiltert."
+          },
+          "extensions": {
+            "q": "Was ist mit Browsererweiterungen?",
+            "a": "Erweiterungen können weiterhin auf einer Seite herumschnüffeln. Verwenden Sie für hochwertige Schlüssel ein sauberes Profil, die CLI oder einen Offline-Computer. Einzelheiten: [Security → Browser](/security#browser)."
+          },
+          "report": {
+            "q": "Wo melde ich Schwachstellen?",
+            "a": "Private GitHub-Sicherheitshinweise – niemals öffentliche Probleme. Siehe [Security → Disclose](/security#disclose)."
+          }
+        }
+      },
+      "proof-cli": {
+        "label": "Beweis und CLI",
+        "n": "09",
+        "items": {
+          "proof": {
+            "q": "Was ist ein Fundnachweis?",
+            "a": "Ein gemeinsam nutzbarer [/proof](/proof)-Link mit Adresse + Muster (und optionalen Statistiken). Jeder kann die Übereinstimmung clientseitig überprüfen. Private Schlüssel sind niemals enthalten."
+          },
+          "cli": {
+            "q": "Wie führe ich die CLI aus?",
+            "a": "`npx vanitas` für einen Assistenten oder Flags wie `npx vanitas sol --prefix Ace --threads 8`. Unterstützt die gleichen Bereitstellungsmodi wie die Web-App (Mint-, CREATE- und CREATE2-Flags)."
+          }
+        }
+      },
+      "usage": {
+        "label": "Verwendung",
+        "n": "10",
+        "items": {
+          "import": {
+            "q": "Wie importiere ich in Phantom / MetaMask / etc.?",
+            "a": "Verwenden Sie das Exportformat für diese Schmiede: Solana JSON für Phantom/Solflare, Hex für die meisten EVM-Wallets, WIF für viele Bitcoin-Wallets, kettenspezifisches Hex/Base58 an anderer Stelle. Führen Sie immer zuerst eine kleine Testübertragung durch."
+          },
+          "pause": {
+            "q": "Kann ich pausieren und fortfahren?",
+            "a": "Sie können jederzeit aufhören; Der Lebenslauf ist eine neue Suche (kein Prüfpunkt früherer Versuche)."
+          },
+          "disabled": {
+            "q": "Warum ist Start deaktiviert?",
+            "a": "Leeres Muster, ungültige Zeichen für dieses Alphabet oder Muster zu lang. Korrigieren Sie die Validierungsmeldung unter den Eingaben."
+          },
+          "freeze": {
+            "q": "Die Benutzeroberfläche friert beim Mining ein?",
+            "a": "Reduzieren Sie die Fadenzahl. Mitarbeiter sollten die Benutzeroberfläche am Leben erhalten, aber die Auslastung jedes Kerns auf einem kleinen Laptop kann sich immer noch träge anfühlen."
+          }
+        }
+      }
+    },
+    "sideCaption": "Abb. IV – Landschaft",
+    "topics": "Themen",
+    "stillStuck": "Stecken Sie immer noch fest?",
+    "stillStuckBody": "Tiefe technische Details finden sich in der Funktionsweise. Vertrauensmodell und Bedrohungshinweise live auf Sicherheit. Integritätsprüfungen live bei Audit.",
+    "linkHow": "Wie es funktioniert",
+    "linkSecurity": "Sicherheit",
+    "linkAudit": "Live-Audit",
+    "glyphs": {
+      "general": "Abb. – Scrollen",
+      "solana": "Abb. – Kolonnade",
+      "evm": "Abb. – Modi",
+      "bitcoin": "Abb. – Schlüssel",
+      "tron": "Abb. – Schmiede",
+      "aptos-sui": "Abb. – Schleife",
+      "ton-cardano-xrp": "Abb. – Stele",
+      "security": "Abb. – Schild",
+      "proof-cli": "Abb. – Siegel",
+      "usage": "Abb. – Zeit"
+    }
+  },
+  "docs": {
+    "howItWorks": {
+      "eyebrow": "Dokumente",
+      "title": "Wie es funktioniert",
+      "description": "Eine vollständige Tour durch Vanitas: Wie Vanity Mining funktioniert, was jede Schmiede produziert, wie Arbeiter parallel suchen und wie Sie sicherstellen, dass nichts Ihre Maschine verlässt.",
+      "sideCaption": "Abb. III – Redner",
+      "overview": {
+        "title": "Was Vanitas ist",
+        "p1": "**Vanitas** ist eine clientseitige Multi-Chain-Vanity-Adressschmiede. Sie wählen ein Präfix und/oder Suffix; Die App sucht nach einem Schlüsselpaar, dessen öffentliche Adresse diesem Muster entspricht. Die Generierung läuft in **Web Workern auf Ihrer CPU**. Private Schlüssel werden im Speicher Ihres Geräts erstellt und niemals hochgeladen.",
+        "p2": "Eine Vanity-Adresse ist immer noch eine normale kryptografische Adresse. Der private Schlüssel ist zufällig; Nur die öffentliche Kodierung wird gefiltert, bis sie Ihren Wünschen entspricht – nützlich für Branding, Spenden, Münzprägungen und unvergessliche öffentliche Geldbörsen."
+      },
+      "pipeline": {
+        "title": "Die Suchschleife",
+        "intro": "Jede Schmiede folgt der gleichen Schleife auf hoher Ebene, die millionenfach wiederholt wird:",
+        "whySecure": "Durch die Suche nach einer Vanity-Adresse wird der private Schlüssel **nicht** geschwächt. Sie lehnen Kandidaten ab, bis die öffentliche Ansprache richtig aussieht – der gleiche Vorgang wie das Generieren zufälliger Schlüssel und das Behalten des glücklichen Schlüssels."
+      },
+      "reminder": {
+        "label": "Erinnerung",
+        "body": "Speichern Sie Ihren privaten Schlüssel, bevor Sie den Tab schließen. Verlorene Schlüssel können nicht wiederhergestellt werden. Für große Guthaben: Testen Sie zunächst mit einer kleinen Überweisung, bevorzugen Sie Hardware-Wallets für die langfristige Aufbewahrung und geben Sie Schlüssel niemals auf nicht vertrauenswürdigen Websites ein."
+      },
+      "toc": {
+        "overview": "Überblick",
+        "pipeline": "Pipeline",
+        "patterns": "Muster",
+        "chains": "Ketten",
+        "modes": "Modi",
+        "workers": "Arbeiter",
+        "proof": "Nachweisen",
+        "cli": "CLI",
+        "verify": "Verifizieren"
+      },
+      "sections": {
+        "overview": {
+          "n": "01 – Übersicht",
+          "title": "Was Vanitas ist",
+          "glyph": "Abb. A – Schlüssel",
+          "ledger": {
+            "where": {
+              "label": "Wo",
+              "value": "Ihr Browser · Ihre CPU",
+              "note": "Nur statisches Hosting; Mining führt keine Netzwerkanrufe durch"
+            },
+            "forges": {
+              "label": "Schmieden",
+              "value": "9 Ketten + Terminal-CLI",
+              "note": "Solana · EVM · Bitcoin · Tron · Aptos · Sui · TON · Cardano · XRP"
+            },
+            "output": {
+              "label": "Ausgabe",
+              "value": "Adresse + privater Schlüssel",
+              "note": "Exportformate hängen vom Forge ab (JSON, Hex, WIF, …)"
+            }
+          }
+        },
+        "pipeline": {
+          "n": "02 – Pipeline",
+          "title": "Die Suchschleife",
+          "glyph": "Abb. B – Schleife",
+          "steps": [
+            "Zeichnen Sie einen kryptografisch sicheren zufälligen privaten Schlüssel (`crypto.getRandomValues`).",
+            "Leiten Sie den öffentlichen Schlüssel mit der Kurve der Kette ab (Ed25519 oder secp256k1).",
+            "Codieren Sie die Adresse so, wie es die Kette erwartet (Base58, Hex, Bech32, …).",
+            "Vergleichen Sie mit Ihrem Präfix/Suffix (und Ihren Modusregeln).",
+            "Bei Übereinstimmung: Arbeiter stoppen, Ergebnis anzeigen, optionaler Ton/Beweis/Export."
+          ],
+          "workersNote": "Worker führen diese Schleife parallel über alle CPU-Kerne hinweg aus. Der UI-Thread bleibt reaktionsfähig; Der Fortschritt (Versuche, Rate, voraussichtliche Ankunftszeit) wird aus Arbeiternachrichten aggregiert. Wenn ein Arbeiter einen Treffer findet, wird der Pool beendet.",
+          "whySecureTitle": "Warum das sicher ist"
+        },
+        "patterns": {
+          "n": "03 – Muster",
+          "title": "Schwierigkeit, Alphabete, Warnungen",
+          "glyph": "Abb. C – Zeit",
+          "intro": "Erwartete Zeitskalen mit Musterlänge und Alphabetgröße. Jedes zusätzliche Zeichen vervielfacht den Suchraum. Die Forge-Benutzeroberfläche zeigt eine Live-Schwierigkeitsschätzung basierend auf Ihrem Muster und einer gemessenen oder angenommenen Hash-Rate an.",
+          "ledger": {
+            "base58": {
+              "label": "Base58",
+              "value": "~58 Symbole",
+              "note": "Solana, Tron, XRP (XRPL-Alphabet), Bitcoin-Erbe"
+            },
+            "hex": {
+              "label": "Verhexen",
+              "value": "16 Symbole (0–9, a–f)",
+              "note": "EVM, Aptos, Sui – Groß-/Kleinschreibung wird beim Abgleich nicht beachtet"
+            },
+            "bech32": {
+              "label": "Bech32",
+              "value": "bc1q / bc1p / addr1…",
+              "note": "Bitcoin SegWit/Taproot, Cardano – HRP korrigiert, dann Zeichensatz"
+            },
+            "ton": {
+              "label": "TON",
+              "value": "Base64url",
+              "note": "UQ… / EQ… – Groß- und Kleinschreibung beachten"
+            }
+          },
+          "trapsTitle": "Alphabetfallen",
+          "traps": [
+            "**Solana / Bitcoin Base58** – kein `0`, `O`, `I` oder `l` (ähnliche Ablehnung).",
+            "**EVM** – nur Hex nach `0x`. Buchstaben über `a–f` hinaus sind ungültig.",
+            "**Tron** – Adressen beginnen mit `T`; Das nächste Zeichen ist normalerweise ein Großbuchstabe. Kleinschreibungspräfixe, bei denen die Groß-/Kleinschreibung beachtet wird, stimmen oft nie überein.",
+            "**Präfix + Suffix** – beide Einschränkungen vervielfachen den Schwierigkeitsgrad. Fangen Sie kurz an; Erweitern Sie das Muster, sobald Sie Ihre Rate kennen."
+          ]
+        },
+        "chains": {
+          "n": "04 – Ketten",
+          "title": "Jede Schmiede, erklärt",
+          "glyph": "Abb. D – Schmieden",
+          "intro": "Neun Schmieden teilen das gleiche UX-Muster – wählen Sie einen Modus, legen Sie ein Muster fest, starten Sie Worker – aber jede Kette verwendet unterschiedliche Kurven, Hashes und Adresskodierungen.",
+          "sol": "Ed25519-Schlüsselpaare, codiert als Base58 (öffentlicher 32-Byte-Schlüssel). Native Web Crypto Ed25519 wird verwendet, wenn der Browser dies unterstützt; andernfalls ein WASM-Fallback (`watsign`). Modi: **Wallet** und **Mint** – gleiche Schlüsselmathematik; Mint-Framing ist für benutzerdefinierte Launchpad-Mint-Flows vorgesehen. Export: Solana CLI JSON-Byte-Array.",
+          "evm": "secp256k1 → unkomprimierter Pubkey → keccak-256 → letzte 20 Bytes → `0x…`-Adresse. Ein privater Schlüssel liefert dieselbe Adresse in Ethereum, Base, Arbitrum, Optimism, BSC, Polygon und jedem anderen EVM-Netzwerk. Modi: Wallet (EOA), CREATE bei Nonce 0, CREATE2 (Grind Salt oder Grind Deployer). Siehe Modi unten.",
+          "btc": "secp256k1. Drei Adresstypen: Legacy P2PKH (`1…`), nativer SegWit P2WPKH (`bc1q…`), Taproot P2TR (`bc1p…`). Der Export umfasst WIF (komprimiert) für den Wallet-Import. Das führende HRP-/Versionsbyte wird bei der Eingabe von Präfixen für Sie gehandhabt.",
+          "tron": "Gleicher secp256k1 + Keccak-Pfad wie EVM für die 20-Byte-Konto-ID, dann Base58Check mit Versionsbyte `0x41` → `T…`. Modi: Wallet und CREATE (Nonce 0), wobei das gleiche RLP-Layout wie bei EVM und dann die Tron-Codierung verwendet wird.",
+          "aptos": "Ed25519. Adresse = `sha3-256(pubkey ‖ 0x00)` als Hex. Kompatibel mit Petra-, Martian- und anderen Aptos-Wallets, die Hex-Geheimnisse importieren.",
+          "sui": "Ed25519. Adresse = `blake2b-256(0x00 ‖ pubkey)` als Hex (Flag-Byte markiert das Schema). Mit dem privaten Hex-Schlüssel in Sui Wallet / Suiet importieren.",
+          "ton": "Ed25519 + Wallet-Vertrag v4R2. Adressen sind benutzerfreundliche Base64url-Formulare: `UQ…` (nicht bouncebar) und `EQ…` (bounceable). Beim Matching wird die Groß-/Kleinschreibung beachtet. Import in Tonkeeper / MyTonWallet.",
+          "cardano": "Ed25519 Unternehmensadresse (CIP-19 Typ 6, nur Zahlungsschlüssel): Header `0x61` + Blake2b-224 Zahlungs-Hash, bech32 mit HRP `addr` → `addr1…`.",
+          "xrp": "secp256k1 komprimierter Pubkey → RIPEMD160(SHA256) Konto-ID → XRPL Classic Base58 Check → `r…`. Hinweis: XRPL verwendet ein anderes Base58-Alphabet als Bitcoin.",
+          "links": {
+            "sol": "[Solana](/sol)",
+            "evm": "[EVM](/evm)",
+            "btc": "[Bitcoin](/btc)",
+            "tron": "[Tron](/tron)",
+            "aptos": "[Aptos](/aptos)",
+            "sui": "[Sui](/sui)",
+            "ton": "[TON](/ton)",
+            "cardano": "[Cardano](/cardano)",
+            "xrp": "[XRP](/xrp)"
+          }
+        },
+        "modes": {
+          "n": "05 – Modi",
+          "title": "Geldbörse, Mint, CREATE, CREATE2",
+          "glyph": "Abb. E – Modi",
+          "solMint": "Kryptografisch identisch mit einem Wallet-Schlüsselpaar. Launchpads verlangen ein benutzerdefiniertes Mint-Schlüsselpaar/privaten Schlüssel; Vanitas kennzeichnet das Ergebnis als „Mint“, sodass der Export diesem Workflow entspricht. Öffnen Sie [/sol?mode=mint](/sol?mode=mint), suchen Sie ein Muster, fügen Sie den Schlüssel in pump.fun, Raydium, Meteora usw. ein.",
+          "create": "Der erste von einem EOA mit Nonce 0 bereitgestellte Vertrag hat eine deterministische Adresse: `keccak256(RLP([sender, 0]))[12:]`. Vanitas bearbeitet EOAs, bis die abgeleitete Vertragsadresse Ihrem Muster entspricht. Sie erhalten den privaten Schlüssel des Bereitstellers – stellen Sie ihn einmal von einem neuen Nonce-0-Konto bereit.",
+          "create2Intro": "Adresse = `keccak256(0xff ‖ deployer ‖ salt ‖ initCodeHash)[12:]`. Zwei Grind-Strategien:",
+          "create2Salt": "**create2-salt** – Deployer-Schlüssel + Init-Code-Hash korrigieren; Suchen Sie nach einem Salz, das die Vanity-Adresse liefert.",
+          "create2Deployer": "**create2-deployer** – Salt + Init-Code-Hash reparieren; Suchen Sie nach einem Deployer-Schlüssel, dessen CREATE2-Adresse übereinstimmt.",
+          "create2Hash": "Sie müssen einen korrekten `initCodeHash` (Keccak des Bereitstellungsbytecodes) angeben. Falscher Hash → falsche On-Chain-Adresse."
+        },
+        "workers": {
+          "n": "06 – Arbeiter",
+          "title": "Leistungsarchitektur",
+          "glyph": "Abb. F – Schmiede",
+          "intro": "Worker-Quellen befinden sich unter `src/workers/*.worker.source.ts` und werden mit esbuild in `public/*-worker.js` gebündelt. Jeder Build schreibt SHA-256-Digests für [live audit](/audit) in `public/worker-hash.json`.",
+          "ledger": {
+            "parallelism": {
+              "label": "Parallelität",
+              "value": "CPU-Kerne − ​​1 (Standard)",
+              "note": "Passen Sie die Fäden an, wenn sich die Maschine erwärmt oder die Benutzeroberfläche stottert"
+            },
+            "solSpeed": {
+              "label": "Solana-Geschwindigkeit",
+              "value": "Native Ed25519, sofern verfügbar",
+              "note": "Chrome 113+ · Firefox 129+ · Safari 17+; sonst WASM"
+            },
+            "libraries": {
+              "label": "Bibliotheken",
+              "value": "@noble · tweetnacl · watsign · @ton/*",
+              "note": "Überprüfte reine JS/WASM-Kryptowährung im Browser"
+            }
+          },
+          "postFind": "Nach einem Fund prüfen optionale **Schlüsselsicherheitsüberprüfungen** die Entropie, die CSPRNG-Verfügbarkeit und einen Chi-Quadrat-Gleichmäßigkeitstest für zufällige Bytes – um zu bestätigen, dass der RNG-Pfad des Browsers fehlerfrei aussieht."
+        },
+        "proof": {
+          "n": "07 – Beweis",
+          "title": "Fundnachweis",
+          "glyph": "Abb. G – Siegel",
+          "p1": "**Share Proof** erstellt einen öffentlichen Link zu [/proof](/proof) nur mit Kette, Adresse und Muster – **niemals dem privaten Schlüssel**. Jeder kann den Link öffnen und überprüfen, ob die Adresse clientseitig mit dem beanspruchten Präfix/Suffix übereinstimmt.",
+          "session": "Aktuelle Funde in der Benutzeroberfläche verwenden `sessionStorage` nur für Adress- und Mustermetadaten. Durch Schließen der Registerkarte wird dieser Verlauf gelöscht. Schlüssel werden dort nicht gespeichert."
+        },
+        "cli": {
+          "n": "08 – CLI",
+          "title": "Terminalschmiede",
+          "glyph": "Abb. H – Stele",
+          "p1": "Dieselbe Idee außerhalb des Browsers: `npx vanitas` öffnet einen Assistenten oder übergibt Flags für Ketten-, Modus-, Präfix-, Threads- und CREATE2-Parameter. Die Ergebnisse schreiben eine JSON-Datei mit dem Modus `0600`, wenn das Betriebssystem dies unterstützt. Paket: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
+          "example": "npx vanitas evm --modetract --prefix cafe --threads 8"
+        },
+        "verify": {
+          "n": "09 – Überprüfen",
+          "title": "Bestätigen Sie es selbst",
+          "glyph": "Abb. I – Auge",
+          "steps": [
+            "Öffnen Sie DevTools → Netzwerk, löschen Sie das Protokoll, starten Sie einen Forge – beim Mining sollten **keine Anfragen** angezeigt werden.",
+            "Laden Sie die Seite, gehen Sie offline, generieren Sie erneut – es funktioniert immer noch.",
+            "Führen Sie [live audit](/audit) aus und vergleichen Sie die Worker-Hashes mit `worker-hash.json`.",
+            "Lesen Sie die Quelle zu [GitHub](https://github.com/bytebrox/vanitas) – insbesondere `src/workers/`."
+          ]
+        }
+      },
+      "footer": {
+        "security": "Sicherheit",
+        "faq": "FAQ",
+        "audit": "Live-Audit"
+      }
+    },
+    "security": {
+      "eyebrow": "Dokumente",
+      "title": "Sicherheit",
+      "description": "Schlüssel werden in Ihrem Browser generiert, niemals auf unseren Servern. Diese Seite ist das Vertrauensmodell: Architektur, Bedrohungen, Krypto, Header und wie Sie jeden Anspruch selbst überprüfen können.",
+      "sideCaption": "Abb. V – Aquädukt",
+      "principles": {
+        "title": "Nicht verhandelbar",
+        "marketing": "Ohne Schecks sind Marketingaussagen wertlos. Verwenden Sie den Abschnitt „[live audit](/audit)“ und „Überprüfen“ unten."
+      },
+      "architecture": {
+        "title": "Wo Schlüssel leben",
+        "keysRam": "Private Schlüssel existieren nur hier – RAM auf Ihrem Gerät"
+      },
+      "next": {
+        "label": "Nächste",
+        "audit": "Live-Audit",
+        "how": "Wie es funktioniert",
+        "faq": "FAQ"
+      },
+      "toc": {
+        "principles": "Prinzipien",
+        "architecture": "Architektur",
+        "threats": "Bedrohungen",
+        "storage": "Lagerung",
+        "crypto": "Krypto",
+        "integrity": "Integrität",
+        "headers": "Überschriften",
+        "browser": "Browser",
+        "workflow": "Arbeitsablauf",
+        "verify": "Verifizieren",
+        "disclose": "Offenlegen"
+      },
+      "sections": {
+        "principles": {
+          "n": "01 – Grundsätze",
+          "title": "Nicht verhandelbar",
+          "glyph": "Abb. A – Schild",
+          "items": [
+            "**Clientseitige Generierung** – Web Worker auf Ihrer CPU erstellen jedes Schlüsselpaar.",
+            "**Null-Schlüssel-Transit** – es gibt keine API, die private Schlüssel akzeptiert oder zurückgibt.",
+            "**Keine Schlüsselspeicherung** – keine Datenbank, keine Protokolle von Geheimnissen, keine Analyse von Mustern oder Adressen.",
+            "**Überprüfbar** – Open Source, Live-Audit, Offline-Test, Netzwerkpanel.",
+            "**Proof ohne Belichtung** – gemeinsam nutzbare Proofs enthalten nur Adresse und Muster."
+          ]
+        },
+        "architecture": {
+          "n": "02 – Architektur",
+          "title": "Wo Schlüssel leben",
+          "glyph": "Abb. B – Ort",
+          "intro": "Vanitas ist eine statische Next.js-Site. Der Host (z. B. Vercel) stellt HTML, CSS, JS und vorgefertigte Worker-Bundles bereit. Für Ihre Schlüssel wird auf diesem Host niemals Kryptographie ausgeführt.",
+          "browserLabel": "Ihr Browser",
+          "mainThread": "Hauptthread",
+          "mainThreadNote": "Benutzeroberfläche · Reagieren · Steuerelemente",
+          "webWorkers": "Web-Worker",
+          "webWorkersNote": "W1…Wn – grind · match · postMessage",
+          "networkLabel": "Netzwerk während des Bergbaus",
+          "networkBody": "Keine erforderlich. Nach dem Laden der Assets funktioniert der Flugmodus weiterhin. Die einzige First-Party-API-Route (`/api/domains`) schlägt Solana-Domain-Links vor – sie generiert oder empfängt keine Schlüssel.",
+          "serversLabel": "Unsere Server",
+          "serversBody": "Liefern Sie Dateien. Ihr Worker-Speicher kann nicht gelesen werden. Ein fertiges Schlüsselpaar kann nicht abgefangen werden. Ein kompromittierter Ursprung könnte schädliches JS liefern – deshalb sind Integritätsprüfungen und Open Source wichtig (siehe Integrität und Browser)."
+        },
+        "threats": {
+          "n": "03 – Bedrohungen",
+          "title": "Bedrohungsmodell (ehrlich)",
+          "glyph": "Abb. C – Waage",
+          "inScopeTitle": "Im Umfang – wir entwerfen dagegen",
+          "inScope": [
+            "Serverseitiger Schlüsseldiebstahl (keine Schlüssel auf dem Server).",
+            "Gelegentliches Netzwerkschnüffeln während des Minings (kein Schlüsselverkehr).",
+            "Clickjacking der Haupt-App (Frame-Deny auf primären Routen).",
+            "Offensichtliche XSS-Exfiltrationspfade (CSP; immer noch kein Allheilmittel)."
+          ],
+          "outScopeTitle": "Außerhalb des Geltungsbereichs/der gemeinsamen Verantwortung",
+          "outScope": [
+            "**Bösartige Browsererweiterungen**, die den Seitenspeicher oder die Zwischenablage lesen – deaktivieren Sie sie in einem sauberen Profil, wenn Sie hochwertige Schlüssel fälschen.",
+            "**Kompromittiertes Gerät/Malware** – Keylogger auf Betriebssystemebene besiegen jede Website.",
+            "**Sie fügen Schlüssel in Discord ein/Phishing** – die Betriebssicherheit liegt bei Ihnen.",
+            "**Lieferkette mit Abhängigkeiten** – wir fixieren und prüfen; Sie können Worker-Hashes überprüfen und aus der Quelle neu erstellen."
+          ],
+          "vanityNote": "Vanity Mining erzeugt keinen „schwächeren“ Schlüssel. Lange Muster kosten nur mehr CPU – sie verringern nicht die Entropie des privaten Schlüssels."
+        },
+        "storage": {
+          "n": "04 – Lagerung",
+          "title": "Was wir speichern",
+          "glyph": "Abb. D – Gewölbe",
+          "intro": "**Nichts über Ihre Schlüssel auf unseren Servern.** Keine Datenbank mit Adressen, Mustern, IPs für Mining oder Analyse-SDKs im Forge-Pfad.",
+          "items": [
+            "Keine privaten Schlüssel auf der Festplatte oder dem Server",
+            "Keine öffentlichen Schlüssel/Adressen, die aus der Ferne erfasst werden",
+            "Keine Mustertelemetrie",
+            "Kein Kontosystem",
+            "Keine Analyse von Drittanbietern im Produktversprechen",
+            "sessionStorage, aktuelle Funde = nur Adresse + Muster, diese Browsersitzung",
+            "Proof-Links = Abfrageparameter, die Sie freigeben möchten (keine Schlüssel)"
+          ]
+        },
+        "crypto": {
+          "n": "05 – Krypto",
+          "title": "Algorithmen pro Schmiede",
+          "intro": "Zufälligkeit kommt immer vom Browser CSPRNG (`crypto.getRandomValues`). Kurven und Adressableitung unterscheiden sich je nach Kette:",
+          "rows": {
+            "sol": {
+              "label": "Solana",
+              "value": "Ed25519 → Base58",
+              "note": "Web Crypto nativ oder WASM-Fallback · Wallet / Mint"
+            },
+            "evm": {
+              "label": "EVM",
+              "value": "secp256k1 + keccak-256",
+              "note": "0x EOA · CREATE · CREATE2"
+            },
+            "btc": {
+              "label": "Bitcoin",
+              "value": "secp256k1",
+              "note": "Legacy · SegWit · Taproot · WIF-Export"
+            },
+            "tron": {
+              "label": "Tron",
+              "value": "secp256k1 + keccak → Base58Check",
+              "note": "T… Brieftasche / ERSTELLEN"
+            },
+            "aptos": {
+              "label": "Aptos",
+              "value": "Ed25519 + SHA3-256",
+              "note": "0x Kontoadresse"
+            },
+            "sui": {
+              "label": "Sui",
+              "value": "Ed25519 + Blake2b-256",
+              "note": "0x mit Schema-Flag"
+            },
+            "ton": {
+              "label": "TON",
+              "value": "Ed25519 · Wallet v4R2",
+              "note": "UQ / EQ Base64url"
+            },
+            "cardano": {
+              "label": "Cardano",
+              "value": "Ed25519 · CIP-19-Unternehmen",
+              "note": "addr1… nur Zahlungsschlüssel"
+            },
+            "xrp": {
+              "label": "XRP",
+              "value": "secp256k1 · XRPL Base58",
+              "note": "Klassische R…-Adressen"
+            }
+          },
+          "postFind": "Post-Find-Prüfungen können die Entropiegröße, das Vorhandensein von CSPRNG und die Chi-Quadrat-Gleichmäßigkeit anhand einer Zufallsstichprobe validieren – eine Gesundheitsprüfung des RNG-Pfads und kein Ersatz für Gerätehygiene."
+        },
+        "integrity": {
+          "n": "06 – Integrität",
+          "title": "Arbeiter und veröffentlichte Hashes",
+          "glyph": "Abb. E – Hash",
+          "p1": "Mining-Code wird als statische `public/*-worker.js`-Dateien geliefert, die aus TypeScript-Quellen erstellt wurden. Jeder Produktions-Build zeichnet SHA-256-Digests in `worker-hash.json` auf. Die Audit-Seite hasht die von Ihrem Browser geladenen Worker erneut und vergleicht sie mit dieser Datei.",
+          "p2": "Wenn die Hashes voneinander abweichen, behandeln Sie die Seite als nicht vertrauenswürdig – stoppen Sie, verwenden Sie keine Schlüssel und untersuchen Sie sie (falsche Bereitstellung, Cache oder Manipulation). Bei der Neuerstellung aus dem offenen Repo sollten dieselben Worker-Bytes für einen bestimmten Commit reproduziert werden."
+        },
+        "headers": {
+          "n": "07 – Kopfzeilen",
+          "title": "HTTP-Sicherheitsheader",
+          "intro": "Zu den Antworten gehören Header, die die XSS-Auswirkungen reduzieren, HTTPS erzwingen und das Framing der Haupt-App blockieren. CSP ermöglicht immer noch, was Next.js benötigt (einschließlich einiger Inline-/Eval-Kompromisse) – Header-Hilfe; Sie ersetzen nicht die Codeüberprüfung.",
+          "rows": {
+            "csp": {
+              "label": "CSP",
+              "value": "Inhaltssicherheitsrichtlinie",
+              "note": "Beschränkt Skripte, Worker, connect-src"
+            },
+            "hsts": {
+              "label": "HSTS",
+              "value": "Strenge Transportsicherheit",
+              "note": "maximales Alter=31536000"
+            },
+            "frame": {
+              "label": "Rahmen",
+              "value": "X-Frame-Optionen: DENY",
+              "note": "Primäre App nicht einbettbar"
+            },
+            "mime": {
+              "label": "MIME",
+              "value": "X-Content-Type-Options: nosniff",
+              "note": "Kein MIME-Sniffing"
+            },
+            "referrer": {
+              "label": "Referrer",
+              "value": "Strikter Ursprung, wenn Cross-Origin",
+              "note": "Begrenzt Referrer-Leaks"
+            }
+          }
+        },
+        "browser": {
+          "n": "08 – Browser",
+          "title": "Was der Browser noch kann",
+          "intro": "Alles, was mit Seitenprivilegien läuft, kann theoretisch die DOM- und Worker-Nachrichten lesen. Dazu gehört:",
+          "items": [
+            "Browsererweiterungen mit umfassendem Site-Zugriff",
+            "DevTools wird auf einem gemeinsam genutzten Computer geöffnet",
+            "Böswillige injizierte Skripte, wenn XSS vorhanden ist",
+            "Zwischenablage-Sniffer, nachdem Sie einen Schlüssel kopiert haben"
+          ],
+          "mitigations": "Abhilfemaßnahmen: Sauberes Browserprofil, keine unnötigen Erweiterungen, für hochwertige Schlüssel das Herunterladen von Dateien gegenüber der Zwischenablage bevorzugen, Zwischenablage nach dem Einfügen in eine Brieftasche löschen, bei großen Kassen die Terminal-CLI oder einen Air-Gap-Computer in Betracht ziehen."
+        },
+        "workflow": {
+          "n": "09 – Arbeitsablauf",
+          "title": "Sicherer Betriebsablauf",
+          "steps": [
+            "Laden Sie vanitas.fun (oder führen Sie es von einem verifizierten lokalen Build aus).",
+            "Optional: Netzwerk öffnen, offline gehen, Audit durchführen.",
+            "Wählen Sie zunächst ein kurzes Muster; Erhöhen Sie die Länge, sobald Sie dem Setup vertrauen.",
+            "Beim Finden: Exportieren, offline speichern, niemals Screenshots von Schlüsseln in Chat-Apps machen.",
+            "In die richtige Wallet für diese Kette importieren; Senden Sie eine Staubtestübertragung.",
+            "Für langfristige Bestände verschieben Sie Gelder in eine Hardware-Wallet – Vanitas ist eine Schmiede, kein Tresor."
+          ]
+        },
+        "verify": {
+          "n": "10 – Überprüfen",
+          "title": "Drei Kontrollen, die jeder durchführen kann",
+          "glyph": "Abb. F – Audit",
+          "network": {
+            "n": "01 – Netzwerk",
+            "title": "Netzwerkmonitor",
+            "steps": [
+              "DevTools → Netzwerk → löschen",
+              "Beginnen Sie mit der Generierung",
+              "Bestätigen Sie beim Mining **keine** Anfragen"
+            ]
+          },
+          "offline": {
+            "n": "02 – Offline",
+            "title": "Flugmodus",
+            "steps": [
+              "Laden Sie die App",
+              "Trennen",
+              "Generieren – Erfolg beweist, dass keine Abhängigkeit vom Live-Server besteht"
+            ]
+          },
+          "audit": {
+            "n": "03 – Prüfung",
+            "title": "Live-Audit + Quelle",
+            "steps": [
+              "Führen Sie [/audit](/audit) aus",
+              "Vergleichen Sie Worker-Hashes mit veröffentlichtem JSON",
+              "Überprüfen Sie [GitHub](https://github.com/bytebrox/vanitas)-Arbeiter und SECURITY.md"
+            ]
+          }
+        },
+        "disclose": {
+          "n": "11 – Offenlegen",
+          "title": "Probleme melden",
+          "glyph": "Abb. G – Bericht",
+          "intro": "Öffnen Sie **keine** öffentlichen GitHub-Ausgaben wegen Sicherheitslücken. Bevorzugen Sie private GitHub-Sicherheitshinweise auf [bytebrox/vanitas](https://github.com/bytebrox/vanitas/security/advisories/new). Geben Sie Reproduktionsschritte, Auswirkungen und einen Lösungsvorschlag an, falls vorhanden.",
+          "faq": {
+            "steal": {
+              "q": "Kannst du meine Schlüssel stehlen?",
+              "a": "Wir haben keinen serverseitigen Pfad, der sie empfängt. Ein böswilliger Build oder eine böswillige Erweiterung könnte – Hashes überprüfen und eine saubere Umgebung für einen hohen Nutzen nutzen."
+            },
+            "host": {
+              "q": "Was passiert, wenn der Host gehackt wird?",
+              "a": "Angreifer könnten verändertes JavaScript bereitstellen. Aus diesem Grund sind Open Source, Worker-Hash-Checks und die Bevorzugung eines bekanntermaßen guten Commits wichtig. Der Host erhält Ihre fertigen Schlüssel immer noch nie von einem sauberen Build."
+            },
+            "weaker": {
+              "q": "Sind Vanity-Adressen weniger sicher?",
+              "a": "Nein. Die Entropie des privaten Schlüssels bleibt unverändert. Nur die öffentliche Adresse wird nach ihrem Erscheinungsbild gefiltert."
+            },
+            "cold": {
+              "q": "Sollte ich Cold-Storage-Schlüssel in einem täglichen Browser fälschen?",
+              "a": "Für erhebliche Mittel: sauberes Profil oder Offline/CLI, kleine Testübertragung, dann Hardware-Wallet-Verwahrung."
+            }
+          }
+        }
+      }
+    }
+  },
+  "meta": {
+    "home": {
+      "title": "Solana, EVM, Bitcoin und Tron Vanity Forge",
+      "description": "Clientseitige Vanity-Adressfälschung für Solana, EVM, Bitcoin und Tron. Geldbörsen, Münzen und Verträge – Schlüssel verlassen diesen Browser nie.",
+      "ogAlt": "Vanitas Mehrketten-Schminktisch aus der Schmiede"
+    },
+    "sol": {
+      "title": "Solana Vanity-Adressgenerator",
+      "description": "Erstellen Sie Vanity-Solana-Wallet- und Token-Mint-Adressen vollständig in Ihrem Browser. Open Source, clientseitig, keine Schlüssel verlassen dieses Gerät.",
+      "ogAlt": "Vanitas – Solana-Schminktischschmiede",
+      "ogTitle": "Solana Vanity-Adressgenerator | Vanitas",
+      "ogDescription": "Forge Vanity Solana Wallet und Mint-Adressen auf Kundenseite. Es verlassen keine Schlüssel dieses Gerät.",
+      "twitterDescription": "Forge Vanity Solana Wallet und Mint-Adressen auf Kundenseite."
+    },
+    "evm": {
+      "title": "EVM Vanity-Adressgenerator",
+      "description": "Forge Vanity EVM Wallet und Vertragsadressen auf Clientseite. Ein Schlüssel für Ethereum, Base, Arbitrum, Optimism, BSC und mehr.",
+      "ogTitle": "EVM Vanity-Adressgenerator | Vanitas",
+      "ogDescription": "Forge Vanity 0x Wallet und Vertragsadressen auf Kundenseite. Gleicher Schlüssel für Ethereum, BNB, Base, Arbitrum und jede EVM-Kette.",
+      "twitterDescription": "Forge Vanity 0x Wallet und Vertragsadressen auf Kundenseite. Gleicher Schlüssel in jeder EVM-Kette.",
+      "ogAlt": "Vanitas – EVM-Vanity-Wallet und Vertragsgenerator"
+    },
+    "btc": {
+      "title": "Bitcoin-Vanity-Adressgenerator",
+      "description": "Erstellen Sie Vanity-Bitcoin-Adressen (Legacy, SegWit, Taproot) vollständig in Ihrem Browser."
+    },
+    "tron": {
+      "title": "Tron Vanity-Adressgenerator",
+      "description": "Forge Vanity Tron Base58 richtet sich clientseitig an TronLink und andere Wallets."
+    },
+    "aptos": {
+      "title": "Aptos Vanity-Adressgenerator",
+      "description": "Erstellen Sie Vanity Aptos Ed25519-Adressen vollständig in Ihrem Browser."
+    },
+    "sui": {
+      "title": "Sui Vanity-Adressgenerator",
+      "description": "Schmieden Sie Vanity Sui Ed25519-Adressen vollständig in Ihrem Browser."
+    },
+    "ton": {
+      "title": "TON Vanity-Adressgenerator",
+      "description": "Forge Vanity TON Wallet v4R2 Adressen (UQ/EQ) clientseitig."
+    },
+    "cardano": {
+      "title": "Cardano Vanity-Adressgenerator",
+      "description": "Erstellen Sie Vanity Cardano Enterprise-Adressen vollständig in Ihrem Browser."
+    },
+    "xrp": {
+      "title": "XRP Vanity-Adressgenerator",
+      "description": "Schmieden Sie Vanity XRPL Classic R…-Adressen vollständig in Ihrem Browser."
+    },
+    "faq": {
+      "title": "FAQ",
+      "description": "Antworten in allen Vanitas-Schmieden – Muster, Modi, Sicherheit, Nachweis und CLI.",
+      "ogTitle": "FAQ | Vanitas",
+      "ogDescription": "Antworten nach Thema – jede Kette, Sicherheit, Nachweis, CLI und Nutzung.",
+      "ogAlt": "Vanitas-FAQ"
+    },
+    "how-it-works": {
+      "title": "Wie es funktioniert",
+      "description": "Wie Vanitas Vanity-Adressen in Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano und XRP fälscht: Worker, Modi (Mint, CREATE, CREATE2), Fundnachweis, CLI und wie man die clientseitige Sicherheit überprüft.",
+      "ogTitle": "Wie es funktioniert | Vanitas",
+      "ogDescription": "Vollständiger Rundgang durch alle Schmieden, Worker-Architekturen, Bereitstellungsmodi und Überprüfungen.",
+      "ogAlt": "Vanitas – wie die Generierung von Vanity-Adressen funktioniert"
+    },
+    "security": {
+      "title": "Sicherheit",
+      "description": "Vanitas trust model — keys stay in your browser. Bedrohungsgrenzen und Überprüfung.",
+      "ogTitle": "Sicherheit | Vanitas",
+      "ogDescription": "Architektur, Bedrohungen, Krypto, Header und Verifizierung – Schlüssel bleiben in Ihrem Browser.",
+      "ogAlt": "Vanitas-Sicherheit – Schlüssel bleiben in Ihrem Browser"
+    },
+    "lab": {
+      "title": "Musterlabor",
+      "description": "Schwierigkeitsmatrix, Seltenheitsschätzungen und Chargenmusterwarteschlange für jede Vanitas-Schmiede – bevor Sie abbauen.",
+      "ogTitle": "Musterlabor | Vanitas",
+      "ogDescription": "Schwierigkeitsmatrix, Seltenheitsschätzungen und Stapelmusterwarteschlange – bevor Sie abbauen."
+    },
+    "lookalike": {
+      "title": "Lookalike-Check",
+      "description": "Fangen Sie verbotene Base58-Glyphen, Tron-Fallfallen und Alphabet-Nichtübereinstimmungen ab, bevor Sie Vanity-Muster schleifen.",
+      "ogTitle": "Lookalike-Check | Vanitas",
+      "ogDescription": "Erkennen Sie Unstimmigkeiten bei 0/O, I/l, Tron-Schreibweise und Alphabet, bevor Sie mit dem Schleifen beginnen."
+    },
+    "create2": {
+      "title": "CREATE2-Helfer",
+      "description": "Hash-Bereitstellungsbytecode an initCodeHash, Vorschau der CREATE2-Adressen von Deployer + Salt und Deep-Link in die EVM-Forge – alles clientseitig.",
+      "ogTitle": "CREATE2-Helfer | Vanitas",
+      "ogDescription": "initCodeHash aus Bytecode, Salt-Vorschau, Adressprüfung vor dem Schleifen."
+    },
+    "brand": {
+      "title": "Brand",
+      "description": "Einbettbares Proof-Widget und Light-Branding-Kit für Vanitas – Wortmarke, Farben, Iframe-Snippets. Keine privaten Schlüssel.",
+      "ogTitle": "Brand | Vanitas",
+      "ogDescription": "Einbettbares Proof-Widget und Light-Branding-Kit."
+    },
+    "proof": {
+      "title": "Fundnachweis",
+      "description": "Überprüfen Sie, ob eine Vanity-Adresse clientseitig ohne private Schlüssel übereinstimmt."
+    },
+    "audit": {
+      "title": "Live-Audit",
+      "description": "Führen Sie acht lokale Prüfungen für Vanitas durch: Web-Krypto, RNG-Qualität, Nullnetzwerk während der Generierung, CSP, Worker-Isolation und Build-Integrität.",
+      "ogTitle": "Live-Audit | Vanitas",
+      "ogDescription": "Acht automatisierte Prüfungen in Ihrem Browser. Nichts wird gefälscht, nichts verschickt.",
+      "ogAlt": "Vanitas Live-Sicherheitsaudit"
+    },
+    "token": {
+      "title": "Token",
+      "description": "Vanitas hat kein Projekt-Token."
+    },
+    "embed-proof": {
+      "title": "Beweiseinbettung",
+      "description": "Einbettbares Proof-of-Find-Widget."
+    },
+    "siteName": "Vanitas",
+    "notFound": {
+      "title": "404 – Nicht gefunden",
+      "description": "Diese Seite existiert nicht auf Vanitas."
+    },
+    "eth": {
+      "title": "ETH-Vanity-Adressgenerator",
+      "description": "Leitet zur EVM-Vanity-Schmiede weiter."
+    }
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "body": "Die angeforderte Seite gibt es auf Vanitas nicht. Sie wurde verschoben oder hat nie existiert.",
+    "home": "Startseite",
+    "sol": "Solana-Schmiede",
+    "evm": "EVM-Schmiede",
+    "metaTitle": "404 – Nicht gefunden",
+    "metaDescription": "Diese Seite existiert nicht auf Vanitas.",
+    "figAbsent": "Abb. – Abwesend",
+    "errorLabel": "Fehler 404",
+    "heading": "Diese Adresse wurde nie geschmiedet",
+    "links": {
+      "sol": "SOL-Schmiede",
+      "evm": "EVM-Schmiede",
+      "btc": "BTC-Schmiede",
+      "tron": "TRON-Schmiede",
+      "how": "So funktioniert’s",
+      "faq": "FAQ"
+    },
+    "homeForge": "Oder zurück zur [Start-Schmiede](/)."
+  }
+}

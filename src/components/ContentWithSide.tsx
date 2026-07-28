@@ -61,11 +61,11 @@ export function ContentWithSide({
       </div>
 
       {/* Compact plate strip on mobile / tablet */}
-      <figure className="lg:hidden mt-12 sm:mt-16 mx-auto max-w-[14rem] sm:max-w-[16rem] opacity-80" aria-hidden="true">
+      <figure className="lg:hidden mt-12 sm:mt-16 mx-auto max-w-[14rem] sm:max-w-[16rem]" aria-hidden="true">
         <img
           src={plateSrc}
           alt=""
-          className="w-full h-auto select-none"
+          className="side-plate__img w-full h-auto select-none !h-auto"
           loading="lazy"
           decoding="async"
           draggable={false}
