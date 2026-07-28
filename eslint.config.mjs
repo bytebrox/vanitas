@@ -1,19 +1,33 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import nextVitals from 'eslint-config-next/core-web-vitals';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
+/** @type {import('eslint').Linter.Config[]} */
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals"),
+  ...nextVitals,
+  {
+    ignores: [
+      '.next/**',
+      'out/**',
+      'node_modules/**',
+      'cli/dist/**',
+      'public/workers/**',
+      'public/**/*-worker.js',
+      'public/**/*-worker-*.js',
+      'scripts/**',
+      'eslint-report.json',
+    ],
+  },
   {
     rules: {
-      "react/no-unescaped-entities": "off",
+      'react/no-unescaped-entities': 'off',
+      // Pattern inputs derive validation UI from props; localStorage hydrate is intentional.
+      'react-hooks/set-state-in-effect': 'off',
+      // next-intl Link + intentional raw anchors (share/footer); not App Router pages dir.
+      '@next/next/no-html-link-for-pages': 'off',
+      // Decorative ASCII / hero assets — next/image not a fit.
+      '@next/next/no-img-element': 'off',
+      // IntersectionObserver fade hooks expose refs + visibility for style; React 19 lint is over-eager.
+      'react-hooks/refs': 'off',
+      'react-hooks/purity': 'off',
     },
   },
 ];

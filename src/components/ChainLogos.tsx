@@ -19,7 +19,6 @@ function ChainImg({
   className?: string;
 }) {
   return (
-    // eslint-disable-next-line @next/next/no-img-element -- static brand assets from /public
     <img
       src={src}
       alt={title}
@@ -105,7 +104,7 @@ const EVM_MARKS = [
   { src: '/chains/optimism.svg', title: 'Optimism' },
 ] as const;
 
-/** Compact row of EVM chain marks for landing & hero */
+/** Compact row of EVM chain marks for landing cards & hero */
 export function EvmChainLogos({ className = '' }: { className?: string }) {
   const mark = 'w-[1.15rem] h-[1.15rem] sm:w-5 sm:h-5';
   return (
@@ -116,3 +115,4 @@ export function EvmChainLogos({ className = '' }: { className?: string }) {
     </span>
   );
 }
+

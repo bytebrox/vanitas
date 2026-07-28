@@ -11,6 +11,7 @@ import { Link } from '@/i18n/navigation';
 import {
   SolanaLogo,
   EvmChainLogos,
+  EthereumLogo,
   BitcoinLogo,
   TronLogo,
   AptosLogo,
@@ -97,7 +98,9 @@ export function LandingContent() {
                 >
                   <div className="shrink-0 w-9 flex justify-center">
                     {key === 'evm' ? (
-                      <span aria-label={t('forges.evm.aria')}>{FORGE_LOGO[key]}</span>
+                      <span aria-label={t('forges.evm.aria')}>
+                        <EthereumLogo className="w-5 h-5" />
+                      </span>
                     ) : (
                       FORGE_LOGO[key]
                     )}

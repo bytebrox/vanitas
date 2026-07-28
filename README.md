@@ -2,6 +2,8 @@
 
 [![Version: 1.9.3](https://img.shields.io/badge/Version-1.9.3-8B7355.svg)](https://vanitas.fun)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![CI](https://github.com/bytebrox/vanitas/actions/workflows/build.yml/badge.svg)](https://github.com/bytebrox/vanitas/actions/workflows/build.yml)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/bytebrox/vanitas/badge)](https://securityscorecards.dev/viewer/?uri=github.com/bytebrox/vanitas)
 [![Live Audit](https://img.shields.io/badge/Live_Audit-vanitas.fun%2Faudit-8B7355.svg)](https://vanitas.fun/audit)
 
 **Forge vanity addresses for Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano, and XRP, entirely in your browser.**

@@ -130,7 +130,6 @@ export function Navbar() {
   const [docsOpen, setDocsOpen] = useState(false);
   const [toolsOpen, setToolsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { theme, toggleTheme } = useTheme();
 
   const docsLinks = [
     { href: '/how-it-works', label: t('docsHow'), hint: t('docsHowHint') },
@@ -405,57 +404,6 @@ export function Navbar() {
                   ))}
                 </ul>
               )}
-            </li>
-            <li className="px-5 py-2">
-              <LanguageSwitcher />
-            </li>
-            <li>
-              <button
-                type="button"
-                className="flex w-full items-center justify-between px-5 py-3.5 text-sm uppercase tracking-[0.16em] text-ink/85 hover:text-ink hover:bg-ink/[0.03]"
-                onClick={() => {
-                  toggleTheme();
-                  closeMobile();
-                }}
-              >
-                <span>Theme</span>
-                <span className="text-muted normal-case tracking-normal text-micro">
-                  {theme === 'dark' ? t('themeMobileDarkToLight') : t('themeMobileLightToDark')}
-                </span>
-              </button>
-            </li>
-            <li>
-              <a
-                href={X_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between px-5 py-3.5 text-sm uppercase tracking-[0.16em] text-ink/85 hover:text-ink hover:bg-ink/[0.03]"
-                onClick={closeMobile}
-              >
-                <span className="inline-flex items-center gap-2">
-                  <XIcon />X
-                </span>
-                <span className="text-muted" aria-hidden>
-                  ↗
-                </span>
-              </a>
-            </li>
-            <li>
-              <a
-                href={GITHUB_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between px-5 py-3.5 text-sm uppercase tracking-[0.16em] text-ink/85 hover:text-ink hover:bg-ink/[0.03]"
-                onClick={closeMobile}
-              >
-                <span className="inline-flex items-center gap-2">
-                  <GitHubIcon />
-                  GitHub
-                </span>
-                <span className="text-muted" aria-hidden>
-                  ↗
-                </span>
-              </a>
             </li>
           </ul>
         </nav>
