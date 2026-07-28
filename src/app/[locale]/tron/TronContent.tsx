@@ -25,6 +25,7 @@ import {
   estimateTronDifficulty,
 } from '@/lib/tron-validation';
 import { saveRecentFind } from '@/lib/find-history';
+import { hasBlockingLookalikeErrors } from '@/lib/lookalike';
 import type { GeneratedTronResult, TronMode } from '@/types/tron';
 import { RecentFinds } from '@/components/RecentFinds';
 import { Link } from '@/i18n/navigation';
@@ -82,7 +83,14 @@ export function TronContent() {
   const prefixValid = validateTronPrefix(prefix, caseSensitive).valid;
   const suffixValid = validateTronSuffix(suffix).valid;
   const hasPattern = prefix.length > 0 || suffix.length > 0;
-  const canStart = prefixValid && suffixValid && hasPattern;
+  const patternBlocked = hasBlockingLookalikeErrors('tron', prefix, suffix);
+  const canStart = prefixValid && suffixValid && hasPattern && !patternBlocked;
+
+  const handleContinueSearch = useCallback(() => {
+    reset();
+    requestForgeNotifyPermission();
+    start(config);
+  }, [reset, start, config]);
 
   const onModeChange = useCallback(
     (next: TronMode) => {
@@ -116,7 +124,7 @@ export function TronContent() {
           <FadeIn className="space-y-8 sm:space-y-12">
             {result ? (
               <>
-                <TronResultDisplay result={result} onReset={reset} />
+                <TronResultDisplay result={result} onReset={reset} onContinueSearch={handleContinueSearch} />
                 <RecentFinds chain="tron" refreshKey={historyKey} />
               </>
             ) : (

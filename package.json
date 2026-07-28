@@ -1,6 +1,6 @@
 {
   "name": "vanitas",
-  "version": "1.9.2",
+  "version": "1.9.3",
   "private": true,
   "scripts": {
     "build:worker": "node scripts/build-worker.js",
@@ -9,7 +9,9 @@
     "dev": "npm run build:worker && next dev",
     "build": "npm run build:worker && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@noble/ed25519": "^3.0.0",
@@ -38,6 +40,7 @@
     "postcss": "^8.4.0",
     "sharp": "^0.35.3",
     "tailwindcss": "~3.4.19",
-    "typescript": "~5.9.3"
+    "typescript": "~5.9.3",
+    "vitest": "^3.2.7"
   }
 }

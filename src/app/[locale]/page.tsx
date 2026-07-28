@@ -1,6 +1,8 @@
 import { setRequestLocale } from 'next-intl/server';
 import { redirect } from '@/i18n/navigation';
 import { buildPageMetadata } from '@/lib/metadata';
+import { softwareApplicationJsonLd } from '@/lib/json-ld';
+import { JsonLd } from '@/components/JsonLd';
 import { LandingContent } from './LandingContent';
 
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;
@@ -57,5 +59,10 @@ export default async function Home({
     redirect({ href: `/sol?${q.toString()}`, locale });
   }
 
-  return <LandingContent />;
+  return (
+    <>
+      <JsonLd data={softwareApplicationJsonLd(locale)} />
+      <LandingContent />
+    </>
+  );
 }

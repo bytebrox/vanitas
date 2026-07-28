@@ -124,7 +124,8 @@
     "entropySigSize": "署名サイズ: 512 ビット (64 バイト)",
     "entropySecLevel": "セキュリティレベル: ～128ビット相当",
     "entropyStandard": "規格: RFC 8032",
-    "unknown": "未知"
+    "unknown": "未知",
+    "continueSearch": "Continue search"
   },
   "nav": {
     "language": "言語",
@@ -1789,5 +1790,28 @@
         }
       ]
     }
+  },
+  "templates": {
+    "lucky1": "Lucky 1",
+    "lucky2": "Lucky 2",
+    "lucky3": "Lucky 3",
+    "moon": "Moon",
+    "dao": "Dao",
+    "cafe": "Cafe",
+    "dead": "Dead",
+    "fun": "Fun",
+    "sat": "Sat",
+    "xyz": "Xyz",
+    "xrp": "Xrp",
+    "hintSeconds": "~3 characters · seconds",
+    "hintMinutes": "Longer · minutes+",
+    "hintHex": "Hex only",
+    "hintHexSeconds": "Hex only · ~seconds",
+    "hintAfter1": "After leading 1",
+    "hintBech32": "Bech32 body after bc1q",
+    "hintCaseOff": "Case sensitive off recommended",
+    "hintCardanoFirst": "First char: y/9/x/8",
+    "hintAfterR": "After fixed r",
+    "hintTon": "Case-sensitive base64url"
   }
 }

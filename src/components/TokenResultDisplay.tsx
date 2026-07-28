@@ -5,17 +5,21 @@
  */
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { GeneratedKeypair } from '@/types';
 import { formatNumber, formatDuration } from '@/lib/format';
+import { buildVanityExportTxt } from '@/lib/export-txt';
 import { EntropyInfo } from './EntropyInfo';
 import { ShareProofButton } from './ShareProofButton';
 
 interface TokenResultDisplayProps {
   result: GeneratedKeypair;
   onReset: () => void;
+  onContinueSearch?: () => void;
 }
 
-export function TokenResultDisplay({ result, onReset }: TokenResultDisplayProps) {
+export function TokenResultDisplay({ result, onReset, onContinueSearch }: TokenResultDisplayProps) {
+  const t = useTranslations('common');
   const [showPrivateKey, setShowPrivateKey] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
 
@@ -30,28 +34,11 @@ export function TokenResultDisplay({ result, onReset }: TokenResultDisplayProps)
   };
 
   const downloadTxt = () => {
-    const content = `VANITAS - TOKEN MINT KEYPAIR
-================================
-Generated: ${new Date().toISOString()}
-
-TOKEN ADDRESS (Mint):
-${result.publicKey}
-
-PRIVATE KEY:
-${result.privateKey}
-
-================================
-HOW TO USE:
-1. Go to your preferred launchpad (pump.fun, Raydium, Meteora, etc.)
-2. Find the "Token Address" or "Custom Mint" section
-3. Paste the Private Key above
-4. Your token will launch with the custom address!
-
-IMPORTANT:
-- The Private Key is only needed during token creation
-- After launch, the token address is public and permanent
-- This keypair was generated locally in your browser
-`;
+    const content = buildVanityExportTxt(t, {
+      title: `${t('exportTxtTitle')} — TOKEN MINT`,
+      address: result.publicKey,
+      privateKey: result.privateKey,
+    });
 
     const blob = new Blob([content], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
@@ -184,9 +171,12 @@ IMPORTANT:
             duration={result.duration}
             mode="mint"
           />
-          <button type="button" onClick={onReset} className="text-muted hover:text-ink">
-            Forge another
-          </button>
+          {onContinueSearch && (
+            <button type="button" onClick={onContinueSearch} className="text-ink hover:text-accent">
+              {t('continueSearch')}
+            </button>
+          )}
+          <button type="button" onClick={onReset} className="text-muted hover:text-ink">{t('forgeAnother')}</button>
         </div>
         <p className="text-micro text-muted">
           TXT includes launchpad steps · JSON for Solana CLI · Share proof never includes keys

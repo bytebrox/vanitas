@@ -25,6 +25,7 @@ import {
   xrpPrefixBody,
 } from '@/lib/xrp-validation';
 import { saveRecentFind } from '@/lib/find-history';
+import { hasBlockingLookalikeErrors } from '@/lib/lookalike';
 import type { GeneratedXrpResult } from '@/types/xrp';
 import { RecentFinds } from '@/components/RecentFinds';
 import { Link } from '@/i18n/navigation';
@@ -80,7 +81,14 @@ export function XrpContent() {
   const prefixValid = validateXrpPrefix(prefix).valid;
   const suffixValid = validateXrpSuffix(suffix).valid;
   const hasPattern = xrpPrefixBody(prefix).length > 0 || suffix.length > 0;
-  const canStart = prefixValid && suffixValid && hasPattern;
+  const patternBlocked = hasBlockingLookalikeErrors('xrp', prefix, suffix);
+  const canStart = prefixValid && suffixValid && hasPattern && !patternBlocked;
+
+  const handleContinueSearch = useCallback(() => {
+    reset();
+    requestForgeNotifyPermission();
+    start(config);
+  }, [reset, start, config]);
 
   const generateShareLink = useCallback(() => {
     const params = new URLSearchParams();
@@ -108,7 +116,7 @@ export function XrpContent() {
           <FadeIn className="space-y-8 sm:space-y-12">
             {result ? (
               <>
-                <XrpResultDisplay result={result} onReset={reset} />
+                <XrpResultDisplay result={result} onReset={reset} onContinueSearch={handleContinueSearch} />
                 <RecentFinds chain="xrp" refreshKey={historyKey} />
               </>
             ) : (

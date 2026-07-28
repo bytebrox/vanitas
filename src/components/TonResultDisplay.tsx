@@ -1,17 +1,21 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import type { GeneratedTonResult } from '@/types/ton';
 import { formatNumber, formatDuration } from '@/lib/format';
+import { buildVanityExportTxt } from '@/lib/export-txt';
 import { EntropyInfo } from './EntropyInfo';
 import { ShareProofButton } from './ShareProofButton';
 
 interface Props {
   result: GeneratedTonResult;
   onReset: () => void;
+  onContinueSearch?: () => void;
 }
 
-export function TonResultDisplay({ result, onReset }: Props) {
+export function TonResultDisplay({ result, onReset, onContinueSearch }: Props) {
+  const t = useTranslations('common');
   const [showPrivateKey, setShowPrivateKey] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
   const shortId = result.address.slice(0, 8);
@@ -29,30 +33,16 @@ export function TonResultDisplay({ result, onReset }: Props) {
   };
 
   const downloadTxt = () => {
-    const content = `VANITAS - TON VANITY
-===============================================
-Generated: ${new Date().toISOString()}
-Mode: ${result.mode} (Wallet v4R2)
-
-ADDRESS:
-${result.address}
-
-BOUNCEABLE (EQ):
-${result.bounceableAddress}
-
-PUBLIC KEY:
-${result.publicKey}
-
-PRIVATE KEY (Keep secret!):
-${result.privateKey}
-
-===============================================
-Import hex private key into Tonkeeper / MyTonWallet (Wallet v4).
-
-IMPORTANT:
-- Never share the private key
-- Generated locally in your browser
-`;
+    const content = buildVanityExportTxt(t, {
+      title: `${t('exportTxtTitle')} — TON`,
+      address: result.address,
+      privateKey: result.privateKey,
+      extraLines: [
+        `Mode: ${result.mode} (Wallet v4R2)`,
+        `BOUNCEABLE (EQ):\n${result.bounceableAddress}`,
+        `PUBLIC KEY:\n${result.publicKey}`,
+      ],
+    });
     const blob = new Blob([content], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -198,13 +188,16 @@ IMPORTANT:
             duration={result.duration}
             mode={result.mode}
           />
+          {onContinueSearch && (
+            <button type="button" onClick={onContinueSearch} className="text-ink hover:text-accent">
+              {t('continueSearch')}
+            </button>
+          )}
           <button
             type="button"
             onClick={onReset}
             className="text-ink border-b border-ink pb-0.5 hover:text-accent hover:border-accent"
-          >
-            Forge another
-          </button>
+          >{t('forgeAnother')}</button>
         </div>
         <p className="text-micro text-muted">
           Share proof links never include private keys

@@ -25,6 +25,7 @@ import {
   estimateTonDifficulty,
 } from '@/lib/ton-validation';
 import { saveRecentFind } from '@/lib/find-history';
+import { hasBlockingLookalikeErrors } from '@/lib/lookalike';
 import type { GeneratedTonResult, TonMode } from '@/types/ton';
 import { RecentFinds } from '@/components/RecentFinds';
 import { Link } from '@/i18n/navigation';
@@ -84,7 +85,14 @@ export function TonContent() {
   const prefixValid = validateTonPrefix(prefix).valid;
   const suffixValid = validateTonSuffix(suffix).valid;
   const hasPattern = prefix.length > 0 || suffix.length > 0;
-  const canStart = prefixValid && suffixValid && hasPattern;
+  const patternBlocked = hasBlockingLookalikeErrors('ton', prefix, suffix);
+  const canStart = prefixValid && suffixValid && hasPattern && !patternBlocked;
+
+  const handleContinueSearch = useCallback(() => {
+    reset();
+    requestForgeNotifyPermission();
+    start(config);
+  }, [reset, start, config]);
 
   const onModeChange = useCallback(
     (next: TonMode) => {
@@ -118,7 +126,7 @@ export function TonContent() {
           <FadeIn className="space-y-8 sm:space-y-12">
             {result ? (
               <>
-                <TonResultDisplay result={result} onReset={reset} />
+                <TonResultDisplay result={result} onReset={reset} onContinueSearch={handleContinueSearch} />
                 <RecentFinds chain="ton" refreshKey={historyKey} />
               </>
             ) : (

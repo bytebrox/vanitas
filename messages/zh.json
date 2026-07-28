@@ -124,7 +124,8 @@
     "entropySigSize": "签名大小：512位（64字节）",
     "entropySecLevel": "安全级别：~128 位等效",
     "entropyStandard": "标准：RFC 8032",
-    "unknown": "未知"
+    "unknown": "未知",
+    "continueSearch": "继续搜索"
   },
   "nav": {
     "language": "语言",
@@ -205,7 +206,7 @@
     "blurb": "适用于 Solana、EVM、比特币、Tron、Aptos、Sui、TON、Cardano 和 XRP 的客户端虚荣工具。没有项目代币。没有钥匙离开该设备。由 [Bytebrox](https://x.com/bytebrox) 开发。",
     "donateSol": "捐赠索尔",
     "solscan": "索尔扫描",
-    "home": "家",
+    "home": "首页",
     "security": "安全",
     "audit": "审计",
     "faq": "FAQ",
@@ -1551,29 +1552,29 @@
   },
   "meta": {
     "home": {
-      "title": "Solana、EVM、比特币和 Tron Vanity Forge",
-      "description": "Solana、EVM、比特币和 Tron 的客户端虚荣地址伪造。钱包、铸币厂和合约——密钥永远不会离开这个浏览器。",
-      "ogAlt": "Vanitas 多链虚荣锻造"
+      "title": "Solana、EVM、Bitcoin 与 Tron Vanity Forge",
+      "description": "面向 Solana、EVM、Bitcoin 与 Tron 的客户端 vanity 地址锻造工具。钱包、铸造与合约——密钥永不离开本浏览器。",
+      "ogAlt": "Vanitas 多链 vanity 锻造"
     },
     "sol": {
-      "title": "Solana 虚荣地址生成器",
-      "description": "完全在浏览器中伪造 Solana 钱包和代币铸造地址。开源、客户端，没有密钥离开该设备。",
-      "ogAlt": "Vanitas — Solana 虚荣锻造",
-      "ogTitle": "Solana 虚荣地址生成器 |瓦尼塔斯",
-      "ogDescription": "Forge 虚荣 Solana 钱包和铸币客户端地址。没有钥匙离开此设备。",
-      "twitterDescription": "Forge 虚荣 Solana 钱包和铸币客户端地址。"
+      "title": "Solana Vanity 地址生成器",
+      "description": "完全在浏览器中生成 Solana 钱包与代币铸造 vanity 地址。开源、客户端，密钥不离开本设备。",
+      "ogAlt": "Vanitas — Solana vanity 锻造",
+      "ogTitle": "Solana Vanity 地址生成器 | Vanitas",
+      "ogDescription": "在客户端生成 Solana 钱包与铸造 vanity 地址。密钥不离开本设备。",
+      "twitterDescription": "在客户端生成 Solana 钱包与铸造 vanity 地址。"
     },
     "evm": {
-      "title": "EVM 虚荣地址生成器",
-      "description": "Forge 虚荣 EVM 钱包和合约地址客户端。以太坊、Base、Arbitrum、Optimism、BSC 等的一键。",
-      "ogTitle": "EVM 虚荣地址生成器 |瓦尼塔斯",
-      "ogDescription": "在客户端伪造虚荣 0x 钱包和合约地址。以太坊、BNB、Base、Arbitrum 和每个 EVM 链上的密钥相同。",
-      "twitterDescription": "在客户端伪造虚荣 0x 钱包和合约地址。每个 EVM 链上都有相同的密钥。",
-      "ogAlt": "Vanitas — EVM 虚荣钱包和合约生成器"
+      "title": "EVM Vanity 地址生成器",
+      "description": "在客户端生成 EVM 钱包与合约 vanity 地址。同一密钥适用于 Ethereum、Base、Arbitrum、Optimism、BSC 等。",
+      "ogTitle": "EVM Vanity 地址生成器 | Vanitas",
+      "ogDescription": "在客户端生成 0x 钱包与合约 vanity 地址。同一密钥适用于 Ethereum、BNB、Base、Arbitrum 及所有 EVM 链。",
+      "twitterDescription": "在客户端生成 0x 钱包与合约 vanity 地址。同一密钥适用于所有 EVM 链。",
+      "ogAlt": "Vanitas — EVM vanity 钱包与合约生成器"
     },
     "btc": {
-      "title": "比特币虚荣地址生成器",
-      "description": "完全在浏览器中伪造虚荣的比特币地址（传统、SegWit、Taproot）。"
+      "title": "Bitcoin Vanity 地址生成器",
+      "description": "完全在浏览器中生成 Bitcoin vanity 地址（Legacy、SegWit、Taproot）。"
     },
     "tron": {
       "title": "Tron 虚荣地址生成器",
@@ -1789,5 +1790,28 @@
         }
       ]
     }
+  },
+  "templates": {
+    "lucky1": "Lucky 1",
+    "lucky2": "Lucky 2",
+    "lucky3": "Lucky 3",
+    "moon": "Moon",
+    "dao": "Dao",
+    "cafe": "Cafe",
+    "dead": "Dead",
+    "fun": "Fun",
+    "sat": "Sat",
+    "xyz": "Xyz",
+    "xrp": "Xrp",
+    "hintSeconds": "~3 characters · seconds",
+    "hintMinutes": "Longer · minutes+",
+    "hintHex": "Hex only",
+    "hintHexSeconds": "Hex only · ~seconds",
+    "hintAfter1": "After leading 1",
+    "hintBech32": "Bech32 body after bc1q",
+    "hintCaseOff": "Case sensitive off recommended",
+    "hintCardanoFirst": "First char: y/9/x/8",
+    "hintAfterR": "After fixed r",
+    "hintTon": "Case-sensitive base64url"
   }
 }

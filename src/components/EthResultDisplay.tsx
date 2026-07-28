@@ -5,17 +5,21 @@
  */
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import type { GeneratedEthResult } from '@/types/eth';
 import { formatNumber, formatDuration } from '@/lib/format';
+import { buildVanityExportTxt } from '@/lib/export-txt';
 import { EntropyInfo } from './EntropyInfo';
 import { ShareProofButton } from './ShareProofButton';
 
 interface EthResultDisplayProps {
   result: GeneratedEthResult;
   onReset: () => void;
+  onContinueSearch?: () => void;
 }
 
-export function EthResultDisplay({ result, onReset }: EthResultDisplayProps) {
+export function EthResultDisplay({ result, onReset, onContinueSearch }: EthResultDisplayProps) {
+  const t = useTranslations('common');
   const [showPrivateKey, setShowPrivateKey] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
   const isContract = result.mode === 'contract';
@@ -35,74 +39,28 @@ export function EthResultDisplay({ result, onReset }: EthResultDisplayProps) {
 
   const downloadTxt = () => {
     const content = isCreate2
-      ? `VANITAS - ETH CREATE2 VANITY (${result.mode})
-===============================================
-Generated: ${new Date().toISOString()}
-
-CONTRACT ADDRESS:
-${result.address}
-
-DEPLOYER ADDRESS:
-${result.deployerAddress || ''}
-
-DEPLOYER PRIVATE KEY:
-${result.privateKey}
-
-SALT:
-${result.create2Salt || ''}
-
-INIT CODE HASH:
-${result.create2InitCodeHash || ''}
-
-===============================================
-Deploy via CREATE2 with the salt and init code that hash to the initCodeHash above.
-`
+      ? buildVanityExportTxt(t, {
+          title: `${t('exportTxtTitle')} — ETH CREATE2 (${result.mode})`,
+          address: result.address,
+          privateKey: result.privateKey,
+          extraLines: [
+            `DEPLOYER ADDRESS:\n${result.deployerAddress || ''}`,
+            `SALT:\n${result.create2Salt || ''}`,
+            `INIT CODE HASH:\n${result.create2InitCodeHash || ''}`,
+          ],
+        })
       : isContract
-      ? `VANITAS - ETH CONTRACT VANITY (CREATE · nonce 0)
-===============================================
-Generated: ${new Date().toISOString()}
-
-CONTRACT ADDRESS:
-${result.address}
-
-DEPLOYER ADDRESS:
-${result.deployerAddress || ''}
-
-DEPLOYER PRIVATE KEY (Keep secret!):
-${result.privateKey}
-
-===============================================
-HOW TO USE:
-1. Import the deployer private key into MetaMask / Rabby / any EVM wallet
-2. Fund the deployer with gas (ETH on that chain)
-3. Deploy your FIRST contract from this wallet (nonce must be 0)
-4. The contract address will be the vanity address above
-
-Works on Ethereum, Arbitrum, Robinhood Chain, Base, and all EVM chains.
-
-IMPORTANT:
-- Never share the private key
-- Do not send any transaction before the deploy (nonce must stay 0)
-- Generated locally in your browser
-`
-      : `VANITAS - ETH WALLET KEYPAIR
-============================
-Generated: ${new Date().toISOString()}
-
-ADDRESS:
-${result.address}
-
-PRIVATE KEY (Keep secret!):
-${result.privateKey}
-
-============================
-Works on Ethereum and every EVM chain (same address).
-
-IMPORTANT:
-- Never share your private key
-- Store this file securely
-- Generated locally in your browser
-`;
+        ? buildVanityExportTxt(t, {
+            title: `${t('exportTxtTitle')} — ETH CONTRACT (CREATE · nonce 0)`,
+            address: result.address,
+            privateKey: result.privateKey,
+            extraLines: [`DEPLOYER ADDRESS:\n${result.deployerAddress || ''}`],
+          })
+        : buildVanityExportTxt(t, {
+            title: `${t('exportTxtTitle')} — ETH WALLET`,
+            address: result.address,
+            privateKey: result.privateKey,
+          });
 
     const blob = new Blob([content], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
@@ -278,13 +236,16 @@ IMPORTANT:
             duration={result.duration}
             mode={result.mode}
           />
+          {onContinueSearch && (
+            <button type="button" onClick={onContinueSearch} className="text-ink hover:text-accent">
+              {t('continueSearch')}
+            </button>
+          )}
           <button
             type="button"
             onClick={onReset}
             className="text-ink border-b border-ink pb-0.5 hover:text-accent hover:border-accent"
-          >
-            Forge another
-          </button>
+          >{t('forgeAnother')}</button>
         </div>
         <p className="text-micro text-muted">
           {isDeployStyle

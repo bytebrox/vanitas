@@ -25,6 +25,7 @@ import { useGenerator } from '@/hooks/useGenerator';
 import { useSound } from '@/hooks/useSound';
 import { useForgeRunUi, requestForgeNotifyPermission } from '@/hooks/useForgeRunUi';
 import { validatePrefix, validateSuffix, estimateDifficulty } from '@/lib/validation';
+import { hasBlockingLookalikeErrors } from '@/lib/lookalike';
 import type { SolMode } from '@/types/sol';
 import type { GeneratedKeypair } from '@/types';
 import { Link } from '@/i18n/navigation';
@@ -91,13 +92,20 @@ export function SolContent() {
   const prefixValid = validatePrefix(prefix, caseSensitive).valid;
   const suffixValid = validateSuffix(suffix, caseSensitive).valid;
   const hasPattern = prefix.length > 0 || suffix.length > 0;
-  const canStart = prefixValid && suffixValid && hasPattern;
+  const patternBlocked = hasBlockingLookalikeErrors('sol', prefix, suffix);
+  const canStart = prefixValid && suffixValid && hasPattern && !patternBlocked;
 
   const handleStart = useCallback(() => {
     if (!canStart) return;
     requestForgeNotifyPermission();
     start(config);
   }, [canStart, config, start]);
+
+  const handleContinueSearch = useCallback(() => {
+    reset();
+    requestForgeNotifyPermission();
+    start(config);
+  }, [reset, start, config]);
 
   const handleModeChange = useCallback(
     (next: SolMode) => {
@@ -135,9 +143,17 @@ export function SolContent() {
 
             {result ? (
               mode === 'mint' ? (
-                <TokenResultDisplay result={result} onReset={reset} />
+                <TokenResultDisplay
+                  result={result}
+                  onReset={reset}
+                  onContinueSearch={handleContinueSearch}
+                />
               ) : (
-                <ResultDisplay result={result} onReset={reset} />
+                <ResultDisplay
+                  result={result}
+                  onReset={reset}
+                  onContinueSearch={handleContinueSearch}
+                />
               )
             ) : (
               <>

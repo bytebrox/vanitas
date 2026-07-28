@@ -1,14 +1,17 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import type { GeneratedBtcResult } from '@/types/btc';
 import { formatNumber, formatDuration } from '@/lib/format';
+import { buildVanityExportTxt } from '@/lib/export-txt';
 import { EntropyInfo } from './EntropyInfo';
 import { ShareProofButton } from './ShareProofButton';
 
 interface BtcResultDisplayProps {
   result: GeneratedBtcResult;
   onReset: () => void;
+  onContinueSearch?: () => void;
 }
 
 function modeLabel(mode: GeneratedBtcResult['mode']): string {
@@ -17,7 +20,8 @@ function modeLabel(mode: GeneratedBtcResult['mode']): string {
   return 'LEGACY 1…';
 }
 
-export function BtcResultDisplay({ result, onReset }: BtcResultDisplayProps) {
+export function BtcResultDisplay({ result, onReset, onContinueSearch }: BtcResultDisplayProps) {
+  const t = useTranslations('common');
   const [showPrivateKey, setShowPrivateKey] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
 
@@ -32,27 +36,12 @@ export function BtcResultDisplay({ result, onReset }: BtcResultDisplayProps) {
   };
 
   const downloadTxt = () => {
-    const content = `VANITAS - BITCOIN VANITY (${modeLabel(result.mode)})
-===============================================
-Generated: ${new Date().toISOString()}
-
-ADDRESS:
-${result.address}
-
-PRIVATE KEY (WIF, compressed):
-${result.privateKeyWif}
-
-PRIVATE KEY (hex):
-${result.privateKeyHex}
-
-===============================================
-Import WIF into Electrum, Sparrow, BlueWallet, etc.
-(Taproot: use a Taproot-capable wallet; key is still standard secp256k1 WIF.)
-
-IMPORTANT:
-- Never share the private key
-- Generated locally in your browser
-`;
+    const content = buildVanityExportTxt(t, {
+      title: `${t('exportTxtTitle')} — BITCOIN (${modeLabel(result.mode)})`,
+      address: result.address,
+      privateKey: result.privateKeyWif,
+      extraLines: [`PRIVATE KEY (hex):\n${result.privateKeyHex}`],
+    });
     const blob = new Blob([content], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -176,13 +165,16 @@ IMPORTANT:
             duration={result.duration}
             mode={result.mode}
           />
+          {onContinueSearch && (
+            <button type="button" onClick={onContinueSearch} className="text-ink hover:text-accent">
+              {t('continueSearch')}
+            </button>
+          )}
           <button
             type="button"
             onClick={onReset}
             className="text-ink border-b border-ink pb-0.5 hover:text-accent hover:border-accent"
-          >
-            Forge another
-          </button>
+          >{t('forgeAnother')}</button>
         </div>
         <p className="text-micro text-muted">Share proof links never include private keys</p>
       </section>

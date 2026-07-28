@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { GeneratedKeypair } from '@/types';
 import { formatNumber, formatDuration } from '@/lib/format';
+import { buildVanityExportTxt } from '@/lib/export-txt';
 import { DomainSuggestions } from './DomainSuggestions';
 import { EntropyInfo } from './EntropyInfo';
 import { ShareProofButton } from './ShareProofButton';
@@ -15,9 +16,11 @@ import { ShareProofButton } from './ShareProofButton';
 interface ResultDisplayProps {
   result: GeneratedKeypair;
   onReset: () => void;
+  /** Clear result and immediately resume forging with the same pattern */
+  onContinueSearch?: () => void;
 }
 
-export function ResultDisplay({ result, onReset }: ResultDisplayProps) {
+export function ResultDisplay({ result, onReset, onContinueSearch }: ResultDisplayProps) {
   const t = useTranslations('common');
   const [showPrivateKey, setShowPrivateKey] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
@@ -35,22 +38,11 @@ export function ResultDisplay({ result, onReset }: ResultDisplayProps) {
   };
 
   const downloadTxt = () => {
-    const content = `${t('exportTxtTitle')}
-============================
-${t('exportTxtGenerated')}: ${new Date().toISOString()}
-
-${t('exportTxtPublic')}:
-${result.publicKey}
-
-${t('exportTxtPrivate')}:
-${result.privateKey}
-
-============================
-${t('exportTxtImportant')}:
-- ${t('exportTxtNeverShare')}
-- ${t('exportTxtStoreSecure')}
-- ${t('exportTxtLocal')}
-`;
+    const content = buildVanityExportTxt(t, {
+      title: `${t('exportTxtTitle')} — SOLANA`,
+      address: result.publicKey,
+      privateKey: result.privateKey,
+    });
 
     const blob = new Blob([content], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
@@ -176,6 +168,11 @@ ${t('exportTxtImportant')}:
             attempts={result.attempts}
             duration={result.duration}
           />
+          {onContinueSearch && (
+            <button type="button" onClick={onContinueSearch} className="text-ink hover:text-accent">
+              {t('continueSearch')}
+            </button>
+          )}
           <button type="button" onClick={onReset} className="text-muted hover:text-ink">
             {t('forgeAnother')}
           </button>

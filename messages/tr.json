@@ -124,7 +124,8 @@
     "entropySigSize": "İmza boyutu: 512 bit (64 bayt)",
     "entropySecLevel": "Güvenlik düzeyi: ~128 bit eşdeğeri",
     "entropyStandard": "Standart: RFC 8032",
-    "unknown": "Bilinmiyor"
+    "unknown": "Bilinmiyor",
+    "continueSearch": "Aramaya devam et"
   },
   "nav": {
     "language": "Dil",
@@ -1552,28 +1553,28 @@
   "meta": {
     "home": {
       "title": "Solana, EVM, Bitcoin ve Tron Vanity Forge",
-      "description": "Solana, EVM, Bitcoin ve Tron için istemci tarafı özel adresler oluşturuldu. Cüzdanlar, darphaneler ve sözleşmeler; anahtarlar bu tarayıcıdan asla ayrılmaz.",
+      "description": "Solana, EVM, Bitcoin ve Tron için istemci tarafı vanity adres forge. Cüzdanlar, mintler ve kontratlar — anahtarlar bu tarayıcıdan asla ayrılmaz.",
       "ogAlt": "Vanitas çok zincirli vanity demirhanesi"
     },
     "sol": {
       "title": "Solana Vanity Adres Oluşturucu",
-      "description": "Tamamen tarayıcınızda gösterişli Solana cüzdanı ve token nane adresleri oluşturun. Açık kaynak, istemci tarafı, bu cihazdan hiçbir anahtar çıkmıyor.",
+      "description": "Vanity Solana cüzdan ve token mint adreslerini tamamen tarayıcınızda oluşturun. Açık kaynak, istemci tarafı — bu cihazdan hiçbir anahtar çıkmaz.",
       "ogAlt": "Vanitas - Solana vanity demirhanesi",
       "ogTitle": "Solana Vanity Adres Oluşturucu | Vanitas",
-      "ogDescription": "Forge gösterişli Solana cüzdanı ve nane istemci tarafı adresleri. Bu cihazdan hiçbir anahtar çıkmıyor.",
-      "twitterDescription": "Forge gösterişli Solana cüzdanı ve nane istemci tarafı adresleri."
+      "ogDescription": "Vanity Solana cüzdan ve mint adreslerini istemci tarafında oluşturun. Bu cihazdan hiçbir anahtar çıkmaz.",
+      "twitterDescription": "Vanity Solana cüzdan ve mint adreslerini istemci tarafında oluşturun."
     },
     "evm": {
-      "title": "EVM Özel Adres Oluşturucu",
-      "description": "Forge vanity EVM cüzdanı ve sözleşmesi müşteri tarafına yöneliktir. Ethereum, Base, Arbitrum, Optimism, BSC ve daha fazlası için tek anahtar.",
-      "ogTitle": "EVM Özel Adres Oluşturucu | Vanitas",
-      "ogDescription": "Forge vanity 0x cüzdan ve sözleşme istemci tarafı adresleri. Ethereum, BNB, Base, Arbitrum ve her EVM zincirinde aynı anahtar.",
-      "twitterDescription": "Forge vanity 0x cüzdan ve sözleşme istemci tarafı adresleri. Her EVM zincirinde aynı anahtar.",
-      "ogAlt": "Vanitas — EVM özel cüzdan ve sözleşme oluşturucu"
+      "title": "EVM Vanity Adres Oluşturucu",
+      "description": "Vanity EVM cüzdan ve kontrat adreslerini istemci tarafında oluşturun. Ethereum, Base, Arbitrum, Optimism, BSC ve daha fazlası için tek anahtar.",
+      "ogTitle": "EVM Vanity Adres Oluşturucu | Vanitas",
+      "ogDescription": "Vanity 0x cüzdan ve kontrat adreslerini istemci tarafında oluşturun. Ethereum, BNB, Base, Arbitrum ve her EVM zincirinde aynı anahtar.",
+      "twitterDescription": "Vanity 0x cüzdan ve kontrat adreslerini istemci tarafında oluşturun. Her EVM zincirinde aynı anahtar.",
+      "ogAlt": "Vanitas — EVM vanity cüzdan ve kontrat oluşturucu"
     },
     "btc": {
-      "title": "Bitcoin Özel Adres Oluşturucu",
-      "description": "Tamamen tarayıcınızda gösterişli Bitcoin adresleri (eski, SegWit, Taproot) oluşturun."
+      "title": "Bitcoin Vanity Adres Oluşturucu",
+      "description": "Vanity Bitcoin adreslerini (legacy, SegWit, Taproot) tamamen tarayıcınızda oluşturun."
     },
     "tron": {
       "title": "Tron Vanity Adres Oluşturucu",
@@ -1789,5 +1790,28 @@
         }
       ]
     }
+  },
+  "templates": {
+    "lucky1": "Lucky 1",
+    "lucky2": "Lucky 2",
+    "lucky3": "Lucky 3",
+    "moon": "Moon",
+    "dao": "Dao",
+    "cafe": "Cafe",
+    "dead": "Dead",
+    "fun": "Fun",
+    "sat": "Sat",
+    "xyz": "Xyz",
+    "xrp": "Xrp",
+    "hintSeconds": "~3 characters · seconds",
+    "hintMinutes": "Longer · minutes+",
+    "hintHex": "Hex only",
+    "hintHexSeconds": "Hex only · ~seconds",
+    "hintAfter1": "After leading 1",
+    "hintBech32": "Bech32 body after bc1q",
+    "hintCaseOff": "Case sensitive off recommended",
+    "hintCardanoFirst": "First char: y/9/x/8",
+    "hintAfterR": "After fixed r",
+    "hintTon": "Case-sensitive base64url"
   }
 }

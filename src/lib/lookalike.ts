@@ -217,6 +217,20 @@ export function analyzeLookalike(
   return findings;
 }
 
+/** True when prefix/suffix would hit lookalike severity `error` (should block forge). */
+export function hasBlockingLookalikeErrors(
+  chain: LookalikeChain,
+  prefix: string,
+  suffix = ''
+): boolean {
+  for (const part of [prefix, suffix]) {
+    const raw = part.trim();
+    if (!raw) continue;
+    if (analyzeLookalike(raw, chain).some((f) => f.severity === 'error')) return true;
+  }
+  return false;
+}
+
 /** Highlight pattern with finding positions */
 export function markPattern(pattern: string, positions: number[] = []): { ch: string; hot: boolean }[] {
   const raw = pattern.replace(/^0x/i, '');

@@ -124,7 +124,8 @@
     "entropySigSize": "Signaturgröße: 512 Bit (64 Byte)",
     "entropySecLevel": "Sicherheitsstufe: ~128-Bit-Äquivalent",
     "entropyStandard": "Standard: RFC 8032",
-    "unknown": "Unbekannt"
+    "unknown": "Unbekannt",
+    "continueSearch": "Weitersuchen"
   },
   "nav": {
     "language": "Sprache",
@@ -205,7 +206,7 @@
     "blurb": "Clientseitiges Vanity-Tool für Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano und XRP. Kein Projekt-Token. Kein Schlüssel verlässt dieses Gerät. Entwickelt von [Bytebrox](https://x.com/bytebrox).",
     "donateSol": "Spenden Sie SOL",
     "solscan": "Solscan",
-    "home": "Heim",
+    "home": "Start",
     "security": "Sicherheit",
     "audit": "Prüfung",
     "faq": "FAQ",
@@ -1551,25 +1552,25 @@
   },
   "meta": {
     "home": {
-      "title": "Solana, EVM, Bitcoin und Tron Vanity Forge",
-      "description": "Clientseitige Vanity-Adressfälschung für Solana, EVM, Bitcoin und Tron. Geldbörsen, Münzen und Verträge – Schlüssel verlassen diesen Browser nie.",
-      "ogAlt": "Vanitas Mehrketten-Schminktisch aus der Schmiede"
+      "title": "Solana-, EVM-, Bitcoin- & Tron-Vanity-Forge",
+      "description": "Clientseitige Vanity-Adress-Forge für Solana, EVM, Bitcoin und Tron. Wallets, Mints und Contracts — Schlüssel verlassen diesen Browser nie.",
+      "ogAlt": "Vanitas Multi-Chain-Vanity-Forge"
     },
     "sol": {
       "title": "Solana Vanity-Adressgenerator",
-      "description": "Erstellen Sie Vanity-Solana-Wallet- und Token-Mint-Adressen vollständig in Ihrem Browser. Open Source, clientseitig, keine Schlüssel verlassen dieses Gerät.",
-      "ogAlt": "Vanitas – Solana-Schminktischschmiede",
+      "description": "Forge Vanity-Solana-Wallet- und Token-Mint-Adressen vollständig im Browser. Open Source, clientseitig — keine Schlüssel verlassen dieses Gerät.",
+      "ogAlt": "Vanitas — Solana-Vanity-Forge",
       "ogTitle": "Solana Vanity-Adressgenerator | Vanitas",
-      "ogDescription": "Forge Vanity Solana Wallet und Mint-Adressen auf Kundenseite. Es verlassen keine Schlüssel dieses Gerät.",
-      "twitterDescription": "Forge Vanity Solana Wallet und Mint-Adressen auf Kundenseite."
+      "ogDescription": "Forge Vanity-Solana-Wallet- und Mint-Adressen clientseitig. Keine Schlüssel verlassen dieses Gerät.",
+      "twitterDescription": "Forge Vanity-Solana-Wallet- und Mint-Adressen clientseitig."
     },
     "evm": {
       "title": "EVM Vanity-Adressgenerator",
-      "description": "Forge Vanity EVM Wallet und Vertragsadressen auf Clientseite. Ein Schlüssel für Ethereum, Base, Arbitrum, Optimism, BSC und mehr.",
+      "description": "Forge Vanity-EVM-Wallet- und Contract-Adressen clientseitig. Ein Schlüssel für Ethereum, Base, Arbitrum, Optimism, BSC und mehr.",
       "ogTitle": "EVM Vanity-Adressgenerator | Vanitas",
-      "ogDescription": "Forge Vanity 0x Wallet und Vertragsadressen auf Kundenseite. Gleicher Schlüssel für Ethereum, BNB, Base, Arbitrum und jede EVM-Kette.",
-      "twitterDescription": "Forge Vanity 0x Wallet und Vertragsadressen auf Kundenseite. Gleicher Schlüssel in jeder EVM-Kette.",
-      "ogAlt": "Vanitas – EVM-Vanity-Wallet und Vertragsgenerator"
+      "ogDescription": "Forge Vanity-0x-Wallet- und Contract-Adressen clientseitig. Gleicher Schlüssel auf Ethereum, BNB, Base, Arbitrum und jeder EVM-Chain.",
+      "twitterDescription": "Forge Vanity-0x-Wallet- und Contract-Adressen clientseitig. Gleicher Schlüssel auf jeder EVM-Chain.",
+      "ogAlt": "Vanitas — EVM-Vanity-Wallet- und Contract-Generator"
     },
     "btc": {
       "title": "Bitcoin-Vanity-Adressgenerator",
@@ -1577,7 +1578,7 @@
     },
     "tron": {
       "title": "Tron Vanity-Adressgenerator",
-      "description": "Forge Vanity Tron Base58 richtet sich clientseitig an TronLink und andere Wallets."
+      "description": "Forge Vanity-Tron-Base58-Adressen clientseitig für TronLink und andere Wallets."
     },
     "aptos": {
       "title": "Aptos Vanity-Adressgenerator",
@@ -1608,14 +1609,14 @@
     },
     "how-it-works": {
       "title": "Wie es funktioniert",
-      "description": "Wie Vanitas Vanity-Adressen in Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano und XRP fälscht: Worker, Modi (Mint, CREATE, CREATE2), Fundnachweis, CLI und wie man die clientseitige Sicherheit überprüft.",
+      "description": "Wie Vanitas Vanity-Adressen auf Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano und XRP erzeugt: Worker, Modi (Mint, CREATE, CREATE2), Fundnachweis, CLI und clientseitige Sicherheitsprüfung.",
       "ogTitle": "Wie es funktioniert | Vanitas",
       "ogDescription": "Vollständiger Rundgang durch alle Schmieden, Worker-Architekturen, Bereitstellungsmodi und Überprüfungen.",
       "ogAlt": "Vanitas – wie die Generierung von Vanity-Adressen funktioniert"
     },
     "security": {
       "title": "Sicherheit",
-      "description": "Vanitas trust model — keys stay in your browser. Bedrohungsgrenzen und Überprüfung.",
+      "description": "Vanitas-Vertrauensmodell — Schlüssel bleiben in Ihrem Browser. Bedrohungsgrenzen und Verifizierung.",
       "ogTitle": "Sicherheit | Vanitas",
       "ogDescription": "Architektur, Bedrohungen, Krypto, Header und Verifizierung – Schlüssel bleiben in Ihrem Browser.",
       "ogAlt": "Vanitas-Sicherheit – Schlüssel bleiben in Ihrem Browser"
@@ -1676,7 +1677,7 @@
       "title": "Nutzungsbedingungen",
       "description": "Nutzungsbedingungen für Vanitas – kundenseitige Vanity-Adressschmiede. Keine Konten, Schlüssel bleiben in Ihrem Browser.",
       "ogTitle": "Nutzungsbedingungen | Vanitas",
-      "ogDescription": "Bedingungen für die Nutzung des Vanitas-Schminktischs und der dazugehörigen Werkzeuge.",
+      "ogDescription": "Bedingungen für die Nutzung der Vanitas-Vanity-Forge und der zugehörigen Tools.",
       "ogAlt": "Vanitas-Nutzungsbedingungen"
     },
     "privacy": {
@@ -1717,7 +1718,7 @@
       "sections": [
         {
           "title": "Was Vanitas ist",
-          "body": "Vanitas ist eine **clientseitige Vanity-Adressfälschung**. Kryptografische Arbeiten werden in Ihrem Browser (oder lokal über die CLI) ausgeführt. Wir betreiben kein Depot-Wallet, keine Börse oder kein Kontosystem."
+          "body": "Vanitas ist eine **clientseitige Vanity-Adress-Forge**. Kryptografische Arbeiten laufen in Ihrem Browser (oder lokal über die CLI). Wir betreiben kein Depot-Wallet, keine Börse und kein Kontosystem."
         },
         {
           "title": "Keine Garantien",
@@ -1757,7 +1758,7 @@
       "sections": [
         {
           "title": "Schlüssel verlassen dieses Gerät niemals",
-          "body": "Die Adressfälschung wird **lokal in Ihrem Browser** (Web Worker) oder in der lokalen CLI ausgeführt. Vanitas lädt keine privaten Schlüssel, Mnemoniken oder generiertes Schlüsselmaterial auf unsere Server hoch. **Share-Proof-Links** schließen private Schlüssel absichtlich aus."
+          "body": "Die Adress-Erzeugung läuft **lokal in Ihrem Browser** (Web Worker) oder in der lokalen CLI. Vanitas lädt keine privaten Schlüssel, Mnemoniken oder generiertes Schlüsselmaterial auf unsere Server hoch. **Share-Proof-Links** schließen private Schlüssel absichtlich aus."
         },
         {
           "title": "Was wir nicht sammeln",
@@ -1785,9 +1786,32 @@
         },
         {
           "title": "Kontakt",
-          "body": "Datenschutzfragen: [Bytebrox on X](https://x.com/bytebrox) oder [GitHub](https://github.com/bytebrox/vanitas). Siehe auch [Terms](/terms) und [Security](/security)."
+          "body": "Datenschutzfragen: [Bytebrox auf X](https://x.com/bytebrox) oder [GitHub](https://github.com/bytebrox/vanitas). Siehe auch [Nutzungsbedingungen](/terms) und [Sicherheit](/security)."
         }
       ]
     }
+  },
+  "templates": {
+    "lucky1": "Glück 1",
+    "lucky2": "Glück 2",
+    "lucky3": "Glück 3",
+    "moon": "Moon",
+    "dao": "Dao",
+    "cafe": "Cafe",
+    "dead": "Dead",
+    "fun": "Fun",
+    "sat": "Sat",
+    "xyz": "Xyz",
+    "xrp": "Xrp",
+    "hintSeconds": "~3 Zeichen · Sekunden",
+    "hintMinutes": "Länger · Minuten+",
+    "hintHex": "Nur Hex",
+    "hintHexSeconds": "Nur Hex · ~Sekunden",
+    "hintAfter1": "Nach führender 1",
+    "hintBech32": "Bech32-Body nach bc1q",
+    "hintCaseOff": "Case-sensitive aus empfohlen",
+    "hintCardanoFirst": "Erstes Zeichen: y/9/x/8",
+    "hintAfterR": "Nach festem r",
+    "hintTon": "Case-sensitiv base64url"
   }
 }

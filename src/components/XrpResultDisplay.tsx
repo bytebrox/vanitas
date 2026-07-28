@@ -1,17 +1,21 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import type { GeneratedXrpResult } from '@/types/xrp';
 import { formatNumber, formatDuration } from '@/lib/format';
+import { buildVanityExportTxt } from '@/lib/export-txt';
 import { EntropyInfo } from './EntropyInfo';
 import { ShareProofButton } from './ShareProofButton';
 
 interface Props {
   result: GeneratedXrpResult;
   onReset: () => void;
+  onContinueSearch?: () => void;
 }
 
-export function XrpResultDisplay({ result, onReset }: Props) {
+export function XrpResultDisplay({ result, onReset, onContinueSearch }: Props) {
+  const t = useTranslations('common');
   const [showPrivateKey, setShowPrivateKey] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
   const shortId = result.address.slice(1, 9);
@@ -29,26 +33,12 @@ export function XrpResultDisplay({ result, onReset }: Props) {
   };
 
   const downloadTxt = () => {
-    const content = `VANITAS - XRP VANITY
-===============================================
-Generated: ${new Date().toISOString()}
-
-ADDRESS (classic):
-${result.address}
-
-PUBLIC KEY (compressed secp256k1):
-${result.publicKey}
-
-PRIVATE KEY (Keep secret!):
-${result.privateKey}
-
-===============================================
-Import into Xaman, Toast, or other XRPL wallets that accept a hex/secp256k1 secret.
-
-IMPORTANT:
-- Never share the private key
-- Generated locally in your browser
-`;
+    const content = buildVanityExportTxt(t, {
+      title: `${t('exportTxtTitle')} — XRP`,
+      address: result.address,
+      privateKey: result.privateKey,
+      extraLines: [`PUBLIC KEY (compressed secp256k1):\n${result.publicKey}`],
+    });
     const blob = new Blob([content], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -172,13 +162,16 @@ IMPORTANT:
             attempts={result.attempts}
             duration={result.duration}
           />
+          {onContinueSearch && (
+            <button type="button" onClick={onContinueSearch} className="text-ink hover:text-accent">
+              {t('continueSearch')}
+            </button>
+          )}
           <button
             type="button"
             onClick={onReset}
             className="text-ink border-b border-ink pb-0.5 hover:text-accent hover:border-accent"
-          >
-            Forge another
-          </button>
+          >{t('forgeAnother')}</button>
         </div>
         <p className="text-micro text-muted">Share proof links never include private keys</p>
       </section>

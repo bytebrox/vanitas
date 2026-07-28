@@ -24,6 +24,7 @@ import {
   estimateSuiDifficulty,
 } from '@/lib/sui-validation';
 import { saveRecentFind } from '@/lib/find-history';
+import { hasBlockingLookalikeErrors } from '@/lib/lookalike';
 import type { GeneratedSuiResult } from '@/types/sui';
 import { RecentFinds } from '@/components/RecentFinds';
 import { Link } from '@/i18n/navigation';
@@ -77,7 +78,14 @@ export function SuiContent() {
   const prefixValid = validateSuiPrefix(prefix).valid;
   const suffixValid = validateSuiSuffix(suffix).valid;
   const hasPattern = prefix.length > 0 || suffix.length > 0;
-  const canStart = prefixValid && suffixValid && hasPattern;
+  const patternBlocked = hasBlockingLookalikeErrors('sui', prefix, suffix);
+  const canStart = prefixValid && suffixValid && hasPattern && !patternBlocked;
+
+  const handleContinueSearch = useCallback(() => {
+    reset();
+    requestForgeNotifyPermission();
+    start(config);
+  }, [reset, start, config]);
 
   const generateShareLink = useCallback(() => {
     const params = new URLSearchParams();
@@ -101,7 +109,7 @@ export function SuiContent() {
           <FadeIn className="space-y-8 sm:space-y-12">
             {result ? (
               <>
-                <SuiResultDisplay result={result} onReset={reset} />
+                <SuiResultDisplay result={result} onReset={reset} onContinueSearch={handleContinueSearch} />
                 <RecentFinds chain="sui" refreshKey={historyKey} />
               </>
             ) : (

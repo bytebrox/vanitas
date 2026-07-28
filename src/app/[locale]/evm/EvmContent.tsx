@@ -24,6 +24,7 @@ import { useEthGenerator } from '@/hooks/useEthGenerator';
 import { useSound } from '@/hooks/useSound';
 import { useForgeRunUi, requestForgeNotifyPermission } from '@/hooks/useForgeRunUi';
 import { validateEthPrefix, validateEthSuffix, estimateEthDifficulty } from '@/lib/eth-validation';
+import { hasBlockingLookalikeErrors } from '@/lib/lookalike';
 import type { EthMode, GeneratedEthResult } from '@/types/eth';
 import { Link } from '@/i18n/navigation';
 import { RichParagraph } from '@/lib/rich-text';
@@ -109,7 +110,8 @@ export function EvmContent() {
       : mode === 'create2-salt'
         ? isHex32(create2InitCodeHash) && isHex32(create2DeployerKey)
         : isHex32(create2InitCodeHash) && isHex32(create2Salt);
-  const canStart = prefixValid && suffixValid && hasPattern && create2Ok;
+  const patternBlocked = hasBlockingLookalikeErrors('evm', prefix, suffix);
+  const canStart = prefixValid && suffixValid && hasPattern && create2Ok && !patternBlocked;
 
   const handleStart = useCallback(() => {
     if (!canStart) return;
@@ -130,6 +132,12 @@ export function EvmContent() {
     reset();
   }, [reset]);
 
+  const handleContinueSearch = useCallback(() => {
+    reset();
+    requestForgeNotifyPermission();
+    start(config);
+  }, [reset, start, config]);
+
   return (
     <div className="min-h-screen flex flex-col">
       <EvmHeader />
@@ -147,7 +155,11 @@ export function EvmContent() {
             </div>
 
             {result ? (
-              <EthResultDisplay result={result} onReset={handleForgeAnother} />
+              <EthResultDisplay
+                result={result}
+                onReset={handleForgeAnother}
+                onContinueSearch={handleContinueSearch}
+              />
             ) : (
               <>
                 <div>

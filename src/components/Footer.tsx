@@ -144,6 +144,12 @@ export function Footer({ compact = false }: FooterProps) {
                 <FooterLink href="/sol">SOL</FooterLink>
                 <FooterLink href="/evm">EVM</FooterLink>
                 <FooterLink href="/btc">BTC</FooterLink>
+                <FooterLink href="/tron">TRON</FooterLink>
+                <FooterLink href="/aptos">APTOS</FooterLink>
+                <FooterLink href="/sui">SUI</FooterLink>
+                <FooterLink href="/ton">TON</FooterLink>
+                <FooterLink href="/cardano">ADA</FooterLink>
+                <FooterLink href="/xrp">XRP</FooterLink>
               </div>
             </div>
             <div>

@@ -21,6 +21,7 @@ import { useSound } from '@/hooks/useSound';
 import { useForgeRunUi, requestForgeNotifyPermission } from '@/hooks/useForgeRunUi';
 import { validateBtcPrefix, validateBtcSuffix, estimateBtcDifficulty } from '@/lib/btc-validation';
 import { saveRecentFind } from '@/lib/find-history';
+import { hasBlockingLookalikeErrors } from '@/lib/lookalike';
 import type { BtcMode, GeneratedBtcResult } from '@/types/btc';
 import { RecentFinds } from '@/components/RecentFinds';
 import { Link } from '@/i18n/navigation';
@@ -79,7 +80,18 @@ export function BtcContent() {
   const prefixValid = validateBtcPrefix(prefix, mode, caseSensitive).valid;
   const suffixValid = validateBtcSuffix(suffix, mode).valid;
   const hasPattern = prefix.length > 0 || suffix.length > 0;
-  const canStart = prefixValid && suffixValid && hasPattern;
+  const patternBlocked = hasBlockingLookalikeErrors(
+    mode === 'legacy' ? 'btc-legacy' : 'btc-bech32',
+    prefix,
+    suffix
+  );
+  const canStart = prefixValid && suffixValid && hasPattern && !patternBlocked;
+
+  const handleContinueSearch = useCallback(() => {
+    reset();
+    requestForgeNotifyPermission();
+    start(config);
+  }, [reset, start, config]);
 
   const generateShareLink = useCallback(() => {
     const params = new URLSearchParams();
@@ -116,7 +128,7 @@ export function BtcContent() {
 
             {result ? (
               <>
-                <BtcResultDisplay result={result} onReset={reset} />
+                <BtcResultDisplay result={result} onReset={reset} onContinueSearch={handleContinueSearch} />
                 <RecentFinds chain="btc" refreshKey={historyKey} />
               </>
             ) : (

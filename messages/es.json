@@ -124,7 +124,8 @@
     "entropySigSize": "Tamaño de firma: 512 bits (64 bytes)",
     "entropySecLevel": "Nivel de seguridad: equivalente a ~128 bits",
     "entropyStandard": "Estándar: RFC 8032",
-    "unknown": "Desconocido"
+    "unknown": "Desconocido",
+    "continueSearch": "Continue search"
   },
   "nav": {
     "language": "Idioma",
@@ -1789,5 +1790,28 @@
         }
       ]
     }
+  },
+  "templates": {
+    "lucky1": "Lucky 1",
+    "lucky2": "Lucky 2",
+    "lucky3": "Lucky 3",
+    "moon": "Moon",
+    "dao": "Dao",
+    "cafe": "Cafe",
+    "dead": "Dead",
+    "fun": "Fun",
+    "sat": "Sat",
+    "xyz": "Xyz",
+    "xrp": "Xrp",
+    "hintSeconds": "~3 characters · seconds",
+    "hintMinutes": "Longer · minutes+",
+    "hintHex": "Hex only",
+    "hintHexSeconds": "Hex only · ~seconds",
+    "hintAfter1": "After leading 1",
+    "hintBech32": "Bech32 body after bc1q",
+    "hintCaseOff": "Case sensitive off recommended",
+    "hintCardanoFirst": "First char: y/9/x/8",
+    "hintAfterR": "After fixed r",
+    "hintTon": "Case-sensitive base64url"
   }
 }

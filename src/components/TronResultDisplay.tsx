@@ -1,17 +1,21 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import type { GeneratedTronResult } from '@/types/tron';
 import { formatNumber, formatDuration } from '@/lib/format';
+import { buildVanityExportTxt } from '@/lib/export-txt';
 import { EntropyInfo } from './EntropyInfo';
 import { ShareProofButton } from './ShareProofButton';
 
 interface TronResultDisplayProps {
   result: GeneratedTronResult;
   onReset: () => void;
+  onContinueSearch?: () => void;
 }
 
-export function TronResultDisplay({ result, onReset }: TronResultDisplayProps) {
+export function TronResultDisplay({ result, onReset, onContinueSearch }: TronResultDisplayProps) {
+  const t = useTranslations('common');
   const [showPrivateKey, setShowPrivateKey] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
   const isContract = result.mode === 'contract' || Boolean(result.deployerAddress);
@@ -29,35 +33,17 @@ export function TronResultDisplay({ result, onReset }: TronResultDisplayProps) {
   };
 
   const downloadTxt = () => {
-    const content = `VANITAS - TRON VANITY
-===============================================
-Generated: ${new Date().toISOString()}
-Mode: ${isContract ? 'contract (CREATE nonce 0)' : 'wallet'}
-
-${isContract ? 'CONTRACT ADDRESS' : 'ADDRESS'}:
-${result.address}
-${
-  isContract && result.deployerAddress
-    ? `
-DEPLOYER ADDRESS:
-${result.deployerAddress}
-`
-    : ''
-}
-${isContract ? 'DEPLOYER PRIVATE KEY (hex)' : 'PRIVATE KEY (hex)'}:
-${result.privateKey}
-
-===============================================
-${
-  isContract
-    ? 'Deploy as the first transaction from the deployer key — nonce must be 0.'
-    : 'Import hex private key into TronLink or any Tron wallet.'
-}
-
-IMPORTANT:
-- Never share the private key
-- Generated locally in your browser
-`;
+    const content = buildVanityExportTxt(t, {
+      title: `${t('exportTxtTitle')} — TRON`,
+      address: result.address,
+      privateKey: result.privateKey,
+      extraLines: [
+        `Mode: ${isContract ? 'contract (CREATE nonce 0)' : 'wallet'}`,
+        ...(isContract && result.deployerAddress
+          ? [`DEPLOYER ADDRESS:\n${result.deployerAddress}`]
+          : []),
+      ],
+    });
     const blob = new Blob([content], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -230,13 +216,16 @@ IMPORTANT:
             duration={result.duration}
             mode={result.mode}
           />
+          {onContinueSearch && (
+            <button type="button" onClick={onContinueSearch} className="text-ink hover:text-accent">
+              {t('continueSearch')}
+            </button>
+          )}
           <button
             type="button"
             onClick={onReset}
             className="text-ink border-b border-ink pb-0.5 hover:text-accent hover:border-accent"
-          >
-            Forge another
-          </button>
+          >{t('forgeAnother')}</button>
         </div>
         <p className="text-micro text-muted">
           {isContract

@@ -5,17 +5,21 @@
  */
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import type { GeneratedAptosResult } from '@/types/aptos';
 import { formatNumber, formatDuration } from '@/lib/format';
+import { buildVanityExportTxt } from '@/lib/export-txt';
 import { EntropyInfo } from './EntropyInfo';
 import { ShareProofButton } from './ShareProofButton';
 
 interface AptosResultDisplayProps {
   result: GeneratedAptosResult;
   onReset: () => void;
+  onContinueSearch?: () => void;
 }
 
-export function AptosResultDisplay({ result, onReset }: AptosResultDisplayProps) {
+export function AptosResultDisplay({ result, onReset, onContinueSearch }: AptosResultDisplayProps) {
+  const t = useTranslations('common');
   const [showPrivateKey, setShowPrivateKey] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
 
@@ -34,27 +38,12 @@ export function AptosResultDisplay({ result, onReset }: AptosResultDisplayProps)
   const shortId = result.address.slice(2, 10);
 
   const downloadTxt = () => {
-    const content = `VANITAS - APTOS VANITY
-===============================================
-Generated: ${new Date().toISOString()}
-
-ADDRESS:
-${result.address}
-
-PUBLIC KEY:
-${result.publicKey}
-
-PRIVATE KEY (Keep secret!):
-${result.privateKey}
-
-===============================================
-Import the hex private key into Petra, Martian, or another Aptos wallet.
-
-IMPORTANT:
-- Never share the private key
-- Store this file securely
-- Generated locally in your browser
-`;
+    const content = buildVanityExportTxt(t, {
+      title: `${t('exportTxtTitle')} — APTOS`,
+      address: result.address,
+      privateKey: result.privateKey,
+      extraLines: [`PUBLIC KEY:\n${result.publicKey}`],
+    });
     const blob = new Blob([content], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -187,13 +176,16 @@ IMPORTANT:
             attempts={result.attempts}
             duration={result.duration}
           />
+          {onContinueSearch && (
+            <button type="button" onClick={onContinueSearch} className="text-ink hover:text-accent">
+              {t('continueSearch')}
+            </button>
+          )}
           <button
             type="button"
             onClick={onReset}
             className="text-ink border-b border-ink pb-0.5 hover:text-accent hover:border-accent"
-          >
-            Forge another
-          </button>
+          >{t('forgeAnother')}</button>
         </div>
         <p className="text-micro text-muted">TXT / JSON include address + private key</p>
       </section>

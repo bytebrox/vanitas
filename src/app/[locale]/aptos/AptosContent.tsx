@@ -24,6 +24,7 @@ import {
   estimateAptosDifficulty,
 } from '@/lib/aptos-validation';
 import { saveRecentFind } from '@/lib/find-history';
+import { hasBlockingLookalikeErrors } from '@/lib/lookalike';
 import type { GeneratedAptosResult } from '@/types/aptos';
 import { RecentFinds } from '@/components/RecentFinds';
 import { Link } from '@/i18n/navigation';
@@ -77,7 +78,14 @@ export function AptosContent() {
   const prefixValid = validateAptosPrefix(prefix).valid;
   const suffixValid = validateAptosSuffix(suffix).valid;
   const hasPattern = prefix.length > 0 || suffix.length > 0;
-  const canStart = prefixValid && suffixValid && hasPattern;
+  const patternBlocked = hasBlockingLookalikeErrors('aptos', prefix, suffix);
+  const canStart = prefixValid && suffixValid && hasPattern && !patternBlocked;
+
+  const handleContinueSearch = useCallback(() => {
+    reset();
+    requestForgeNotifyPermission();
+    start(config);
+  }, [reset, start, config]);
 
   const generateShareLink = useCallback(() => {
     const params = new URLSearchParams();
@@ -101,7 +109,7 @@ export function AptosContent() {
           <FadeIn className="space-y-8 sm:space-y-12">
             {result ? (
               <>
-                <AptosResultDisplay result={result} onReset={reset} />
+                <AptosResultDisplay result={result} onReset={reset} onContinueSearch={handleContinueSearch} />
                 <RecentFinds chain="aptos" refreshKey={historyKey} />
               </>
             ) : (
