@@ -13,10 +13,12 @@ import {
   TronDifficultyDisplay,
   TronResultDisplay,
   TronModeToggle,
+  ForgePatternHints,
 } from '@/components';
 import { Header } from '@/components/Header';
 import { useTronGenerator } from '@/hooks/useTronGenerator';
 import { useSound } from '@/hooks/useSound';
+import { useForgeRunUi, requestForgeNotifyPermission } from '@/hooks/useForgeRunUi';
 import {
   validateTronPrefix,
   validateTronSuffix,
@@ -42,6 +44,14 @@ export function TronContent() {
 
   const { status, config, stats, result } = state;
   const { prefix, suffix, threads, caseSensitive, mode } = config;
+
+  useForgeRunUi({
+    status,
+    forgingLabel: tCommon('tabForging'),
+    foundLabel: tCommon('tabFound'),
+    notifyTitle: tCommon('notifyTitle'),
+    notifyBody: tCommon('notifyBody'),
+  });
 
   useEffect(() => {
     if (result && result !== prevResultRef.current) {
@@ -140,6 +150,8 @@ export function TronContent() {
                   />
                 </div>
 
+                <ForgePatternHints chain={"tron"} prefix={prefix} suffix={suffix} />
+
                 <div>
                   <p className="text-micro uppercase tracking-[0.2em] text-muted mb-4">{tSteps('forge')}</p>
                   <GeneratorControls
@@ -147,7 +159,9 @@ export function TronContent() {
                     threads={threads}
                     maxThreads={maxThreads}
                     onStart={() => {
-                      if (canStart) start(config);
+                      if (!canStart) return;
+                      requestForgeNotifyPermission();
+                      start(config);
                     }}
                     onStop={stop}
                     onThreadsChange={(value) => updateConfig({ threads: value })}

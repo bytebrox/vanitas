@@ -35,21 +35,21 @@ export function ResultDisplay({ result, onReset }: ResultDisplayProps) {
   };
 
   const downloadTxt = () => {
-    const content = `VANITAS - SOLANA KEYPAIR
+    const content = `${t('exportTxtTitle')}
 ============================
-Generated: ${new Date().toISOString()}
+${t('exportTxtGenerated')}: ${new Date().toISOString()}
 
-PUBLIC KEY (Address):
+${t('exportTxtPublic')}:
 ${result.publicKey}
 
-PRIVATE KEY (Keep secret!):
+${t('exportTxtPrivate')}:
 ${result.privateKey}
 
 ============================
-IMPORTANT:
-- Never share your private key
-- Store this file securely
-- This keypair was generated locally in your browser
+${t('exportTxtImportant')}:
+- ${t('exportTxtNeverShare')}
+- ${t('exportTxtStoreSecure')}
+- ${t('exportTxtLocal')}
 `;
 
     const blob = new Blob([content], { type: 'text/plain' });

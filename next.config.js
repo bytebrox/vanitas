@@ -74,7 +74,7 @@ const embedHeaders = [
   },
 ];
 
-const localeOpt = ':locale(en|de|es|pt|zh|ja)?';
+const localeOpt = ':locale(en|de|es|pt|fr|it|tr|id|vi|th|zh|ja|ko)?';
 
 const nextConfig = {
   async headers() {

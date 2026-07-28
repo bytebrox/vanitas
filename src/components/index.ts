@@ -11,6 +11,7 @@ export { DifficultyDisplay } from './DifficultyDisplay';
 export { StatsDisplay } from './StatsDisplay';
 export { ResultDisplay } from './ResultDisplay';
 export { GeneratorControls } from './GeneratorControls';
+export { ForgePatternHints } from './ForgePatternHints';
 export { EthModeToggle } from './EthModeToggle';
 export { EthPatternInput } from './EthPatternInput';
 export { EthDifficultyDisplay } from './EthDifficultyDisplay';

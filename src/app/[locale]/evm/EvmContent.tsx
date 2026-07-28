@@ -17,10 +17,12 @@ import {
   EthPatternInput,
   EthDifficultyDisplay,
   EthResultDisplay,
+  ForgePatternHints,
 } from '@/components';
 import { EvmHeader } from './EvmHeader';
 import { useEthGenerator } from '@/hooks/useEthGenerator';
 import { useSound } from '@/hooks/useSound';
+import { useForgeRunUi, requestForgeNotifyPermission } from '@/hooks/useForgeRunUi';
 import { validateEthPrefix, validateEthSuffix, estimateEthDifficulty } from '@/lib/eth-validation';
 import type { EthMode, GeneratedEthResult } from '@/types/eth';
 import { Link } from '@/i18n/navigation';
@@ -42,6 +44,14 @@ export function EvmContent() {
   const { status, config, stats, result } = state;
   const { prefix, suffix, threads, mode, create2Salt, create2InitCodeHash, create2DeployerKey } =
     config;
+
+  useForgeRunUi({
+    status,
+    forgingLabel: tCommon('tabForging'),
+    foundLabel: tCommon('tabFound'),
+    notifyTitle: tCommon('notifyTitle'),
+    notifyBody: tCommon('notifyBody'),
+  });
 
   useEffect(() => {
     if (result && result !== prevResultRef.current) {
@@ -102,7 +112,9 @@ export function EvmContent() {
   const canStart = prefixValid && suffixValid && hasPattern && create2Ok;
 
   const handleStart = useCallback(() => {
-    if (canStart) start(config);
+    if (!canStart) return;
+    requestForgeNotifyPermission();
+    start(config);
   }, [canStart, config, start]);
 
   const handleModeChange = useCallback(
@@ -223,6 +235,8 @@ export function EvmContent() {
                     currentRate={stats.attemptsPerSecond}
                   />
                 </div>
+
+                <ForgePatternHints chain="evm" prefix={prefix} suffix={suffix} />
 
                 <div>
                   <p className="text-micro uppercase tracking-[0.2em] text-muted mb-4">{tSteps('forge')}</p>

@@ -33,6 +33,7 @@ export function GeneratorControls({
   const t = useTranslations('common');
   const isRunning = status === 'running';
   const canStart = !disabled && (status === 'idle' || status === 'stopped' || status === 'found');
+  const startLabel = status === 'stopped' ? t('resume') : t('forge');
 
   return (
     <div className="flex flex-col gap-6 sm:gap-8">
@@ -83,7 +84,7 @@ export function GeneratorControls({
       <div className="w-full sm:w-auto">
         {isRunning ? (
           <button type="button" onClick={onStop} className="btn-danger w-full sm:w-auto sm:min-w-[12rem]">
-            {t('stop')}
+            {t('pause')}
           </button>
         ) : (
           <button
@@ -92,7 +93,7 @@ export function GeneratorControls({
             disabled={!canStart}
             className={`btn-primary w-full sm:w-auto sm:min-w-[12rem] ${!canStart ? 'opacity-40 cursor-not-allowed' : ''}`}
           >
-            {t('forge')}
+            {startLabel}
           </button>
         )}
       </div>

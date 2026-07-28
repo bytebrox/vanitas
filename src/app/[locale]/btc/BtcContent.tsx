@@ -13,10 +13,12 @@ import {
   BtcPatternInput,
   BtcDifficultyDisplay,
   BtcResultDisplay,
+  ForgePatternHints,
 } from '@/components';
 import { Header } from '@/components/Header';
 import { useBtcGenerator } from '@/hooks/useBtcGenerator';
 import { useSound } from '@/hooks/useSound';
+import { useForgeRunUi, requestForgeNotifyPermission } from '@/hooks/useForgeRunUi';
 import { validateBtcPrefix, validateBtcSuffix, estimateBtcDifficulty } from '@/lib/btc-validation';
 import { saveRecentFind } from '@/lib/find-history';
 import type { BtcMode, GeneratedBtcResult } from '@/types/btc';
@@ -38,6 +40,14 @@ export function BtcContent() {
 
   const { status, config, stats, result } = state;
   const { prefix, suffix, threads, mode, caseSensitive } = config;
+
+  useForgeRunUi({
+    status,
+    forgingLabel: tCommon('tabForging'),
+    foundLabel: tCommon('tabFound'),
+    notifyTitle: tCommon('notifyTitle'),
+    notifyBody: tCommon('notifyBody'),
+  });
 
   useEffect(() => {
     if (result && result !== prevResultRef.current) {
@@ -136,13 +146,23 @@ export function BtcContent() {
                   />
                 </div>
 
+                <ForgePatternHints
+                  chain={mode === 'legacy' ? 'btc-legacy' : 'btc-bech32'}
+                  prefix={prefix}
+                  suffix={suffix}
+                />
+
                 <div>
                   <p className="text-micro uppercase tracking-[0.2em] text-muted mb-4">{tSteps('forge')}</p>
                   <GeneratorControls
                     status={status}
                     threads={threads}
                     maxThreads={maxThreads}
-                    onStart={() => { if (canStart) start(config); }}
+                    onStart={() => {
+                      if (!canStart) return;
+                      requestForgeNotifyPermission();
+                      start(config);
+                    }}
                     onStop={stop}
                     onThreadsChange={(value) => updateConfig({ threads: value })}
                     disabled={!canStart}

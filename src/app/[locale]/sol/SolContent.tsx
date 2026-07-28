@@ -19,9 +19,11 @@ import {
   ContentWithSide,
   SolModeToggle,
   TokenResultDisplay,
+  ForgePatternHints,
 } from '@/components';
 import { useGenerator } from '@/hooks/useGenerator';
 import { useSound } from '@/hooks/useSound';
+import { useForgeRunUi, requestForgeNotifyPermission } from '@/hooks/useForgeRunUi';
 import { validatePrefix, validateSuffix, estimateDifficulty } from '@/lib/validation';
 import type { SolMode } from '@/types/sol';
 import type { GeneratedKeypair } from '@/types';
@@ -43,6 +45,14 @@ export function SolContent() {
 
   const { status, config, stats, result } = state;
   const { prefix, suffix, caseSensitive, threads } = config;
+
+  useForgeRunUi({
+    status,
+    forgingLabel: tCommon('tabForging'),
+    foundLabel: tCommon('tabFound'),
+    notifyTitle: tCommon('notifyTitle'),
+    notifyBody: tCommon('notifyBody'),
+  });
 
   useEffect(() => {
     if (result && result !== prevResultRef.current) {
@@ -84,7 +94,9 @@ export function SolContent() {
   const canStart = prefixValid && suffixValid && hasPattern;
 
   const handleStart = useCallback(() => {
-    if (canStart) start(config);
+    if (!canStart) return;
+    requestForgeNotifyPermission();
+    start(config);
   }, [canStart, config, start]);
 
   const handleModeChange = useCallback(
@@ -153,6 +165,8 @@ export function SolContent() {
                     currentRate={stats.attemptsPerSecond}
                   />
                 </div>
+
+                <ForgePatternHints chain="sol" prefix={prefix} suffix={suffix} />
 
                 <div>
                   <p className="text-micro uppercase tracking-[0.2em] text-muted mb-4">{tSteps('forge')}</p>

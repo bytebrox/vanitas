@@ -80,7 +80,51 @@
     "attemptsLabel": "denemeler",
     "charsDays": "{n} karakterleri günler veya haftalar sürebilir.",
     "charsHours": "{n} karakterleri saatler sürebilir.",
-    "considerSuffix": "Yalnızca son eki veya büyük/küçük harfe duyarlı olmayı düşünün."
+    "considerSuffix": "Yalnızca son eki veya büyük/küçük harfe duyarlı olmayı düşünün.",
+    "pause": "Duraklat",
+    "resume": "Sürdür",
+    "tabForging": "Forge ediliyor…",
+    "tabFound": "Bulundu!",
+    "notifyTitle": "Vanitas — adres bulundu",
+    "notifyBody": "Gösteriş deseniniz eşleşti. Anahtarı kaydetmek için sekmeye dönün.",
+    "exportTxtTitle": "VANITAS ANAHTAR TAKIMI",
+    "exportTxtGenerated": "Oluşturuldu",
+    "exportTxtPublic": "GENEL ANAHTAR (Adres)",
+    "exportTxtPrivate": "ÖZEL ANAHTAR (Gizli tutun!)",
+    "exportTxtImportant": "ÖNEMLİ",
+    "exportTxtNeverShare": "Özel anahtarınızı asla paylaşmayın",
+    "exportTxtStoreSecure": "Bu dosyayı güvenli bir şekilde saklayın",
+    "exportTxtLocal": "Bu anahtar çifti tarayıcınızda yerel olarak oluşturuldu",
+    "entropyTitle": "Anahtar güvenliği",
+    "entropySecure": "256 bit entropi · kriptografik olarak güvenli",
+    "entropyWarning": "Güvenlik uyarısı — ayrıntılar için genişletin",
+    "entropyBits": "{n} bit",
+    "entropyMaxEd25519": "256 bit = Ed25519 anahtarları için maksimum",
+    "entropyVerified": "Doğrulandı",
+    "entropyNotAvailable": "Müsait değil",
+    "entropyNative": "Yerli",
+    "entropyFallback": "Geri çekilmek",
+    "entropySourceWebCryptoEd": "Web Kripto API'si (Yerel Ed25519)",
+    "entropySourceWebCrypto": "Web Kripto API'si (CSPRNG)",
+    "entropySourceMath": "Geri dönüş (Math.random)",
+    "entropyDetailSecure": "Tarayıcınız donanım destekli kriptografik rastgele sayı oluşturma (CSPRNG) kullanıyor. Bu, anahtar üretimi için altın standarttır.",
+    "entropyDetailOk": "Kriptografik olarak güvenli sözde rastgele sayı üretecinin kullanılması. Anahtarlar güvende.",
+    "entropyDetailBad": "Tarayıcınız güvenli rastgele oluşturmayı desteklemiyor. Anahtarlar öngörülebilir olabilir!",
+    "entropyRandomSample": "Rastgele örnek",
+    "entropySample": "örnek",
+    "entropySpeed": "hız",
+    "entropyUniform": "üniforma",
+    "entropyPass": "geçmek",
+    "entropyFail": "hata",
+    "entropyTestPassed": "İstatistiksel test geçildi (p={p})",
+    "entropyTestFailed": "İstatistiksel test başarısız oldu — RNG kalitesinden ödün verilmiş olabilir",
+    "entropyTechnical": "Teknik detaylar",
+    "entropyAlgo": "Algoritma: Ed25519 (EdDSA)",
+    "entropyKeySize": "Anahtar boyutu: 256 bit (32 bayt)",
+    "entropySigSize": "İmza boyutu: 512 bit (64 bayt)",
+    "entropySecLevel": "Güvenlik düzeyi: ~128 bit eşdeğeri",
+    "entropyStandard": "Standart: RFC 8032",
+    "unknown": "Bilinmiyor"
   },
   "nav": {
     "language": "Dil",
@@ -158,7 +202,7 @@
     }
   },
   "footer": {
-    "blurb": "Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano ve XRP için istemci tarafı makyaj araçları. Proje jetonu yok. Bu cihazdan hiçbir anahtar çıkmıyor. [Bytebrox](https://x.com/bytebrox) tarafından geliştirildi.",
+    "blurb": "Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano ve XRP için istemci tarafı vanity araçları. Proje jetonu yok. Bu cihazdan hiçbir anahtar çıkmıyor. [Bytebrox](https://x.com/bytebrox) tarafından geliştirildi.",
     "donateSol": "SOL'a Bağış Yapın",
     "solscan": "Sol tarama",
     "home": "Ana sayfa",
@@ -193,7 +237,7 @@
   },
   "landing": {
     "eyebrow": "Müşteri tarafı gösteriş dövmesi",
-    "title": "Vanitalar",
+    "title": "Vanitas",
     "subtitle": "Bir zincir seç. Anahtarlar bu tarayıcıda kalır.",
     "enterForge": "Dövmeyi girin →",
     "preferTerminal": "Terminali mi tercih edersiniz?",
@@ -222,12 +266,12 @@
       "aptos": {
         "name": "Aptos",
         "title": "Ed25519 0x",
-        "blurb": "Petra ve Marslı için büyü makyajı."
+        "blurb": "Petra ve Marslı için büyü vanityı."
       },
       "sui": {
         "name": "Sui",
         "title": "Ed25519 0x",
-        "blurb": "Sui Wallet & Suite için altıgen makyaj masası."
+        "blurb": "Sui Wallet & Suite için altıgen vanity masası."
       },
       "ton": {
         "name": "TON",
@@ -432,6 +476,11 @@
     },
     "xrp": {
       "headerBlurb": "Tamamen bu tarayıcıda gösterişli XRP Ledger klasik adresleri (r…) oluşturun. Xaman ve diğer XRPL cüzdanlarına aktarın."
+    },
+    "hints": {
+      "title": "Desen kontrolü",
+      "openLookalike": "Tam lookalike kontrolü",
+      "openLab": "Pattern lab’i aç"
     }
   },
   "tools": {
@@ -706,7 +755,7 @@
       "shortLabel": "Kısa",
       "shortBlurb": "Vanitas ile yerel olarak oluşturulan özel adres; anahtarlar asla cihazdan ayrılmaz. Desen eşleşmesi istemci tarafında doğrulandı.",
       "launchpadLabel": "Başlatma Çubuğu",
-      "launchpadBlurb": "Vanitas.fun aracılığıyla tarayıcıda oluşturulan özel nane / makyaj cüzdanı. Herkesin modeli doğrulamasını sağlamak için kanıt bağlantısını paylaşın; özel anahtarlar sayfanın dışında kalır.",
+      "launchpadBlurb": "Vanitas.fun aracılığıyla tarayıcıda oluşturulan özel nane / vanity cüzdanı. Herkesin modeli doğrulamasını sağlamak için kanıt bağlantısını paylaşın; özel anahtarlar sayfanın dışında kalır.",
       "linkProof": "Prova sayfası",
       "linkLab": "Desen laboratuvarı",
       "linkSecurity": "Güvenlik"
@@ -722,7 +771,7 @@
     },
     "embedProof": {
       "eyebrow": "Vanita kanıtı",
-      "brand": "Vanitalar",
+      "brand": "Vanitas",
       "missingParams": "Eksik kanıt parametreleri.",
       "openProof": "Açık kanıt",
       "site": "Vanitas.fun"
@@ -865,7 +914,7 @@
           },
           "pump": {
             "q": "Darphanelerin “pompa” ile bitmesi gerekiyor mu?",
-            "a": "Hayır. Bu son ek bir protokol kuralı değil, pazarlamadır. Başlatma paneli özel bir nane anahtar çiftini kabul ederse geçerli herhangi bir Base58 makyaj modeli çalışır."
+            "a": "Hayır. Bu son ek bir protokol kuralı değil, pazarlamadır. Başlatma paneli özel bir nane anahtar çiftini kabul ederse geçerli herhangi bir Base58 vanity modeli çalışır."
           }
         }
       },
@@ -874,7 +923,7 @@
         "n": "03",
         "items": {
           "networks": {
-            "q": "EVM makyaj anahtarı hangi ağlarda çalışır?",
+            "q": "EVM vanity anahtarı hangi ağlarda çalışır?",
             "a": "Tüm EVM uyumlu zincirler aynı adres türetmeyi paylaşır. Ethereum, Base, Arbitrum, Optimism, BSC, Polygon, Avalanche C-Chain ve diğerlerinde bir anahtar → bir `0x` adresi."
           },
           "modes": {
@@ -1504,20 +1553,20 @@
     "home": {
       "title": "Solana, EVM, Bitcoin ve Tron Vanity Forge",
       "description": "Solana, EVM, Bitcoin ve Tron için istemci tarafı özel adresler oluşturuldu. Cüzdanlar, darphaneler ve sözleşmeler; anahtarlar bu tarayıcıdan asla ayrılmaz.",
-      "ogAlt": "Vanitas çok zincirli makyaj demirhanesi"
+      "ogAlt": "Vanitas çok zincirli vanity demirhanesi"
     },
     "sol": {
       "title": "Solana Vanity Adres Oluşturucu",
       "description": "Tamamen tarayıcınızda gösterişli Solana cüzdanı ve token nane adresleri oluşturun. Açık kaynak, istemci tarafı, bu cihazdan hiçbir anahtar çıkmıyor.",
-      "ogAlt": "Vanitas - Solana makyaj demirhanesi",
-      "ogTitle": "Solana Vanity Adres Oluşturucu | Vanitalar",
+      "ogAlt": "Vanitas - Solana vanity demirhanesi",
+      "ogTitle": "Solana Vanity Adres Oluşturucu | Vanitas",
       "ogDescription": "Forge gösterişli Solana cüzdanı ve nane istemci tarafı adresleri. Bu cihazdan hiçbir anahtar çıkmıyor.",
       "twitterDescription": "Forge gösterişli Solana cüzdanı ve nane istemci tarafı adresleri."
     },
     "evm": {
       "title": "EVM Özel Adres Oluşturucu",
       "description": "Forge vanity EVM cüzdanı ve sözleşmesi müşteri tarafına yöneliktir. Ethereum, Base, Arbitrum, Optimism, BSC ve daha fazlası için tek anahtar.",
-      "ogTitle": "EVM Özel Adres Oluşturucu | Vanitalar",
+      "ogTitle": "EVM Özel Adres Oluşturucu | Vanitas",
       "ogDescription": "Forge vanity 0x cüzdan ve sözleşme istemci tarafı adresleri. Ethereum, BNB, Base, Arbitrum ve her EVM zincirinde aynı anahtar.",
       "twitterDescription": "Forge vanity 0x cüzdan ve sözleşme istemci tarafı adresleri. Her EVM zincirinde aynı anahtar.",
       "ogAlt": "Vanitas — EVM özel cüzdan ve sözleşme oluşturucu"
@@ -1553,46 +1602,46 @@
     "faq": {
       "title": "FAQ",
       "description": "Her Vanitas dövmesinde cevaplar: kalıplar, modlar, güvenlik, kanıt ve CLI.",
-      "ogTitle": "SSS | Vanitalar",
+      "ogTitle": "SSS | Vanitas",
       "ogDescription": "Konuya göre yanıtlar — her zincir, güvenlik, kanıt, CLI ve kullanım.",
-      "ogAlt": "Vanitalar SSS"
+      "ogAlt": "Vanitas SSS"
     },
     "how-it-works": {
       "title": "Nasıl Çalışır?",
       "description": "Vanitas, Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano ve XRP'de özel adresleri nasıl oluşturuyor: çalışanlar, modlar (mint, CREATE, CREATE2), bulma kanıtı, CLI ve istemci tarafı güvenliğinin nasıl doğrulanacağı.",
-      "ogTitle": "Nasıl Çalışır | Vanitalar",
+      "ogTitle": "Nasıl Çalışır | Vanitas",
       "ogDescription": "Her demirhanenin, çalışan mimarisinin, konuşlandırma modlarının ve doğrulamanın tam turu.",
       "ogAlt": "Vanitas — gösterişli adres oluşturma nasıl çalışır?"
     },
     "security": {
       "title": "Güvenlik",
       "description": "Vanitas güven modeli — anahtarlar tarayıcınızda kalır. Tehdit sınırları ve doğrulama.",
-      "ogTitle": "Güvenlik | Vanitalar",
+      "ogTitle": "Güvenlik | Vanitas",
       "ogDescription": "Mimari, tehditler, kripto, başlıklar ve doğrulama; anahtarlar tarayıcınızda kalır.",
       "ogAlt": "Vanitas güvenliği — anahtarlar tarayıcınızda kalır"
     },
     "lab": {
       "title": "Desen Laboratuvarı",
       "description": "Madencilik yapmadan önce her Vanitas demirhanesi için zorluk matrisi, nadirlik tahminleri ve toplu model kuyruğu.",
-      "ogTitle": "Desen Laboratuvarı | Vanitalar",
+      "ogTitle": "Desen Laboratuvarı | Vanitas",
       "ogDescription": "Zorluk matrisi, nadirlik tahminleri ve toplu model kuyruğu — madencilik yapmadan önce."
     },
     "lookalike": {
       "title": "Benzerlik Kontrolü",
       "description": "Gösteriş kalıplarını işlemeden önce yasak Base58 gliflerini, Tron harf tuzaklarını ve alfabe uyumsuzluklarını yakalayın.",
-      "ogTitle": "Benzerlik Kontrolü | Vanitalar",
+      "ogTitle": "Benzerlik Kontrolü | Vanitas",
       "ogDescription": "Öğütmeden önce 0/O, I/l, Tron harfi ve alfabe uyumsuzluklarını yakalayın."
     },
     "create2": {
       "title": "CREATE2 Yardımcısı",
       "description": "initCodeHash'a karma dağıtım bayt kodu, konuşlandırıcı + salt'tan CREATE2 adreslerini önizleyin ve EVM forge'a derin bağlantı — tamamı istemci tarafında.",
-      "ogTitle": "CREATE2 Yardımcısı | Vanitalar",
+      "ogTitle": "CREATE2 Yardımcısı | Vanitas",
       "ogDescription": "Bayt kodundan initCodeHash, tuz önizlemesi, öğütmeden önce adres kontrolü."
     },
     "brand": {
       "title": "Marka",
       "description": "Vanitas için yerleştirilebilir prova widget'ı ve hafif markalama kiti — marka işareti, renkler, iframe parçacıkları. Özel anahtar yok.",
-      "ogTitle": "Marka | Vanitalar",
+      "ogTitle": "Marka | Vanitas",
       "ogDescription": "Yerleştirilebilir prova widget'ı ve hafif markalama kiti."
     },
     "proof": {
@@ -1602,7 +1651,7 @@
     "audit": {
       "title": "Canlı Denetim",
       "description": "Vanitas'ta sekiz yerel kontrol çalıştırın: Web Kripto, RNG kalitesi, üretim sırasında sıfır ağ, CSP, çalışan izolasyonu ve yapı bütünlüğü.",
-      "ogTitle": "Canlı Denetim | Vanitalar",
+      "ogTitle": "Canlı Denetim | Vanitas",
       "ogDescription": "Tarayıcınızda sekiz otomatik kontrol. Hiçbir şey sahte değil, hiçbir şey gönderilmiyor.",
       "ogAlt": "Vanitas canlı güvenlik denetimi"
     },
@@ -1621,19 +1670,19 @@
     },
     "eth": {
       "title": "ETH Özel Adres Oluşturucu",
-      "description": "EVM makyaj demirhanesine yönlendirir."
+      "description": "EVM vanity demirhanesine yönlendirir."
     },
     "terms": {
       "title": "Kullanım Koşulları",
       "description": "Vanitas'ın kullanım koşulları - müşteri tarafı özel adres sahteciliği. Hesap yok, anahtarlar tarayıcınızda kalıyor.",
-      "ogTitle": "Kullanım Koşulları | Vanitalar",
-      "ogDescription": "Vanitas makyaj makinesini ve ilgili araçları kullanma şartları.",
+      "ogTitle": "Kullanım Koşulları | Vanitas",
+      "ogDescription": "Vanitas vanity aracıni ve ilgili araçları kullanma şartları.",
       "ogAlt": "Vanitas'ın kullanım koşulları"
     },
     "privacy": {
       "title": "Mahremiyet",
       "description": "Vanitas'ın gizlilik politikası - cihazınızda kalanlar, tema çerezleri ve toplamadıklarımız.",
-      "ogTitle": "Gizlilik | Vanitalar",
+      "ogTitle": "Gizlilik | Vanitas",
       "ogDescription": "Vanitas gizliliği nasıl ele alıyor: yerel nesil, tema tercihi, anahtar teslimi yok.",
       "ogAlt": "Vanitas gizlilik ilkesi"
     }

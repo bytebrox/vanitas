@@ -13,10 +13,12 @@ import {
   TonDifficultyDisplay,
   TonResultDisplay,
   TonModeToggle,
+  ForgePatternHints,
 } from '@/components';
 import { Header } from '@/components/Header';
 import { useTonGenerator } from '@/hooks/useTonGenerator';
 import { useSound } from '@/hooks/useSound';
+import { useForgeRunUi, requestForgeNotifyPermission } from '@/hooks/useForgeRunUi';
 import {
   validateTonPrefix,
   validateTonSuffix,
@@ -43,6 +45,14 @@ export function TonContent() {
 
   const { status, config, stats, result } = state;
   const { prefix, suffix, threads, mode } = config;
+
+  useForgeRunUi({
+    status,
+    forgingLabel: tCommon('tabForging'),
+    foundLabel: tCommon('tabFound'),
+    notifyTitle: tCommon('notifyTitle'),
+    notifyBody: tCommon('notifyBody'),
+  });
 
   useEffect(() => {
     if (result && result !== prevResultRef.current) {
@@ -141,6 +151,8 @@ export function TonContent() {
                   />
                 </div>
 
+                <ForgePatternHints chain={"ton"} prefix={prefix} suffix={suffix} />
+
                 <div>
                   <p className="text-micro uppercase tracking-[0.2em] text-muted mb-4">{tSteps('forge')}</p>
                   <GeneratorControls
@@ -148,7 +160,9 @@ export function TonContent() {
                     threads={threads}
                     maxThreads={maxThreads}
                     onStart={() => {
-                      if (canStart) start(config);
+                      if (!canStart) return;
+                      requestForgeNotifyPermission();
+                      start(config);
                     }}
                     onStop={stop}
                     onThreadsChange={(value) => updateConfig({ threads: value })}
