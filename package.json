@@ -23,7 +23,7 @@
     "next": "^16.2.1",
     "next-intl": "^4.13.4",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react-dom": "^19.2.8",
     "tweetnacl": "^1.0.3",
     "watsign": "^0.1.9"
   },
