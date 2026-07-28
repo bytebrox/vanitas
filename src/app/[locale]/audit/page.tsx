@@ -422,7 +422,7 @@ export default function AuditPage() {
                     <StatusIcon status={test.status} />
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                        <h3 className="font-semibold text-ink">{test.name}</h3>
+                        <h3 className="font-display font-semibold text-ink normal-case tracking-[0.03em]">{test.name}</h3>
                         {test.duration !== undefined && (
                           <span className="text-micro text-muted font-mono">{test.duration.toFixed(0)}ms</span>
                         )}

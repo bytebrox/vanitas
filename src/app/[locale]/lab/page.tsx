@@ -304,7 +304,7 @@ export default function LabPage() {
                             <p className="text-micro uppercase tracking-[0.14em] text-muted mb-1">
                               {String(idx + 1).padStart(2, '0')} · {item.analysis.label} · {modeLabel}
                             </p>
-                            <p className="font-display text-xl text-ink normal-case tracking-tight">
+                            <p className="font-display text-xl text-ink normal-case tracking-[0.02em]">
                               <span className="text-accent">{item.analysis.prefix || ''}</span>
                               <span className="text-ink/25">…</span>
                               <span className="text-accent">{item.analysis.suffix || ''}</span>

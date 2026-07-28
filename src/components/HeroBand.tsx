@@ -122,13 +122,13 @@ export function HeroBand({
                 {chain === 'xrp' && (
                   <XrpLogo className="w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 shrink-0 drop-shadow-sm" />
                 )}
-                <h1 className="font-display text-[2rem] leading-tight sm:text-5xl md:text-6xl font-semibold tracking-tight text-ink normal-case drop-shadow-sm">
+                <h1 className="font-display text-[2rem] leading-tight sm:text-5xl md:text-6xl font-semibold tracking-[0.02em] text-ink normal-case drop-shadow-sm">
                   {title}
                 </h1>
               </div>
             ) : (
               <div className="flex flex-col items-center gap-2.5 sm:gap-3 max-w-[20rem] sm:max-w-3xl">
-                <h1 className="font-display text-[2rem] leading-tight sm:text-5xl md:text-6xl font-semibold tracking-tight text-ink normal-case drop-shadow-sm">
+                <h1 className="font-display text-[2rem] leading-tight sm:text-5xl md:text-6xl font-semibold tracking-[0.02em] text-ink normal-case drop-shadow-sm">
                   {title}
                 </h1>
                 {chain === 'evm' && (

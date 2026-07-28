@@ -171,7 +171,7 @@ export function DocSearchLoop() {
         </svg>
 
         <div className="mt-2 text-center px-2 min-h-[4.5rem]">
-          <p className="font-display text-lg font-semibold text-ink normal-case tracking-tight">
+          <p className="font-display text-lg font-semibold text-ink normal-case tracking-[0.02em]">
             {step.title}
           </p>
           <p className="text-sm text-muted mt-1 max-w-md mx-auto leading-relaxed">{step.detail}</p>
@@ -255,7 +255,7 @@ export function DocDifficultyScale() {
         </div>
 
         <div className="text-center">
-          <p className="font-display text-2xl font-semibold text-ink normal-case tracking-tight">
+          <p className="font-display text-2xl font-semibold text-ink normal-case tracking-[0.02em]">
             {formatAttempts(attempts)}
           </p>
           <p className="text-sm text-muted mt-1">

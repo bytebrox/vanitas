@@ -19,7 +19,7 @@ export function LegalPage({ ns }: { ns: LegalNamespace }) {
       <main className="px-4 sm:px-8 lg:px-12 pt-8 sm:pt-12 pb-8 sm:pb-12">
         <div className="max-w-2xl mx-auto">
           <p className="text-micro uppercase tracking-[0.16em] text-muted mb-3">{t('eyebrow')}</p>
-          <h1 className="font-display text-3xl sm:text-4xl font-semibold text-ink normal-case tracking-tight mb-4">
+          <h1 className="font-display text-3xl sm:text-4xl font-semibold text-ink normal-case tracking-[0.02em] mb-4">
             {t('title')}
           </h1>
           <p className="text-base sm:text-lg text-muted leading-relaxed mb-2">{t('intro')}</p>
@@ -32,7 +32,7 @@ export function LegalPage({ ns }: { ns: LegalNamespace }) {
                   <p className="text-micro uppercase tracking-[0.16em] text-muted mb-2">
                     {String(i + 1).padStart(2, '0')}
                   </p>
-                  <h2 className="font-display text-xl sm:text-2xl font-semibold text-ink normal-case tracking-tight mb-3">
+                  <h2 className="font-display text-xl sm:text-2xl font-semibold text-ink normal-case tracking-[0.02em] mb-3">
                     {section.title}
                   </h2>
                   <RichParagraph

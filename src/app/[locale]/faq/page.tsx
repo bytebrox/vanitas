@@ -63,7 +63,7 @@ function FaqAccordion({
               }}
               className="w-full py-5 flex items-start justify-between text-left gap-4 group"
             >
-              <h3 className="text-lg font-medium text-ink group-hover:text-accent transition-colors">
+              <h3 className="font-display text-lg font-medium text-ink normal-case tracking-[0.03em] group-hover:text-accent transition-colors">
                 {faq.question}
               </h3>
               <span
@@ -153,7 +153,7 @@ export default function FAQPage() {
                         <p className="text-micro uppercase tracking-[0.2em] text-muted mb-2">
                           {cat.n} — {cat.label}
                         </p>
-                        <h2 className="font-display text-xl sm:text-2xl font-semibold tracking-tight text-ink normal-case">
+                        <h2 className="font-display text-xl sm:text-2xl font-semibold tracking-[0.02em] text-ink normal-case">
                           {cat.label}
                         </h2>
                       </div>
@@ -162,7 +162,7 @@ export default function FAQPage() {
                         <p className="text-micro uppercase tracking-[0.2em] text-muted mb-2">
                           {cat.n} — {cat.label}
                         </p>
-                        <h2 className="font-display text-xl sm:text-2xl font-semibold tracking-tight text-ink normal-case mb-2">
+                        <h2 className="font-display text-xl sm:text-2xl font-semibold tracking-[0.02em] text-ink normal-case mb-2">
                           {cat.label}
                         </h2>
                       </>

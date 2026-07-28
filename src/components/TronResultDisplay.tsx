@@ -83,7 +83,7 @@ export function TronResultDisplay({ result, onReset, onContinueSearch }: TronRes
     <div className="space-y-10">
       <header className="border-b border-ink/15 pb-6">
         <p className="text-micro uppercase tracking-[0.2em] text-accent mb-2">Found</p>
-        <h2 className="text-2xl sm:text-3xl font-bold text-ink normal-case tracking-tight mb-2">
+        <h2 className="font-display text-2xl sm:text-3xl font-semibold text-ink normal-case tracking-[0.02em] mb-2">
           {isContract ? 'Contract address ready' : 'Tron address ready'}
         </h2>
         <p className="text-sm text-muted font-mono">

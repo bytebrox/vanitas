@@ -63,7 +63,7 @@ const VERIFY_SUBSECTIONS = ['network', 'offline', 'audit'] as const;
 function FaqRow({ q, a }: { q: string; a: string }) {
   return (
     <div className="py-5 border-b border-ink/10 last:border-0">
-      <h3 className="font-display text-lg font-semibold text-ink normal-case tracking-tight mb-2">
+      <h3 className="font-display text-lg font-semibold text-ink normal-case tracking-[0.02em] mb-2">
         {q}
       </h3>
       <RichParagraph
@@ -337,7 +337,7 @@ export default function SecurityPage() {
                         <p className="text-micro uppercase tracking-[0.16em] text-accent mb-2">
                           {t(`sections.verify.${sub}.n`)}
                         </p>
-                        <h3 className="font-display text-lg font-semibold text-ink normal-case mb-3">
+                        <h3 className="font-display text-lg font-semibold text-ink normal-case tracking-[0.03em] mb-3">
                           {t(`sections.verify.${sub}.title`)}
                         </h3>
                         <ol className="list-decimal list-inside space-y-1.5 text-sm">

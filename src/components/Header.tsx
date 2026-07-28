@@ -58,7 +58,7 @@ export function Header({
       >
         <div className="lg:w-1/2 lg:pr-8 xl:pr-12">
           <div className="w-full max-w-xl xl:max-w-2xl lg:ml-auto lg:pl-8 text-left lg:text-right">
-            <h2 className="font-display text-xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-ink normal-case leading-tight mb-3 sm:mb-4">
+            <h2 className="font-display text-xl sm:text-3xl md:text-4xl font-semibold tracking-[0.02em] text-ink normal-case leading-tight mb-3 sm:mb-4">
               {t(`${mode}.headline`)}
             </h2>
             <p className="text-sm sm:text-lg text-muted max-w-2xl leading-relaxed lg:ml-auto">

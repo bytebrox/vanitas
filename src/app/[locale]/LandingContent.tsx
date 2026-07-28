@@ -129,7 +129,7 @@ export function LandingContent() {
                     <p className="text-[0.65rem] uppercase tracking-[0.16em] text-muted mb-0.5">
                       {t(`forges.${key}.name`)}
                     </p>
-                    <p className="font-display text-base font-semibold text-ink normal-case tracking-tight leading-snug">
+                    <p className="font-display text-base font-semibold text-ink normal-case tracking-[0.02em] leading-snug">
                       {t(`forges.${key}.title`)}
                     </p>
                     <p className="text-[0.8rem] text-muted leading-snug normal-case tracking-normal mt-0.5 line-clamp-1">
@@ -161,7 +161,7 @@ export function LandingContent() {
                         FORGE_LOGO[key]
                       )}
                     </div>
-                    <p className="font-display text-xl font-semibold text-ink normal-case tracking-tight mb-1">
+                    <p className="font-display text-xl font-semibold text-ink normal-case tracking-[0.02em] mb-1">
                       {t(`forges.${key}.title`)}
                     </p>
                     <p className="text-sm text-muted leading-relaxed normal-case tracking-normal">

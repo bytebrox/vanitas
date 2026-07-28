@@ -144,14 +144,14 @@ export function DocSection({
             className="w-[7rem] sm:w-[8.5rem] md:w-[9.5rem] mb-5 sm:mb-6"
           />
           <p className="text-micro uppercase tracking-[0.2em] text-muted mb-2">{n}</p>
-          <h2 className="font-display text-xl sm:text-2xl font-semibold tracking-tight text-ink normal-case">
+          <h2 className="font-display text-xl sm:text-2xl font-semibold tracking-[0.02em] text-ink normal-case">
             {title}
           </h2>
         </div>
       ) : (
         <div className="relative z-[1]">
           <p className="text-micro uppercase tracking-[0.2em] text-muted mb-2">{n}</p>
-          <h2 className="font-display text-xl sm:text-2xl font-semibold tracking-tight text-ink normal-case mb-5">
+          <h2 className="font-display text-xl sm:text-2xl font-semibold tracking-[0.02em] text-ink normal-case mb-5">
             {title}
           </h2>
         </div>
@@ -163,7 +163,7 @@ export function DocSection({
 
 export function DocSubheading({ children }: { children: ReactNode }) {
   return (
-    <h3 className="font-display text-lg font-semibold text-ink normal-case tracking-tight pt-2">
+    <h3 className="font-display text-lg font-semibold text-ink normal-case tracking-[0.02em] pt-2">
       {children}
     </h3>
   );

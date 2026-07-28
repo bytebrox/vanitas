@@ -161,7 +161,7 @@ export default function LookalikePage() {
                         <p className="text-micro uppercase tracking-[0.16em] mb-1">
                           {t(`severity.${f.severity}`)}
                         </p>
-                        <p className="font-display text-lg font-semibold text-ink normal-case tracking-tight">
+                        <p className="font-display text-lg font-semibold text-ink normal-case tracking-[0.02em]">
                           {title}
                         </p>
                         {detail ? (

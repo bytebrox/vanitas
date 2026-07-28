@@ -11,7 +11,8 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ['IBM Plex Sans', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        display: ['EB Garamond', 'Georgia', 'Times New Roman', 'serif'],
+        display: ['Cinzel', 'Palatino Linotype', 'Palatino', 'Times New Roman', 'serif'],
+        brand: ['Cinzel', 'Palatino Linotype', 'Palatino', 'Times New Roman', 'serif'],
         mono: ['IBM Plex Mono', 'Menlo', 'Monaco', 'monospace'],
       },
       colors: {
@@ -24,9 +25,9 @@ const config: Config = {
         border: 'rgb(var(--border) / <alpha-value>)',
       },
       fontSize: {
-        display: ['4.5rem', { lineHeight: '1', letterSpacing: '-0.02em' }],
-        headline: ['2.5rem', { lineHeight: '1.15', letterSpacing: '-0.015em' }],
-        title: ['1.5rem', { lineHeight: '1.25', letterSpacing: '-0.01em' }],
+        display: ['4.5rem', { lineHeight: '1.05', letterSpacing: '0.02em' }],
+        headline: ['2.5rem', { lineHeight: '1.2', letterSpacing: '0.025em' }],
+        title: ['1.5rem', { lineHeight: '1.3', letterSpacing: '0.03em' }],
         body: ['1rem', { lineHeight: '1.6', letterSpacing: '0' }],
         caption: ['0.875rem', { lineHeight: '1.4', letterSpacing: '0.01em' }],
         micro: ['0.75rem', { lineHeight: '1.4', letterSpacing: '0.02em' }],

@@ -89,7 +89,7 @@ export function Footer({ compact = false }: FooterProps) {
         }`}
       >
         <div className={compact ? '' : 'md:max-w-sm'}>
-          <p className="font-display font-semibold normal-case tracking-tight text-ink text-base sm:text-lg mb-1 sm:mb-2">
+          <p className="font-display font-semibold normal-case tracking-[0.02em] text-ink text-base sm:text-lg mb-1 sm:mb-2">
             Vanitas
           </p>
           <p

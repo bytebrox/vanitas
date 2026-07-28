@@ -1,5 +1,5 @@
 /* Import fonts - must be first */
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -47,15 +47,15 @@
   }
 
   h1 {
-    @apply font-display text-display font-semibold tracking-tight normal-case;
+    @apply font-display text-display font-semibold tracking-[0.02em] normal-case;
   }
 
   h2 {
-    @apply font-display text-headline font-semibold tracking-tight normal-case;
+    @apply font-display text-headline font-semibold tracking-[0.025em] normal-case;
   }
 
   h3 {
-    @apply font-display text-title font-medium tracking-tight normal-case;
+    @apply font-display text-title font-medium tracking-[0.03em] normal-case;
   }
 
   code,
@@ -237,6 +237,105 @@
     background: linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.35) 50%, transparent 75%);
     background-size: 200% 100%;
     animation: shimmer 1.5s infinite;
+  }
+
+  /* Brand mark: ink bleed + forge spark (navbar wordmark) */
+  .brand-ink-fill {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .group\/brand:hover .brand-ink-fill,
+  .group\/brand:focus-visible .brand-ink-fill {
+    clip-path: inset(0 0 0 0);
+  }
+
+  .brand-spark {
+    position: absolute;
+    left: 0;
+    bottom: 0.08em;
+    width: 3px;
+    height: 3px;
+    border-radius: 0.5px;
+    background: rgb(var(--accent));
+    box-shadow: 0 0 0 1px rgb(var(--accent) / 0.25);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .brand-spark--mark {
+    bottom: 1px;
+    left: 2px;
+  }
+
+  .group\/brand:hover .brand-spark,
+  .group\/brand:focus-visible .brand-spark {
+    animation: brand-forge-spark 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .group\/brand:hover .brand-spark--mark,
+  .group\/brand:focus-visible .brand-spark--mark {
+    animation-name: brand-forge-spark-mark;
+  }
+
+  @keyframes brand-forge-spark {
+    0% {
+      opacity: 0;
+      left: 0;
+      transform: scale(0.5);
+    }
+    12% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    78% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      left: calc(100% - 3px);
+      transform: scale(0.85);
+    }
+  }
+
+  @keyframes brand-forge-spark-mark {
+    0% {
+      opacity: 0;
+      left: 2px;
+      transform: scale(0.5);
+    }
+    12% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    78% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      left: calc(100% - 5px);
+      transform: scale(0.85);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .brand-ink-fill {
+      transition: none;
+    }
+
+    .group\/brand:hover .brand-ink-fill,
+    .group\/brand:focus-visible .brand-ink-fill {
+      clip-path: inset(0 0 0 0);
+    }
+
+    .group\/brand:hover .brand-spark,
+    .group\/brand:focus-visible .brand-spark,
+    .group\/brand:hover .brand-spark--mark,
+    .group\/brand:focus-visible .brand-spark--mark {
+      animation: none;
+      opacity: 0;
+    }
   }
 
   .grain-overlay {

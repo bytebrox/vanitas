@@ -43,7 +43,7 @@ export default function NotFound() {
                 <p className="text-micro uppercase tracking-[0.2em] text-accent mb-3">
                   {t('errorLabel')}
                 </p>
-                <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-ink normal-case leading-tight mb-4">
+                <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold tracking-[0.02em] text-ink normal-case leading-tight mb-4">
                   {t('heading')}
                 </h1>
                 <p className="text-base sm:text-lg text-muted leading-relaxed mb-10 max-w-md">

@@ -191,16 +191,16 @@ export function Navbar() {
       <div className="relative flex items-center justify-between gap-3 min-h-[2.75rem]">
         <Link
           href="/"
-          className="pointer-events-auto inline-flex items-center text-ink leading-none tracking-tight drop-shadow-sm hover:text-accent transition-colors"
+          className="pointer-events-auto group/brand inline-flex items-center text-ink leading-none tracking-tight drop-shadow-sm focus-visible:outline-none"
           aria-label="Vanitas"
         >
-          <span className="md:hidden inline-flex items-center" aria-hidden>
+          <span className="relative md:hidden inline-flex items-center" aria-hidden>
             <img
               src="/logo-light.png"
               alt=""
               width={40}
               height={40}
-              className="h-9 w-9 object-contain dark:hidden"
+              className="h-9 w-9 object-contain dark:hidden transition-transform duration-300 group-hover/brand:-translate-y-px"
               draggable={false}
             />
             <img
@@ -208,15 +208,20 @@ export function Navbar() {
               alt=""
               width={40}
               height={40}
-              className="hidden h-9 w-9 object-contain dark:block"
+              className="hidden h-9 w-9 object-contain dark:block transition-transform duration-300 group-hover/brand:-translate-y-px"
               draggable={false}
             />
+            <span className="brand-spark brand-spark--mark" />
           </span>
           <span
-            className="hidden md:inline font-display font-semibold normal-case"
-            style={{ fontSize: 'clamp(1.25rem, 5vw, 2.35rem)' }}
+            className="brand-ink relative hidden md:inline-grid font-brand font-semibold uppercase tracking-[0.06em]"
+            style={{ fontSize: 'clamp(1.15rem, 4.2vw, 1.85rem)' }}
           >
-            Vanitas
+            <span className="col-start-1 row-start-1">Vanitas</span>
+            <span className="col-start-1 row-start-1 text-accent brand-ink-fill" aria-hidden>
+              Vanitas
+            </span>
+            <span className="brand-spark" aria-hidden />
           </span>
         </Link>
 

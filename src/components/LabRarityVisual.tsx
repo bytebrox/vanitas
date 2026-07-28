@@ -94,7 +94,7 @@ export function LabRarityVisual({ analysis }: LabRarityVisualProps) {
           {analysis.mode ? ` · ${analysis.mode}` : ''}
         </p>
         <p
-          className={`font-display font-semibold normal-case tracking-tight transition-all duration-500 ${
+          className={`font-display font-semibold normal-case tracking-[0.02em] transition-all duration-500 ${
             (analysis.prefix + analysis.suffix).length > 14
               ? 'text-2xl sm:text-3xl'
               : 'text-3xl sm:text-5xl'
@@ -187,7 +187,7 @@ export function LabRarityVisual({ analysis }: LabRarityVisualProps) {
       </div>
 
       <div className="text-center mt-2 mb-5">
-        <p className="font-display text-2xl sm:text-3xl font-semibold text-ink normal-case tracking-tight">
+        <p className="font-display text-2xl sm:text-3xl font-semibold text-ink normal-case tracking-[0.02em]">
           {rarityWord}
         </p>
         {oneIn ? (
