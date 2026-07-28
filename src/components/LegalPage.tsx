@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Footer, FadeIn, PageIntro } from '@/components';
+import { Footer, FadeIn, Navbar } from '@/components';
 import { RichParagraph } from '@/lib/rich-text';
 
 type LegalNamespace = 'legal.terms' | 'legal.privacy';
@@ -12,38 +12,39 @@ export function LegalPage({ ns }: { ns: LegalNamespace }) {
 
   return (
     <div className="min-h-screen bg-paper text-ink">
-      <PageIntro
-        eyebrow={t('eyebrow')}
-        title={t('title')}
-        description={
-          <div className="space-y-2">
-            <p>{t('intro')}</p>
-            <p className="text-sm text-muted/80">{t('updated')}</p>
-          </div>
-        }
-        imageSrc="/ascii/page-security-wide.webp"
-      />
+      <div className="relative min-h-[4.5rem] bg-paper">
+        <Navbar />
+      </div>
 
-      <main className="px-4 sm:px-8 lg:px-12 pb-8 sm:pb-12">
-        <div className="max-w-2xl mx-auto space-y-10 sm:space-y-12">
-          {sections.map((section, i) => (
-            <FadeIn key={section.title}>
-              <section className="border-t border-ink/10 pt-6 sm:pt-8">
-                <p className="text-micro uppercase tracking-[0.16em] text-muted mb-2">
-                  {String(i + 1).padStart(2, '0')}
-                </p>
-                <h2 className="font-display text-xl sm:text-2xl font-semibold text-ink normal-case tracking-tight mb-3">
-                  {section.title}
-                </h2>
-                <RichParagraph
-                  text={section.body}
-                  className="text-sm sm:text-base text-muted leading-relaxed"
-                  linkClassName="text-accent hover:text-ink"
-                  codeClassName="font-mono text-ink text-[0.9em]"
-                />
-              </section>
-            </FadeIn>
-          ))}
+      <main className="px-4 sm:px-8 lg:px-12 pt-8 sm:pt-12 pb-8 sm:pb-12">
+        <div className="max-w-2xl mx-auto">
+          <p className="text-micro uppercase tracking-[0.16em] text-muted mb-3">{t('eyebrow')}</p>
+          <h1 className="font-display text-3xl sm:text-4xl font-semibold text-ink normal-case tracking-tight mb-4">
+            {t('title')}
+          </h1>
+          <p className="text-base sm:text-lg text-muted leading-relaxed mb-2">{t('intro')}</p>
+          <p className="text-sm text-muted/80 mb-10 sm:mb-14">{t('updated')}</p>
+
+          <div className="space-y-10 sm:space-y-12">
+            {sections.map((section, i) => (
+              <FadeIn key={section.title}>
+                <section className="border-t border-ink/10 pt-6 sm:pt-8">
+                  <p className="text-micro uppercase tracking-[0.16em] text-muted mb-2">
+                    {String(i + 1).padStart(2, '0')}
+                  </p>
+                  <h2 className="font-display text-xl sm:text-2xl font-semibold text-ink normal-case tracking-tight mb-3">
+                    {section.title}
+                  </h2>
+                  <RichParagraph
+                    text={section.body}
+                    className="text-sm sm:text-base text-muted leading-relaxed"
+                    linkClassName="text-accent hover:text-ink"
+                    codeClassName="font-mono text-ink text-[0.9em]"
+                  />
+                </section>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </main>
 
