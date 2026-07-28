@@ -17,6 +17,33 @@ function shortAddr(addr: string) {
   return `${addr.slice(0, 4)}…${addr.slice(-4)}`;
 }
 
+function FooterLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link href={href} className="hover:text-ink py-0.5 block">
+      {children}
+    </Link>
+  );
+}
+
+function ExtLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:text-ink py-0.5 block"
+    >
+      {children}
+    </a>
+  );
+}
+
 export function Footer({ compact = false }: FooterProps) {
   const t = useTranslations('footer');
   const tc = useTranslations('common');
@@ -57,11 +84,11 @@ export function Footer({ compact = false }: FooterProps) {
       )}
 
       <div
-        className={`relative z-[1] flex flex-col md:flex-row md:items-end md:justify-between ${
-          compact ? 'gap-2.5 sm:gap-3' : 'gap-5 sm:gap-6'
+        className={`relative z-[1] flex flex-col ${
+          compact ? 'gap-2.5 sm:gap-3 md:flex-row md:items-end md:justify-between' : 'gap-8 sm:gap-10'
         }`}
       >
-        <div>
+        <div className={compact ? '' : 'md:max-w-sm'}>
           <p className="font-display font-semibold normal-case tracking-tight text-ink text-base sm:text-lg mb-1 sm:mb-2">
             Vanitas
           </p>
@@ -95,86 +122,61 @@ export function Footer({ compact = false }: FooterProps) {
             </a>
           </div>
         </div>
-        <div className="flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-1.5 text-micro uppercase tracking-[0.14em] sm:tracking-[0.16em] text-muted">
-          {!compact && (
-            <>
-              <Link href="/" className="hover:text-ink py-1">
-                {t('home')}
-              </Link>
-              <Link href="/sol" className="hover:text-ink py-1">
-                SOL
-              </Link>
-              <Link href="/evm" className="hover:text-ink py-1">
-                EVM
-              </Link>
-              <Link href="/btc" className="hover:text-ink py-1">
-                BTC
-              </Link>
-              <Link href="/tron" className="hover:text-ink py-1">
-                TRON
-              </Link>
-              <Link href="/aptos" className="hover:text-ink py-1">
-                APTOS
-              </Link>
-              <Link href="/sui" className="hover:text-ink py-1">
-                SUI
-              </Link>
-              <Link href="/ton" className="hover:text-ink py-1">
-                TON
-              </Link>
-              <Link href="/cardano" className="hover:text-ink py-1">
-                ADA
-              </Link>
-              <Link href="/xrp" className="hover:text-ink py-1">
-                XRP
-              </Link>
-              <Link href="/proof" className="hover:text-ink py-1">
-                {t('proof')}
-              </Link>
-              <Link href="/lab" className="hover:text-ink py-1">
-                {t('lab')}
-              </Link>
-              <Link href="/lookalike" className="hover:text-ink py-1">
-                {t('lookalike')}
-              </Link>
-              <Link href="/create2" className="hover:text-ink py-1">
-                {t('create2')}
-              </Link>
-              <Link href="/brand" className="hover:text-ink py-1">
-                {t('brand')}
-              </Link>
-            </>
-          )}
-          <Link href="/security" className="hover:text-ink py-1">
-            {t('security')}
-          </Link>
-          <Link href="/audit" className="hover:text-ink py-1">
-            {t('audit')}
-          </Link>
-          <Link href="/faq" className="hover:text-ink py-1">
-            {t('faq')}
-          </Link>
-          <Link href="/how-it-works" className="hover:text-ink py-1">
-            {t('how')}
-          </Link>
-          <a
-            href="https://www.npmjs.com/package/vanitas"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-ink py-1"
+
+        {compact ? (
+          <div className="flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-1.5 text-micro uppercase tracking-[0.14em] sm:tracking-[0.16em] text-muted">
+            <FooterLink href="/security">{t('security')}</FooterLink>
+            <FooterLink href="/faq">{t('faq')}</FooterLink>
+            <FooterLink href="/terms">{t('terms')}</FooterLink>
+            <FooterLink href="/privacy">{t('privacy')}</FooterLink>
+            <ExtLink href="https://github.com/bytebrox/vanitas">{t('github')}</ExtLink>
+            <span className="py-0.5">© {year}</span>
+          </div>
+        ) : (
+          <nav
+            aria-label="Footer"
+            className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 text-micro uppercase tracking-[0.14em] text-muted"
           >
-            {t('cli')}
-          </a>
-          <a
-            href="https://github.com/bytebrox/vanitas"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-ink py-1"
-          >
-            {t('github')}
-          </a>
-          <span className="py-1">© {year}</span>
-        </div>
+            <div>
+              <p className="text-ink/70 mb-2.5 tracking-[0.16em]">{t('groupForges')}</p>
+              <div className="flex flex-col gap-1.5">
+                <FooterLink href="/">{t('allForges')}</FooterLink>
+                <FooterLink href="/sol">SOL</FooterLink>
+                <FooterLink href="/evm">EVM</FooterLink>
+                <FooterLink href="/btc">BTC</FooterLink>
+              </div>
+            </div>
+            <div>
+              <p className="text-ink/70 mb-2.5 tracking-[0.16em]">{t('groupTools')}</p>
+              <div className="flex flex-col gap-1.5">
+                <FooterLink href="/proof">{t('proof')}</FooterLink>
+                <FooterLink href="/lab">{t('lab')}</FooterLink>
+                <FooterLink href="/lookalike">{t('lookalike')}</FooterLink>
+                <FooterLink href="/create2">{t('create2')}</FooterLink>
+                <FooterLink href="/brand">{t('brand')}</FooterLink>
+              </div>
+            </div>
+            <div>
+              <p className="text-ink/70 mb-2.5 tracking-[0.16em]">{t('groupDocs')}</p>
+              <div className="flex flex-col gap-1.5">
+                <FooterLink href="/how-it-works">{t('how')}</FooterLink>
+                <FooterLink href="/faq">{t('faq')}</FooterLink>
+                <FooterLink href="/security">{t('security')}</FooterLink>
+                <FooterLink href="/audit">{t('audit')}</FooterLink>
+              </div>
+            </div>
+            <div>
+              <p className="text-ink/70 mb-2.5 tracking-[0.16em]">{t('groupProject')}</p>
+              <div className="flex flex-col gap-1.5">
+                <FooterLink href="/terms">{t('terms')}</FooterLink>
+                <FooterLink href="/privacy">{t('privacy')}</FooterLink>
+                <ExtLink href="https://www.npmjs.com/package/vanitas">{t('cli')}</ExtLink>
+                <ExtLink href="https://github.com/bytebrox/vanitas">{t('github')}</ExtLink>
+                <span className="py-0.5">© {year}</span>
+              </div>
+            </div>
+          </nav>
+        )}
       </div>
     </footer>
   );

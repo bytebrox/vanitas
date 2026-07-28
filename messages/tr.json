@@ -182,7 +182,14 @@
     "ton": "TON",
     "ada": "ADA",
     "xrp": "XRP",
-    "copyright": "© {year}"
+    "copyright": "© {year}",
+    "terms": "Şartlar",
+    "privacy": "Mahremiyet",
+    "groupForges": "Demirhaneler",
+    "groupTools": "Aletler",
+    "groupDocs": "Dokümanlar",
+    "groupProject": "Proje",
+    "allForges": "Tüm demirhaneler"
   },
   "landing": {
     "eyebrow": "Müşteri tarafı gösteriş dövmesi",
@@ -1615,6 +1622,20 @@
     "eth": {
       "title": "ETH Özel Adres Oluşturucu",
       "description": "EVM makyaj demirhanesine yönlendirir."
+    },
+    "terms": {
+      "title": "Kullanım Koşulları",
+      "description": "Vanitas'ın kullanım koşulları - müşteri tarafı özel adres sahteciliği. Hesap yok, anahtarlar tarayıcınızda kalıyor.",
+      "ogTitle": "Kullanım Koşulları | Vanitalar",
+      "ogDescription": "Vanitas makyaj makinesini ve ilgili araçları kullanma şartları.",
+      "ogAlt": "Vanitas'ın kullanım koşulları"
+    },
+    "privacy": {
+      "title": "Mahremiyet",
+      "description": "Vanitas'ın gizlilik politikası - cihazınızda kalanlar, tema çerezleri ve toplamadıklarımız.",
+      "ogTitle": "Gizlilik | Vanitalar",
+      "ogDescription": "Vanitas gizliliği nasıl ele alıyor: yerel nesil, tema tercihi, anahtar teslimi yok.",
+      "ogAlt": "Vanitas gizlilik ilkesi"
     }
   },
   "notFound": {
@@ -1637,5 +1658,87 @@
       "faq": "FAQ"
     },
     "homeForge": "Veya [ana forge](/) sayfasına dönün."
+  },
+  "legal": {
+    "terms": {
+      "eyebrow": "Yasal",
+      "title": "Kullanım şartları",
+      "updated": "Son güncelleme: 28 Temmuz 2026",
+      "intro": "Bu şartlar Vanitas'ı (vanitas.fun), ilgili açık kaynak kodunu ve isteğe bağlı CLI'yi kullanımınızı yönetir. Siteyi veya araçları kullanarak bunları kabul etmiş olursunuz.",
+      "sections": [
+        {
+          "title": "Vanitas nedir?",
+          "body": "Vanitas **istemci tarafında gösterişli bir adres sahtekarlığıdır**. Şifreleme çalışması tarayıcınızda (veya yerel olarak CLI aracılığıyla) yürütülür. Saklama cüzdanı, takas veya hesap sistemi işletmiyoruz."
+        },
+        {
+          "title": "Garanti yok",
+          "body": "Yazılım **olduğu gibi**, herhangi bir garanti olmaksızın sağlanmaktadır. Desenler, zorluk tahminleri ve bulgu kanıtları kolaylık sağlayan özelliklerdir; fonları taşımadan önce sonuçları kendiniz doğrulayın."
+        },
+        {
+          "title": "Sizin sorumluluğunuz",
+          "body": "Özel anahtarların, tohum ifadelerinin ve dışa aktarımların korunmasından yalnızca siz sorumlusunuz. Özel anahtara sahip olan herkes ilgili fonları kontrol eder. Anahtarları paylaşmayın. Dolandırıcılık, kimliğe bürünme veya diğer yasa dışı kullanım amacıyla sahte adresler kullanmayın."
+        },
+        {
+          "title": "Kabul edilebilir kullanım",
+          "body": "Site altyapısını kötüye kullanmayın (örneğin kullanılabilirliğe zarar veren otomatik kazıma), güvenlik kontrollerini ihlal etmeye çalışmayın veya Vanitas'ı barındırılan bir anahtar hizmeti olarak yanlış tanıtmayın."
+        },
+        {
+          "title": "Açık kaynak ve üçüncü taraflar",
+          "body": "Kaynak [GitHub](https://github.com/bytebrox/vanitas) adresinde MIT lisansı altında yayınlanmaktadır. Üçüncü taraf cüzdanların, kaşiflerin, npm'nin ve barındırma sağlayıcılarının kendi koşulları vardır. Bunlara verilen bağlantılar yalnızca kolaylık sağlamak içindir."
+        },
+        {
+          "title": "Sorumluluğun Sınırlandırılması",
+          "body": "Yasaların izin verdiği ölçüde, yazarlar ve operatörler kayıp anahtarlardan, kayıp paralardan, kesintilerden, yanlış kalıplardan veya Vanitas'ın kullanımından kaynaklanan zararlardan sorumlu değildir."
+        },
+        {
+          "title": "Değişiklikler",
+          "body": "Bu şartları güncelleyebiliriz. Yayınlanan bir güncellemeden sonra kullanmaya devam etmek, revize edilen şartların kabul edildiği anlamına gelir. Yukarıdaki tarih en son revizyonu göstermektedir."
+        },
+        {
+          "title": "Temas etmek",
+          "body": "Sorular: [Bytebrox on X](https://x.com/bytebrox) veya [GitHub repository](https://github.com/bytebrox/vanitas)."
+        }
+      ]
+    },
+    "privacy": {
+      "eyebrow": "Yasal",
+      "title": "Mahremiyet",
+      "updated": "Son güncelleme: 28 Temmuz 2026",
+      "intro": "Vanitas, özel anahtarların ve oluşturma çalışmalarının cihazınızda kalması için tasarlanmıştır. Bu sayfada nelere az dokunup neleri toplamadığımız anlatılıyor.",
+      "sections": [
+        {
+          "title": "Anahtarlar bu cihazdan asla ayrılmıyor",
+          "body": "Adres sahteciliği **yerel olarak tarayıcınızda** (Web Çalışanları) veya yerel CLI'de çalışır. Vanitas, sunucularımıza özel anahtarlar, anımsatıcılar veya oluşturulan anahtar materyali yüklemez. **Paylaşım kanıtı** bağlantıları özel anahtarları kasıtlı olarak hariç tutar."
+        },
+        {
+          "title": "Neleri toplamıyoruz",
+          "body": "Hesaplara ihtiyacımız yok. Vanitas arka ucunda kasıtlı olarak cüzdan bakiyelerini, sahte özel anahtarları veya kalıp arama sonuçlarını toplamıyoruz. Vanitas girişi yok."
+        },
+        {
+          "title": "Cihazınızdaki veriler",
+          "body": "**Tema** (açık/koyu) gibi tercihler localStorage'da ve birinci taraf **tema çerezinde** saklanabilir, böylece doğru mod flaş olmadan oluşturulabilir. Ses tercihi ve benzer kullanıcı arayüzü durumu da yerel depolamada kalabilir. **Son bulgular** söz konusu tarayıcı oturumu için cihazınızdaki sessionStorage'da saklanır ve bize gönderilmez."
+        },
+        {
+          "title": "Barındırma ve günlükler",
+          "body": "Web sitesi standart web barındırma (şu anda Vercel) aracılığıyla sunulmaktadır. Çoğu site gibi altyapı da güvenlik ve güvenilirlik amacıyla erişim günlüklerindeki teknik istek verilerini (örneğin IP adresi, kullanıcı aracısı, URL'ler, zaman damgaları) işleyebilir. Bunu sahte anahtarların pazarlama profillerini oluşturmak için kullanmayız."
+        },
+        {
+          "title": "Reklam izleyici yok",
+          "body": "Vanitas üçüncü taraf reklam piksellerini yerleştirmez. Bu durumun değişmesi durumunda bu politika güncellenecektir."
+        },
+        {
+          "title": "Dış bağlantılar",
+          "body": "Kaşiflere (örneğin Solscan), GitHub'a, npm'ye veya sosyal profillere olan bağlantılar, kendi gizlilik uygulamalarına sahip üçüncü taraf sitelerdir."
+        },
+        {
+          "title": "Çocuklar",
+          "body": "Araçlar çocuklara yönelik değildir. Bulunduğunuz bölgede kriptografik cüzdan yazılımını kullanmanıza yasal olarak izin verilmiyorsa Vanitas'ı kullanmayın."
+        },
+        {
+          "title": "Temas etmek",
+          "body": "Gizlilik soruları: [Bytebrox on X](https://x.com/bytebrox) veya [GitHub](https://github.com/bytebrox/vanitas). Ayrıca bkz. [Terms](/terms) ve [Security](/security)."
+        }
+      ]
+    }
   }
 }

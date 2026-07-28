@@ -182,7 +182,14 @@
     "ton": "TON",
     "ada": "ADA",
     "xrp": "XRP",
-    "copyright": "© {year}"
+    "copyright": "© {year}",
+    "terms": "Điều khoản",
+    "privacy": "Sự riêng tư",
+    "groupForges": "lò rèn",
+    "groupTools": "Công cụ",
+    "groupDocs": "Tài liệu",
+    "groupProject": "Dự án",
+    "allForges": "Tất cả các lò rèn"
   },
   "landing": {
     "eyebrow": "Lò rèn trang điểm phía khách hàng",
@@ -1615,6 +1622,20 @@
     "eth": {
       "title": "Trình tạo địa chỉ ảo ETH",
       "description": "Chuyển hướng đến lò rèn vanity EVM."
+    },
+    "terms": {
+      "title": "Điều khoản sử dụng",
+      "description": "Điều khoản sử dụng của Vanitas — giả mạo địa chỉ ảo phía khách hàng. Không có tài khoản, chìa khóa vẫn còn trong trình duyệt của bạn.",
+      "ogTitle": "Điều khoản sử dụng | Vanitas",
+      "ogDescription": "Điều khoản sử dụng lò rèn vanity Vanitas và các công cụ liên quan.",
+      "ogAlt": "Điều khoản sử dụng Vanitas"
+    },
+    "privacy": {
+      "title": "Sự riêng tư",
+      "description": "Chính sách quyền riêng tư dành cho Vanitas — những gì còn trên thiết bị của bạn, cookie chủ đề và những gì chúng tôi không thu thập.",
+      "ogTitle": "Quyền riêng tư | Vanitas",
+      "ogDescription": "Cách Vanitas xử lý quyền riêng tư: tạo cục bộ, ưu tiên chủ đề, không thu thập khóa.",
+      "ogAlt": "Chính sách về quyền riêng tư của Vanitas"
     }
   },
   "notFound": {
@@ -1637,5 +1658,87 @@
       "faq": "FAQ"
     },
     "homeForge": "Hoặc quay lại [forge trang chủ](/)."
+  },
+  "legal": {
+    "terms": {
+      "eyebrow": "Hợp pháp",
+      "title": "Điều khoản sử dụng",
+      "updated": "Cập nhật lần cuối: ngày 28 tháng 7 năm 2026",
+      "intro": "Các điều khoản này chi phối việc bạn sử dụng Vanitas (vanitas.fun), mã nguồn mở có liên quan và CLI tùy chọn. Bằng cách sử dụng trang web hoặc công cụ, bạn đồng ý với chúng.",
+      "sections": [
+        {
+          "title": "Vanitas là gì",
+          "body": "Vanitas là **lò rèn địa chỉ phù hợp phía khách hàng**. Công việc mã hóa chạy trong trình duyệt của bạn (hoặc cục bộ thông qua CLI). Chúng tôi không vận hành hệ thống ví, sàn giao dịch hoặc tài khoản giám sát."
+        },
+        {
+          "title": "Không có bảo hành",
+          "body": "Phần mềm được cung cấp **nguyên trạng**, không có bảo hành dưới bất kỳ hình thức nào. Các mẫu, ước tính độ khó và bằng chứng tìm thấy là các tính năng tiện lợi - hãy tự xác minh kết quả trước khi chuyển tiền."
+        },
+        {
+          "title": "Trách nhiệm của bạn",
+          "body": "Bạn hoàn toàn chịu trách nhiệm bảo vệ khóa riêng, cụm từ gốc và dữ liệu xuất. Bất kỳ ai có khóa riêng sẽ kiểm soát số tiền tương ứng. Không chia sẻ chìa khóa. Không giả mạo địa chỉ để lừa đảo, mạo danh hoặc sử dụng trái pháp luật khác."
+        },
+        {
+          "title": "Sử dụng chấp nhận được",
+          "body": "Không lạm dụng cơ sở hạ tầng của trang web (ví dụ: tự động thu thập dữ liệu gây tổn hại đến tính khả dụng), cố gắng phá vỡ các biện pháp kiểm soát bảo mật hoặc xuyên tạc Vanitas là dịch vụ chính được lưu trữ."
+        },
+        {
+          "title": "Nguồn mở và bên thứ ba",
+          "body": "Nguồn được xuất bản theo giấy phép MIT trên [GitHub](https://github.com/bytebrox/vanitas). Ví, nhà thám hiểm, npm và nhà cung cấp dịch vụ lưu trữ của bên thứ ba có các điều khoản riêng. Liên kết đến chúng chỉ nhằm mục đích thuận tiện."
+        },
+        {
+          "title": "Giới hạn trách nhiệm pháp lý",
+          "body": "Trong phạm vi tối đa được pháp luật cho phép, các tác giả và nhà điều hành không chịu trách nhiệm về việc mất chìa khóa, mất tiền, thời gian ngừng hoạt động, mẫu không chính xác hoặc thiệt hại phát sinh từ việc sử dụng Vanitas."
+        },
+        {
+          "title": "Thay đổi",
+          "body": "Chúng tôi có thể cập nhật các điều khoản này. Việc tiếp tục sử dụng sau khi có bản cập nhật được đăng sẽ đồng nghĩa với việc chấp nhận các điều khoản đã sửa đổi. Ngày ở trên hiển thị bản sửa đổi mới nhất."
+        },
+        {
+          "title": "Liên hệ",
+          "body": "Câu hỏi: [Bytebrox on X](https://x.com/bytebrox) hoặc [GitHub repository](https://github.com/bytebrox/vanitas)."
+        }
+      ]
+    },
+    "privacy": {
+      "eyebrow": "Hợp pháp",
+      "title": "Sự riêng tư",
+      "updated": "Cập nhật lần cuối: ngày 28 tháng 7 năm 2026",
+      "intro": "Vanitas được xây dựng để các khóa riêng và công việc tạo vẫn ở trên thiết bị của bạn. Trang này giải thích những gì chúng tôi chạm vào và những gì chúng tôi không thu thập.",
+      "sections": [
+        {
+          "title": "Chìa khóa không bao giờ rời khỏi thiết bị này",
+          "body": "Việc giả mạo địa chỉ chạy **cục bộ trong trình duyệt của bạn** (Web Workers) hoặc trong CLI cục bộ. Vanitas không tải khóa riêng, thuật nhớ hoặc tài liệu khóa được tạo lên máy chủ của chúng tôi. Liên kết **Chia sẻ bằng chứng** có chủ ý loại trừ khóa riêng tư."
+        },
+        {
+          "title": "Những gì chúng tôi không thu thập",
+          "body": "Chúng tôi không yêu cầu tài khoản. Chúng tôi không cố ý thu thập số dư ví, khóa riêng giả mạo hoặc kết quả tìm kiếm mẫu trên chương trình phụ trợ của Vanitas. Không có thông tin đăng nhập Vanitas."
+        },
+        {
+          "title": "Dữ liệu trên thiết bị của bạn",
+          "body": "Các tùy chọn như **chủ đề** (sáng/tối) có thể được lưu trữ trong localStorage và **cookie chủ đề** của bên thứ nhất để chế độ chính xác có thể hiển thị mà không cần đèn flash. Tùy chọn âm thanh và trạng thái giao diện người dùng tương tự cũng có thể được lưu trữ trong bộ nhớ cục bộ. **Những phát hiện gần đây** được lưu giữ trong sessionStorage trên thiết bị của bạn cho phiên trình duyệt đó và không được gửi cho chúng tôi."
+        },
+        {
+          "title": "Lưu trữ & nhật ký",
+          "body": "Trang web được phục vụ thông qua dịch vụ lưu trữ web tiêu chuẩn (hiện tại là Vercel). Giống như hầu hết các trang web, cơ sở hạ tầng có thể xử lý dữ liệu yêu cầu kỹ thuật (ví dụ: địa chỉ IP, tác nhân người dùng, URL, dấu thời gian) trong nhật ký truy cập để bảo mật và độ tin cậy. Chúng tôi không sử dụng thông tin đó để xây dựng hồ sơ tiếp thị về các khóa giả mạo."
+        },
+        {
+          "title": "Không có trình theo dõi quảng cáo",
+          "body": "Vanitas không nhúng pixel quảng cáo của bên thứ ba. Nếu điều đó thay đổi, chính sách này sẽ được cập nhật."
+        },
+        {
+          "title": "Liên kết ngoài",
+          "body": "Các liên kết tới người khám phá (ví dụ: Solscan), GitHub, npm hoặc hồ sơ xã hội là các trang web của bên thứ ba có các biện pháp bảo vệ quyền riêng tư của riêng họ."
+        },
+        {
+          "title": "Những đứa trẻ",
+          "body": "Các công cụ không hướng vào trẻ em. Không sử dụng Vanitas nếu bạn không được phép sử dụng hợp pháp phần mềm ví tiền điện tử trong phạm vi quyền hạn của mình."
+        },
+        {
+          "title": "Liên hệ",
+          "body": "Câu hỏi về quyền riêng tư: [Bytebrox on X](https://x.com/bytebrox) hoặc [GitHub](https://github.com/bytebrox/vanitas). Xem thêm [Terms](/terms) và [Security](/security)."
+        }
+      ]
+    }
   }
 }

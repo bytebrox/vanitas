@@ -182,7 +182,14 @@
     "ton": "TON",
     "ada": "ADA",
     "xrp": "XRP",
-    "copyright": "© {year}"
+    "copyright": "© {year}",
+    "terms": "Ketentuan",
+    "privacy": "Pribadi",
+    "groupForges": "menempa",
+    "groupTools": "Peralatan",
+    "groupDocs": "dokumen",
+    "groupProject": "Proyek",
+    "allForges": "Semua ditempa"
   },
   "landing": {
     "eyebrow": "Penempaan kesombongan sisi klien",
@@ -1615,6 +1622,20 @@
     "eth": {
       "title": "Generator Alamat Kesombongan ETH",
       "description": "Pengalihan ke bengkel kesombongan EVM."
+    },
+    "terms": {
+      "title": "Ketentuan Penggunaan",
+      "description": "Ketentuan penggunaan untuk Vanitas — pemalsuan alamat rias sisi klien. Tidak ada akun, kunci tetap ada di browser Anda.",
+      "ogTitle": "Ketentuan Penggunaan | kesombongan",
+      "ogDescription": "Ketentuan penggunaan vanity forge Vanitas dan alat terkait.",
+      "ogAlt": "Ketentuan penggunaan Vanitas"
+    },
+    "privacy": {
+      "title": "Pribadi",
+      "description": "Kebijakan privasi untuk Vanitas — apa yang ada di perangkat Anda, cookie tema, dan apa yang tidak kami kumpulkan.",
+      "ogTitle": "Privasi | kesombongan",
+      "ogDescription": "Bagaimana Vanitas menangani privasi: generasi lokal, preferensi tema, tanpa pengumpulan kunci.",
+      "ogAlt": "Kebijakan privasi Vanitas"
     }
   },
   "notFound": {
@@ -1637,5 +1658,87 @@
       "faq": "FAQ"
     },
     "homeForge": "Atau kembali ke [forge beranda](/)."
+  },
+  "legal": {
+    "terms": {
+      "eyebrow": "Legal",
+      "title": "Ketentuan penggunaan",
+      "updated": "Terakhir diperbarui: 28 Juli 2026",
+      "intro": "Ketentuan ini mengatur penggunaan Anda atas Vanitas (vanitas.fun), kode sumber terbuka terkait, dan CLI opsional. Dengan menggunakan situs atau alat, Anda menyetujuinya.",
+      "sections": [
+        {
+          "title": "Apa itu Vanitas",
+          "body": "Vanitas adalah **pemalsuan alamat rias sisi klien**. Pekerjaan kriptografi berjalan di browser Anda (atau secara lokal melalui CLI). Kami tidak mengoperasikan dompet kustodian, bursa, atau sistem akun."
+        },
+        {
+          "title": "Tidak ada jaminan",
+          "body": "Perangkat lunak ini disediakan **apa adanya**, tanpa jaminan apa pun. Pola, perkiraan kesulitan, dan bukti penemuan adalah fitur kemudahan — verifikasi sendiri hasilnya sebelum memindahkan dana."
+        },
+        {
+          "title": "Tanggung jawab Anda",
+          "body": "Anda sepenuhnya bertanggung jawab untuk menjaga kunci pribadi, frase awal, dan ekspor. Siapa pun yang memiliki kunci pribadi mengontrol dana terkait. Jangan berbagi kunci. Jangan memalsukan alamat untuk tujuan penipuan, peniruan identitas, atau penggunaan melanggar hukum lainnya."
+        },
+        {
+          "title": "Penggunaan yang dapat diterima",
+          "body": "Jangan menyalahgunakan infrastruktur situs (misalnya pengikisan otomatis yang membahayakan ketersediaan), mencoba melanggar kontrol keamanan, atau salah menggambarkan Vanitas sebagai layanan kunci yang dihosting."
+        },
+        {
+          "title": "Sumber terbuka & pihak ketiga",
+          "body": "Sumber diterbitkan di bawah lisensi MIT pada [GitHub](https://github.com/bytebrox/vanitas). Dompet pihak ketiga, penjelajah, npm, dan penyedia hosting memiliki ketentuannya sendiri. Tautan ke sana hanya untuk kenyamanan."
+        },
+        {
+          "title": "Batasan tanggung jawab",
+          "body": "Sejauh diizinkan oleh undang-undang, penulis dan operator tidak bertanggung jawab atas kehilangan kunci, kehilangan dana, waktu henti, pola yang salah, atau kerusakan yang timbul dari penggunaan Vanitas."
+        },
+        {
+          "title": "Perubahan",
+          "body": "Kami dapat memperbarui ketentuan ini. Penggunaan yang berkelanjutan setelah pembaruan yang diposting merupakan penerimaan terhadap persyaratan yang direvisi. Tanggal di atas menunjukkan revisi terbaru."
+        },
+        {
+          "title": "Kontak",
+          "body": "Pertanyaan: [Bytebrox on X](https://x.com/bytebrox) atau [GitHub repository](https://github.com/bytebrox/vanitas)."
+        }
+      ]
+    },
+    "privacy": {
+      "eyebrow": "Legal",
+      "title": "Pribadi",
+      "updated": "Terakhir diperbarui: 28 Juli 2026",
+      "intro": "Vanitas dibuat agar kunci pribadi dan pekerjaan pembangkitan tetap ada di perangkat Anda. Halaman ini menjelaskan sedikit apa yang kami sentuh dan apa yang tidak kami kumpulkan.",
+      "sections": [
+        {
+          "title": "Kunci tidak pernah lepas dari perangkat ini",
+          "body": "Penempaan alamat berjalan **secara lokal di browser Anda** (Pekerja Web) atau di CLI lokal. Vanitas tidak mengunggah kunci pribadi, mnemonik, atau materi kunci yang dihasilkan ke server kami. Tautan **Bagikan bukti** dengan sengaja mengecualikan kunci pribadi."
+        },
+        {
+          "title": "Apa yang tidak kami kumpulkan",
+          "body": "Kami tidak memerlukan akun. Kami tidak dengan sengaja mengumpulkan saldo dompet, kunci pribadi palsu, atau hasil pencarian pola di backend Vanitas. Tidak ada login Vanitas."
+        },
+        {
+          "title": "Data di perangkat Anda",
+          "body": "Preferensi seperti **tema** (terang/gelap) dapat disimpan di Penyimpanan lokal dan **kuki tema** pihak pertama sehingga mode yang benar dapat ditampilkan tanpa flash. Preferensi suara dan status UI serupa mungkin juga tetap berada di penyimpanan lokal. **Penemuan terkini** disimpan dalam sessionStorage di perangkat Anda untuk sesi browser tersebut dan tidak dikirimkan kepada kami."
+        },
+        {
+          "title": "Hosting & log",
+          "body": "Situs web dilayani melalui web hosting standar (saat ini Vercel). Seperti kebanyakan situs, infrastruktur dapat memproses data permintaan teknis (misalnya alamat IP, agen pengguna, URL, stempel waktu) dalam log akses untuk keamanan dan keandalan. Kami tidak menggunakannya untuk membangun profil pemasaran dari kunci palsu."
+        },
+        {
+          "title": "Tidak ada pelacak iklan",
+          "body": "Vanitas tidak menyematkan piksel iklan pihak ketiga. Jika ada perubahan, kebijakan ini akan diperbarui."
+        },
+        {
+          "title": "Tautan eksternal",
+          "body": "Tautan ke penjelajah (misalnya Solscan), GitHub, npm, atau profil sosial adalah situs pihak ketiga dengan praktik privasinya sendiri."
+        },
+        {
+          "title": "Anak-anak",
+          "body": "Alat-alat tersebut tidak ditujukan untuk anak-anak. Jangan gunakan Vanitas jika Anda tidak diizinkan secara hukum untuk menggunakan perangkat lunak dompet kriptografi di yurisdiksi Anda."
+        },
+        {
+          "title": "Kontak",
+          "body": "Pertanyaan privasi: [Bytebrox on X](https://x.com/bytebrox) atau [GitHub](https://github.com/bytebrox/vanitas). Lihat juga [Terms](/terms) dan [Security](/security)."
+        }
+      ]
+    }
   }
 }

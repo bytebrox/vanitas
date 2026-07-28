@@ -182,7 +182,14 @@
     "ton": "TON",
     "ada": "ADA",
     "xrp": "XRP",
-    "copyright": "©{year}"
+    "copyright": "©{year}",
+    "terms": "条款",
+    "privacy": "隐私",
+    "groupForges": "福吉斯",
+    "groupTools": "工具",
+    "groupDocs": "文档",
+    "groupProject": "项目",
+    "allForges": "所有锻造"
   },
   "landing": {
     "eyebrow": "客户端虚荣伪造",
@@ -1615,6 +1622,20 @@
     "eth": {
       "title": "ETH 虚荣地址生成器",
       "description": "重定向至 EVM 虚荣锻造厂。"
+    },
+    "terms": {
+      "title": "使用条款",
+      "description": "Terms of use for Vanitas — client-side vanity address forge.没有帐户，密钥保留在您的浏览器中。",
+      "ogTitle": "使用条款 |瓦尼塔斯",
+      "ogDescription": "Vanitas 虚荣锻造及相关工具的使用条款。",
+      "ogAlt": "瓦尼塔斯使用条款"
+    },
+    "privacy": {
+      "title": "隐私",
+      "description": "Vanitas 的隐私政策 — 您的设备上保留的内容、主题 cookie 以及我们不收集的内容。",
+      "ogTitle": "隐私 |瓦尼塔斯",
+      "ogDescription": "Vanitas 如何处理隐私：本地生成、主题偏好、无密钥收集。",
+      "ogAlt": "瓦尼塔隐私政策"
     }
   },
   "notFound": {
@@ -1637,5 +1658,87 @@
       "faq": "常见问题"
     },
     "homeForge": "或返回[首页锻造](/)。"
+  },
+  "legal": {
+    "terms": {
+      "eyebrow": "合法的",
+      "title": "使用条款",
+      "updated": "最后更新日期：2026 年 7 月 28 日",
+      "intro": "这些条款管辖您对 Vanitas (vanitas.fun)、相关开源代码和可选 CLI 的使用。使用该网站或工具即表示您同意它们。",
+      "sections": [
+        {
+          "title": "瓦尼塔斯是什么",
+          "body": "Vanitas 是一个**客户端虚荣地址伪造**。加密工作在您的浏览器中运行（或通过 CLI 在本地运行）。我们不运营托管钱包、交易所或账户系统。"
+        },
+        {
+          "title": "无保证",
+          "body": "该软件**按原样**提供，不提供任何形式的保证。模式、难度估计和发现证明都是方便的功能——在转移资金之前亲自验证结果。"
+        },
+        {
+          "title": "你的责任",
+          "body": "您全权负责保护私钥、助记词和导出。任何拥有私钥的人都可以控制相应的资金。不要共享密钥。请勿伪造地址用于欺诈、冒充或其他非法用途。"
+        },
+        {
+          "title": "可接受的使用",
+          "body": "请勿滥用站点基础设施（例如损害可用性的自动抓取）、尝试破坏安全控制或将 Vanitas 歪曲为托管密钥服务。"
+        },
+        {
+          "title": "开源和第三方",
+          "body": "源代码根据 MIT 许可在 [GitHub](https://github.com/bytebrox/vanitas) 上发布。第三方钱包、浏览器、npm 和托管提供商都有自己的条款。链接到它们只是为了方便。"
+        },
+        {
+          "title": "责任限制",
+          "body": "在法律允许的最大范围内，作者和运营商不对密钥丢失、资金丢失、停机、错误模式或因使用 Vanitas 造成的损害承担责任。"
+        },
+        {
+          "title": "变化",
+          "body": "我们可能会更新这些条款。发布更新后继续使用即表示接受修订后的条款。上面的日期显示的是最新版本。"
+        },
+        {
+          "title": "接触",
+          "body": "问题：[Bytebrox on X](https://x.com/bytebrox) 或 [GitHub repository](https://github.com/bytebrox/vanitas)。"
+        }
+      ]
+    },
+    "privacy": {
+      "eyebrow": "合法的",
+      "title": "隐私",
+      "updated": "最后更新日期：2026 年 7 月 28 日",
+      "intro": "Vanitas 的构建是为了让私钥和生成工作保留在您的设备上。本页解释了我们接触的少量内容以及我们不收集的内容。",
+      "sections": [
+        {
+          "title": "钥匙永远不会离开该设备",
+          "body": "地址伪造在**本地浏览器**（Web Workers）或本地 CLI 中运行。 Vanitas 不会将私钥、助记词或生成的密钥材料上传到我们的服务器。 **共享证明**链接有意排除私钥。"
+        },
+        {
+          "title": "我们不收集什么",
+          "body": "我们不需要帐户。我们不会故意在 Vanitas 后端收集钱包余额、伪造私钥或模式搜索结果。没有 Vanitas 登录信息。"
+        },
+        {
+          "title": "您设备上的数据",
+          "body": "**主题**（亮/暗）等首选项可以存储在 localStorage 和第一方 **主题 cookie** 中，以便可以在不闪烁的情况下呈现正确的模式。声音偏好和类似的UI状态也可以保留在本地存储中。 **最近的发现**将保存在您设备上该浏览器会话的 sessionStorage 中，并且不会发送给我们。"
+        },
+        {
+          "title": "托管和日志",
+          "body": "该网站通过标准网络托管（目前为 Vercel）提供服务。与大多数站点一样，基础设施可能会处理访问日志中的技术请求数据（例如 IP 地址、用户代理、URL、时间戳）以确保安全性和可靠性。我们不会用它来建立伪造密钥的营销档案。"
+        },
+        {
+          "title": "没有广告跟踪器",
+          "body": "Vanitas 不嵌入第三方广告像素。如果情况发生变化，本政策将会更新。"
+        },
+        {
+          "title": "外部链接",
+          "body": "浏览器（例如 Solscan）、GitHub、npm 或社交资料的链接是具有自己的隐私惯例的第三方网站。"
+        },
+        {
+          "title": "孩子们",
+          "body": "这些工具不针对儿童。如果您所在司法管辖区法律不允许您使用加密钱包软件，请勿使用 Vanitas。"
+        },
+        {
+          "title": "接触",
+          "body": "隐私问题：[Bytebrox on X](https://x.com/bytebrox) 或 [GitHub](https://github.com/bytebrox/vanitas)。另请参阅 [Terms](/terms) 和 [Security](/security)。"
+        }
+      ]
+    }
   }
 }

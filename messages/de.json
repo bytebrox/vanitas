@@ -182,7 +182,14 @@
     "ton": "TON",
     "ada": "ADA",
     "xrp": "XRP",
-    "copyright": "© {year}"
+    "copyright": "© {year}",
+    "terms": "Nutzungsbedingungen",
+    "privacy": "Datenschutz",
+    "groupForges": "Forges",
+    "groupTools": "Tools",
+    "groupDocs": "Docs",
+    "groupProject": "Projekt",
+    "allForges": "Alle Forges"
   },
   "landing": {
     "eyebrow": "Kundenseitige Schminkschmiede",
@@ -1615,6 +1622,20 @@
     "eth": {
       "title": "ETH-Vanity-Adressgenerator",
       "description": "Leitet zur EVM-Vanity-Schmiede weiter."
+    },
+    "terms": {
+      "title": "Nutzungsbedingungen",
+      "description": "Nutzungsbedingungen für Vanitas – kundenseitige Vanity-Adressschmiede. Keine Konten, Schlüssel bleiben in Ihrem Browser.",
+      "ogTitle": "Nutzungsbedingungen | Vanitas",
+      "ogDescription": "Bedingungen für die Nutzung des Vanitas-Schminktischs und der dazugehörigen Werkzeuge.",
+      "ogAlt": "Vanitas-Nutzungsbedingungen"
+    },
+    "privacy": {
+      "title": "Datenschutz",
+      "description": "Datenschutzrichtlinie für Vanitas – was auf Ihrem Gerät bleibt, Themen-Cookies und was wir nicht sammeln.",
+      "ogTitle": "Datenschutz | Vanitas",
+      "ogDescription": "Wie Vanitas mit Datenschutz umgeht: lokale Generierung, Themenpräferenz, keine Schlüsselübergabe.",
+      "ogAlt": "Vanitas-Datenschutzrichtlinie"
     }
   },
   "notFound": {
@@ -1637,5 +1658,87 @@
       "faq": "FAQ"
     },
     "homeForge": "Oder zurück zur [Start-Schmiede](/)."
+  },
+  "legal": {
+    "terms": {
+      "eyebrow": "Rechtliches",
+      "title": "Nutzungsbedingungen",
+      "updated": "Letzte Aktualisierung: 28. Juli 2026",
+      "intro": "Diese Bedingungen regeln Ihre Nutzung von Vanitas (vanitas.fun), dem zugehörigen Open-Source-Code und der optionalen CLI. Durch die Nutzung der Website oder Tools stimmen Sie diesen zu.",
+      "sections": [
+        {
+          "title": "Was Vanitas ist",
+          "body": "Vanitas ist eine **clientseitige Vanity-Adressfälschung**. Kryptografische Arbeiten werden in Ihrem Browser (oder lokal über die CLI) ausgeführt. Wir betreiben kein Depot-Wallet, keine Börse oder kein Kontosystem."
+        },
+        {
+          "title": "Keine Garantien",
+          "body": "Die Software wird „wie besehen“ und ohne Gewährleistung jeglicher Art bereitgestellt. Muster, Schwierigkeitsschätzungen und Fundnachweise sind praktische Funktionen – überprüfen Sie die Ergebnisse selbst, bevor Sie Geld bewegen."
+        },
+        {
+          "title": "Ihre Verantwortung",
+          "body": "Sie allein sind für den Schutz privater Schlüssel, Seed-Phrasen und Exporte verantwortlich. Wer über einen privaten Schlüssel verfügt, kontrolliert die entsprechenden Gelder. Geben Sie keine Schlüssel weiter. Fälschen Sie keine Adressen für Betrug, Identitätsdiebstahl oder andere rechtswidrige Zwecke."
+        },
+        {
+          "title": "Akzeptable Verwendung",
+          "body": "Missbrauchen Sie die Infrastruktur der Website nicht (z. B. automatisiertes Scraping, das die Verfügbarkeit beeinträchtigt), versuchen Sie nicht, Sicherheitskontrollen zu durchbrechen, und stellen Sie Vanitas nicht fälschlicherweise als gehosteten Schlüsseldienst dar."
+        },
+        {
+          "title": "Open Source und Dritte",
+          "body": "Die Quelle wird unter der MIT-Lizenz auf [GitHub](https://github.com/bytebrox/vanitas) veröffentlicht. Für Wallets, Explorer, NPM und Hosting-Anbieter von Drittanbietern gelten eigene Bedingungen. Links zu ihnen dienen lediglich der Benutzerfreundlichkeit."
+        },
+        {
+          "title": "Haftungsbeschränkung",
+          "body": "Soweit gesetzlich zulässig, haften die Autoren und Betreiber nicht für verlorene Schlüssel, verlorenes Geld, Ausfallzeiten, falsche Muster oder Schäden, die durch die Nutzung von Vanitas entstehen."
+        },
+        {
+          "title": "Änderungen",
+          "body": "Wir können diese Bedingungen aktualisieren. Die fortgesetzte Nutzung nach einer veröffentlichten Aktualisierung stellt die Annahme der überarbeiteten Bedingungen dar. Das Datum oben zeigt die letzte Überarbeitung."
+        },
+        {
+          "title": "Kontakt",
+          "body": "Fragen: [Bytebrox on X](https://x.com/bytebrox) oder [GitHub repository](https://github.com/bytebrox/vanitas)."
+        }
+      ]
+    },
+    "privacy": {
+      "eyebrow": "Rechtliches",
+      "title": "Datenschutz",
+      "updated": "Letzte Aktualisierung: 28. Juli 2026",
+      "intro": "Vanitas ist so konzipiert, dass private Schlüssel und Generierungsarbeiten auf Ihrem Gerät verbleiben. Auf dieser Seite wird erklärt, was wir anfassen und was wir nicht sammeln.",
+      "sections": [
+        {
+          "title": "Schlüssel verlassen dieses Gerät niemals",
+          "body": "Die Adressfälschung wird **lokal in Ihrem Browser** (Web Worker) oder in der lokalen CLI ausgeführt. Vanitas lädt keine privaten Schlüssel, Mnemoniken oder generiertes Schlüsselmaterial auf unsere Server hoch. **Share-Proof-Links** schließen private Schlüssel absichtlich aus."
+        },
+        {
+          "title": "Was wir nicht sammeln",
+          "body": "Wir benötigen keine Konten. Wir sammeln nicht absichtlich Wallet-Guthaben, gefälschte private Schlüssel oder Mustersuchergebnisse auf einem Vanitas-Backend. Es gibt kein Vanitas-Login."
+        },
+        {
+          "title": "Daten auf Ihrem Gerät",
+          "body": "Einstellungen wie **Theme** (hell/dunkel) können in localStorage und einem Erstanbieter-**Theme-Cookie** gespeichert werden, sodass der richtige Modus ohne Flash gerendert werden kann. Toneinstellungen und ähnliche UI-Status bleiben möglicherweise auch im lokalen Speicher. **Neueste Funde** werden für diese Browsersitzung im SessionStorage auf Ihrem Gerät gespeichert und nicht an uns gesendet."
+        },
+        {
+          "title": "Hosting und Protokolle",
+          "body": "Die Website wird über Standard-Webhosting (derzeit Vercel) bereitgestellt. Wie die meisten Websites verarbeitet die Infrastruktur aus Sicherheits- und Zuverlässigkeitsgründen möglicherweise technische Anforderungsdaten (z. B. IP-Adresse, Benutzeragent, URLs, Zeitstempel) in Zugriffsprotokollen. Wir verwenden dies nicht, um Marketingprofile für gefälschte Schlüssel zu erstellen."
+        },
+        {
+          "title": "Keine Werbe-Tracker",
+          "body": "Vanitas bettet keine Werbepixel Dritter ein. Wenn sich dies ändert, wird diese Richtlinie aktualisiert."
+        },
+        {
+          "title": "Externe Links",
+          "body": "Links zu Explorern (z. B. Solscan), GitHub, npm oder sozialen Profilen sind Websites Dritter mit eigenen Datenschutzpraktiken."
+        },
+        {
+          "title": "Kinder",
+          "body": "Die Tools richten sich nicht an Kinder. Verwenden Sie Vanitas nicht, wenn Ihnen die Verwendung von kryptografischer Wallet-Software in Ihrem Land gesetzlich nicht gestattet ist."
+        },
+        {
+          "title": "Kontakt",
+          "body": "Datenschutzfragen: [Bytebrox on X](https://x.com/bytebrox) oder [GitHub](https://github.com/bytebrox/vanitas). Siehe auch [Terms](/terms) und [Security](/security)."
+        }
+      ]
+    }
   }
 }

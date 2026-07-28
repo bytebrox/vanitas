@@ -182,7 +182,14 @@
     "ton": "TON",
     "ada": "ADA",
     "xrp": "XRP",
-    "copyright": "© {year}"
+    "copyright": "© {year}",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "groupForges": "Forges",
+    "groupTools": "Tools",
+    "groupDocs": "Docs",
+    "groupProject": "Project",
+    "allForges": "All forges"
   },
   "landing": {
     "eyebrow": "Client-side vanity forge",
@@ -1615,6 +1622,20 @@
     "eth": {
       "title": "ETH Vanity Address Generator",
       "description": "Redirects to the EVM vanity forge."
+    },
+    "terms": {
+      "title": "Terms of Use",
+      "description": "Terms of use for Vanitas — client-side vanity address forge. No accounts, keys stay in your browser.",
+      "ogTitle": "Terms of Use | Vanitas",
+      "ogDescription": "Terms for using the Vanitas vanity forge and related tools.",
+      "ogAlt": "Vanitas terms of use"
+    },
+    "privacy": {
+      "title": "Privacy",
+      "description": "Privacy policy for Vanitas — what stays on your device, theme cookie, and what we do not collect.",
+      "ogTitle": "Privacy | Vanitas",
+      "ogDescription": "How Vanitas handles privacy: local generation, theme preference, no key collection.",
+      "ogAlt": "Vanitas privacy policy"
     }
   },
   "notFound": {
@@ -1637,5 +1658,87 @@
       "faq": "FAQ"
     },
     "homeForge": "Or return to the [home forge](/)."
+  },
+  "legal": {
+    "terms": {
+      "eyebrow": "Legal",
+      "title": "Terms of use",
+      "updated": "Last updated: 28 July 2026",
+      "intro": "These terms govern your use of Vanitas (vanitas.fun), the related open-source code, and the optional CLI. By using the site or tools, you agree to them.",
+      "sections": [
+        {
+          "title": "What Vanitas is",
+          "body": "Vanitas is a **client-side vanity address forge**. Cryptographic work runs in your browser (or locally via the CLI). We do not operate a custodial wallet, exchange, or account system."
+        },
+        {
+          "title": "No warranties",
+          "body": "The software is provided **as is**, without warranty of any kind. Patterns, difficulty estimates, and proofs of find are convenience features — verify results yourself before moving funds."
+        },
+        {
+          "title": "Your responsibility",
+          "body": "You are solely responsible for safeguarding private keys, seed phrases, and exports. Anyone with a private key controls the corresponding funds. Do not share keys. Do not forge addresses for fraud, impersonation, or other unlawful use."
+        },
+        {
+          "title": "Acceptable use",
+          "body": "Do not abuse the site infrastructure (for example automated scraping that harms availability), attempt to break security controls, or misrepresent Vanitas as a hosted key service."
+        },
+        {
+          "title": "Open source & third parties",
+          "body": "Source is published under the MIT license on [GitHub](https://github.com/bytebrox/vanitas). Third-party wallets, explorers, npm, and hosting providers have their own terms. Links to them are for convenience only."
+        },
+        {
+          "title": "Limitation of liability",
+          "body": "To the fullest extent permitted by law, the authors and operators are not liable for lost keys, lost funds, downtime, incorrect patterns, or damages arising from use of Vanitas."
+        },
+        {
+          "title": "Changes",
+          "body": "We may update these terms. Continued use after a posted update constitutes acceptance of the revised terms. The date above shows the latest revision."
+        },
+        {
+          "title": "Contact",
+          "body": "Questions: [Bytebrox on X](https://x.com/bytebrox) or the [GitHub repository](https://github.com/bytebrox/vanitas)."
+        }
+      ]
+    },
+    "privacy": {
+      "eyebrow": "Legal",
+      "title": "Privacy",
+      "updated": "Last updated: 28 July 2026",
+      "intro": "Vanitas is built so private keys and generation work stay on your device. This page explains what little we touch and what we do not collect.",
+      "sections": [
+        {
+          "title": "Keys never leave this device",
+          "body": "Address forging runs **locally in your browser** (Web Workers) or in the local CLI. Vanitas does not upload private keys, mnemonics, or generated key material to our servers. **Share proof** links intentionally exclude private keys."
+        },
+        {
+          "title": "What we do not collect",
+          "body": "We do not require accounts. We do not intentionally collect wallet balances, forged private keys, or pattern search results on a Vanitas backend. There is no Vanitas login."
+        },
+        {
+          "title": "Data on your device",
+          "body": "Preferences such as **theme** (light/dark) may be stored in localStorage and a first-party **theme cookie** so the correct mode can render without a flash. Sound preference and similar UI state may also stay in local storage. **Recent finds** are kept in sessionStorage on your device for that browser session and are not sent to us."
+        },
+        {
+          "title": "Hosting & logs",
+          "body": "The website is served via standard web hosting (currently Vercel). Like most sites, infrastructure may process technical request data (for example IP address, user agent, URLs, timestamps) in access logs for security and reliability. We do not use that to build marketing profiles of forged keys."
+        },
+        {
+          "title": "No advertising trackers",
+          "body": "Vanitas does not embed third-party advertising pixels. If that changes, this policy will be updated."
+        },
+        {
+          "title": "External links",
+          "body": "Links to explorers (for example Solscan), GitHub, npm, or social profiles are third-party sites with their own privacy practices."
+        },
+        {
+          "title": "Children",
+          "body": "The tools are not directed at children. Do not use Vanitas if you are not legally allowed to use cryptographic wallet software in your jurisdiction."
+        },
+        {
+          "title": "Contact",
+          "body": "Privacy questions: [Bytebrox on X](https://x.com/bytebrox) or [GitHub](https://github.com/bytebrox/vanitas). Also see [Terms](/terms) and [Security](/security)."
+        }
+      ]
+    }
   }
 }
