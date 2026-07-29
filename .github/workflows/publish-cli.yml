@@ -63,12 +63,28 @@ jobs:
             exit 1
           fi
 
+      # A tag can be re-pointed after the fact, which replays this workflow.
+      # npm rejects a duplicate version, so check before trying.
+      - name: Check npm for this version
+        id: published
+        run: |
+          if npm view "vanitas@${{ steps.ver.outputs.version }}" version >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Publish to npm
+        if: steps.published.outputs.exists == 'false'
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Summary
         run: |
-          echo "Published vanitas@${{ steps.ver.outputs.version }}"
+          if [ "${{ steps.published.outputs.exists }}" = "true" ]; then
+            echo "vanitas@${{ steps.ver.outputs.version }} was already on npm; nothing to publish."
+          else
+            echo "Published vanitas@${{ steps.ver.outputs.version }}"
+          fi
           echo "Try: npx vanitas@${{ steps.ver.outputs.version }} --help"
