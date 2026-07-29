@@ -4,6 +4,7 @@
  */
 
 import { getPublicKey, utils, etc, schnorr } from '@noble/secp256k1';
+import { yieldToEventLoop } from './yield';
 import {
   btcLegacyAddress,
   btcSegwitAddress,
@@ -146,7 +147,7 @@ async function generateBtcVanity(config: BtcGeneratorConfig): Promise<void> {
       lastProgressUpdate = now;
     }
 
-    await new Promise((resolve) => setTimeout(resolve, 0));
+    await yieldToEventLoop();
   }
 
   self.postMessage({

@@ -34,6 +34,15 @@ jobs:
       - name: Unit tests
         run: npm test
 
+      # The forges refuse to run a worker whose hash differs from the one
+      # compiled into the app, and the audit page tells visitors to compare
+      # against the committed copy. Both only hold if it is actually current.
+      - name: Worker integrity hashes are current
+        run: |
+          npm run build:worker
+          git diff --exit-code -- public/worker-hash.json src/lib/worker-integrity.ts \
+            || (echo "::error::Worker hashes are stale — run 'npm run build:worker' and commit the result." && exit 1)
+
       - name: Build workers + Next.js
         run: npm run build
 

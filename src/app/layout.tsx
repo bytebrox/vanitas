@@ -41,8 +41,10 @@ export default async function RootLayout({
       <head>
         <style dangerouslySetInnerHTML={{ __html: THEME_CRITICAL_CSS }} />
         <link rel="icon" href="/favicon.png" type="image/png" sizes="any" />
-        <link rel="apple-touch-icon" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         <meta name="color-scheme" content="light dark" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-title" content="Vanitas" />
       </head>
       <body className="min-h-screen flex flex-col" suppressHydrationWarning>
         <Script

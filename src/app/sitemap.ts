@@ -16,6 +16,7 @@ const PATHS = [
   '/cardano',
   '/xrp',
   '/lab',
+  '/seed',
   '/lookalike',
   '/create2',
   '/proof',

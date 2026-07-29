@@ -4,6 +4,7 @@
  */
 
 import { ReactNode } from 'react';
+import { AsciiImage } from './AsciiImage';
 
 interface ContentWithSideProps {
   children: ReactNode;
@@ -24,7 +25,7 @@ export function ContentWithSide({
   caption = 'Fig. — Vanitas',
   className = '',
 }: ContentWithSideProps) {
-  const plateSrc = `${toPlateSrc(imageSrc)}?v=5`;
+  const plateSrc = toPlateSrc(imageSrc);
 
   return (
     <div className={`relative ${className}`.trim()}>
@@ -47,12 +48,11 @@ export function ContentWithSide({
         <div className="relative hidden lg:flex lg:pl-10 xl:pl-14 justify-start min-h-0 self-stretch">
           <aside className="side-plate" aria-hidden="true">
             <div className="side-plate__press">
-              <img
+              <AsciiImage
                 src={plateSrc}
-                alt=""
+                version="5"
+                sizes="(min-width: 1280px) 26rem, 22rem"
                 className="side-plate__img"
-                loading="lazy"
-                decoding="async"
               />
               <span className="side-plate__grain" />
             </div>
@@ -62,13 +62,11 @@ export function ContentWithSide({
 
       {/* Compact plate strip on mobile / tablet */}
       <figure className="lg:hidden mt-12 sm:mt-16 mx-auto max-w-[14rem] sm:max-w-[16rem]" aria-hidden="true">
-        <img
+        <AsciiImage
           src={plateSrc}
-          alt=""
+          version="5"
+          sizes="(min-width: 640px) 16rem, 14rem"
           className="side-plate__img w-full h-auto select-none !h-auto"
-          loading="lazy"
-          decoding="async"
-          draggable={false}
         />
         <figcaption className="mt-2 text-center text-micro uppercase tracking-[0.16em] text-muted">
           {caption}

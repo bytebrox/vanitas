@@ -4,6 +4,7 @@
  */
 
 import { getPublicKey, utils, etc } from '@noble/secp256k1';
+import { yieldToEventLoop } from './yield';
 import { keccak_256 } from '@noble/hashes/sha3.js';
 import { tronAddressFromEth20 } from '../lib/address-encoding';
 
@@ -143,7 +144,7 @@ async function generateTronVanity(config: TronGeneratorConfig): Promise<void> {
       lastProgressUpdate = now;
     }
 
-    await new Promise((resolve) => setTimeout(resolve, 0));
+    await yieldToEventLoop();
   }
 
   self.postMessage({

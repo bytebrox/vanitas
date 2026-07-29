@@ -10,8 +10,12 @@ import type {
   SuiWorkerInboundMessage,
   SuiWorkerOutboundMessage,
 } from '@/types/sui';
+import { verifiedWorkerUrl } from './verified-worker';
+import { clampThreads, optimalThreadCount } from '@/lib/threads';
 
 export type SuiGeneratorCallback = (state: SuiGeneratorState) => void;
+
+const WORKER_PATH = '/sui-worker.js';
 
 export class SuiVanityGenerator {
   private workers: Worker[] = [];
@@ -23,6 +27,7 @@ export class SuiVanityGenerator {
   private result: GeneratedSuiResult | null = null;
   private isRunning = false;
   private statsInterval: ReturnType<typeof setInterval> | null = null;
+  private runToken = 0;
 
   constructor(callback: SuiGeneratorCallback) {
     this.callback = callback;
@@ -34,14 +39,11 @@ export class SuiVanityGenerator {
   }
 
   private getOptimalThreadCount(): number {
-    if (typeof navigator !== 'undefined' && navigator.hardwareConcurrency) {
-      return Math.max(1, navigator.hardwareConcurrency - 1);
-    }
-    return 4;
+    return optimalThreadCount();
   }
 
-  private createWorker(workerId: number): Worker {
-    const worker = new Worker('/sui-worker.js');
+  private createWorker(workerId: number, workerUrl: string): Worker {
+    const worker = new Worker(workerUrl);
     worker.onmessage = (event: MessageEvent<SuiWorkerOutboundMessage>) => {
       this.handleWorkerMessage(event.data);
     };
@@ -113,20 +115,36 @@ export class SuiVanityGenerator {
     this.startTime = Date.now();
     this.isRunning = true;
 
-    for (let i = 0; i < this.config.threads; i++) {
-      const worker = this.createWorker(i);
-      this.workers.push(worker);
-      worker.postMessage({
-        type: 'start',
-        config: this.config,
-        workerId: i,
-      } satisfies SuiWorkerInboundMessage);
-    }
-
-    this.statsInterval = setInterval(() => {
-      if (this.isRunning) this.emitState('running');
-    }, 250);
     this.emitState('running');
+
+    // Workers only start once the bundle has been verified against the hash
+    // compiled into the app.
+    const token = ++this.runToken;
+    void verifiedWorkerUrl(WORKER_PATH)
+      .then((workerUrl) => {
+        if (!this.isRunning || token !== this.runToken) return;
+
+        for (let i = 0; i < this.config.threads; i++) {
+          const worker = this.createWorker(i, workerUrl);
+          this.workers.push(worker);
+          worker.postMessage({
+            type: 'start',
+            config: this.config,
+            workerId: i,
+          } satisfies SuiWorkerInboundMessage);
+        }
+
+        this.statsInterval = setInterval(() => {
+          if (this.isRunning) this.emitState('running');
+        }, 250);
+      })
+      .catch((err: unknown) => {
+        this.isRunning = false;
+        this.emitState(
+          'error',
+          err instanceof Error ? err.message : 'Worker verification failed'
+        );
+      });
   }
 
   stop(): void {
@@ -164,7 +182,7 @@ export class SuiVanityGenerator {
   }
 
   setThreadCount(count: number): void {
-    this.config.threads = Math.max(1, Math.min(count, 16));
+    this.config.threads = clampThreads(count);
   }
 
   destroy(): void {

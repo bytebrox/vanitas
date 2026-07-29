@@ -153,6 +153,8 @@
     "toolsProofHint": "Verifique uma descoberta",
     "toolsLab": "Laboratório",
     "toolsLabHint": "Laboratório de padrões",
+    "toolsSeed": "Forja de seed",
+    "toolsSeedHint": "Endereço personalizado a partir de uma frase de recuperação",
     "toolsLookalike": "Sósia",
     "toolsLookalikeHint": "Armadilhas do alfabeto",
     "toolsCreate2": "CREATE2",
@@ -199,6 +201,10 @@
       "xrp": {
         "label": "XRP",
         "short": "XRP"
+      },
+      "seed": {
+        "label": "Seed",
+        "short": "SEED"
       }
     }
   },
@@ -215,6 +221,7 @@
     "github": "GitHub",
     "proof": "Prova",
     "lab": "Laboratório",
+    "seed": "Forja de seed",
     "lookalike": "Sósia",
     "create2": "CREATE2",
     "brand": "Marca",
@@ -512,6 +519,47 @@
       "queueN": "03 – Fila",
       "forge": "Forja",
       "exportWarning": "Apenas padrões – sem chaves privadas."
+    },
+    "seed": {
+      "eyebrow": "Recuperável por concepção",
+      "title": "Forja de seed",
+      "description": "Gere um endereço personalizado que você restaura com doze palavras. A frase de recuperação é fixada primeiro e só o índice de derivação varia, então o resultado importa em qualquer carteira padrão em vez de sobreviver como uma chave privada solta.",
+      "caption": "Fig. — Forja de seed",
+      "toc": {
+        "mnemonic": "Frase de recuperação",
+        "pattern": "Caminho e padrão",
+        "run": "Forjar"
+      },
+      "sectionMnemonicN": "01",
+      "sectionMnemonicTitle": "Comece por uma frase de recuperação",
+      "mnemonicIntro": "Gere uma frase nova ou cole uma que você já controla. Ela é esticada em uma seed nesta aba e nunca é enviada a lugar nenhum — a [auditoria ao vivo](/audit) mostra o registro de rede vazio.",
+      "generate12": "Gerar 12 palavras",
+      "generate24": "Gerar 24 palavras",
+      "mnemonicLabel": "Frase de recuperação",
+      "mnemonicPh": "doze ou vinte e quatro palavras separadas por espaços",
+      "mnemonicValid": "Frase BIP-39 válida — {words} palavras",
+      "mnemonicInvalid": "Não é uma frase BIP-39 válida. Confira a grafia e a ordem das palavras.",
+      "passphraseLabel": "Senha (opcional)",
+      "passphrasePh": "a 25ª palavra — deixe vazio se tiver dúvida",
+      "mnemonicWarning": "Anote a frase antes de começar. Quem a tiver terá todos os endereços derivados dela, e o Vanitas não guarda cópia.",
+      "sectionPatternN": "02",
+      "sectionPatternTitle": "Escolha um caminho e um padrão",
+      "pathIntro": "As carteiras discordam sobre onde ficam as contas. Escolha o esquema da sua — o nível marcado com `{i}` é o que será percorrido, e o número dele é o que você digita ao importar.",
+      "alphabetSol": "Endereços Solana usam Base58 — sem 0, O, I ou l.",
+      "alphabetEvm": "Endereços EVM são hexadecimais — apenas 0-9 e a-f.",
+      "startIndexLabel": "Índice inicial",
+      "startIndexHint": "Primeiro caminho testado: {path}",
+      "sectionRunN": "03",
+      "sectionRunTitle": "Ligue a forja",
+      "derivationPath": "Caminho de derivação",
+      "copyPath": "Copiar caminho",
+      "copyAddress": "Copiar endereço",
+      "recoveryTitle": "Como recuperar este endereço",
+      "recoveryBody": "Importe sua frase de recuperação em qualquer carteira e adicione uma conta em `{path}`. Nenhum arquivo para guardar, nenhuma chave privada para perder.",
+      "showPrivateKey": "Mostrar a chave privada bruta",
+      "privateKeyNote": "Só é necessária se você preferir importar a chave avulsa em vez da frase. Proteja-a com o mesmo cuidado.",
+      "exhausted": "Todos os índices de derivação foram testados. Encurte o padrão ou escolha outro esquema de caminho.",
+      "needMnemonic": "Informe ou gere uma frase de recuperação válida e um padrão para começar."
     },
     "lookalike": {
       "title": "Verificação semelhante",
@@ -858,12 +906,21 @@
           "description": "As impressões digitais SHA-256 correspondem a todos os trabalhadores da forja publicados",
           "why": "Fazemos hash de cada trabalhador de geração de chaves (Solana, EVM, Bitcoin, Tron, Aptos, Sui) e comparamos cada um com trabalhador-hash.json da construção aberta. Se corresponderem, o código não foi adulterado."
         },
+        "offline": {
+          "name": "Capacidade offline",
+          "description": "Todos os workers de forja estão em cache para funcionar sem conexão",
+          "why": "Depois que os workers estão em cache você pode desligar o Wi-Fi e continuar forjando. É a prova mais forte que existe de que nada é enviado — dá para assistir funcionando com a rede fisicamente ausente."
+        },
         "keygen": {
           "name": "Teste de geração de chaves",
           "description": "Gere e valide um par de chaves Ed25519 real",
           "why": "A prova final: criamos uma chave real, assinamos uma mensagem com ela e depois verificamos a assinatura. Se isso funcionar, seu navegador poderá gerar endereços Solana com segurança."
         }
-      }
+      },
+      "hashCrossCheckTitle": "Verifique você mesmo",
+      "hashCrossCheckBody": "Estas impressões digitais estão compiladas dentro da página que você está lendo, não vêm do servidor, e as forjas se recusam a executar um worker que não corresponda. Calcule o hash dos arquivos servidos e compare com a cópia no repositório público.",
+      "hashCrossCheckLink": "worker-hash.json no GitHub",
+      "hashBuiltAt": "Compilado em {at}"
     }
   },
   "faq": {
@@ -1627,6 +1684,12 @@
       "ogTitle": "Laboratório de Padrões | Vanitas",
       "ogDescription": "Matriz de dificuldade, estimativas de raridade e fila de padrões de lote – antes de você minerar."
     },
+    "seed": {
+      "title": "Forja de seed — Endereço personalizado a partir de uma frase de recuperação",
+      "description": "Gere um endereço personalizado Solana ou EVM que se restaura com uma frase BIP-39 de 12 palavras. Tudo acontece no seu navegador.",
+      "ogTitle": "Forja de seed | Vanitas",
+      "ogDescription": "Endereços personalizados que você recupera com doze palavras — sem chave privada solta."
+    },
     "lookalike": {
       "title": "Verificação semelhante",
       "description": "Capture glifos Base58 proibidos, armadilhas de caixa Tron e incompatibilidades de alfabeto antes de criar padrões personalizados.",
@@ -1974,6 +2037,19 @@
     "hintCardanoFirst": "First char: y/9/x/8",
     "hintAfterR": "After fixed r",
     "hintTon": "Case-sensitive base64url"
+  },
+  "domains": {
+    "label": "Domínios",
+    "matching": "Nomes correspondentes a “{name}”",
+    "via": "via {provider}",
+    "check": "Verificar",
+    "note": "Um domínio torna o endereço mais fácil de partilhar. A disponibilidade é confirmada no site do registrador."
+  },
+  "offline": {
+    "airGapped": "Isolado da rede",
+    "airGappedDetail": "Você está offline e a forja continua funcionando. Nada pode sair deste dispositivo.",
+    "offline": "Offline",
+    "offlineDetail": "Sem conexão. Carregue a página uma vez online para guardar a forja para uso offline."
   },
   "postFind": {
     "playbook": {

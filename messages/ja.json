@@ -153,6 +153,8 @@
     "toolsProofHint": "検索結果を確認する",
     "toolsLab": "研究室",
     "toolsLabHint": "パターンラボ",
+    "toolsSeed": "シード鍛造",
+    "toolsSeedHint": "リカバリーフレーズから作るこだわりアドレス",
     "toolsLookalike": "そっくりさん",
     "toolsLookalikeHint": "アルファベットの罠",
     "toolsCreate2": "CREATE2",
@@ -199,6 +201,10 @@
       "xrp": {
         "label": "XRP",
         "short": "XRP"
+      },
+      "seed": {
+        "label": "Seed",
+        "short": "SEED"
       }
     }
   },
@@ -215,6 +221,7 @@
     "github": "GitHub",
     "proof": "証拠",
     "lab": "研究室",
+    "seed": "シード鍛造",
     "lookalike": "そっくりさん",
     "create2": "CREATE2",
     "brand": "ブランド",
@@ -512,6 +519,47 @@
       "queueN": "03 — キュー",
       "forge": "フォージ",
       "exportWarning": "パターンのみ - 秘密キーはありません。"
+    },
+    "seed": {
+      "eyebrow": "設計から復元可能",
+      "title": "シード鍛造",
+      "description": "12 語で復元できるこだわりアドレスを鍛造します。先にリカバリーフレーズを固定し、変えるのは導出インデックスだけ。だから結果はむき出しの秘密鍵として残らず、標準的なウォレットにそのまま取り込めます。",
+      "caption": "図 — シード鍛造",
+      "toc": {
+        "mnemonic": "リカバリーフレーズ",
+        "pattern": "パスとパターン",
+        "run": "鍛造"
+      },
+      "sectionMnemonicN": "01",
+      "sectionMnemonicTitle": "リカバリーフレーズから始める",
+      "mnemonicIntro": "新しいフレーズを生成するか、すでに管理しているものを貼り付けてください。このタブ内でシードへ伸長され、どこにも送信されません。[ライブ監査](/audit) で空のネットワークログを確認できます。",
+      "generate12": "12 語を生成",
+      "generate24": "24 語を生成",
+      "mnemonicLabel": "リカバリーフレーズ",
+      "mnemonicPh": "半角スペース区切りの 12 語または 24 語",
+      "mnemonicValid": "有効な BIP-39 フレーズ — {words} 語",
+      "mnemonicInvalid": "有効な BIP-39 フレーズではありません。綴りと語順を確認してください。",
+      "passphraseLabel": "パスフレーズ（任意）",
+      "passphrasePh": "25 番目の語 — 不明なら空欄のまま",
+      "mnemonicWarning": "始める前にフレーズを書き留めてください。これを持つ人は、そこから導かれるすべてのアドレスを持つことになります。Vanitas は控えを一切保持しません。",
+      "sectionPatternN": "02",
+      "sectionPatternTitle": "パスとパターンを選ぶ",
+      "pathIntro": "アカウントの置き場所はウォレットごとに流儀が違います。お使いのウォレットの方式を選んでください。`{i}` が付いた階層が探索対象で、その番号をインポート時に入力します。",
+      "alphabetSol": "Solana アドレスは Base58 — 0、O、I、l は使いません。",
+      "alphabetEvm": "EVM アドレスは 16 進数 — 0-9 と a-f のみです。",
+      "startIndexLabel": "開始インデックス",
+      "startIndexHint": "最初に試すパス: {path}",
+      "sectionRunN": "03",
+      "sectionRunTitle": "鍛造を始める",
+      "derivationPath": "導出パス",
+      "copyPath": "パスをコピー",
+      "copyAddress": "アドレスをコピー",
+      "recoveryTitle": "このアドレスを取り戻す方法",
+      "recoveryBody": "リカバリーフレーズを任意のウォレットに読み込み、`{path}` のアカウントを追加してください。保管するファイルも、失くす秘密鍵もありません。",
+      "showPrivateKey": "生の秘密鍵を表示",
+      "privateKeyNote": "フレーズではなく鍵単体で取り込みたい場合にだけ必要です。同じ厳重さで扱ってください。",
+      "exhausted": "導出インデックスを試し尽くしました。パターンを短くするか、別のパス方式を選んでください。",
+      "needMnemonic": "有効なリカバリーフレーズとパターンを入力すると開始できます。"
     },
     "lookalike": {
       "title": "類似チェック",
@@ -858,12 +906,21 @@
           "description": "SHA-256 フィンガープリントは公開されているすべての Forge ワーカーと一致します",
           "why": "すべてのキー生成ワーカー (Solana、EVM、Bitcoin、Tron、Aptos、Sui) をハッシュし、それぞれをオープン ビルドの worker-hash.json と比較します。それらが一致する場合、コードは改ざんされていません。"
         },
+        "offline": {
+          "name": "オフライン動作",
+          "description": "すべての鍛造 worker が、接続なしで使えるようキャッシュ済み",
+          "why": "worker がキャッシュされれば、Wi-Fi を切ったまま鍛造を続けられます。何も送信していないことのこれ以上ない証明です。ネットワークが物理的に無い状態で動く様子をそのまま確認できます。"
+        },
         "keygen": {
           "name": "鍵生成テスト",
           "description": "実際の Ed25519 キーペアを生成して検証する",
           "why": "最後の証明: 本物の鍵を作成し、それを使ってメッセージに署名し、署名を検証します。これが機能すると、ブラウザは Solana アドレスを安全に生成できます。"
         }
-      }
+      },
+      "hashCrossCheckTitle": "自分で確かめる",
+      "hashCrossCheckBody": "これらのフィンガープリントはサーバーから取得したものではなく、いま読んでいるページに組み込まれています。鍛造は一致しない worker の実行を拒否します。配信中のファイルを自分でハッシュし、公開リポジトリの控えと突き合わせてください。",
+      "hashCrossCheckLink": "GitHub の worker-hash.json",
+      "hashBuiltAt": "ビルド日時 {at}"
     }
   },
   "faq": {
@@ -1627,6 +1684,12 @@
       "ogTitle": "パターンラボ |ヴァニタス",
       "ogDescription": "マイニングする前に、難易度マトリックス、希少性の推定、バッチ パターン キューを確認します。"
     },
+    "seed": {
+      "title": "シード鍛造 — リカバリーフレーズから作るこだわりアドレス",
+      "description": "12 語の BIP-39 フレーズから復元できる Solana / EVM のこだわりアドレスを鍛造します。すべてブラウザ内で完結します。",
+      "ogTitle": "シード鍛造 | Vanitas",
+      "ogDescription": "12 語で復元できるこだわりアドレス。むき出しの秘密鍵はもう不要です。"
+    },
     "lookalike": {
       "title": "類似チェック",
       "description": "バニティ パターンを研削​​する前に、禁止されている Base58 グリフ、トロン大文字のトラップ、アルファベットの不一致を見つけてください。",
@@ -1974,6 +2037,19 @@
     "hintCardanoFirst": "First char: y/9/x/8",
     "hintAfterR": "After fixed r",
     "hintTon": "Case-sensitive base64url"
+  },
+  "domains": {
+    "label": "ドメイン",
+    "matching": "「{name}」に一致する名前",
+    "via": "{provider} 経由",
+    "check": "確認",
+    "note": "ドメインがあるとアドレスを共有しやすくなります。空き状況は登録サービス側のサイトで確認してください。"
+  },
+  "offline": {
+    "airGapped": "エアギャップ",
+    "airGappedDetail": "オフラインでも鍛造は動き続けています。この端末から出ていくものは何もありません。",
+    "offline": "オフライン",
+    "offlineDetail": "接続がありません。オンラインのうちに一度読み込むと、鍛造をオフラインで使えるようになります。"
   },
   "postFind": {
     "playbook": {

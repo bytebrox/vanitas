@@ -153,6 +153,8 @@
     "toolsProofHint": "Einen Fund verifizieren",
     "toolsLab": "Labor",
     "toolsLabHint": "Musterlabor",
+    "toolsSeed": "Seed-Schmiede",
+    "toolsSeedHint": "Wunschadresse aus einer Wiederherstellungsphrase",
     "toolsLookalike": "Doppelgänger",
     "toolsLookalikeHint": "Alphabetfallen",
     "toolsCreate2": "CREATE2",
@@ -199,6 +201,10 @@
       "xrp": {
         "label": "XRP",
         "short": "XRP"
+      },
+      "seed": {
+        "label": "Seed",
+        "short": "SEED"
       }
     }
   },
@@ -215,6 +221,7 @@
     "github": "GitHub",
     "proof": "Nachweisen",
     "lab": "Labor",
+    "seed": "Seed-Schmiede",
     "lookalike": "Doppelgänger",
     "create2": "CREATE2",
     "brand": "Brand",
@@ -512,6 +519,47 @@
       "queueN": "03 – Warteschlange",
       "forge": "Schmiede",
       "exportWarning": "Nur Muster – keine privaten Schlüssel."
+    },
+    "seed": {
+      "eyebrow": "Wiederherstellbar von Grund auf",
+      "title": "Seed-Schmiede",
+      "description": "Erzeuge eine Wunschadresse, die sich aus zwölf Wörtern wiederherstellen lässt. Die Wiederherstellungsphrase steht zuerst fest, variiert wird nur der Ableitungsindex — das Ergebnis lässt sich in jede gängige Wallet importieren, statt als loser Private Key weiterzuleben.",
+      "caption": "Abb. — Seed-Schmiede",
+      "toc": {
+        "mnemonic": "Wiederherstellungsphrase",
+        "pattern": "Pfad & Muster",
+        "run": "Schmieden"
+      },
+      "sectionMnemonicN": "01",
+      "sectionMnemonicTitle": "Mit einer Wiederherstellungsphrase beginnen",
+      "mnemonicIntro": "Erzeuge eine neue Phrase oder füge eine ein, die dir bereits gehört. Sie wird in diesem Tab zu einem Seed gestreckt und nirgendwohin gesendet — das [Live-Audit](/audit) zeigt dir das leere Netzwerkprotokoll.",
+      "generate12": "12 Wörter erzeugen",
+      "generate24": "24 Wörter erzeugen",
+      "mnemonicLabel": "Wiederherstellungsphrase",
+      "mnemonicPh": "zwölf oder vierundzwanzig Wörter, durch Leerzeichen getrennt",
+      "mnemonicValid": "Gültige BIP-39-Phrase — {words} Wörter",
+      "mnemonicInvalid": "Keine gültige BIP-39-Phrase. Prüfe Schreibweise und Reihenfolge der Wörter.",
+      "passphraseLabel": "Passphrase (optional)",
+      "passphrasePh": "das 25. Wort — im Zweifel leer lassen",
+      "mnemonicWarning": "Schreibe die Phrase auf, bevor du startest. Wer sie hat, hat jede daraus abgeleitete Adresse, und Vanitas behält keine Kopie.",
+      "sectionPatternN": "02",
+      "sectionPatternTitle": "Pfad und Muster wählen",
+      "pathIntro": "Wallets sind sich uneinig, wo Konten liegen. Wähle das Schema deiner Wallet — die mit `{i}` markierte Ebene wird durchsucht, und ihre Zahl gibst du beim Import ein.",
+      "alphabetSol": "Solana-Adressen nutzen Base58 — kein 0, O, I oder l.",
+      "alphabetEvm": "EVM-Adressen sind hexadezimal — nur 0-9 und a-f.",
+      "startIndexLabel": "Startindex",
+      "startIndexHint": "Erster geprüfter Pfad: {path}",
+      "sectionRunN": "03",
+      "sectionRunTitle": "Schmiede starten",
+      "derivationPath": "Ableitungspfad",
+      "copyPath": "Pfad kopieren",
+      "copyAddress": "Adresse kopieren",
+      "recoveryTitle": "So bekommst du diese Adresse zurück",
+      "recoveryBody": "Importiere deine Wiederherstellungsphrase in eine beliebige Wallet und füge ein Konto unter `{path}` hinzu. Keine Datei zum Aufbewahren, kein Private Key zum Verlieren.",
+      "showPrivateKey": "Rohen Private Key anzeigen",
+      "privateKeyNote": "Nur nötig, wenn du lieber den einzelnen Schlüssel als die Phrase importierst. Behandle ihn genauso sorgfältig.",
+      "exhausted": "Alle Ableitungsindizes sind durchprobiert. Kürze das Muster oder wähle ein anderes Pfadschema.",
+      "needMnemonic": "Gib eine gültige Wiederherstellungsphrase und ein Muster ein, um zu starten."
     },
     "lookalike": {
       "title": "Lookalike-Check",
@@ -858,12 +906,21 @@
           "description": "SHA-256-Fingerabdrücke stimmen mit allen veröffentlichten Fälschungsarbeitern überein",
           "why": "Wir hashen jeden Worker der Schlüsselgenerierung (Solana, EVM, Bitcoin, Tron, Aptos, Sui) und vergleichen jeden mit worker-hash.json aus dem offenen Build. Wenn sie übereinstimmen, wurde der Code nicht manipuliert."
         },
+        "offline": {
+          "name": "Offline-Fähigkeit",
+          "description": "Alle Worker der Schmieden liegen für den Betrieb ohne Verbindung im Cache",
+          "why": "Sobald die Worker im Cache liegen, kannst du das WLAN abschalten und weiter schmieden. Das ist der stärkste denkbare Beweis, dass nichts übertragen wird — du kannst dabei zusehen, während das Netzwerk physisch weg ist."
+        },
         "keygen": {
           "name": "Schlüsselgenerierungstest",
           "description": "Generieren und validieren Sie ein tatsächliches Ed25519-Schlüsselpaar",
           "why": "Der letzte Beweis: Wir erstellen einen echten Schlüssel, signieren damit eine Nachricht und überprüfen dann die Signatur. Wenn dies funktioniert, kann Ihr Browser Solana-Adressen sicher generieren."
         }
-      }
+      },
+      "hashCrossCheckTitle": "Selbst nachprüfen",
+      "hashCrossCheckBody": "Diese Fingerabdrücke sind fest in die Seite einkompiliert, die du gerade liest — sie kommen nicht vom Server, und die Schmieden weigern sich, einen abweichenden Worker auszuführen. Hashe die ausgelieferten Dateien selbst und vergleiche sie mit der Kopie im öffentlichen Repository.",
+      "hashCrossCheckLink": "worker-hash.json auf GitHub",
+      "hashBuiltAt": "Gebaut am {at}"
     }
   },
   "faq": {
@@ -1627,6 +1684,12 @@
       "ogTitle": "Musterlabor | Vanitas",
       "ogDescription": "Schwierigkeitsmatrix, Seltenheitsschätzungen und Stapelmusterwarteschlange – bevor Sie abbauen."
     },
+    "seed": {
+      "title": "Seed-Schmiede — Wunschadresse aus einer Wiederherstellungsphrase",
+      "description": "Erzeuge eine Solana- oder EVM-Wunschadresse, die sich aus zwölf BIP-39-Wörtern wiederherstellen lässt. Läuft vollständig im Browser.",
+      "ogTitle": "Seed-Schmiede | Vanitas",
+      "ogDescription": "Wunschadressen, die sich aus zwölf Wörtern wiederherstellen lassen — kein loser Private Key."
+    },
     "lookalike": {
       "title": "Lookalike-Check",
       "description": "Fangen Sie verbotene Base58-Glyphen, Tron-Fallfallen und Alphabet-Nichtübereinstimmungen ab, bevor Sie Vanity-Muster schleifen.",
@@ -1974,6 +2037,19 @@
     "hintCardanoFirst": "Erstes Zeichen: y/9/x/8",
     "hintAfterR": "Nach festem r",
     "hintTon": "Case-sensitiv base64url"
+  },
+  "domains": {
+    "label": "Domains",
+    "matching": "Passende Namen für „{name}“",
+    "via": "über {provider}",
+    "check": "Prüfen",
+    "note": "Eine Domain macht die Adresse leichter teilbar. Die Verfügbarkeit bestätigt die Registrierungsseite selbst."
+  },
+  "offline": {
+    "airGapped": "Air-Gapped",
+    "airGappedDetail": "Du bist offline und die Schmiede läuft weiter. Nichts kann dieses Gerät verlassen.",
+    "offline": "Offline",
+    "offlineDetail": "Keine Verbindung. Lade die Seite einmal online, damit die Schmiede offline verfügbar wird."
   },
   "postFind": {
     "playbook": {

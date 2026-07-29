@@ -13,8 +13,12 @@ import {
   WorkerInboundMessage,
   WorkerOutboundMessage,
 } from '@/types';
+import { verifiedWorkerUrl } from './verified-worker';
+import { clampThreads, optimalThreadCount } from '@/lib/threads';
 
 export type GeneratorCallback = (state: GeneratorState) => void;
+
+const WORKER_PATH = '/vanity-worker.js';
 
 export class VanityGenerator {
   private workers: Worker[] = [];
@@ -26,6 +30,7 @@ export class VanityGenerator {
   private result: GeneratedKeypair | null = null;
   private isRunning: boolean = false;
   private statsInterval: ReturnType<typeof setInterval> | null = null;
+  private runToken = 0;
 
   constructor(callback: GeneratorCallback) {
     this.callback = callback;
@@ -41,19 +46,14 @@ export class VanityGenerator {
    * Get optimal number of threads based on available cores
    */
   private getOptimalThreadCount(): number {
-    if (typeof navigator !== 'undefined' && navigator.hardwareConcurrency) {
-      // Use all but one core to keep UI responsive
-      return Math.max(1, navigator.hardwareConcurrency - 1);
-    }
-    return 4; // Default fallback
+    return optimalThreadCount();
   }
 
   /**
    * Create a new Web Worker
    */
-  private createWorker(workerId: number): Worker {
-    // Load pre-compiled worker from public folder (includes @noble/ed25519)
-    const worker = new Worker('/vanity-worker.js');
+  private createWorker(workerId: number, workerUrl: string): Worker {
+    const worker = new Worker(workerUrl);
 
     worker.onmessage = (event: MessageEvent<WorkerOutboundMessage>) => {
       this.handleWorkerMessage(event.data);
@@ -169,28 +169,41 @@ export class VanityGenerator {
     this.startTime = Date.now();
     this.isRunning = true;
 
-    // Create and start workers
-    for (let i = 0; i < this.config.threads; i++) {
-      const worker = this.createWorker(i);
-      this.workers.push(worker);
-
-      const message: WorkerInboundMessage = {
-        type: 'start',
-        config: this.config,
-        workerId: i,
-      };
-
-      worker.postMessage(message);
-    }
-
-    // Start stats update interval
-    this.statsInterval = setInterval(() => {
-      if (this.isRunning) {
-        this.emitState('running');
-      }
-    }, 250);
-
     this.emitState('running');
+
+    // Workers only start once the bundle has been verified against the hash
+    // compiled into the app.
+    const token = ++this.runToken;
+    void verifiedWorkerUrl(WORKER_PATH)
+      .then((workerUrl) => {
+        if (!this.isRunning || token !== this.runToken) return;
+
+        for (let i = 0; i < this.config.threads; i++) {
+          const worker = this.createWorker(i, workerUrl);
+          this.workers.push(worker);
+
+          const message: WorkerInboundMessage = {
+            type: 'start',
+            config: this.config,
+            workerId: i,
+          };
+
+          worker.postMessage(message);
+        }
+
+        this.statsInterval = setInterval(() => {
+          if (this.isRunning) {
+            this.emitState('running');
+          }
+        }, 250);
+      })
+      .catch((err: unknown) => {
+        this.isRunning = false;
+        this.emitState(
+          'error',
+          err instanceof Error ? err.message : 'Worker verification failed'
+        );
+      });
   }
 
   /**
@@ -249,7 +262,7 @@ export class VanityGenerator {
    * Update thread count
    */
   setThreadCount(count: number): void {
-    this.config.threads = Math.max(1, Math.min(count, 16));
+    this.config.threads = clampThreads(count);
   }
 
   /**

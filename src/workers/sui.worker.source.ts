@@ -3,6 +3,7 @@
  */
 
 import { getPublicKey, utils, etc, hashes } from '@noble/ed25519';
+import { yieldToEventLoop } from './yield';
 import { sha512 } from '@noble/hashes/sha2.js';
 import { blake2b } from '@noble/hashes/blake2.js';
 
@@ -115,7 +116,7 @@ async function generateSuiVanity(config: SuiGeneratorConfig): Promise<void> {
       lastProgressUpdate = now;
     }
 
-    await new Promise((resolve) => setTimeout(resolve, 0));
+    await yieldToEventLoop();
   }
 
   self.postMessage({

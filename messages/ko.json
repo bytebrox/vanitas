@@ -153,6 +153,8 @@
     "toolsProofHint": "찾기 확인",
     "toolsLab": "랩",
     "toolsLabHint": "패턴 연구실",
+    "toolsSeed": "시드 제련소",
+    "toolsSeedHint": "복구 문구로 만드는 원하는 주소",
     "toolsLookalike": "유사 문자",
     "toolsLookalikeHint": "알파벳 트랩",
     "toolsCreate2": "CREATE2",
@@ -199,6 +201,10 @@
       "xrp": {
         "label": "XRP",
         "short": "XRP"
+      },
+      "seed": {
+        "label": "Seed",
+        "short": "SEED"
       }
     }
   },
@@ -215,6 +221,7 @@
     "github": "GitHub",
     "proof": "증명",
     "lab": "랩",
+    "seed": "시드 제련소",
     "lookalike": "유사 문자",
     "create2": "CREATE2",
     "brand": "Brand",
@@ -512,6 +519,47 @@
       "queueN": "03 — 대기열",
       "forge": "노",
       "exportWarning": "패턴만 — 개인 키가 없습니다."
+    },
+    "seed": {
+      "eyebrow": "설계부터 복구 가능",
+      "title": "시드 제련소",
+      "description": "열두 단어로 되찾을 수 있는 원하는 주소를 제련합니다. 복구 문구를 먼저 고정하고 파생 인덱스만 바꾸므로, 결과는 떠도는 개인키로 남는 대신 어떤 표준 지갑에도 그대로 불러올 수 있습니다.",
+      "caption": "그림 — 시드 제련소",
+      "toc": {
+        "mnemonic": "복구 문구",
+        "pattern": "경로와 패턴",
+        "run": "제련"
+      },
+      "sectionMnemonicN": "01",
+      "sectionMnemonicTitle": "복구 문구에서 시작하기",
+      "mnemonicIntro": "새 문구를 만들거나 이미 가지고 있는 문구를 붙여 넣으세요. 이 탭 안에서 시드로 늘어날 뿐 어디로도 전송되지 않습니다 — [실시간 감사](/audit)에서 비어 있는 네트워크 기록을 확인할 수 있습니다.",
+      "generate12": "12단어 생성",
+      "generate24": "24단어 생성",
+      "mnemonicLabel": "복구 문구",
+      "mnemonicPh": "공백으로 구분한 12개 또는 24개 단어",
+      "mnemonicValid": "유효한 BIP-39 문구 — {words}개 단어",
+      "mnemonicInvalid": "유효한 BIP-39 문구가 아닙니다. 철자와 단어 순서를 확인하세요.",
+      "passphraseLabel": "패스프레이즈 (선택)",
+      "passphrasePh": "25번째 단어 — 확실하지 않으면 비워 두세요",
+      "mnemonicWarning": "시작하기 전에 문구를 적어 두세요. 이 문구를 가진 사람이 여기서 파생되는 모든 주소를 가지며, Vanitas는 사본을 남기지 않습니다.",
+      "sectionPatternN": "02",
+      "sectionPatternTitle": "경로와 패턴 고르기",
+      "pathIntro": "지갑마다 계정의 위치 규약이 다릅니다. 쓰는 지갑의 방식을 고르세요 — `{i}`로 표시된 단계가 탐색되는 자리이고, 그 숫자가 불러올 때 입력할 값입니다.",
+      "alphabetSol": "솔라나 주소는 Base58을 씁니다 — 0, O, I, l 없음.",
+      "alphabetEvm": "EVM 주소는 16진수입니다 — 0-9와 a-f만.",
+      "startIndexLabel": "시작 인덱스",
+      "startIndexHint": "처음 시도하는 경로: {path}",
+      "sectionRunN": "03",
+      "sectionRunTitle": "제련 시작",
+      "derivationPath": "파생 경로",
+      "copyPath": "경로 복사",
+      "copyAddress": "주소 복사",
+      "recoveryTitle": "이 주소를 다시 얻는 방법",
+      "recoveryBody": "복구 문구를 아무 지갑에나 불러온 뒤 `{path}` 위치에 계정을 추가하세요. 보관할 파일도, 잃어버릴 개인키도 없습니다.",
+      "showPrivateKey": "원본 개인키 보기",
+      "privateKeyNote": "문구 대신 개인키 하나만 불러오고 싶을 때만 필요합니다. 문구와 똑같이 조심해서 보관하세요.",
+      "exhausted": "모든 파생 인덱스를 시도했습니다. 패턴을 짧게 하거나 다른 경로 방식을 선택하세요.",
+      "needMnemonic": "유효한 복구 문구와 패턴을 입력하면 시작할 수 있습니다."
     },
     "lookalike": {
       "title": "유사 체크",
@@ -858,12 +906,21 @@
           "description": "SHA-256 지문은 게시된 모든 단조 작업자와 일치합니다.",
           "why": "우리는 모든 키 생성 작업자(Solana, EVM, Bitcoin, Tron, Aptos, Sui)를 해시하고 각각을 오픈 빌드의 Worker-hash.json과 비교합니다. 일치하면 코드가 변조되지 않은 것입니다."
         },
+        "offline": {
+          "name": "오프라인 동작",
+          "description": "모든 제련 워커가 연결 없이 쓸 수 있도록 캐시됨",
+          "why": "워커가 캐시되고 나면 와이파이를 꺼도 계속 제련할 수 있습니다. 아무것도 전송되지 않는다는 가장 강력한 증거입니다. 네트워크가 실제로 끊긴 상태에서 작동하는 모습을 그대로 볼 수 있으니까요."
+        },
         "keygen": {
           "name": "키 생성 테스트",
           "description": "실제 Ed25519 키 쌍 생성 및 검증",
           "why": "최종 증명: 실제 키를 생성하고 이를 사용하여 메시지에 서명한 다음 서명을 확인합니다. 이것이 작동한다면 귀하의 브라우저는 안전하게 Solana 주소를 생성할 수 있습니다."
         }
-      }
+      },
+      "hashCrossCheckTitle": "직접 확인하기",
+      "hashCrossCheckBody": "이 지문들은 서버에서 받아온 것이 아니라 지금 보고 있는 페이지에 함께 컴파일되어 있으며, 제련소는 일치하지 않는 워커의 실행을 거부합니다. 배포된 파일을 직접 해시한 뒤 공개 저장소의 사본과 비교해 보세요.",
+      "hashCrossCheckLink": "GitHub의 worker-hash.json",
+      "hashBuiltAt": "{at} 빌드"
     }
   },
   "faq": {
@@ -1627,6 +1684,12 @@
       "ogTitle": "패턴 연구실 | Vanitas",
       "ogDescription": "채굴하기 전에 난이도 매트릭스, 희귀도 추정, 배치 패턴 대기열을 살펴보세요."
     },
+    "seed": {
+      "title": "시드 제련소 — 복구 문구로 만드는 원하는 주소",
+      "description": "12단어 BIP-39 문구로 복구되는 솔라나 또는 EVM 주소를 제련합니다. 전 과정이 브라우저 안에서 이뤄집니다.",
+      "ogTitle": "시드 제련소 | Vanitas",
+      "ogDescription": "열두 단어로 되찾을 수 있는 원하는 주소 — 떠도는 개인키가 없습니다."
+    },
     "lookalike": {
       "title": "유사검사",
       "description": "허영 패턴을 연마하기 전에 금지된 Base58 글리프, Tron 케이스 트랩 및 알파벳 불일치를 잡아보세요.",
@@ -1974,6 +2037,19 @@
     "hintCardanoFirst": "First char: y/9/x/8",
     "hintAfterR": "After fixed r",
     "hintTon": "Case-sensitive base64url"
+  },
+  "domains": {
+    "label": "도메인",
+    "matching": "“{name}”와(과) 어울리는 이름",
+    "via": "{provider} 경유",
+    "check": "확인",
+    "note": "도메인이 있으면 주소를 공유하기 쉬워집니다. 등록 가능 여부는 등록기관 사이트에서 확인하세요."
+  },
+  "offline": {
+    "airGapped": "망 분리 상태",
+    "airGappedDetail": "오프라인인데도 제련소가 계속 돌아갑니다. 이 기기를 빠져나갈 수 있는 것은 없습니다.",
+    "offline": "오프라인",
+    "offlineDetail": "연결이 없습니다. 온라인일 때 한 번 열어 두면 제련소를 오프라인에서도 쓸 수 있습니다."
   },
   "postFind": {
     "playbook": {

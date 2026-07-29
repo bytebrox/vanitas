@@ -10,8 +10,12 @@ import type {
   TronWorkerInboundMessage,
   TronWorkerOutboundMessage,
 } from '@/types/tron';
+import { verifiedWorkerUrl } from './verified-worker';
+import { clampThreads, optimalThreadCount } from '@/lib/threads';
 
 export type TronGeneratorCallback = (state: TronGeneratorState) => void;
+
+const WORKER_PATH = '/tron-worker.js';
 
 export class TronVanityGenerator {
   private workers: Worker[] = [];
@@ -23,6 +27,7 @@ export class TronVanityGenerator {
   private result: GeneratedTronResult | null = null;
   private isRunning = false;
   private statsInterval: ReturnType<typeof setInterval> | null = null;
+  private runToken = 0;
 
   constructor(callback: TronGeneratorCallback) {
     this.callback = callback;
@@ -36,14 +41,11 @@ export class TronVanityGenerator {
   }
 
   private getOptimalThreadCount(): number {
-    if (typeof navigator !== 'undefined' && navigator.hardwareConcurrency) {
-      return Math.max(1, navigator.hardwareConcurrency - 1);
-    }
-    return 4;
+    return optimalThreadCount();
   }
 
-  private createWorker(workerId: number): Worker {
-    const worker = new Worker('/tron-worker.js');
+  private createWorker(workerId: number, workerUrl: string): Worker {
+    const worker = new Worker(workerUrl);
     worker.onmessage = (event: MessageEvent<TronWorkerOutboundMessage>) => {
       this.handleWorkerMessage(event.data);
     };
@@ -108,20 +110,36 @@ export class TronVanityGenerator {
     this.startTime = Date.now();
     this.isRunning = true;
 
-    for (let i = 0; i < this.config.threads; i++) {
-      const worker = this.createWorker(i);
-      this.workers.push(worker);
-      worker.postMessage({
-        type: 'start',
-        config: this.config,
-        workerId: i,
-      } satisfies TronWorkerInboundMessage);
-    }
-
-    this.statsInterval = setInterval(() => {
-      if (this.isRunning) this.emitState('running');
-    }, 250);
     this.emitState('running');
+
+    // Workers only start once the bundle has been verified against the hash
+    // compiled into the app.
+    const token = ++this.runToken;
+    void verifiedWorkerUrl(WORKER_PATH)
+      .then((workerUrl) => {
+        if (!this.isRunning || token !== this.runToken) return;
+
+        for (let i = 0; i < this.config.threads; i++) {
+          const worker = this.createWorker(i, workerUrl);
+          this.workers.push(worker);
+          worker.postMessage({
+            type: 'start',
+            config: this.config,
+            workerId: i,
+          } satisfies TronWorkerInboundMessage);
+        }
+
+        this.statsInterval = setInterval(() => {
+          if (this.isRunning) this.emitState('running');
+        }, 250);
+      })
+      .catch((err: unknown) => {
+        this.isRunning = false;
+        this.emitState(
+          'error',
+          err instanceof Error ? err.message : 'Worker verification failed'
+        );
+      });
   }
 
   stop(): void {
@@ -157,7 +175,7 @@ export class TronVanityGenerator {
   }
 
   setThreadCount(count: number): void {
-    this.config.threads = Math.max(1, Math.min(count, 16));
+    this.config.threads = clampThreads(count);
   }
 
   destroy(): void {

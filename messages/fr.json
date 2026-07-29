@@ -153,6 +153,8 @@
     "toolsProofHint": "Vérifier une trouvaille",
     "toolsLab": "Laboratoire",
     "toolsLabHint": "Laboratoire de modèles",
+    "toolsSeed": "Forge de seed",
+    "toolsSeedHint": "Adresse personnalisée à partir d’une phrase de récupération",
     "toolsLookalike": "Sosie",
     "toolsLookalikeHint": "Pièges alphabétiques",
     "toolsCreate2": "CREATE2",
@@ -199,6 +201,10 @@
       "xrp": {
         "label": "XRP",
         "short": "XRP"
+      },
+      "seed": {
+        "label": "Seed",
+        "short": "SEED"
       }
     }
   },
@@ -215,6 +221,7 @@
     "github": "GitHub",
     "proof": "Preuve",
     "lab": "Laboratoire",
+    "seed": "Forge de seed",
     "lookalike": "Sosie",
     "create2": "CREATE2",
     "brand": "Brand",
@@ -512,6 +519,47 @@
       "queueN": "03 — File d'attente",
       "forge": "Forge",
       "exportWarning": "Modèles uniquement – ​​pas de clés privées."
+    },
+    "seed": {
+      "eyebrow": "Récupérable par conception",
+      "title": "Forge de seed",
+      "description": "Forgez une adresse personnalisée que vous pouvez restaurer avec douze mots. La phrase de récupération est fixée d’abord et seul l’index de dérivation varie : le résultat s’importe dans n’importe quel portefeuille standard au lieu de survivre comme une clé privée isolée.",
+      "caption": "Fig. — Forge de seed",
+      "toc": {
+        "mnemonic": "Phrase de récupération",
+        "pattern": "Chemin et motif",
+        "run": "Forger"
+      },
+      "sectionMnemonicN": "01",
+      "sectionMnemonicTitle": "Partez d’une phrase de récupération",
+      "mnemonicIntro": "Générez une nouvelle phrase ou collez-en une que vous maîtrisez déjà. Elle est étirée en seed dans cet onglet et n’est envoyée nulle part — l’[audit en direct](/audit) vous montrera le journal réseau vide.",
+      "generate12": "Générer 12 mots",
+      "generate24": "Générer 24 mots",
+      "mnemonicLabel": "Phrase de récupération",
+      "mnemonicPh": "douze ou vingt-quatre mots séparés par des espaces",
+      "mnemonicValid": "Phrase BIP-39 valide — {words} mots",
+      "mnemonicInvalid": "Phrase BIP-39 invalide. Vérifiez l’orthographe et l’ordre des mots.",
+      "passphraseLabel": "Phrase secrète (facultatif)",
+      "passphrasePh": "le 25e mot — laissez vide en cas de doute",
+      "mnemonicWarning": "Notez la phrase avant de commencer. Quiconque la détient détient toutes les adresses qui en dérivent, et Vanitas n’en garde aucune copie.",
+      "sectionPatternN": "02",
+      "sectionPatternTitle": "Choisissez un chemin et un motif",
+      "pathIntro": "Les portefeuilles ne s’accordent pas sur l’emplacement des comptes. Choisissez le schéma du vôtre — le niveau marqué `{i}` est celui qui est parcouru, et son numéro est celui que vous saisirez à l’import.",
+      "alphabetSol": "Les adresses Solana utilisent le Base58 — ni 0, ni O, ni I, ni l.",
+      "alphabetEvm": "Les adresses EVM sont hexadécimales — uniquement 0-9 et a-f.",
+      "startIndexLabel": "Index de départ",
+      "startIndexHint": "Premier chemin testé : {path}",
+      "sectionRunN": "03",
+      "sectionRunTitle": "Lancez la forge",
+      "derivationPath": "Chemin de dérivation",
+      "copyPath": "Copier le chemin",
+      "copyAddress": "Copier l’adresse",
+      "recoveryTitle": "Comment retrouver cette adresse",
+      "recoveryBody": "Importez votre phrase de récupération dans n’importe quel portefeuille, puis ajoutez un compte à `{path}`. Aucun fichier à conserver, aucune clé privée à perdre.",
+      "showPrivateKey": "Afficher la clé privée brute",
+      "privateKeyNote": "Utile seulement si vous préférez importer la clé seule plutôt que la phrase. Protégez-la avec le même soin.",
+      "exhausted": "Tous les index de dérivation ont été essayés. Raccourcissez le motif ou choisissez un autre schéma de chemin.",
+      "needMnemonic": "Saisissez ou générez une phrase de récupération valide et un motif pour commencer."
     },
     "lookalike": {
       "title": "Vérification de sosie",
@@ -858,12 +906,21 @@
           "description": "Les empreintes digitales SHA-256 correspondent à celles de tous les travailleurs de la forge publiés",
           "why": "Nous hachons chaque travailleur de génération de clé (Solana, EVM, Bitcoin, Tron, Aptos, Sui) et comparons chacun à worker-hash.json de la version ouverte. S'ils correspondent, le code n'a pas été falsifié."
         },
+        "offline": {
+          "name": "Fonctionnement hors ligne",
+          "description": "Tous les workers de forge sont en cache pour fonctionner sans connexion",
+          "why": "Une fois les workers en cache, vous pouvez couper le Wi-Fi et continuer à forger. C’est la preuve la plus forte qui soit que rien n’est envoyé : vous pouvez le voir fonctionner réseau physiquement débranché."
+        },
         "keygen": {
           "name": "Test de génération de clé",
           "description": "Générez et validez une véritable paire de clés Ed25519",
           "why": "La preuve finale : on crée une vraie clé, on signe un message avec, puis on vérifie la signature. Si cela fonctionne, votre navigateur peut générer en toute sécurité des adresses Solana."
         }
-      }
+      },
+      "hashCrossCheckTitle": "Vérifiez par vous-même",
+      "hashCrossCheckBody": "Ces empreintes sont compilées dans la page que vous lisez, elles ne viennent pas du serveur, et les forges refusent d’exécuter un worker qui ne correspond pas. Calculez vous-même l’empreinte des fichiers servis, puis comparez avec la copie du dépôt public.",
+      "hashCrossCheckLink": "worker-hash.json sur GitHub",
+      "hashBuiltAt": "Compilé le {at}"
     }
   },
   "faq": {
@@ -1627,6 +1684,12 @@
       "ogTitle": "Laboratoire de modèles | Vanitas",
       "ogDescription": "Matrice de difficulté, estimations de rareté et file d'attente de modèles de lots - avant d'exploiter."
     },
+    "seed": {
+      "title": "Forge de seed — Adresse personnalisée à partir d’une phrase de récupération",
+      "description": "Générez une adresse personnalisée Solana ou EVM restaurable avec une phrase BIP-39 de 12 mots. Tout se passe dans votre navigateur.",
+      "ogTitle": "Forge de seed | Vanitas",
+      "ogDescription": "Des adresses personnalisées que vous récupérez avec douze mots, sans clé privée isolée."
+    },
     "lookalike": {
       "title": "Vérification de sosie",
       "description": "Détectez les glyphes Base58 interdits, les pièges du cas Tron et les incompatibilités d'alphabet avant de créer des modèles vaniteux.",
@@ -1974,6 +2037,19 @@
     "hintCardanoFirst": "First char: y/9/x/8",
     "hintAfterR": "After fixed r",
     "hintTon": "Case-sensitive base64url"
+  },
+  "domains": {
+    "label": "Domaines",
+    "matching": "Noms correspondant à « {name} »",
+    "via": "via {provider}",
+    "check": "Vérifier",
+    "note": "Un domaine rend l’adresse plus facile à partager. La disponibilité se confirme sur le site du registraire."
+  },
+  "offline": {
+    "airGapped": "Isolé du réseau",
+    "airGappedDetail": "Vous êtes hors ligne et la forge tourne toujours. Rien ne peut quitter cet appareil.",
+    "offline": "Hors ligne",
+    "offlineDetail": "Aucune connexion. Chargez la page une fois en ligne pour mettre la forge en cache."
   },
   "postFind": {
     "playbook": {

@@ -1,3 +1,5 @@
+import { AsciiImage } from './AsciiImage';
+
 export type DocGlyphId =
   | 'key'
   | 'loop'
@@ -48,13 +50,13 @@ export function DocGlyph({
   variant = 'mark',
   className = '',
 }: DocGlyphProps) {
-  const src = `${GLYPH_SRC[id]}?v=2`;
+  const src = GLYPH_SRC[id];
 
   if (variant === 'watermark') {
     return (
       <div className={`doc-glyph doc-glyph--watermark ${className}`.trim()} aria-hidden>
         <div className="doc-glyph__press">
-          <img src={src} alt="" className="doc-glyph__img" loading="lazy" decoding="async" draggable={false} />
+          <AsciiImage src={src} version="2" sizes="13rem" className="doc-glyph__img" />
           <span className="doc-glyph__grain" />
         </div>
       </div>
@@ -65,7 +67,7 @@ export function DocGlyph({
     return (
       <div className={`doc-glyph doc-glyph--band ${className}`.trim()} aria-hidden>
         <div className="doc-glyph__press">
-          <img src={src} alt="" className="doc-glyph__img" loading="lazy" decoding="async" draggable={false} />
+          <AsciiImage src={src} version="2" sizes="13rem" className="doc-glyph__img" />
           <span className="doc-glyph__grain" />
         </div>
         {label ? <p className="doc-glyph__label">{label}</p> : null}
@@ -76,7 +78,7 @@ export function DocGlyph({
   return (
     <div className={`doc-glyph doc-glyph--mark ${className}`.trim()} aria-hidden>
       <div className="doc-glyph__press">
-        <img src={src} alt="" className="doc-glyph__img" loading="lazy" decoding="async" draggable={false} />
+        <AsciiImage src={src} version="2" sizes="13rem" className="doc-glyph__img" />
         <span className="doc-glyph__grain" />
       </div>
       {label ? <p className="doc-glyph__label">{label}</p> : null}

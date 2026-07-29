@@ -1,6 +1,7 @@
 'use client';
 
 import { Navbar } from './Navbar';
+import { AsciiImage } from './AsciiImage';
 import { useHeroScrollFade } from '@/hooks/useHeroScrollFade';
 import {
   SolanaLogo,
@@ -57,11 +58,11 @@ export function HeroBand({
               'linear-gradient(to bottom, #000 0%, #000 42%, rgba(0,0,0,0.85) 58%, rgba(0,0,0,0.35) 78%, transparent 100%)',
           }}
         >
-          <img
+          <AsciiImage
             src={imageSrc}
-            alt=""
+            sizes="100vw"
+            priority
             className="block w-full h-auto select-none ascii-hero"
-            draggable={false}
           />
         </div>
 

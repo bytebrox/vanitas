@@ -1,45 +1,50 @@
 {
-  "hash": "sha256-bb9f32069f104fb2e27ff1d07aee354111b2f48e81e973bd64d4bd962945aa55",
-  "size": 19285,
-  "built": "2026-07-28T13:18:34.713Z",
+  "hash": "sha256-dd3ba4ae8e811121f9281a39cfb0fb9ee501c8d3237bfcc24164fe515f378537",
+  "size": 19431,
+  "built": "2026-07-29T12:41:36.820Z",
   "eth": {
-    "hash": "sha256-b6d21e9b981c27331d3f909fc0949cc9da701554cd9a30f9f454c7af1e1810fe",
-    "size": 13268,
-    "built": "2026-07-28T13:18:34.713Z"
+    "hash": "sha256-8a2ccfa7e7ab6689d89a984ff1d26ddeab6901626007145099ffd135457ca9be",
+    "size": 13889,
+    "built": "2026-07-29T12:41:36.820Z"
   },
   "btc": {
-    "hash": "sha256-820e7cd3cd29fc0d4c527d2c52a447903259e2f22e0d79df2f7e31bd98a5425a",
-    "size": 18198,
-    "built": "2026-07-28T13:18:34.713Z"
+    "hash": "sha256-813640f61c27344a6120f546d1f5cb03fe22824e6db7216c377fd5c8342ec7ea",
+    "size": 18430,
+    "built": "2026-07-29T12:41:36.820Z"
   },
   "tron": {
-    "hash": "sha256-edef8719b92b3b5aea263cd6a36a65100d6063ec6ec2f35f1ac4808211d38c69",
-    "size": 16491,
-    "built": "2026-07-28T13:18:34.713Z"
+    "hash": "sha256-030f606770be55634a8a17df0aee5677aa6b09efeca01d4393c2dbf41e3f7025",
+    "size": 17150,
+    "built": "2026-07-29T12:41:36.820Z"
   },
   "aptos": {
-    "hash": "sha256-d4d5fecf97d03d9b54b17ff9340f97b0a5a03904440f112a9fbce9c99aec3d86",
-    "size": 19040,
-    "built": "2026-07-28T13:18:34.713Z"
+    "hash": "sha256-5cf7b03b3da1a472813452ecf00c74e73f525496b030b3960235137a6b743997",
+    "size": 19700,
+    "built": "2026-07-29T12:41:36.820Z"
   },
   "sui": {
-    "hash": "sha256-a0fd0b316379cecab8fd6521797ad8b3aba64df4a2bd848d203ca700b323e04e",
-    "size": 21686,
-    "built": "2026-07-28T13:18:34.713Z"
+    "hash": "sha256-9e0abcc1d5be2b748e870784ee7f0c7771a54b19cd8b048db6430a36ac86bd21",
+    "size": 22294,
+    "built": "2026-07-29T12:41:36.820Z"
   },
   "ton": {
-    "hash": "sha256-a50255f58155be3055bc8e08b89526c161edf4efcb80c2fbe687eaa1dae6c0fe",
-    "size": 544557,
-    "built": "2026-07-28T13:18:34.713Z"
+    "hash": "sha256-adf1d8d57155bbc5541916a9773ec14d8680140c798c90ee227fd927c43fa965",
+    "size": 544790,
+    "built": "2026-07-29T12:41:36.820Z"
   },
   "cardano": {
-    "hash": "sha256-de361beb1606ae1901e7427b6f8b3c672d7b86babf08223a1fbef463fcb860c9",
-    "size": 22627,
-    "built": "2026-07-28T13:18:34.713Z"
+    "hash": "sha256-0df1ef2971de59eaa86dbb05457f232bfa87e17067f9b957dc8b7b0eced7f27a",
+    "size": 23235,
+    "built": "2026-07-29T12:41:36.820Z"
   },
   "xrp": {
-    "hash": "sha256-83c34532ef563dba03e4c56d9371e677c97ad7b27e7eb0e85e27abae803be78b",
-    "size": 14441,
-    "built": "2026-07-28T13:18:34.713Z"
+    "hash": "sha256-adbac01d31b9ad13ec595c3b43cb2d3961e3c69efa60f1b1de6f0da289ee358d",
+    "size": 14672,
+    "built": "2026-07-29T12:41:36.820Z"
+  },
+  "seed": {
+    "hash": "sha256-0088d06859050d214eba5b05c447be088249aee14f72005477f5ebe862614026",
+    "size": 70195,
+    "built": "2026-07-29T12:41:36.820Z"
   }
 }

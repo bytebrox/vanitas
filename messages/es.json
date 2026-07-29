@@ -153,6 +153,8 @@
     "toolsProofHint": "Verificar un hallazgo",
     "toolsLab": "Laboratorio",
     "toolsLabHint": "laboratorio de patrones",
+    "toolsSeed": "Forja de semilla",
+    "toolsSeedHint": "Dirección personalizada desde una frase de recuperación",
     "toolsLookalike": "parecido",
     "toolsLookalikeHint": "trampas del alfabeto",
     "toolsCreate2": "CREATE2",
@@ -199,6 +201,10 @@
       "xrp": {
         "label": "XRP",
         "short": "XRP"
+      },
+      "seed": {
+        "label": "Semilla",
+        "short": "SEED"
       }
     }
   },
@@ -215,6 +221,7 @@
     "github": "GitHub",
     "proof": "Prueba",
     "lab": "Laboratorio",
+    "seed": "Forja de semilla",
     "lookalike": "parecido",
     "create2": "CREATE2",
     "brand": "Marca",
@@ -512,6 +519,47 @@
       "queueN": "03 — Cola",
       "forge": "Fragua",
       "exportWarning": "Solo patrones, sin claves privadas."
+    },
+    "seed": {
+      "eyebrow": "Recuperable por diseño",
+      "title": "Forja de semilla",
+      "description": "Genera una dirección personalizada que puedes restaurar con doce palabras. Primero se fija la frase de recuperación y solo varía el índice de derivación, así que el resultado se importa en cualquier monedero estándar en lugar de quedar como una clave privada suelta.",
+      "caption": "Fig. — Forja de semilla",
+      "toc": {
+        "mnemonic": "Frase de recuperación",
+        "pattern": "Ruta y patrón",
+        "run": "Forjar"
+      },
+      "sectionMnemonicN": "01",
+      "sectionMnemonicTitle": "Empieza por una frase de recuperación",
+      "mnemonicIntro": "Genera una frase nueva o pega una que ya controles. Se convierte en semilla dentro de esta pestaña y nunca se envía a ningún sitio — la [auditoría en vivo](/audit) te mostrará el registro de red vacío.",
+      "generate12": "Generar 12 palabras",
+      "generate24": "Generar 24 palabras",
+      "mnemonicLabel": "Frase de recuperación",
+      "mnemonicPh": "doce o veinticuatro palabras separadas por espacios",
+      "mnemonicValid": "Frase BIP-39 válida — {words} palabras",
+      "mnemonicInvalid": "No es una frase BIP-39 válida. Revisa la ortografía y el orden de las palabras.",
+      "passphraseLabel": "Contraseña (opcional)",
+      "passphrasePh": "la palabra 25 — déjalo vacío si tienes dudas",
+      "mnemonicWarning": "Apunta la frase antes de empezar. Quien la tenga tendrá todas las direcciones derivadas de ella, y Vanitas no guarda ninguna copia.",
+      "sectionPatternN": "02",
+      "sectionPatternTitle": "Elige una ruta y un patrón",
+      "pathIntro": "Los monederos no se ponen de acuerdo sobre dónde viven las cuentas. Elige el esquema del tuyo — el nivel marcado con `{i}` es el que se recorre, y su número es el que escribirás al importar.",
+      "alphabetSol": "Las direcciones de Solana usan Base58 — sin 0, O, I ni l.",
+      "alphabetEvm": "Las direcciones EVM son hexadecimales — solo 0-9 y a-f.",
+      "startIndexLabel": "Índice inicial",
+      "startIndexHint": "Primera ruta probada: {path}",
+      "sectionRunN": "03",
+      "sectionRunTitle": "Pon la forja en marcha",
+      "derivationPath": "Ruta de derivación",
+      "copyPath": "Copiar ruta",
+      "copyAddress": "Copiar dirección",
+      "recoveryTitle": "Cómo recuperar esta dirección",
+      "recoveryBody": "Importa tu frase de recuperación en cualquier monedero y añade una cuenta en `{path}`. Ningún archivo que guardar, ninguna clave privada que perder.",
+      "showPrivateKey": "Mostrar la clave privada en bruto",
+      "privateKeyNote": "Solo hace falta si prefieres importar la clave suelta en vez de la frase. Protégela con el mismo cuidado.",
+      "exhausted": "Se han probado todos los índices de derivación. Acorta el patrón o elige otro esquema de ruta.",
+      "needMnemonic": "Introduce o genera una frase de recuperación válida y un patrón para empezar."
     },
     "lookalike": {
       "title": "cheque similar",
@@ -858,12 +906,21 @@
           "description": "Las huellas dactilares SHA-256 coinciden con todas las de los trabajadores de la forja publicadas",
           "why": "Analizamos a cada trabajador de generación de claves (Solana, EVM, Bitcoin, Tron, Aptos, Sui) y los comparamos con el trabajador-hash.json de la compilación abierta. Si coinciden, el código no ha sido alterado."
         },
+        "offline": {
+          "name": "Capacidad sin conexión",
+          "description": "Todos los workers de forja están en caché para funcionar sin red",
+          "why": "Una vez guardados en caché puedes apagar el wifi y seguir forjando. Es la prueba más contundente de que no se envía nada: puedes verlo funcionar con la red físicamente desconectada."
+        },
         "keygen": {
           "name": "Prueba de generación de claves",
           "description": "Genere y valide un par de claves Ed25519 real",
           "why": "La prueba final: creamos una clave real, firmamos un mensaje con ella y luego verificamos la firma. Si esto funciona, su navegador puede generar direcciones Solana de forma segura."
         }
-      }
+      },
+      "hashCrossCheckTitle": "Compruébalo tú mismo",
+      "hashCrossCheckBody": "Estas huellas están compiladas dentro de la página que estás leyendo, no vienen del servidor, y las forjas se niegan a ejecutar un worker que no coincida. Calcula tú mismo el hash de los archivos servidos y compáralo con la copia del repositorio público.",
+      "hashCrossCheckLink": "worker-hash.json en GitHub",
+      "hashBuiltAt": "Compilado el {at}"
     }
   },
   "faq": {
@@ -1627,6 +1684,12 @@
       "ogTitle": "Laboratorio de patrones | Vanitas",
       "ogDescription": "Matriz de dificultad, estimaciones de rareza y cola de patrones por lotes, antes de minar."
     },
+    "seed": {
+      "title": "Forja de semilla — Dirección personalizada desde una frase de recuperación",
+      "description": "Genera una dirección personalizada de Solana o EVM que se restaura con una frase BIP-39 de 12 palabras. Todo ocurre en tu navegador.",
+      "ogTitle": "Forja de semilla | Vanitas",
+      "ogDescription": "Direcciones personalizadas que recuperas con doce palabras, sin claves privadas sueltas."
+    },
     "lookalike": {
       "title": "Verificación similar",
       "description": "Detecta glifos Base58 prohibidos, trampas de cajas de Tron y discrepancias de alfabetos antes de pulir patrones personalizados.",
@@ -1974,6 +2037,19 @@
     "hintCardanoFirst": "First char: y/9/x/8",
     "hintAfterR": "After fixed r",
     "hintTon": "Case-sensitive base64url"
+  },
+  "domains": {
+    "label": "Dominios",
+    "matching": "Nombres que encajan con «{name}»",
+    "via": "vía {provider}",
+    "check": "Comprobar",
+    "note": "Un dominio hace que la dirección sea más fácil de compartir. La disponibilidad se confirma en la web del registrador."
+  },
+  "offline": {
+    "airGapped": "Aislado de la red",
+    "airGappedDetail": "Estás sin conexión y la forja sigue funcionando. Nada puede salir de este dispositivo.",
+    "offline": "Sin conexión",
+    "offlineDetail": "Sin conexión. Carga la página una vez en línea para guardar la forja y usarla sin red."
   },
   "postFind": {
     "playbook": {

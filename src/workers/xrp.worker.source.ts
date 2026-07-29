@@ -3,6 +3,7 @@
  */
 
 import { getPublicKey, utils, etc } from '@noble/secp256k1';
+import { yieldToEventLoop } from './yield';
 import { xrpClassicAddress } from '../lib/address-encoding';
 
 interface XrpGeneratorConfig {
@@ -114,7 +115,7 @@ async function generateXrpVanity(config: XrpGeneratorConfig): Promise<void> {
       lastProgressUpdate = now;
     }
 
-    await new Promise((resolve) => setTimeout(resolve, 0));
+    await yieldToEventLoop();
   }
 
   self.postMessage({

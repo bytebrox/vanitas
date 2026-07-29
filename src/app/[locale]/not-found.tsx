@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react';
 import { useTranslations } from 'next-intl';
-import { Navbar, Footer } from '@/components';
+import { Navbar, Footer, AsciiImage } from '@/components';
 import { Link } from '@/i18n/navigation';
 import { RichParagraph } from '@/lib/rich-text';
 
@@ -76,12 +76,11 @@ export default function NotFound() {
             <div className="relative hidden lg:flex lg:pl-10 xl:pl-14 justify-start min-h-0 self-stretch mt-4 lg:mt-0">
               <aside className="side-plate" aria-hidden="true">
                 <div className="side-plate__press">
-                  <img
-                    src="/ascii/side-temple-plate.webp?v=5"
-                    alt=""
+                  <AsciiImage
+                    src="/ascii/side-temple-plate.webp"
+                    version="5"
+                    sizes="(min-width: 1280px) 26rem, 22rem"
                     className="side-plate__img"
-                    loading="eager"
-                    decoding="async"
                   />
                   <span className="side-plate__grain" />
                 </div>

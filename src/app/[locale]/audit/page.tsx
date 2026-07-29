@@ -4,6 +4,8 @@ import { useState, useCallback, useEffect, useRef, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { Footer, FadeIn, PageIntro, ContentWithSide } from '@/components';
 import { RichParagraph, RichText } from '@/lib/rich-text';
+import { expectedWorkerHash } from '@/lib/verified-worker';
+import { WORKER_INTEGRITY, WORKER_INTEGRITY_BUILT } from '@/lib/worker-integrity';
 
 type TestStatus = 'idle' | 'running' | 'pass' | 'fail';
 
@@ -25,8 +27,27 @@ const TEST_IDS = [
   'csp',
   'worker',
   'integrity',
+  'offline',
   'keygen',
 ] as const;
+
+/** Worker bundles in the order the audit reports them. */
+const AUDIT_WORKERS = [
+  { label: 'Solana', navKey: 'sol', path: '/vanity-worker.js' },
+  { label: 'EVM', navKey: 'evm', path: '/eth-worker.js' },
+  { label: 'Bitcoin', navKey: 'btc', path: '/btc-worker.js' },
+  { label: 'Tron', navKey: 'tron', path: '/tron-worker.js' },
+  { label: 'Aptos', navKey: 'aptos', path: '/aptos-worker.js' },
+  { label: 'Sui', navKey: 'sui', path: '/sui-worker.js' },
+  { label: 'TON', navKey: 'ton', path: '/ton-worker.js' },
+  { label: 'Cardano', navKey: 'cardano', path: '/cardano-worker.js' },
+  { label: 'XRP', navKey: 'xrp', path: '/xrp-worker.js' },
+  { label: 'Seed', navKey: 'seed', path: '/seed-worker.js' },
+] as const;
+
+/** Repo path a visitor can check the hashes against themselves. */
+const WORKER_HASH_SOURCE =
+  'https://github.com/bytebrox/vanitas/blob/main/public/worker-hash.json';
 
 async function runWebCryptoTest(): Promise<{ pass: boolean; detail: string }> {
   try {
@@ -194,58 +215,55 @@ async function hashWorkerFile(path: string): Promise<string> {
   return 'sha256-' + hashArr.map((b) => b.toString(16).padStart(2, '0')).join('');
 }
 
+/**
+ * Two independent references per worker: the hash compiled into this page's
+ * bundle (which the forges enforce before executing anything) and the
+ * `worker-hash.json` served alongside the workers. Agreeing with the compiled
+ * copy is the one that matters — a swapped worker cannot ship its own.
+ */
 async function runIntegrityTest(): Promise<{ pass: boolean; detail: string }> {
   try {
-    const hashResp = await fetch('/worker-hash.json');
-    if (!hashResp.ok) {
-      return { pass: false, detail: 'Could not load published worker-hash.json' };
-    }
-    const published = await hashResp.json() as {
-      hash?: string;
-      eth?: { hash?: string };
-      btc?: { hash?: string };
-      tron?: { hash?: string };
-      aptos?: { hash?: string };
-      sui?: { hash?: string };
-      ton?: { hash?: string };
-      cardano?: { hash?: string };
-      xrp?: { hash?: string };
-    };
+    const published = await fetch('/worker-hash.json')
+      .then((r) => (r.ok ? (r.json() as Promise<Record<string, unknown>>) : null))
+      .catch(() => null);
 
-    const checks: { label: string; path: string; expected?: string }[] = [
-      { label: 'Solana', path: '/vanity-worker.js', expected: published.hash },
-      { label: 'EVM', path: '/eth-worker.js', expected: published.eth?.hash },
-      { label: 'Bitcoin', path: '/btc-worker.js', expected: published.btc?.hash },
-      { label: 'Tron', path: '/tron-worker.js', expected: published.tron?.hash },
-      { label: 'Aptos', path: '/aptos-worker.js', expected: published.aptos?.hash },
-      { label: 'Sui', path: '/sui-worker.js', expected: published.sui?.hash },
-      { label: 'TON', path: '/ton-worker.js', expected: published.ton?.hash },
-      { label: 'Cardano', path: '/cardano-worker.js', expected: published.cardano?.hash },
-      { label: 'XRP', path: '/xrp-worker.js', expected: published.xrp?.hash },
-    ];
+    const publishedFor = (path: string): string | undefined => {
+      if (!published) return undefined;
+      if (path === '/vanity-worker.js') return published.hash as string | undefined;
+      const key = path.replace(/^\/|-worker\.js$/g, '');
+      const entry = published[key] as { hash?: string } | undefined;
+      return entry?.hash;
+    };
 
     const results: string[] = [];
     let allPass = true;
-    for (const check of checks) {
-      if (!check.expected) {
+
+    for (const { label, path } of AUDIT_WORKERS) {
+      const compiled = expectedWorkerHash(path);
+      if (!compiled) {
         allPass = false;
-        results.push(`${check.label}: missing published hash`);
+        results.push(`${label}: no compiled-in hash`);
         continue;
       }
-      const live = await hashWorkerFile(check.path);
-      const ok = live === check.expected;
-      if (!ok) allPass = false;
-      results.push(
-        ok
-          ? `${check.label}: ok`
-          : `${check.label}: mismatch (${live.slice(0, 18)}…)`
-      );
+
+      const live = await hashWorkerFile(path);
+      if (live !== compiled) {
+        allPass = false;
+        results.push(`${label}: MISMATCH vs compiled hash (${live.slice(0, 18)}…)`);
+        continue;
+      }
+
+      const servedHash = publishedFor(path);
+      if (servedHash && servedHash !== compiled) {
+        allPass = false;
+        results.push(`${label}: worker-hash.json disagrees`);
+        continue;
+      }
+
+      results.push(`${label}: ok`);
     }
 
-    return {
-      pass: allPass,
-      detail: results.join(' · '),
-    };
+    return { pass: allPass, detail: results.join(' · ') };
   } catch (e) {
     return { pass: false, detail: `Integrity check failed: ${e instanceof Error ? e.message : 'unknown'}` };
   }
@@ -288,6 +306,43 @@ async function runKeygenTest(): Promise<{ pass: boolean; detail: string }> {
   }
 }
 
+/**
+ * Can this machine still forge with the network unplugged? That is only true
+ * once the service worker holds every worker bundle, so the check inspects the
+ * cache rather than trusting the registration.
+ */
+async function runOfflineTest(): Promise<{ pass: boolean; detail: string }> {
+  if (!('serviceWorker' in navigator) || !('caches' in window)) {
+    return { pass: false, detail: 'Service workers not available in this browser' };
+  }
+
+  const registration = await navigator.serviceWorker.getRegistration('/');
+  if (!registration?.active) {
+    return {
+      pass: false,
+      detail: 'Offline cache not installed yet — reload once to arm it',
+    };
+  }
+
+  const missing: string[] = [];
+  for (const { label, path } of AUDIT_WORKERS) {
+    const hit = await caches.match(path);
+    if (!hit) missing.push(label);
+  }
+
+  if (missing.length > 0) {
+    return {
+      pass: false,
+      detail: `Cached ${AUDIT_WORKERS.length - missing.length}/${AUDIT_WORKERS.length} workers — missing: ${missing.join(', ')}`,
+    };
+  }
+
+  return {
+    pass: true,
+    detail: `All ${AUDIT_WORKERS.length} worker bundles cached — you can disconnect and keep forging`,
+  };
+}
+
 const testRunners: Record<string, () => Promise<{ pass: boolean; detail: string }>> = {
   webcrypto: runWebCryptoTest,
   csprng: runCSPRNGTest,
@@ -296,6 +351,7 @@ const testRunners: Record<string, () => Promise<{ pass: boolean; detail: string 
   csp: runCSPTest,
   worker: runWorkerTest,
   integrity: runIntegrityTest,
+  offline: runOfflineTest,
   keygen: runKeygenTest,
 };
 
@@ -519,57 +575,56 @@ function StatusIcon({ status }: { status: TestStatus }) {
   }
 }
 
+/**
+ * Shows the hashes compiled into this page, not the ones served next to the
+ * workers — those two being the same file is exactly what an attacker would
+ * arrange.
+ */
 function WorkerHash() {
   const t = useTranslations('tools.audit');
-  const tCommon = useTranslations('common');
   const tNav = useTranslations('nav.chainItems');
-  const [rows, setRows] = useState<{ label: string; hash: string }[] | null>(null);
 
-  useEffect(() => {
-    fetch('/worker-hash.json')
-      .then((r) => r.json())
-      .then((data: {
-        hash?: string;
-        eth?: { hash?: string };
-        btc?: { hash?: string };
-        tron?: { hash?: string };
-        aptos?: { hash?: string };
-        sui?: { hash?: string };
-        ton?: { hash?: string };
-        cardano?: { hash?: string };
-        xrp?: { hash?: string };
-      }) => {
-        setRows([
-          { label: tNav('sol.label'), hash: data.hash || '...' },
-          { label: tNav('evm.label'), hash: data.eth?.hash || '...' },
-          { label: tNav('btc.label'), hash: data.btc?.hash || '...' },
-          { label: tNav('tron.label'), hash: data.tron?.hash || '...' },
-          { label: tNav('aptos.label'), hash: data.aptos?.hash || '...' },
-          { label: tNav('sui.label'), hash: data.sui?.hash || '...' },
-          { label: tNav('ton.label'), hash: data.ton?.hash || '...' },
-          { label: tNav('cardano.label'), hash: data.cardano?.hash || '...' },
-          { label: tNav('xrp.label'), hash: data.xrp?.hash || '...' },
-        ]);
-      })
-      .catch(() => {
-        setRows([{ label: 'error', hash: t('hashUnavailable') }]);
-      });
-  }, [t, tNav]);
-
-  if (!rows) {
-    return <p className="font-mono text-sm text-muted animate-pulse">{tCommon('loading')}</p>;
-  }
+  const rows = AUDIT_WORKERS.map((w) => ({
+    label: tNav(`${w.navKey}.label`),
+    path: w.path,
+    hash: WORKER_INTEGRITY[w.path] ?? t('hashUnavailable'),
+  }));
 
   return (
-    <div className="space-y-3">
-      {rows.map((row) => (
-        <div key={row.label}>
-          <p className="text-micro text-muted mb-1 font-mono uppercase tracking-[0.14em]">{row.label}</p>
-          <p className="font-mono text-sm break-all select-all cursor-pointer" title="Click to select">
-            {row.hash}
-          </p>
-        </div>
-      ))}
+    <div className="space-y-5">
+      <div className="space-y-3">
+        {rows.map((row) => (
+          <div key={row.path}>
+            <p className="text-micro text-muted mb-1 font-mono uppercase tracking-[0.14em]">
+              {row.label}
+            </p>
+            <p className="font-mono text-sm break-all select-all cursor-pointer" title={row.path}>
+              {row.hash}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <div className="border-t border-ink/15 pt-4 space-y-2">
+        <p className="text-micro uppercase tracking-[0.16em] text-muted">
+          {t('hashCrossCheckTitle')}
+        </p>
+        <RichParagraph text={t('hashCrossCheckBody')} className="text-sm text-muted leading-relaxed" />
+        <pre className="font-mono text-micro bg-ink/[0.04] border border-ink/10 p-3 overflow-x-auto select-all">
+          {AUDIT_WORKERS.map((w) => `curl -s https://www.vanitas.fun${w.path} | sha256sum`).join('\n')}
+        </pre>
+        <a
+          href={WORKER_HASH_SOURCE}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block text-micro uppercase tracking-[0.16em] text-accent hover:text-ink"
+        >
+          {t('hashCrossCheckLink')} →
+        </a>
+        <p className="text-micro text-muted">
+          {t('hashBuiltAt', { at: WORKER_INTEGRITY_BUILT })}
+        </p>
+      </div>
     </div>
   );
 }

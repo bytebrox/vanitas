@@ -153,6 +153,8 @@
     "toolsProofHint": "Verifikasi temuan",
     "toolsLab": "Laboratorium",
     "toolsLabHint": "Laboratorium pola",
+    "toolsSeed": "Penempaan Seed",
+    "toolsSeedHint": "Alamat pilihan dari frasa pemulihan",
     "toolsLookalike": "Mirip",
     "toolsLookalikeHint": "Perangkap alfabet",
     "toolsCreate2": "CREATE2",
@@ -199,6 +201,10 @@
       "xrp": {
         "label": "XRP",
         "short": "XRP"
+      },
+      "seed": {
+        "label": "Seed",
+        "short": "SEED"
       }
     }
   },
@@ -215,6 +221,7 @@
     "github": "GitHub",
     "proof": "Bukti",
     "lab": "Laboratorium",
+    "seed": "Penempaan Seed",
     "lookalike": "Mirip",
     "create2": "CREATE2",
     "brand": "Brand",
@@ -512,6 +519,47 @@
       "queueN": "03 — Antrian",
       "forge": "Menempa",
       "exportWarning": "Hanya pola — tidak ada kunci pribadi."
+    },
+    "seed": {
+      "eyebrow": "Dapat dipulihkan sejak awal",
+      "title": "Penempaan Seed",
+      "description": "Tempa alamat pilihan yang bisa kamu pulihkan dari dua belas kata. Frasa pemulihan ditetapkan lebih dulu dan hanya indeks derivasi yang berubah, sehingga hasilnya bisa diimpor ke dompet standar mana pun alih-alih tersisa sebagai kunci privat lepas.",
+      "caption": "Gbr. — Penempaan Seed",
+      "toc": {
+        "mnemonic": "Frasa pemulihan",
+        "pattern": "Jalur & pola",
+        "run": "Tempa"
+      },
+      "sectionMnemonicN": "01",
+      "sectionMnemonicTitle": "Mulai dari frasa pemulihan",
+      "mnemonicIntro": "Buat frasa baru atau tempel frasa yang sudah kamu kuasai. Frasa diregangkan menjadi seed di tab ini dan tidak pernah dikirim ke mana pun — [audit langsung](/audit) akan menunjukkan log jaringan yang kosong.",
+      "generate12": "Buat 12 kata",
+      "generate24": "Buat 24 kata",
+      "mnemonicLabel": "Frasa pemulihan",
+      "mnemonicPh": "dua belas atau dua puluh empat kata, dipisahkan spasi",
+      "mnemonicValid": "Frasa BIP-39 valid — {words} kata",
+      "mnemonicInvalid": "Bukan frasa BIP-39 yang valid. Periksa ejaan dan urutan katanya.",
+      "passphraseLabel": "Passphrase (opsional)",
+      "passphrasePh": "kata ke-25 — kosongkan jika ragu",
+      "mnemonicWarning": "Catat frasa itu sebelum mulai. Siapa pun yang memegangnya memegang semua alamat turunannya, dan Vanitas tidak menyimpan salinan.",
+      "sectionPatternN": "02",
+      "sectionPatternTitle": "Pilih jalur dan pola",
+      "pathIntro": "Dompet berbeda pendapat soal letak akun. Pilih skema dompetmu — level bertanda `{i}` adalah yang ditelusuri, dan angkanya yang kamu ketik saat mengimpor.",
+      "alphabetSol": "Alamat Solana memakai Base58 — tanpa 0, O, I, atau l.",
+      "alphabetEvm": "Alamat EVM berupa heksadesimal — hanya 0-9 dan a-f.",
+      "startIndexLabel": "Mulai dari indeks",
+      "startIndexHint": "Jalur pertama yang dicoba: {path}",
+      "sectionRunN": "03",
+      "sectionRunTitle": "Jalankan penempaan",
+      "derivationPath": "Jalur derivasi",
+      "copyPath": "Salin jalur",
+      "copyAddress": "Salin alamat",
+      "recoveryTitle": "Cara mendapatkan alamat ini kembali",
+      "recoveryBody": "Impor frasa pemulihanmu ke dompet mana pun, lalu tambahkan akun di `{path}`. Tidak ada berkas untuk disimpan, tidak ada kunci privat untuk hilang.",
+      "showPrivateKey": "Tampilkan kunci privat mentah",
+      "privateKeyNote": "Hanya perlu jika kamu lebih suka mengimpor kunci tunggal daripada frasanya. Jaga dengan kehati-hatian yang sama.",
+      "exhausted": "Semua indeks derivasi sudah dicoba. Perpendek polanya atau pilih skema jalur lain.",
+      "needMnemonic": "Masukkan atau buat frasa pemulihan yang valid dan sebuah pola untuk memulai."
     },
     "lookalike": {
       "title": "Cek serupa",
@@ -858,12 +906,21 @@
           "description": "Sidik jari SHA-256 cocok dengan semua pekerja bengkel yang diterbitkan",
           "why": "Kami melakukan hash pada setiap pekerja penghasil kunci (Solana, EVM, Bitcoin, Tron, Aptos, Sui) dan membandingkan masing-masing dengan pekerja-hash.json dari versi terbuka. Jika cocok, berarti kodenya belum diubah."
         },
+        "offline": {
+          "name": "Kemampuan offline",
+          "description": "Semua worker penempaan tersimpan untuk dipakai tanpa koneksi",
+          "why": "Setelah worker tersimpan, kamu bisa mematikan Wi-Fi dan terus menempa. Itu bukti terkuat bahwa tidak ada yang dikirim ke mana pun — kamu bisa melihatnya bekerja dengan jaringan benar-benar hilang."
+        },
         "keygen": {
           "name": "Tes Pembuatan Kunci",
           "description": "Hasilkan dan validasi pasangan kunci Ed25519 yang sebenarnya",
           "why": "Bukti terakhir: kita membuat kunci asli, menandatangani pesan dengannya, lalu memverifikasi tanda tangan. Jika ini berhasil, browser Anda dapat menghasilkan alamat Solana dengan aman."
         }
-      }
+      },
+      "hashCrossCheckTitle": "Periksa sendiri",
+      "hashCrossCheckBody": "Sidik jari ini dikompilasi ke dalam halaman yang sedang kamu baca, bukan diambil dari server, dan penempaan menolak menjalankan worker yang tidak cocok. Hitung sendiri hash berkas yang disajikan, lalu bandingkan dengan salinan di repositori publik.",
+      "hashCrossCheckLink": "worker-hash.json di GitHub",
+      "hashBuiltAt": "Dibangun {at}"
     }
   },
   "faq": {
@@ -1627,6 +1684,12 @@
       "ogTitle": "Lab Pola | kesombongan",
       "ogDescription": "Matriks tingkat kesulitan, perkiraan kelangkaan, dan antrean pola batch — sebelum Anda menambang."
     },
+    "seed": {
+      "title": "Penempaan Seed — Alamat pilihan dari frasa pemulihan",
+      "description": "Tempa alamat pilihan Solana atau EVM yang bisa dipulihkan dari frasa BIP-39 12 kata. Sepenuhnya di browser.",
+      "ogTitle": "Penempaan Seed | Vanitas",
+      "ogDescription": "Alamat pilihan yang bisa dipulihkan dari dua belas kata — tanpa kunci privat lepas."
+    },
     "lookalike": {
       "title": "Periksa Mirip",
       "description": "Tangkap mesin terbang Base58 terlarang, jebakan kotak Tron, dan ketidakcocokan alfabet sebelum Anda mengerjakan pola rias.",
@@ -1974,6 +2037,19 @@
     "hintCardanoFirst": "First char: y/9/x/8",
     "hintAfterR": "After fixed r",
     "hintTon": "Case-sensitive base64url"
+  },
+  "domains": {
+    "label": "Domain",
+    "matching": "Nama yang cocok untuk “{name}”",
+    "via": "via {provider}",
+    "check": "Cek",
+    "note": "Domain membuat alamat lebih mudah dibagikan. Ketersediaan dikonfirmasi di situs registrar."
+  },
+  "offline": {
+    "airGapped": "Terputus dari jaringan",
+    "airGappedDetail": "Kamu offline dan penempaan tetap berjalan. Tidak ada yang bisa keluar dari perangkat ini.",
+    "offline": "Offline",
+    "offlineDetail": "Tidak ada koneksi. Muat halaman sekali saat online agar penempaan tersimpan untuk mode offline."
   },
   "postFind": {
     "playbook": {

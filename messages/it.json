@@ -153,6 +153,8 @@
     "toolsProofHint": "Verifica una scoperta",
     "toolsLab": "Laboratorio",
     "toolsLabHint": "Laboratorio di modellistica",
+    "toolsSeed": "Fucina seed",
+    "toolsSeedHint": "Indirizzo personalizzato da una frase di recupero",
     "toolsLookalike": "Sosia",
     "toolsLookalikeHint": "Trappole alfabetiche",
     "toolsCreate2": "CREATE2",
@@ -199,6 +201,10 @@
       "xrp": {
         "label": "XRP",
         "short": "XRP"
+      },
+      "seed": {
+        "label": "Seed",
+        "short": "SEED"
       }
     }
   },
@@ -215,6 +221,7 @@
     "github": "GitHub",
     "proof": "Prova",
     "lab": "Laboratorio",
+    "seed": "Fucina seed",
     "lookalike": "Sosia",
     "create2": "CREATE2",
     "brand": "Brand",
@@ -512,6 +519,47 @@
       "queueN": "03 — Coda",
       "forge": "Fucina",
       "exportWarning": "Solo pattern: nessuna chiave privata."
+    },
+    "seed": {
+      "eyebrow": "Recuperabile per costruzione",
+      "title": "Fucina seed",
+      "description": "Forgia un indirizzo personalizzato che puoi ripristinare con dodici parole. La frase di recupero viene fissata prima e varia solo l’indice di derivazione, così il risultato si importa in qualsiasi wallet standard invece di sopravvivere come chiave privata sciolta.",
+      "caption": "Fig. — Fucina seed",
+      "toc": {
+        "mnemonic": "Frase di recupero",
+        "pattern": "Percorso e schema",
+        "run": "Forgia"
+      },
+      "sectionMnemonicN": "01",
+      "sectionMnemonicTitle": "Parti da una frase di recupero",
+      "mnemonicIntro": "Genera una frase nuova o incollane una che già controlli. Viene trasformata in seed dentro questa scheda e non viene inviata da nessuna parte — l’[audit dal vivo](/audit) ti mostra il registro di rete vuoto.",
+      "generate12": "Genera 12 parole",
+      "generate24": "Genera 24 parole",
+      "mnemonicLabel": "Frase di recupero",
+      "mnemonicPh": "dodici o ventiquattro parole separate da spazi",
+      "mnemonicValid": "Frase BIP-39 valida — {words} parole",
+      "mnemonicInvalid": "Non è una frase BIP-39 valida. Controlla ortografia e ordine delle parole.",
+      "passphraseLabel": "Passphrase (facoltativa)",
+      "passphrasePh": "la 25ª parola — lascia vuoto se hai dubbi",
+      "mnemonicWarning": "Trascrivi la frase prima di iniziare. Chi la possiede possiede ogni indirizzo che ne deriva, e Vanitas non ne conserva copia.",
+      "sectionPatternN": "02",
+      "sectionPatternTitle": "Scegli percorso e schema",
+      "pathIntro": "I wallet non concordano su dove stiano gli account. Scegli lo schema del tuo — il livello contrassegnato con `{i}` è quello percorso, e il suo numero è ciò che digiterai all’importazione.",
+      "alphabetSol": "Gli indirizzi Solana usano Base58 — niente 0, O, I o l.",
+      "alphabetEvm": "Gli indirizzi EVM sono esadecimali — solo 0-9 e a-f.",
+      "startIndexLabel": "Indice iniziale",
+      "startIndexHint": "Primo percorso provato: {path}",
+      "sectionRunN": "03",
+      "sectionRunTitle": "Avvia la fucina",
+      "derivationPath": "Percorso di derivazione",
+      "copyPath": "Copia percorso",
+      "copyAddress": "Copia indirizzo",
+      "recoveryTitle": "Come ritrovare questo indirizzo",
+      "recoveryBody": "Importa la tua frase di recupero in un wallet qualsiasi, poi aggiungi un account a `{path}`. Nessun file da conservare, nessuna chiave privata da perdere.",
+      "showPrivateKey": "Mostra la chiave privata grezza",
+      "privateKeyNote": "Serve solo se preferisci importare la singola chiave invece della frase. Custodiscila con la stessa cura.",
+      "exhausted": "Tutti gli indici di derivazione sono stati provati. Accorcia lo schema o scegli un altro percorso.",
+      "needMnemonic": "Inserisci o genera una frase di recupero valida e uno schema per iniziare."
     },
     "lookalike": {
       "title": "Controllo dei sosia",
@@ -858,12 +906,21 @@
           "description": "Le impronte digitali SHA-256 corrispondono a quelle di tutti i lavoratori della fucina pubblicati",
           "why": "Effettuiamo l'hashing di ogni lavoratore di generazione di chiavi (Solana, EVM, Bitcoin, Tron, Aptos, Sui) e li confrontiamo con lavoratore-hash.json dalla build aperta. Se corrispondono, il codice non è stato manomesso."
         },
+        "offline": {
+          "name": "Funzionamento offline",
+          "description": "Tutti i worker delle fucine sono in cache per l’uso senza connessione",
+          "why": "Una volta messi in cache puoi spegnere il Wi-Fi e continuare a forgiare. È la prova più solida che non venga inviato nulla: puoi guardarlo funzionare con la rete fisicamente assente."
+        },
         "keygen": {
           "name": "Test di generazione delle chiavi",
           "description": "Genera e convalida una coppia di chiavi Ed25519 effettiva",
           "why": "La prova finale: creiamo una vera chiave, con essa firmiamo un messaggio, quindi verifichiamo la firma. Se funziona, il tuo browser può generare in modo sicuro indirizzi Solana."
         }
-      }
+      },
+      "hashCrossCheckTitle": "Verificalo di persona",
+      "hashCrossCheckBody": "Queste impronte sono compilate dentro la pagina che stai leggendo, non arrivano dal server, e le fucine si rifiutano di eseguire un worker che non corrisponde. Calcola tu stesso l’hash dei file serviti e confrontalo con la copia nel repository pubblico.",
+      "hashCrossCheckLink": "worker-hash.json su GitHub",
+      "hashBuiltAt": "Compilato il {at}"
     }
   },
   "faq": {
@@ -1627,6 +1684,12 @@
       "ogTitle": "Laboratorio di modelli | Vanità",
       "ogDescription": "Matrice di difficoltà, stime di rarità e coda di modelli batch: prima di estrarre."
     },
+    "seed": {
+      "title": "Fucina seed — Indirizzo personalizzato da una frase di recupero",
+      "description": "Genera un indirizzo personalizzato Solana o EVM ripristinabile con una frase BIP-39 di 12 parole. Tutto nel browser.",
+      "ogTitle": "Fucina seed | Vanitas",
+      "ogDescription": "Indirizzi personalizzati che recuperi con dodici parole, senza chiavi private sparse."
+    },
     "lookalike": {
       "title": "Controllo dei sosia",
       "description": "Cattura glifi Base58 proibiti, trappole dei casi Tron e disallineamenti alfabetici prima di macinare modelli di vanità.",
@@ -1974,6 +2037,19 @@
     "hintCardanoFirst": "First char: y/9/x/8",
     "hintAfterR": "After fixed r",
     "hintTon": "Case-sensitive base64url"
+  },
+  "domains": {
+    "label": "Domini",
+    "matching": "Nomi corrispondenti a «{name}»",
+    "via": "tramite {provider}",
+    "check": "Verifica",
+    "note": "Un dominio rende l’indirizzo più facile da condividere. La disponibilità si conferma sul sito del registrar."
+  },
+  "offline": {
+    "airGapped": "Isolato dalla rete",
+    "airGappedDetail": "Sei offline e la fucina continua a funzionare. Niente può lasciare questo dispositivo.",
+    "offline": "Offline",
+    "offlineDetail": "Nessuna connessione. Carica la pagina una volta online per mettere la fucina in cache."
   },
   "postFind": {
     "playbook": {

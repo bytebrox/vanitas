@@ -3,6 +3,7 @@
  */
 
 import { getPublicKey, utils, etc, hashes } from '@noble/ed25519';
+import { yieldToEventLoop } from './yield';
 import { sha512 } from '@noble/hashes/sha2.js';
 import { cardanoEnterpriseAddress } from '../lib/address-encoding';
 
@@ -117,7 +118,7 @@ async function generateCardanoVanity(config: CardanoGeneratorConfig): Promise<vo
       lastProgressUpdate = now;
     }
 
-    await new Promise((resolve) => setTimeout(resolve, 0));
+    await yieldToEventLoop();
   }
 
   self.postMessage({

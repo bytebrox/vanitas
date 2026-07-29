@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { maxThreadCount, optimalThreadCount } from '@/lib/threads';
 import { BtcVanityGenerator } from '@/lib/btc-generator';
 import type { BtcGeneratorConfig, BtcGeneratorState } from '@/types/btc';
 
@@ -33,7 +34,7 @@ export function useBtcGenerator() {
       configRef.current = newState.config;
       setState(newState);
     });
-    const optimalThreads = Math.max(1, (navigator.hardwareConcurrency || 4) - 1);
+    const optimalThreads = optimalThreadCount();
     generatorRef.current.patchConfig({ threads: optimalThreads });
     setState((prev) => {
       const config = { ...prev.config, threads: optimalThreads };
@@ -86,8 +87,7 @@ export function useBtcGenerator() {
     setState((prev) => ({ ...prev, config: nextConfig }));
   }, []);
 
-  const maxThreads =
-    typeof navigator !== 'undefined' ? navigator.hardwareConcurrency || 8 : 8;
+  const maxThreads = maxThreadCount();
 
   return { state, start, stop, reset, updateConfig, maxThreads };
 }

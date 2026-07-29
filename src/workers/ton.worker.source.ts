@@ -3,6 +3,7 @@
  */
 
 import { Buffer } from 'buffer';
+import { yieldToEventLoop } from './yield';
 import { getPublicKey, utils, etc, hashes } from '@noble/ed25519';
 import { sha512 } from '@noble/hashes/sha2.js';
 import { WalletContractV4 } from '@ton/ton';
@@ -132,7 +133,7 @@ async function generateTonVanity(config: TonGeneratorConfig): Promise<void> {
       lastProgressUpdate = now;
     }
 
-    await new Promise((resolve) => setTimeout(resolve, 0));
+    await yieldToEventLoop();
   }
 
   self.postMessage({

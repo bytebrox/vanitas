@@ -6,7 +6,7 @@
 
 import type { ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
-import { Navbar, Footer } from '@/components';
+import { Navbar, Footer, AsciiImage } from '@/components';
 import { Link } from '@/i18n/navigation';
 import {
   SolanaLogo,
@@ -66,11 +66,11 @@ export function LandingContent() {
 
       <main className="relative flex-1 flex flex-col">
         <div className="absolute inset-0 overflow-hidden" aria-hidden>
-          <img
+          <AsciiImage
             src="/ascii/hero-landing-wide.webp"
-            alt=""
+            sizes="100vw"
+            priority
             className="absolute inset-0 w-full h-full object-cover object-[center_28%] sm:object-center select-none ascii-hero"
-            draggable={false}
           />
           <div className="absolute inset-0 hero-fade-landing" />
         </div>

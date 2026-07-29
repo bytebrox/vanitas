@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { RichText } from '@/lib/rich-text';
+import { AsciiImage } from './AsciiImage';
 
 /** Solana tip jar — Bytebrox */
 export const DONATE_SOL = '3ZgrgEADJJtjyWYag6XfYd7zoD7LEwFhsoEpj7FFWUPo';
@@ -70,13 +71,11 @@ export function Footer({ compact = false }: FooterProps) {
     >
       {!compact && (
         <div className="footer-stone" aria-hidden>
-          <img
-            src="/ascii/footer-stele.webp?v=2"
-            alt=""
+          <AsciiImage
+            src="/ascii/footer-stele.webp"
+            version="2"
+            sizes="100vw"
             className="footer-stone__img"
-            loading="lazy"
-            decoding="async"
-            draggable={false}
           />
           <span className="footer-stone__grain" />
           <span className="footer-stone__veil" />
@@ -157,6 +156,7 @@ export function Footer({ compact = false }: FooterProps) {
               <div className="flex flex-col gap-1.5">
                 <FooterLink href="/proof">{t('proof')}</FooterLink>
                 <FooterLink href="/lab">{t('lab')}</FooterLink>
+                <FooterLink href="/seed">{t('seed')}</FooterLink>
                 <FooterLink href="/lookalike">{t('lookalike')}</FooterLink>
                 <FooterLink href="/create2">{t('create2')}</FooterLink>
                 <FooterLink href="/brand">{t('brand')}</FooterLink>

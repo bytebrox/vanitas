@@ -5,6 +5,7 @@
  */
 
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { maxThreadCount, optimalThreadCount } from '@/lib/threads';
 import { VanityGenerator } from '@/lib/generator';
 import { GeneratorState, GeneratorConfig } from '@/types';
 
@@ -37,7 +38,7 @@ export function useGenerator() {
       setState(newState);
     });
 
-    const optimalThreads = Math.max(1, (navigator.hardwareConcurrency || 4) - 1);
+    const optimalThreads = optimalThreadCount();
     generatorRef.current.patchConfig({ threads: optimalThreads });
     setState((prev) => {
       const config = { ...prev.config, threads: optimalThreads };
@@ -87,8 +88,7 @@ export function useGenerator() {
     }));
   }, []);
 
-  const maxThreads =
-    typeof navigator !== 'undefined' ? navigator.hardwareConcurrency || 8 : 8;
+  const maxThreads = maxThreadCount();
 
   return {
     state,

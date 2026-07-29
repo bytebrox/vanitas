@@ -141,6 +141,7 @@ export function Navbar() {
     { href: '/audit', label: t('toolsAudit'), hint: t('toolsAuditHint') },
     { href: '/proof', label: t('toolsProof'), hint: t('toolsProofHint') },
     { href: '/lab', label: t('toolsLab'), hint: t('toolsLabHint') },
+    { href: '/seed', label: t('toolsSeed'), hint: t('toolsSeedHint') },
     { href: '/lookalike', label: t('toolsLookalike'), hint: t('toolsLookalikeHint') },
     { href: '/create2', label: t('toolsCreate2'), hint: t('toolsCreate2Hint') },
     { href: '/brand', label: t('toolsBrand'), hint: t('toolsBrandHint') },

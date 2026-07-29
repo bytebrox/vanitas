@@ -5,6 +5,7 @@
  */
 
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { maxThreadCount, optimalThreadCount } from '@/lib/threads';
 import { EthVanityGenerator } from '@/lib/eth-generator';
 import type { EthGeneratorConfig, EthGeneratorState } from '@/types/eth';
 
@@ -37,7 +38,7 @@ export function useEthGenerator() {
       setState(newState);
     });
 
-    const optimalThreads = Math.max(1, (navigator.hardwareConcurrency || 4) - 1);
+    const optimalThreads = optimalThreadCount();
     generatorRef.current.patchConfig({ threads: optimalThreads });
     setState((prev) => {
       const config = { ...prev.config, threads: optimalThreads };
@@ -108,8 +109,7 @@ export function useEthGenerator() {
     }));
   }, []);
 
-  const maxThreads =
-    typeof navigator !== 'undefined' ? navigator.hardwareConcurrency || 8 : 8;
+  const maxThreads = maxThreadCount();
 
   return {
     state,

@@ -153,6 +153,8 @@
     "toolsProofHint": "验证发现",
     "toolsLab": "实验室",
     "toolsLabHint": "模式实验室",
+    "toolsSeed": "助记词锻造",
+    "toolsSeedHint": "用助记词生成靓号地址",
     "toolsLookalike": "相似的",
     "toolsLookalikeHint": "字母陷阱",
     "toolsCreate2": "CREATE2",
@@ -199,6 +201,10 @@
       "xrp": {
         "label": "XRP",
         "short": "XRP"
+      },
+      "seed": {
+        "label": "Seed",
+        "short": "SEED"
       }
     }
   },
@@ -215,6 +221,7 @@
     "github": "GitHub",
     "proof": "证明",
     "lab": "实验室",
+    "seed": "助记词锻造",
     "lookalike": "相似的",
     "create2": "CREATE2",
     "brand": "品牌",
@@ -512,6 +519,47 @@
       "queueN": "03 — 队列",
       "forge": "锻造",
       "exportWarning": "只有模式——没有私钥。"
+    },
+    "seed": {
+      "eyebrow": "生来可恢复",
+      "title": "助记词锻造",
+      "description": "锻造一个可用十二个单词恢复的靓号地址。助记词先固定下来，只变动派生索引，因此结果可以导入任意标准钱包，而不是留下一把零散的私钥。",
+      "caption": "图 — 助记词锻造",
+      "toc": {
+        "mnemonic": "助记词",
+        "pattern": "路径与图案",
+        "run": "锻造"
+      },
+      "sectionMnemonicN": "01",
+      "sectionMnemonicTitle": "从一组助记词开始",
+      "mnemonicIntro": "生成一组新助记词，或粘贴你已掌握的一组。它会在本标签页内被拉伸成种子，绝不会发送到任何地方——[实时审计](/audit)会让你看到空白的网络日志。",
+      "generate12": "生成 12 个词",
+      "generate24": "生成 24 个词",
+      "mnemonicLabel": "助记词",
+      "mnemonicPh": "十二或二十四个单词，用空格分隔",
+      "mnemonicValid": "有效的 BIP-39 助记词 — {words} 个词",
+      "mnemonicInvalid": "不是有效的 BIP-39 助记词。请检查拼写和词序。",
+      "passphraseLabel": "口令（可选）",
+      "passphrasePh": "第 25 个词 — 不确定就留空",
+      "mnemonicWarning": "开始前先把助记词抄下来。谁掌握它，谁就掌握由它派生的每一个地址，而 Vanitas 不保留任何副本。",
+      "sectionPatternN": "02",
+      "sectionPatternTitle": "选择路径和图案",
+      "pathIntro": "各家钱包对账户位置的约定并不一致。请选择你的钱包所用的方案——标记为 `{i}` 的那一层就是被遍历的层，它的数字就是你导入时要填的值。",
+      "alphabetSol": "Solana 地址使用 Base58 — 没有 0、O、I 和 l。",
+      "alphabetEvm": "EVM 地址是十六进制 — 只有 0-9 和 a-f。",
+      "startIndexLabel": "起始索引",
+      "startIndexHint": "首个尝试的路径：{path}",
+      "sectionRunN": "03",
+      "sectionRunTitle": "启动锻造",
+      "derivationPath": "派生路径",
+      "copyPath": "复制路径",
+      "copyAddress": "复制地址",
+      "recoveryTitle": "如何找回这个地址",
+      "recoveryBody": "把助记词导入任意钱包，然后在 `{path}` 处添加一个账户。没有文件要保管，也没有私钥会丢失。",
+      "showPrivateKey": "显示原始私钥",
+      "privateKeyNote": "只有当你更愿意导入单个私钥而不是助记词时才需要。请同样小心保管。",
+      "exhausted": "所有派生索引都已尝试完毕。请缩短图案，或换一种路径方案。",
+      "needMnemonic": "请输入或生成一组有效的助记词和一个图案后再开始。"
     },
     "lookalike": {
       "title": "相似检查",
@@ -858,12 +906,21 @@
           "description": "SHA-256 指纹与所有已发布的锻造工人相匹配",
           "why": "我们对每个密钥生成工作线程（Solana、EVM、Bitcoin、Tron、Aptos、Sui）进行哈希处理，并将每个密钥生成工作线程与开放版本中的worker-hash.json 进行比较。如果它们匹配，则代码没有被篡改。"
         },
+        "offline": {
+          "name": "离线能力",
+          "description": "全部锻造 worker 已缓存，可在无网络时使用",
+          "why": "worker 缓存完成后，你可以关掉 Wi-Fi 继续锻造。这是最有力的证明：网络实际断开时你仍能亲眼看到它正常工作。"
+        },
         "keygen": {
           "name": "密钥生成测试",
           "description": "生成并验证实际的 Ed25519 密钥对",
           "why": "最终证明：我们创建一个真实的密钥，用它签署一条消息，然后验证签名。如果可行，您的浏览器可以安全地生成 Solana 地址。"
         }
-      }
+      },
+      "hashCrossCheckTitle": "自己动手核验",
+      "hashCrossCheckBody": "这些指纹是编译进你正在阅读的这个页面的，并非来自服务器；锻造在校验不通过时会拒绝运行 worker。你可以自己对线上文件求哈希，再与公开仓库中的副本比对。",
+      "hashCrossCheckLink": "GitHub 上的 worker-hash.json",
+      "hashBuiltAt": "构建于 {at}"
     }
   },
   "faq": {
@@ -1627,6 +1684,12 @@
       "ogTitle": "模式实验室|瓦尼塔斯",
       "ogDescription": "难度矩阵、稀有度估计和批量模式队列 - 在您挖矿之前。"
     },
+    "seed": {
+      "title": "助记词锻造 — 用助记词生成靓号地址",
+      "description": "锻造可用 12 个 BIP-39 单词恢复的 Solana 或 EVM 靓号地址，全程在浏览器内完成。",
+      "ogTitle": "助记词锻造 | Vanitas",
+      "ogDescription": "用十二个单词就能找回的靓号地址，不再有零散的私钥。"
+    },
     "lookalike": {
       "title": "相似检查",
       "description": "在你打磨虚荣图案之前，先发现禁止的 Base58 字形、Tron 大小写陷阱和字母不匹配。",
@@ -1974,6 +2037,19 @@
     "hintCardanoFirst": "First char: y/9/x/8",
     "hintAfterR": "After fixed r",
     "hintTon": "Case-sensitive base64url"
+  },
+  "domains": {
+    "label": "域名",
+    "matching": "与“{name}”匹配的名称",
+    "via": "来自 {provider}",
+    "check": "查询",
+    "note": "域名让地址更方便分享。是否可注册请在注册商网站确认。"
+  },
+  "offline": {
+    "airGapped": "物理隔离",
+    "airGappedDetail": "你已离线，锻造仍在运行。没有任何东西能离开这台设备。",
+    "offline": "离线",
+    "offlineDetail": "没有连接。请在联网时打开一次页面，把锻造缓存下来以便离线使用。"
   },
   "postFind": {
     "playbook": {

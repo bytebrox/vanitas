@@ -13,6 +13,7 @@
  */
 
 import { keyPairFromSeed } from 'watsign';
+import { yieldToEventLoop } from './yield';
 
 // Check if native Ed25519 is supported
 let useNativeCrypto = false;
@@ -30,11 +31,17 @@ async function checkNativeSupport(): Promise<boolean> {
   }
 }
 
-// Initialize native support check
-checkNativeSupport().then(supported => {
-  useNativeCrypto = supported;
-  console.log(`Ed25519: ${supported ? 'Native Web Crypto' : 'WASM fallback'}`);
-}).catch(() => { /* Fallback to WASM */ });
+/**
+ * Awaited before the first candidate so a run never starts on the slow WASM
+ * path while the native probe is still in flight.
+ */
+const nativeReady: Promise<void> = checkNativeSupport()
+  .then((supported) => {
+    useNativeCrypto = supported;
+  })
+  .catch(() => {
+    useNativeCrypto = false;
+  });
 
 /**
  * Generate keypair using native Web Crypto API
@@ -174,6 +181,7 @@ let workerId = 0;
  */
 async function generateVanityAddress(config: GeneratorConfig): Promise<void> {
   const { prefix, suffix, caseSensitive } = config;
+  await nativeReady;
   const startTime = performance.now();
   let attempts = 0;
   let lastProgressUpdate = startTime;
@@ -253,7 +261,7 @@ async function generateVanityAddress(config: GeneratorConfig): Promise<void> {
     }
     
     // Yield to allow message processing
-    await new Promise(resolve => setTimeout(resolve, 0));
+    await yieldToEventLoop();
   }
   
   const message: WorkerOutboundMessage = {

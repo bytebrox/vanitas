@@ -3,6 +3,7 @@
  */
 
 export { Navbar } from './Navbar';
+export { AsciiImage } from './AsciiImage';
 export { Header } from './Header';
 export { HeroBand } from './HeroBand';
 export { PageIntro } from './PageIntro';
@@ -49,6 +50,8 @@ export { TokenResultDisplay } from './TokenResultDisplay';
 
 export { PatternTemplates } from './PatternTemplates';
 export { RecentFinds } from './RecentFinds';
+export { OfflineBadge } from './OfflineBadge';
+export { ServiceWorkerRegistration } from './ServiceWorkerRegistration';
 export { Footer } from './Footer';
 export { ThemeProvider, useTheme } from './ThemeProvider';
 export { LanguageSwitcher } from './LanguageSwitcher';

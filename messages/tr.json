@@ -153,6 +153,8 @@
     "toolsProofHint": "Bir bulguyu doğrulama",
     "toolsLab": "Laboratuvar",
     "toolsLabHint": "Desen laboratuvarı",
+    "toolsSeed": "Seed Ocağı",
+    "toolsSeedHint": "Kurtarma ifadesinden özel adres",
     "toolsLookalike": "benzer",
     "toolsLookalikeHint": "Alfabe tuzakları",
     "toolsCreate2": "CREATE2",
@@ -199,6 +201,10 @@
       "xrp": {
         "label": "XRP",
         "short": "XRP"
+      },
+      "seed": {
+        "label": "Seed",
+        "short": "SEED"
       }
     }
   },
@@ -215,6 +221,7 @@
     "github": "GitHub",
     "proof": "Kanıt",
     "lab": "Laboratuvar",
+    "seed": "Seed Ocağı",
     "lookalike": "benzer",
     "create2": "CREATE2",
     "brand": "Brand",
@@ -512,6 +519,47 @@
       "queueN": "03 — Sıra",
       "forge": "Dövmek",
       "exportWarning": "Yalnızca desenler; özel anahtar yok."
+    },
+    "seed": {
+      "eyebrow": "Tasarımı gereği geri getirilebilir",
+      "title": "Seed Ocağı",
+      "description": "On iki kelimeyle geri getirebileceğin bir özel adres üret. Önce kurtarma ifadesi sabitlenir, yalnızca türetme dizini değişir; böylece sonuç başıboş bir özel anahtar olarak kalmak yerine her standart cüzdana aktarılabilir.",
+      "caption": "Şek. — Seed Ocağı",
+      "toc": {
+        "mnemonic": "Kurtarma ifadesi",
+        "pattern": "Yol ve desen",
+        "run": "Üret"
+      },
+      "sectionMnemonicN": "01",
+      "sectionMnemonicTitle": "Bir kurtarma ifadesiyle başla",
+      "mnemonicIntro": "Yeni bir ifade üret ya da zaten sana ait olan birini yapıştır. Bu sekmede seed’e dönüştürülür ve hiçbir yere gönderilmez — [canlı denetim](/audit) sana boş ağ kaydını gösterir.",
+      "generate12": "12 kelime üret",
+      "generate24": "24 kelime üret",
+      "mnemonicLabel": "Kurtarma ifadesi",
+      "mnemonicPh": "boşlukla ayrılmış on iki ya da yirmi dört kelime",
+      "mnemonicValid": "Geçerli BIP-39 ifadesi — {words} kelime",
+      "mnemonicInvalid": "Geçerli bir BIP-39 ifadesi değil. Yazımı ve kelime sırasını kontrol et.",
+      "passphraseLabel": "Parola (isteğe bağlı)",
+      "passphrasePh": "25. kelime — emin değilsen boş bırak",
+      "mnemonicWarning": "Başlamadan önce ifadeyi yaz. Onu elinde tutan, ondan türeyen her adresi elinde tutar; Vanitas hiçbir kopya saklamaz.",
+      "sectionPatternN": "02",
+      "sectionPatternTitle": "Bir yol ve desen seç",
+      "pathIntro": "Cüzdanlar hesapların nerede durduğu konusunda hemfikir değil. Kendi cüzdanının şemasını seç — `{i}` ile işaretli seviye taranan seviyedir ve numarası içe aktarırken gireceğin sayıdır.",
+      "alphabetSol": "Solana adresleri Base58 kullanır — 0, O, I ve l yok.",
+      "alphabetEvm": "EVM adresleri onaltılıktır — yalnızca 0-9 ve a-f.",
+      "startIndexLabel": "Başlangıç dizini",
+      "startIndexHint": "Denenen ilk yol: {path}",
+      "sectionRunN": "03",
+      "sectionRunTitle": "Ocağı çalıştır",
+      "derivationPath": "Türetme yolu",
+      "copyPath": "Yolu kopyala",
+      "copyAddress": "Adresi kopyala",
+      "recoveryTitle": "Bu adresi nasıl geri getirirsin",
+      "recoveryBody": "Kurtarma ifadeni herhangi bir cüzdana aktar, sonra `{path}` yolunda bir hesap ekle. Saklanacak dosya yok, kaybedilecek özel anahtar yok.",
+      "showPrivateKey": "Ham özel anahtarı göster",
+      "privateKeyNote": "Yalnızca ifade yerine tek anahtarı içe aktarmayı tercih edersen gerekir. Aynı özenle koru.",
+      "exhausted": "Tüm türetme dizinleri denendi. Deseni kısalt ya da başka bir yol şeması seç.",
+      "needMnemonic": "Başlamak için geçerli bir kurtarma ifadesi ve bir desen gir."
     },
     "lookalike": {
       "title": "Benzerlik kontrolü",
@@ -858,12 +906,21 @@
           "description": "SHA-256 parmak izleri yayınlanmış tüm demirci işçileriyle eşleşiyor",
           "why": "Her anahtar nesil çalışanın (Solana, EVM, Bitcoin, Tron, Aptos, Sui) hashini alıyoruz ve her birini açık yapıdaki Worker-hash.json ile karşılaştırıyoruz. Eşleşiyorlarsa kod değiştirilmemiştir."
         },
+        "offline": {
+          "name": "Çevrimdışı yetenek",
+          "description": "Tüm ocak worker’ları bağlantısız kullanım için önbellekte",
+          "why": "Worker’lar önbelleğe alındıktan sonra Wi-Fi’yi kapatıp üretmeye devam edebilirsin. Hiçbir şeyin gönderilmediğinin en güçlü kanıtı budur — ağ fiziksel olarak yokken çalıştığını izleyebilirsin."
+        },
         "keygen": {
           "name": "Anahtar Oluşturma Testi",
           "description": "Gerçek bir Ed25519 anahtar çifti oluşturun ve doğrulayın",
           "why": "Son kanıt: Gerçek bir anahtar oluşturuyoruz, onunla bir mesaj imzalıyoruz ve ardından imzayı doğruluyoruz. Bu işe yararsa tarayıcınız güvenli bir şekilde Solana adresleri oluşturabilir."
         }
-      }
+      },
+      "hashCrossCheckTitle": "Kendin doğrula",
+      "hashCrossCheckBody": "Bu parmak izleri okuduğun sayfanın içine derlenmiştir, sunucudan gelmez; ocaklar eşleşmeyen bir worker’ı çalıştırmayı reddeder. Sunulan dosyaların özetini kendin al ve açık depodaki kopyayla karşılaştır.",
+      "hashCrossCheckLink": "GitHub’da worker-hash.json",
+      "hashBuiltAt": "{at} tarihinde derlendi"
     }
   },
   "faq": {
@@ -1627,6 +1684,12 @@
       "ogTitle": "Desen Laboratuvarı | Vanitas",
       "ogDescription": "Zorluk matrisi, nadirlik tahminleri ve toplu model kuyruğu — madencilik yapmadan önce."
     },
+    "seed": {
+      "title": "Seed Ocağı — Kurtarma ifadesinden özel adres",
+      "description": "12 kelimelik BIP-39 ifadesiyle geri getirilebilen Solana veya EVM özel adresi üret. Tamamen tarayıcında çalışır.",
+      "ogTitle": "Seed Ocağı | Vanitas",
+      "ogDescription": "On iki kelimeyle geri getirebileceğin özel adresler — ortada gezen özel anahtar yok."
+    },
     "lookalike": {
       "title": "Benzerlik Kontrolü",
       "description": "Gösteriş kalıplarını işlemeden önce yasak Base58 gliflerini, Tron harf tuzaklarını ve alfabe uyumsuzluklarını yakalayın.",
@@ -1974,6 +2037,19 @@
     "hintCardanoFirst": "First char: y/9/x/8",
     "hintAfterR": "After fixed r",
     "hintTon": "Case-sensitive base64url"
+  },
+  "domains": {
+    "label": "Alan adları",
+    "matching": "“{name}” ile eşleşen adlar",
+    "via": "{provider} üzerinden",
+    "check": "Kontrol et",
+    "note": "Alan adı adresi paylaşmayı kolaylaştırır. Uygunluk, kayıt sağlayıcının kendi sitesinde doğrulanır."
+  },
+  "offline": {
+    "airGapped": "Ağdan yalıtılmış",
+    "airGappedDetail": "Çevrimdışısın ve ocak hâlâ çalışıyor. Hiçbir şey bu cihazdan çıkamaz.",
+    "offline": "Çevrimdışı",
+    "offlineDetail": "Bağlantı yok. Ocağı çevrimdışı kullanabilmek için sayfayı bir kez çevrimiçi aç."
   },
   "postFind": {
     "playbook": {

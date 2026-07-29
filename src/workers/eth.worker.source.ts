@@ -9,6 +9,7 @@
  */
 
 import { getPublicKey, utils, etc } from '@noble/secp256k1';
+import { yieldToEventLoop } from './yield';
 import { keccak_256 } from '@noble/hashes/sha3.js';
 
 type EthMode = 'wallet' | 'contract' | 'create2-salt' | 'create2-deployer';
@@ -220,7 +221,7 @@ async function generateEthVanity(config: EthGeneratorConfig): Promise<void> {
       lastProgressUpdate = now;
     }
 
-    await new Promise((resolve) => setTimeout(resolve, 0));
+    await yieldToEventLoop();
   }
 
   self.postMessage({

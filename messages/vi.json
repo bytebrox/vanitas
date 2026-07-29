@@ -153,6 +153,8 @@
     "toolsProofHint": "Xác minh một phát hiện",
     "toolsLab": "phòng thí nghiệm",
     "toolsLabHint": "Phòng thí nghiệm mẫu",
+    "toolsSeed": "Lò rèn Seed",
+    "toolsSeedHint": "Địa chỉ tuỳ chọn từ cụm từ khôi phục",
     "toolsLookalike": "Trông giống nhau",
     "toolsLookalikeHint": "Bẫy bảng chữ cái",
     "toolsCreate2": "CREATE2",
@@ -199,6 +201,10 @@
       "xrp": {
         "label": "XRP",
         "short": "XRP"
+      },
+      "seed": {
+        "label": "Seed",
+        "short": "SEED"
       }
     }
   },
@@ -215,6 +221,7 @@
     "github": "GitHub",
     "proof": "Bằng chứng",
     "lab": "phòng thí nghiệm",
+    "seed": "Lò rèn Seed",
     "lookalike": "Trông giống nhau",
     "create2": "CREATE2",
     "brand": "Brand",
@@ -512,6 +519,47 @@
       "queueN": "03 — Hàng đợi",
       "forge": "lò rèn",
       "exportWarning": "Chỉ các mẫu - không có khóa riêng."
+    },
+    "seed": {
+      "eyebrow": "Khôi phục được ngay từ thiết kế",
+      "title": "Lò rèn Seed",
+      "description": "Rèn một địa chỉ tuỳ chọn mà bạn khôi phục được bằng mười hai chữ. Cụm từ khôi phục được cố định trước, chỉ chỉ số dẫn xuất thay đổi, nên kết quả nhập được vào mọi ví tiêu chuẩn thay vì tồn tại như một khoá riêng rời rạc.",
+      "caption": "H. — Lò rèn Seed",
+      "toc": {
+        "mnemonic": "Cụm từ khôi phục",
+        "pattern": "Đường dẫn & mẫu",
+        "run": "Rèn"
+      },
+      "sectionMnemonicN": "01",
+      "sectionMnemonicTitle": "Bắt đầu từ cụm từ khôi phục",
+      "mnemonicIntro": "Tạo cụm từ mới hoặc dán cụm từ bạn đã có. Nó được kéo dài thành seed ngay trong thẻ này và không bao giờ được gửi đi đâu — [kiểm định trực tiếp](/audit) sẽ cho bạn thấy nhật ký mạng trống.",
+      "generate12": "Tạo 12 chữ",
+      "generate24": "Tạo 24 chữ",
+      "mnemonicLabel": "Cụm từ khôi phục",
+      "mnemonicPh": "mười hai hoặc hai mươi bốn chữ, cách nhau bằng dấu cách",
+      "mnemonicValid": "Cụm từ BIP-39 hợp lệ — {words} chữ",
+      "mnemonicInvalid": "Không phải cụm từ BIP-39 hợp lệ. Hãy kiểm tra chính tả và thứ tự các chữ.",
+      "passphraseLabel": "Mật khẩu phụ (tuỳ chọn)",
+      "passphrasePh": "chữ thứ 25 — để trống nếu không chắc",
+      "mnemonicWarning": "Hãy ghi cụm từ ra trước khi bắt đầu. Ai giữ nó là giữ mọi địa chỉ dẫn xuất từ nó, và Vanitas không lưu bản sao nào.",
+      "sectionPatternN": "02",
+      "sectionPatternTitle": "Chọn đường dẫn và mẫu",
+      "pathIntro": "Các ví không thống nhất về vị trí tài khoản. Hãy chọn sơ đồ ví bạn dùng — cấp được đánh dấu `{i}` là cấp được quét, và con số của nó là thứ bạn nhập khi nhập ví.",
+      "alphabetSol": "Địa chỉ Solana dùng Base58 — không có 0, O, I hay l.",
+      "alphabetEvm": "Địa chỉ EVM là thập lục phân — chỉ 0-9 và a-f.",
+      "startIndexLabel": "Bắt đầu từ chỉ số",
+      "startIndexHint": "Đường dẫn thử đầu tiên: {path}",
+      "sectionRunN": "03",
+      "sectionRunTitle": "Khởi động lò rèn",
+      "derivationPath": "Đường dẫn dẫn xuất",
+      "copyPath": "Sao chép đường dẫn",
+      "copyAddress": "Sao chép địa chỉ",
+      "recoveryTitle": "Cách lấy lại địa chỉ này",
+      "recoveryBody": "Nhập cụm từ khôi phục vào bất kỳ ví nào, rồi thêm một tài khoản tại `{path}`. Không có tệp phải giữ, không có khoá riêng để mất.",
+      "showPrivateKey": "Hiện khoá riêng dạng thô",
+      "privateKeyNote": "Chỉ cần khi bạn muốn nhập riêng khoá thay vì cụm từ. Hãy bảo vệ nó cẩn thận y như vậy.",
+      "exhausted": "Đã thử hết mọi chỉ số dẫn xuất. Hãy rút ngắn mẫu hoặc chọn sơ đồ đường dẫn khác.",
+      "needMnemonic": "Nhập hoặc tạo một cụm từ khôi phục hợp lệ và một mẫu để bắt đầu."
     },
     "lookalike": {
       "title": "Kiểm tra tương tự",
@@ -858,12 +906,21 @@
           "description": "Dấu vân tay SHA-256 khớp với tất cả các công nhân rèn được công bố",
           "why": "Chúng tôi băm mọi công nhân tạo khóa (Solana, EVM, Bitcoin, Tron, Aptos, Sui) và so sánh từng công nhân với worker-hash.json từ bản dựng mở. Nếu chúng khớp nhau thì mã đó không bị giả mạo."
         },
+        "offline": {
+          "name": "Khả năng ngoại tuyến",
+          "description": "Mọi worker của lò rèn đã được lưu đệm để dùng khi không có mạng",
+          "why": "Khi worker đã nằm trong bộ nhớ đệm, bạn có thể tắt Wi-Fi và tiếp tục rèn. Đó là bằng chứng mạnh nhất cho thấy không có gì được gửi đi — bạn xem nó chạy trong khi mạng đã ngắt hẳn."
+        },
         "keygen": {
           "name": "Kiểm tra tạo khóa",
           "description": "Tạo và xác thực cặp khóa Ed25519 thực tế",
           "why": "Bằng chứng cuối cùng: chúng ta tạo một khóa thực, ký tin nhắn bằng nó, sau đó xác minh chữ ký. Nếu cách này hiệu quả, trình duyệt của bạn có thể tạo địa chỉ Solana một cách an toàn."
         }
-      }
+      },
+      "hashCrossCheckTitle": "Tự kiểm chứng",
+      "hashCrossCheckBody": "Các dấu vân tay này được biên dịch thẳng vào trang bạn đang đọc chứ không lấy từ máy chủ, và các lò rèn từ chối chạy worker không khớp. Hãy tự băm các tệp được phục vụ rồi đối chiếu với bản sao trong kho mã nguồn công khai.",
+      "hashCrossCheckLink": "worker-hash.json trên GitHub",
+      "hashBuiltAt": "Dựng lúc {at}"
     }
   },
   "faq": {
@@ -1627,6 +1684,12 @@
       "ogTitle": "Phòng thí nghiệm mẫu | Vanitas",
       "ogDescription": "Ma trận độ khó, ước tính độ hiếm và hàng đợi mẫu hàng loạt — trước khi bạn khai thác."
     },
+    "seed": {
+      "title": "Lò rèn Seed — Địa chỉ tuỳ chọn từ cụm từ khôi phục",
+      "description": "Rèn địa chỉ tuỳ chọn Solana hoặc EVM khôi phục được bằng cụm từ BIP-39 12 chữ. Chạy hoàn toàn trong trình duyệt.",
+      "ogTitle": "Lò rèn Seed | Vanitas",
+      "ogDescription": "Địa chỉ tuỳ chọn khôi phục được bằng mười hai chữ — không còn khoá riêng rời rạc."
+    },
     "lookalike": {
       "title": "Kiểm tra tương tự",
       "description": "Nắm bắt các ký tự Base58 bị cấm, bẫy chữ Tron và bảng chữ cái không khớp trước khi bạn mài giũa các mẫu phù phiếm.",
@@ -1974,6 +2037,19 @@
     "hintCardanoFirst": "First char: y/9/x/8",
     "hintAfterR": "After fixed r",
     "hintTon": "Case-sensitive base64url"
+  },
+  "domains": {
+    "label": "Tên miền",
+    "matching": "Tên khớp với “{name}”",
+    "via": "qua {provider}",
+    "check": "Kiểm tra",
+    "note": "Tên miền giúp chia sẻ địa chỉ dễ hơn. Tình trạng còn trống được xác nhận trên trang của nhà đăng ký."
+  },
+  "offline": {
+    "airGapped": "Cách ly mạng",
+    "airGappedDetail": "Bạn đang ngoại tuyến mà lò rèn vẫn chạy. Không gì có thể rời khỏi thiết bị này.",
+    "offline": "Ngoại tuyến",
+    "offlineDetail": "Không có kết nối. Hãy mở trang một lần khi trực tuyến để lưu lò rèn cho chế độ ngoại tuyến."
   },
   "postFind": {
     "playbook": {
