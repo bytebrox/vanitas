@@ -1713,80 +1713,241 @@
     "terms": {
       "eyebrow": "Legale",
       "title": "Termini di utilizzo",
-      "updated": "Ultimo aggiornamento: 28 luglio 2026",
-      "intro": "I presenti termini regolano l'utilizzo di Vanitas (vanitas.fun), del relativo codice open source e della CLI opzionale. Utilizzando il sito o gli strumenti, li accetti.",
+      "updated": "Last updated: 28 July 2026",
+      "intro": "These Terms of Use (“Terms”) govern your access to and use of Vanitas at vanitas.fun, related documentation pages, share-proof and embed surfaces, the published open-source code, and the optional command-line interface (CLI). By accessing or using any of these, you agree to these Terms. If you do not agree, do not use Vanitas.",
       "sections": [
         {
-          "title": "Cos'è Vanitas",
-          "body": "Vanitas è una **fucina di indirizzi vanity lato client**. Il lavoro crittografico viene eseguito nel tuo browser (o localmente tramite la CLI). Non gestiamo un portafoglio di custodia, uno scambio o un sistema di conti."
+          "title": "Who we are and what these Terms cover",
+          "body": [
+            "Vanitas is an open-source, client-side vanity address forge maintained in public at [GitHub](https://github.com/bytebrox/vanitas). References to “we”, “us”, or “operators” mean the project maintainers of that repository and the operators of the vanitas.fun website.",
+            "These Terms apply to the website, static assets, client-side workers shipped with the site, documentation (including security and how-it-works pages), proof and lookalike tools, and the npm-published CLI when you obtain it through the project’s documented channels.",
+            "They do **not** turn Vanitas into a hosted wallet, custodian, broker, exchange, payment processor, or financial adviser. We do not hold your keys or your assets."
+          ]
         },
         {
-          "title": "Nessuna garanzia",
-          "body": "Il software viene fornito **così com'è**, senza garanzie di alcun tipo. Modelli, stime di difficoltà e prove di ritrovamento sono funzionalità utili: verifica tu stesso i risultati prima di trasferire fondi."
+          "title": "Eligibility",
+          "body": [
+            "You may use Vanitas only if you can form a binding agreement under the laws that apply to you, and only where use of cryptographic wallet tooling is lawful.",
+            "You are responsible for complying with local laws on cryptography, digital assets, sanctions, export controls, and consumer protection. If any part of Vanitas is illegal where you live, you must not use it."
+          ]
         },
         {
-          "title": "La tua responsabilità",
-          "body": "Sei l'unico responsabile della salvaguardia delle chiavi private, delle frasi seed e delle esportazioni. Chiunque abbia una chiave privata controlla i fondi corrispondenti. Non condividere le chiavi. Non falsificare indirizzi per frode, furto d'identità o altro uso illegale."
+          "title": "What Vanitas provides",
+          "body": [
+            "Vanitas helps you search for blockchain addresses whose public form matches a pattern you choose (for example a prefix or suffix), across supported networks such as Solana, EVM chains, Bitcoin, Tron, Aptos, Sui, TON, Cardano, and XRP. Modes may include wallet addresses, token mints, and contract-oriented flows such as CREATE2-style searches where documented.",
+            "Cryptographic generation and matching run **locally** in your browser (typically via Web Workers) or on your machine via the CLI. The site UI streams static application code and assets; it is not a remote key-generation service.",
+            "Convenience features — difficulty or time estimates, pattern templates, lookalike warnings, rarity lab visuals, recent-find lists, export helpers, and share-proof links — are provided as tools. They may be incomplete, approximate, or wrong for your case. Always verify results with tools you trust before moving value."
+          ]
         },
         {
-          "title": "Uso accettabile",
-          "body": "Non abusare dell'infrastruttura del sito (ad esempio scraping automatizzato che danneggia la disponibilità), tentare di infrangere i controlli di sicurezza o travisare Vanitas come un servizio chiave ospitato."
+          "title": "No accounts and no custody",
+          "body": [
+            "Vanitas does not require registration, KYC, or an account. There is no Vanitas login and no on-site balance or portfolio product.",
+            "We do not custody digital assets, do not execute trades, and do not transmit private keys to a Vanitas backend as part of normal forging. If you paste keys into third-party sites after exporting from Vanitas, that is outside these Terms and outside our control."
+          ]
         },
         {
-          "title": "Open source e terze parti",
-          "body": "La fonte è pubblicata sotto la licenza MIT su [GitHub](https://github.com/bytebrox/vanitas). Wallet, esploratori, npm e provider di hosting di terze parti hanno i propri termini. I collegamenti ad essi sono solo per comodità."
+          "title": "Not advice; no warranties",
+          "body": [
+            "Nothing on Vanitas is investment, legal, tax, accounting, or security advice. Descriptions of chains, address formats, launchpads, or explorers are informational only.",
+            "THE SOFTWARE AND SITE ARE PROVIDED **“AS IS” AND “AS AVAILABLE”**, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. We do not warrant that generation will complete in any time, that estimates are accurate, that proofs are exhaustive, that the site will be uninterrupted, or that local storage will persist.",
+            "Open-source distribution under the MIT license (see the repository) may grant additional copyright permissions for the code itself; these Terms govern use of the operated website and related services in addition to that license."
+          ]
         },
         {
-          "title": "Limitazione di responsabilità",
-          "body": "Nella misura massima consentita dalla legge, gli autori e gli operatori non sono responsabili per la perdita di chiavi, fondi persi, tempi di inattività, modelli errati o danni derivanti dall'uso di Vanitas."
+          "title": "Your responsibilities",
+          "body": [
+            "You alone are responsible for safeguarding private keys, seed phrases, keystores, WIF strings, and any export files you create. Anyone who obtains a private key can control the corresponding funds. Do not share keys in chat, screenshots, tickets, or public proofs.",
+            "Before transferring assets, independently verify the address, network, derivation path or key format, and that you can import the key into a wallet you trust. Browser extensions, malware, clipboard hijackers, and phishing sites can compromise keys even when Vanitas itself runs locally.",
+            "You are responsible for backups, device security, and deciding whether a pattern is appropriate. Lookalike and similarity warnings are helpers, not guarantees against confusion or fraud."
+          ]
         },
         {
-          "title": "Cambiamenti",
-          "body": "Potremmo aggiornare questi termini. L'uso continuato dopo un aggiornamento pubblicato costituisce l'accettazione dei termini modificati. La data sopra mostra l'ultima revisione."
+          "title": "Acceptable use",
+          "body": [
+            "You agree not to use Vanitas to commit fraud, phishing, impersonation of brands or people, money laundering, sanctions evasion, or any other unlawful activity.",
+            "You agree not to attack, probe, or overload the website or related infrastructure in ways that degrade availability for others; not to circumvent rate limits or access controls if present; and not to misrepresent Vanitas as a hosted key-management or custodial service.",
+            "You agree not to scrape the site in a way that harms availability, and not to remove or obscure security or attribution notices in redistributed unmodified site builds where those notices appear.",
+            "Automated or high-volume use of the **local** forge in your own browser or CLI is generally fine; abusing shared hosting, CDNs, or proof endpoints is not."
+          ]
         },
         {
-          "title": "Contatto",
-          "body": "Domande: [Bytebrox on X](https://x.com/bytebrox) o [GitHub repository](https://github.com/bytebrox/vanitas)."
+          "title": "Lookalikes, trademarks, and third-party brands",
+          "body": [
+            "Forging an address that resembles a well-known brand, product, exchange, or person does not give you rights in that brand. Do not use such addresses to deceive others.",
+            "Vanitas, chain names, wallet names, and third-party marks belong to their respective owners. Mentions and logos (where shown) are for identification of supported networks or linked tools only."
+          ]
+        },
+        {
+          "title": "Open source, CLI, and third-party software",
+          "body": [
+            "Source code is published under the MIT license on [GitHub](https://github.com/bytebrox/vanitas). The optional CLI may be distributed via npm or other channels described in the repository. Dependency licenses apply to those packages.",
+            "If you fork, self-host, or modify Vanitas, you are responsible for your deployment, including privacy notices, security, and compliance. These Terms do not automatically bind visitors of unrelated forks unless those operators adopt them.",
+            "Third-party wallets, explorers, launchpads, package registries, and social platforms have their own terms. Links from Vanitas are for convenience only and do not imply endorsement."
+          ]
+        },
+        {
+          "title": "Intellectual property of the site",
+          "body": [
+            "Subject to the MIT license on the code and any open fonts or third-party assets with their own licenses, the vanitas.fun presentation, documentation copy, and branding elements as published on the site are provided for use of the service as intended.",
+            "You may not suggest official partnership or endorsement by Vanitas or Bytebrox without permission, except for factual statements that you used the open-source tool."
+          ]
+        },
+        {
+          "title": "Limitation of liability",
+          "body": [
+            "To the fullest extent permitted by law, the authors, maintainers, and operators are not liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, or for loss of keys, funds, profits, data, goodwill, or business interruption, arising from or related to your use of Vanitas — whether based in contract, tort, strict liability, or otherwise — even if advised of the possibility.",
+            "To the fullest extent permitted by law, total liability for any claim relating to the site or these Terms is limited to zero (EUR 0 / USD 0), reflecting that the core forge is free, open-source, and non-custodial. Some jurisdictions do not allow certain limitations; in those places, liability is limited to the maximum permitted by law."
+          ]
+        },
+        {
+          "title": "Indemnity",
+          "body": [
+            "You agree to defend and indemnify the operators and contributors against claims, damages, and expenses (including reasonable legal fees) arising from your misuse of Vanitas, your violation of these Terms, or your infringement of others’ rights — including use of forged addresses for deception."
+          ]
+        },
+        {
+          "title": "Suspension and availability",
+          "body": [
+            "We may change, suspend, or discontinue the website, specific chain forges, or features at any time without notice. Open-source code may remain available under its license even if the hosted site changes.",
+            "We are not obliged to provide support, uptime SLAs, or continued hosting of any particular URL."
+          ]
+        },
+        {
+          "title": "Changes to these Terms",
+          "body": [
+            "We may update these Terms by posting a revised version on this page and updating the “Last updated” date. Material changes may also be highlighted in project channels when practical.",
+            "Continued use of the site after an update constitutes acceptance of the revised Terms. If you do not agree, stop using Vanitas."
+          ]
+        },
+        {
+          "title": "Severability and entire agreement",
+          "body": [
+            "If any provision of these Terms is held unenforceable, the remaining provisions remain in effect. These Terms, together with the [Privacy](/privacy) notice and any license texts shipped with the software, are the entire agreement between you and the operators regarding the site, superseding prior informal understandings on the same subject.",
+            "Failure to enforce a provision is not a waiver of that provision."
+          ]
+        },
+        {
+          "title": "Contact",
+          "body": [
+            "Questions about these Terms: [Bytebrox on X](https://x.com/bytebrox) or the [GitHub repository](https://github.com/bytebrox/vanitas). For security vulnerabilities, use private reporting as described on the [Security](/security) page — do not open public issues that expose exploit details."
+          ]
         }
       ]
     },
     "privacy": {
       "eyebrow": "Legale",
       "title": "Privacy",
-      "updated": "Ultimo aggiornamento: 28 luglio 2026",
-      "intro": "Vanitas è progettato in modo che le chiavi private e il lavoro di generazione rimangano sul tuo dispositivo. Questa pagina spiega quel poco che tocchiamo e quello che non raccogliamo.",
+      "updated": "Last updated: 28 July 2026",
+      "intro": "This Privacy notice explains how Vanitas (vanitas.fun) approaches personal data. The product is designed so private keys and forging work stay on your device. We intentionally collect very little. Please also read the [Terms](/terms) and [Security](/security) pages.",
       "sections": [
         {
-          "title": "Le chiavi non lasciano mai questo dispositivo",
-          "body": "La falsificazione degli indirizzi viene eseguita **localmente nel browser** (Web Worker) o nella CLI locale. Vanitas non carica chiavi private, codici mnemonici o materiale chiave generato sui nostri server. I collegamenti **Condividi prova** escludono intenzionalmente le chiavi private."
+          "title": "Summary",
+          "body": [
+            "**Private keys, mnemonics, and forged key material are generated and matched on your device.** Under normal use they are not uploaded to a Vanitas server.",
+            "We do not require accounts or a Vanitas login. We do not sell personal data. We do not embed third-party advertising pixels.",
+            "Some technical data may still be processed by hosting infrastructure when you load the website (for example IP address in access logs). Preferences such as theme may be stored on your device and in a small first-party cookie."
+          ]
         },
         {
-          "title": "Ciò che non raccogliamo",
-          "body": "Non abbiamo bisogno di account. Non raccogliamo intenzionalmente saldi di portafoglio, chiavi private contraffatte o risultati di ricerca di pattern su un backend Vanitas. Non esiste un accesso Vanitas."
+          "title": "Who this notice covers",
+          "body": [
+            "This notice covers visitors to vanitas.fun and related pages we operate (documentation, proof, lookalike, lab, legal pages, and embeds served from the same project).",
+            "It does **not** control forks, mirrors, or third-party redeployments of the open-source code. Those operators must publish their own notices. The npm CLI runs on your machine; we do not receive CLI telemetry from the published package unless a future version documents otherwise (none is intended today)."
+          ]
         },
         {
-          "title": "Dati sul tuo dispositivo",
-          "body": "Preferenze come **tema** (chiaro/scuro) possono essere archiviate in localStorage e in un **cookie del tema** di prima parte in modo che la modalità corretta possa essere visualizzata senza flash. Anche le preferenze audio e lo stato simile dell'interfaccia utente potrebbero rimanere nella memoria locale. **Ritrovamenti recenti** vengono conservati nello spazio di archiviazione della sessione sul tuo dispositivo per quella sessione del browser e non ci vengono inviati."
+          "title": "Keys and forging stay on your device",
+          "body": [
+            "Address forging runs locally in the browser (Web Workers) or in the local CLI. Matching against your pattern happens in that same local environment.",
+            "**Share proof** links and public proof pages are designed to help others verify that an address matches a pattern. They are built to **exclude private keys**. Do not paste private keys into URLs, issues, or chat.",
+            "**Recent finds** stored in `sessionStorage` keep address metadata for your browser session (for example chain, pattern, address, timestamp) — **not** private keys. Clearing the tab/session or site data removes them from that browser.",
+            "Exports you download (TXT/JSON and similar) are written by your browser to your device. We do not receive those files."
+          ]
         },
         {
-          "title": "Hosting e registri",
-          "body": "Il sito web è servito tramite web hosting standard (attualmente Vercel). Come la maggior parte dei siti, l'infrastruttura può elaborare i dati delle richieste tecniche (ad esempio indirizzo IP, agente utente, URL, timestamp) nei registri di accesso per motivi di sicurezza e affidabilità. Non lo usiamo per creare profili di marketing di chiavi contraffatte."
+          "title": "What we do not collect",
+          "body": [
+            "We do not intentionally collect or store on a Vanitas backend: private keys, seed phrases, forged key material, wallet balances, address books, or a history of your pattern searches tied to an account.",
+            "We do not run a Vanitas user database of identities. There is no newsletter signup baked into the forge product as of the date above.",
+            "If you contact us via X, GitHub, or another channel, that platform processes the communication under its own rules; we only see what you choose to send."
+          ]
         },
         {
-          "title": "Nessun tracker pubblicitario",
-          "body": "Vanitas non incorpora pixel pubblicitari di terze parti. Se ciò cambia, questa politica verrà aggiornata."
+          "title": "Data processed on your device",
+          "body": [
+            "**Theme preference** (light/dark) may be stored in `localStorage` and mirrored in a first-party **theme cookie** so the correct mode can render on first paint without a flash. The cookie is not used for advertising.",
+            "**Sound / UI preferences** and similar settings may be stored in `localStorage` on your device only.",
+            "**Locale** is primarily selected via the URL path (for example `/de/...`). We do not use browser locale auto-detection to force a language; see project routing configuration.",
+            "You can clear site data in your browser settings to remove localStorage, sessionStorage, and cookies for vanitas.fun."
+          ]
         },
         {
-          "title": "Collegamenti esterni",
-          "body": "I collegamenti a esploratori (ad esempio Solscan), GitHub, npm o profili social sono siti di terze parti con le proprie pratiche sulla privacy."
+          "title": "Cookies",
+          "body": [
+            "Vanitas uses a minimal first-party cookie for theme preference as described above. We do not set advertising or cross-site tracking cookies.",
+            "Essential delivery of the site may involve cookies or similar storage set by the hosting/CDN stack for security or performance; those are governed by the host’s practices as well as this notice."
+          ]
         },
         {
-          "title": "Bambini",
-          "body": "Gli strumenti non sono rivolti ai bambini. Non utilizzare Vanitas se non sei legalmente autorizzato a utilizzare il software di portafoglio crittografico nella tua giurisdizione."
+          "title": "Hosting, logs, and security",
+          "body": [
+            "The website is served via standard web hosting (currently Vercel). Like most sites, the infrastructure may process technical request metadata — for example IP address, user agent, request URL/path, referrer, and timestamps — in access and security logs.",
+            "Purposes: deliver the site, maintain reliability, debug outages, and protect against abuse. We do not use these logs to build marketing profiles of forged keys or vanity patterns.",
+            "Log retention follows the host’s defaults and our operational needs; we do not operate a separate analytics product on top of forge results."
+          ]
         },
         {
-          "title": "Contatto",
-          "body": "Domande sulla privacy: [Bytebrox on X](https://x.com/bytebrox) o [GitHub](https://github.com/bytebrox/vanitas). Vedi anche [Terms](/terms) e [Security](/security)."
+          "title": "No advertising trackers",
+          "body": [
+            "Vanitas does not embed third-party advertising pixels or ad networks. If that changes, this notice will be updated before or when such tooling goes live."
+          ]
+        },
+        {
+          "title": "External links and third parties",
+          "body": [
+            "Links to explorers (for example Solscan), GitHub, npm, social profiles, wallets, or launchpads go to third-party sites. Their privacy practices apply when you leave Vanitas.",
+            "If you import a key into a wallet or paste an address into an explorer, that interaction is with that third party — not with a Vanitas key vault."
+          ]
+        },
+        {
+          "title": "International processing",
+          "body": [
+            "Hosting and CDN providers may process technical data in multiple regions. By using the website, you understand that request metadata may be handled in countries other than your own, subject to the host’s safeguards and applicable law."
+          ]
+        },
+        {
+          "title": "Children",
+          "body": [
+            "Vanitas is not directed at children. Do not use the tools if you are not of legal age to use cryptographic wallet software where you live, or if a parent/guardian’s consent would be required and has not been obtained."
+          ]
+        },
+        {
+          "title": "Security",
+          "body": [
+            "We design the forge so sensitive key material stays local. No system is perfect: device malware, malicious browser extensions, phishing domains that mimic Vanitas, or compromised dependencies can still put you at risk.",
+            "Prefer the canonical site, review [Security](/security), and consider verifying builds via the project’s documented integrity practices. Report vulnerabilities privately as described there."
+          ]
+        },
+        {
+          "title": "Your choices and rights",
+          "body": [
+            "Because we do not run user accounts, there is typically no Vanitas “profile” to download or delete. You can erase on-device data by clearing site storage for vanitas.fun.",
+            "Where hosting logs contain personal data (such as an IP address) and applicable law (for example GDPR/UK GDPR) grants rights of access, erasure, or objection, you may contact us to exercise those rights. We may need to verify the request and may only be able to act on data we actually control and can locate.",
+            "You may also lodge a complaint with a supervisory authority in your country of residence where that right applies."
+          ]
+        },
+        {
+          "title": "Changes to this notice",
+          "body": [
+            "We may update this Privacy notice by posting a revised version on this page and changing the “Last updated” date. Continued use of the site after an update means you acknowledge the revised notice."
+          ]
+        },
+        {
+          "title": "Contact",
+          "body": [
+            "Privacy questions: [Bytebrox on X](https://x.com/bytebrox) or [GitHub](https://github.com/bytebrox/vanitas). See also [Terms](/terms) and [Security](/security)."
+          ]
         }
       ]
     }
@@ -1813,5 +1974,278 @@
     "hintCardanoFirst": "First char: y/9/x/8",
     "hintAfterR": "After fixed r",
     "hintTon": "Case-sensitive base64url"
+  },
+  "postFind": {
+    "playbook": {
+      "solWallet": {
+        "eyebrow": "Passi successivi",
+        "title": "Metti in uso questo wallet",
+        "steps": [
+          "**Salva la chiave privata** (scarica TXT/JSON o copiala dopo il reveal). Uscire senza backup fa perdere la chiave.",
+          "**Importala in un wallet Solana** — Phantom, Solflare o Solana CLI con l’export JSON.",
+          "Invia prima un **importo di prova minimo**. Conferma che l’indirizzo corrisponda a `{short}` sull’explorer.",
+          "Condividi un **link di proof** (mai la chiave) se altri devono verificare il pattern vanity."
+        ]
+      },
+      "solMint": {
+        "eyebrow": "Percorso di lancio",
+        "title": "Porta questo mint su un launchpad",
+        "steps": [
+          "**Fai subito il backup della chiave di autorità del mint** — ti serve una volta in creazione.",
+          "Apri il launchpad (**pump.fun**, Raydium, Meteora, …) e trova il campo **custom mint**.",
+          "Rivela e incolla la chiave privata, poi completa il lancio così il mint resta `{short}`.",
+          "Dopo il lancio l’indirizzo del mint è **pubblico e permanente**. Condividi il proof senza la chiave."
+        ]
+      },
+      "evmWallet": {
+        "eyebrow": "Passi successivi",
+        "title": "Importa questo wallet EVM",
+        "steps": [
+          "**Salva la chiave privata hex** prima di uscire — i download includono TXT e JSON.",
+          "Importala in **MetaMask, Rabby, Frame** o qualsiasi wallet EVM (stesso indirizzo su ogni chain EVM).",
+          "Verifica `{short}` su un explorer con un piccolo trasferimento di prova.",
+          "Usa **Share proof** per la verifica pubblica — le chiavi restano fuori dal link."
+        ]
+      },
+      "evmContract": {
+        "eyebrow": "Percorso di deploy",
+        "title": "Otieni questo indirizzo CREATE",
+        "steps": [
+          "**Salva la chiave privata del deployer** e annota l’indirizzo del contratto previsto `{short}`.",
+          "Fondi il wallet **deployer**. L’indirizzo vanity appare solo al **primo** CREATE (nonce **0**).",
+          "Distribuisci il contratto come prima transazione — qualsiasi tx precedente brucia la vanity.",
+          "Pubblica un **link di proof** così altri controllano il pattern senza vedere le chiavi."
+        ]
+      },
+      "evmCreate2": {
+        "eyebrow": "Percorso CREATE2",
+        "title": "Usa salt e init code con attenzione",
+        "steps": [
+          "**Salva chiave deployer, salt e initCodeHash** dall’export — tutti e tre devono corrispondere al deploy.",
+          "Distribuisci con **CREATE2** usando l’init code esatto che hasha al tuo initCodeHash.",
+          "Conferma che il contratto risultante sia `{short}` prima di annunciarlo.",
+          "Condividi il proof pubblicamente; tieni privati strategia salt e chiavi se contano ancora."
+        ]
+      },
+      "btcWallet": {
+        "eyebrow": "Passi successivi",
+        "title": "Importa questo indirizzo Bitcoin",
+        "steps": [
+          "**Salva il WIF** (e il backup hex nell’export) prima di chiudere la scheda.",
+          "Importa il WIF in **Electrum, Sparrow** o un altro wallet Bitcoin adatto a questo tipo di indirizzo.",
+          "Ricevi un piccolo UTXO di prova e conferma `{short}` su un explorer.",
+          "Condividi il proof del pattern — mai il WIF."
+        ]
+      },
+      "tronWallet": {
+        "eyebrow": "Passi successivi",
+        "title": "Importa in un wallet Tron",
+        "steps": [
+          "**Salva la chiave privata hex** tramite download TXT/JSON.",
+          "Importala in **TronLink** o un altro wallet Tron.",
+          "Invia un minuscolo trasferimento TRX/test per confermare `{short}`.",
+          "Condividi un link di proof se serve la verifica pubblica del pattern."
+        ]
+      },
+      "tronContract": {
+        "eyebrow": "Percorso di deploy",
+        "title": "Primo CREATE su Tron",
+        "steps": [
+          "**Salva la chiave del deployer** — il contratto `{short}` è il primo CREATE (nonce 0) di quella chiave.",
+          "Fondi il deployer, poi distribuisci come prima creazione di contratto.",
+          "Non inviare altre tx dal deployer prima, altrimenti perdi la vanity.",
+          "Pubblica il proof senza esporre la chiave del deployer."
+        ]
+      },
+      "aptosWallet": {
+        "eyebrow": "Passi successivi",
+        "title": "Importa questo wallet Aptos",
+        "steps": [
+          "**Salva la chiave privata** dal reveal o dal download.",
+          "Importala in **Petra, Martian** o un altro wallet Aptos.",
+          "Conferma `{short}` con un piccolo trasferimento di prova.",
+          "Condividi solo link di proof — mai la chiave."
+        ]
+      },
+      "suiWallet": {
+        "eyebrow": "Passi successivi",
+        "title": "Importa questo wallet Sui",
+        "steps": [
+          "**Salva la chiave privata** prima di lasciare questa pagina.",
+          "Importala in **Sui Wallet, Suiet** o un altro wallet Sui.",
+          "Verifica `{short}` sull’explorer con un trasferimento minimo.",
+          "Condividi il proof del pattern senza chiavi."
+        ]
+      },
+      "tonWallet": {
+        "eyebrow": "Passi successivi",
+        "title": "Importa questo wallet TON",
+        "steps": [
+          "**Salva la chiave privata** (l’export include EQ bounceable quando disponibile).",
+          "Importala in **Tonkeeper** o **MyTonWallet**.",
+          "Conferma `{short}` con un piccolo invio di prova.",
+          "Condividi il proof del pattern vanity — tieni la chiave offline."
+        ]
+      },
+      "cardanoWallet": {
+        "eyebrow": "Passi successivi",
+        "title": "Importa questo indirizzo Cardano",
+        "steps": [
+          "**Salva il materiale della chiave** dal download prima di navigare altrove.",
+          "Importalo in un wallet Cardano che accetta questo formato.",
+          "Verifica `{short}` con un piccolo test ADA.",
+          "Condividi il proof senza materiale privato."
+        ]
+      },
+      "xrpWallet": {
+        "eyebrow": "Passi successivi",
+        "title": "Importa questo account XRPL",
+        "steps": [
+          "**Salva il secret** dall’export — gli account XRPL richiedono attivazione con riserva.",
+          "Importalo in **Xaman** o un altro wallet XRPL.",
+          "Fondi/attiva `{short}` con attenzione, poi prova un piccolo pagamento.",
+          "Condividi solo il proof del pattern vanity."
+        ]
+      },
+      "genericWallet": {
+        "eyebrow": "Passi successivi",
+        "title": "Metti in sicurezza e importa",
+        "steps": [
+          "**Fai backup della chiave privata** prima di uscire.",
+          "Importala in un wallet che supporta questa chain.",
+          "Invia un piccolo importo di prova per confermare `{short}`.",
+          "Condividi link di proof — mai le chiavi."
+        ]
+      }
+    },
+    "import": {
+      "solWallet": {
+        "eyebrow": "Formato di import",
+        "summary": "Array JSON keypair Solana · Phantom / Solflare / CLI",
+        "formatLabel": "Formato",
+        "formatBody": "Scarica il **JSON** per un array di chiave segreta da 64 byte (`[1,2,…,64]`) — ciò che aspettano Solana CLI e molti wallet. Il **TXT** è leggibile con la chiave privata base58.",
+        "walletsLabel": "Compatibile con",
+        "wallets": "Phantom, Solflare, Solana CLI (`solana-keygen`), Backpack",
+        "hint": "Preferisci JSON per la CLI. Non incollare mai la chiave in un sito che non è il tuo wallet."
+      },
+      "solMint": {
+        "eyebrow": "Formato chiave mint",
+        "summary": "Stessa forma di keypair Solana — da incollare nei campi custom mint",
+        "formatLabel": "Formato",
+        "formatBody": "I launchpad di solito vogliono la **chiave privata del mint** (base58 o array JSON a seconda dell’UI). Il **JSON** Vanitas combacia con gli strumenti Solana; il **TXT** spiega i passi.",
+        "walletsLabel": "Destinazioni tipiche",
+        "wallets": "pump.fun · Raydium · Meteora · altre UI custom mint",
+        "hint": "La chiave serve soprattutto in creazione. Dopo il lancio l’indirizzo del mint è pubblico."
+      },
+      "evmWallet": {
+        "eyebrow": "Formato di import",
+        "summary": "Chiave privata 64 hex · MetaMask / Rabby / Frame",
+        "formatLabel": "Formato",
+        "formatBody": "La chiave privata è di **64 caratteri hex** (con o senza `0x` a seconda del wallet). Stessa chiave → stesso indirizzo su ogni chain EVM.",
+        "walletsLabel": "Compatibile con",
+        "wallets": "MetaMask, Rabby, Frame, Rainbow, hardware wallet via import",
+        "hint": "I download TXT/JSON includono la chiave hex. Share proof non la include mai."
+      },
+      "evmDeploy": {
+        "eyebrow": "Formato chiave deployer",
+        "summary": "Chiave hex del deployer · strumenti CREATE / CREATE2",
+        "formatLabel": "Formato",
+        "formatBody": "Gli export includono **chiave privata del deployer**, **indirizzo del contratto** previsto e, per CREATE2, anche **salt** + **initCodeHash**. Il JSON è il più comodo per gli script.",
+        "walletsLabel": "Usare con",
+        "wallets": "Foundry, Hardhat, Remix, script Safe/deploy, helper CREATE2 forge",
+        "hint": "Init code errato o nonce ≠ 0 distrugge l’indirizzo vanity."
+      },
+      "btcWif": {
+        "eyebrow": "Formato di import",
+        "summary": "Chiave privata WIF · Electrum / Sparrow",
+        "formatLabel": "Formato",
+        "formatBody": "La stringa di import principale è **WIF**. Gli export includono anche **hex** grezzo. Il tipo di indirizzo (legacy / segwit / taproot) deve corrispondere al percorso di import.",
+        "walletsLabel": "Compatibile con",
+        "wallets": "Electrum, Sparrow, BlueWallet (dove è supportato l’import WIF)",
+        "hint": "Importare nel tipo di script sbagliato produce un altro indirizzo."
+      },
+      "tronHex": {
+        "eyebrow": "Formato di import",
+        "summary": "Chiave privata hex · TronLink",
+        "formatLabel": "Formato",
+        "formatBody": "Le chiavi private Tron sono **hex**. Il JSON indica modalità wallet vs contratto (CREATE nonce 0).",
+        "walletsLabel": "Compatibile con",
+        "wallets": "TronLink e altri wallet Tron con import di chiave privata",
+        "hint": "Per vanity di contratto, la chiave del deployer — non un wallet finanziato a caso — deve fare CREATE per prima."
+      },
+      "aptosHex": {
+        "eyebrow": "Formato di import",
+        "summary": "Chiave privata Ed25519 · Petra / Martian",
+        "formatLabel": "Formato",
+        "formatBody": "L’export include la stringa di **chiave privata** Aptos attesa dai wallet comuni.",
+        "walletsLabel": "Compatibile con",
+        "wallets": "Petra, Martian e altri wallet Aptos",
+        "hint": "Verifica sempre l’indirizzo `0x` dopo l’import."
+      },
+      "suiHex": {
+        "eyebrow": "Formato di import",
+        "summary": "Chiave privata Ed25519 · Sui Wallet / Suiet",
+        "formatLabel": "Formato",
+        "formatBody": "Usa la **chiave privata** esportata con wallet Sui che supportano import raw.",
+        "walletsLabel": "Compatibile con",
+        "wallets": "Sui Wallet, Suiet e importatori compatibili",
+        "hint": "Conferma l’indirizzo prima di spostare fondi importanti."
+      },
+      "tonHex": {
+        "eyebrow": "Formato di import",
+        "summary": "Chiave TON v4R2 · Tonkeeper / MyTonWallet",
+        "formatLabel": "Formato",
+        "formatBody": "Gli export includono la chiave privata e spesso le forme **UQ / EQ**. Importa in wallet che accettano chiavi raw per Wallet v4R2.",
+        "walletsLabel": "Compatibile con",
+        "wallets": "Tonkeeper, MyTonWallet",
+        "hint": "I pattern TON distinguono maiuscole/minuscole — ricontrolla l’indirizzo."
+      },
+      "cardanoHex": {
+        "eyebrow": "Formato di import",
+        "summary": "Materiale chiave Cardano · wallet compatibili",
+        "formatLabel": "Formato",
+        "formatBody": "Usa i campi scaricati con un wallet che supporta questo percorso di import enterprise `addr1`.",
+        "walletsLabel": "Compatibile con",
+        "wallets": "Wallet Cardano che accettano import raw/chiave privata per questo tipo di indirizzo",
+        "hint": "Preferisci una piccola transazione di prova dopo l’import."
+      },
+      "xrpSeed": {
+        "eyebrow": "Formato di import",
+        "summary": "Secret XRPL · Xaman / importatori classici",
+        "formatLabel": "Formato",
+        "formatBody": "L’export porta il **secret** XRPL per account classici `r…`. I nuovi account necessitano della riserva per attivarsi.",
+        "walletsLabel": "Compatibile con",
+        "wallets": "Xaman e altri wallet XRPL con import del secret",
+        "hint": "Non condividere mai il secret in link di proof o screenshot."
+      },
+      "genericHex": {
+        "eyebrow": "Formato di import",
+        "summary": "Export chiave privata nativo della chain",
+        "formatLabel": "Formato",
+        "formatBody": "Usa il download TXT/JSON di questo forge — contiene il materiale privato importabile per questa chain.",
+        "walletsLabel": "Compatibile con",
+        "wallets": "Wallet che supportano l’import di chiave privata di questa rete",
+        "hint": "Prova con un importo minimo dopo l’import."
+      }
+    },
+    "launch": {
+      "eyebrow": "Condividi senza chiavi",
+      "compactTitle": "Kit di lancio rapido",
+      "fullTitle": "Kit di lancio",
+      "intro": "Copia testi pubblici e link di proof. Le chiavi private non sono mai incluse — sicuro per Discord, docs e launchpad.",
+      "labelBlurb": "Testo breve",
+      "labelLaunchpad": "Launchpad / docs",
+      "labelDiscord": "Discord / social",
+      "labelProof": "URL di proof",
+      "labelEmbed": "Iframe embed",
+      "copy": "Copia",
+      "copied": "Copiato",
+      "noKeys": "Nessuno di questi snippet include chiavi private.",
+      "brandLink": "Apri kit brand + embed",
+      "embedPlaceholder": "Snippet embed disponibile dopo il caricamento",
+      "blurbShort": "Indirizzo vanity `{short}` forgiato localmente con Vanitas (pattern `{pattern}`). Le chiavi non hanno lasciato il dispositivo. Verifica: {proofUrl}",
+      "blurbLaunchpad": "Mint personalizzato / indirizzo vanity `{address}` (pattern `{pattern}`) generato nel browser via vanitas.fun. Proof (senza chiavi): {proofUrl}",
+      "blurbDiscord": "Forgiato `{short}` per corrispondere a `{pattern}` lato client su vanitas.fun — verifica il pattern qui (chiavi private fuori dal link): {proofUrl}"
+    }
   }
 }

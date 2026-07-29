@@ -7,6 +7,9 @@ import { formatNumber, formatDuration } from '@/lib/format';
 import { buildVanityExportTxt } from '@/lib/export-txt';
 import { EntropyInfo } from './EntropyInfo';
 import { ShareProofButton } from './ShareProofButton';
+import { PostFindPlaybook } from './PostFindPlaybook';
+import { ImportGuide } from './ImportGuide';
+import { LaunchKit } from './LaunchKit';
 
 interface BtcResultDisplayProps {
   result: GeneratedBtcResult;
@@ -133,13 +136,11 @@ export function BtcResultDisplay({ result, onReset, onContinueSearch }: BtcResul
               <span className="text-ink/25 select-none tracking-widest">••••••••••••••••••••••••••••••••</span>
             )}
           </p>
-          <p className="text-micro text-muted mt-3 normal-case tracking-normal leading-relaxed">
-            Import WIF into Electrum, Sparrow, BlueWallet, etc.
-          </p>
         </div>
       </section>
 
-      <EntropyInfo />
+      <PostFindPlaybook chain="btc" mode={result.mode} address={result.address} />
+      <ImportGuide chain="btc" mode={result.mode} />
 
       <section className="border-t border-ink/15 pt-8 space-y-5">
         <div className="flex flex-wrap gap-x-8 gap-y-3 text-micro uppercase tracking-[0.16em]">
@@ -176,8 +177,18 @@ export function BtcResultDisplay({ result, onReset, onContinueSearch }: BtcResul
             className="text-ink border-b border-ink pb-0.5 hover:text-accent hover:border-accent"
           >{t('forgeAnother')}</button>
         </div>
-        <p className="text-micro text-muted">Share proof links never include private keys</p>
       </section>
+
+      <LaunchKit
+        chain="btc"
+        mode={result.mode}
+        address={result.address}
+        matchedPattern={result.matchedPattern}
+        attempts={result.attempts}
+        duration={result.duration}
+      />
+
+      <EntropyInfo />
     </div>
   );
 }

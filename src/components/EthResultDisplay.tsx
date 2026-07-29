@@ -11,6 +11,9 @@ import { formatNumber, formatDuration } from '@/lib/format';
 import { buildVanityExportTxt } from '@/lib/export-txt';
 import { EntropyInfo } from './EntropyInfo';
 import { ShareProofButton } from './ShareProofButton';
+import { PostFindPlaybook } from './PostFindPlaybook';
+import { ImportGuide } from './ImportGuide';
+import { LaunchKit } from './LaunchKit';
 
 interface EthResultDisplayProps {
   result: GeneratedEthResult;
@@ -199,22 +202,8 @@ export function EthResultDisplay({ result, onReset, onContinueSearch }: EthResul
         </div>
       </section>
 
-      <section>
-        <p className="text-micro uppercase tracking-[0.18em] text-accent mb-3">Keep safe</p>
-        <ul className="text-sm text-muted space-y-2 leading-relaxed">
-          <li>Save the private key before leaving this page</li>
-          {isCreate2 ? (
-            <li>Use CREATE2 with the returned salt and the init code that matches initCodeHash</li>
-          ) : isContract ? (
-            <li>Deploy as the first transaction from this key — nonce must be 0</li>
-          ) : (
-            <li>Import into any EVM wallet — same address on every chain</li>
-          )}
-          <li>Generated locally; nothing was stored on a server</li>
-        </ul>
-      </section>
-
-      <EntropyInfo />
+      <PostFindPlaybook chain="evm" mode={result.mode} address={result.address} />
+      <ImportGuide chain="evm" mode={result.mode} />
 
       <section className="border-t border-ink/15 pt-8 space-y-5">
         <div className="flex flex-wrap gap-x-8 gap-y-3 text-micro uppercase tracking-[0.16em]">
@@ -247,12 +236,18 @@ export function EthResultDisplay({ result, onReset, onContinueSearch }: EthResul
             className="text-ink border-b border-ink pb-0.5 hover:text-accent hover:border-accent"
           >{t('forgeAnother')}</button>
         </div>
-        <p className="text-micro text-muted">
-          {isDeployStyle
-            ? 'TXT / JSON include contract + deployer key (and CREATE2 salt when applicable) · Share proof never includes keys'
-            : 'Hex private key for MetaMask, Rabby, Frame, … · Share proof never includes keys'}
-        </p>
       </section>
+
+      <LaunchKit
+        chain="evm"
+        mode={result.mode}
+        address={result.address}
+        matchedPattern={result.matchedPattern}
+        attempts={result.attempts}
+        duration={result.duration}
+      />
+
+      <EntropyInfo />
     </div>
   );
 }

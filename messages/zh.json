@@ -1713,80 +1713,241 @@
     "terms": {
       "eyebrow": "合法的",
       "title": "使用条款",
-      "updated": "最后更新日期：2026 年 7 月 28 日",
-      "intro": "这些条款管辖您对 Vanitas (vanitas.fun)、相关开源代码和可选 CLI 的使用。使用该网站或工具即表示您同意它们。",
+      "updated": "Last updated: 28 July 2026",
+      "intro": "These Terms of Use (“Terms”) govern your access to and use of Vanitas at vanitas.fun, related documentation pages, share-proof and embed surfaces, the published open-source code, and the optional command-line interface (CLI). By accessing or using any of these, you agree to these Terms. If you do not agree, do not use Vanitas.",
       "sections": [
         {
-          "title": "瓦尼塔斯是什么",
-          "body": "Vanitas 是一个**客户端虚荣地址伪造**。加密工作在您的浏览器中运行（或通过 CLI 在本地运行）。我们不运营托管钱包、交易所或账户系统。"
+          "title": "Who we are and what these Terms cover",
+          "body": [
+            "Vanitas is an open-source, client-side vanity address forge maintained in public at [GitHub](https://github.com/bytebrox/vanitas). References to “we”, “us”, or “operators” mean the project maintainers of that repository and the operators of the vanitas.fun website.",
+            "These Terms apply to the website, static assets, client-side workers shipped with the site, documentation (including security and how-it-works pages), proof and lookalike tools, and the npm-published CLI when you obtain it through the project’s documented channels.",
+            "They do **not** turn Vanitas into a hosted wallet, custodian, broker, exchange, payment processor, or financial adviser. We do not hold your keys or your assets."
+          ]
         },
         {
-          "title": "无保证",
-          "body": "该软件**按原样**提供，不提供任何形式的保证。模式、难度估计和发现证明都是方便的功能——在转移资金之前亲自验证结果。"
+          "title": "Eligibility",
+          "body": [
+            "You may use Vanitas only if you can form a binding agreement under the laws that apply to you, and only where use of cryptographic wallet tooling is lawful.",
+            "You are responsible for complying with local laws on cryptography, digital assets, sanctions, export controls, and consumer protection. If any part of Vanitas is illegal where you live, you must not use it."
+          ]
         },
         {
-          "title": "你的责任",
-          "body": "您全权负责保护私钥、助记词和导出。任何拥有私钥的人都可以控制相应的资金。不要共享密钥。请勿伪造地址用于欺诈、冒充或其他非法用途。"
+          "title": "What Vanitas provides",
+          "body": [
+            "Vanitas helps you search for blockchain addresses whose public form matches a pattern you choose (for example a prefix or suffix), across supported networks such as Solana, EVM chains, Bitcoin, Tron, Aptos, Sui, TON, Cardano, and XRP. Modes may include wallet addresses, token mints, and contract-oriented flows such as CREATE2-style searches where documented.",
+            "Cryptographic generation and matching run **locally** in your browser (typically via Web Workers) or on your machine via the CLI. The site UI streams static application code and assets; it is not a remote key-generation service.",
+            "Convenience features — difficulty or time estimates, pattern templates, lookalike warnings, rarity lab visuals, recent-find lists, export helpers, and share-proof links — are provided as tools. They may be incomplete, approximate, or wrong for your case. Always verify results with tools you trust before moving value."
+          ]
         },
         {
-          "title": "可接受的使用",
-          "body": "请勿滥用站点基础设施（例如损害可用性的自动抓取）、尝试破坏安全控制或将 Vanitas 歪曲为托管密钥服务。"
+          "title": "No accounts and no custody",
+          "body": [
+            "Vanitas does not require registration, KYC, or an account. There is no Vanitas login and no on-site balance or portfolio product.",
+            "We do not custody digital assets, do not execute trades, and do not transmit private keys to a Vanitas backend as part of normal forging. If you paste keys into third-party sites after exporting from Vanitas, that is outside these Terms and outside our control."
+          ]
         },
         {
-          "title": "开源和第三方",
-          "body": "源代码根据 MIT 许可在 [GitHub](https://github.com/bytebrox/vanitas) 上发布。第三方钱包、浏览器、npm 和托管提供商都有自己的条款。链接到它们只是为了方便。"
+          "title": "Not advice; no warranties",
+          "body": [
+            "Nothing on Vanitas is investment, legal, tax, accounting, or security advice. Descriptions of chains, address formats, launchpads, or explorers are informational only.",
+            "THE SOFTWARE AND SITE ARE PROVIDED **“AS IS” AND “AS AVAILABLE”**, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. We do not warrant that generation will complete in any time, that estimates are accurate, that proofs are exhaustive, that the site will be uninterrupted, or that local storage will persist.",
+            "Open-source distribution under the MIT license (see the repository) may grant additional copyright permissions for the code itself; these Terms govern use of the operated website and related services in addition to that license."
+          ]
         },
         {
-          "title": "责任限制",
-          "body": "在法律允许的最大范围内，作者和运营商不对密钥丢失、资金丢失、停机、错误模式或因使用 Vanitas 造成的损害承担责任。"
+          "title": "Your responsibilities",
+          "body": [
+            "You alone are responsible for safeguarding private keys, seed phrases, keystores, WIF strings, and any export files you create. Anyone who obtains a private key can control the corresponding funds. Do not share keys in chat, screenshots, tickets, or public proofs.",
+            "Before transferring assets, independently verify the address, network, derivation path or key format, and that you can import the key into a wallet you trust. Browser extensions, malware, clipboard hijackers, and phishing sites can compromise keys even when Vanitas itself runs locally.",
+            "You are responsible for backups, device security, and deciding whether a pattern is appropriate. Lookalike and similarity warnings are helpers, not guarantees against confusion or fraud."
+          ]
         },
         {
-          "title": "变化",
-          "body": "我们可能会更新这些条款。发布更新后继续使用即表示接受修订后的条款。上面的日期显示的是最新版本。"
+          "title": "Acceptable use",
+          "body": [
+            "You agree not to use Vanitas to commit fraud, phishing, impersonation of brands or people, money laundering, sanctions evasion, or any other unlawful activity.",
+            "You agree not to attack, probe, or overload the website or related infrastructure in ways that degrade availability for others; not to circumvent rate limits or access controls if present; and not to misrepresent Vanitas as a hosted key-management or custodial service.",
+            "You agree not to scrape the site in a way that harms availability, and not to remove or obscure security or attribution notices in redistributed unmodified site builds where those notices appear.",
+            "Automated or high-volume use of the **local** forge in your own browser or CLI is generally fine; abusing shared hosting, CDNs, or proof endpoints is not."
+          ]
         },
         {
-          "title": "接触",
-          "body": "问题：[Bytebrox on X](https://x.com/bytebrox) 或 [GitHub repository](https://github.com/bytebrox/vanitas)。"
+          "title": "Lookalikes, trademarks, and third-party brands",
+          "body": [
+            "Forging an address that resembles a well-known brand, product, exchange, or person does not give you rights in that brand. Do not use such addresses to deceive others.",
+            "Vanitas, chain names, wallet names, and third-party marks belong to their respective owners. Mentions and logos (where shown) are for identification of supported networks or linked tools only."
+          ]
+        },
+        {
+          "title": "Open source, CLI, and third-party software",
+          "body": [
+            "Source code is published under the MIT license on [GitHub](https://github.com/bytebrox/vanitas). The optional CLI may be distributed via npm or other channels described in the repository. Dependency licenses apply to those packages.",
+            "If you fork, self-host, or modify Vanitas, you are responsible for your deployment, including privacy notices, security, and compliance. These Terms do not automatically bind visitors of unrelated forks unless those operators adopt them.",
+            "Third-party wallets, explorers, launchpads, package registries, and social platforms have their own terms. Links from Vanitas are for convenience only and do not imply endorsement."
+          ]
+        },
+        {
+          "title": "Intellectual property of the site",
+          "body": [
+            "Subject to the MIT license on the code and any open fonts or third-party assets with their own licenses, the vanitas.fun presentation, documentation copy, and branding elements as published on the site are provided for use of the service as intended.",
+            "You may not suggest official partnership or endorsement by Vanitas or Bytebrox without permission, except for factual statements that you used the open-source tool."
+          ]
+        },
+        {
+          "title": "Limitation of liability",
+          "body": [
+            "To the fullest extent permitted by law, the authors, maintainers, and operators are not liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, or for loss of keys, funds, profits, data, goodwill, or business interruption, arising from or related to your use of Vanitas — whether based in contract, tort, strict liability, or otherwise — even if advised of the possibility.",
+            "To the fullest extent permitted by law, total liability for any claim relating to the site or these Terms is limited to zero (EUR 0 / USD 0), reflecting that the core forge is free, open-source, and non-custodial. Some jurisdictions do not allow certain limitations; in those places, liability is limited to the maximum permitted by law."
+          ]
+        },
+        {
+          "title": "Indemnity",
+          "body": [
+            "You agree to defend and indemnify the operators and contributors against claims, damages, and expenses (including reasonable legal fees) arising from your misuse of Vanitas, your violation of these Terms, or your infringement of others’ rights — including use of forged addresses for deception."
+          ]
+        },
+        {
+          "title": "Suspension and availability",
+          "body": [
+            "We may change, suspend, or discontinue the website, specific chain forges, or features at any time without notice. Open-source code may remain available under its license even if the hosted site changes.",
+            "We are not obliged to provide support, uptime SLAs, or continued hosting of any particular URL."
+          ]
+        },
+        {
+          "title": "Changes to these Terms",
+          "body": [
+            "We may update these Terms by posting a revised version on this page and updating the “Last updated” date. Material changes may also be highlighted in project channels when practical.",
+            "Continued use of the site after an update constitutes acceptance of the revised Terms. If you do not agree, stop using Vanitas."
+          ]
+        },
+        {
+          "title": "Severability and entire agreement",
+          "body": [
+            "If any provision of these Terms is held unenforceable, the remaining provisions remain in effect. These Terms, together with the [Privacy](/privacy) notice and any license texts shipped with the software, are the entire agreement between you and the operators regarding the site, superseding prior informal understandings on the same subject.",
+            "Failure to enforce a provision is not a waiver of that provision."
+          ]
+        },
+        {
+          "title": "Contact",
+          "body": [
+            "Questions about these Terms: [Bytebrox on X](https://x.com/bytebrox) or the [GitHub repository](https://github.com/bytebrox/vanitas). For security vulnerabilities, use private reporting as described on the [Security](/security) page — do not open public issues that expose exploit details."
+          ]
         }
       ]
     },
     "privacy": {
       "eyebrow": "合法的",
       "title": "隐私",
-      "updated": "最后更新日期：2026 年 7 月 28 日",
-      "intro": "Vanitas 的构建是为了让私钥和生成工作保留在您的设备上。本页解释了我们接触的少量内容以及我们不收集的内容。",
+      "updated": "Last updated: 28 July 2026",
+      "intro": "This Privacy notice explains how Vanitas (vanitas.fun) approaches personal data. The product is designed so private keys and forging work stay on your device. We intentionally collect very little. Please also read the [Terms](/terms) and [Security](/security) pages.",
       "sections": [
         {
-          "title": "钥匙永远不会离开该设备",
-          "body": "地址伪造在**本地浏览器**（Web Workers）或本地 CLI 中运行。 Vanitas 不会将私钥、助记词或生成的密钥材料上传到我们的服务器。 **共享证明**链接有意排除私钥。"
+          "title": "Summary",
+          "body": [
+            "**Private keys, mnemonics, and forged key material are generated and matched on your device.** Under normal use they are not uploaded to a Vanitas server.",
+            "We do not require accounts or a Vanitas login. We do not sell personal data. We do not embed third-party advertising pixels.",
+            "Some technical data may still be processed by hosting infrastructure when you load the website (for example IP address in access logs). Preferences such as theme may be stored on your device and in a small first-party cookie."
+          ]
         },
         {
-          "title": "我们不收集什么",
-          "body": "我们不需要帐户。我们不会故意在 Vanitas 后端收集钱包余额、伪造私钥或模式搜索结果。没有 Vanitas 登录信息。"
+          "title": "Who this notice covers",
+          "body": [
+            "This notice covers visitors to vanitas.fun and related pages we operate (documentation, proof, lookalike, lab, legal pages, and embeds served from the same project).",
+            "It does **not** control forks, mirrors, or third-party redeployments of the open-source code. Those operators must publish their own notices. The npm CLI runs on your machine; we do not receive CLI telemetry from the published package unless a future version documents otherwise (none is intended today)."
+          ]
         },
         {
-          "title": "您设备上的数据",
-          "body": "**主题**（亮/暗）等首选项可以存储在 localStorage 和第一方 **主题 cookie** 中，以便可以在不闪烁的情况下呈现正确的模式。声音偏好和类似的UI状态也可以保留在本地存储中。 **最近的发现**将保存在您设备上该浏览器会话的 sessionStorage 中，并且不会发送给我们。"
+          "title": "Keys and forging stay on your device",
+          "body": [
+            "Address forging runs locally in the browser (Web Workers) or in the local CLI. Matching against your pattern happens in that same local environment.",
+            "**Share proof** links and public proof pages are designed to help others verify that an address matches a pattern. They are built to **exclude private keys**. Do not paste private keys into URLs, issues, or chat.",
+            "**Recent finds** stored in `sessionStorage` keep address metadata for your browser session (for example chain, pattern, address, timestamp) — **not** private keys. Clearing the tab/session or site data removes them from that browser.",
+            "Exports you download (TXT/JSON and similar) are written by your browser to your device. We do not receive those files."
+          ]
         },
         {
-          "title": "托管和日志",
-          "body": "该网站通过标准网络托管（目前为 Vercel）提供服务。与大多数站点一样，基础设施可能会处理访问日志中的技术请求数据（例如 IP 地址、用户代理、URL、时间戳）以确保安全性和可靠性。我们不会用它来建立伪造密钥的营销档案。"
+          "title": "What we do not collect",
+          "body": [
+            "We do not intentionally collect or store on a Vanitas backend: private keys, seed phrases, forged key material, wallet balances, address books, or a history of your pattern searches tied to an account.",
+            "We do not run a Vanitas user database of identities. There is no newsletter signup baked into the forge product as of the date above.",
+            "If you contact us via X, GitHub, or another channel, that platform processes the communication under its own rules; we only see what you choose to send."
+          ]
         },
         {
-          "title": "没有广告跟踪器",
-          "body": "Vanitas 不嵌入第三方广告像素。如果情况发生变化，本政策将会更新。"
+          "title": "Data processed on your device",
+          "body": [
+            "**Theme preference** (light/dark) may be stored in `localStorage` and mirrored in a first-party **theme cookie** so the correct mode can render on first paint without a flash. The cookie is not used for advertising.",
+            "**Sound / UI preferences** and similar settings may be stored in `localStorage` on your device only.",
+            "**Locale** is primarily selected via the URL path (for example `/de/...`). We do not use browser locale auto-detection to force a language; see project routing configuration.",
+            "You can clear site data in your browser settings to remove localStorage, sessionStorage, and cookies for vanitas.fun."
+          ]
         },
         {
-          "title": "外部链接",
-          "body": "浏览器（例如 Solscan）、GitHub、npm 或社交资料的链接是具有自己的隐私惯例的第三方网站。"
+          "title": "Cookies",
+          "body": [
+            "Vanitas uses a minimal first-party cookie for theme preference as described above. We do not set advertising or cross-site tracking cookies.",
+            "Essential delivery of the site may involve cookies or similar storage set by the hosting/CDN stack for security or performance; those are governed by the host’s practices as well as this notice."
+          ]
         },
         {
-          "title": "孩子们",
-          "body": "这些工具不针对儿童。如果您所在司法管辖区法律不允许您使用加密钱包软件，请勿使用 Vanitas。"
+          "title": "Hosting, logs, and security",
+          "body": [
+            "The website is served via standard web hosting (currently Vercel). Like most sites, the infrastructure may process technical request metadata — for example IP address, user agent, request URL/path, referrer, and timestamps — in access and security logs.",
+            "Purposes: deliver the site, maintain reliability, debug outages, and protect against abuse. We do not use these logs to build marketing profiles of forged keys or vanity patterns.",
+            "Log retention follows the host’s defaults and our operational needs; we do not operate a separate analytics product on top of forge results."
+          ]
         },
         {
-          "title": "接触",
-          "body": "隐私问题：[Bytebrox on X](https://x.com/bytebrox) 或 [GitHub](https://github.com/bytebrox/vanitas)。另请参阅 [Terms](/terms) 和 [Security](/security)。"
+          "title": "No advertising trackers",
+          "body": [
+            "Vanitas does not embed third-party advertising pixels or ad networks. If that changes, this notice will be updated before or when such tooling goes live."
+          ]
+        },
+        {
+          "title": "External links and third parties",
+          "body": [
+            "Links to explorers (for example Solscan), GitHub, npm, social profiles, wallets, or launchpads go to third-party sites. Their privacy practices apply when you leave Vanitas.",
+            "If you import a key into a wallet or paste an address into an explorer, that interaction is with that third party — not with a Vanitas key vault."
+          ]
+        },
+        {
+          "title": "International processing",
+          "body": [
+            "Hosting and CDN providers may process technical data in multiple regions. By using the website, you understand that request metadata may be handled in countries other than your own, subject to the host’s safeguards and applicable law."
+          ]
+        },
+        {
+          "title": "Children",
+          "body": [
+            "Vanitas is not directed at children. Do not use the tools if you are not of legal age to use cryptographic wallet software where you live, or if a parent/guardian’s consent would be required and has not been obtained."
+          ]
+        },
+        {
+          "title": "Security",
+          "body": [
+            "We design the forge so sensitive key material stays local. No system is perfect: device malware, malicious browser extensions, phishing domains that mimic Vanitas, or compromised dependencies can still put you at risk.",
+            "Prefer the canonical site, review [Security](/security), and consider verifying builds via the project’s documented integrity practices. Report vulnerabilities privately as described there."
+          ]
+        },
+        {
+          "title": "Your choices and rights",
+          "body": [
+            "Because we do not run user accounts, there is typically no Vanitas “profile” to download or delete. You can erase on-device data by clearing site storage for vanitas.fun.",
+            "Where hosting logs contain personal data (such as an IP address) and applicable law (for example GDPR/UK GDPR) grants rights of access, erasure, or objection, you may contact us to exercise those rights. We may need to verify the request and may only be able to act on data we actually control and can locate.",
+            "You may also lodge a complaint with a supervisory authority in your country of residence where that right applies."
+          ]
+        },
+        {
+          "title": "Changes to this notice",
+          "body": [
+            "We may update this Privacy notice by posting a revised version on this page and changing the “Last updated” date. Continued use of the site after an update means you acknowledge the revised notice."
+          ]
+        },
+        {
+          "title": "Contact",
+          "body": [
+            "Privacy questions: [Bytebrox on X](https://x.com/bytebrox) or [GitHub](https://github.com/bytebrox/vanitas). See also [Terms](/terms) and [Security](/security)."
+          ]
         }
       ]
     }
@@ -1813,5 +1974,278 @@
     "hintCardanoFirst": "First char: y/9/x/8",
     "hintAfterR": "After fixed r",
     "hintTon": "Case-sensitive base64url"
+  },
+  "postFind": {
+    "playbook": {
+      "solWallet": {
+        "eyebrow": "下一步",
+        "title": "让这个钱包可用",
+        "steps": [
+          "**保存私钥**（下载 TXT/JSON，或在显示后复制）。未备份就离开页面会丢失密钥。",
+          "**导入到 Solana 钱包** — Phantom、Solflare，或使用 JSON 导出配合 Solana CLI。",
+          "先发送一笔**极小的测试金额**。在浏览器确认地址与 `{short}` 一致。",
+          "若他人需要验证 vanity 图案，分享**proof 链接**（绝不要分享私钥）。"
+        ]
+      },
+      "solMint": {
+        "eyebrow": "上线路径",
+        "title": "把这个 mint 带到 launchpad",
+        "steps": [
+          "**立刻备份 mint 权限私钥** — 创建时需要用一次。",
+          "打开 launchpad（**pump.fun**、Raydium、Meteora 等）并找到 **custom mint** 字段。",
+          "显示并粘贴私钥，然后完成上线，使 mint 保持为 `{short}`。",
+          "上线后 mint 地址是**公开且永久的**。分享 proof 时不要带私钥。"
+        ]
+      },
+      "evmWallet": {
+        "eyebrow": "下一步",
+        "title": "导入这个 EVM 钱包",
+        "steps": [
+          "离开前**保存十六进制私钥** — 下载包含 TXT 和 JSON。",
+          "导入到 **MetaMask、Rabby、Frame** 或任意 EVM 钱包（每条 EVM 链地址相同）。",
+          "用小额测试转账在区块浏览器上核验 `{short}`。",
+          "使用 **Share proof** 做公开验证 — 链接中不含私钥。"
+        ]
+      },
+      "evmContract": {
+        "eyebrow": "部署路径",
+        "title": "落地这个 CREATE 地址",
+        "steps": [
+          "**保存部署者私钥**，并记下预测的合约地址 `{short}`。",
+          "为**部署者**钱包充值。Vanity 地址只在**首次** CREATE（nonce **0**）出现。",
+          "把合约作为第一笔交易部署 — 任何更早的交易都会毁掉 vanity。",
+          "发布 **proof 链接**，让他人在不看到密钥的情况下核对图案。"
+        ]
+      },
+      "evmCreate2": {
+        "eyebrow": "CREATE2 路径",
+        "title": "谨慎使用 salt 与 init code",
+        "steps": [
+          "从导出中**保存部署者密钥、salt 和 initCodeHash** — 部署时三者必须一致。",
+          "使用哈希恰好等于你的 initCodeHash 的 init code，通过 **CREATE2** 部署。",
+          "宣布前确认最终合约等于 `{short}`。",
+          "公开分享 proof；若 salt 策略与密钥仍重要，请保密。"
+        ]
+      },
+      "btcWallet": {
+        "eyebrow": "下一步",
+        "title": "导入这个比特币地址",
+        "steps": [
+          "关闭标签页前**保存 WIF**（以及导出中的十六进制备份）。",
+          "将 WIF 导入匹配此地址类型的 **Electrum、Sparrow** 或其他比特币钱包。",
+          "接收一笔小额测试 UTXO，并在浏览器确认 `{short}`。",
+          "分享图案 proof — 绝不要分享 WIF。"
+        ]
+      },
+      "tronWallet": {
+        "eyebrow": "下一步",
+        "title": "导入到 Tron 钱包",
+        "steps": [
+          "通过 TXT/JSON 下载**保存十六进制私钥**。",
+          "导入到 **TronLink** 或其他 Tron 钱包。",
+          "发送极小的 TRX/测试转账以确认 `{short}`。",
+          "若需要公开验证图案，分享 proof 链接。"
+        ]
+      },
+      "tronContract": {
+        "eyebrow": "部署路径",
+        "title": "Tron 上的首次 CREATE",
+        "steps": [
+          "**保存部署者密钥** — 合约 `{short}` 是该密钥的首次 CREATE（nonce 0）。",
+          "为部署者充值，然后作为第一次合约创建进行部署。",
+          "不要先从部署者发送其他交易，否则会丢失 vanity。",
+          "发布 proof，不要暴露部署者密钥。"
+        ]
+      },
+      "aptosWallet": {
+        "eyebrow": "下一步",
+        "title": "导入这个 Aptos 钱包",
+        "steps": [
+          "从显示或下载中**保存私钥**。",
+          "导入到 **Petra、Martian** 或其他 Aptos 钱包。",
+          "用小额测试转账确认 `{short}`。",
+          "只分享 proof 链接 — 绝不要分享私钥。"
+        ]
+      },
+      "suiWallet": {
+        "eyebrow": "下一步",
+        "title": "导入这个 Sui 钱包",
+        "steps": [
+          "离开本页前**保存私钥**。",
+          "导入到 **Sui Wallet、Suiet** 或其他 Sui 钱包。",
+          "用极小转账在浏览器核验 `{short}`。",
+          "分享不含密钥的图案 proof。"
+        ]
+      },
+      "tonWallet": {
+        "eyebrow": "下一步",
+        "title": "导入这个 TON 钱包",
+        "steps": [
+          "**保存私钥**（导出在可用时包含可弹回 EQ）。",
+          "导入到 **Tonkeeper** 或 **MyTonWallet**。",
+          "用小额测试发送确认 `{short}`。",
+          "分享 vanity 图案 proof — 私钥保持离线。"
+        ]
+      },
+      "cardanoWallet": {
+        "eyebrow": "下一步",
+        "title": "导入这个 Cardano 地址",
+        "steps": [
+          "跳转前从下载中**保存密钥材料**。",
+          "导入到接受此格式的 Cardano 钱包。",
+          "用小额 ADA 测试核验 `{short}`。",
+          "分享 proof，不要包含私密材料。"
+        ]
+      },
+      "xrpWallet": {
+        "eyebrow": "下一步",
+        "title": "导入这个 XRPL 账户",
+        "steps": [
+          "从导出中**保存 secret** — XRPL 账户需要准备金激活。",
+          "导入到 **Xaman** 或其他 XRPL 钱包。",
+          "谨慎为 `{short}` 充值/激活，然后测试一笔小额支付。",
+          "只分享 vanity 图案的 proof。"
+        ]
+      },
+      "genericWallet": {
+        "eyebrow": "下一步",
+        "title": "备份并导入",
+        "steps": [
+          "离开前**备份私钥**。",
+          "导入到支持此链的钱包。",
+          "发送小额测试以确认 `{short}`。",
+          "分享 proof 链接 — 绝不要分享密钥。"
+        ]
+      }
+    },
+    "import": {
+      "solWallet": {
+        "eyebrow": "导入格式",
+        "summary": "Solana JSON 密钥对数组 · Phantom / Solflare / CLI",
+        "formatLabel": "格式",
+        "formatBody": "下载 **JSON** 获取 64 字节密钥数组（`[1,2,…,64]`）— Solana CLI 与多数钱包所需。**TXT** 为人可读的 base58 私钥。",
+        "walletsLabel": "适用于",
+        "wallets": "Phantom、Solflare、Solana CLI（`solana-keygen`）、Backpack",
+        "hint": "CLI 优先使用 JSON。切勿把密钥粘贴到非你钱包的网站。"
+      },
+      "solMint": {
+        "eyebrow": "Mint 密钥格式",
+        "summary": "相同的 Solana 密钥对形态 — 粘贴到 custom mint 字段",
+        "formatLabel": "格式",
+        "formatBody": "Launchpad 通常需要 **mint 私钥**（视界面为 base58 或 JSON 数组）。Vanitas 的 **JSON** 适配 Solana 工具；**TXT** 说明步骤。",
+        "walletsLabel": "常见目标",
+        "wallets": "pump.fun · Raydium · Meteora · 其他 custom mint 界面",
+        "hint": "密钥主要在创建时需要。上线后 mint 地址是公开的。"
+      },
+      "evmWallet": {
+        "eyebrow": "导入格式",
+        "summary": "64 位十六进制私钥 · MetaMask / Rabby / Frame",
+        "formatLabel": "格式",
+        "formatBody": "私钥为 **64 个十六进制字符**（是否带 `0x` 视钱包而定）。同一密钥 → 每条 EVM 链同一地址。",
+        "walletsLabel": "适用于",
+        "wallets": "MetaMask、Rabby、Frame、Rainbow，以及支持导入的硬件钱包",
+        "hint": "TXT/JSON 下载含十六进制密钥。Share proof 从不包含它。"
+      },
+      "evmDeploy": {
+        "eyebrow": "部署者密钥格式",
+        "summary": "十六进制部署者密钥 · CREATE / CREATE2 工具",
+        "formatLabel": "格式",
+        "formatBody": "导出包含**部署者私钥**、预测的**合约地址**，CREATE2 时还有 **salt** + **initCodeHash**。脚本最适合用 JSON。",
+        "walletsLabel": "配合使用",
+        "wallets": "Foundry、Hardhat、Remix、Safe/部署脚本、forge CREATE2 助手",
+        "hint": "init code 不匹配或 nonce 非 0 会毁掉 vanity 地址。"
+      },
+      "btcWif": {
+        "eyebrow": "导入格式",
+        "summary": "WIF 私钥 · Electrum / Sparrow",
+        "formatLabel": "格式",
+        "formatBody": "主要导入字符串为 **WIF**。导出也含原始 **hex**。地址类型（legacy / segwit / taproot）必须与钱包导入路径一致。",
+        "walletsLabel": "适用于",
+        "wallets": "Electrum、Sparrow、BlueWallet（支持 WIF 导入时）",
+        "hint": "导入错误脚本类型会得到不同地址。"
+      },
+      "tronHex": {
+        "eyebrow": "导入格式",
+        "summary": "十六进制私钥 · TronLink",
+        "formatLabel": "格式",
+        "formatBody": "Tron 私钥为 **hex**。JSON 标明钱包与合约（nonce-0 CREATE）模式。",
+        "walletsLabel": "适用于",
+        "wallets": "TronLink 及其他支持私钥导入的 Tron 钱包",
+        "hint": "合约 vanity 必须由部署者密钥先 CREATE — 不是任意已充值钱包。"
+      },
+      "aptosHex": {
+        "eyebrow": "导入格式",
+        "summary": "Ed25519 私钥 · Petra / Martian",
+        "formatLabel": "格式",
+        "formatBody": "导出包含常见钱包期望的 Aptos **私钥** 字符串。",
+        "walletsLabel": "适用于",
+        "wallets": "Petra、Martian 及其他 Aptos 钱包",
+        "hint": "导入后务必核对 `0x` 地址。"
+      },
+      "suiHex": {
+        "eyebrow": "导入格式",
+        "summary": "Ed25519 私钥 · Sui Wallet / Suiet",
+        "formatLabel": "格式",
+        "formatBody": "将导出的**私钥**用于支持原始导入的 Sui 钱包。",
+        "walletsLabel": "适用于",
+        "wallets": "Sui Wallet、Suiet 及兼容导入器",
+        "hint": "大额转账前确认地址一致。"
+      },
+      "tonHex": {
+        "eyebrow": "导入格式",
+        "summary": "TON v4R2 密钥 · Tonkeeper / MyTonWallet",
+        "formatLabel": "格式",
+        "formatBody": "导出含私钥，并常含 **UQ / EQ** 地址形式。导入到接受 Wallet v4R2 原始密钥的钱包。",
+        "walletsLabel": "适用于",
+        "wallets": "Tonkeeper、MyTonWallet",
+        "hint": "TON 图案区分大小写 — 请仔细核对地址字符串。"
+      },
+      "cardanoHex": {
+        "eyebrow": "导入格式",
+        "summary": "Cardano 密钥材料 · 兼容钱包",
+        "formatLabel": "格式",
+        "formatBody": "将下载字段用于支持此 enterprise `addr1` 导入路径的钱包。",
+        "walletsLabel": "适用于",
+        "wallets": "接受此地址类型原始/私钥导入的 Cardano 钱包",
+        "hint": "导入后建议先做小额测试交易。"
+      },
+      "xrpSeed": {
+        "eyebrow": "导入格式",
+        "summary": "XRPL secret · Xaman / 经典导入",
+        "formatLabel": "格式",
+        "formatBody": "导出包含经典 `r…` 账户的 XRPL **secret**。新账户需准备金才能激活。",
+        "walletsLabel": "适用于",
+        "wallets": "Xaman 及其他支持 secret 导入的 XRPL 钱包",
+        "hint": "切勿在 proof 链接或截图中分享 secret。"
+      },
+      "genericHex": {
+        "eyebrow": "导入格式",
+        "summary": "链原生私钥导出",
+        "formatLabel": "格式",
+        "formatBody": "使用此 forge 的 TXT/JSON 下载 — 含本链可导入的私钥材料。",
+        "walletsLabel": "适用于",
+        "wallets": "支持该网络私钥导入的钱包",
+        "hint": "导入后用极小金额测试。"
+      }
+    },
+    "launch": {
+      "eyebrow": "无密钥分享",
+      "compactTitle": "快速上线套件",
+      "fullTitle": "上线套件",
+      "intro": "复制公开文案与 proof 链接。绝不包含私钥 — 可安全用于 Discord、文档与 launchpad。",
+      "labelBlurb": "短文案",
+      "labelLaunchpad": "Launchpad / 文档",
+      "labelDiscord": "Discord / 社交",
+      "labelProof": "Proof URL",
+      "labelEmbed": "嵌入 iframe",
+      "copy": "复制",
+      "copied": "已复制",
+      "noKeys": "这些片段均不含私钥。",
+      "brandLink": "打开品牌与嵌入套件",
+      "embedPlaceholder": "加载后可生成嵌入片段",
+      "blurbShort": "Vanity 地址 `{short}` 由 Vanitas 本地锻造（图案 `{pattern}`）。密钥未离开设备。验证：{proofUrl}",
+      "blurbLaunchpad": "自定义 mint / vanity 地址 `{address}`（图案 `{pattern}`）经 vanitas.fun 在浏览器中生成。Proof（无密钥）：{proofUrl}",
+      "blurbDiscord": "在 vanitas.fun 客户端上将 `{short}` 锻造成匹配 `{pattern}` — 在此验证图案（链接不含私钥）：{proofUrl}"
+    }
   }
 }

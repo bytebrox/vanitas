@@ -11,6 +11,9 @@ import { formatNumber, formatDuration } from '@/lib/format';
 import { buildVanityExportTxt } from '@/lib/export-txt';
 import { EntropyInfo } from './EntropyInfo';
 import { ShareProofButton } from './ShareProofButton';
+import { PostFindPlaybook } from './PostFindPlaybook';
+import { ImportGuide } from './ImportGuide';
+import { LaunchKit } from './LaunchKit';
 
 interface AptosResultDisplayProps {
   result: GeneratedAptosResult;
@@ -145,17 +148,8 @@ export function AptosResultDisplay({ result, onReset, onContinueSearch }: AptosR
           </p>
         </div>
       </section>
-
-      <section>
-        <p className="text-micro uppercase tracking-[0.18em] text-accent mb-3">Keep safe</p>
-        <ul className="text-sm text-muted space-y-2 leading-relaxed">
-          <li>Save the private key before leaving this page</li>
-          <li>Import into Petra, Martian, or any Aptos wallet</li>
-          <li>Generated locally; nothing was stored on a server</li>
-        </ul>
-      </section>
-
-      <EntropyInfo />
+      <PostFindPlaybook chain="aptos" mode={'wallet'} address={result.address} />
+      <ImportGuide chain="aptos" mode={'wallet'} />
 
       <section className="border-t border-ink/15 pt-8 space-y-5">
         <div className="flex flex-wrap gap-x-8 gap-y-3 text-micro uppercase tracking-[0.16em]">
@@ -187,8 +181,18 @@ export function AptosResultDisplay({ result, onReset, onContinueSearch }: AptosR
             className="text-ink border-b border-ink pb-0.5 hover:text-accent hover:border-accent"
           >{t('forgeAnother')}</button>
         </div>
-        <p className="text-micro text-muted">TXT / JSON include address + private key</p>
       </section>
+
+            <LaunchKit
+        chain="aptos"
+        mode={'wallet'}
+        address={result.address}
+        matchedPattern={result.matchedPattern}
+        attempts={result.attempts}
+        duration={result.duration}
+      />
+
+      <EntropyInfo />
     </div>
   );
 }

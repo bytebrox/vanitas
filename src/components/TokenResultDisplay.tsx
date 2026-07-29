@@ -11,6 +11,9 @@ import { formatNumber, formatDuration } from '@/lib/format';
 import { buildVanityExportTxt } from '@/lib/export-txt';
 import { EntropyInfo } from './EntropyInfo';
 import { ShareProofButton } from './ShareProofButton';
+import { PostFindPlaybook } from './PostFindPlaybook';
+import { ImportGuide } from './ImportGuide';
+import { LaunchKit } from './LaunchKit';
 
 interface TokenResultDisplayProps {
   result: GeneratedKeypair;
@@ -130,30 +133,8 @@ export function TokenResultDisplay({ result, onReset, onContinueSearch }: TokenR
         </div>
       </section>
 
-      <section>
-        <p className="text-micro uppercase tracking-[0.18em] text-muted mb-3">Launchpad</p>
-        <ol className="text-sm text-muted space-y-2 list-decimal list-inside leading-relaxed">
-          <li>Open your launchpad (pump.fun, Raydium, Meteora, …)</li>
-          <li>Find the custom mint / token address field</li>
-          <li>Reveal and paste the private key above</li>
-          <li>Complete the launch — mint stays{' '}
-            <span className="font-mono text-ink">
-              {result.publicKey.slice(0, 8)}…{result.publicKey.slice(-4)}
-            </span>
-          </li>
-        </ol>
-      </section>
-
-      <section>
-        <p className="text-micro uppercase tracking-[0.18em] text-accent mb-3">Notes</p>
-        <ul className="text-sm text-muted space-y-2 leading-relaxed">
-          <li>Private key is mainly needed at creation time</li>
-          <li>After launch the mint address is public and permanent</li>
-          <li>Generated locally in this browser</li>
-        </ul>
-      </section>
-
-      <EntropyInfo />
+      <PostFindPlaybook chain="sol" mode="mint" address={result.publicKey} />
+      <ImportGuide chain="sol" mode="mint" />
 
       <section className="border-t border-ink/15 pt-8 space-y-5">
         <div className="flex flex-wrap gap-x-8 gap-y-3 text-micro uppercase tracking-[0.16em]">
@@ -178,10 +159,18 @@ export function TokenResultDisplay({ result, onReset, onContinueSearch }: TokenR
           )}
           <button type="button" onClick={onReset} className="text-muted hover:text-ink">{t('forgeAnother')}</button>
         </div>
-        <p className="text-micro text-muted">
-          TXT includes launchpad steps · JSON for Solana CLI · Share proof never includes keys
-        </p>
       </section>
+
+      <LaunchKit
+        chain="sol"
+        mode="mint"
+        address={result.publicKey}
+        matchedPattern={result.matchedPattern}
+        attempts={result.attempts}
+        duration={result.duration}
+      />
+
+      <EntropyInfo />
     </div>
   );
 }

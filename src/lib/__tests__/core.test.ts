@@ -15,6 +15,7 @@ import {
   hashInitCode,
   computeCreate2Address,
 } from '@/lib/create2-helper';
+import { resolvePostFindProfile } from '@/lib/post-find';
 
 describe('validation (sol base58)', () => {
   it('accepts empty prefix', () => {
@@ -118,5 +119,18 @@ describe('create2 helpers', () => {
     const addr = computeCreate2Address(deployer, salt, init.initCodeHash!);
     expect(addr.ok).toBe(true);
     expect(addr.address).toMatch(/^0x[0-9a-f]{40}$/);
+  });
+});
+
+describe('post-find catalog', () => {
+  it('uses full launch kit for mint and CREATE2', () => {
+    expect(resolvePostFindProfile('sol', 'mint').launch).toBe('full');
+    expect(resolvePostFindProfile('evm', 'create2-salt').launch).toBe('full');
+    expect(resolvePostFindProfile('evm', 'contract').playbookId).toBe('evmContract');
+  });
+
+  it('uses compact launch kit for wallets', () => {
+    expect(resolvePostFindProfile('sol', 'wallet').launch).toBe('compact');
+    expect(resolvePostFindProfile('btc', 'taproot').importId).toBe('btcWif');
   });
 });

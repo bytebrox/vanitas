@@ -41,6 +41,9 @@ export { XrpPatternInput } from './XrpPatternInput';
 export { XrpDifficultyDisplay } from './XrpDifficultyDisplay';
 export { XrpResultDisplay } from './XrpResultDisplay';
 export { ShareProofButton } from './ShareProofButton';
+export { PostFindPlaybook } from './PostFindPlaybook';
+export { ImportGuide } from './ImportGuide';
+export { LaunchKit } from './LaunchKit';
 export { SolModeToggle } from './SolModeToggle';
 export { TokenResultDisplay } from './TokenResultDisplay';
 

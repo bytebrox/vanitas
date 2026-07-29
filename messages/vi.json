@@ -1713,80 +1713,241 @@
     "terms": {
       "eyebrow": "Hợp pháp",
       "title": "Điều khoản sử dụng",
-      "updated": "Cập nhật lần cuối: ngày 28 tháng 7 năm 2026",
-      "intro": "Các điều khoản này chi phối việc bạn sử dụng Vanitas (vanitas.fun), mã nguồn mở có liên quan và CLI tùy chọn. Bằng cách sử dụng trang web hoặc công cụ, bạn đồng ý với chúng.",
+      "updated": "Last updated: 28 July 2026",
+      "intro": "These Terms of Use (“Terms”) govern your access to and use of Vanitas at vanitas.fun, related documentation pages, share-proof and embed surfaces, the published open-source code, and the optional command-line interface (CLI). By accessing or using any of these, you agree to these Terms. If you do not agree, do not use Vanitas.",
       "sections": [
         {
-          "title": "Vanitas là gì",
-          "body": "Vanitas là **lò rèn địa chỉ phù hợp phía khách hàng**. Công việc mã hóa chạy trong trình duyệt của bạn (hoặc cục bộ thông qua CLI). Chúng tôi không vận hành hệ thống ví, sàn giao dịch hoặc tài khoản giám sát."
+          "title": "Who we are and what these Terms cover",
+          "body": [
+            "Vanitas is an open-source, client-side vanity address forge maintained in public at [GitHub](https://github.com/bytebrox/vanitas). References to “we”, “us”, or “operators” mean the project maintainers of that repository and the operators of the vanitas.fun website.",
+            "These Terms apply to the website, static assets, client-side workers shipped with the site, documentation (including security and how-it-works pages), proof and lookalike tools, and the npm-published CLI when you obtain it through the project’s documented channels.",
+            "They do **not** turn Vanitas into a hosted wallet, custodian, broker, exchange, payment processor, or financial adviser. We do not hold your keys or your assets."
+          ]
         },
         {
-          "title": "Không có bảo hành",
-          "body": "Phần mềm được cung cấp **nguyên trạng**, không có bảo hành dưới bất kỳ hình thức nào. Các mẫu, ước tính độ khó và bằng chứng tìm thấy là các tính năng tiện lợi - hãy tự xác minh kết quả trước khi chuyển tiền."
+          "title": "Eligibility",
+          "body": [
+            "You may use Vanitas only if you can form a binding agreement under the laws that apply to you, and only where use of cryptographic wallet tooling is lawful.",
+            "You are responsible for complying with local laws on cryptography, digital assets, sanctions, export controls, and consumer protection. If any part of Vanitas is illegal where you live, you must not use it."
+          ]
         },
         {
-          "title": "Trách nhiệm của bạn",
-          "body": "Bạn hoàn toàn chịu trách nhiệm bảo vệ khóa riêng, cụm từ gốc và dữ liệu xuất. Bất kỳ ai có khóa riêng sẽ kiểm soát số tiền tương ứng. Không chia sẻ chìa khóa. Không giả mạo địa chỉ để lừa đảo, mạo danh hoặc sử dụng trái pháp luật khác."
+          "title": "What Vanitas provides",
+          "body": [
+            "Vanitas helps you search for blockchain addresses whose public form matches a pattern you choose (for example a prefix or suffix), across supported networks such as Solana, EVM chains, Bitcoin, Tron, Aptos, Sui, TON, Cardano, and XRP. Modes may include wallet addresses, token mints, and contract-oriented flows such as CREATE2-style searches where documented.",
+            "Cryptographic generation and matching run **locally** in your browser (typically via Web Workers) or on your machine via the CLI. The site UI streams static application code and assets; it is not a remote key-generation service.",
+            "Convenience features — difficulty or time estimates, pattern templates, lookalike warnings, rarity lab visuals, recent-find lists, export helpers, and share-proof links — are provided as tools. They may be incomplete, approximate, or wrong for your case. Always verify results with tools you trust before moving value."
+          ]
         },
         {
-          "title": "Sử dụng chấp nhận được",
-          "body": "Không lạm dụng cơ sở hạ tầng của trang web (ví dụ: tự động thu thập dữ liệu gây tổn hại đến tính khả dụng), cố gắng phá vỡ các biện pháp kiểm soát bảo mật hoặc xuyên tạc Vanitas là dịch vụ chính được lưu trữ."
+          "title": "No accounts and no custody",
+          "body": [
+            "Vanitas does not require registration, KYC, or an account. There is no Vanitas login and no on-site balance or portfolio product.",
+            "We do not custody digital assets, do not execute trades, and do not transmit private keys to a Vanitas backend as part of normal forging. If you paste keys into third-party sites after exporting from Vanitas, that is outside these Terms and outside our control."
+          ]
         },
         {
-          "title": "Nguồn mở và bên thứ ba",
-          "body": "Nguồn được xuất bản theo giấy phép MIT trên [GitHub](https://github.com/bytebrox/vanitas). Ví, nhà thám hiểm, npm và nhà cung cấp dịch vụ lưu trữ của bên thứ ba có các điều khoản riêng. Liên kết đến chúng chỉ nhằm mục đích thuận tiện."
+          "title": "Not advice; no warranties",
+          "body": [
+            "Nothing on Vanitas is investment, legal, tax, accounting, or security advice. Descriptions of chains, address formats, launchpads, or explorers are informational only.",
+            "THE SOFTWARE AND SITE ARE PROVIDED **“AS IS” AND “AS AVAILABLE”**, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. We do not warrant that generation will complete in any time, that estimates are accurate, that proofs are exhaustive, that the site will be uninterrupted, or that local storage will persist.",
+            "Open-source distribution under the MIT license (see the repository) may grant additional copyright permissions for the code itself; these Terms govern use of the operated website and related services in addition to that license."
+          ]
         },
         {
-          "title": "Giới hạn trách nhiệm pháp lý",
-          "body": "Trong phạm vi tối đa được pháp luật cho phép, các tác giả và nhà điều hành không chịu trách nhiệm về việc mất chìa khóa, mất tiền, thời gian ngừng hoạt động, mẫu không chính xác hoặc thiệt hại phát sinh từ việc sử dụng Vanitas."
+          "title": "Your responsibilities",
+          "body": [
+            "You alone are responsible for safeguarding private keys, seed phrases, keystores, WIF strings, and any export files you create. Anyone who obtains a private key can control the corresponding funds. Do not share keys in chat, screenshots, tickets, or public proofs.",
+            "Before transferring assets, independently verify the address, network, derivation path or key format, and that you can import the key into a wallet you trust. Browser extensions, malware, clipboard hijackers, and phishing sites can compromise keys even when Vanitas itself runs locally.",
+            "You are responsible for backups, device security, and deciding whether a pattern is appropriate. Lookalike and similarity warnings are helpers, not guarantees against confusion or fraud."
+          ]
         },
         {
-          "title": "Thay đổi",
-          "body": "Chúng tôi có thể cập nhật các điều khoản này. Việc tiếp tục sử dụng sau khi có bản cập nhật được đăng sẽ đồng nghĩa với việc chấp nhận các điều khoản đã sửa đổi. Ngày ở trên hiển thị bản sửa đổi mới nhất."
+          "title": "Acceptable use",
+          "body": [
+            "You agree not to use Vanitas to commit fraud, phishing, impersonation of brands or people, money laundering, sanctions evasion, or any other unlawful activity.",
+            "You agree not to attack, probe, or overload the website or related infrastructure in ways that degrade availability for others; not to circumvent rate limits or access controls if present; and not to misrepresent Vanitas as a hosted key-management or custodial service.",
+            "You agree not to scrape the site in a way that harms availability, and not to remove or obscure security or attribution notices in redistributed unmodified site builds where those notices appear.",
+            "Automated or high-volume use of the **local** forge in your own browser or CLI is generally fine; abusing shared hosting, CDNs, or proof endpoints is not."
+          ]
         },
         {
-          "title": "Liên hệ",
-          "body": "Câu hỏi: [Bytebrox on X](https://x.com/bytebrox) hoặc [GitHub repository](https://github.com/bytebrox/vanitas)."
+          "title": "Lookalikes, trademarks, and third-party brands",
+          "body": [
+            "Forging an address that resembles a well-known brand, product, exchange, or person does not give you rights in that brand. Do not use such addresses to deceive others.",
+            "Vanitas, chain names, wallet names, and third-party marks belong to their respective owners. Mentions and logos (where shown) are for identification of supported networks or linked tools only."
+          ]
+        },
+        {
+          "title": "Open source, CLI, and third-party software",
+          "body": [
+            "Source code is published under the MIT license on [GitHub](https://github.com/bytebrox/vanitas). The optional CLI may be distributed via npm or other channels described in the repository. Dependency licenses apply to those packages.",
+            "If you fork, self-host, or modify Vanitas, you are responsible for your deployment, including privacy notices, security, and compliance. These Terms do not automatically bind visitors of unrelated forks unless those operators adopt them.",
+            "Third-party wallets, explorers, launchpads, package registries, and social platforms have their own terms. Links from Vanitas are for convenience only and do not imply endorsement."
+          ]
+        },
+        {
+          "title": "Intellectual property of the site",
+          "body": [
+            "Subject to the MIT license on the code and any open fonts or third-party assets with their own licenses, the vanitas.fun presentation, documentation copy, and branding elements as published on the site are provided for use of the service as intended.",
+            "You may not suggest official partnership or endorsement by Vanitas or Bytebrox without permission, except for factual statements that you used the open-source tool."
+          ]
+        },
+        {
+          "title": "Limitation of liability",
+          "body": [
+            "To the fullest extent permitted by law, the authors, maintainers, and operators are not liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, or for loss of keys, funds, profits, data, goodwill, or business interruption, arising from or related to your use of Vanitas — whether based in contract, tort, strict liability, or otherwise — even if advised of the possibility.",
+            "To the fullest extent permitted by law, total liability for any claim relating to the site or these Terms is limited to zero (EUR 0 / USD 0), reflecting that the core forge is free, open-source, and non-custodial. Some jurisdictions do not allow certain limitations; in those places, liability is limited to the maximum permitted by law."
+          ]
+        },
+        {
+          "title": "Indemnity",
+          "body": [
+            "You agree to defend and indemnify the operators and contributors against claims, damages, and expenses (including reasonable legal fees) arising from your misuse of Vanitas, your violation of these Terms, or your infringement of others’ rights — including use of forged addresses for deception."
+          ]
+        },
+        {
+          "title": "Suspension and availability",
+          "body": [
+            "We may change, suspend, or discontinue the website, specific chain forges, or features at any time without notice. Open-source code may remain available under its license even if the hosted site changes.",
+            "We are not obliged to provide support, uptime SLAs, or continued hosting of any particular URL."
+          ]
+        },
+        {
+          "title": "Changes to these Terms",
+          "body": [
+            "We may update these Terms by posting a revised version on this page and updating the “Last updated” date. Material changes may also be highlighted in project channels when practical.",
+            "Continued use of the site after an update constitutes acceptance of the revised Terms. If you do not agree, stop using Vanitas."
+          ]
+        },
+        {
+          "title": "Severability and entire agreement",
+          "body": [
+            "If any provision of these Terms is held unenforceable, the remaining provisions remain in effect. These Terms, together with the [Privacy](/privacy) notice and any license texts shipped with the software, are the entire agreement between you and the operators regarding the site, superseding prior informal understandings on the same subject.",
+            "Failure to enforce a provision is not a waiver of that provision."
+          ]
+        },
+        {
+          "title": "Contact",
+          "body": [
+            "Questions about these Terms: [Bytebrox on X](https://x.com/bytebrox) or the [GitHub repository](https://github.com/bytebrox/vanitas). For security vulnerabilities, use private reporting as described on the [Security](/security) page — do not open public issues that expose exploit details."
+          ]
         }
       ]
     },
     "privacy": {
       "eyebrow": "Hợp pháp",
       "title": "Sự riêng tư",
-      "updated": "Cập nhật lần cuối: ngày 28 tháng 7 năm 2026",
-      "intro": "Vanitas được xây dựng để các khóa riêng và công việc tạo vẫn ở trên thiết bị của bạn. Trang này giải thích những gì chúng tôi chạm vào và những gì chúng tôi không thu thập.",
+      "updated": "Last updated: 28 July 2026",
+      "intro": "This Privacy notice explains how Vanitas (vanitas.fun) approaches personal data. The product is designed so private keys and forging work stay on your device. We intentionally collect very little. Please also read the [Terms](/terms) and [Security](/security) pages.",
       "sections": [
         {
-          "title": "Chìa khóa không bao giờ rời khỏi thiết bị này",
-          "body": "Việc giả mạo địa chỉ chạy **cục bộ trong trình duyệt của bạn** (Web Workers) hoặc trong CLI cục bộ. Vanitas không tải khóa riêng, thuật nhớ hoặc tài liệu khóa được tạo lên máy chủ của chúng tôi. Liên kết **Chia sẻ bằng chứng** có chủ ý loại trừ khóa riêng tư."
+          "title": "Summary",
+          "body": [
+            "**Private keys, mnemonics, and forged key material are generated and matched on your device.** Under normal use they are not uploaded to a Vanitas server.",
+            "We do not require accounts or a Vanitas login. We do not sell personal data. We do not embed third-party advertising pixels.",
+            "Some technical data may still be processed by hosting infrastructure when you load the website (for example IP address in access logs). Preferences such as theme may be stored on your device and in a small first-party cookie."
+          ]
         },
         {
-          "title": "Những gì chúng tôi không thu thập",
-          "body": "Chúng tôi không yêu cầu tài khoản. Chúng tôi không cố ý thu thập số dư ví, khóa riêng giả mạo hoặc kết quả tìm kiếm mẫu trên chương trình phụ trợ của Vanitas. Không có thông tin đăng nhập Vanitas."
+          "title": "Who this notice covers",
+          "body": [
+            "This notice covers visitors to vanitas.fun and related pages we operate (documentation, proof, lookalike, lab, legal pages, and embeds served from the same project).",
+            "It does **not** control forks, mirrors, or third-party redeployments of the open-source code. Those operators must publish their own notices. The npm CLI runs on your machine; we do not receive CLI telemetry from the published package unless a future version documents otherwise (none is intended today)."
+          ]
         },
         {
-          "title": "Dữ liệu trên thiết bị của bạn",
-          "body": "Các tùy chọn như **chủ đề** (sáng/tối) có thể được lưu trữ trong localStorage và **cookie chủ đề** của bên thứ nhất để chế độ chính xác có thể hiển thị mà không cần đèn flash. Tùy chọn âm thanh và trạng thái giao diện người dùng tương tự cũng có thể được lưu trữ trong bộ nhớ cục bộ. **Những phát hiện gần đây** được lưu giữ trong sessionStorage trên thiết bị của bạn cho phiên trình duyệt đó và không được gửi cho chúng tôi."
+          "title": "Keys and forging stay on your device",
+          "body": [
+            "Address forging runs locally in the browser (Web Workers) or in the local CLI. Matching against your pattern happens in that same local environment.",
+            "**Share proof** links and public proof pages are designed to help others verify that an address matches a pattern. They are built to **exclude private keys**. Do not paste private keys into URLs, issues, or chat.",
+            "**Recent finds** stored in `sessionStorage` keep address metadata for your browser session (for example chain, pattern, address, timestamp) — **not** private keys. Clearing the tab/session or site data removes them from that browser.",
+            "Exports you download (TXT/JSON and similar) are written by your browser to your device. We do not receive those files."
+          ]
         },
         {
-          "title": "Lưu trữ & nhật ký",
-          "body": "Trang web được phục vụ thông qua dịch vụ lưu trữ web tiêu chuẩn (hiện tại là Vercel). Giống như hầu hết các trang web, cơ sở hạ tầng có thể xử lý dữ liệu yêu cầu kỹ thuật (ví dụ: địa chỉ IP, tác nhân người dùng, URL, dấu thời gian) trong nhật ký truy cập để bảo mật và độ tin cậy. Chúng tôi không sử dụng thông tin đó để xây dựng hồ sơ tiếp thị về các khóa giả mạo."
+          "title": "What we do not collect",
+          "body": [
+            "We do not intentionally collect or store on a Vanitas backend: private keys, seed phrases, forged key material, wallet balances, address books, or a history of your pattern searches tied to an account.",
+            "We do not run a Vanitas user database of identities. There is no newsletter signup baked into the forge product as of the date above.",
+            "If you contact us via X, GitHub, or another channel, that platform processes the communication under its own rules; we only see what you choose to send."
+          ]
         },
         {
-          "title": "Không có trình theo dõi quảng cáo",
-          "body": "Vanitas không nhúng pixel quảng cáo của bên thứ ba. Nếu điều đó thay đổi, chính sách này sẽ được cập nhật."
+          "title": "Data processed on your device",
+          "body": [
+            "**Theme preference** (light/dark) may be stored in `localStorage` and mirrored in a first-party **theme cookie** so the correct mode can render on first paint without a flash. The cookie is not used for advertising.",
+            "**Sound / UI preferences** and similar settings may be stored in `localStorage` on your device only.",
+            "**Locale** is primarily selected via the URL path (for example `/de/...`). We do not use browser locale auto-detection to force a language; see project routing configuration.",
+            "You can clear site data in your browser settings to remove localStorage, sessionStorage, and cookies for vanitas.fun."
+          ]
         },
         {
-          "title": "Liên kết ngoài",
-          "body": "Các liên kết tới người khám phá (ví dụ: Solscan), GitHub, npm hoặc hồ sơ xã hội là các trang web của bên thứ ba có các biện pháp bảo vệ quyền riêng tư của riêng họ."
+          "title": "Cookies",
+          "body": [
+            "Vanitas uses a minimal first-party cookie for theme preference as described above. We do not set advertising or cross-site tracking cookies.",
+            "Essential delivery of the site may involve cookies or similar storage set by the hosting/CDN stack for security or performance; those are governed by the host’s practices as well as this notice."
+          ]
         },
         {
-          "title": "Những đứa trẻ",
-          "body": "Các công cụ không hướng vào trẻ em. Không sử dụng Vanitas nếu bạn không được phép sử dụng hợp pháp phần mềm ví tiền điện tử trong phạm vi quyền hạn của mình."
+          "title": "Hosting, logs, and security",
+          "body": [
+            "The website is served via standard web hosting (currently Vercel). Like most sites, the infrastructure may process technical request metadata — for example IP address, user agent, request URL/path, referrer, and timestamps — in access and security logs.",
+            "Purposes: deliver the site, maintain reliability, debug outages, and protect against abuse. We do not use these logs to build marketing profiles of forged keys or vanity patterns.",
+            "Log retention follows the host’s defaults and our operational needs; we do not operate a separate analytics product on top of forge results."
+          ]
         },
         {
-          "title": "Liên hệ",
-          "body": "Câu hỏi về quyền riêng tư: [Bytebrox on X](https://x.com/bytebrox) hoặc [GitHub](https://github.com/bytebrox/vanitas). Xem thêm [Terms](/terms) và [Security](/security)."
+          "title": "No advertising trackers",
+          "body": [
+            "Vanitas does not embed third-party advertising pixels or ad networks. If that changes, this notice will be updated before or when such tooling goes live."
+          ]
+        },
+        {
+          "title": "External links and third parties",
+          "body": [
+            "Links to explorers (for example Solscan), GitHub, npm, social profiles, wallets, or launchpads go to third-party sites. Their privacy practices apply when you leave Vanitas.",
+            "If you import a key into a wallet or paste an address into an explorer, that interaction is with that third party — not with a Vanitas key vault."
+          ]
+        },
+        {
+          "title": "International processing",
+          "body": [
+            "Hosting and CDN providers may process technical data in multiple regions. By using the website, you understand that request metadata may be handled in countries other than your own, subject to the host’s safeguards and applicable law."
+          ]
+        },
+        {
+          "title": "Children",
+          "body": [
+            "Vanitas is not directed at children. Do not use the tools if you are not of legal age to use cryptographic wallet software where you live, or if a parent/guardian’s consent would be required and has not been obtained."
+          ]
+        },
+        {
+          "title": "Security",
+          "body": [
+            "We design the forge so sensitive key material stays local. No system is perfect: device malware, malicious browser extensions, phishing domains that mimic Vanitas, or compromised dependencies can still put you at risk.",
+            "Prefer the canonical site, review [Security](/security), and consider verifying builds via the project’s documented integrity practices. Report vulnerabilities privately as described there."
+          ]
+        },
+        {
+          "title": "Your choices and rights",
+          "body": [
+            "Because we do not run user accounts, there is typically no Vanitas “profile” to download or delete. You can erase on-device data by clearing site storage for vanitas.fun.",
+            "Where hosting logs contain personal data (such as an IP address) and applicable law (for example GDPR/UK GDPR) grants rights of access, erasure, or objection, you may contact us to exercise those rights. We may need to verify the request and may only be able to act on data we actually control and can locate.",
+            "You may also lodge a complaint with a supervisory authority in your country of residence where that right applies."
+          ]
+        },
+        {
+          "title": "Changes to this notice",
+          "body": [
+            "We may update this Privacy notice by posting a revised version on this page and changing the “Last updated” date. Continued use of the site after an update means you acknowledge the revised notice."
+          ]
+        },
+        {
+          "title": "Contact",
+          "body": [
+            "Privacy questions: [Bytebrox on X](https://x.com/bytebrox) or [GitHub](https://github.com/bytebrox/vanitas). See also [Terms](/terms) and [Security](/security)."
+          ]
         }
       ]
     }
@@ -1813,5 +1974,278 @@
     "hintCardanoFirst": "First char: y/9/x/8",
     "hintAfterR": "After fixed r",
     "hintTon": "Case-sensitive base64url"
+  },
+  "postFind": {
+    "playbook": {
+      "solWallet": {
+        "eyebrow": "Bước tiếp theo",
+        "title": "Đưa ví này vào sử dụng",
+        "steps": [
+          "**Lưu khóa riêng** (tải TXT/JSON hoặc sao chép sau khi hiện). Rời trang không sao lưu sẽ mất khóa.",
+          "**Nhập vào ví Solana** — Phantom, Solflare hoặc Solana CLI bằng xuất JSON.",
+          "Gửi trước một **số tiền thử rất nhỏ**. Xác nhận địa chỉ khớp `{short}` trên explorer.",
+          "Chia sẻ **liên kết proof** (không bao giờ khóa) nếu người khác cần xác minh mẫu vanity."
+        ]
+      },
+      "solMint": {
+        "eyebrow": "Lộ trình ra mắt",
+        "title": "Đưa mint này lên launchpad",
+        "steps": [
+          "**Sao lưu ngay khóa quyền mint** — cần một lần lúc tạo.",
+          "Mở launchpad (**pump.fun**, Raydium, Meteora, …) và tìm trường **custom mint**.",
+          "Hiện và dán khóa riêng, rồi hoàn tất ra mắt để mint giữ `{short}`.",
+          "Sau khi ra mắt địa chỉ mint là **công khai và vĩnh viễn**. Chia sẻ proof không có khóa."
+        ]
+      },
+      "evmWallet": {
+        "eyebrow": "Bước tiếp theo",
+        "title": "Nhập ví EVM này",
+        "steps": [
+          "**Lưu khóa hex riêng** trước khi rời — tải về gồm TXT và JSON.",
+          "Nhập vào **MetaMask, Rabby, Frame** hoặc bất kỳ ví EVM nào (cùng địa chỉ trên mọi chuỗi EVM).",
+          "Xác minh `{short}` trên explorer bằng chuyển thử nhỏ.",
+          "Dùng **Share proof** để xác minh công khai — khóa không nằm trong liên kết."
+        ]
+      },
+      "evmContract": {
+        "eyebrow": "Lộ trình deploy",
+        "title": "Chốt địa chỉ CREATE này",
+        "steps": [
+          "**Lưu khóa riêng deployer** và ghi địa chỉ hợp đồng dự kiến `{short}`.",
+          "Nạp ví **deployer**. Địa chỉ vanity chỉ xuất hiện ở CREATE **đầu tiên** (nonce **0**).",
+          "Deploy hợp đồng là giao dịch đầu tiên — mọi tx trước đó sẽ đốt vanity.",
+          "Đăng **liên kết proof** để người khác kiểm tra mẫu mà không thấy khóa."
+        ]
+      },
+      "evmCreate2": {
+        "eyebrow": "Lộ trình CREATE2",
+        "title": "Dùng salt và init code cẩn thận",
+        "steps": [
+          "**Lưu khóa deployer, salt và initCodeHash** từ bản xuất — cả ba phải khớp lúc deploy.",
+          "Deploy bằng **CREATE2** với đúng init code băm thành initCodeHash của bạn.",
+          "Xác nhận hợp đồng kết quả là `{short}` trước khi công bố.",
+          "Chia sẻ proof công khai; giữ chiến lược salt và khóa riêng nếu vẫn quan trọng."
+        ]
+      },
+      "btcWallet": {
+        "eyebrow": "Bước tiếp theo",
+        "title": "Nhập địa chỉ Bitcoin này",
+        "steps": [
+          "**Lưu WIF** (và bản sao hex trong xuất) trước khi đóng tab.",
+          "Nhập WIF vào **Electrum, Sparrow** hoặc ví Bitcoin khớp loại địa chỉ này.",
+          "Nhận UTXO thử nhỏ và xác nhận `{short}` trên explorer.",
+          "Chia sẻ proof mẫu — không bao giờ WIF."
+        ]
+      },
+      "tronWallet": {
+        "eyebrow": "Bước tiếp theo",
+        "title": "Nhập vào ví Tron",
+        "steps": [
+          "**Lưu khóa hex riêng** qua tải TXT/JSON.",
+          "Nhập vào **TronLink** hoặc ví Tron khác.",
+          "Gửi chuyển TRX/thử rất nhỏ để xác nhận `{short}`.",
+          "Chia sẻ liên kết proof nếu cần xác minh mẫu công khai."
+        ]
+      },
+      "tronContract": {
+        "eyebrow": "Lộ trình deploy",
+        "title": "CREATE đầu tiên trên Tron",
+        "steps": [
+          "**Lưu khóa deployer** — hợp đồng `{short}` là CREATE đầu tiên (nonce 0) từ khóa đó.",
+          "Nạp deployer rồi deploy là lần tạo hợp đồng đầu tiên.",
+          "Đừng gửi tx khác từ deployer trước nếu không sẽ mất vanity.",
+          "Công bố proof mà không lộ khóa deployer."
+        ]
+      },
+      "aptosWallet": {
+        "eyebrow": "Bước tiếp theo",
+        "title": "Nhập ví Aptos này",
+        "steps": [
+          "**Lưu khóa riêng** từ hiện hoặc tải về.",
+          "Nhập vào **Petra, Martian** hoặc ví Aptos khác.",
+          "Xác nhận `{short}` bằng chuyển thử nhỏ.",
+          "Chỉ chia sẻ liên kết proof — không bao giờ khóa."
+        ]
+      },
+      "suiWallet": {
+        "eyebrow": "Bước tiếp theo",
+        "title": "Nhập ví Sui này",
+        "steps": [
+          "**Lưu khóa riêng** trước khi rời trang này.",
+          "Nhập vào **Sui Wallet, Suiet** hoặc ví Sui khác.",
+          "Xác minh `{short}` trên explorer bằng chuyển rất nhỏ.",
+          "Chia sẻ proof mẫu không có khóa."
+        ]
+      },
+      "tonWallet": {
+        "eyebrow": "Bước tiếp theo",
+        "title": "Nhập ví TON này",
+        "steps": [
+          "**Lưu khóa riêng** (xuất thường gồm EQ bounceable khi có).",
+          "Nhập vào **Tonkeeper** hoặc **MyTonWallet**.",
+          "Xác nhận `{short}` bằng gửi thử nhỏ.",
+          "Chia sẻ proof mẫu vanity — giữ khóa offline."
+        ]
+      },
+      "cardanoWallet": {
+        "eyebrow": "Bước tiếp theo",
+        "title": "Nhập địa chỉ Cardano này",
+        "steps": [
+          "**Lưu vật liệu khóa** từ tải về trước khi điều hướng đi.",
+          "Nhập vào ví Cardano chấp nhận định dạng này.",
+          "Xác minh `{short}` bằng thử ADA nhỏ.",
+          "Chia sẻ proof không có vật liệu riêng tư."
+        ]
+      },
+      "xrpWallet": {
+        "eyebrow": "Bước tiếp theo",
+        "title": "Nhập tài khoản XRPL này",
+        "steps": [
+          "**Lưu secret** từ xuất — tài khoản XRPL cần kích hoạt bằng dự trữ.",
+          "Nhập vào **Xaman** hoặc ví XRPL khác.",
+          "Nạp/kích hoạt `{short}` cẩn thận rồi thử thanh toán nhỏ.",
+          "Chỉ chia sẻ proof mẫu vanity."
+        ]
+      },
+      "genericWallet": {
+        "eyebrow": "Bước tiếp theo",
+        "title": "Bảo mật và nhập",
+        "steps": [
+          "**Sao lưu khóa riêng** trước khi rời.",
+          "Nhập vào ví hỗ trợ chuỗi này.",
+          "Gửi số tiền thử nhỏ để xác nhận `{short}`.",
+          "Chia sẻ liên kết proof — không bao giờ khóa."
+        ]
+      }
+    },
+    "import": {
+      "solWallet": {
+        "eyebrow": "Định dạng nhập",
+        "summary": "Mảng keypair JSON Solana · Phantom / Solflare / CLI",
+        "formatLabel": "Định dạng",
+        "formatBody": "Tải **JSON** cho mảng khóa bí mật 64 byte (`[1,2,…,64]`) — Solana CLI và nhiều ví mong đợi. **TXT** dễ đọc với khóa riêng base58.",
+        "walletsLabel": "Tương thích",
+        "wallets": "Phantom, Solflare, Solana CLI (`solana-keygen`), Backpack",
+        "hint": "Ưu tiên JSON cho CLI. Đừng dán khóa vào trang không phải ví của bạn."
+      },
+      "solMint": {
+        "eyebrow": "Định dạng khóa mint",
+        "summary": "Cùng hình keypair Solana — dán vào trường custom mint",
+        "formatLabel": "Định dạng",
+        "formatBody": "Launchpad thường muốn **khóa riêng mint** (base58 hoặc mảng JSON tùy UI). **JSON** Vanitas khớp công cụ Solana; **TXT** nêu các bước.",
+        "walletsLabel": "Đích điển hình",
+        "wallets": "pump.fun · Raydium · Meteora · UI custom mint khác",
+        "hint": "Khóa chủ yếu cần lúc tạo. Sau ra mắt địa chỉ mint là công khai."
+      },
+      "evmWallet": {
+        "eyebrow": "Định dạng nhập",
+        "summary": "Khóa riêng 64 hex · MetaMask / Rabby / Frame",
+        "formatLabel": "Định dạng",
+        "formatBody": "Khóa riêng có **64 ký tự hex** (có/không `0x` tùy ví). Cùng khóa → cùng địa chỉ trên mọi chuỗi EVM.",
+        "walletsLabel": "Tương thích",
+        "wallets": "MetaMask, Rabby, Frame, Rainbow, ví phần cứng qua nhập",
+        "hint": "Tải TXT/JSON gồm khóa hex. Share proof không bao giờ gồm."
+      },
+      "evmDeploy": {
+        "eyebrow": "Định dạng khóa deployer",
+        "summary": "Khóa hex deployer · công cụ CREATE / CREATE2",
+        "formatLabel": "Định dạng",
+        "formatBody": "Xuất gồm **khóa riêng deployer**, **địa chỉ hợp đồng** dự kiến và với CREATE2 cả **salt** + **initCodeHash**. JSON dễ nhất cho script.",
+        "walletsLabel": "Dùng với",
+        "wallets": "Foundry, Hardhat, Remix, script Safe/deploy, trợ lý CREATE2 forge",
+        "hint": "Init code lệch hoặc nonce ≠ 0 phá địa chỉ vanity."
+      },
+      "btcWif": {
+        "eyebrow": "Định dạng nhập",
+        "summary": "Khóa riêng WIF · Electrum / Sparrow",
+        "formatLabel": "Định dạng",
+        "formatBody": "Chuỗi nhập chính là **WIF**. Xuất cũng gồm **hex** thô. Loại địa chỉ (legacy / segwit / taproot) phải khớp đường nhập ví.",
+        "walletsLabel": "Tương thích",
+        "wallets": "Electrum, Sparrow, BlueWallet (khi hỗ trợ nhập WIF)",
+        "hint": "Nhập sai loại script cho địa chỉ khác."
+      },
+      "tronHex": {
+        "eyebrow": "Định dạng nhập",
+        "summary": "Khóa riêng hex · TronLink",
+        "formatLabel": "Định dạng",
+        "formatBody": "Khóa riêng Tron là **hex**. JSON ghi chế độ ví vs hợp đồng (CREATE nonce 0).",
+        "walletsLabel": "Tương thích",
+        "wallets": "TronLink và ví Tron khác hỗ trợ nhập khóa riêng",
+        "hint": "Với vanity hợp đồng, khóa deployer — không phải ví nạp ngẫu nhiên — phải CREATE trước."
+      },
+      "aptosHex": {
+        "eyebrow": "Định dạng nhập",
+        "summary": "Khóa riêng Ed25519 · Petra / Martian",
+        "formatLabel": "Định dạng",
+        "formatBody": "Xuất gồm chuỗi **khóa riêng** Aptos mà ví phổ biến mong đợi.",
+        "walletsLabel": "Tương thích",
+        "wallets": "Petra, Martian và ví Aptos khác",
+        "hint": "Luôn xác minh địa chỉ `0x` sau khi nhập."
+      },
+      "suiHex": {
+        "eyebrow": "Định dạng nhập",
+        "summary": "Khóa riêng Ed25519 · Sui Wallet / Suiet",
+        "formatLabel": "Định dạng",
+        "formatBody": "Dùng **khóa riêng** đã xuất với ví Sui hỗ trợ nhập thô.",
+        "walletsLabel": "Tương thích",
+        "wallets": "Sui Wallet, Suiet và bộ nhập tương thích",
+        "hint": "Xác nhận địa chỉ trước khi chuyển số lớn."
+      },
+      "tonHex": {
+        "eyebrow": "Định dạng nhập",
+        "summary": "Khóa TON v4R2 · Tonkeeper / MyTonWallet",
+        "formatLabel": "Định dạng",
+        "formatBody": "Xuất gồm khóa riêng và thường dạng **UQ / EQ**. Nhập vào ví nhận khóa thô cho Wallet v4R2.",
+        "walletsLabel": "Tương thích",
+        "wallets": "Tonkeeper, MyTonWallet",
+        "hint": "Mẫu TON phân biệt hoa thường — kiểm tra lại chuỗi địa chỉ."
+      },
+      "cardanoHex": {
+        "eyebrow": "Định dạng nhập",
+        "summary": "Vật liệu khóa Cardano · ví tương thích",
+        "formatLabel": "Định dạng",
+        "formatBody": "Dùng trường tải về với ví hỗ trợ đường nhập enterprise `addr1` này.",
+        "walletsLabel": "Tương thích",
+        "wallets": "Ví Cardano nhận nhập khóa thô/riêng cho loại địa chỉ này",
+        "hint": "Nên giao dịch thử nhỏ sau khi nhập."
+      },
+      "xrpSeed": {
+        "eyebrow": "Định dạng nhập",
+        "summary": "Secret XRPL · Xaman / nhập cổ điển",
+        "formatLabel": "Định dạng",
+        "formatBody": "Xuất mang **secret** XRPL cho tài khoản cổ điển `r…`. Tài khoản mới cần dự trữ để kích hoạt.",
+        "walletsLabel": "Tương thích",
+        "wallets": "Xaman và ví XRPL khác hỗ trợ nhập secret",
+        "hint": "Không bao giờ chia sẻ secret trong liên kết proof hoặc ảnh chụp."
+      },
+      "genericHex": {
+        "eyebrow": "Định dạng nhập",
+        "summary": "Xuất khóa riêng gốc chuỗi",
+        "formatLabel": "Định dạng",
+        "formatBody": "Dùng tải TXT/JSON của forge này — chứa vật liệu riêng có thể nhập cho chuỗi này.",
+        "walletsLabel": "Tương thích",
+        "wallets": "Ví hỗ trợ nhập khóa riêng của mạng này",
+        "hint": "Thử với số rất nhỏ sau khi nhập."
+      }
+    },
+    "launch": {
+      "eyebrow": "Chia sẻ không có khóa",
+      "compactTitle": "Bộ kit ra mắt nhanh",
+      "fullTitle": "Bộ kit ra mắt",
+      "intro": "Sao chép đoạn công khai và liên kết proof. Khóa riêng không bao giờ được gồm — an toàn cho Discord, tài liệu và launchpad.",
+      "labelBlurb": "Đoạn ngắn",
+      "labelLaunchpad": "Launchpad / tài liệu",
+      "labelDiscord": "Discord / mạng xã hội",
+      "labelProof": "URL proof",
+      "labelEmbed": "Iframe nhúng",
+      "copy": "Sao chép",
+      "copied": "Đã sao chép",
+      "noKeys": "Không đoạn nào chứa khóa riêng.",
+      "brandLink": "Mở kit thương hiệu + nhúng",
+      "embedPlaceholder": "Đoạn nhúng sẵn sau khi tải",
+      "blurbShort": "Địa chỉ vanity `{short}` rèn cục bộ với Vanitas (mẫu `{pattern}`). Khóa không rời thiết bị. Xác minh: {proofUrl}",
+      "blurbLaunchpad": "Mint tùy chỉnh / địa chỉ vanity `{address}` (mẫu `{pattern}`) tạo trong trình duyệt qua vanitas.fun. Proof (không khóa): {proofUrl}",
+      "blurbDiscord": "Rèn `{short}` khớp `{pattern}` phía client trên vanitas.fun — xác minh mẫu tại đây (khóa riêng không trong liên kết): {proofUrl}"
+    }
   }
 }
