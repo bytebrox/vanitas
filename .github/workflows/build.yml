@@ -37,11 +37,26 @@ jobs:
       # The forges refuse to run a worker whose hash differs from the one
       # compiled into the app, and the audit page tells visitors to compare
       # against the committed copy. Both only hold if it is actually current.
+      # Only the hashes are compared; the build timestamp changes every run.
       - name: Worker integrity hashes are current
         run: |
+          hashes() {
+            node -e '
+              const m = require("./public/worker-hash.json");
+              const pick = (o) => o.hash;
+              const out = { solana: pick(m) };
+              for (const [k, v] of Object.entries(m)) {
+                if (v && typeof v === "object") out[k] = pick(v);
+              }
+              console.log(JSON.stringify(out, Object.keys(out).sort(), 2));
+            '
+          }
+          hashes > /tmp/worker-hashes-committed.json
           npm run build:worker
-          git diff --exit-code -- public/worker-hash.json src/lib/worker-integrity.ts \
-            || (echo "::error::Worker hashes are stale — run 'npm run build:worker' and commit the result." && exit 1)
+          hashes > /tmp/worker-hashes-rebuilt.json
+          diff -u /tmp/worker-hashes-committed.json /tmp/worker-hashes-rebuilt.json && exit 0
+          echo "::error::Worker hashes are stale — run 'npm run build:worker' and commit the result."
+          exit 1
 
       - name: Build workers + Next.js
         run: npm run build

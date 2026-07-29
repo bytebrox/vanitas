@@ -15,7 +15,7 @@ export const WORKER_INTEGRITY: Record<string, string> = {
   "/ton-worker.js": "sha256-adf1d8d57155bbc5541916a9773ec14d8680140c798c90ee227fd927c43fa965",
   "/cardano-worker.js": "sha256-0df1ef2971de59eaa86dbb05457f232bfa87e17067f9b957dc8b7b0eced7f27a",
   "/xrp-worker.js": "sha256-adbac01d31b9ad13ec595c3b43cb2d3961e3c69efa60f1b1de6f0da289ee358d",
-  "/seed-worker.js": "sha256-0088d06859050d214eba5b05c447be088249aee14f72005477f5ebe862614026"
+  "/seed-worker.js": "sha256-b086182f06335db6b3c4967e5859b741c1595598cb63eec1a708062e1c7776a7"
 };
 
-export const WORKER_INTEGRITY_BUILT = "2026-07-29T12:41:37.058Z";
+export const WORKER_INTEGRITY_BUILT = "2026-07-29T12:58:09.889Z";
