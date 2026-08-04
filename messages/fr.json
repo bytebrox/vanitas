@@ -210,8 +210,7 @@
   },
   "footer": {
     "blurb": "Outils personnalisés côté client pour Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano et XRP. Aucun jeton de projet. Aucune clé ne quitte cet appareil. Développé par [Bytebrox](https://x.com/bytebrox).",
-    "donateSol": "Donner du SOL",
-    "solscan": "Solscan",
+    "ca": "CA",
     "home": "Accueil",
     "security": "Sécurité",
     "audit": "Audit",

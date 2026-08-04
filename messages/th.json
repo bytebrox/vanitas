@@ -210,8 +210,7 @@
   },
   "footer": {
     "blurb": "เครื่องมือโต๊ะเครื่องแป้งฝั่งไคลเอ็นต์สำหรับ Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano และ XRP ไม่มีโทเค็นโครงการ ไม่มีกุญแจออกจากอุปกรณ์นี้ พัฒนาโดย [Bytebrox](https://x.com/bytebrox)",
-    "donateSol": "บริจาค SOL",
-    "solscan": "โซลสแกน",
+    "ca": "CA",
     "home": "หน้าแรก",
     "security": "ความปลอดภัย",
     "audit": "การตรวจสอบ",

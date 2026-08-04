@@ -210,8 +210,7 @@
   },
   "footer": {
     "blurb": "Clientseitiges Vanity-Tool für Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano und XRP. Kein Projekt-Token. Kein Schlüssel verlässt dieses Gerät. Entwickelt von [Bytebrox](https://x.com/bytebrox).",
-    "donateSol": "Spenden Sie SOL",
-    "solscan": "Solscan",
+    "ca": "CA",
     "home": "Start",
     "security": "Sicherheit",
     "audit": "Prüfung",

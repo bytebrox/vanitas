@@ -210,8 +210,7 @@
   },
   "footer": {
     "blurb": "Solana、EVM、Bitcoin、Tron、Aptos、Sui、TON、Cardano、XRP 用のクライアント側バニティ ツール。プロジェクトトークンがありません。このデバイスからキーが離れることはありません。 [Bytebrox](https://x.com/bytebrox) によって開発されました。",
-    "donateSol": "SOLを寄付する",
-    "solscan": "ソルスキャン",
+    "ca": "CA",
     "home": "家",
     "security": "安全",
     "audit": "監査",

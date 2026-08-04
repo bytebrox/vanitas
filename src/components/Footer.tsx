@@ -6,8 +6,8 @@ import { Link } from '@/i18n/navigation';
 import { RichText } from '@/lib/rich-text';
 import { AsciiImage } from './AsciiImage';
 
-/** Solana tip jar — Bytebrox */
-export const DONATE_SOL = '3ZgrgEADJJtjyWYag6XfYd7zoD7LEwFhsoEpj7FFWUPo';
+/** Contract address tip jar — set NEXT_PUBLIC_DONATE_CA in Vercel / .env.local */
+export const DONATE_CA = (process.env.NEXT_PUBLIC_DONATE_CA ?? '').trim();
 
 interface FooterProps {
   /** Tighter padding for single-viewport landing */
@@ -15,7 +15,8 @@ interface FooterProps {
 }
 
 function shortAddr(addr: string) {
-  return `${addr.slice(0, 4)}…${addr.slice(-4)}`;
+  if (addr.length <= 13) return addr;
+  return `${addr.slice(0, 6)}…${addr.slice(-4)}`;
 }
 
 function FooterLink({
@@ -51,9 +52,10 @@ export function Footer({ compact = false }: FooterProps) {
   const year = new Date().getFullYear();
   const [copied, setCopied] = useState(false);
 
-  const copyDonate = async () => {
+  const copyCa = async () => {
+    if (!DONATE_CA) return;
     try {
-      await navigator.clipboard.writeText(DONATE_SOL);
+      await navigator.clipboard.writeText(DONATE_CA);
       setCopied(true);
       window.setTimeout(() => setCopied(false), 1600);
     } catch {
@@ -99,27 +101,28 @@ export function Footer({ compact = false }: FooterProps) {
             <RichText text={t('blurb')} />
           </p>
 
-          <div className={`flex flex-wrap items-baseline gap-x-3 gap-y-1 ${compact ? 'mt-2' : 'mt-3.5'}`}>
-            <span className="text-micro uppercase tracking-[0.16em] text-muted">{t('donateSol')}</span>
-            <button
-              type="button"
-              onClick={() => {
-                void copyDonate();
-              }}
-              title={DONATE_SOL}
-              className="font-mono text-[0.7rem] sm:text-micro text-ink/80 hover:text-accent tracking-normal normal-case transition-colors"
+          {DONATE_CA ? (
+            <div
+              className={`flex flex-wrap items-center gap-x-2.5 gap-y-1 ${compact ? 'mt-2' : 'mt-3.5'}`}
             >
-              {copied ? tc('copied') : shortAddr(DONATE_SOL)}
-            </button>
-            <a
-              href={`https://solscan.io/account/${DONATE_SOL}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-micro uppercase tracking-[0.14em] text-muted hover:text-ink"
-            >
-              {t('solscan')}
-            </a>
-          </div>
+              <span className="text-micro uppercase tracking-[0.16em] text-muted">{t('ca')}:</span>
+              <span
+                title={DONATE_CA}
+                className="font-mono text-[0.7rem] sm:text-micro text-ink/80 tracking-normal normal-case"
+              >
+                {shortAddr(DONATE_CA)}
+              </span>
+              <button
+                type="button"
+                onClick={() => {
+                  void copyCa();
+                }}
+                className="text-micro uppercase tracking-[0.14em] text-muted hover:text-ink transition-colors"
+              >
+                {copied ? tc('copied') : tc('copy')}
+              </button>
+            </div>
+          ) : null}
         </div>
 
         {compact ? (

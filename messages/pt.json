@@ -210,8 +210,7 @@
   },
   "footer": {
     "blurb": "Ferramentas personalizadas do lado do cliente para Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano e XRP. Nenhum token de projeto. Nenhuma chave sai deste dispositivo. Desenvolvido por [Bytebrox](https://x.com/bytebrox).",
-    "donateSol": "Doe SOL",
-    "solscan": "Solscan",
+    "ca": "CA",
     "home": "Lar",
     "security": "Segurança",
     "audit": "Auditoria",

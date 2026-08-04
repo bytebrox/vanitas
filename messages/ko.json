@@ -210,8 +210,7 @@
   },
   "footer": {
     "blurb": "Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano & XRP용 클라이언트 사이드 바니티 도구. 프로젝트 토큰 없음. 키가 이 기기를 떠나지 않습니다. [Bytebrox](https://x.com/bytebrox) 제작.",
-    "donateSol": "SOL 기부",
-    "solscan": "솔스캔",
+    "ca": "CA",
     "home": "홈",
     "security": "보안",
     "audit": "감사",

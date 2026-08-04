@@ -210,8 +210,7 @@
   },
   "footer": {
     "blurb": "适用于 Solana、EVM、比特币、Tron、Aptos、Sui、TON、Cardano 和 XRP 的客户端虚荣工具。没有项目代币。没有钥匙离开该设备。由 [Bytebrox](https://x.com/bytebrox) 开发。",
-    "donateSol": "捐赠索尔",
-    "solscan": "索尔扫描",
+    "ca": "CA",
     "home": "首页",
     "security": "安全",
     "audit": "审计",

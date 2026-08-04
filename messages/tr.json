@@ -210,8 +210,7 @@
   },
   "footer": {
     "blurb": "Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano ve XRP için istemci tarafı vanity araçları. Proje jetonu yok. Bu cihazdan hiçbir anahtar çıkmıyor. [Bytebrox](https://x.com/bytebrox) tarafından geliştirildi.",
-    "donateSol": "SOL'a Bağış Yapın",
-    "solscan": "Sol tarama",
+    "ca": "CA",
     "home": "Ana sayfa",
     "security": "Güvenlik",
     "audit": "Denetim",

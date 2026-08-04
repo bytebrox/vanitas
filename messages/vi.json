@@ -210,8 +210,7 @@
   },
   "footer": {
     "blurb": "Công cụ trang điểm phía khách hàng dành cho Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano & XRP. Không có mã thông báo dự án. Không có chìa khóa nào rời khỏi thiết bị này. Được phát triển bởi [Bytebrox](https://x.com/bytebrox).",
-    "donateSol": "Đóng góp SOL",
-    "solscan": "Solscan",
+    "ca": "CA",
     "home": "Trang chủ",
     "security": "Bảo vệ",
     "audit": "Kiểm toán",
