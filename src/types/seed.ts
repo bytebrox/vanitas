@@ -1,3 +1,4 @@
+import type { PatternTarget } from '@/lib/patterns';
 import type { SeedChain } from '@/workers/seed-derivation';
 
 export type { SeedChain };
@@ -12,6 +13,8 @@ export interface SeedConfig {
   styleId: string;
   prefix: string;
   suffix: string;
+  /** OR-targets; falls back to prefix/suffix when empty */
+  patterns?: PatternTarget[];
   caseSensitive: boolean;
   /** Lowest derivation index to try. */
   startIndex: number;
@@ -51,6 +54,7 @@ export interface SeedWorkerInbound {
     styleId: string;
     prefix: string;
     suffix: string;
+    patterns?: PatternTarget[];
     caseSensitive: boolean;
     startIndex: number;
     stride: number;

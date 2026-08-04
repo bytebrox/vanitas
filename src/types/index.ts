@@ -1,3 +1,4 @@
+import type { PatternTarget } from '@/lib/patterns';
 /**
  * Core types for Vanitas
  * Solana vanity address generator
@@ -7,6 +8,8 @@
 export interface GeneratorConfig {
   prefix: string;
   suffix: string;
+  /** OR-targets; falls back to prefix/suffix when empty */
+  patterns?: PatternTarget[];
   caseSensitive: boolean;
   threads: number;
 }

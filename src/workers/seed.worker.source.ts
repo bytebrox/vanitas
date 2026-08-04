@@ -9,6 +9,7 @@
  */
 
 import { yieldToEventLoop } from './yield';
+import { normalizePatterns, formatMatchedPattern } from '../lib/patterns';
 import {
   createWalker,
   matchesAddress,
@@ -22,6 +23,7 @@ interface SeedWorkerConfig {
   styleId: string;
   prefix: string;
   suffix: string;
+  patterns?: { prefix: string; suffix: string }[];
   caseSensitive: boolean;
   /** First index this worker tries. */
   startIndex: number;
@@ -91,7 +93,15 @@ async function grind(config: SeedWorkerConfig): Promise<void> {
       const address = walker.addressAt(index);
       attempts++;
 
-      if (matchesAddress(style.chain, address, config.prefix, config.suffix, config.caseSensitive)) {
+      const patterns = normalizePatterns(config);
+      let matchedTarget: { prefix: string; suffix: string } | null = null;
+      for (const target of patterns.length > 0 ? patterns : [{ prefix: '', suffix: '' }]) {
+        if (matchesAddress(style.chain, address, target.prefix, target.suffix, config.caseSensitive)) {
+          matchedTarget = target;
+          break;
+        }
+      }
+      if (matchedTarget) {
         const secret = walker.secretAt(index);
         post({
           type: 'found',
@@ -106,7 +116,7 @@ async function grind(config: SeedWorkerConfig): Promise<void> {
             styleId: style.id,
             attempts,
             duration: performance.now() - startTime,
-            matchedPattern: `${config.prefix}...${config.suffix}`,
+            matchedPattern: formatMatchedPattern(matchedTarget),
           },
         });
         isRunning = false;

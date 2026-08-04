@@ -6,31 +6,42 @@ import {
   formatCardanoDifficulty,
   estimateCardanoTime,
 } from '@/lib/cardano-validation';
+import { combineOrDifficulty, normalizePatterns, type PatternTarget } from '@/lib/patterns';
 
 interface Props {
   prefix: string;
   suffix: string;
+  patterns?: PatternTarget[];
   currentRate: number;
 }
 
-export function CardanoDifficultyDisplay({ prefix, suffix, currentRate }: Props) {
+export function CardanoDifficultyDisplay({ prefix, suffix, patterns, currentRate }: Props) {
   const estimatedRate = useMemo(() => {
     if (currentRate > 0) return currentRate;
     const cores = typeof navigator !== 'undefined' ? navigator.hardwareConcurrency || 4 : 4;
     return Math.max(1, cores - 1) * 5000;
   }, [currentRate]);
 
+  const targets = useMemo(
+    () => normalizePatterns(patterns?.length ? patterns : { prefix, suffix }),
+    [patterns, prefix, suffix]
+  );
+
   const difficulty = useMemo(
-    () => estimateCardanoDifficulty(prefix, suffix),
-    [prefix, suffix]
+    () =>
+      combineOrDifficulty(targets.map((p) => estimateCardanoDifficulty(p.prefix, p.suffix))),
+    [targets]
   );
   const difficultyLabel = useMemo(() => formatCardanoDifficulty(difficulty), [difficulty]);
   const timeEstimate = useMemo(
     () => estimateCardanoTime(difficulty, estimatedRate),
     [difficulty, estimatedRate]
   );
-  const hasPattern = prefix.length > 0 || suffix.length > 0;
-  const totalChars = prefix.length + suffix.length;
+  const hasPattern = targets.some((p) => p.prefix.length > 0 || p.suffix.length > 0);
+  const totalChars = Math.max(
+    0,
+    ...targets.map((p) => p.prefix.length + p.suffix.length)
+  );
 
   return (
     <div className="space-y-4">
@@ -44,6 +55,11 @@ export function CardanoDifficultyDisplay({ prefix, suffix, currentRate }: Props)
             </span>
             <span className="text-ink/20 mx-1">…</span>
             <span className={suffix ? 'text-accent' : 'text-ink/25'}>{suffix || '····'}</span>
+            {targets.length > 1 && (
+              <span className="text-micro text-muted ml-2 normal-case tracking-normal">
+                +{targets.length - 1}
+              </span>
+            )}
           </p>
         </div>
         <div>

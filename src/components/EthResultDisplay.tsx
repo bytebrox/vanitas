@@ -4,13 +4,16 @@
  * ETH vanity result — wallet or contract
  */
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import type { GeneratedEthResult } from '@/types/eth';
 import { formatNumber, formatDuration } from '@/lib/format';
 import { buildVanityExportTxt } from '@/lib/export-txt';
+import { scoreChecksumVanity, toChecksumAddress } from '@/lib/eip55';
+import { splitMatchedPattern } from '@/lib/proof-of-find';
 import { EntropyInfo } from './EntropyInfo';
 import { ShareProofButton } from './ShareProofButton';
+import { ShareCardButton } from './ShareCardButton';
 import { PostFindPlaybook } from './PostFindPlaybook';
 import { ImportGuide } from './ImportGuide';
 import { LaunchKit } from './LaunchKit';
@@ -23,12 +26,30 @@ interface EthResultDisplayProps {
 
 export function EthResultDisplay({ result, onReset, onContinueSearch }: EthResultDisplayProps) {
   const t = useTranslations('common');
+  const tEip = useTranslations('eip55');
   const [showPrivateKey, setShowPrivateKey] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
   const isContract = result.mode === 'contract';
   const isCreate2 =
     result.mode === 'create2-salt' || result.mode === 'create2-deployer';
   const isDeployStyle = isContract || isCreate2;
+
+  const checksumAddress = useMemo(() => {
+    try {
+      return toChecksumAddress(result.address);
+    } catch {
+      return result.address;
+    }
+  }, [result.address]);
+  const lowercaseAddress = useMemo(
+    () => `0x${result.address.replace(/^0x/i, '').toLowerCase()}`,
+    [result.address]
+  );
+  const luck = useMemo(() => {
+    const { prefix, suffix } = splitMatchedPattern(result.matchedPattern);
+    return scoreChecksumVanity(checksumAddress, prefix, suffix);
+  }, [checksumAddress, result.matchedPattern]);
+  const luckPct = Math.round(luck.score * 100);
 
   const copyToClipboard = async (text: string, field: string) => {
     try {
@@ -44,7 +65,7 @@ export function EthResultDisplay({ result, onReset, onContinueSearch }: EthResul
     const content = isCreate2
       ? buildVanityExportTxt(t, {
           title: `${t('exportTxtTitle')} — ETH CREATE2 (${result.mode})`,
-          address: result.address,
+          address: checksumAddress,
           privateKey: result.privateKey,
           extraLines: [
             `DEPLOYER ADDRESS:\n${result.deployerAddress || ''}`,
@@ -55,13 +76,13 @@ export function EthResultDisplay({ result, onReset, onContinueSearch }: EthResul
       : isContract
         ? buildVanityExportTxt(t, {
             title: `${t('exportTxtTitle')} — ETH CONTRACT (CREATE · nonce 0)`,
-            address: result.address,
+            address: checksumAddress,
             privateKey: result.privateKey,
             extraLines: [`DEPLOYER ADDRESS:\n${result.deployerAddress || ''}`],
           })
         : buildVanityExportTxt(t, {
             title: `${t('exportTxtTitle')} — ETH WALLET`,
-            address: result.address,
+            address: checksumAddress,
             privateKey: result.privateKey,
           });
 
@@ -70,8 +91,8 @@ export function EthResultDisplay({ result, onReset, onContinueSearch }: EthResul
     const a = document.createElement('a');
     a.href = url;
     a.download = isDeployStyle
-      ? `eth-contract-${result.address.slice(2, 10)}.txt`
-      : `eth-wallet-${result.address.slice(2, 10)}.txt`;
+      ? `eth-contract-${checksumAddress.slice(2, 10)}.txt`
+      : `eth-wallet-${checksumAddress.slice(2, 10)}.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -82,7 +103,7 @@ export function EthResultDisplay({ result, onReset, onContinueSearch }: EthResul
     const payload = isCreate2
       ? {
           mode: result.mode,
-          contractAddress: result.address,
+          contractAddress: checksumAddress,
           deployerAddress: result.deployerAddress,
           privateKey: result.privateKey,
           salt: result.create2Salt,
@@ -91,14 +112,14 @@ export function EthResultDisplay({ result, onReset, onContinueSearch }: EthResul
       : isContract
         ? {
             mode: 'contract',
-            contractAddress: result.address,
+            contractAddress: checksumAddress,
             deployerAddress: result.deployerAddress,
             privateKey: result.privateKey,
             note: 'Deploy first contract with this key at nonce 0',
           }
         : {
             mode: 'wallet',
-            address: result.address,
+            address: checksumAddress,
             privateKey: result.privateKey,
           };
 
@@ -109,8 +130,8 @@ export function EthResultDisplay({ result, onReset, onContinueSearch }: EthResul
     const a = document.createElement('a');
     a.href = url;
     a.download = isDeployStyle
-      ? `eth-contract-${result.address.slice(2, 10)}.json`
-      : `eth-wallet-${result.address.slice(2, 10)}.json`;
+      ? `eth-contract-${checksumAddress.slice(2, 10)}.json`
+      : `eth-wallet-${checksumAddress.slice(2, 10)}.json`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -131,21 +152,39 @@ export function EthResultDisplay({ result, onReset, onContinueSearch }: EthResul
 
       <section className="border-y border-ink/15 divide-y divide-ink/15">
         <div className="py-5">
-          <div className="flex items-center justify-between gap-4 mb-3">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
             <p className="text-micro uppercase tracking-[0.18em] text-muted">
               {isDeployStyle ? 'Contract address' : 'Wallet address'}
+              <span className="ml-2 normal-case tracking-normal text-ink/50">EIP-55</span>
             </p>
-            <button
-              type="button"
-              onClick={() => { void copyToClipboard(result.address, 'address'); }}
-              className="text-micro uppercase tracking-[0.14em] text-muted hover:text-ink"
-            >
-              {copiedField === 'address' ? 'Copied' : 'Copy'}
-            </button>
+            <div className="flex flex-wrap items-center gap-4">
+              <button
+                type="button"
+                onClick={() => { void copyToClipboard(checksumAddress, 'checksum'); }}
+                className="text-micro uppercase tracking-[0.14em] text-muted hover:text-ink"
+              >
+                {copiedField === 'checksum' ? t('copied') : tEip('copyChecksum')}
+              </button>
+              <button
+                type="button"
+                onClick={() => { void copyToClipboard(lowercaseAddress, 'lower'); }}
+                className="text-micro uppercase tracking-[0.14em] text-muted hover:text-ink"
+              >
+                {copiedField === 'lower' ? t('copied') : tEip('copyLower')}
+              </button>
+            </div>
           </div>
           <p className="font-mono text-base sm:text-lg break-all leading-relaxed text-ink">
-            <HighlightedEthAddress address={result.address} pattern={result.matchedPattern} />
+            <HighlightedEthAddress address={checksumAddress} pattern={result.matchedPattern} />
           </p>
+          {luck.letters > 0 && (
+            <div className="mt-4 space-y-1">
+              <p className="text-micro text-muted leading-relaxed">
+                {tEip('luckScore', { pct: luckPct, upper: luck.upper, letters: luck.letters })}
+              </p>
+              <p className="text-micro text-muted leading-relaxed">{tEip('postFindNote')}</p>
+            </div>
+          )}
         </div>
 
         {isDeployStyle && result.deployerAddress && (
@@ -202,7 +241,7 @@ export function EthResultDisplay({ result, onReset, onContinueSearch }: EthResul
         </div>
       </section>
 
-      <PostFindPlaybook chain="evm" mode={result.mode} address={result.address} />
+      <PostFindPlaybook chain="evm" mode={result.mode} address={checksumAddress} />
       <ImportGuide chain="evm" mode={result.mode} />
 
       <section className="border-t border-ink/15 pt-8 space-y-5">
@@ -219,7 +258,15 @@ export function EthResultDisplay({ result, onReset, onContinueSearch }: EthResul
           </button>
           <ShareProofButton
             chain="evm"
-            address={result.address}
+            address={checksumAddress}
+            matchedPattern={result.matchedPattern}
+            attempts={result.attempts}
+            duration={result.duration}
+            mode={result.mode}
+          />
+          <ShareCardButton
+            chain={"evm"}
+            address={checksumAddress}
             matchedPattern={result.matchedPattern}
             attempts={result.attempts}
             duration={result.duration}
@@ -241,7 +288,7 @@ export function EthResultDisplay({ result, onReset, onContinueSearch }: EthResul
       <LaunchKit
         chain="evm"
         mode={result.mode}
-        address={result.address}
+        address={checksumAddress}
         matchedPattern={result.matchedPattern}
         attempts={result.attempts}
         duration={result.duration}

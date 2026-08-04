@@ -144,6 +144,8 @@ export function BtcContent() {
                     onSuffixChange={(value) => updateConfig({ suffix: value })}
                     onCaseSensitiveChange={(value) => updateConfig({ caseSensitive: value })}
                     disabled={status === 'running'}
+                    patterns={config.patterns}
+                    onPatternsChange={(patterns) => updateConfig({ patterns, prefix: patterns[0]?.prefix ?? '', suffix: patterns[0]?.suffix ?? '' })}
                   />
                 </div>
 
@@ -152,6 +154,7 @@ export function BtcContent() {
                   <BtcDifficultyDisplay
                     prefix={prefix}
                     suffix={suffix}
+                    patterns={config.patterns}
                     mode={mode}
                     caseSensitive={caseSensitive}
                     currentRate={stats.attemptsPerSecond}

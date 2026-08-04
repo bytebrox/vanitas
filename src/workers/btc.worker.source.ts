@@ -11,12 +11,14 @@ import {
   btcTaprootAddress,
   btcWifCompressed,
 } from '../lib/address-encoding';
+import { normalizePatterns, formatMatchedPattern } from '../lib/patterns';
 
 type BtcMode = 'legacy' | 'segwit' | 'taproot';
 
 interface BtcGeneratorConfig {
   prefix: string;
   suffix: string;
+  patterns?: { prefix: string; suffix: string }[];
   threads: number;
   mode: BtcMode;
   caseSensitive: boolean;
@@ -92,8 +94,7 @@ let isRunning = false;
 let workerId = 0;
 
 async function generateBtcVanity(config: BtcGeneratorConfig): Promise<void> {
-  const prefix = config.prefix || '';
-  const suffix = config.suffix || '';
+  const patterns = normalizePatterns(config);
   const mode = config.mode || 'legacy';
   const caseSensitive =
     mode === 'segwit' || mode === 'taproot' ? false : Boolean(config.caseSensitive);
@@ -111,7 +112,14 @@ async function generateBtcVanity(config: BtcGeneratorConfig): Promise<void> {
       const address = deriveAddress(secret, mode);
       attempts++;
 
-      if (matches(address, prefix, suffix, caseSensitive, mode)) {
+      let matchedTarget: { prefix: string; suffix: string } | null = null;
+      for (const target of patterns.length > 0 ? patterns : [{ prefix: '', suffix: '' }]) {
+        if (matches(address, target.prefix, target.suffix, caseSensitive, mode)) {
+          matchedTarget = target;
+          break;
+        }
+      }
+      if (matchedTarget) {
         const duration = performance.now() - startTime;
         const result: GeneratedBtcResult = {
           mode,
@@ -121,7 +129,7 @@ async function generateBtcVanity(config: BtcGeneratorConfig): Promise<void> {
           privateKeyBytes: secret,
           attempts,
           duration,
-          matchedPattern: `${prefix}...${suffix}`,
+          matchedPattern: formatMatchedPattern(matchedTarget),
         };
         self.postMessage({
           type: 'found',

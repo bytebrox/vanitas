@@ -13,11 +13,13 @@ import {
   getFirstCharWarning,
   getFirstCharRarity,
 } from '@/lib/validation';
+import { combineOrDifficulty, normalizePatterns, type PatternTarget } from '@/lib/patterns';
 
 interface DifficultyDisplayProps {
   prefix: string;
   suffix: string;
   caseSensitive: boolean;
+  patterns?: PatternTarget[];
   currentRate: number;
 }
 
@@ -25,6 +27,7 @@ export function DifficultyDisplay({
   prefix,
   suffix,
   caseSensitive,
+  patterns,
   currentRate,
 }: DifficultyDisplayProps) {
   const t = useTranslations('common');
@@ -36,9 +39,17 @@ export function DifficultyDisplay({
     return workers * 6000;
   }, [currentRate]);
 
+  const targets = useMemo(
+    () => normalizePatterns(patterns?.length ? patterns : { prefix, suffix }),
+    [patterns, prefix, suffix]
+  );
+
   const difficulty = useMemo(
-    () => estimateDifficulty(prefix, suffix, caseSensitive),
-    [prefix, suffix, caseSensitive]
+    () =>
+      combineOrDifficulty(
+        targets.map((p) => estimateDifficulty(p.prefix, p.suffix, caseSensitive))
+      ),
+    [targets, caseSensitive]
   );
 
   const difficultyLabel = useMemo(() => formatDifficulty(difficulty), [difficulty]);
@@ -47,8 +58,11 @@ export function DifficultyDisplay({
     [difficulty, estimatedRate]
   );
 
-  const hasPattern = prefix.length > 0 || suffix.length > 0;
-  const totalChars = prefix.length + suffix.length;
+  const hasPattern = targets.some((p) => p.prefix.length > 0 || p.suffix.length > 0);
+  const totalChars = Math.max(
+    0,
+    ...targets.map((p) => p.prefix.length + p.suffix.length)
+  );
   const firstCharWarning = useMemo(
     () => getFirstCharWarning(prefix, caseSensitive),
     [prefix, caseSensitive]

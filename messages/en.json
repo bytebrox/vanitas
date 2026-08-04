@@ -125,7 +125,10 @@
     "entropySecLevel": "Security level: ~128-bit equivalent",
     "entropyStandard": "Standard: RFC 8032",
     "unknown": "Unknown",
-    "continueSearch": "Continue search"
+    "continueSearch": "Continue search",
+    "shareCard": "Share card",
+    "shareCardBusy": "Rendering…",
+    "shareCardSaved": "Card saved"
   },
   "nav": {
     "language": "Language",
@@ -2322,5 +2325,21 @@
       "blurbLaunchpad": "Custom mint / vanity address `{address}` (pattern `{pattern}`) generated in-browser via vanitas.fun. Proof (no keys): {proofUrl}",
       "blurbDiscord": "Forged `{short}` to match `{pattern}` client-side on vanitas.fun — verify the pattern here (private keys stay off the link): {proofUrl}"
     }
+  },
+  "multiPattern": {
+    "title": "Alternatives",
+    "hint": "Match any of these patterns (OR). First hit wins.",
+    "add": "Add alternative",
+    "remove": "Remove",
+    "altPrefix": "Prefix {n}",
+    "altSuffix": "Suffix {n}"
+  },
+  "eip55": {
+    "casings": "Case coach",
+    "preFindNote": "Grind is case-insensitive; EIP-55 applies after the find.",
+    "copyChecksum": "Copy checksum",
+    "copyLower": "Copy lowercase",
+    "luckScore": "Checksum luck: {pct}% of vanity letters uppercase ({upper}/{letters}).",
+    "postFindNote": "Wallets accept both forms. Prefer EIP-55 when sharing."
   }
 }

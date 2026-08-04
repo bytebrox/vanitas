@@ -125,7 +125,10 @@
     "entropySecLevel": "ระดับความปลอดภัย: เทียบเท่า ~ 128 บิต",
     "entropyStandard": "มาตรฐาน: RFC 8032",
     "unknown": "ไม่ทราบ",
-    "continueSearch": "Continue search"
+    "continueSearch": "Continue search",
+    "shareCard": "การ์ดแชร์",
+    "shareCardBusy": "กำลังสร้าง…",
+    "shareCardSaved": "บันทึกการ์ดแล้ว"
   },
   "nav": {
     "language": "ภาษา",
@@ -2322,5 +2325,21 @@
       "blurbLaunchpad": "มินต์กำหนดเอง / ที่อยู่ vanity `{address}` (รูปแบบ `{pattern}`) สร้างในเบราว์เซอร์ผ่าน vanitas.fun Proof (ไม่มีคีย์): {proofUrl}",
       "blurbDiscord": "หลอม `{short}` ให้ตรง `{pattern}` ฝั่งไคลเอนต์บน vanitas.fun — ตรวจรูปแบบที่นี่ (คีย์ส่วนตัวไม่อยู่ในลิงก์): {proofUrl}"
     }
+  },
+  "multiPattern": {
+    "title": "ทางเลือก",
+    "hint": "จับคู่กับรูปแบบใดก็ได้ (OR) ตัวแรกที่ตรงจะใช้",
+    "add": "เพิ่มทางเลือก",
+    "remove": "ลบ",
+    "altPrefix": "คำนำหน้า {n}",
+    "altSuffix": "คำลงท้าย {n}"
+  },
+  "eip55": {
+    "casings": "โค้ชตัวพิมพ์",
+    "preFindNote": "การค้นหาไม่สนตัวพิมพ์ใหญ่เล็ก; EIP-55 ใช้หลังพบผล",
+    "copyChecksum": "คัดลอก checksum",
+    "copyLower": "คัดลอกตัวพิมพ์เล็ก",
+    "luckScore": "ดวง checksum: {pct}% ของตัวอักษร vanity เป็นตัวพิมพ์ใหญ่ ({upper}/{letters})",
+    "postFindNote": "วอลเล็ตรับทั้งสองรูปแบบ แชร์ควรใช้ EIP-55"
   }
 }

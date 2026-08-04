@@ -111,6 +111,7 @@ export default function LabPage() {
         mode: j.analysis.mode,
         prefix: j.analysis.prefix,
         suffix: j.analysis.suffix,
+        patterns: [{ prefix: j.analysis.prefix, suffix: j.analysis.suffix }],
         difficulty: j.analysis.difficulty,
         rarity: j.analysis.rarityLabel,
         forgeHref: j.analysis.forgeHref,

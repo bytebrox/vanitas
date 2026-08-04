@@ -125,7 +125,10 @@
     "entropySecLevel": "Sicherheitsstufe: ~128-Bit-Äquivalent",
     "entropyStandard": "Standard: RFC 8032",
     "unknown": "Unbekannt",
-    "continueSearch": "Weitersuchen"
+    "continueSearch": "Weitersuchen",
+    "shareCard": "Share-Card",
+    "shareCardBusy": "Wird erzeugt…",
+    "shareCardSaved": "Card gespeichert"
   },
   "nav": {
     "language": "Sprache",
@@ -2322,5 +2325,21 @@
       "blurbLaunchpad": "Custom Mint / Vanity-Adresse `{address}` (Muster `{pattern}`) im Browser über vanitas.fun erzeugt. Proof (ohne Keys): {proofUrl}",
       "blurbDiscord": "`{short}` clientseitig auf vanitas.fun auf `{pattern}` geschmiedet — Muster hier prüfen (Private Keys nicht im Link): {proofUrl}"
     }
+  },
+  "multiPattern": {
+    "title": "Alternativen",
+    "hint": "Trifft eines dieser Patterns (ODER). Der erste Treffer zählt.",
+    "add": "Alternative hinzufügen",
+    "remove": "Entfernen",
+    "altPrefix": "Präfix {n}",
+    "altSuffix": "Suffix {n}"
+  },
+  "eip55": {
+    "casings": "Case-Coach",
+    "preFindNote": "Der Grind ist case-insensitive; EIP-55 gilt nach dem Fund.",
+    "copyChecksum": "Checksum kopieren",
+    "copyLower": "Lowercase kopieren",
+    "luckScore": "Checksum-Luck: {pct}% der Vanity-Buchstaben groß ({upper}/{letters}).",
+    "postFindNote": "Wallets akzeptieren beide Formen. Beim Teilen EIP-55 bevorzugen."
   }
 }

@@ -7,10 +7,12 @@ import {
   estimateTronTime,
   normalizeTronPrefix,
 } from '@/lib/tron-validation';
+import { combineOrDifficulty, normalizePatterns, type PatternTarget } from '@/lib/patterns';
 
 interface TronDifficultyDisplayProps {
   prefix: string;
   suffix: string;
+  patterns?: PatternTarget[];
   caseSensitive: boolean;
   currentRate: number;
 }
@@ -18,6 +20,7 @@ interface TronDifficultyDisplayProps {
 export function TronDifficultyDisplay({
   prefix,
   suffix,
+  patterns,
   caseSensitive,
   currentRate,
 }: TronDifficultyDisplayProps) {
@@ -27,9 +30,17 @@ export function TronDifficultyDisplay({
     return Math.max(1, cores - 1) * 2200;
   }, [currentRate]);
 
+  const targets = useMemo(
+    () => normalizePatterns(patterns?.length ? patterns : { prefix, suffix }),
+    [patterns, prefix, suffix]
+  );
+
   const difficulty = useMemo(
-    () => estimateTronDifficulty(prefix, suffix, caseSensitive),
-    [prefix, suffix, caseSensitive]
+    () =>
+      combineOrDifficulty(
+        targets.map((p) => estimateTronDifficulty(p.prefix, p.suffix, caseSensitive))
+      ),
+    [targets, caseSensitive]
   );
   const difficultyLabel = useMemo(() => formatTronDifficulty(difficulty), [difficulty]);
   const timeEstimate = useMemo(
@@ -40,7 +51,7 @@ export function TronDifficultyDisplay({
     () => (prefix ? normalizeTronPrefix(prefix) : ''),
     [prefix]
   );
-  const hasPattern = prefix.length > 0 || suffix.length > 0;
+  const hasPattern = targets.some((p) => p.prefix.length > 0 || p.suffix.length > 0);
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4">
@@ -52,6 +63,11 @@ export function TronDifficultyDisplay({
           </span>
           <span className="text-ink/20 mx-1">…</span>
           <span className={suffix ? 'text-accent' : 'text-ink/25'}>{suffix || '····'}</span>
+          {targets.length > 1 && (
+            <span className="text-micro text-muted ml-2 normal-case tracking-normal">
+              +{targets.length - 1}
+            </span>
+          )}
         </p>
       </div>
       <div>

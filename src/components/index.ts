@@ -42,6 +42,12 @@ export { XrpPatternInput } from './XrpPatternInput';
 export { XrpDifficultyDisplay } from './XrpDifficultyDisplay';
 export { XrpResultDisplay } from './XrpResultDisplay';
 export { ShareProofButton } from './ShareProofButton';
+export { ShareCardButton } from './ShareCardButton';
+export {
+  MultiPatternField,
+  mergePatternTargets,
+  patternAlternatives,
+} from './MultiPatternField';
 export { PostFindPlaybook } from './PostFindPlaybook';
 export { ImportGuide } from './ImportGuide';
 export { LaunchKit } from './LaunchKit';

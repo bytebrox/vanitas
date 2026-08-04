@@ -12,6 +12,7 @@ import { buildVanityExportTxt } from '@/lib/export-txt';
 import { DomainSuggestions } from './DomainSuggestions';
 import { EntropyInfo } from './EntropyInfo';
 import { ShareProofButton } from './ShareProofButton';
+import { ShareCardButton } from './ShareCardButton';
 import { PostFindPlaybook } from './PostFindPlaybook';
 import { ImportGuide } from './ImportGuide';
 import { LaunchKit } from './LaunchKit';
@@ -157,6 +158,13 @@ export function ResultDisplay({ result, onReset, onContinueSearch }: ResultDispl
           </button>
           <ShareProofButton
             chain="sol"
+            address={result.publicKey}
+            matchedPattern={result.matchedPattern}
+            attempts={result.attempts}
+            duration={result.duration}
+          />
+          <ShareCardButton
+            chain={"sol"}
             address={result.publicKey}
             matchedPattern={result.matchedPattern}
             attempts={result.attempts}

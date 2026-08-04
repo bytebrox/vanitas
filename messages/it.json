@@ -125,7 +125,10 @@
     "entropySecLevel": "Livello di sicurezza: equivalente a ~128 bit",
     "entropyStandard": "Norma: RFC 8032",
     "unknown": "Sconosciuto",
-    "continueSearch": "Continue search"
+    "continueSearch": "Continue search",
+    "shareCard": "Scheda da condividere",
+    "shareCardBusy": "Generazione…",
+    "shareCardSaved": "Scheda salvata"
   },
   "nav": {
     "language": "Lingua",
@@ -2322,5 +2325,21 @@
       "blurbLaunchpad": "Mint personalizzato / indirizzo vanity `{address}` (pattern `{pattern}`) generato nel browser via vanitas.fun. Proof (senza chiavi): {proofUrl}",
       "blurbDiscord": "Forgiato `{short}` per corrispondere a `{pattern}` lato client su vanitas.fun — verifica il pattern qui (chiavi private fuori dal link): {proofUrl}"
     }
+  },
+  "multiPattern": {
+    "title": "Alternative",
+    "hint": "Corrisponde a uno di questi pattern (OR). Vince il primo.",
+    "add": "Aggiungi alternativa",
+    "remove": "Rimuovi",
+    "altPrefix": "Prefisso {n}",
+    "altSuffix": "Suffisso {n}"
+  },
+  "eip55": {
+    "casings": "Coach del case",
+    "preFindNote": "Il grind ignora il case; EIP-55 si applica dopo il find.",
+    "copyChecksum": "Copia checksum",
+    "copyLower": "Copia minuscolo",
+    "luckScore": "Fortuna checksum: {pct}% delle lettere vanity maiuscole ({upper}/{letters}).",
+    "postFindNote": "I wallet accettano entrambe le forme. Preferisci EIP-55 in condivisione."
   }
 }

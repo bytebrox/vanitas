@@ -9,6 +9,7 @@ import {
   splitMatchedPattern,
 } from '@/lib/proof-of-find';
 import { resolvePostFindProfile, shortAddress, type PostFindContext } from '@/lib/post-find';
+import { ShareCardButton } from './ShareCardButton';
 
 type Props = PostFindContext;
 
@@ -153,6 +154,17 @@ export function LaunchKit({
               onCopy={copy}
               mono
             />
+            <div className="pt-1">
+              <ShareCardButton
+                chain={chain}
+                address={address}
+                matchedPattern={matchedPattern}
+                attempts={attempts ?? 0}
+                duration={duration ?? 0}
+                mode={mode}
+                className="text-micro uppercase tracking-[0.14em] text-ink border-b border-ink pb-0.5 hover:text-accent hover:border-accent"
+              />
+            </div>
             <p className="text-micro text-muted pt-1">
               <Link href="/brand" className="text-accent hover:text-ink">
                 {t('brandLink')}

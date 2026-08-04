@@ -11,6 +11,7 @@ import { formatNumber, formatDuration } from '@/lib/format';
 import { buildVanityExportTxt } from '@/lib/export-txt';
 import { EntropyInfo } from './EntropyInfo';
 import { ShareProofButton } from './ShareProofButton';
+import { ShareCardButton } from './ShareCardButton';
 import { PostFindPlaybook } from './PostFindPlaybook';
 import { ImportGuide } from './ImportGuide';
 import { LaunchKit } from './LaunchKit';
@@ -146,6 +147,14 @@ export function TokenResultDisplay({ result, onReset, onContinueSearch }: TokenR
           </button>
           <ShareProofButton
             chain="sol"
+            address={result.publicKey}
+            matchedPattern={result.matchedPattern}
+            attempts={result.attempts}
+            duration={result.duration}
+            mode="mint"
+          />
+          <ShareCardButton
+            chain={"sol"}
             address={result.publicKey}
             matchedPattern={result.matchedPattern}
             attempts={result.attempts}

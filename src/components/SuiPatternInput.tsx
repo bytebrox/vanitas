@@ -9,6 +9,12 @@ import { useTranslations } from 'next-intl';
 import { validateSuiPrefix, validateSuiSuffix } from '@/lib/sui-validation';
 import { PatternTemplates, HEX_TEMPLATES } from './PatternTemplates';
 import { RichParagraph } from '@/lib/rich-text';
+import type { PatternTarget } from '@/lib/patterns';
+import {
+  MultiPatternField,
+  mergePatternTargets,
+  patternAlternatives,
+} from './MultiPatternField';
 
 interface SuiPatternInputProps {
   prefix: string;
@@ -16,6 +22,8 @@ interface SuiPatternInputProps {
   onPrefixChange: (value: string) => void;
   onSuffixChange: (value: string) => void;
   disabled?: boolean;
+  patterns?: PatternTarget[];
+  onPatternsChange?: (patterns: PatternTarget[]) => void;
 }
 
 export function SuiPatternInput({
@@ -24,6 +32,8 @@ export function SuiPatternInput({
   onPrefixChange,
   onSuffixChange,
   disabled = false,
+  patterns,
+  onPatternsChange,
 }: SuiPatternInputProps) {
   const t = useTranslations('common');
   const tForge = useTranslations('forge.pattern');
@@ -130,6 +140,19 @@ export function SuiPatternInput({
       </label>
 
       <RichParagraph text={tForge('ethCaseNote')} className="py-4 text-micro text-muted" />
+
+      {onPatternsChange && (
+        <div className="py-4 border-t border-ink/15">
+          <MultiPatternField
+            alternatives={patternAlternatives(patterns)}
+            disabled={disabled}
+            show0x
+            onChange={(alts) => {
+              onPatternsChange(mergePatternTargets({ prefix, suffix }, alts));
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }

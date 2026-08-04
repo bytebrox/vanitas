@@ -7,6 +7,7 @@ import { formatNumber, formatDuration } from '@/lib/format';
 import { buildVanityExportTxt } from '@/lib/export-txt';
 import { EntropyInfo } from './EntropyInfo';
 import { ShareProofButton } from './ShareProofButton';
+import { ShareCardButton } from './ShareCardButton';
 import { PostFindPlaybook } from './PostFindPlaybook';
 import { ImportGuide } from './ImportGuide';
 import { LaunchKit } from './LaunchKit';
@@ -160,6 +161,13 @@ export function XrpResultDisplay({ result, onReset, onContinueSearch }: Props) {
           </button>
           <ShareProofButton
             chain="xrp"
+            address={result.address}
+            matchedPattern={result.matchedPattern}
+            attempts={result.attempts}
+            duration={result.duration}
+          />
+          <ShareCardButton
+            chain={"xrp"}
             address={result.address}
             matchedPattern={result.matchedPattern}
             attempts={result.attempts}

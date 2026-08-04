@@ -1,6 +1,6 @@
 {
   "name": "vanitas",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "description": "Client-side vanity address forge CLI for Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano, and XRP (wallet, mint, CREATE, CREATE2)",
   "license": "MIT",
   "author": "bytebrox",

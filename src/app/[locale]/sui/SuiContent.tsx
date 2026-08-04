@@ -122,6 +122,8 @@ export function SuiContent() {
                     onPrefixChange={(value) => updateConfig({ prefix: value })}
                     onSuffixChange={(value) => updateConfig({ suffix: value })}
                     disabled={status === 'running'}
+                    patterns={config.patterns}
+                    onPatternsChange={(patterns) => updateConfig({ patterns, prefix: patterns[0]?.prefix ?? '', suffix: patterns[0]?.suffix ?? '' })}
                   />
                 </div>
 
@@ -130,6 +132,7 @@ export function SuiContent() {
                   <SuiDifficultyDisplay
                     prefix={prefix}
                     suffix={suffix}
+                    patterns={config.patterns}
                     currentRate={stats.attemptsPerSecond}
                   />
                 </div>

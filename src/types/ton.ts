@@ -1,3 +1,4 @@
+import type { PatternTarget } from '@/lib/patterns';
 /**
  * Types for TON vanity generation (Wallet v4R2)
  */
@@ -7,6 +8,8 @@ export type TonMode = 'non-bounceable' | 'bounceable';
 export interface TonGeneratorConfig {
   prefix: string;
   suffix: string;
+  /** OR-targets; falls back to prefix/suffix when empty */
+  patterns?: PatternTarget[];
   threads: number;
   mode: TonMode;
 }

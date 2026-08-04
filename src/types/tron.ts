@@ -1,3 +1,4 @@
+import type { PatternTarget } from '@/lib/patterns';
 /**
  * Types for Tron vanity generation
  */
@@ -7,6 +8,8 @@ export type TronMode = 'wallet' | 'contract';
 export interface TronGeneratorConfig {
   prefix: string;
   suffix: string;
+  /** OR-targets; falls back to prefix/suffix when empty */
+  patterns?: PatternTarget[];
   threads: number;
   caseSensitive: boolean;
   mode: TronMode;

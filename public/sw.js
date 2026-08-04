@@ -8,7 +8,7 @@
  * network.
  */
 
-const VERSION = 'v1';
+const VERSION = 'v1.11.0';
 const SHELL_CACHE = `vanitas-shell-${VERSION}`;
 const ASSET_CACHE = `vanitas-assets-${VERSION}`;
 const FONT_CACHE = `vanitas-fonts-${VERSION}`;

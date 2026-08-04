@@ -1,3 +1,4 @@
+import type { PatternTarget } from '@/lib/patterns';
 /**
  * Types for ETH / EVM vanity generation
  */
@@ -9,6 +10,8 @@ export const ETH_HEX_LOWER = '0123456789abcdef';
 export interface EthGeneratorConfig {
   prefix: string;
   suffix: string;
+  /** OR-targets; falls back to prefix/suffix when empty */
+  patterns?: PatternTarget[];
   threads: number;
   mode: EthMode;
   /** CREATE2: 32-byte hex salt (with or without 0x) — required for create2-deployer; ignored when grinding salt */

@@ -4,6 +4,12 @@ import { useState, useEffect } from 'react';
 import { validateXrpPrefix, validateXrpSuffix, xrpPrefixBody } from '@/lib/xrp-validation';
 import { PatternTemplates, XRP_TEMPLATES } from './PatternTemplates';
 import { XRP_BASE58 } from '@/types/xrp';
+import type { PatternTarget } from '@/lib/patterns';
+import {
+  MultiPatternField,
+  mergePatternTargets,
+  patternAlternatives,
+} from './MultiPatternField';
 
 interface Props {
   prefix: string;
@@ -13,6 +19,8 @@ interface Props {
   onSuffixChange: (value: string) => void;
   onCaseSensitiveChange: (value: boolean) => void;
   disabled?: boolean;
+  patterns?: PatternTarget[];
+  onPatternsChange?: (patterns: PatternTarget[]) => void;
 }
 
 export function XrpPatternInput({
@@ -23,6 +31,8 @@ export function XrpPatternInput({
   onSuffixChange,
   onCaseSensitiveChange,
   disabled = false,
+  patterns,
+  onPatternsChange,
 }: Props) {
   const [prefixError, setPrefixError] = useState<string | null>(null);
   const [suffixError, setSuffixError] = useState<string | null>(null);
@@ -114,6 +124,18 @@ export function XrpPatternInput({
           Case sensitive
         </span>
       </label>
+
+      {onPatternsChange && (
+        <div className="py-4 border-t border-ink/15">
+          <MultiPatternField
+            alternatives={patternAlternatives(patterns)}
+            disabled={disabled}
+            onChange={(alts) => {
+              onPatternsChange(mergePatternTargets({ prefix, suffix }, alts));
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }

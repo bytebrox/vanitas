@@ -125,7 +125,10 @@
     "entropySecLevel": "安全级别：~128 位等效",
     "entropyStandard": "标准：RFC 8032",
     "unknown": "未知",
-    "continueSearch": "继续搜索"
+    "continueSearch": "继续搜索",
+    "shareCard": "分享卡片",
+    "shareCardBusy": "生成中…",
+    "shareCardSaved": "卡片已保存"
   },
   "nav": {
     "language": "语言",
@@ -2322,5 +2325,21 @@
       "blurbLaunchpad": "自定义 mint / vanity 地址 `{address}`（图案 `{pattern}`）经 vanitas.fun 在浏览器中生成。Proof（无密钥）：{proofUrl}",
       "blurbDiscord": "在 vanitas.fun 客户端上将 `{short}` 锻造成匹配 `{pattern}` — 在此验证图案（链接不含私钥）：{proofUrl}"
     }
+  },
+  "multiPattern": {
+    "title": "备选图案",
+    "hint": "匹配任一图案（或）。先命中者生效。",
+    "add": "添加备选",
+    "remove": "移除",
+    "altPrefix": "前缀 {n}",
+    "altSuffix": "后缀 {n}"
+  },
+  "eip55": {
+    "casings": "大小写提示",
+    "preFindNote": "搜索不区分大小写；EIP-55 在找到后应用。",
+    "copyChecksum": "复制校验和地址",
+    "copyLower": "复制小写",
+    "luckScore": "校验和运气：{pct}% 的 vanity 字母为大写（{upper}/{letters}）。",
+    "postFindNote": "钱包接受两种形式。分享时优先使用 EIP-55。"
   }
 }

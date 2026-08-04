@@ -5,6 +5,12 @@ import { validateTronPrefix, validateTronSuffix } from '@/lib/tron-validation';
 import { TRON_BASE58 } from '@/types/tron';
 
 import { PatternTemplates, TRON_TEMPLATES } from './PatternTemplates';
+import type { PatternTarget } from '@/lib/patterns';
+import {
+  MultiPatternField,
+  mergePatternTargets,
+  patternAlternatives,
+} from './MultiPatternField';
 
 interface TronPatternInputProps {
   prefix: string;
@@ -14,6 +20,8 @@ interface TronPatternInputProps {
   onSuffixChange: (value: string) => void;
   onCaseSensitiveChange: (value: boolean) => void;
   disabled?: boolean;
+  patterns?: PatternTarget[];
+  onPatternsChange?: (patterns: PatternTarget[]) => void;
 }
 
 export function TronPatternInput({
@@ -24,6 +32,8 @@ export function TronPatternInput({
   onSuffixChange,
   onCaseSensitiveChange,
   disabled = false,
+  patterns,
+  onPatternsChange,
 }: TronPatternInputProps) {
   const [prefixError, setPrefixError] = useState<string | null>(null);
   const [suffixError, setSuffixError] = useState<string | null>(null);
@@ -113,6 +123,18 @@ export function TronPatternInput({
           </span>
         </span>
       </label>
+
+      {onPatternsChange && (
+        <div className="py-4 border-t border-ink/15">
+          <MultiPatternField
+            alternatives={patternAlternatives(patterns)}
+            disabled={disabled}
+            onChange={(alts) => {
+              onPatternsChange(mergePatternTargets({ prefix, suffix }, alts));
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }

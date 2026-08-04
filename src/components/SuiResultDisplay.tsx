@@ -11,6 +11,7 @@ import { formatNumber, formatDuration } from '@/lib/format';
 import { buildVanityExportTxt } from '@/lib/export-txt';
 import { EntropyInfo } from './EntropyInfo';
 import { ShareProofButton } from './ShareProofButton';
+import { ShareCardButton } from './ShareCardButton';
 import { PostFindPlaybook } from './PostFindPlaybook';
 import { ImportGuide } from './ImportGuide';
 import { LaunchKit } from './LaunchKit';
@@ -165,6 +166,13 @@ export function SuiResultDisplay({ result, onReset, onContinueSearch }: SuiResul
           </button>
           <ShareProofButton
             chain="sui"
+            address={result.address}
+            matchedPattern={result.matchedPattern}
+            attempts={result.attempts}
+            duration={result.duration}
+          />
+          <ShareCardButton
+            chain={"sui"}
             address={result.address}
             matchedPattern={result.matchedPattern}
             attempts={result.attempts}

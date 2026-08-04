@@ -125,7 +125,10 @@
     "entropySecLevel": "Niveau de sécurité : ~équivalent 128 bits",
     "entropyStandard": "Norme : RFC 8032",
     "unknown": "Inconnu",
-    "continueSearch": "Continue search"
+    "continueSearch": "Continue search",
+    "shareCard": "Carte à partager",
+    "shareCardBusy": "Génération…",
+    "shareCardSaved": "Carte enregistrée"
   },
   "nav": {
     "language": "Langue",
@@ -2322,5 +2325,21 @@
       "blurbLaunchpad": "Mint personnalisé / adresse vanity `{address}` (motif `{pattern}`) générée dans le navigateur via vanitas.fun. Proof (sans clés) : {proofUrl}",
       "blurbDiscord": "`{short}` forgée pour correspondre à `{pattern}` côté client sur vanitas.fun — vérifiez le motif ici (clés privées hors du lien) : {proofUrl}"
     }
+  },
+  "multiPattern": {
+    "title": "Alternatives",
+    "hint": "Correspond à l’un de ces motifs (OU). Le premier gagne.",
+    "add": "Ajouter une alternative",
+    "remove": "Retirer",
+    "altPrefix": "Préfixe {n}",
+    "altSuffix": "Suffixe {n}"
+  },
+  "eip55": {
+    "casings": "Coach de casse",
+    "preFindNote": "Le grind ignore la casse ; EIP-55 s’applique après la trouvaille.",
+    "copyChecksum": "Copier checksum",
+    "copyLower": "Copier en minuscules",
+    "luckScore": "Chance checksum : {pct}% des lettres vanity en majuscules ({upper}/{letters}).",
+    "postFindNote": "Les wallets acceptent les deux formes. Préférez EIP-55 pour partager."
   }
 }

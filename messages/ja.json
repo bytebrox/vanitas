@@ -125,7 +125,10 @@
     "entropySecLevel": "セキュリティレベル: ～128ビット相当",
     "entropyStandard": "規格: RFC 8032",
     "unknown": "未知",
-    "continueSearch": "Continue search"
+    "continueSearch": "Continue search",
+    "shareCard": "シェアカード",
+    "shareCardBusy": "生成中…",
+    "shareCardSaved": "カードを保存しました"
   },
   "nav": {
     "language": "言語",
@@ -2322,5 +2325,21 @@
       "blurbLaunchpad": "カスタム mint / vanity アドレス `{address}`（パターン `{pattern}`）を vanitas.fun のブラウザで生成。Proof（鍵なし）: {proofUrl}",
       "blurbDiscord": "vanitas.fun のクライアント側で `{short}` を `{pattern}` に合わせて鍛造 — ここでパターンを検証（リンクに秘密鍵なし）: {proofUrl}"
     }
+  },
+  "multiPattern": {
+    "title": "代替パターン",
+    "hint": "いずれかのパターンに一致（OR）。最初の一致が採用されます。",
+    "add": "代替を追加",
+    "remove": "削除",
+    "altPrefix": "接頭辞 {n}",
+    "altSuffix": "接尾辞 {n}"
+  },
+  "eip55": {
+    "casings": "ケースコーチ",
+    "preFindNote": "検索は大文字小文字を区別しません。EIP-55 は発見後に適用されます。",
+    "copyChecksum": "チェックサムをコピー",
+    "copyLower": "小文字をコピー",
+    "luckScore": "チェックサム運: バニティ文字の {pct}% が大文字 ({upper}/{letters})。",
+    "postFindNote": "ウォレットは両方の形式を受け付けます。共有時は EIP-55 を推奨。"
   }
 }

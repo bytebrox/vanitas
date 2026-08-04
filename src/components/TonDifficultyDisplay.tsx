@@ -8,34 +8,45 @@ import {
   tonAddressTag,
   tonUserPrefix,
 } from '@/lib/ton-validation';
+import { combineOrDifficulty, normalizePatterns, type PatternTarget } from '@/lib/patterns';
 import type { TonMode } from '@/types/ton';
 
 interface Props {
   prefix: string;
   suffix: string;
+  patterns?: PatternTarget[];
   mode: TonMode;
   currentRate: number;
 }
 
-export function TonDifficultyDisplay({ prefix, suffix, mode, currentRate }: Props) {
+export function TonDifficultyDisplay({ prefix, suffix, patterns, mode, currentRate }: Props) {
   const estimatedRate = useMemo(() => {
     if (currentRate > 0) return currentRate;
     const cores = typeof navigator !== 'undefined' ? navigator.hardwareConcurrency || 4 : 4;
     return Math.max(1, cores - 1) * 2000;
   }, [currentRate]);
 
+  const targets = useMemo(
+    () => normalizePatterns(patterns?.length ? patterns : { prefix, suffix }),
+    [patterns, prefix, suffix]
+  );
+
   const difficulty = useMemo(
-    () => estimateTonDifficulty(prefix, suffix, mode),
-    [prefix, suffix, mode]
+    () =>
+      combineOrDifficulty(targets.map((p) => estimateTonDifficulty(p.prefix, p.suffix, mode))),
+    [targets, mode]
   );
   const difficultyLabel = useMemo(() => formatTonDifficulty(difficulty), [difficulty]);
   const timeEstimate = useMemo(
     () => estimateTonTime(difficulty, estimatedRate),
     [difficulty, estimatedRate]
   );
-  const hasPattern = prefix.length > 0 || suffix.length > 0;
+  const hasPattern = targets.some((p) => p.prefix.length > 0 || p.suffix.length > 0);
   const userPrefix = tonUserPrefix(prefix, mode);
-  const totalChars = userPrefix.length + suffix.length;
+  const totalChars = Math.max(
+    0,
+    ...targets.map((p) => tonUserPrefix(p.prefix, mode).length + p.suffix.length)
+  );
   const tag = tonAddressTag(mode);
 
   return (
@@ -50,6 +61,11 @@ export function TonDifficultyDisplay({ prefix, suffix, mode, currentRate }: Prop
             </span>
             <span className="text-ink/20 mx-1">…</span>
             <span className={suffix ? 'text-accent' : 'text-ink/25'}>{suffix || '····'}</span>
+            {targets.length > 1 && (
+              <span className="text-micro text-muted ml-2 normal-case tracking-normal">
+                +{targets.length - 1}
+              </span>
+            )}
           </p>
         </div>
         <div>

@@ -5,10 +5,12 @@
 import { getPublicKey, utils, etc } from '@noble/secp256k1';
 import { yieldToEventLoop } from './yield';
 import { xrpClassicAddress } from '../lib/address-encoding';
+import { normalizePatterns, formatMatchedPattern } from '../lib/patterns';
 
 interface XrpGeneratorConfig {
   prefix: string;
   suffix: string;
+  patterns?: { prefix: string; suffix: string }[];
   threads: number;
   caseSensitive: boolean;
 }
@@ -62,8 +64,7 @@ let isRunning = false;
 let workerId = 0;
 
 async function generateXrpVanity(config: XrpGeneratorConfig): Promise<void> {
-  const prefix = config.prefix || '';
-  const suffix = config.suffix || '';
+  const patterns = normalizePatterns(config);
   const caseSensitive = Boolean(config.caseSensitive);
   const startTime = performance.now();
   let attempts = 0;
@@ -80,7 +81,14 @@ async function generateXrpVanity(config: XrpGeneratorConfig): Promise<void> {
       const address = xrpClassicAddress(pub);
       attempts++;
 
-      if (matches(address, prefix, suffix, caseSensitive)) {
+      let matchedTarget: { prefix: string; suffix: string } | null = null;
+      for (const target of patterns.length > 0 ? patterns : [{ prefix: '', suffix: '' }]) {
+        if (matches(address, target.prefix, target.suffix, caseSensitive)) {
+          matchedTarget = target;
+          break;
+        }
+      }
+      if (matchedTarget) {
         const duration = performance.now() - startTime;
         const result: GeneratedXrpResult = {
           address,
@@ -89,7 +97,7 @@ async function generateXrpVanity(config: XrpGeneratorConfig): Promise<void> {
           publicKey: '0x' + etc.bytesToHex(pub),
           attempts,
           duration,
-          matchedPattern: `${prefix}...${suffix}`,
+          matchedPattern: formatMatchedPattern(matchedTarget),
         };
         self.postMessage({
           type: 'found',

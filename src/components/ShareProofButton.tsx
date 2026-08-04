@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { buildProofUrl, splitMatchedPattern, type ProofChain } from '@/lib/proof-of-find';
 
 interface ShareProofButtonProps {
@@ -20,6 +21,7 @@ export function ShareProofButton({
   duration,
   mode,
 }: ShareProofButtonProps) {
+  const t = useTranslations('common');
   const [copied, setCopied] = useState(false);
 
   const onShare = () => {
@@ -52,7 +54,7 @@ export function ShareProofButton({
       onClick={onShare}
       className="text-ink border-b border-ink pb-0.5 hover:text-accent hover:border-accent"
     >
-      {copied ? 'Proof link copied' : 'Share proof'}
+      {copied ? t('proofLinkCopied') : t('shareProof')}
     </button>
   );
 }

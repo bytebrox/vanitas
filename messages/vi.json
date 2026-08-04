@@ -125,7 +125,10 @@
     "entropySecLevel": "Mức độ bảo mật: tương đương ~128-bit",
     "entropyStandard": "Tiêu chuẩn: RFC 8032",
     "unknown": "Không xác định",
-    "continueSearch": "Continue search"
+    "continueSearch": "Continue search",
+    "shareCard": "Thẻ chia sẻ",
+    "shareCardBusy": "Đang tạo…",
+    "shareCardSaved": "Đã lưu thẻ"
   },
   "nav": {
     "language": "Ngôn ngữ",
@@ -2322,5 +2325,21 @@
       "blurbLaunchpad": "Mint tùy chỉnh / địa chỉ vanity `{address}` (mẫu `{pattern}`) tạo trong trình duyệt qua vanitas.fun. Proof (không khóa): {proofUrl}",
       "blurbDiscord": "Rèn `{short}` khớp `{pattern}` phía client trên vanitas.fun — xác minh mẫu tại đây (khóa riêng không trong liên kết): {proofUrl}"
     }
+  },
+  "multiPattern": {
+    "title": "Phương án khác",
+    "hint": "Khớp bất kỳ mẫu nào (OR). Trùng đầu tiên thắng.",
+    "add": "Thêm phương án",
+    "remove": "Xóa",
+    "altPrefix": "Tiền tố {n}",
+    "altSuffix": "Hậu tố {n}"
+  },
+  "eip55": {
+    "casings": "Gợi ý chữ hoa/thường",
+    "preFindNote": "Tìm kiếm không phân biệt hoa thường; EIP-55 áp dụng sau khi tìm thấy.",
+    "copyChecksum": "Sao chép checksum",
+    "copyLower": "Sao chép chữ thường",
+    "luckScore": "May checksum: {pct}% chữ vanity viết hoa ({upper}/{letters}).",
+    "postFindNote": "Ví chấp nhận cả hai dạng. Nên dùng EIP-55 khi chia sẻ."
   }
 }

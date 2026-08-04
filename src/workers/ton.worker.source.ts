@@ -7,6 +7,7 @@ import { yieldToEventLoop } from './yield';
 import { getPublicKey, utils, etc, hashes } from '@noble/ed25519';
 import { sha512 } from '@noble/hashes/sha2.js';
 import { WalletContractV4 } from '@ton/ton';
+import { normalizePatterns, formatMatchedPattern } from '../lib/patterns';
 
 // @ton/core uses the free global `Buffer` (Buffer.alloc / .copy). In the
 // browser worker there is no Node Buffer — pin the polyfill once up front.
@@ -19,6 +20,7 @@ type TonMode = 'non-bounceable' | 'bounceable';
 interface TonGeneratorConfig {
   prefix: string;
   suffix: string;
+  patterns?: { prefix: string; suffix: string }[];
   threads: number;
   mode?: TonMode;
 }
@@ -71,8 +73,7 @@ let isRunning = false;
 let workerId = 0;
 
 async function generateTonVanity(config: TonGeneratorConfig): Promise<void> {
-  const prefix = config.prefix || '';
-  const suffix = config.suffix || '';
+  const patterns = normalizePatterns(config);
   const mode: TonMode = config.mode === 'bounceable' ? 'bounceable' : 'non-bounceable';
   const bounceable = mode === 'bounceable';
   const startTime = performance.now();
@@ -96,7 +97,14 @@ async function generateTonVanity(config: TonGeneratorConfig): Promise<void> {
       const address = bounceable ? eq : uq;
       attempts++;
 
-      if (matches(address, prefix, suffix, mode)) {
+      let matchedTarget: { prefix: string; suffix: string } | null = null;
+      for (const target of patterns.length > 0 ? patterns : [{ prefix: '', suffix: '' }]) {
+        if (matches(address, target.prefix, target.suffix, mode)) {
+          matchedTarget = target;
+          break;
+        }
+      }
+      if (matchedTarget) {
         const duration = performance.now() - startTime;
         const result: GeneratedTonResult = {
           mode,
@@ -107,7 +115,7 @@ async function generateTonVanity(config: TonGeneratorConfig): Promise<void> {
           publicKey: '0x' + etc.bytesToHex(pub),
           attempts,
           duration,
-          matchedPattern: `${prefix}...${suffix}`,
+          matchedPattern: formatMatchedPattern(matchedTarget),
         };
         self.postMessage({
           type: 'found',

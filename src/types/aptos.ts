@@ -1,3 +1,4 @@
+import type { PatternTarget } from '@/lib/patterns';
 /**
  * Types for Aptos vanity generation (Ed25519)
  */
@@ -5,6 +6,8 @@
 export interface AptosGeneratorConfig {
   prefix: string;
   suffix: string;
+  /** OR-targets; falls back to prefix/suffix when empty */
+  patterns?: PatternTarget[];
   threads: number;
 }
 

@@ -6,12 +6,14 @@ import { getPublicKey, utils, etc, hashes } from '@noble/ed25519';
 import { yieldToEventLoop } from './yield';
 import { sha512 } from '@noble/hashes/sha2.js';
 import { sha3_256 } from '@noble/hashes/sha3.js';
+import { normalizePatterns, formatMatchedPattern } from '../lib/patterns';
 
 hashes.sha512 = sha512;
 
 interface AptosGeneratorConfig {
   prefix: string;
   suffix: string;
+  patterns?: { prefix: string; suffix: string }[];
   threads: number;
 }
 
@@ -64,8 +66,10 @@ let isRunning = false;
 let workerId = 0;
 
 async function generateAptosVanity(config: AptosGeneratorConfig): Promise<void> {
-  const prefix = strip0x(config.prefix || '');
-  const suffix = strip0x(config.suffix || '');
+  const patterns = normalizePatterns(config).map((t) => ({
+    prefix: strip0x(t.prefix),
+    suffix: strip0x(t.suffix),
+  }));
   const startTime = performance.now();
   let attempts = 0;
   let lastProgressUpdate = startTime;
@@ -81,7 +85,14 @@ async function generateAptosVanity(config: AptosGeneratorConfig): Promise<void> 
       const address = aptosAddressFromPubkey(pub);
       attempts++;
 
-      if (matchesHexBody(address, prefix, suffix)) {
+      let matchedTarget: { prefix: string; suffix: string } | null = null;
+      for (const target of patterns.length > 0 ? patterns : [{ prefix: '', suffix: '' }]) {
+        if (matchesHexBody(address, target.prefix, target.suffix)) {
+          matchedTarget = target;
+          break;
+        }
+      }
+      if (matchedTarget) {
         const duration = performance.now() - startTime;
         const result: GeneratedAptosResult = {
           address,
@@ -90,7 +101,7 @@ async function generateAptosVanity(config: AptosGeneratorConfig): Promise<void> 
           publicKey: '0x' + etc.bytesToHex(pub),
           attempts,
           duration,
-          matchedPattern: `${prefix}...${suffix}`,
+          matchedPattern: formatMatchedPattern(matchedTarget),
         };
         self.postMessage({
           type: 'found',

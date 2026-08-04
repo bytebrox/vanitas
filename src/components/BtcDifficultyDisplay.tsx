@@ -7,11 +7,13 @@ import {
   estimateBtcTime,
   normalizeBtcPrefix,
 } from '@/lib/btc-validation';
+import { combineOrDifficulty, normalizePatterns, type PatternTarget } from '@/lib/patterns';
 import type { BtcMode } from '@/types/btc';
 
 interface BtcDifficultyDisplayProps {
   prefix: string;
   suffix: string;
+  patterns?: PatternTarget[];
   mode: BtcMode;
   caseSensitive: boolean;
   currentRate: number;
@@ -20,6 +22,7 @@ interface BtcDifficultyDisplayProps {
 export function BtcDifficultyDisplay({
   prefix,
   suffix,
+  patterns,
   mode,
   caseSensitive,
   currentRate,
@@ -30,9 +33,17 @@ export function BtcDifficultyDisplay({
     return Math.max(1, cores - 1) * 2000;
   }, [currentRate]);
 
+  const targets = useMemo(
+    () => normalizePatterns(patterns?.length ? patterns : { prefix, suffix }),
+    [patterns, prefix, suffix]
+  );
+
   const difficulty = useMemo(
-    () => estimateBtcDifficulty(prefix, suffix, mode, caseSensitive),
-    [prefix, suffix, mode, caseSensitive]
+    () =>
+      combineOrDifficulty(
+        targets.map((p) => estimateBtcDifficulty(p.prefix, p.suffix, mode, caseSensitive))
+      ),
+    [targets, mode, caseSensitive]
   );
   const difficultyLabel = useMemo(() => formatBtcDifficulty(difficulty), [difficulty]);
   const timeEstimate = useMemo(
@@ -43,7 +54,7 @@ export function BtcDifficultyDisplay({
     () => (prefix ? normalizeBtcPrefix(prefix, mode) : ''),
     [prefix, mode]
   );
-  const hasPattern = prefix.length > 0 || suffix.length > 0;
+  const hasPattern = targets.some((p) => p.prefix.length > 0 || p.suffix.length > 0);
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4">
@@ -55,6 +66,11 @@ export function BtcDifficultyDisplay({
           </span>
           <span className="text-ink/20 mx-1">…</span>
           <span className={suffix ? 'text-accent' : 'text-ink/25'}>{suffix || '····'}</span>
+          {targets.length > 1 && (
+            <span className="text-micro text-muted ml-2 normal-case tracking-normal">
+              +{targets.length - 1}
+            </span>
+          )}
         </p>
       </div>
       <div>

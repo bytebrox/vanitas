@@ -174,6 +174,7 @@ export class SeedGenerator {
               styleId: this.config.styleId,
               prefix: this.config.prefix,
               suffix: this.config.suffix,
+              patterns: this.config.patterns,
               caseSensitive: this.config.caseSensitive,
               startIndex: this.config.startIndex + i,
               stride: threads,

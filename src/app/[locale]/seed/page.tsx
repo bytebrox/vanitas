@@ -13,6 +13,9 @@ import {
   DocsToc,
   GeneratorControls,
   StatsDisplay,
+  MultiPatternField,
+  mergePatternTargets,
+  patternAlternatives,
 } from '@/components';
 import { RichParagraph } from '@/lib/rich-text';
 import { useSeedGenerator } from '@/hooks/useSeedGenerator';
@@ -23,6 +26,7 @@ import {
   renderPath,
   pathStyleById,
 } from '@/workers/seed-derivation';
+import { tryChecksumAddress } from '@/lib/eip55';
 
 export default function SeedPage() {
   const t = useTranslations('tools.seed');
@@ -46,7 +50,10 @@ export default function SeedPage() {
   const style = pathStyleById(config.styleId) ?? SEED_PATH_STYLES[0];
   const mnemonicWords = config.mnemonic.trim() ? config.mnemonic.trim().split(/\s+/) : [];
   const mnemonicValid = mnemonicWords.length > 0 && isValidMnemonic(config.mnemonic);
-  const hasPattern = config.prefix.length > 0 || config.suffix.length > 0;
+  const hasPattern =
+    config.prefix.length > 0 ||
+    config.suffix.length > 0 ||
+    (config.patterns?.some((p) => p.prefix || p.suffix) ?? false);
   const canStart = mnemonicValid && hasPattern && status !== 'running';
 
   const copy = useCallback((value: string, id: string) => {
@@ -199,7 +206,16 @@ export default function SeedPage() {
                     </span>
                     <input
                       value={config.prefix}
-                      onChange={(e) => { updateConfig({ prefix: e.target.value }); }}
+                      onChange={(e) => {
+                        const nextPrefix = e.target.value;
+                        updateConfig({
+                          prefix: nextPrefix,
+                          patterns: mergePatternTargets(
+                            { prefix: nextPrefix, suffix: config.suffix },
+                            patternAlternatives(config.patterns)
+                          ),
+                        });
+                      }}
                       spellCheck={false}
                       disabled={status === 'running'}
                       className="mt-2 w-full border border-ink/20 bg-surface px-3 py-2.5 font-mono text-ink text-sm focus:outline-none focus:border-accent disabled:opacity-60"
@@ -212,7 +228,16 @@ export default function SeedPage() {
                     </span>
                     <input
                       value={config.suffix}
-                      onChange={(e) => { updateConfig({ suffix: e.target.value }); }}
+                      onChange={(e) => {
+                        const nextSuffix = e.target.value;
+                        updateConfig({
+                          suffix: nextSuffix,
+                          patterns: mergePatternTargets(
+                            { prefix: config.prefix, suffix: nextSuffix },
+                            patternAlternatives(config.patterns)
+                          ),
+                        });
+                      }}
                       spellCheck={false}
                       disabled={status === 'running'}
                       className="mt-2 w-full border border-ink/20 bg-surface px-3 py-2.5 font-mono text-ink text-sm focus:outline-none focus:border-accent disabled:opacity-60"
@@ -220,6 +245,25 @@ export default function SeedPage() {
                     />
                   </label>
                 </div>
+
+                <MultiPatternField
+                  alternatives={patternAlternatives(config.patterns)}
+                  disabled={status === 'running'}
+                  show0x={style.chain === 'evm'}
+                  sanitize={
+                    style.chain === 'evm'
+                      ? (v) => v.replace(/^0x/i, '').replace(/[^0-9a-fA-F]/g, '').slice(0, 8)
+                      : undefined
+                  }
+                  onChange={(alts) => {
+                    updateConfig({
+                      patterns: mergePatternTargets(
+                        { prefix: config.prefix, suffix: config.suffix },
+                        alts
+                      ),
+                    });
+                  }}
+                />
 
                 <p className="text-micro text-muted">{alphabetHint}</p>
 
@@ -254,7 +298,9 @@ export default function SeedPage() {
                           {tCommon('publicAddress')}
                         </p>
                         <p className="font-mono text-sm sm:text-base text-ink break-all">
-                          {result.address}
+                          {style.chain === 'evm'
+                            ? tryChecksumAddress(result.address) || result.address
+                            : result.address}
                         </p>
                       </div>
                       <div>
@@ -273,7 +319,13 @@ export default function SeedPage() {
                         </button>
                         <button
                           type="button"
-                          onClick={() => { copy(result.address, 'address'); }}
+                          onClick={() => {
+                            const addr =
+                              style.chain === 'evm'
+                                ? tryChecksumAddress(result.address) || result.address
+                                : result.address;
+                            copy(addr, 'address');
+                          }}
                           className="text-muted hover:text-ink"
                         >
                           {copied === 'address' ? tCommon('copied') : t('copyAddress')}

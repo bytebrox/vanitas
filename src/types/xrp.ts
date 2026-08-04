@@ -1,3 +1,4 @@
+import type { PatternTarget } from '@/lib/patterns';
 /**
  * Types for XRPL classic vanity generation (`r…`)
  */
@@ -5,6 +6,8 @@
 export interface XrpGeneratorConfig {
   prefix: string;
   suffix: string;
+  /** OR-targets; falls back to prefix/suffix when empty */
+  patterns?: PatternTarget[];
   threads: number;
   caseSensitive: boolean;
 }

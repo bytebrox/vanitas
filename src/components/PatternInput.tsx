@@ -8,14 +8,22 @@ import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { validatePrefix, validateSuffix } from '@/lib/validation';
 import { RichParagraph } from '@/lib/rich-text';
+import type { PatternTarget } from '@/lib/patterns';
+import {
+  MultiPatternField,
+  mergePatternTargets,
+  patternAlternatives,
+} from './MultiPatternField';
 
 interface PatternInputProps {
   prefix: string;
   suffix: string;
   caseSensitive: boolean;
+  patterns?: PatternTarget[];
   onPrefixChange: (value: string) => void;
   onSuffixChange: (value: string) => void;
   onCaseSensitiveChange: (value: boolean) => void;
+  onPatternsChange?: (patterns: PatternTarget[]) => void;
   disabled?: boolean;
 }
 
@@ -23,9 +31,11 @@ export function PatternInput({
   prefix,
   suffix,
   caseSensitive,
+  patterns,
   onPrefixChange,
   onSuffixChange,
   onCaseSensitiveChange,
+  onPatternsChange,
   disabled = false,
 }: PatternInputProps) {
   const t = useTranslations('common');
@@ -43,6 +53,17 @@ export function PatternInput({
     setSuffixError(result.valid ? null : result.error || null);
   }, [suffix, caseSensitive]);
 
+  const setPrimary = (nextPrefix: string, nextSuffix: string) => {
+    onPrefixChange(nextPrefix);
+    onSuffixChange(nextSuffix);
+    onPatternsChange?.(
+      mergePatternTargets(
+        { prefix: nextPrefix, suffix: nextSuffix },
+        patternAlternatives(patterns)
+      )
+    );
+  };
+
   return (
     <div className="space-y-0 divide-y divide-ink/15 border-y border-ink/15">
       <label className="grid grid-cols-1 sm:grid-cols-[7rem_1fr] gap-2 sm:gap-6 py-4 sm:py-5 items-start cursor-text">
@@ -52,7 +73,9 @@ export function PatternInput({
             id="prefix"
             type="text"
             value={prefix}
-            onChange={(e) => { onPrefixChange(e.target.value); }}
+            onChange={(e) => {
+              setPrimary(e.target.value, suffix);
+            }}
             placeholder={tForge('solPrefixPh')}
             maxLength={8}
             disabled={disabled}
@@ -72,7 +95,9 @@ export function PatternInput({
             id="suffix"
             type="text"
             value={suffix}
-            onChange={(e) => { onSuffixChange(e.target.value); }}
+            onChange={(e) => {
+              setPrimary(prefix, e.target.value);
+            }}
             placeholder={tForge('solSuffixPh')}
             maxLength={8}
             disabled={disabled}
@@ -92,7 +117,9 @@ export function PatternInput({
             id="caseSensitive"
             type="checkbox"
             checked={caseSensitive}
-            onChange={(e) => { onCaseSensitiveChange(e.target.checked); }}
+            onChange={(e) => {
+              onCaseSensitiveChange(e.target.checked);
+            }}
             disabled={disabled}
             className="w-5 h-5 sm:w-4 sm:h-4 accent-ink"
           />
@@ -101,6 +128,18 @@ export function PatternInput({
       </div>
 
       <RichParagraph text={tForge('solAlphabet')} className="py-4 text-micro text-muted" />
+
+      {onPatternsChange && (
+        <div className="py-4">
+          <MultiPatternField
+            alternatives={patternAlternatives(patterns)}
+            disabled={disabled}
+            onChange={(alts) => {
+              onPatternsChange(mergePatternTargets({ prefix, suffix }, alts));
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }

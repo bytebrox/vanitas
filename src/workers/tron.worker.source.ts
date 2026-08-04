@@ -7,12 +7,14 @@ import { getPublicKey, utils, etc } from '@noble/secp256k1';
 import { yieldToEventLoop } from './yield';
 import { keccak_256 } from '@noble/hashes/sha3.js';
 import { tronAddressFromEth20 } from '../lib/address-encoding';
+import { normalizePatterns, formatMatchedPattern } from '../lib/patterns';
 
 type TronMode = 'wallet' | 'contract';
 
 interface TronGeneratorConfig {
   prefix: string;
   suffix: string;
+  patterns?: { prefix: string; suffix: string }[];
   threads: number;
   caseSensitive: boolean;
   mode?: TronMode;
@@ -79,8 +81,7 @@ let isRunning = false;
 let workerId = 0;
 
 async function generateTronVanity(config: TronGeneratorConfig): Promise<void> {
-  const prefix = config.prefix || '';
-  const suffix = config.suffix || '';
+  const patterns = normalizePatterns(config);
   const caseSensitive = Boolean(config.caseSensitive);
   const mode: TronMode = config.mode === 'contract' ? 'contract' : 'wallet';
   const startTime = performance.now();
@@ -108,7 +109,14 @@ async function generateTronVanity(config: TronGeneratorConfig): Promise<void> {
 
       attempts++;
 
-      if (matches(address, prefix, suffix, caseSensitive)) {
+      let matchedTarget: { prefix: string; suffix: string } | null = null;
+      for (const target of patterns.length > 0 ? patterns : [{ prefix: '', suffix: '' }]) {
+        if (matches(address, target.prefix, target.suffix, caseSensitive)) {
+          matchedTarget = target;
+          break;
+        }
+      }
+      if (matchedTarget) {
         const duration = performance.now() - startTime;
         const result: GeneratedTronResult = {
           mode,
@@ -118,7 +126,7 @@ async function generateTronVanity(config: TronGeneratorConfig): Promise<void> {
           deployerAddress,
           attempts,
           duration,
-          matchedPattern: `${prefix}...${suffix}`,
+          matchedPattern: formatMatchedPattern(matchedTarget),
         };
         self.postMessage({
           type: 'found',

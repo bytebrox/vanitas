@@ -11,12 +11,14 @@
 import { getPublicKey, utils, etc } from '@noble/secp256k1';
 import { yieldToEventLoop } from './yield';
 import { keccak_256 } from '@noble/hashes/sha3.js';
+import { normalizePatterns, formatMatchedPattern } from '../lib/patterns';
 
 type EthMode = 'wallet' | 'contract' | 'create2-salt' | 'create2-deployer';
 
 interface EthGeneratorConfig {
   prefix: string;
   suffix: string;
+  patterns?: { prefix: string; suffix: string }[];
   threads: number;
   mode: EthMode;
   create2Salt?: string;
@@ -104,8 +106,10 @@ let isRunning = false;
 let workerId = 0;
 
 async function generateEthVanity(config: EthGeneratorConfig): Promise<void> {
-  const prefix = strip0x(config.prefix || '');
-  const suffix = strip0x(config.suffix || '');
+  const patterns = normalizePatterns(config).map((t) => ({
+    prefix: strip0x(t.prefix),
+    suffix: strip0x(t.suffix),
+  }));
   const mode = config.mode || 'wallet';
   const startTime = performance.now();
   let attempts = 0;
@@ -183,7 +187,14 @@ async function generateEthVanity(config: EthGeneratorConfig): Promise<void> {
         }
       }
 
-      if (matchesHexBody(targetAddress, prefix, suffix)) {
+      let matchedTarget: { prefix: string; suffix: string } | null = null;
+      for (const target of patterns.length > 0 ? patterns : [{ prefix: '', suffix: '' }]) {
+        if (matchesHexBody(targetAddress, target.prefix, target.suffix)) {
+          matchedTarget = target;
+          break;
+        }
+      }
+      if (matchedTarget) {
         const duration = performance.now() - startTime;
         const result: GeneratedEthResult = {
           mode,
@@ -195,7 +206,7 @@ async function generateEthVanity(config: EthGeneratorConfig): Promise<void> {
           create2InitCodeHash: resultInitHash,
           attempts,
           duration,
-          matchedPattern: `${prefix}...${suffix}`,
+          matchedPattern: formatMatchedPattern(matchedTarget),
         };
         self.postMessage({
           type: 'found',

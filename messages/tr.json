@@ -125,7 +125,10 @@
     "entropySecLevel": "Güvenlik düzeyi: ~128 bit eşdeğeri",
     "entropyStandard": "Standart: RFC 8032",
     "unknown": "Bilinmiyor",
-    "continueSearch": "Aramaya devam et"
+    "continueSearch": "Aramaya devam et",
+    "shareCard": "Paylaşım kartı",
+    "shareCardBusy": "Oluşturuluyor…",
+    "shareCardSaved": "Kart kaydedildi"
   },
   "nav": {
     "language": "Dil",
@@ -2322,5 +2325,21 @@
       "blurbLaunchpad": "Özel mint / vanity adres `{address}` (kalıp `{pattern}`) tarayıcıda vanitas.fun ile üretildi. Proof (anahtarsız): {proofUrl}",
       "blurbDiscord": "`{pattern}` ile eşleşecek şekilde vanitas.fun’da istemci tarafında `{short}` dövüldü — kalıbı burada doğrulayın (özel anahtarlar bağlantıda yok): {proofUrl}"
     }
+  },
+  "multiPattern": {
+    "title": "Alternatifler",
+    "hint": "Bu kalıplardan herhangi biri (VEYA). İlk eşleşme geçerli.",
+    "add": "Alternatif ekle",
+    "remove": "Kaldır",
+    "altPrefix": "Önek {n}",
+    "altSuffix": "Sonek {n}"
+  },
+  "eip55": {
+    "casings": "Büyük/küçük harf koçu",
+    "preFindNote": "Arama büyük/küçük harfe duyarsızdır; EIP-55 bulgudan sonra uygulanır.",
+    "copyChecksum": "Checksum kopyala",
+    "copyLower": "Küçük harf kopyala",
+    "luckScore": "Checksum şansı: vanity harflerin %{pct}’i büyük ({upper}/{letters}).",
+    "postFindNote": "Cüzdanlar her iki biçimi kabul eder. Paylaşırken EIP-55 tercih edin."
   }
 }

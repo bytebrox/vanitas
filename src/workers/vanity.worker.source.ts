@@ -14,6 +14,7 @@
 
 import { keyPairFromSeed } from 'watsign';
 import { yieldToEventLoop } from './yield';
+import { normalizePatterns, formatMatchedPattern } from '../lib/patterns';
 
 // Check if native Ed25519 is supported
 let useNativeCrypto = false;
@@ -89,6 +90,7 @@ function base64UrlDecode(base64url: string): Uint8Array {
 interface GeneratorConfig {
   prefix: string;
   suffix: string;
+  patterns?: { prefix: string; suffix: string }[];
   caseSensitive: boolean;
   threads: number;
 }
@@ -180,7 +182,8 @@ let workerId = 0;
  * Main generation loop using watsign WASM
  */
 async function generateVanityAddress(config: GeneratorConfig): Promise<void> {
-  const { prefix, suffix, caseSensitive } = config;
+  const { caseSensitive } = config;
+  const patterns = normalizePatterns(config);
   await nativeReady;
   const startTime = performance.now();
   let attempts = 0;
@@ -214,7 +217,14 @@ async function generateVanityAddress(config: GeneratorConfig): Promise<void> {
       const publicKeyBase58 = base58Encode(publicKey);
       attempts++;
       
-      if (matchesPattern(publicKeyBase58, prefix, suffix, caseSensitive)) {
+      let matchedTarget: { prefix: string; suffix: string } | null = null;
+      for (const target of patterns.length > 0 ? patterns : [{ prefix: '', suffix: '' }]) {
+        if (matchesPattern(publicKeyBase58, target.prefix, target.suffix, caseSensitive)) {
+          matchedTarget = target;
+          break;
+        }
+      }
+      if (matchedTarget) {
         const endTime = performance.now();
         const duration = endTime - startTime;
         
@@ -226,7 +236,7 @@ async function generateVanityAddress(config: GeneratorConfig): Promise<void> {
           secretKey: new Uint8Array(secretKey),
           attempts,
           duration,
-          matchedPattern: `${prefix}...${suffix}`,
+          matchedPattern: formatMatchedPattern(matchedTarget),
         };
         
         const message: WorkerOutboundMessage = {

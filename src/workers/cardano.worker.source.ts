@@ -6,12 +6,14 @@ import { getPublicKey, utils, etc, hashes } from '@noble/ed25519';
 import { yieldToEventLoop } from './yield';
 import { sha512 } from '@noble/hashes/sha2.js';
 import { cardanoEnterpriseAddress } from '../lib/address-encoding';
+import { normalizePatterns, formatMatchedPattern } from '../lib/patterns';
 
 hashes.sha512 = sha512;
 
 interface CardanoGeneratorConfig {
   prefix: string;
   suffix: string;
+  patterns?: { prefix: string; suffix: string }[];
   threads: number;
 }
 
@@ -66,8 +68,7 @@ let isRunning = false;
 let workerId = 0;
 
 async function generateCardanoVanity(config: CardanoGeneratorConfig): Promise<void> {
-  const prefix = config.prefix || '';
-  const suffix = config.suffix || '';
+  const patterns = normalizePatterns(config);
   const startTime = performance.now();
   let attempts = 0;
   let lastProgressUpdate = startTime;
@@ -83,7 +84,14 @@ async function generateCardanoVanity(config: CardanoGeneratorConfig): Promise<vo
       const address = cardanoEnterpriseAddress(pub);
       attempts++;
 
-      if (matches(address, prefix, suffix)) {
+      let matchedTarget: { prefix: string; suffix: string } | null = null;
+      for (const target of patterns.length > 0 ? patterns : [{ prefix: '', suffix: '' }]) {
+        if (matches(address, target.prefix, target.suffix)) {
+          matchedTarget = target;
+          break;
+        }
+      }
+      if (matchedTarget) {
         const duration = performance.now() - startTime;
         const result: GeneratedCardanoResult = {
           address,
@@ -92,7 +100,7 @@ async function generateCardanoVanity(config: CardanoGeneratorConfig): Promise<vo
           publicKey: '0x' + etc.bytesToHex(pub),
           attempts,
           duration,
-          matchedPattern: `${prefix}...${suffix}`,
+          matchedPattern: formatMatchedPattern(matchedTarget),
         };
         self.postMessage({
           type: 'found',

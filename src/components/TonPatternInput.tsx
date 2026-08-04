@@ -9,6 +9,12 @@ import {
 } from '@/lib/ton-validation';
 import { PatternTemplates, TON_TEMPLATES } from './PatternTemplates';
 import { TON_BASE64URL, type TonMode } from '@/types/ton';
+import type { PatternTarget } from '@/lib/patterns';
+import {
+  MultiPatternField,
+  mergePatternTargets,
+  patternAlternatives,
+} from './MultiPatternField';
 
 interface Props {
   prefix: string;
@@ -17,6 +23,8 @@ interface Props {
   onPrefixChange: (value: string) => void;
   onSuffixChange: (value: string) => void;
   disabled?: boolean;
+  patterns?: PatternTarget[];
+  onPatternsChange?: (patterns: PatternTarget[]) => void;
 }
 
 export function TonPatternInput({
@@ -26,6 +34,8 @@ export function TonPatternInput({
   onPrefixChange,
   onSuffixChange,
   disabled = false,
+  patterns,
+  onPatternsChange,
 }: Props) {
   const [prefixError, setPrefixError] = useState<string | null>(null);
   const [suffixError, setSuffixError] = useState<string | null>(null);
@@ -106,6 +116,18 @@ export function TonPatternInput({
           {suffixError && <p className="text-micro text-accent mt-1">{suffixError}</p>}
         </div>
       </label>
+
+      {onPatternsChange && (
+        <div className="py-4 border-t border-ink/15">
+          <MultiPatternField
+            alternatives={patternAlternatives(patterns)}
+            disabled={disabled}
+            onChange={(alts) => {
+              onPatternsChange(mergePatternTargets({ prefix, suffix }, alts));
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }

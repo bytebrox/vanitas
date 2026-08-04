@@ -6,16 +6,16 @@
  */
 
 export const WORKER_INTEGRITY: Record<string, string> = {
-  "/vanity-worker.js": "sha256-dd3ba4ae8e811121f9281a39cfb0fb9ee501c8d3237bfcc24164fe515f378537",
-  "/eth-worker.js": "sha256-8a2ccfa7e7ab6689d89a984ff1d26ddeab6901626007145099ffd135457ca9be",
-  "/btc-worker.js": "sha256-813640f61c27344a6120f546d1f5cb03fe22824e6db7216c377fd5c8342ec7ea",
-  "/tron-worker.js": "sha256-030f606770be55634a8a17df0aee5677aa6b09efeca01d4393c2dbf41e3f7025",
-  "/aptos-worker.js": "sha256-5cf7b03b3da1a472813452ecf00c74e73f525496b030b3960235137a6b743997",
-  "/sui-worker.js": "sha256-9e0abcc1d5be2b748e870784ee7f0c7771a54b19cd8b048db6430a36ac86bd21",
-  "/ton-worker.js": "sha256-adf1d8d57155bbc5541916a9773ec14d8680140c798c90ee227fd927c43fa965",
-  "/cardano-worker.js": "sha256-0df1ef2971de59eaa86dbb05457f232bfa87e17067f9b957dc8b7b0eced7f27a",
-  "/xrp-worker.js": "sha256-adbac01d31b9ad13ec595c3b43cb2d3961e3c69efa60f1b1de6f0da289ee358d",
-  "/seed-worker.js": "sha256-b086182f06335db6b3c4967e5859b741c1595598cb63eec1a708062e1c7776a7"
+  "/vanity-worker.js": "sha256-02c9c78a06717f1397b705c4cb02a34b2991053fbdbf403026161e08b6f05531",
+  "/eth-worker.js": "sha256-2087c1aa870f500eb1cdf55b2a8f43b5be7429b38635e8789fb7c3f4fada3b67",
+  "/btc-worker.js": "sha256-ee298ec5c825192930007dab65cccee6ddddc112dfb0e25ff7ebb53ea91db33d",
+  "/tron-worker.js": "sha256-0ba21a3b6c8f0020c3e0dd18601401600945a64d5a515b994ba331be944be5e6",
+  "/aptos-worker.js": "sha256-9eadb8afdaf7ce370f759485b28e1e5e651e928cd6612c66f92987460c77426c",
+  "/sui-worker.js": "sha256-e0519b1f115bae644af29b8c5cf8c164759d7c4bc1540c25f749caeaa0cb3f79",
+  "/ton-worker.js": "sha256-db5f8b35c880f0ff76f17fb47bdb86d549030a753a064892022e570899dfc83b",
+  "/cardano-worker.js": "sha256-c2704ffa88cb0c305d6282e9ef0894637a0da8c609f30bb942aaa4de4db67b05",
+  "/xrp-worker.js": "sha256-4d54d197a3982c40095339e3d6d0cc233db44a40b530473da43eee86ce1cdda8",
+  "/seed-worker.js": "sha256-d8c0f5c9d34c56ba82a3fc0b28deaf50f35e0151607fd4360b23e69b1739b987"
 };
 
-export const WORKER_INTEGRITY_BUILT = "2026-07-29T12:58:09.889Z";
+export const WORKER_INTEGRITY_BUILT = "2026-08-04T11:19:00.710Z";

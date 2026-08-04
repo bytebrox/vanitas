@@ -4,30 +4,43 @@
  * ETH hex pattern fields — ledger rows
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { validateEthPrefix, validateEthSuffix } from '@/lib/eth-validation';
 import { RichParagraph } from '@/lib/rich-text';
+import type { PatternTarget } from '@/lib/patterns';
+import { suggestPatternCasings } from '@/lib/eip55';
+import {
+  MultiPatternField,
+  mergePatternTargets,
+  patternAlternatives,
+} from './MultiPatternField';
 
 interface EthPatternInputProps {
   prefix: string;
   suffix: string;
+  patterns?: PatternTarget[];
   onPrefixChange: (value: string) => void;
   onSuffixChange: (value: string) => void;
+  onPatternsChange?: (patterns: PatternTarget[]) => void;
   disabled?: boolean;
 }
 
 export function EthPatternInput({
   prefix,
   suffix,
+  patterns,
   onPrefixChange,
   onSuffixChange,
+  onPatternsChange,
   disabled = false,
 }: EthPatternInputProps) {
   const t = useTranslations('common');
   const tForge = useTranslations('forge.pattern');
+  const tEip = useTranslations('eip55');
   const [prefixError, setPrefixError] = useState<string | null>(null);
   const [suffixError, setSuffixError] = useState<string | null>(null);
+  const [strippedHint, setStrippedHint] = useState<string | null>(null);
 
   useEffect(() => {
     const result = validateEthPrefix(prefix);
@@ -39,20 +52,33 @@ export function EthPatternInput({
     setSuffixError(result.valid ? null : result.error || null);
   }, [suffix]);
 
-  const [strippedHint, setStrippedHint] = useState<string | null>(null);
-
   const sanitize = (value: string) => {
     const withoutOx = value.replace(/^0x/i, '');
     const cleaned = withoutOx.replace(/[^0-9a-fA-F]/g, '').slice(0, 8);
-    const removed = withoutOx
-      .replace(/[0-9a-fA-F]/g, '')
-      .replace(/\s/g, '');
+    const removed = withoutOx.replace(/[0-9a-fA-F]/g, '').replace(/\s/g, '');
     if (removed.length > 0) {
       const unique = [...new Set(removed.split(''))].join(' ');
       setStrippedHint(unique);
     }
     return cleaned;
   };
+
+  const setPrimary = (nextPrefix: string, nextSuffix: string) => {
+    onPrefixChange(nextPrefix);
+    onSuffixChange(nextSuffix);
+    onPatternsChange?.(
+      mergePatternTargets({ prefix: nextPrefix, suffix: nextSuffix }, patternAlternatives(patterns))
+    );
+  };
+
+  const prefixCasings = useMemo(
+    () => (prefix && !prefixError ? suggestPatternCasings(prefix) : []),
+    [prefix, prefixError]
+  );
+  const suffixCasings = useMemo(
+    () => (suffix && !suffixError ? suggestPatternCasings(suffix) : []),
+    [suffix, suffixError]
+  );
 
   return (
     <div className="space-y-0 divide-y divide-ink/15 border-y border-ink/15">
@@ -79,7 +105,9 @@ export function EthPatternInput({
               id="eth-prefix"
               type="text"
               value={prefix}
-              onChange={(e) => { onPrefixChange(sanitize(e.target.value)); }}
+              onChange={(e) => {
+                setPrimary(sanitize(e.target.value), suffix);
+              }}
               placeholder={tForge('ethPrefixPh')}
               maxLength={8}
               spellCheck={false}
@@ -92,6 +120,24 @@ export function EthPatternInput({
           </div>
           <p className="text-micro text-muted mt-2">{tForge('ethAfter0x')}</p>
           {prefixError && <p className="text-micro text-accent mt-1">{prefixError}</p>}
+          {prefixCasings.length > 1 && (
+            <div className="mt-3 flex flex-wrap gap-2 items-center">
+              <span className="text-micro uppercase tracking-[0.12em] text-muted">{tEip('casings')}</span>
+              {prefixCasings.map((c) => (
+                <button
+                  key={`p-${c}`}
+                  type="button"
+                  disabled={disabled}
+                  onClick={() => {
+                    setPrimary(c, suffix);
+                  }}
+                  className="font-mono text-micro text-ink/80 hover:text-accent border-b border-ink/20 hover:border-accent pb-0.5"
+                >
+                  {c}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </label>
 
@@ -102,7 +148,9 @@ export function EthPatternInput({
             id="eth-suffix"
             type="text"
             value={suffix}
-            onChange={(e) => { onSuffixChange(sanitize(e.target.value)); }}
+            onChange={(e) => {
+              setPrimary(prefix, sanitize(e.target.value));
+            }}
             placeholder={tForge('ethSuffixPh')}
             maxLength={8}
             spellCheck={false}
@@ -114,10 +162,45 @@ export function EthPatternInput({
           />
           <p className="text-micro text-muted mt-2">{t('endsAddress')}</p>
           {suffixError && <p className="text-micro text-accent mt-1">{suffixError}</p>}
+          {suffixCasings.length > 1 && (
+            <div className="mt-3 flex flex-wrap gap-2 items-center">
+              <span className="text-micro uppercase tracking-[0.12em] text-muted">{tEip('casings')}</span>
+              {suffixCasings.map((c) => (
+                <button
+                  key={`s-${c}`}
+                  type="button"
+                  disabled={disabled}
+                  onClick={() => {
+                    setPrimary(prefix, c);
+                  }}
+                  className="font-mono text-micro text-ink/80 hover:text-accent border-b border-ink/20 hover:border-accent pb-0.5"
+                >
+                  {c}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </label>
 
-      <RichParagraph text={tForge('ethCaseNote')} className="py-4 text-micro text-muted" />
+      <div className="py-4 space-y-2">
+        <RichParagraph text={tForge('ethCaseNote')} className="text-micro text-muted" />
+        <p className="text-micro text-muted leading-relaxed">{tEip('preFindNote')}</p>
+      </div>
+
+      {onPatternsChange && (
+        <div className="py-4">
+          <MultiPatternField
+            alternatives={patternAlternatives(patterns)}
+            disabled={disabled}
+            show0x
+            sanitize={sanitize}
+            onChange={(alts) => {
+              onPatternsChange(mergePatternTargets({ prefix, suffix }, alts));
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }

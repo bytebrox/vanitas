@@ -7,10 +7,12 @@ import {
   estimateXrpTime,
   xrpPrefixBody,
 } from '@/lib/xrp-validation';
+import { combineOrDifficulty, normalizePatterns, type PatternTarget } from '@/lib/patterns';
 
 interface Props {
   prefix: string;
   suffix: string;
+  patterns?: PatternTarget[];
   caseSensitive: boolean;
   currentRate: number;
 }
@@ -18,6 +20,7 @@ interface Props {
 export function XrpDifficultyDisplay({
   prefix,
   suffix,
+  patterns,
   caseSensitive,
   currentRate,
 }: Props) {
@@ -27,9 +30,17 @@ export function XrpDifficultyDisplay({
     return Math.max(1, cores - 1) * 8000;
   }, [currentRate]);
 
+  const targets = useMemo(
+    () => normalizePatterns(patterns?.length ? patterns : { prefix, suffix }),
+    [patterns, prefix, suffix]
+  );
+
   const difficulty = useMemo(
-    () => estimateXrpDifficulty(prefix, suffix, caseSensitive),
-    [prefix, suffix, caseSensitive]
+    () =>
+      combineOrDifficulty(
+        targets.map((p) => estimateXrpDifficulty(p.prefix, p.suffix, caseSensitive))
+      ),
+    [targets, caseSensitive]
   );
   const difficultyLabel = useMemo(() => formatXrpDifficulty(difficulty), [difficulty]);
   const timeEstimate = useMemo(
@@ -37,8 +48,13 @@ export function XrpDifficultyDisplay({
     [difficulty, estimatedRate]
   );
   const body = xrpPrefixBody(prefix);
-  const hasPattern = body.length > 0 || suffix.length > 0;
-  const totalChars = body.length + suffix.length;
+  const hasPattern = targets.some(
+    (p) => xrpPrefixBody(p.prefix).length > 0 || p.suffix.length > 0
+  );
+  const totalChars = Math.max(
+    0,
+    ...targets.map((p) => xrpPrefixBody(p.prefix).length + p.suffix.length)
+  );
 
   return (
     <div className="space-y-4">
@@ -50,6 +66,11 @@ export function XrpDifficultyDisplay({
             <span className={body ? 'text-accent' : 'text-ink/25'}>{body || '····'}</span>
             <span className="text-ink/20 mx-1">…</span>
             <span className={suffix ? 'text-accent' : 'text-ink/25'}>{suffix || '····'}</span>
+            {targets.length > 1 && (
+              <span className="text-micro text-muted ml-2 normal-case tracking-normal">
+                +{targets.length - 1}
+              </span>
+            )}
           </p>
         </div>
         <div>

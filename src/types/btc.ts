@@ -1,3 +1,4 @@
+import type { PatternTarget } from '@/lib/patterns';
 /**
  * Types for Bitcoin vanity generation
  */
@@ -7,6 +8,8 @@ export type BtcMode = 'legacy' | 'segwit' | 'taproot';
 export interface BtcGeneratorConfig {
   prefix: string;
   suffix: string;
+  /** OR-targets; falls back to prefix/suffix when empty */
+  patterns?: PatternTarget[];
   threads: number;
   mode: BtcMode;
   /** Legacy Base58 is case-sensitive; SegWit/Taproot are always lowercase */

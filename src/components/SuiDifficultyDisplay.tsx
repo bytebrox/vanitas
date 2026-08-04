@@ -10,16 +10,19 @@ import {
   formatSuiDifficulty,
   estimateSuiTime,
 } from '@/lib/sui-validation';
+import { combineOrDifficulty, normalizePatterns, type PatternTarget } from '@/lib/patterns';
 
 interface SuiDifficultyDisplayProps {
   prefix: string;
   suffix: string;
+  patterns?: PatternTarget[];
   currentRate: number;
 }
 
 export function SuiDifficultyDisplay({
   prefix,
   suffix,
+  patterns,
   currentRate,
 }: SuiDifficultyDisplayProps) {
   const estimatedRate = useMemo(() => {
@@ -30,9 +33,14 @@ export function SuiDifficultyDisplay({
     return workers * 8000;
   }, [currentRate]);
 
+  const targets = useMemo(
+    () => normalizePatterns(patterns?.length ? patterns : { prefix, suffix }),
+    [patterns, prefix, suffix]
+  );
+
   const difficulty = useMemo(
-    () => estimateSuiDifficulty(prefix, suffix),
-    [prefix, suffix]
+    () => combineOrDifficulty(targets.map((p) => estimateSuiDifficulty(p.prefix, p.suffix))),
+    [targets]
   );
 
   const difficultyLabel = useMemo(() => formatSuiDifficulty(difficulty), [difficulty]);
@@ -41,8 +49,11 @@ export function SuiDifficultyDisplay({
     [difficulty, estimatedRate]
   );
 
-  const hasPattern = prefix.length > 0 || suffix.length > 0;
-  const totalChars = prefix.length + suffix.length;
+  const hasPattern = targets.some((p) => p.prefix.length > 0 || p.suffix.length > 0);
+  const totalChars = Math.max(
+    0,
+    ...targets.map((p) => p.prefix.length + p.suffix.length)
+  );
 
   return (
     <div className="space-y-4">
@@ -54,6 +65,11 @@ export function SuiDifficultyDisplay({
             <span className={prefix ? 'text-accent' : 'text-ink/25'}>{prefix || '····'}</span>
             <span className="text-ink/20 mx-1">…</span>
             <span className={suffix ? 'text-accent' : 'text-ink/25'}>{suffix || '····'}</span>
+            {targets.length > 1 && (
+              <span className="text-micro text-muted ml-2 normal-case tracking-normal">
+                +{targets.length - 1}
+              </span>
+            )}
           </p>
         </div>
         <div>

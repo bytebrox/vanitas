@@ -125,7 +125,10 @@
     "entropySecLevel": "Tingkat keamanan: ~setara dengan 128-bit",
     "entropyStandard": "Standar: RFC 8032",
     "unknown": "Tidak dikenal",
-    "continueSearch": "Continue search"
+    "continueSearch": "Continue search",
+    "shareCard": "Kartu berbagi",
+    "shareCardBusy": "Merender…",
+    "shareCardSaved": "Kartu disimpan"
   },
   "nav": {
     "language": "Bahasa",
@@ -2322,5 +2325,21 @@
       "blurbLaunchpad": "Mint kustom / alamat vanity `{address}` (pola `{pattern}`) dibuat di browser via vanitas.fun. Proof (tanpa kunci): {proofUrl}",
       "blurbDiscord": "Ditempa `{short}` agar cocok `{pattern}` di sisi klien di vanitas.fun — verifikasi pola di sini (kunci pribadi tidak di tautan): {proofUrl}"
     }
+  },
+  "multiPattern": {
+    "title": "Alternatif",
+    "hint": "Cocok dengan salah satu pola ini (OR). Yang pertama menang.",
+    "add": "Tambah alternatif",
+    "remove": "Hapus",
+    "altPrefix": "Awalan {n}",
+    "altSuffix": "Akhiran {n}"
+  },
+  "eip55": {
+    "casings": "Pelatih huruf besar/kecil",
+    "preFindNote": "Grind tidak peka huruf; EIP-55 diterapkan setelah ditemukan.",
+    "copyChecksum": "Salin checksum",
+    "copyLower": "Salin huruf kecil",
+    "luckScore": "Keberuntungan checksum: {pct}% huruf vanity huruf besar ({upper}/{letters}).",
+    "postFindNote": "Dompet menerima kedua bentuk. Utamakan EIP-55 saat berbagi."
   }
 }

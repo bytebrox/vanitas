@@ -4,6 +4,12 @@ import { useState, useEffect } from 'react';
 import { validateBtcPrefix, validateBtcSuffix } from '@/lib/btc-validation';
 import type { BtcMode } from '@/types/btc';
 import { BTC_BASE58, BTC_BECH32 } from '@/types/btc';
+import type { PatternTarget } from '@/lib/patterns';
+import {
+  MultiPatternField,
+  mergePatternTargets,
+  patternAlternatives,
+} from './MultiPatternField';
 import {
   PatternTemplates,
   BTC_LEGACY_TEMPLATES,
@@ -19,6 +25,8 @@ interface BtcPatternInputProps {
   onSuffixChange: (value: string) => void;
   onCaseSensitiveChange: (value: boolean) => void;
   disabled?: boolean;
+  patterns?: PatternTarget[];
+  onPatternsChange?: (patterns: PatternTarget[]) => void;
 }
 
 export function BtcPatternInput({
@@ -30,6 +38,8 @@ export function BtcPatternInput({
   onSuffixChange,
   onCaseSensitiveChange,
   disabled = false,
+  patterns,
+  onPatternsChange,
 }: BtcPatternInputProps) {
   const [prefixError, setPrefixError] = useState<string | null>(null);
   const [suffixError, setSuffixError] = useState<string | null>(null);
@@ -135,6 +145,18 @@ export function BtcPatternInput({
             </span>
           </span>
         </label>
+      )}
+
+      {onPatternsChange && (
+        <div className="py-4 border-t border-ink/15">
+          <MultiPatternField
+            alternatives={patternAlternatives(patterns)}
+            disabled={disabled}
+            onChange={(alts) => {
+              onPatternsChange(mergePatternTargets({ prefix, suffix }, alts));
+            }}
+          />
+        </div>
       )}
     </div>
   );

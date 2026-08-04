@@ -145,6 +145,8 @@ export function TronContent() {
                     onSuffixChange={(value) => updateConfig({ suffix: value })}
                     onCaseSensitiveChange={(value) => updateConfig({ caseSensitive: value })}
                     disabled={status === 'running'}
+                    patterns={config.patterns}
+                    onPatternsChange={(patterns) => updateConfig({ patterns, prefix: patterns[0]?.prefix ?? '', suffix: patterns[0]?.suffix ?? '' })}
                   />
                 </div>
 
@@ -153,6 +155,7 @@ export function TronContent() {
                   <TronDifficultyDisplay
                     prefix={prefix}
                     suffix={suffix}
+                    patterns={config.patterns}
                     caseSensitive={caseSensitive}
                     currentRate={stats.attemptsPerSecond}
                   />
