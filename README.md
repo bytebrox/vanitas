@@ -12,6 +12,16 @@ Create personalized wallet (and related) addresses that start or end with patter
 
 Website: [vanitas.fun](https://vanitas.fun)
 
+### Token
+
+Live on Robinhood.
+
+Contract address:
+
+```text
+0x1bfab31ae01a030ae600da4825389a60156952c1
+```
+
 ### Terminal CLI
 
 ```bash
