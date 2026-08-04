@@ -41,6 +41,11 @@ export function EthereumLogo({ className = 'w-5 h-5', title = 'Ethereum' }: Logo
   return <ChainImg src="/chains/ethereum.svg" title={title} className={className} />;
 }
 
+/** Robinhood feather mark */
+export function RobinhoodLogo({ className = 'w-5 h-5', title = 'Robinhood' }: LogoProps) {
+  return <ChainImg src="/chains/robinhood.svg" title={title} className={className} />;
+}
+
 /** BNB Smart Chain token mark */
 export function BnbLogo({ className = 'w-5 h-5', title = 'BNB Smart Chain' }: LogoProps) {
   return <ChainImg src="/chains/bnb.svg" title={title} className={className} />;
@@ -98,6 +103,7 @@ export function XrpLogo({ className = 'w-5 h-5', title = 'XRP' }: LogoProps) {
 
 const EVM_MARKS = [
   { src: '/chains/ethereum.svg', title: 'Ethereum' },
+  { src: '/chains/robinhood.svg', title: 'Robinhood' },
   { src: '/chains/bnb.svg', title: 'BNB Smart Chain' },
   { src: '/chains/base.png', title: 'Base' },
   { src: '/chains/arbitrum.svg', title: 'Arbitrum' },

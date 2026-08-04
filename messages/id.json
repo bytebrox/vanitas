@@ -209,7 +209,7 @@
     }
   },
   "footer": {
-    "blurb": "Peralatan rias sisi klien untuk Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano & XRP. Tidak ada token proyek. Tidak ada kunci yang keluar dari perangkat ini. Dikembangkan oleh [Bytebrox](https://x.com/bytebrox).",
+    "blurb": "Peralatan vanity sisi klien untuk Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano & XRP. Tidak ada kunci yang keluar dari perangkat ini. Dikembangkan oleh [Bytebrox](https://x.com/bytebrox).",
     "ca": "CA",
     "home": "Beranda",
     "security": "Keamanan",
@@ -1720,7 +1720,7 @@
     },
     "token": {
       "title": "Token",
-      "description": "Vanitas tidak memiliki token proyek."
+      "description": "CA token Vanitas: {ca}."
     },
     "embed-proof": {
       "title": "Penyematan bukti",

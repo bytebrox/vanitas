@@ -1,11 +1,18 @@
 import { setRequestLocale } from 'next-intl/server';
 import { buildPageMetadata } from '@/lib/metadata';
+import { DONATE_CA } from '@/lib/donate';
 
 type Params = Promise<{ locale: string }>;
 
 export async function generateMetadata({ params }: { params: Params }) {
   const { locale } = await params;
-  return buildPageMetadata({ locale, route: 'token', path: '/token', image: '/og.jpg' });
+  return buildPageMetadata({
+    locale,
+    route: 'token',
+    path: '/token',
+    image: '/og.jpg',
+    values: { ca: DONATE_CA || '—' },
+  });
 }
 
 export default async function Layout({

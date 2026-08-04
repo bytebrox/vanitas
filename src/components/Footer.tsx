@@ -4,10 +4,8 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { RichText } from '@/lib/rich-text';
+import { DONATE_CA } from '@/lib/donate';
 import { AsciiImage } from './AsciiImage';
-
-/** Contract address tip jar — set NEXT_PUBLIC_DONATE_CA in Vercel / .env.local */
-export const DONATE_CA = (process.env.NEXT_PUBLIC_DONATE_CA ?? '').trim();
 
 interface FooterProps {
   /** Tighter padding for single-viewport landing */

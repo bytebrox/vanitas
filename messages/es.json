@@ -209,7 +209,7 @@
     }
   },
   "footer": {
-    "blurb": "Herramientas personalizadas del lado del cliente para Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano y XRP. Sin ficha de proyecto. Ninguna llave sale de este dispositivo. Desarrollado por [Bytebrox](https://x.com/bytebrox).",
+    "blurb": "Herramientas vanity del lado del cliente para Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano y XRP. Ninguna clave sale de este dispositivo. Desarrollado por [Bytebrox](https://x.com/bytebrox).",
     "ca": "CA",
     "home": "Hogar",
     "security": "Seguridad",
@@ -1720,7 +1720,7 @@
     },
     "token": {
       "title": "Simbólico",
-      "description": "Vanitas no tiene token de proyecto."
+      "description": "CA del token de Vanitas: {ca}."
     },
     "embed-proof": {
       "title": "Incrustar prueba",

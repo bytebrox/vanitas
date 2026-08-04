@@ -209,7 +209,7 @@
     }
   },
   "footer": {
-    "blurb": "适用于 Solana、EVM、比特币、Tron、Aptos、Sui、TON、Cardano 和 XRP 的客户端虚荣工具。没有项目代币。没有钥匙离开该设备。由 [Bytebrox](https://x.com/bytebrox) 开发。",
+    "blurb": "适用于 Solana、EVM、比特币、Tron、Aptos、Sui、TON、Cardano 和 XRP 的客户端 vanity 工具。没有密钥离开该设备。由 [Bytebrox](https://x.com/bytebrox) 开发。",
     "ca": "CA",
     "home": "首页",
     "security": "安全",
@@ -1720,7 +1720,7 @@
     },
     "token": {
       "title": "代币",
-      "description": "Vanitas 没有项目代币。"
+      "description": "Vanitas 代币 CA：{ca}。"
     },
     "embed-proof": {
       "title": "证明嵌入",

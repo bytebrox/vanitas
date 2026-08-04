@@ -209,7 +209,7 @@
     }
   },
   "footer": {
-    "blurb": "เครื่องมือโต๊ะเครื่องแป้งฝั่งไคลเอ็นต์สำหรับ Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano และ XRP ไม่มีโทเค็นโครงการ ไม่มีกุญแจออกจากอุปกรณ์นี้ พัฒนาโดย [Bytebrox](https://x.com/bytebrox)",
+    "blurb": "เครื่องมือ vanity ฝั่งไคลเอ็นต์สำหรับ Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano และ XRP ไม่มีกุญแจออกจากอุปกรณ์นี้ พัฒนาโดย [Bytebrox](https://x.com/bytebrox)",
     "ca": "CA",
     "home": "หน้าแรก",
     "security": "ความปลอดภัย",
@@ -1720,7 +1720,7 @@
     },
     "token": {
       "title": "โทเค็น",
-      "description": "Vanitas ไม่มีโทเค็นโครงการ"
+      "description": "CA ของโทเค็น Vanitas: {ca}"
     },
     "embed-proof": {
       "title": "หลักฐานการฝัง",

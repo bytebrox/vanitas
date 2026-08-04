@@ -209,7 +209,7 @@
     }
   },
   "footer": {
-    "blurb": "Công cụ trang điểm phía khách hàng dành cho Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano & XRP. Không có mã thông báo dự án. Không có chìa khóa nào rời khỏi thiết bị này. Được phát triển bởi [Bytebrox](https://x.com/bytebrox).",
+    "blurb": "Công cụ vanity phía khách dành cho Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano & XRP. Không có khóa nào rời khỏi thiết bị này. Được phát triển bởi [Bytebrox](https://x.com/bytebrox).",
     "ca": "CA",
     "home": "Trang chủ",
     "security": "Bảo vệ",
@@ -1720,7 +1720,7 @@
     },
     "token": {
       "title": "Mã thông báo",
-      "description": "Vanitas không có mã thông báo dự án."
+      "description": "CA token Vanitas: {ca}."
     },
     "embed-proof": {
       "title": "Bằng chứng nhúng",

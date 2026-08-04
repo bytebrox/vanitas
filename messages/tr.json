@@ -209,7 +209,7 @@
     }
   },
   "footer": {
-    "blurb": "Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano ve XRP için istemci tarafı vanity araçları. Proje jetonu yok. Bu cihazdan hiçbir anahtar çıkmıyor. [Bytebrox](https://x.com/bytebrox) tarafından geliştirildi.",
+    "blurb": "Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano ve XRP için istemci tarafı vanity araçları. Bu cihazdan hiçbir anahtar çıkmıyor. [Bytebrox](https://x.com/bytebrox) tarafından geliştirildi.",
     "ca": "CA",
     "home": "Ana sayfa",
     "security": "Güvenlik",
@@ -1720,7 +1720,7 @@
     },
     "token": {
       "title": "Jeton",
-      "description": "Vanitas'ın proje jetonu yok."
+      "description": "Vanitas token CA: {ca}."
     },
     "embed-proof": {
       "title": "Kanıt yerleştirme",

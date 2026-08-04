@@ -209,7 +209,7 @@
     }
   },
   "footer": {
-    "blurb": "Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano & XRP용 클라이언트 사이드 바니티 도구. 프로젝트 토큰 없음. 키가 이 기기를 떠나지 않습니다. [Bytebrox](https://x.com/bytebrox) 제작.",
+    "blurb": "Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano & XRP용 클라이언트 사이드 배니티 도구. 키가 이 기기를 떠나지 않습니다. [Bytebrox](https://x.com/bytebrox) 제작.",
     "ca": "CA",
     "home": "홈",
     "security": "보안",
@@ -1720,7 +1720,7 @@
     },
     "token": {
       "title": "토큰",
-      "description": "Vanitas에는 프로젝트 토큰이 없습니다."
+      "description": "Vanitas 토큰 CA: {ca}."
     },
     "embed-proof": {
       "title": "증거 삽입",

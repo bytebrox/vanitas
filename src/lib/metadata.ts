@@ -40,6 +40,8 @@ type MetaOpts = {
   path: string;
   image?: string;
   keywords?: string[];
+  /** ICU values for title / description (e.g. `{ ca }` in meta.token). */
+  values?: Record<string, string | number | Date>;
 };
 
 export async function buildPageMetadata({
@@ -48,11 +50,12 @@ export async function buildPageMetadata({
   path,
   image = '/og.jpg',
   keywords,
+  values,
 }: MetaOpts): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'meta' });
-  const title = t(`${route}.title`);
-  const description = t(`${route}.description`);
-  const ogAlt = t.has(`${route}.ogAlt`) ? t(`${route}.ogAlt`) : title;
+  const title = t(`${route}.title`, values);
+  const description = t(`${route}.description`, values);
+  const ogAlt = t.has(`${route}.ogAlt`) ? t(`${route}.ogAlt`, values) : title;
   const prefix = locale === routing.defaultLocale ? '' : `/${locale}`;
   const url = `${SITE}${prefix}${path === '/' ? '' : path}`;
   const languages = localeAlternates(path);

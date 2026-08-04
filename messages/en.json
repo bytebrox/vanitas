@@ -209,7 +209,7 @@
     }
   },
   "footer": {
-    "blurb": "Client-side vanity tooling for Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano & XRP. No project token. No key leaves this device. Dev’d by [Bytebrox](https://x.com/bytebrox).",
+    "blurb": "Client-side vanity tooling for Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano & XRP. No key leaves this device. Dev'd by [Bytebrox](https://x.com/bytebrox).",
     "ca": "CA",
     "home": "Home",
     "security": "Security",
@@ -1720,7 +1720,7 @@
     },
     "token": {
       "title": "Token",
-      "description": "Vanitas has no project token."
+      "description": "Vanitas token CA: {ca}."
     },
     "embed-proof": {
       "title": "Proof embed",

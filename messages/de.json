@@ -209,7 +209,7 @@
     }
   },
   "footer": {
-    "blurb": "Clientseitiges Vanity-Tool für Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano und XRP. Kein Projekt-Token. Kein Schlüssel verlässt dieses Gerät. Entwickelt von [Bytebrox](https://x.com/bytebrox).",
+    "blurb": "Clientseitiges Vanity-Tool für Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano und XRP. Kein Schlüssel verlässt dieses Gerät. Entwickelt von [Bytebrox](https://x.com/bytebrox).",
     "ca": "CA",
     "home": "Start",
     "security": "Sicherheit",
@@ -1720,7 +1720,7 @@
     },
     "token": {
       "title": "Token",
-      "description": "Vanitas hat kein Projekt-Token."
+      "description": "Vanitas-Token-CA: {ca}."
     },
     "embed-proof": {
       "title": "Beweiseinbettung",

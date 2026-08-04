@@ -209,7 +209,7 @@
     }
   },
   "footer": {
-    "blurb": "Solana、EVM、Bitcoin、Tron、Aptos、Sui、TON、Cardano、XRP 用のクライアント側バニティ ツール。プロジェクトトークンがありません。このデバイスからキーが離れることはありません。 [Bytebrox](https://x.com/bytebrox) によって開発されました。",
+    "blurb": "Solana、EVM、Bitcoin、Tron、Aptos、Sui、TON、Cardano、XRP 用のクライアント側バニティツール。このデバイスからキーが離れることはありません。[Bytebrox](https://x.com/bytebrox) によって開発されました。",
     "ca": "CA",
     "home": "家",
     "security": "安全",
@@ -1720,7 +1720,7 @@
     },
     "token": {
       "title": "トークン",
-      "description": "Vanitas にはプロジェクト トークンがありません。"
+      "description": "Vanitas トークン CA: {ca}。"
     },
     "embed-proof": {
       "title": "証拠の埋め込み",
