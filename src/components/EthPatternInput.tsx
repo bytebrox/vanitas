@@ -113,7 +113,7 @@ export function EthPatternInput({
               spellCheck={false}
               autoCapitalize="off"
               disabled={disabled}
-              className={`w-full bg-transparent border-0 border-b border-ink/25 rounded-none px-0 py-2.5 sm:py-2 text-xl sm:text-2xl font-mono tracking-wide lowercase
+              className={`w-full bg-transparent border-0 border-b border-ink/25 rounded-none px-0 py-2.5 sm:py-2 text-xl sm:text-2xl font-mono tracking-wide
                 placeholder:text-ink/20 focus:outline-none focus:border-accent
                 ${prefixError ? 'border-accent' : ''} ${disabled ? 'opacity-50' : ''}`}
             />
@@ -156,7 +156,7 @@ export function EthPatternInput({
             spellCheck={false}
             autoCapitalize="off"
             disabled={disabled}
-            className={`w-full bg-transparent border-0 border-b border-ink/25 rounded-none px-0 py-2.5 sm:py-2 text-xl sm:text-2xl font-mono tracking-wide lowercase
+            className={`w-full bg-transparent border-0 border-b border-ink/25 rounded-none px-0 py-2.5 sm:py-2 text-xl sm:text-2xl font-mono tracking-wide
               placeholder:text-ink/20 focus:outline-none focus:border-accent
               ${suffixError ? 'border-accent' : ''} ${disabled ? 'opacity-50' : ''}`}
           />
