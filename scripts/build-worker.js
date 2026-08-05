@@ -118,6 +118,12 @@ async function build() {
     );
     console.log('SEED worker built successfully!');
 
+    const market = await buildOne(
+      path.join(__dirname, '../src/workers/market-eth.worker.source.ts'),
+      path.join(__dirname, '../public/market-eth-worker.js')
+    );
+    console.log('MARKET worker built successfully!');
+
     const hashData = {
       hash: solana.hash,
       size: solana.size,
@@ -131,6 +137,7 @@ async function build() {
       cardano: { hash: cardano.hash, size: cardano.size, built },
       xrp: { hash: xrp.hash, size: xrp.size, built },
       seed: { hash: seed.hash, size: seed.size, built },
+      market: { hash: market.hash, size: market.size, built },
     };
     fs.writeFileSync(hashFile, JSON.stringify(hashData, null, 2));
 
@@ -145,6 +152,7 @@ async function build() {
       '/cardano-worker.js': cardano.hash,
       '/xrp-worker.js': xrp.hash,
       '/seed-worker.js': seed.hash,
+      '/market-eth-worker.js': market.hash,
     });
 
     console.log(`Solana: ${solana.hash}`);
@@ -157,6 +165,7 @@ async function build() {
     console.log(`CARDANO: ${cardano.hash}`);
     console.log(`XRP: ${xrp.hash}`);
     console.log(`SEED: ${seed.hash}`);
+    console.log(`MARKET: ${market.hash}`);
   } catch (error) {
     console.error('Worker build failed:', error);
     process.exit(1);

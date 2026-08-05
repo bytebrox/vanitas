@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import {
   SolanaLogo,
-  EthereumLogo,
+  RobinhoodLogo,
   BitcoinLogo,
   TronLogo,
   AptosLogo,
@@ -14,15 +14,16 @@ import {
   CardanoLogo,
   XrpLogo,
 } from './ChainLogos';
+import { MARKET_ENABLED } from '@/lib/market-flag';
 import { useTheme } from './ThemeProvider';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
 const GITHUB_URL = 'https://github.com/bytebrox/vanitas';
 const X_URL = 'https://x.com/bytebrox';
 
-const chainDefs: { href: '/sol' | '/evm' | '/btc' | '/tron' | '/aptos' | '/sui' | '/ton' | '/cardano' | '/xrp'; label: string; short: string; logo: ReactNode }[] = [
+/** The EVM forge is the headline act and sits in the bar itself, not in here. */
+const otherChainDefs: { href: '/sol' | '/btc' | '/tron' | '/aptos' | '/sui' | '/ton' | '/cardano' | '/xrp'; label: string; short: string; logo: ReactNode }[] = [
   { href: '/sol', label: 'Solana', short: 'SOL', logo: <SolanaLogo className="w-4 h-4" /> },
-  { href: '/evm', label: 'EVM', short: 'EVM', logo: <EthereumLogo className="w-4 h-4" /> },
   { href: '/btc', label: 'Bitcoin', short: 'BTC', logo: <BitcoinLogo className="w-4 h-4" /> },
   { href: '/tron', label: 'Tron', short: 'TRON', logo: <TronLogo className="w-4 h-4" /> },
   { href: '/aptos', label: 'Aptos', short: 'APTOS', logo: <AptosLogo className="w-4 h-4" /> },
@@ -179,7 +180,7 @@ export function Navbar() {
     setOpen(false);
   };
 
-  const softBtn = scrolled || open ? '' : 'md:bg-paper/50 md:backdrop-blur-sm';
+  const softBtn = scrolled || open ? '' : 'lg:bg-paper/50 lg:backdrop-blur-sm';
 
   return (
     <div
@@ -226,7 +227,9 @@ export function Navbar() {
           </span>
         </Link>
 
-        <nav className="pointer-events-auto absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block">
+        {/* Six entries no longer clear the wordmark and the icon rail at md, so the
+            centred bar waits for lg and tablets keep the drawer. */}
+        <nav className="pointer-events-auto absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden lg:block">
           <div
             className={`flex items-center gap-1 px-3 py-2 text-micro uppercase tracking-[0.16em] text-ink/80 transition-colors ${
               scrolled ? 'bg-transparent' : 'bg-paper/50 backdrop-blur-sm'
@@ -237,20 +240,40 @@ export function Navbar() {
             </Link>
             <NavDot />
 
+            <Link
+              href="/evm"
+              className="px-1.5 py-0.5 text-ink hover:text-accent transition-colors whitespace-nowrap inline-flex items-center gap-1.5"
+            >
+              <RobinhoodLogo className="w-3.5 h-3.5" />
+              {t('forge')}
+            </Link>
+            {MARKET_ENABLED && (
+              <>
+                <NavDot />
+                <Link
+                  href="/market"
+                  className="px-1.5 py-0.5 hover:text-ink transition-colors whitespace-nowrap"
+                >
+                  {t('market')}
+                </Link>
+              </>
+            )}
+            <NavDot />
+
             <div className="relative group">
               <button
                 type="button"
                 className="px-1.5 py-0.5 hover:text-ink transition-colors whitespace-nowrap inline-flex items-center gap-1"
                 aria-haspopup="true"
               >
-                {t('chains')}
+                {t('otherChains')}
                 <span className="text-[0.65em] text-ink/40 group-hover:text-ink/70" aria-hidden>
                   ▾
                 </span>
               </button>
               <div className="invisible opacity-0 pointer-events-none group-hover:visible group-hover:opacity-100 group-hover:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100 group-focus-within:pointer-events-auto absolute left-1/2 -translate-x-1/2 top-full pt-2 transition-opacity duration-150 z-50">
                 <div className="min-w-[12rem] border border-ink/15 bg-paper shadow-[0_8px_24px_rgba(0,0,0,0.08)] py-1">
-                  {chainDefs.map((c) => (
+                  {otherChainDefs.map((c) => (
                     <Link
                       key={c.href}
                       href={c.href}
@@ -304,7 +327,7 @@ export function Navbar() {
 
           <button
             type="button"
-            className={`md:hidden text-micro uppercase tracking-[0.16em] min-h-11 min-w-[4.5rem] px-3 py-2 text-ink/80 ${
+            className={`lg:hidden text-micro uppercase tracking-[0.16em] min-h-11 min-w-[4.5rem] px-3 py-2 text-ink/80 ${
               scrolled || open ? 'bg-transparent' : 'bg-paper/50 backdrop-blur-sm'
             }`}
             onClick={() => {
@@ -321,7 +344,7 @@ export function Navbar() {
       {open && (
         <nav
           id="mobile-nav"
-          className="pointer-events-auto md:hidden mt-3 -mx-4 sm:-mx-6 border-t border-ink/10 bg-paper/98 backdrop-blur-md animate-fade-in-up"
+          className="pointer-events-auto lg:hidden mt-3 -mx-4 sm:-mx-6 border-t border-ink/10 bg-paper/98 backdrop-blur-md animate-fade-in-up"
         >
           <ul className="flex flex-col divide-y divide-ink/10">
             <li>
@@ -337,6 +360,35 @@ export function Navbar() {
               </Link>
             </li>
             <li>
+              <Link
+                href="/evm"
+                className="flex items-center justify-between px-5 py-3.5 text-sm uppercase tracking-[0.16em] text-ink hover:bg-ink/[0.03] active:bg-ink/[0.05]"
+                onClick={closeMobile}
+              >
+                <span className="inline-flex items-center gap-2.5">
+                  <RobinhoodLogo className="w-4 h-4" />
+                  {t('forge')}
+                </span>
+                <span className="text-muted" aria-hidden>
+                  →
+                </span>
+              </Link>
+            </li>
+            {MARKET_ENABLED && (
+              <li>
+                <Link
+                  href="/market"
+                  className="flex items-center justify-between px-5 py-3.5 text-sm uppercase tracking-[0.16em] text-ink/85 hover:text-ink hover:bg-ink/[0.03] active:bg-ink/[0.05]"
+                  onClick={closeMobile}
+                >
+                  <span>{t('market')}</span>
+                  <span className="text-muted" aria-hidden>
+                    →
+                  </span>
+                </Link>
+              </li>
+            )}
+            <li>
               <button
                 type="button"
                 className="flex w-full items-center justify-between px-5 py-3.5 text-sm uppercase tracking-[0.16em] text-ink/85 hover:text-ink hover:bg-ink/[0.03]"
@@ -345,14 +397,14 @@ export function Navbar() {
                   setChainsOpen((v) => !v);
                 }}
               >
-                <span>{t('chains')}</span>
+                <span>{t('otherChains')}</span>
                 <span className="text-muted" aria-hidden>
                   {chainsOpen ? '▴' : '▾'}
                 </span>
               </button>
               {chainsOpen && (
                 <ul className="border-t border-ink/10 bg-ink/[0.02]">
-                  {chainDefs.map((c) => (
+                  {otherChainDefs.map((c) => (
                     <li key={c.href}>
                       <Link
                         href={c.href}

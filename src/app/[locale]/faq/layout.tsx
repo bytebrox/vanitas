@@ -3,6 +3,7 @@ import { getTranslations } from 'next-intl/server';
 import { buildPageMetadata } from '@/lib/metadata';
 import { faqPageJsonLd } from '@/lib/json-ld';
 import { JsonLd } from '@/components/JsonLd';
+import { MARKET_ENABLED } from '@/lib/market-flag';
 
 type Params = Promise<{ locale: string }>;
 
@@ -21,7 +22,8 @@ const FAQ_CATEGORY_IDS = [
   'security',
   'proof-cli',
   'usage',
-] as const;
+  ...(MARKET_ENABLED ? (['market'] as const) : []),
+];
 
 export async function generateMetadata({ params }: { params: Params }) {
   const { locale } = await params;

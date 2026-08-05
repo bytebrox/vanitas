@@ -27,6 +27,9 @@ yarn-error.log*
 .env*.local
 .env
 
+# Operator notes that name real infrastructure — never for a public clone
+*.local.md
+
 # Vercel
 .vercel
 

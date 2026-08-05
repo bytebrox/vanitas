@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { routing } from '@/i18n/routing';
+import { MARKET_ENABLED } from '@/lib/market-flag';
 
 const SITE = 'https://www.vanitas.fun';
 
@@ -38,8 +39,9 @@ function urlFor(locale: string, path: string): string {
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
   const entries: MetadataRoute.Sitemap = [];
+  const paths = MARKET_ENABLED ? [...PATHS, '/market'] : [...PATHS];
 
-  for (const path of PATHS) {
+  for (const path of paths) {
     for (const locale of routing.locales) {
       entries.push({
         url: urlFor(locale, path),

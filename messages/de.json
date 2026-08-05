@@ -133,7 +133,6 @@
   "nav": {
     "language": "Sprache",
     "home": "Start",
-    "chains": "CHAINS",
     "docs": "DOCS",
     "tools": "TOOLS",
     "menu": "Menü",
@@ -209,7 +208,10 @@
         "label": "Seed",
         "short": "SEED"
       }
-    }
+    },
+    "forge": "Forge",
+    "market": "Markt",
+    "otherChains": "WEITERE CHAINS"
   },
   "footer": {
     "blurb": "Clientseitiges Vanity-Tool für Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano und XRP. Kein Schlüssel verlässt dieses Gerät. Entwickelt von [Bytebrox](https://x.com/bytebrox).",
@@ -243,25 +245,19 @@
     "groupTools": "Tools",
     "groupDocs": "Docs",
     "groupProject": "Projekt",
-    "allForges": "Alle Forges"
+    "allForges": "Alle Forges",
+    "market": "Markt"
   },
   "landing": {
-    "eyebrow": "Kundenseitige Schminkschmiede",
+    "eyebrow": "Deine Onchain-Identität",
     "title": "Vanitas",
-    "subtitle": "Wählen Sie eine Kette. Schlüssel bleiben in diesem Browser.",
-    "enterForge": "Geben Sie Schmiede → ein",
+    "subtitle": "Sichere dir die Robinhood-Chain-Adresse, die deinen Namen trägt. Der Schlüssel entsteht hier und verlässt diesen Browser nie.",
     "preferTerminal": "Bevorzugen Sie das Terminal?",
     "forges": {
       "sol": {
         "name": "Solana",
         "title": "Brieftasche und Minze",
         "blurb": "Base58-Vanity-Wallets und Token-Mints."
-      },
-      "evm": {
-        "name": "EVM",
-        "title": "Wallet & Vertrag",
-        "blurb": "Ein 0x-Schlüssel für jede EVM-Kette.",
-        "aria": "Ethereum, BNB, Basis, Arbitrum, Optimismus"
       },
       "btc": {
         "name": "Bitcoin",
@@ -299,7 +295,21 @@
         "blurb": "XRPL Base58-Vanity-Adressen."
       }
     },
-    "npxVanitas": "npx vanitas"
+    "npxVanitas": "npx vanitas",
+    "otherChains": "Weitere Chains",
+    "primary": {
+      "name": "Robinhood Chain · EVM",
+      "title": "Sichere deine Onchain-Identität",
+      "blurb": "Über deine Adresse finden dich andere, bezahlen dich und erkennen dich wieder. Bestimm, mit welchen Zeichen sie beginnt, und mach sie zu deiner. Die Suche läuft auf deiner eigenen CPU, in diesem Tab, und der Schlüssel existiert nirgendwo sonst.",
+      "cta": "Adresse sichern →",
+      "alsoOn": "Dieselbe Identität auf"
+    },
+    "market": {
+      "name": "Markt",
+      "title": "Direkt kaufen",
+      "blurb": "Identitäten, die schon gesichert und übergabebereit sind, oder stell eine eigene ein.",
+      "cta": "Zum Markt →"
+    }
   },
   "forge": {
     "header": {
@@ -1127,6 +1137,36 @@
             "a": "Reduzieren Sie die Fadenzahl. Mitarbeiter sollten die Benutzeroberfläche am Leben erhalten, aber die Auslastung jedes Kerns auf einem kleinen Laptop kann sich immer noch träge anfühlen."
           }
         }
+      },
+      "market": {
+        "label": "Markt",
+        "n": "11",
+        "items": {
+          "what": {
+            "q": "Was ist der Markt?",
+            "a": "Eine Pinnwand unter [/market](/market) für Adressen, die schon geforgt sind. Verkäufer forgen im eigenen Browser, setzen einen Preis in ETH auf der Robinhood Chain, und der Käufer bekommt den privaten Schlüssel, sobald die Zahlung ankommt."
+          },
+          "trust": {
+            "q": "Bricht der Markt das Versprechen, dass Schlüssel das Gerät nie verlassen?",
+            "a": "Für die freien Forges nicht — dort hat sich nichts geändert. Der Markt ist eine getrennte, freiwillige Fläche mit einem anderen Vertrauensmodell, und der Unterschied steht auf jeder Marktseite. Wer eine Adresse will, die nie jemand anders hält, forgt sie auf den normalen Seiten."
+          },
+          "splitKey": {
+            "q": "Kann ein Verkäufer eine Kopie des verkauften Schlüssels behalten?",
+            "a": "Nein. Gesucht wird mit geteiltem Schlüssel: Der Browser sucht einen Skalar `b`, der Server hält ein geheimes `s`, und die Adresse gehört zu `b + s`. Der Verkäufer kennt nur `b`, und das allein kontrolliert nichts."
+          },
+          "pay": {
+            "q": "Wie bezahle ich?",
+            "a": "Jede Bestellung bekommt ihre eigene Einzahladresse. Schicke den exakten Betrag aus einem beliebigen Wallet oder direkt von einer Börsenauszahlung. Es gibt keinen Contract-Aufruf und keine Freigabe zu signieren."
+          },
+          "chains": {
+            "q": "Für welche Chains kann ich verkaufen?",
+            "a": "Vorerst nur EVM. Das Verfahren mit geteiltem Schlüssel braucht die additive Struktur von secp256k1, was die Ed25519-Chains wie Solana, TON, Sui und Aptos ausschließt."
+          },
+          "cost": {
+            "q": "Was kostet der Markt?",
+            "a": "Nichts. Es gibt weder eine Einstellgebühr noch eine Provision auf den Verkauf. Die Zahlung des Käufers geht direkt von der Einzahladresse an den Verkäufer, und einbehalten wird nur die Netzwerkgebühr für diese eine Überweisung, die auf der Robinhood Chain im Bruchteil eines Cents liegt."
+          }
+        }
       }
     },
     "sideCaption": "Abb. IV – Landschaft",
@@ -1146,7 +1186,8 @@
       "ton-cardano-xrp": "Abb. – Stele",
       "security": "Abb. – Schild",
       "proof-cli": "Abb. – Siegel",
-      "usage": "Abb. – Zeit"
+      "usage": "Abb. – Zeit",
+      "market": "Abb. — Waage"
     }
   },
   "docs": {
@@ -1766,6 +1807,20 @@
       "ogTitle": "Datenschutz | Vanitas",
       "ogDescription": "Datenschutz bei Vanitas: lokale Erzeugung, minimale Cookies, keine Ad-Tracker, keine Schlüsselsammlung.",
       "ogAlt": "Vanitas-Datenschutzrichtlinie"
+    },
+    "market": {
+      "title": "Marktplatz für Vanity-Adressen",
+      "description": "Fertige EVM-Vanity-Adressen auf der Robinhood Chain kaufen und verkaufen. Verkäufer forgen im Browser mit geteiltem Schlüssel, niemand hält den fertigen Schlüssel während der Suche allein.",
+      "ogTitle": "Markt | Vanitas",
+      "ogDescription": "Vanity-Adressen kaufen und verkaufen. Geteilter Schlüssel, kein Smart Contract, Zahlung in ETH.",
+      "ogAlt": "Vanitas Marktplatz für Vanity-Adressen"
+    },
+    "marketAccount": {
+      "title": "Mein Marktkonto",
+      "description": "Deine Angebote, deine Auszahlungsadresse und deine Verkäufe auf Vanitas.",
+      "ogTitle": "Mein Marktkonto | Vanitas",
+      "ogDescription": "Deine Angebote, deine Auszahlungsadresse und deine Verkäufe.",
+      "ogAlt": "Vanitas Marktkonto"
     }
   },
   "notFound": {
@@ -1793,7 +1848,7 @@
     "terms": {
       "eyebrow": "Rechtliches",
       "title": "Nutzungsbedingungen",
-      "updated": "Letzte Aktualisierung: 28. Juli 2026",
+      "updated": "Letzte Aktualisierung: 5. August 2026",
       "intro": "Diese Nutzungsbedingungen („Bedingungen“) regeln Ihren Zugang zu und die Nutzung von Vanitas unter vanitas.fun, zugehöriger Dokumentationsseiten, Share-Proof- und Embed-Oberflächen, des veröffentlichten Open-Source-Codes sowie der optionalen Kommandozeilen-Schnittstelle (CLI). Durch den Zugriff auf oder die Nutzung dieser Angebote erklären Sie sich mit diesen Bedingungen einverstanden. Wenn Sie nicht einverstanden sind, nutzen Sie Vanitas nicht.",
       "sections": [
         {
@@ -1824,6 +1879,16 @@
           "body": [
             "Vanitas erfordert keine Registrierung, kein KYC und kein Konto. Es gibt kein Vanitas-Login und kein On-Site-Portfolio.",
             "Wir verwahren keine digitalen Vermögenswerte, führen keine Trades aus und übertragen im normalen Forge-Betrieb keine privaten Schlüssel an ein Vanitas-Backend. Wenn Sie Schlüssel nach dem Export in Drittangebote einfügen, liegt das außerhalb dieser Bedingungen und außerhalb unserer Kontrolle."
+          ]
+        },
+        {
+          "title": "Marktplatz (/market)",
+          "body": [
+            "Wo der optionale Marktplatz unter [/market](/market) aktiviert ist, gilt dort ein **anderes Vertrauensmodell** als in den kostenlosen Forges, und die beiden vorangehenden Abschnitte sind entsprechend eingeschränkt. Die Nutzung setzt voraus, dass du eine Wallet verbindest und eine Anmeldenachricht signierst; dabei entsteht ein Datensatz, der deiner Wallet-Adresse zugeordnet ist.",
+            "Verkäufer forgen im eigenen Browser mit einem **geteilten Schlüssel**: Die Seite liefert einen öffentlichen Punkt, der aus einem serverseitigen Geheimnis abgeleitet ist, und der Browser findet ausschließlich die Hälfte des Verkäufers. Während des Forgens kann also keine Seite allein über die Adresse verfügen. Sobald ein Angebot entsteht, halten die Betreiber den vollständigen Schlüssel verschlüsselt, bis er verkauft und freigegeben wird. **Damit musst du einverstanden sein, bevor du kaufst oder verkaufst.** Statte keine Adresse mit Guthaben aus, bevor dir der Schlüssel freigegeben und du ihn in eine Wallet importiert hast, die du kontrollierst.",
+            "Käufer zahlen den exakt angegebenen Betrag an eine einmalige Einzahladresse, die zur Bestellung angezeigt wird. Der Zahlungseingang wird on-chain erkannt; ein abweichender Betrag, ein anderes Netzwerk oder eine Zahlung nach Ablauf der Bestellfrist kann dazu führen, dass die Zahlung nicht automatisch zugeordnet wird. Preise legen die Verkäufer fest, sie lauten auf das native ETH der Chain. **Die Betreiber erheben keine Einstellgebühr und nehmen keine Provision.** Die Zahlung wird von der Einzahladresse direkt an den Verkäufer weitergeleitet, einbehalten wird allein die Netzwerkgebühr für diese Überweisung.",
+            "Wir sind weder Treuhänder noch Börse oder Makler und sagen nichts über Wiederverkaufswert, Einzigartigkeit oder Reputationsrisiko einer Adresse zu. **Alle Verkäufe sind endgültig.** Ein freigegebener Schlüssel lässt sich nicht zurückholen, und eine Adresse, deren Schlüssel einem Käufer gezeigt wurde, gilt als dessen Adresse. Angebote, die Marken, Börsen oder Personen täuschend nachahmen, können ohne Vorankündigung entfernt werden.",
+            "Der Marktplatz kann jederzeit pausiert, regional beschränkt oder eingestellt werden. Wo er deaktiviert ist, gilt dieser Abschnitt nicht."
           ]
         },
         {
@@ -1918,7 +1983,7 @@
     "privacy": {
       "eyebrow": "Rechtliches",
       "title": "Datenschutz",
-      "updated": "Letzte Aktualisierung: 28. Juli 2026",
+      "updated": "Letzte Aktualisierung: 5. August 2026",
       "intro": "Dieser Datenschutzhinweis erklärt, wie Vanitas (vanitas.fun) mit personenbezogenen Daten umgeht. Das Produkt ist so gebaut, dass private Schlüssel und Forge-Arbeit auf Ihrem Gerät bleiben. Wir erheben absichtlich sehr wenig. Bitte lesen Sie auch die [Nutzungsbedingungen](/terms) und die [Security](/security)-Seite.",
       "sections": [
         {
@@ -1951,6 +2016,16 @@
             "Wir erheben und speichern absichtlich nicht auf einem Vanitas-Backend: private Schlüssel, Seed-Phrasen, geforgtes Schlüsselmaterial, Wallet-Guthaben, Adressbücher oder eine an ein Konto gebundene Historie Ihrer Mustersuchen.",
             "Wir betreiben keine Vanitas-Nutzerdatenbank mit Identitäten. Es gibt zum Stand oben keine in die Forge integrierte Newsletter-Anmeldung.",
             "Wenn Sie uns über X, GitHub oder einen anderen Kanal kontaktieren, verarbeitet diese Plattform die Kommunikation nach eigenen Regeln; wir sehen nur, was Sie uns senden."
+          ]
+        },
+        {
+          "title": "Daten im Marktplatz (/market)",
+          "body": [
+            "Der optionale Marktplatz unter [/market](/market) ist der einzige Teil von Vanitas, der serverseitige Datensätze führt; die Aussagen zu „keine Konten“ weiter oben sind hier entsprechend eingeschränkt. Wenn du ihn nie öffnest, betrifft dich dieser Abschnitt nicht.",
+            "Beim Anmelden mit einer Wallet speichern wir deine **Wallet-Adresse**, eine optionale, von dir selbst eingetragene **Auszahlungsadresse** sowie Zeitstempel. Die Anmeldung nutzt eine kurzlebige Nonce und ein signiertes httpOnly-Sitzungscookie; dieses Cookie ist für den Marktplatz zwingend erforderlich und dient weder Werbung noch seitenübergreifendem Tracking.",
+            "Zu jedem Angebot speichern wir die geforgte **Adresse**, das verwendete Muster, den Preis und den privaten Schlüssel in **verschlüsselter Form**. Zu jeder Bestellung speichern wir das Angebot, den Käufer, eine einmalige Einzahladresse, den Betrag, den Transaktions-Hash der Zahlung und den Status. Auszahlungen werden mit Betrag und Hash protokolliert.",
+            "Schlüssel verkaufter Angebote werden nach einer kurzen Aufbewahrungsfrist gelöscht, sobald sie an den Käufer freigegeben wurden. Angebots-, Bestell- und Auszahlungsdaten bleiben länger erhalten, weil sie der Nachweis eines abgeschlossenen Verkaufs sind und für Steuer- oder Streitfälle gebraucht werden können.",
+            "On-chain-Daten sind naturgemäß öffentlich. Adressen, Beträge, Einzahladressen und Auszahlungstransaktionen sind für jeden mit einem Block-Explorer dauerhaft sichtbar und lassen sich von uns weder löschen noch unkenntlich machen."
           ]
         },
         {
@@ -2367,5 +2442,211 @@
     "copyLower": "Lowercase kopieren",
     "luckScore": "Checksum-Luck: {pct}% der Vanity-Buchstaben groß ({upper}/{letters}).",
     "postFindNote": "Wallets akzeptieren beide Formen. Beim Teilen EIP-55 bevorzugen."
+  },
+  "market": {
+    "common": {
+      "copy": "Kopieren",
+      "copied": "Kopiert"
+    },
+    "nav": {
+      "eyebrow": "Markt",
+      "caption": "Abb. — Forum",
+      "browse": "Angebote",
+      "forge": "Forgen & verkaufen",
+      "mine": "Mein Konto"
+    },
+    "wallet": {
+      "loading": "Prüfe",
+      "noWallet": "Kein Wallet",
+      "noWalletHint": "Installiere ein Browser-Wallet wie MetaMask, um hier zu kaufen oder zu verkaufen.",
+      "working": "Läuft",
+      "connect": "Wallet verbinden",
+      "switchTo": "Zu {chain} wechseln",
+      "disconnect": "Klicken zum Abmelden",
+      "signPrompt": "Signiere die Nachricht im Wallet, um die Anmeldung abzuschließen.",
+      "error": "Anmeldung fehlgeschlagen: {code}"
+    },
+    "gate": {
+      "loading": "Prüfe deine Sitzung",
+      "connectTitle": "Wallet nötig",
+      "connectBody": "Der Markt braucht ein Konto, damit ein Verkauf ausgezahlt und ein Kauf geliefert werden kann. Die Signatur kostet kein Gas und erlaubt keine Transaktion.",
+      "wrongChainTitle": "Falsches Netzwerk",
+      "wrongChainBody": "Wechsle im Wallet zu {chain}, um fortzufahren.",
+      "switchNetwork": "Netzwerk wechseln"
+    },
+    "trust": {
+      "title": "Was hier anders ist als in den freien Forges",
+      "split": "Während eine Adresse gesucht wird, ist der Schlüssel geteilt: Dein Browser hält die eine Hälfte, der Server die andere. Keine Hälfte allein kontrolliert die Adresse.",
+      "custody": "Sobald du eine Adresse einstellst, setzt die Plattform beide Hälften zusammen und verwahrt den fertigen Schlüssel, bis jemand bezahlt hat. Wer hier kauft, vertraut uns diesen Schritt an.",
+      "freeForges": "Wenn du eine Adresse willst, die nie jemand anders in der Hand hatte, nimm die freien Forges. Dort verlässt der Schlüssel dein Gerät nicht.",
+      "testnet": "Läuft gegen {chain}. Hier ist noch nichts echtes Geld wert.",
+      "compact": "Die Plattform verwahrt den fertigen Schlüssel bis zur Abwicklung. In den freien Forges sieht ihn außer dir niemand."
+    },
+    "browse": {
+      "title": "Markt",
+      "description": "Adressen, die schon geforgt und übergabefertig sind. Bezahlt wird in ETH auf der Robinhood Chain, den privaten Schlüssel gibt es, sobald die Zahlung ankommt.",
+      "sortLabel": "Sortierung",
+      "sort": {
+        "newest": "Neueste",
+        "cheapest": "Günstigste",
+        "dearest": "Teuerste",
+        "rarest": "Seltenste"
+      },
+      "empty": "Noch nichts im Angebot. Das erste Listing könnte deins sein.",
+      "error": "Angebote konnten nicht geladen werden: {code}",
+      "sellHint": "CPU-Zeit übrig?",
+      "sellLink": "Adresse forgen und verkaufen.",
+      "searchLabel": "Adressen durchsuchen",
+      "searchPlaceholder": "Nach Adresse oder Zeichen suchen, z. B. cafe",
+      "clearSearch": "Suche zurücksetzen",
+      "counting": "Zählt",
+      "count": "{total} Adressen",
+      "emptySearch": "Nichts passt zu \"{query}\". Versuch es mit weniger Zeichen.",
+      "pagination": "Seiten",
+      "prev": "← Zurück",
+      "next": "Weiter →",
+      "pageOf": "Seite {page} von {pageCount}",
+      "countOne": "1 Adresse"
+    },
+    "card": {
+      "loading": "Lädt",
+      "unpriced": "Noch kein Preis",
+      "difficulty": "{bits} Bit",
+      "originPlatform": "Vanitas",
+      "originUser": "Verkäufer",
+      "draft": "Entwurf",
+      "reserved": "Reserviert",
+      "sold": "Verkauft",
+      "withdrawn": "Zurückgezogen"
+    },
+    "detail": {
+      "title": "Angebot",
+      "loading": "Angebot lädt",
+      "notFound": "Dieses Angebot gibt es nicht, oder es ist nicht öffentlich.",
+      "addressLabel": "Adresse",
+      "patternLabel": "Muster",
+      "difficultyLabel": "Seltenheit",
+      "difficultyValue": "{bits} Bit Suchaufwand",
+      "sellerLabel": "Verkäufer",
+      "sellerPlatform": "Vanitas"
+    },
+    "forge": {
+      "title": "Forgen & verkaufen",
+      "description": "Forge eine EVM-Adresse im Browser und stelle sie zum Verkauf. Der Schlüssel ist während der Suche geteilt, deshalb kannst du von einer eigenen Adresse nichts ausgeben.",
+      "stepPattern": "Muster",
+      "stepForge": "Forge",
+      "stepLive": "Live",
+      "needPattern": "Gib einen Prefix oder einen Suffix ein, bevor du startest.",
+      "opening": "Forge-Sitzung wird geöffnet",
+      "claiming": "Adresse wird eingetragen",
+      "listedTitle": "Im Angebot",
+      "listedBody": "Die Adresse steht im Markt. Sobald jemand kauft, wirst du automatisch ausgezahlt.",
+      "forgeAnother": "Noch eine forgen",
+      "footnote": "Dein Browser lernt immer nur eine Hälfte des Schlüssels. Die Adresse, die du beim Suchen siehst, gehört zum zusammengesetzten Schlüssel — genau das prüft der Server, bevor er deinen Fund annimmt.",
+      "error": "Forge fehlgeschlagen: {code}"
+    },
+    "sell": {
+      "addressLabel": "Deine Adresse",
+      "noKeyNote": "Es gibt keinen privaten Schlüssel zu zeigen. Dein Browser hält eine Hälfte, der Server die andere, zusammengesetzt werden sie nur für den Käufer.",
+      "priceLabel": "Dein Preis",
+      "payoutLabel": "Auszahlungsadresse",
+      "payoutHint": "Dorthin geht dein Erlös nach einem Verkauf. Voreingestellt ist die Wallet, mit der du dich angemeldet hast.",
+      "netLabel": "Du bekommst",
+      "publish": "Zum Verkauf stellen",
+      "publishing": "Wird eingestellt",
+      "errorPriceFormat": "Gib einen einfachen Betrag in ETH ein, zum Beispiel 0.05.",
+      "errorPriceMin": "Der Mindestpreis liegt bei {min} ETH.",
+      "errorPriceMax": "Der Höchstpreis liegt bei {max} ETH.",
+      "errorPayout": "Das ist keine gültige Adresse.",
+      "error": "Einstellen fehlgeschlagen: {code}",
+      "gasLabel": "Netzwerkgebühr",
+      "noCommission": "Wir nehmen keine Provision. Abgezogen wird nur die Netzwerkgebühr für die eine Überweisung, die dich auszahlt, und die geht von der Zahlung des Käufers ab, nicht aus deiner Tasche."
+    },
+    "buy": {
+      "priceLabel": "Preis",
+      "body": "Beim Reservieren öffnet sich ein Zahlungsfenster von einer Stunde und eine Einzahladresse nur für diese Bestellung. Der private Schlüssel wird freigegeben, sobald die Zahlung gutgeschrieben ist.",
+      "buy": "Kaufen",
+      "opening": "Wird reserviert",
+      "ownListing": "Das ist dein eigenes Angebot.",
+      "alreadySold": "Diese Adresse ist bereits verkauft.",
+      "reserved": "Gerade bezahlt jemand anders für diese Adresse. Schau wieder vorbei, falls das Fenster verstreicht.",
+      "orderExpired": "Das Zahlungsfenster ist zu. Die Adresse steht wieder im Angebot.",
+      "error": "Bestellung konnte nicht geöffnet werden: {code}"
+    },
+    "pay": {
+      "title": "Zahlung",
+      "instructions": "Schicke den exakten Betrag an die Adresse unten. Sie gehört allein zu dieser Bestellung, also funktioniert jedes Wallet und auch eine Auszahlung von der Börse.",
+      "amount": "Betrag",
+      "depositTo": "Senden an",
+      "network": "Netzwerk",
+      "networkWarning": "Nur auf diesem Netzwerk senden. Von einer anderen Chain geschickte Mittel sind verloren.",
+      "expiresIn": "Läuft ab in {time}",
+      "expired": "Abgelaufen",
+      "payWithWallet": "Mit Wallet zahlen",
+      "sending": "Im Wallet bestätigen",
+      "checkNow": "Ich habe bezahlt",
+      "checking": "Prüfe",
+      "error": "Zahlungsprüfung fehlgeschlagen: {code}"
+    },
+    "key": {
+      "title": "Dein Schlüssel",
+      "body": "Die Zahlung ist gutgeschrieben. Zeige den privaten Schlüssel an, wenn du bereit bist, ihn zu sichern.",
+      "reveal": "Privaten Schlüssel anzeigen",
+      "revealing": "Wird geholt",
+      "addressLabel": "Adresse",
+      "keyLabel": "Privater Schlüssel",
+      "warning": "Wer diesen Schlüssel hat, kontrolliert die Adresse. Importiere ihn, bring ihn in deine eigene Verwahrung und füge ihn nie auf einer Seite ein, die du nicht selbst geöffnet hast.",
+      "retention": "Dieser Schlüssel bleibt in deinem Konto, du kannst ihn jederzeit unter Mein Konto erneut abrufen.",
+      "error": "Schlüssel konnte nicht geholt werden: {code}",
+      "download": "Als .txt herunterladen"
+    },
+    "mine": {
+      "title": "Mein Konto",
+      "description": "Deine Auszahlungsadresse und alles, was du zum Verkauf geforgt hast.",
+      "payoutTitle": "Auszahlungsadresse",
+      "payoutHint": "Verkaufserlöse gehen vollständig hierher, abzüglich nur der Netzwerkgebühr für diese eine Überweisung.",
+      "savePayout": "Speichern",
+      "payoutSaved": "Gespeichert.",
+      "listingsTitle": "Meine Angebote",
+      "loading": "Lädt",
+      "empty": "Du hast noch nichts zum Verkauf geforgt.",
+      "emptyLink": "Lauf starten.",
+      "savePrice": "Preis speichern",
+      "publish": "Einstellen",
+      "withdraw": "Zurückziehen",
+      "lockedNote": "Für dieses Angebot läuft eine Bestellung, es lässt sich gerade nicht ändern.",
+      "status": {
+        "draft": "Entwurf",
+        "active": "Eingestellt",
+        "reserved": "Reserviert",
+        "sold": "Verkauft",
+        "withdrawn": "Zurückgezogen"
+      },
+      "error": "Da ist etwas schiefgelaufen: {code}"
+    },
+    "unavailable": {
+      "eyebrow": "Markt",
+      "title": "Noch nicht offen",
+      "caption": "Abb. — Forum",
+      "body": "Der Marktplatz ist auf diesem Deployment nicht aktiviert.",
+      "forgesHint": "Alle Forges sind währenddessen offen und kostenlos.",
+      "forgesLink": "Chain auswählen."
+    },
+    "purchases": {
+      "title": "Meine Käufe",
+      "loading": "Lädt",
+      "empty": "Du hast noch keine Adresse gekauft.",
+      "emptyLink": "Schau dir das Angebot an.",
+      "show": "Schlüssel zeigen",
+      "hide": "Schlüssel verbergen",
+      "retention": "Gekaufte Schlüssel bleiben hier abrufbar. Wir halten weiterhin eine Kopie, verschieb also alles Wertvolle auf einen Schlüssel, den nur du je gesehen hast.",
+      "status": {
+        "pending": "Wartet auf Zahlung",
+        "paid": "Bezahlt",
+        "released": "Übergeben",
+        "expired": "Abgelaufen"
+      },
+      "error": "Etwas ist schiefgelaufen: {code}"
+    }
   }
 }

@@ -42,6 +42,8 @@ type MetaOpts = {
   keywords?: string[];
   /** ICU values for title / description (e.g. `{ ca }` in meta.token). */
   values?: Record<string, string | number | Date>;
+  /** Keep session bound pages such as `/market/me` out of the index. */
+  noindex?: boolean;
 };
 
 export async function buildPageMetadata({
@@ -51,6 +53,7 @@ export async function buildPageMetadata({
   image = '/og.jpg',
   keywords,
   values,
+  noindex,
 }: MetaOpts): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'meta' });
   const title = t(`${route}.title`, values);
@@ -91,5 +94,6 @@ export async function buildPageMetadata({
       canonical: url,
       languages,
     },
+    ...(noindex ? { robots: { index: false, follow: true } } : {}),
   };
 }

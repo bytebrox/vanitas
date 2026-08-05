@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { RichText } from '@/lib/rich-text';
 import { DONATE_CA } from '@/lib/donate';
+import { MARKET_ENABLED } from '@/lib/market-flag';
 import { AsciiImage } from './AsciiImage';
 
 interface FooterProps {
@@ -141,8 +142,8 @@ export function Footer({ compact = false }: FooterProps) {
               <p className="text-ink/70 mb-2.5 tracking-[0.16em]">{t('groupForges')}</p>
               <div className="flex flex-col gap-1.5">
                 <FooterLink href="/">{t('allForges')}</FooterLink>
-                <FooterLink href="/sol">SOL</FooterLink>
                 <FooterLink href="/evm">EVM</FooterLink>
+                <FooterLink href="/sol">SOL</FooterLink>
                 <FooterLink href="/btc">BTC</FooterLink>
                 <FooterLink href="/tron">TRON</FooterLink>
                 <FooterLink href="/aptos">APTOS</FooterLink>
@@ -161,6 +162,7 @@ export function Footer({ compact = false }: FooterProps) {
                 <FooterLink href="/lookalike">{t('lookalike')}</FooterLink>
                 <FooterLink href="/create2">{t('create2')}</FooterLink>
                 <FooterLink href="/brand">{t('brand')}</FooterLink>
+                {MARKET_ENABLED && <FooterLink href="/market">{t('market')}</FooterLink>}
               </div>
             </div>
             <div>

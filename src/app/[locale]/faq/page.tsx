@@ -15,6 +15,7 @@ import {
 } from '@/components';
 import type { DocGlyphId } from '@/components';
 import { Link } from '@/i18n/navigation';
+import { MARKET_ENABLED } from '@/lib/market-flag';
 import { RichText } from '@/lib/rich-text';
 
 const CATEGORY_IDS = [
@@ -28,7 +29,8 @@ const CATEGORY_IDS = [
   'security',
   'proof-cli',
   'usage',
-] as const;
+  ...(MARKET_ENABLED ? (['market'] as const) : []),
+];
 
 const FAQ_GLYPH_IDS: Record<string, DocGlyphId> = {
   general: 'scroll',
@@ -41,6 +43,7 @@ const FAQ_GLYPH_IDS: Record<string, DocGlyphId> = {
   security: 'shield',
   'proof-cli': 'seal',
   usage: 'hourglass',
+  market: 'scales',
 };
 
 function FaqAccordion({
