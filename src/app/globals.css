@@ -233,6 +233,60 @@
     100% { background-position: 200% 0; }
   }
 
+  /**
+   * Marketplace: top-three rarest listings. Accent-tinted border glow that
+   * breathes so the eye finds them without fighting the rest of the board.
+   */
+  @keyframes market-rarest-glow {
+    0%,
+    100% {
+      box-shadow:
+        0 0 0 1px rgb(var(--accent) / 0.55),
+        0 0 14px rgb(var(--accent) / 0.22),
+        0 0 28px rgb(var(--accent) / 0.1);
+    }
+    50% {
+      box-shadow:
+        0 0 0 1px rgb(var(--accent) / 0.9),
+        0 0 22px rgb(var(--accent) / 0.4),
+        0 0 42px rgb(var(--accent) / 0.18);
+    }
+  }
+
+  .market-rarest {
+    border-color: rgb(var(--accent) / 0.65);
+    background-color: rgb(var(--surface));
+    background-image: linear-gradient(
+      160deg,
+      rgb(var(--accent) / 0.1),
+      transparent 42%
+    );
+    animation: market-rarest-glow 2.8s ease-in-out infinite;
+  }
+
+  .market-rarest--1 {
+    animation-duration: 2.2s;
+  }
+
+  .market-rarest--2 {
+    animation-duration: 2.8s;
+    animation-delay: 0.35s;
+  }
+
+  .market-rarest--3 {
+    animation-duration: 3.4s;
+    animation-delay: 0.7s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .market-rarest {
+      animation: none;
+      box-shadow:
+        0 0 0 1px rgb(var(--accent) / 0.7),
+        0 0 18px rgb(var(--accent) / 0.28);
+    }
+  }
+
   .animate-shimmer {
     background: linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.35) 50%, transparent 75%);
     background-size: 200% 100%;

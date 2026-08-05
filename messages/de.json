@@ -2517,7 +2517,10 @@
       "draft": "Entwurf",
       "reserved": "Reserviert",
       "sold": "Verkauft",
-      "withdrawn": "Zurückgezogen"
+      "withdrawn": "Zurückgezogen",
+      "rarest1": "Seltenste",
+      "rarest2": "2. seltenste",
+      "rarest3": "3. seltenste"
     },
     "detail": {
       "title": "Angebot",

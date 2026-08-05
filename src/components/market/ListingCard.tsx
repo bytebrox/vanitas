@@ -5,6 +5,8 @@ import { Link } from '@/i18n/navigation';
 import { formatEth, shortAddress } from '@/lib/market-format';
 import type { ListingSummary } from '@/types/market';
 
+export type RarestRank = 1 | 2 | 3;
+
 /** Split an address so the matched prefix and suffix can be emphasised. */
 function splitByPattern(address: string, matched: string) {
   const [rawPrefix = '', rawSuffix = ''] = matched.split('...');
@@ -22,16 +24,36 @@ function splitByPattern(address: string, matched: string) {
  * carry the accent and a larger size while the rest of the address recedes.
  * Price sits on its own baseline underneath, because comparing prices down a
  * column is the second thing anyone does here.
+ *
+ * The three rarest active listings on the whole board get a rank badge and a
+ * soft pulsing glow so they stay findable under any sort order.
  */
-export function ListingCard({ listing }: { listing: ListingSummary }) {
+export function ListingCard({
+  listing,
+  rarestRank,
+}: {
+  listing: ListingSummary;
+  rarestRank?: RarestRank;
+}) {
   const t = useTranslations('market.card');
   const { prefix, middle, suffix } = splitByPattern(listing.address, listing.matchedPattern);
 
   return (
     <Link
       href={`/market/${listing.id}`}
-      className="group flex flex-col justify-between gap-4 border border-ink/15 bg-surface px-4 py-4 transition-colors hover:border-accent focus-visible:border-accent"
+      className={[
+        'group relative flex flex-col justify-between gap-4 border bg-surface px-4 py-4 transition-colors',
+        rarestRank
+          ? `market-rarest market-rarest--${rarestRank} hover:border-accent`
+          : 'border-ink/15 hover:border-accent focus-visible:border-accent',
+      ].join(' ')}
     >
+      {rarestRank && (
+        <span className="absolute -top-2.5 left-3 bg-paper px-1.5 text-micro uppercase tracking-[0.16em] text-accent">
+          {t(`rarest${rarestRank}`)}
+        </span>
+      )}
+
       <div>
         <p className="font-mono text-[0.82rem] leading-relaxed break-all">
           <span className="text-ink/30">0x</span>

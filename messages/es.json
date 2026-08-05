@@ -2517,7 +2517,10 @@
       "draft": "Draft",
       "reserved": "Reserved",
       "sold": "Sold",
-      "withdrawn": "Withdrawn"
+      "withdrawn": "Withdrawn",
+      "rarest1": "Rarest",
+      "rarest2": "2nd rarest",
+      "rarest3": "3rd rarest"
     },
     "detail": {
       "title": "Listing",

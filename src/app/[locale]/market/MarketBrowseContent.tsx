@@ -7,12 +7,14 @@ import { ListingGrid } from '@/components/market/ListingGrid';
 import { MarketShell } from '@/components/market/MarketShell';
 import { MarketTrustNotice } from '@/components/market/MarketTrustNotice';
 import { Pagination } from '@/components/market/Pagination';
+import type { RarestRank } from '@/components/market/ListingCard';
 import { marketApi } from '@/lib/market-api';
 import type { ListingSummary } from '@/types/market';
 
 const SORTS = ['newest', 'cheapest', 'dearest', 'rarest'] as const;
 const PAGE_SIZE = 24;
 const SEARCH_DEBOUNCE_MS = 300;
+const EMPTY_RAREST = new Map<string, RarestRank>();
 
 export function MarketBrowseContent() {
   const t = useTranslations('market.browse');
@@ -24,6 +26,7 @@ export function MarketBrowseContent() {
 
   const [items, setItems] = useState<ListingSummary[]>([]);
   const [total, setTotal] = useState(0);
+  const [rarestRanks, setRarestRanks] = useState(EMPTY_RAREST);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -37,6 +40,34 @@ export function MarketBrowseContent() {
     }, SEARCH_DEBOUNCE_MS);
     return () => clearTimeout(timer);
   }, [search]);
+
+  // The top three rarest are board-wide, not page-local, so they stay marked
+  // under every sort and search that happens to include them.
+  useEffect(() => {
+    let cancelled = false;
+
+    void (async () => {
+      try {
+        const rarest = await marketApi.listings({
+          sort: 'rarest',
+          status: 'active',
+          limit: 3,
+        });
+        if (cancelled) return;
+        const ranks = new Map<string, RarestRank>();
+        rarest.items.forEach((listing, index) => {
+          if (index < 3) ranks.set(listing.id, (index + 1) as RarestRank);
+        });
+        setRarestRanks(ranks);
+      } catch {
+        if (!cancelled) setRarestRanks(EMPTY_RAREST);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [total]);
 
   useEffect(() => {
     let cancelled = false;
@@ -144,6 +175,7 @@ export function MarketBrowseContent() {
           items={items}
           loading={loading}
           emptyLabel={query ? t('emptySearch', { query }) : t('empty')}
+          rarestRanks={rarestRanks}
         />
 
         <Pagination page={page} pageCount={pageCount} onPage={goToPage} disabled={loading} />

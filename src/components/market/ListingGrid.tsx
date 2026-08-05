@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { ListingCard } from './ListingCard';
+import { ListingCard, type RarestRank } from './ListingCard';
 import type { ListingSummary } from '@/types/market';
 
 /** Keeps the grid from collapsing to nothing while a page is being fetched. */
@@ -20,15 +20,18 @@ export function ListingGrid({
   items,
   loading,
   emptyLabel,
+  rarestRanks,
   skeletonCount = 8,
 }: {
   items: ListingSummary[];
   loading: boolean;
   emptyLabel: string;
+  /** Global top-three rarest listing ids → rank. */
+  rarestRanks?: ReadonlyMap<string, RarestRank>;
   skeletonCount?: number;
 }) {
   const t = useTranslations('market.card');
-  const grid = 'grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+  const grid = 'grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pt-2';
 
   if (loading) {
     return (
@@ -51,7 +54,11 @@ export function ListingGrid({
   return (
     <div className={grid}>
       {items.map((listing) => (
-        <ListingCard key={listing.id} listing={listing} />
+        <ListingCard
+          key={listing.id}
+          listing={listing}
+          rarestRank={rarestRanks?.get(listing.id)}
+        />
       ))}
     </div>
   );
