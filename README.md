@@ -68,17 +68,23 @@ Legacy `/token` redirects to `/sol?mode=mint`. `/eth` redirects to `/evm`.
 
 After a find, **Share proof** builds a public link to `/proof` with address + pattern only (never the private key). Anyone can open it and verify the match client-side.
 
-## Marketplace (optional, off by default)
+## Marketplace
 
-- `/market` is a board for ready-made EVM addresses on Robinhood Chain. It is the one part of Vanitas that runs against a server, and it stays hidden unless `NEXT_PUBLIC_MARKET_ENABLED=true` is set at build time. Nothing about the free forges changes when it is on.
-- The board pages server side and can be filtered by any run of hex characters, matched anywhere in the address. Both are query parameters on `/api/market/listings` (`offset`, `limit`, `q`), so nothing accumulates in the browser as the inventory grows.
-- Sellers still grind in their own browser, but under a **split key**: the server keeps a secret scalar `s` and hands out only the point `S = s·G`, the worker searches for a scalar `b` such that `address(b·G + S)` matches, and the final key is `b + s`. Neither side alone can spend from a listing while it is being forged. Once the listing exists the platform does hold the combined key, encrypted, until a buyer has paid — that difference is stated on every market page.
-- Buyers pay the exact price to a one-time deposit address derived from a BIP32 seed. There is no smart contract and no approval to sign; a settlement cron watches balances, releases the key, and forwards the payment from the deposit address straight to the seller. Money that no sale will use, an underpayment or a transfer that landed after the window closed, is returned to the buyer by the same pass.
-- The delivered key stays available in the buyer's account instead of being deleted after a grace period, and can be copied or downloaded as a text file. That is a deliberate trade: it survives a lost tab, at the cost of the platform keeping a copy, which is why buyers are told to move anything valuable onto a key only they have ever seen.
-- **There is no commission and no listing fee.** Because there is also no margin to pay network fees out of, every transfer funds itself: the payout pins its own `maxFeePerGas`, measures the gas the actual recipient needs, reserves exactly `gas × maxFeePerGas` from the amount being moved, and sends the rest. The reserve is therefore a hard upper bound, the transfer cannot run out of gas, and the platform never pays anything out of its own pocket. No hot wallet has to be funded.
-- Two scripts rehearse all of this against the testnet with real transfers. `node scripts/market-e2e.mjs` walks a sale from grinding to payout and verifies the delivered key really controls the advertised address; `node scripts/market-e2e-refund.mjs` underpays on purpose and checks the money comes home. Both print the address to top up when the funding account is empty.
-- Deployment needs Neon Postgres, an RPC endpoint, and the secrets listed in [.env.example](.env.example); `node scripts/market-secrets.mjs` generates the three random ones plus the cron token. The Vercel Neon integration provides `DATABASE_URL` and `DATABASE_URL_UNPOOLED` under exactly those names, so only the `MARKET_*` values and `CRON_SECRET` have to be added by hand. Apply the schema once with `npm run db:migrate`. All browser RPC traffic goes through `/api/market/rpc` so the `connect-src 'self'` policy stays as it is. Minute-resolution crons require a Vercel Pro plan; on Hobby the "I have paid" button carries the load.
-- Nothing in the schema records which chain a row belongs to, so switching `MARKET_CHAIN` between testnet and mainnet does not separate the data. Clear the marketplace tables and issue fresh secrets before pointing a rehearsed deployment at real money.
+[vanitas.fun/market](https://vanitas.fun/market) is where finished addresses change hands. A good pattern costs time: six fixed characters on EVM is roughly 16 million tries, and every further character multiplies that by sixteen. Not everyone wants to leave a laptop running for it. The board lets whoever already spent that time pass the result on.
+
+Everything is priced in ETH on Robinhood Chain. Connect any browser wallet to take part.
+
+**Buying.** Search the board for the characters you want, anywhere in the address, and open a listing. You get a one-time deposit address and pay the exact price to it. There is no contract to approve and no token allowance to sign. The moment the payment lands the private key is released: copy it, or download it as a text file. It also stays in your account, so a closed tab is not a lost key. Import it into any wallet that accepts a raw EVM key.
+
+Pay too little, or too late, and the money comes back to you on its own. Nothing is kept.
+
+**Selling.** Grind an address on the market forge and name your own price. The search runs on your own machine, the same as the free forges. Once it sells, the money goes straight from the buyer to the payout address you set.
+
+**No commission and no listing fee.** The only thing taken out is the network fee for the single transfer that pays you.
+
+**Worth knowing before you buy.** This is the one corner of Vanitas that involves a server. While an address is being ground the key exists in two halves, one in the seller's browser and one on ours, so a seller can never walk away with a copy of what they sold you. But from the moment a listing goes up until a buyer pays, the finished key does sit with us, encrypted. A purchased address has been through our hands, and you are trusting us on that step. Every market page says so plainly.
+
+Buy here for an address you want to show, receive on, or brand. **For a wallet meant to hold serious value, use a free forge.** There the key is made on your machine and never goes anywhere.
 
 What is a Vanity Address?
 
@@ -95,6 +101,7 @@ A vanity address contains a recognizable pattern instead of looking fully random
 - **Multi-Core** – Uses available CPU cores for parallel search
 - **Deploy Modes** – Solana mint, EVM/Tron CREATE, EVM CREATE2 (salt or deployer)
 - **Proof of Find** – Shareable match verification without private keys
+- **Marketplace** – Buy or sell finished EVM addresses in ETH on Robinhood Chain
 - **Recent Finds** – Session history of addresses only (no private keys stored)
 - **Pattern Templates** – Quick-start prefixes per forge
 - **Key Security Check** – Entropy / CSPRNG / chi-square probes after a find
@@ -115,7 +122,7 @@ Vanitas is designed with one principle: **your private keys should never leave y
 3. **Live Audit** – [vanitas.fun/audit](https://vanitas.fun/audit) for in-browser checks
 4. **Offline Capable** – Works without internet after initial load
 
-The optional marketplace is the documented exception: it needs an account, a server, and custody of the finished key between listing and sale. It is opt-in, clearly marked in the UI, and covered separately in the [Terms](https://vanitas.fun/terms) and [Privacy](https://vanitas.fun/privacy) pages.
+That covers every forge and every tool. The [marketplace](#marketplace) is the one documented exception, because a sale cannot work without an account, a server, and custody of the key between listing and payment. It is marked as such wherever it appears, and the details are in the [Terms](https://vanitas.fun/terms) and [Privacy](https://vanitas.fun/privacy) pages.
 
 ## Disclaimer
 
