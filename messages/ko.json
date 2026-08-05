@@ -1089,7 +1089,7 @@
         }
       },
       "proof-cli": {
-        "label": "증명 및 CLI",
+        "label": "Proof · CLI · Seed",
         "n": "09",
         "items": {
           "proof": {
@@ -1099,6 +1099,10 @@
           "cli": {
             "q": "CLI를 어떻게 실행하나요?",
             "a": "마법사의 경우 `npx vanitas` 또는 `npx vanitas sol --prefix Ace --threads 8`과 같은 플래그입니다. 웹 앱과 동일한 배포 모드를 지원합니다(mint, CREATE, CREATE2 플래그)."
+          },
+          "seed": {
+            "q": "What is Seed Forge?",
+            "a": "You fix a BIP-39 recovery phrase first, then grind **derivation indices** until the address matches. A hit restores from the phrase in a normal wallet (path shown on find). Supports Solana, EVM, Bitcoin (legacy / SegWit / Taproot), and Tron. See [/seed](/seed) and [How it works → Seed](/how-it-works#seed)."
           }
         }
       },
@@ -1174,7 +1178,8 @@
         "workers": "노동자",
         "proof": "증거",
         "cli": "CLI",
-        "verify": "확인하다"
+        "verify": "확인하다",
+        "seed": "Seed"
       },
       "sections": {
         "overview": {
@@ -1317,22 +1322,30 @@
           "session": "UI의 최근 발견 항목은 주소 + 패턴 메타데이터에만 `sessionStorage`을 사용합니다. 탭을 닫으면 해당 기록이 지워집니다. 키는 거기에 저장되지 않습니다."
         },
         "cli": {
-          "n": "08 - CLI",
+          "n": "09 — CLI",
           "title": "터미널 단조",
-          "glyph": "그림 H - 비석",
-          "p1": "브라우저 외부에서도 동일한 아이디어: `npx vanitas`은 마법사를 열거나 체인, 모드, 접두사, 스레드 및 CREATE2 매개변수에 대한 플래그를 전달합니다. 결과는 OS가 지원하는 경우 `0600` 모드로 JSON 파일을 작성합니다. 패키지: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
-          "example": "npx vanitas evm --mode contract --prefix 카페 --threads 8"
+          "glyph": "Fig. I — Stele",
+          "p1": "Same idea outside the browser: `npx vanitas` opens a wizard, or pass flags for chain, mode, prefix, threads, and CREATE2 parameters. Repeat `--pattern prefix[:suffix]` for OR targets. Results write a JSON file with mode `0600` when the OS supports it. Package: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
+          "example": "npx vanitas sol --prefix Ace --pattern Bee --pattern Cat:zz --threads 8"
         },
         "verify": {
-          "n": "09 — 확인",
+          "n": "10 — Verify",
           "title": "직접 확인하세요",
-          "glyph": "그림 I - 눈",
+          "glyph": "Fig. J — Eye",
           "steps": [
             "DevTools → 네트워크를 열고, 로그를 지우고, 단조를 시작하세요. 채굴하는 동안 **요청 없음**이 표시되어야 합니다.",
             "페이지를 로드하고, 오프라인으로 전환하고, 다시 생성하세요. 여전히 작동합니다.",
             "[live audit](/audit)을 실행하고 작업자 해시를 `worker-hash.json`과 비교합니다.",
             "[GitHub](https://github.com/bytebrox/vanitas), 특히 `src/workers/`의 소스를 읽어보세요."
           ]
+        },
+        "seed": {
+          "n": "08 — Seed",
+          "title": "Seed Forge",
+          "glyph": "Fig. H — Phrase",
+          "p1": "Normal forges draw a fresh private key every attempt. **Seed Forge** fixes a BIP-39 mnemonic (and optional passphrase) first, stretches it once with PBKDF2, then walks **derivation indices** until the address matches. A hit is recoverable in any wallet that supports that path: you import the phrase and open the shown account index.",
+          "p2": "Supported today: **Solana** (SLIP-0010 Ed25519), **EVM** (BIP-44 `m/44'/60'/…`), **Bitcoin** (BIP-44 legacy, BIP-84 SegWit, BIP-86 Taproot), **Tron** (BIP-44 `m/44'/195'/…`). Export is chain-native (Solana keypair Base58, EVM/Tron hex, Bitcoin WIF). Open [/seed](/seed).",
+          "note": "Whoever holds the phrase holds every derived address. Write it down before you grind. The CLI does not mine seeds yet; use the web tool."
         }
       },
       "footer": {

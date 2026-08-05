@@ -1089,7 +1089,7 @@
         }
       },
       "proof-cli": {
-        "label": "证明和 CLI",
+        "label": "Proof · CLI · Seed",
         "n": "09",
         "items": {
           "proof": {
@@ -1099,6 +1099,10 @@
           "cli": {
             "q": "如何运行 CLI？",
             "a": "`npx vanitas` 表示向导，或类似 `npx vanitas sol --prefix Ace --threads 8` 的标志。支持与 Web 应用程序相同的部署模式（mint、CREATE、CREATE2 标志）。"
+          },
+          "seed": {
+            "q": "What is Seed Forge?",
+            "a": "You fix a BIP-39 recovery phrase first, then grind **derivation indices** until the address matches. A hit restores from the phrase in a normal wallet (path shown on find). Supports Solana, EVM, Bitcoin (legacy / SegWit / Taproot), and Tron. See [/seed](/seed) and [How it works → Seed](/how-it-works#seed)."
           }
         }
       },
@@ -1174,7 +1178,8 @@
         "workers": "工人",
         "proof": "证明",
         "cli": "CLI",
-        "verify": "核实"
+        "verify": "核实",
+        "seed": "Seed"
       },
       "sections": {
         "overview": {
@@ -1317,22 +1322,30 @@
           "session": "最近在 UI 中发现仅使用 `sessionStorage` 作为地址 + 模式元数据。关闭选项卡会清除该历史记录；密钥不存储在那里。"
         },
         "cli": {
-          "n": "08 — CLI",
+          "n": "09 — CLI",
           "title": "端子锻造",
-          "glyph": "图 H——石碑",
-          "p1": "浏览器外的想法相同：`npx vanitas` 打开一个向导，或传递链、模式、前缀、线程和 CREATE2 参数的标志。当操作系统支持时，结果会写入模式为 `0600` 的 JSON 文件。封装：[npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas)。",
-          "example": "npx vanitas evm --模式合约 --前缀咖啡馆 --线程 8"
+          "glyph": "Fig. I — Stele",
+          "p1": "Same idea outside the browser: `npx vanitas` opens a wizard, or pass flags for chain, mode, prefix, threads, and CREATE2 parameters. Repeat `--pattern prefix[:suffix]` for OR targets. Results write a JSON file with mode `0600` when the OS supports it. Package: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
+          "example": "npx vanitas sol --prefix Ace --pattern Bee --pattern Cat:zz --threads 8"
         },
         "verify": {
-          "n": "09 — 验证",
+          "n": "10 — Verify",
           "title": "自己确认一下",
-          "glyph": "图一——眼睛",
+          "glyph": "Fig. J — Eye",
           "steps": [
             "打开 DevTools → 网络，清除日志，启动锻造 - 挖矿时您应该看到 **没有请求**。",
             "加载页面，离线，再次生成——它仍然有效。",
             "运行 [live audit](/audit) 并将工作线程哈希值与 `worker-hash.json` 进行比较。",
             "阅读 [GitHub](https://github.com/bytebrox/vanitas) 的源代码 — 尤其是 `src/workers/`。"
           ]
+        },
+        "seed": {
+          "n": "08 — Seed",
+          "title": "Seed Forge",
+          "glyph": "Fig. H — Phrase",
+          "p1": "Normal forges draw a fresh private key every attempt. **Seed Forge** fixes a BIP-39 mnemonic (and optional passphrase) first, stretches it once with PBKDF2, then walks **derivation indices** until the address matches. A hit is recoverable in any wallet that supports that path: you import the phrase and open the shown account index.",
+          "p2": "Supported today: **Solana** (SLIP-0010 Ed25519), **EVM** (BIP-44 `m/44'/60'/…`), **Bitcoin** (BIP-44 legacy, BIP-84 SegWit, BIP-86 Taproot), **Tron** (BIP-44 `m/44'/195'/…`). Export is chain-native (Solana keypair Base58, EVM/Tron hex, Bitcoin WIF). Open [/seed](/seed).",
+          "note": "Whoever holds the phrase holds every derived address. Write it down before you grind. The CLI does not mine seeds yet; use the web tool."
         }
       },
       "footer": {

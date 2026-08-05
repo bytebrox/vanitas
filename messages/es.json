@@ -1089,7 +1089,7 @@
         }
       },
       "proof-cli": {
-        "label": "Prueba y CLI",
+        "label": "Proof · CLI · Seed",
         "n": "09",
         "items": {
           "proof": {
@@ -1099,6 +1099,10 @@
           "cli": {
             "q": "¿Cómo ejecuto la CLI?",
             "a": "`npx vanitas` para un asistente o banderas como `npx vanitas sol --prefix Ace --threads 8`. Admite los mismos modos de implementación que la aplicación web (indicadores mint, CREATE, CREATE2)."
+          },
+          "seed": {
+            "q": "What is Seed Forge?",
+            "a": "You fix a BIP-39 recovery phrase first, then grind **derivation indices** until the address matches. A hit restores from the phrase in a normal wallet (path shown on find). Supports Solana, EVM, Bitcoin (legacy / SegWit / Taproot), and Tron. See [/seed](/seed) and [How it works → Seed](/how-it-works#seed)."
           }
         }
       },
@@ -1174,7 +1178,8 @@
         "workers": "Trabajadores",
         "proof": "Prueba",
         "cli": "CLI",
-        "verify": "Verificar"
+        "verify": "Verificar",
+        "seed": "Seed"
       },
       "sections": {
         "overview": {
@@ -1317,22 +1322,30 @@
           "session": "Los hallazgos recientes en la interfaz de usuario usan `sessionStorage` solo para metadatos de dirección + patrón. Al cerrar la pestaña se borra ese historial; Las claves no se almacenan allí."
         },
         "cli": {
-          "n": "08-CLI",
+          "n": "09 — CLI",
           "title": "Forja terminal",
-          "glyph": "Fig. H — Estela",
-          "p1": "La misma idea fuera del navegador: `npx vanitas` abre un asistente o pasa indicadores para cadena, modo, prefijo, subprocesos y parámetros CREATE2. Los resultados escriben un archivo JSON con el modo `0600` cuando el sistema operativo lo admite. Paquete: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
-          "example": "npx vanitas evm --modo contrato --prefix cafe --threads 8"
+          "glyph": "Fig. I — Stele",
+          "p1": "Same idea outside the browser: `npx vanitas` opens a wizard, or pass flags for chain, mode, prefix, threads, and CREATE2 parameters. Repeat `--pattern prefix[:suffix]` for OR targets. Results write a JSON file with mode `0600` when the OS supports it. Package: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
+          "example": "npx vanitas sol --prefix Ace --pattern Bee --pattern Cat:zz --threads 8"
         },
         "verify": {
-          "n": "09 — Verificar",
+          "n": "10 — Verify",
           "title": "Confírmalo tú mismo",
-          "glyph": "Figura I — Ojo",
+          "glyph": "Fig. J — Eye",
           "steps": [
             "Abra DevTools → Red, borre el registro, inicie una falsificación; debería ver **sin solicitudes** mientras extrae.",
             "Cargue la página, desconéctese, genere nuevamente; todavía funciona.",
             "Ejecute [live audit](/audit) y compare los hashes de trabajo con `worker-hash.json`.",
             "Lea la fuente sobre [GitHub](https://github.com/bytebrox/vanitas), especialmente `src/workers/`."
           ]
+        },
+        "seed": {
+          "n": "08 — Seed",
+          "title": "Seed Forge",
+          "glyph": "Fig. H — Phrase",
+          "p1": "Normal forges draw a fresh private key every attempt. **Seed Forge** fixes a BIP-39 mnemonic (and optional passphrase) first, stretches it once with PBKDF2, then walks **derivation indices** until the address matches. A hit is recoverable in any wallet that supports that path: you import the phrase and open the shown account index.",
+          "p2": "Supported today: **Solana** (SLIP-0010 Ed25519), **EVM** (BIP-44 `m/44'/60'/…`), **Bitcoin** (BIP-44 legacy, BIP-84 SegWit, BIP-86 Taproot), **Tron** (BIP-44 `m/44'/195'/…`). Export is chain-native (Solana keypair Base58, EVM/Tron hex, Bitcoin WIF). Open [/seed](/seed).",
+          "note": "Whoever holds the phrase holds every derived address. Write it down before you grind. The CLI does not mine seeds yet; use the web tool."
         }
       },
       "footer": {

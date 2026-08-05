@@ -157,7 +157,7 @@
     "toolsLab": "Lab",
     "toolsLabHint": "Pattern lab",
     "toolsSeed": "Seed Forge",
-    "toolsSeedHint": "Vanity address from a recovery phrase",
+    "toolsSeedHint": "BIP-39 vanity: Sol, EVM, BTC, Tron",
     "toolsLookalike": "Lookalike",
     "toolsLookalikeHint": "Alphabet traps",
     "toolsCreate2": "CREATE2",
@@ -496,7 +496,7 @@
   "tools": {
     "lab": {
       "title": "Pattern lab",
-      "description": "See how rare a pattern is before you mine — then queue jobs and open the forge.",
+      "description": "See how rare a pattern is before you mine. Multi-pattern OR, CREATE2 modes on EVM, then queue jobs and open the forge.",
       "eyebrow": "Tools",
       "caption": "Fig. — Lab",
       "toc": {
@@ -525,7 +525,7 @@
     "seed": {
       "eyebrow": "Recoverable by design",
       "title": "Seed Forge",
-      "description": "Grind a vanity address you can restore from twelve words. The recovery phrase is fixed first and only the derivation index varies, so the result imports into any standard wallet instead of living on as a loose private key.",
+      "description": "Grind a vanity address you can restore from twelve words on Solana, EVM, Bitcoin, or Tron. The recovery phrase is fixed first and only the derivation index varies, so the result imports into any standard wallet instead of living on as a loose private key.",
       "caption": "Fig. — Seed Forge",
       "toc": {
         "mnemonic": "Recovery phrase",
@@ -930,7 +930,7 @@
   "faq": {
     "eyebrow": "Docs",
     "title": "FAQ",
-    "description": "Answers across every forge — patterns, modes, security, proof links, CLI, and day-to-day usage. Use the submenu to jump by topic.",
+    "description": "Answers across every forge: patterns, modes, Seed Forge, security, proof links, CLI, and day-to-day usage. Use the submenu to jump by topic.",
     "categories": {
       "general": {
         "label": "General",
@@ -946,7 +946,7 @@
           },
           "which": {
             "q": "Which forges exist?",
-            "a": "Nine web forges — Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano, XRP — plus `npx vanitas` for the terminal. See [How it works → Chains](/how-it-works#chains)."
+            "a": "Nine web forges: Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano, XRP. Tools on top: [Pattern Lab](/lab), [Seed Forge](/seed) (Solana, EVM, Bitcoin, Tron from a BIP-39 phrase), CREATE2 helper, lookalike check. Terminal: `npx vanitas`. See [How it works → Chains](/how-it-works#chains)."
           },
           "howLong": {
             "q": "How long will my pattern take?",
@@ -954,7 +954,7 @@
           },
           "prefixSuffix": {
             "q": "Can I use prefix and suffix together?",
-            "a": "Yes — both constraints multiply difficulty. Prefer one strong side (prefix or suffix) unless you have time and hash rate to spare."
+            "a": "Yes. Both constraints multiply difficulty. Prefer one strong side (prefix or suffix) unless you have time and hash rate to spare. You can also add **alternative** patterns (OR): one key is generated and matched against any target; the first hit wins."
           }
         }
       },
@@ -1050,7 +1050,7 @@
         "items": {
           "ton": {
             "q": "TON UQ vs EQ?",
-            "a": "Non-bounceable (`UQ…`) vs bounceable (`EQ…`) user-friendly forms of Wallet v4R2. Matching is case-sensitive."
+            "a": "Non-bounceable (`UQ…`) is the usual wallet receive form. Bounceable (`EQ…`) is the twin used more often for contracts / bounce-on-fail flows. Same account, different encoding. Matching is case-sensitive. After a find, the playbook follows the mode you forged."
           },
           "cardano": {
             "q": "What Cardano address type is forged?",
@@ -1089,16 +1089,20 @@
         }
       },
       "proof-cli": {
-        "label": "Proof & CLI",
+        "label": "Proof · CLI · Seed",
         "n": "09",
         "items": {
           "proof": {
             "q": "What is Proof of find?",
-            "a": "A shareable [/proof](/proof) link with address + pattern (and optional stats). Anyone can verify the match client-side. Private keys are never included."
+            "a": "A shareable [/proof](/proof) link with address + pattern (and optional stats). Anyone can verify the match client-side. Private keys are never included. Forge share links can also carry pattern + mode (and for CREATE2: salt / initCodeHash, never the deployer key)."
           },
           "cli": {
             "q": "How do I run the CLI?",
-            "a": "`npx vanitas` for a wizard, or flags like `npx vanitas sol --prefix Ace --threads 8`. Supports the same deploy modes as the web app (mint, CREATE, CREATE2 flags)."
+            "a": "`npx vanitas` for a wizard, or flags like `npx vanitas sol --prefix Ace --threads 8`. Repeat `--pattern prefix[:suffix]` for OR targets. Same deploy modes as the web app (mint, CREATE, CREATE2). Seed grinding is web-only for now: `npx vanitas seed` points you to [/seed](/seed)."
+          },
+          "seed": {
+            "q": "What is Seed Forge?",
+            "a": "You fix a BIP-39 recovery phrase first, then grind **derivation indices** until the address matches. A hit restores from the phrase in a normal wallet (path shown on find). Supports Solana, EVM, Bitcoin (legacy / SegWit / Taproot), and Tron. See [/seed](/seed) and [How it works → Seed](/how-it-works#seed)."
           }
         }
       },
@@ -1116,7 +1120,7 @@
           },
           "disabled": {
             "q": "Why is Start disabled?",
-            "a": "Empty pattern, invalid characters for that alphabet, or pattern too long. Fix the validation message under the inputs."
+            "a": "No usable pattern yet (primary **or** alternatives), invalid characters for that alphabet, pattern too long, or (CREATE2) missing salt / initCodeHash / deployer fields. Fix the validation message under the inputs."
           },
           "freeze": {
             "q": "UI freezes while mining?",
@@ -1149,12 +1153,12 @@
     "howItWorks": {
       "eyebrow": "Docs",
       "title": "How it works",
-      "description": "A full tour of Vanitas: how vanity mining works, what each forge produces, how workers search in parallel, and how to verify that nothing leaves your machine.",
+      "description": "A full tour of Vanitas: how vanity mining works, what each forge produces, Seed Forge, multi-pattern OR, how workers search in parallel, and how to verify that nothing leaves your machine.",
       "sideCaption": "Fig. III — Orator",
       "overview": {
         "title": "What Vanitas is",
-        "p1": "**Vanitas** is a client-side multi-chain vanity address forge. You choose a prefix and/or suffix; the app searches for a keypair whose public address matches that pattern. Generation runs in **Web Workers on your CPU**. Private keys are created in memory on your device and are never uploaded.",
-        "p2": "A vanity address is still a normal cryptographic address. The private key is random; only the public encoding is filtered until it looks the way you want — useful for branding, donations, mints, and memorable public wallets."
+        "p1": "**Vanitas** is a client-side multi-chain vanity address forge. You choose a prefix and/or suffix (or several OR alternatives); the app searches for a keypair whose public address matches. Generation runs in **Web Workers on your CPU**. Private keys are created in memory on your device and are never uploaded. Extra tools: [Pattern Lab](/lab) (difficulty before you mine), [Seed Forge](/seed) (vanity from a BIP-39 phrase on Solana, EVM, Bitcoin, Tron), and the terminal CLI.",
+        "p2": "A vanity address is still a normal cryptographic address. The private key is random; only the public encoding is filtered until it looks the way you want. Useful for branding, donations, mints, and memorable public wallets."
       },
       "pipeline": {
         "title": "The search loop",
@@ -1173,6 +1177,7 @@
         "modes": "Modes",
         "workers": "Workers",
         "proof": "Proof",
+        "seed": "Seed",
         "cli": "CLI",
         "verify": "Verify"
       },
@@ -1189,13 +1194,13 @@
             },
             "forges": {
               "label": "Forges",
-              "value": "9 chains + terminal CLI",
-              "note": "Solana · EVM · Bitcoin · Tron · Aptos · Sui · TON · Cardano · XRP"
+              "value": "9 chains + tools + CLI",
+              "note": "Solana · EVM · Bitcoin · Tron · Aptos · Sui · TON · Cardano · XRP · Seed · Lab"
             },
             "output": {
               "label": "Output",
-              "value": "Address + private key",
-              "note": "Export formats depend on the forge (JSON, hex, WIF, …)"
+              "value": "Address + private key (or path)",
+              "note": "Export formats depend on the forge (JSON, hex, WIF, …). Seed Forge recovers via mnemonic + path."
             }
           }
         },
@@ -1207,7 +1212,7 @@
             "Draw a cryptographically secure random private key (`crypto.getRandomValues`).",
             "Derive the public key with the chain's curve (Ed25519 or secp256k1).",
             "Encode the address the way that chain expects (Base58, hex, bech32, …).",
-            "Compare against your prefix / suffix (and mode rules).",
+            "Compare against your pattern targets (prefix / suffix, OR alternatives, and mode rules).",
             "On match: stop workers, show the result, optional sound / proof / export."
           ],
           "workersNote": "Workers run this loop in parallel across CPU cores. The UI thread stays responsive; progress (attempts, rate, ETA) is aggregated from worker messages. When one worker finds a hit, the pool is terminated.",
@@ -1217,7 +1222,7 @@
           "n": "03 — Patterns",
           "title": "Difficulty, alphabets, warnings",
           "glyph": "Fig. C — Time",
-          "intro": "Expected time scales with pattern length and alphabet size. Each extra character multiplies the search space. The forge UI shows a live difficulty estimate based on your pattern and a measured or assumed hash rate.",
+          "intro": "Expected time scales with pattern length and alphabet size. Each extra character multiplies the search space. **OR alternatives** (multi-pattern) combine odds: roughly `1 / Σ(1/d_i)` when hits do not overlap. The forge UI and [Pattern Lab](/lab) show a live difficulty estimate based on your pattern(s) and a measured or assumed hash rate.",
           "ledger": {
             "base58": {
               "label": "Base58",
@@ -1245,7 +1250,7 @@
             "**Solana / Bitcoin Base58** — no `0`, `O`, `I`, or `l` (look-alike rejection).",
             "**EVM** — only hex after `0x`. Letters beyond `a–f` are invalid.",
             "**Tron** — addresses start with `T`; the next character is usually uppercase. Case-sensitive lowercase prefixes often never match.",
-            "**Prefix + suffix** — both constraints multiply difficulty. Start short; grow the pattern once you know your rate."
+            "**Prefix + suffix** multiply difficulty. **OR alternatives** ease it (any target can win). Start short; grow once you know your rate."
           ]
         },
         "chains": {
@@ -1313,20 +1318,28 @@
           "n": "07 — Proof",
           "title": "Proof of find",
           "glyph": "Fig. G — Seal",
-          "p1": "**Share proof** builds a public link to [/proof](/proof) with chain, address, and pattern only — **never the private key**. Anyone can open the link and verify the address matches the claimed prefix/suffix client-side.",
+          "p1": "**Share proof** builds a public link to [/proof](/proof) with chain, address, and pattern only — **never the private key**. Anyone can open the link and verify the address matches the claimed prefix/suffix client-side. Forge share URLs can also reload patterns (including `p1`/`s1` alternatives) and CREATE2 public params (`salt`, `initCodeHash`), never a deployer private key.",
           "session": "Recent finds in the UI use `sessionStorage` for address + pattern metadata only. Closing the tab clears that history; keys are not stored there."
         },
+        "seed": {
+          "n": "08 — Seed",
+          "title": "Seed Forge",
+          "glyph": "Fig. H — Phrase",
+          "p1": "Normal forges draw a fresh private key every attempt. **Seed Forge** fixes a BIP-39 mnemonic (and optional passphrase) first, stretches it once with PBKDF2, then walks **derivation indices** until the address matches. A hit is recoverable in any wallet that supports that path: you import the phrase and open the shown account index.",
+          "p2": "Supported today: **Solana** (SLIP-0010 Ed25519), **EVM** (BIP-44 `m/44'/60'/…`), **Bitcoin** (BIP-44 legacy, BIP-84 SegWit, BIP-86 Taproot), **Tron** (BIP-44 `m/44'/195'/…`). Export is chain-native (Solana keypair Base58, EVM/Tron hex, Bitcoin WIF). Open [/seed](/seed).",
+          "note": "Whoever holds the phrase holds every derived address. Write it down before you grind. The CLI does not mine seeds yet; use the web tool."
+        },
         "cli": {
-          "n": "08 — CLI",
+          "n": "09 — CLI",
           "title": "Terminal forge",
-          "glyph": "Fig. H — Stele",
-          "p1": "Same idea outside the browser: `npx vanitas` opens a wizard, or pass flags for chain, mode, prefix, threads, and CREATE2 parameters. Results write a JSON file with mode `0600` when the OS supports it. Package: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
-          "example": "npx vanitas evm --mode contract --prefix cafe --threads 8"
+          "glyph": "Fig. I — Stele",
+          "p1": "Same idea outside the browser: `npx vanitas` opens a wizard, or pass flags for chain, mode, prefix, threads, and CREATE2 parameters. Repeat `--pattern prefix[:suffix]` for OR targets. Results write a JSON file with mode `0600` when the OS supports it. Package: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
+          "example": "npx vanitas sol --prefix Ace --pattern Bee --pattern Cat:zz --threads 8"
         },
         "verify": {
-          "n": "09 — Verify",
+          "n": "10 — Verify",
           "title": "Confirm it yourself",
-          "glyph": "Fig. I — Eye",
+          "glyph": "Fig. J — Eye",
           "steps": [
             "Open DevTools → Network, clear the log, start a forge — you should see **no requests** while mining.",
             "Load the page, go offline, generate again — it still works.",
@@ -1397,7 +1410,7 @@
           "webWorkers": "Web Workers",
           "webWorkersNote": "W1…Wn — grind · match · postMessage",
           "networkLabel": "Network during mining",
-          "networkBody": "None required. After assets load, airplane mode still works. The only first-party API route (`/api/domains`) suggests Solana domain links — it does not generate or receive keys.",
+          "networkBody": "None required. After assets load, airplane mode still works. Domain suggestions for Solana (and ENS links for EVM) are built client-side from your pattern; they do not generate or receive keys.",
           "serversLabel": "Our servers",
           "serversBody": "Deliver files. Cannot read your Worker memory. Cannot intercept a finished keypair. A compromised origin could serve malicious JS — that is why integrity checks and open source matter (see Integrity & Browser)."
         },
@@ -1663,16 +1676,16 @@
     },
     "faq": {
       "title": "FAQ",
-      "description": "Answers across every Vanitas forge — patterns, modes, security, proof, and CLI.",
+      "description": "Answers across every Vanitas forge: patterns, modes, Seed Forge, security, proof, and CLI.",
       "ogTitle": "FAQ | Vanitas",
-      "ogDescription": "Answers by topic — every chain, security, proof, CLI, and usage.",
+      "ogDescription": "Answers by topic: every chain, Seed Forge, security, proof, CLI, and usage.",
       "ogAlt": "Vanitas FAQ"
     },
     "how-it-works": {
       "title": "How it Works",
-      "description": "How Vanitas forges vanity addresses across Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano, and XRP: workers, modes (mint, CREATE, CREATE2), proof of find, CLI, and how to verify client-side security.",
+      "description": "How Vanitas forges vanity addresses across Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano, and XRP: workers, modes (mint, CREATE, CREATE2), Seed Forge, multi-pattern OR, proof of find, CLI, and how to verify client-side security.",
       "ogTitle": "How it Works | Vanitas",
-      "ogDescription": "Full tour of every forge, worker architecture, deploy modes, and verification.",
+      "ogDescription": "Full tour of every forge, Seed Forge, worker architecture, deploy modes, and verification.",
       "ogAlt": "Vanitas — how vanity address generation works"
     },
     "security": {
@@ -1684,15 +1697,15 @@
     },
     "lab": {
       "title": "Pattern Lab",
-      "description": "Difficulty matrix, rarity estimates, and batch pattern queue for every Vanitas forge — before you mine.",
+      "description": "Difficulty matrix, rarity estimates, multi-pattern OR, CREATE2 modes, and a batch queue for every Vanitas forge before you mine.",
       "ogTitle": "Pattern Lab | Vanitas",
-      "ogDescription": "Difficulty matrix, rarity estimates, and batch pattern queue — before you mine."
+      "ogDescription": "Difficulty, multi-pattern OR, CREATE2 modes, and batch queue before you mine."
     },
     "seed": {
       "title": "Seed Forge — Vanity Address from a Recovery Phrase",
       "description": "Grind a Solana, EVM, Bitcoin, or Tron vanity address that restores from a BIP-39 phrase. Runs entirely in your browser.",
       "ogTitle": "Seed Forge | Vanitas",
-      "ogDescription": "Vanity addresses you can restore from twelve words — no loose private key."
+      "ogDescription": "Vanity addresses you can restore from twelve words. No loose private key."
     },
     "lookalike": {
       "title": "Lookalike Check",

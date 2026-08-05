@@ -1089,7 +1089,7 @@
         }
       },
       "proof-cli": {
-        "label": "プルーフと CLI",
+        "label": "Proof · CLI · Seed",
         "n": "09",
         "items": {
           "proof": {
@@ -1099,6 +1099,10 @@
           "cli": {
             "q": "CLI を実行するにはどうすればよいですか?",
             "a": "ウィザードの場合は `npx vanitas`、または `npx vanitas sol --prefix Ace --threads 8` のようなフラグ。 Web アプリと同じデプロイ モード (mint、CREATE、CREATE2 フラグ) をサポートします。"
+          },
+          "seed": {
+            "q": "What is Seed Forge?",
+            "a": "You fix a BIP-39 recovery phrase first, then grind **derivation indices** until the address matches. A hit restores from the phrase in a normal wallet (path shown on find). Supports Solana, EVM, Bitcoin (legacy / SegWit / Taproot), and Tron. See [/seed](/seed) and [How it works → Seed](/how-it-works#seed)."
           }
         }
       },
@@ -1174,7 +1178,8 @@
         "workers": "労働者",
         "proof": "証拠",
         "cli": "CLI",
-        "verify": "確認する"
+        "verify": "確認する",
+        "seed": "Seed"
       },
       "sections": {
         "overview": {
@@ -1317,22 +1322,30 @@
           "session": "UI で最近見つかったものでは、アドレスとパターンのメタデータのみに `sessionStorage` が使用されています。タブを閉じるとその履歴は消去されます。キーはそこに保存されません。"
         },
         "cli": {
-          "n": "08 — CLI",
+          "n": "09 — CLI",
           "title": "端子鍛造",
-          "glyph": "図 H — 石碑",
-          "p1": "ブラウザの外でも同じ考え方です。`npx vanitas` はウィザードを開くか、チェーン、モード、プレフィックス、スレッド、および CREATE2 パラメーターのフラグを渡します。 OS がサポートしている場合、結果はモード `0600` で JSON ファイルを書き込みます。パッケージ: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas)。",
-          "example": "npx vanitas evm --mode Contract --prefix Cafe --threads 8"
+          "glyph": "Fig. I — Stele",
+          "p1": "Same idea outside the browser: `npx vanitas` opens a wizard, or pass flags for chain, mode, prefix, threads, and CREATE2 parameters. Repeat `--pattern prefix[:suffix]` for OR targets. Results write a JSON file with mode `0600` when the OS supports it. Package: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
+          "example": "npx vanitas sol --prefix Ace --pattern Bee --pattern Cat:zz --threads 8"
         },
         "verify": {
-          "n": "09 — 確認する",
+          "n": "10 — Verify",
           "title": "自分で確認してください",
-          "glyph": "図 I — 目",
+          "glyph": "Fig. J — Eye",
           "steps": [
             "DevTools → Network を開き、ログをクリアし、Forge を開始します。マイニング中は **リクエストがない** ことが表示されます。",
             "ページをロードし、オフラインにして、再度生成しても、引き続き機能します。",
             "[live audit](/audit) を実行し、ワーカー ハッシュを `worker-hash.json` と比較します。",
             "[GitHub](https://github.com/bytebrox/vanitas)、特に `src/workers/` のソースを読んでください。"
           ]
+        },
+        "seed": {
+          "n": "08 — Seed",
+          "title": "Seed Forge",
+          "glyph": "Fig. H — Phrase",
+          "p1": "Normal forges draw a fresh private key every attempt. **Seed Forge** fixes a BIP-39 mnemonic (and optional passphrase) first, stretches it once with PBKDF2, then walks **derivation indices** until the address matches. A hit is recoverable in any wallet that supports that path: you import the phrase and open the shown account index.",
+          "p2": "Supported today: **Solana** (SLIP-0010 Ed25519), **EVM** (BIP-44 `m/44'/60'/…`), **Bitcoin** (BIP-44 legacy, BIP-84 SegWit, BIP-86 Taproot), **Tron** (BIP-44 `m/44'/195'/…`). Export is chain-native (Solana keypair Base58, EVM/Tron hex, Bitcoin WIF). Open [/seed](/seed).",
+          "note": "Whoever holds the phrase holds every derived address. Write it down before you grind. The CLI does not mine seeds yet; use the web tool."
         }
       },
       "footer": {

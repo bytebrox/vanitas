@@ -28,6 +28,7 @@ const TOC_IDS = [
   'modes',
   'workers',
   'proof',
+  'seed',
   'cli',
   'verify',
 ] as const;
@@ -52,6 +53,7 @@ const SECTION_GLYPHS: Record<(typeof TOC_IDS)[number], DocGlyphId> = {
   modes: 'modes',
   workers: 'forge',
   proof: 'seal',
+  seed: 'key',
   cli: 'stele',
   verify: 'eye',
 };
@@ -277,6 +279,27 @@ export default function HowItWorksPage() {
                   text={t('sections.proof.session')}
                   codeClassName="font-mono text-sm text-ink"
                 />
+              </DocSection>
+            </FadeIn>
+
+            <FadeIn>
+              <DocSection
+                id="seed"
+                n={t('sections.seed.n')}
+                title={t('sections.seed.title')}
+                glyph={SECTION_GLYPHS.seed}
+                glyphLabel={t('sections.seed.glyph')}
+              >
+                <RichParagraph
+                  text={t('sections.seed.p1')}
+                  linkClassName="text-accent hover:text-ink"
+                />
+                <RichParagraph
+                  text={t('sections.seed.p2')}
+                  linkClassName="text-accent hover:text-ink"
+                  codeClassName="font-mono text-sm text-ink"
+                />
+                <RichParagraph text={t('sections.seed.note')} />
               </DocSection>
             </FadeIn>
 

@@ -157,7 +157,7 @@
     "toolsLab": "Labor",
     "toolsLabHint": "Musterlabor",
     "toolsSeed": "Seed-Schmiede",
-    "toolsSeedHint": "Wunschadresse aus einer Wiederherstellungsphrase",
+    "toolsSeedHint": "BIP-39 Vanity: Sol, EVM, BTC, Tron",
     "toolsLookalike": "Doppelgänger",
     "toolsLookalikeHint": "Alphabetfallen",
     "toolsCreate2": "CREATE2",
@@ -946,7 +946,7 @@
           },
           "which": {
             "q": "Welche Schmieden gibt es?",
-            "a": "Neun Webschmieden – Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano, XRP – plus `npx vanitas` für das Terminal. Siehe [How it works → Chains](/how-it-works#chains)."
+            "a": "Neun Web-Forges: Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano, XRP. Dazu Tools: [Pattern Lab](/lab), [Seed-Schmiede](/seed) (Solana, EVM, Bitcoin, Tron aus einer BIP-39-Phrase), CREATE2-Helfer, Lookalike-Check. Terminal: `npx vanitas`. Siehe [How it works → Chains](/how-it-works#chains)."
           },
           "howLong": {
             "q": "Wie lange dauert mein Schnittmuster?",
@@ -954,7 +954,7 @@
           },
           "prefixSuffix": {
             "q": "Kann ich Präfix und Suffix zusammen verwenden?",
-            "a": "Ja – beide Einschränkungen vervielfachen die Schwierigkeit. Bevorzugen Sie eine starke Seite (Präfix oder Suffix), es sei denn, Sie haben Zeit und Hash-Rate übrig."
+            "a": "Ja. Beide Constraints multiplizieren die Difficulty. Lieber eine starke Seite (Prefix oder Suffix), außer du hast Zeit und Hashrate übrig. Du kannst auch **Alternativ**-Pattern (OR) setzen: ein Key wird erzeugt und gegen jedes Ziel geprüft; der erste Treffer gewinnt."
           }
         }
       },
@@ -1050,7 +1050,7 @@
         "items": {
           "ton": {
             "q": "TON UQ vs. EQ?",
-            "a": "Nicht bouncebare (`UQ…`) vs. bouncebare (`EQ…`) benutzerfreundliche Formen von Wallet v4R2. Beim Matching wird die Groß-/Kleinschreibung beachtet."
+            "a": "Non-bounceable (`UQ…`) ist die übliche Empfangsform für Wallets. Bounceable (`EQ…`) ist der Zwilling, eher für Contracts / Bounce-on-fail. Gleicher Account, andere Kodierung. Matching ist case-sensitive. Nach dem Fund folgt das Playbook dem Modus, den du geschmiedet hast."
           },
           "cardano": {
             "q": "Welcher Cardano-Adresstyp ist gefälscht?",
@@ -1089,16 +1089,20 @@
         }
       },
       "proof-cli": {
-        "label": "Beweis und CLI",
+        "label": "Proof · CLI · Seed",
         "n": "09",
         "items": {
           "proof": {
             "q": "Was ist ein Fundnachweis?",
-            "a": "Ein gemeinsam nutzbarer [/proof](/proof)-Link mit Adresse + Muster (und optionalen Statistiken). Jeder kann die Übereinstimmung clientseitig überprüfen. Private Schlüssel sind niemals enthalten."
+            "a": "Ein teilbarer [/proof](/proof)-Link mit Adresse + Muster (und optionalen Stats). Jeder kann den Match clientseitig prüfen. Private Keys sind nie enthalten. Forge-Share-Links können auch Pattern + Mode tragen (bei CREATE2: salt / initCodeHash, nie den Deployer-Key)."
           },
           "cli": {
             "q": "Wie führe ich die CLI aus?",
-            "a": "`npx vanitas` für einen Assistenten oder Flags wie `npx vanitas sol --prefix Ace --threads 8`. Unterstützt die gleichen Bereitstellungsmodi wie die Web-App (Mint-, CREATE- und CREATE2-Flags)."
+            "a": "`npx vanitas` für einen Assistenten oder Flags wie `npx vanitas sol --prefix Ace --threads 8`. Wiederhole `--pattern prefix[:suffix]` für OR-Ziele. Gleiche Deploy-Modi wie die Web-App (Mint, CREATE, CREATE2). Seed-Mining ist vorerst nur im Web: `npx vanitas seed` verweist auf [/seed](/seed)."
+          },
+          "seed": {
+            "q": "Was ist die Seed-Schmiede?",
+            "a": "Du legst zuerst eine BIP-39-Wiederherstellungsphrase fest und grindest dann **Derivation-Indizes**, bis die Adresse passt. Ein Treffer lässt sich in einer normalen Wallet aus der Phrase wiederherstellen (Pfad wird beim Fund gezeigt). Unterstützt Solana, EVM, Bitcoin (Legacy / SegWit / Taproot) und Tron. Siehe [/seed](/seed) und [How it works → Seed](/how-it-works#seed)."
           }
         }
       },
@@ -1116,7 +1120,7 @@
           },
           "disabled": {
             "q": "Warum ist Start deaktiviert?",
-            "a": "Leeres Muster, ungültige Zeichen für dieses Alphabet oder Muster zu lang. Korrigieren Sie die Validierungsmeldung unter den Eingaben."
+            "a": "Noch kein nutzbares Pattern (Primary **oder** Alternativen), ungültige Zeichen für dieses Alphabet, Pattern zu lang, oder (CREATE2) fehlende salt / initCodeHash / Deployer-Felder. Schau auf die Validierungsmeldung unter den Inputs."
           },
           "freeze": {
             "q": "Die Benutzeroberfläche friert beim Mining ein?",
@@ -1174,7 +1178,8 @@
         "workers": "Arbeiter",
         "proof": "Nachweisen",
         "cli": "CLI",
-        "verify": "Verifizieren"
+        "verify": "Verifizieren",
+        "seed": "Seed"
       },
       "sections": {
         "overview": {
@@ -1317,22 +1322,30 @@
           "session": "Aktuelle Funde in der Benutzeroberfläche verwenden `sessionStorage` nur für Adress- und Mustermetadaten. Durch Schließen der Registerkarte wird dieser Verlauf gelöscht. Schlüssel werden dort nicht gespeichert."
         },
         "cli": {
-          "n": "08 – CLI",
+          "n": "09 — CLI",
           "title": "Terminalschmiede",
-          "glyph": "Abb. H – Stele",
-          "p1": "Dieselbe Idee außerhalb des Browsers: `npx vanitas` öffnet einen Assistenten oder übergibt Flags für Ketten-, Modus-, Präfix-, Threads- und CREATE2-Parameter. Die Ergebnisse schreiben eine JSON-Datei mit dem Modus `0600`, wenn das Betriebssystem dies unterstützt. Paket: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
-          "example": "npx vanitas evm --modetract --prefix cafe --threads 8"
+          "glyph": "Fig. I — Stele",
+          "p1": "Dieselbe Idee außerhalb des Browsers: `npx vanitas` öffnet einen Assistenten, oder Flags für Chain, Mode, Prefix, Threads und CREATE2. Wiederhole `--pattern prefix[:suffix]` für OR-Ziele. Ergebnisse schreiben eine JSON-Datei mit Mode `0600`, wenn das OS das kann. Paket: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
+          "example": "npx vanitas sol --prefix Ace --pattern Bee --pattern Cat:zz --threads 8"
         },
         "verify": {
-          "n": "09 – Überprüfen",
+          "n": "10 — Verify",
           "title": "Bestätigen Sie es selbst",
-          "glyph": "Abb. I – Auge",
+          "glyph": "Fig. J — Eye",
           "steps": [
             "Öffnen Sie DevTools → Netzwerk, löschen Sie das Protokoll, starten Sie einen Forge – beim Mining sollten **keine Anfragen** angezeigt werden.",
             "Laden Sie die Seite, gehen Sie offline, generieren Sie erneut – es funktioniert immer noch.",
             "Führen Sie [live audit](/audit) aus und vergleichen Sie die Worker-Hashes mit `worker-hash.json`.",
             "Lesen Sie die Quelle zu [GitHub](https://github.com/bytebrox/vanitas) – insbesondere `src/workers/`."
           ]
+        },
+        "seed": {
+          "n": "08 — Seed",
+          "title": "Seed-Schmiede",
+          "glyph": "Fig. H — Phrase",
+          "p1": "Normale Forges ziehen bei jedem Versuch einen frischen Private Key. Die **Seed-Schmiede** fixiert zuerst eine BIP-39-Mnemonic (optional Passphrase), streckt sie einmal mit PBKDF2 und läuft dann **Derivation-Indizes** ab, bis die Adresse passt. Ein Treffer ist in jeder Wallet mit diesem Pfad wiederherstellbar: Phrase importieren und den gezeigten Account-Index öffnen.",
+          "p2": "Heute unterstützt: **Solana** (SLIP-0010 Ed25519), **EVM** (BIP-44 `m/44'/60'/…`), **Bitcoin** (BIP-44 Legacy, BIP-84 SegWit, BIP-86 Taproot), **Tron** (BIP-44 `m/44'/195'/…`). Export ist kettenüblich (Solana-Keypair Base58, EVM/Tron Hex, Bitcoin WIF). Öffne [/seed](/seed).",
+          "note": "Wer die Phrase hat, hat jede abgeleitete Adresse. Schreib sie auf, bevor du grindest. Die CLI mined Seeds noch nicht; nutze das Web-Tool."
         }
       },
       "footer": {

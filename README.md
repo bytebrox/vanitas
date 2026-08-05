@@ -1,6 +1,6 @@
 ﻿# Vanitas
 
-[![Version: 1.12.0](https://img.shields.io/badge/Version-1.12.0-8B7355.svg)](https://vanitas.fun)
+[![Version: 1.12.1](https://img.shields.io/badge/Version-1.12.1-8B7355.svg)](https://vanitas.fun)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![CI](https://github.com/bytebrox/vanitas/actions/workflows/build.yml/badge.svg)](https://github.com/bytebrox/vanitas/actions/workflows/build.yml)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/bytebrox/vanitas/badge)](https://securityscorecards.dev/viewer/?uri=github.com/bytebrox/vanitas)
@@ -26,9 +26,10 @@ Contract address:
 
 ```bash
 npx vanitas
+npx vanitas sol --prefix Ace --pattern Bee --threads 8
 ```
 
-Same forges, wizard or flags. See [cli/README.md](cli/README.md).
+Same forges, wizard or flags (including multi-pattern OR). See [cli/README.md](cli/README.md).
 
 ## Forges
 
@@ -46,6 +47,15 @@ Same forges, wizard or flags. See [cli/README.md](cli/README.md).
 
 Legacy `/token` redirects to `/sol?mode=mint`. `/eth` redirects to `/evm`.
 
+## Tools
+
+| Tool | Use | URL |
+|------|-----|-----|
+| **Pattern Lab** | Difficulty / rarity before you mine, multi-pattern OR, CREATE2 modes, batch queue | `/lab` |
+| **Seed Forge** | Vanity from a BIP-39 phrase (Solana, EVM, Bitcoin, Tron) | `/seed` |
+| **CREATE2 helper** | initCodeHash from bytecode, salt preview, deep-link to EVM forge | `/create2` |
+| **Lookalike** | Alphabet / case traps before you grind | `/lookalike` |
+
 ## Proof of find
 
 After a find, **Share proof** builds a public link to `/proof` with address + pattern only (never the private key). Anyone can open it and verify the match client-side.
@@ -58,6 +68,9 @@ A vanity address contains a recognizable pattern instead of looking fully random
 
 - **100% Client-Side** – Generation runs in Web Workers on your device
 - **Multi-Chain** – Solana, EVM, Bitcoin, Tron, Aptos, Sui, TON, Cardano, XRP
+- **Multi-Pattern OR** – Match any of several prefix/suffix targets in one run
+- **Seed Forge** – Recoverable vanity from a BIP-39 phrase (Sol, EVM, BTC, Tron)
+- **Pattern Lab** – Difficulty matrix, CREATE2 modes, batch queue before mining
 - **Native Web Crypto** – Fast Ed25519 path for Solana where supported
 - **Multi-Core** – Uses available CPU cores for parallel search
 - **Deploy Modes** – Solana mint, EVM/Tron CREATE, EVM CREATE2 (salt or deployer)

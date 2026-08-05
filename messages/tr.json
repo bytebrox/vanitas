@@ -1089,7 +1089,7 @@
         }
       },
       "proof-cli": {
-        "label": "Kanıt ve CLI",
+        "label": "Proof · CLI · Seed",
         "n": "09",
         "items": {
           "proof": {
@@ -1099,6 +1099,10 @@
           "cli": {
             "q": "CLI'yi nasıl çalıştırırım?",
             "a": "Bir sihirbaz için `npx vanitas` veya `npx vanitas sol --prefix Ace --threads 8` gibi işaretler. Web uygulamasıyla aynı dağıtım modlarını destekler (mint, CREATE, CREATE2 bayrakları)."
+          },
+          "seed": {
+            "q": "What is Seed Forge?",
+            "a": "You fix a BIP-39 recovery phrase first, then grind **derivation indices** until the address matches. A hit restores from the phrase in a normal wallet (path shown on find). Supports Solana, EVM, Bitcoin (legacy / SegWit / Taproot), and Tron. See [/seed](/seed) and [How it works → Seed](/how-it-works#seed)."
           }
         }
       },
@@ -1174,7 +1178,8 @@
         "workers": "İşçiler",
         "proof": "Kanıt",
         "cli": "CLI",
-        "verify": "Doğrulamak"
+        "verify": "Doğrulamak",
+        "seed": "Seed"
       },
       "sections": {
         "overview": {
@@ -1317,22 +1322,30 @@
           "session": "Kullanıcı arayüzündeki son bulgular, yalnızca adres + kalıp meta verileri için `sessionStorage` kullanır. Sekmeyi kapatmak bu geçmişi temizler; anahtarlar orada saklanmaz."
         },
         "cli": {
-          "n": "08 — CLI",
+          "n": "09 — CLI",
           "title": "Terminal demirhanesi",
-          "glyph": "Şekil H - Stel",
-          "p1": "Tarayıcının dışında da aynı fikir: `npx vanitas` bir sihirbaz açar veya zincir, mod, önek, iş parçacıkları ve CREATE2 parametreleri için bayrakları iletir. Sonuçlar, işletim sistemi desteklediğinde `0600` moduna sahip bir JSON dosyası yazar. Paket: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
-          "example": "npx vanitas evm --mode sözleşmesi --prefix cafe --threads 8"
+          "glyph": "Fig. I — Stele",
+          "p1": "Same idea outside the browser: `npx vanitas` opens a wizard, or pass flags for chain, mode, prefix, threads, and CREATE2 parameters. Repeat `--pattern prefix[:suffix]` for OR targets. Results write a JSON file with mode `0600` when the OS supports it. Package: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
+          "example": "npx vanitas sol --prefix Ace --pattern Bee --pattern Cat:zz --threads 8"
         },
         "verify": {
-          "n": "09 — Doğrula",
+          "n": "10 — Verify",
           "title": "Kendiniz onaylayın",
-          "glyph": "Şekil I – Göz",
+          "glyph": "Fig. J — Eye",
           "steps": [
             "DevTools → Ağı açın, günlüğü temizleyin, bir forge başlatın; madencilik sırasında **istek yok** görmeniz gerekir.",
             "Sayfayı yükleyin, çevrimdışı olun, tekrar oluşturun; hâlâ çalışıyor.",
             "[live audit](/audit) komutunu çalıştırın ve çalışan karmalarını `worker-hash.json` ile karşılaştırın.",
             "[GitHub](https://github.com/bytebrox/vanitas)'deki kaynağı okuyun — özellikle `src/workers/`."
           ]
+        },
+        "seed": {
+          "n": "08 — Seed",
+          "title": "Seed Forge",
+          "glyph": "Fig. H — Phrase",
+          "p1": "Normal forges draw a fresh private key every attempt. **Seed Forge** fixes a BIP-39 mnemonic (and optional passphrase) first, stretches it once with PBKDF2, then walks **derivation indices** until the address matches. A hit is recoverable in any wallet that supports that path: you import the phrase and open the shown account index.",
+          "p2": "Supported today: **Solana** (SLIP-0010 Ed25519), **EVM** (BIP-44 `m/44'/60'/…`), **Bitcoin** (BIP-44 legacy, BIP-84 SegWit, BIP-86 Taproot), **Tron** (BIP-44 `m/44'/195'/…`). Export is chain-native (Solana keypair Base58, EVM/Tron hex, Bitcoin WIF). Open [/seed](/seed).",
+          "note": "Whoever holds the phrase holds every derived address. Write it down before you grind. The CLI does not mine seeds yet; use the web tool."
         }
       },
       "footer": {

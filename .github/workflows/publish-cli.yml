@@ -1,4 +1,4 @@
-# Publish the Vanitas CLI to npm when you push a tag: cli-v1.12.0
+# Publish the Vanitas CLI to npm when you push a tag: cli-v1.12.1
 # Prereq: GitHub repo secret NPM_TOKEN (npm Automation token)
 
 name: Publish CLI

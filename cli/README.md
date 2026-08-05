@@ -14,6 +14,7 @@ Follow the prompts (chain → mode → pattern → threads). When a match is fou
 
 ```bash
 npx vanitas sol --prefix Ace
+npx vanitas sol --prefix Ace --pattern Bee --pattern Cat:zz
 npx vanitas sol --mode mint --prefix Ace
 npx vanitas evm --prefix cafe --threads 8
 npx vanitas evm --mode contract --prefix cafe
@@ -25,6 +26,24 @@ npx vanitas ton --mode non-bounceable --prefix UQ
 npx vanitas cardano --prefix cafe --out ./my-ada.json
 npx vanitas xrp --prefix Ace
 ```
+
+### Multi-pattern (OR)
+
+Repeat `--pattern prefix[:suffix]`. One key is generated and matched against any target; the first hit wins.
+
+```bash
+npx vanitas sol --prefix Ace --pattern Bee --pattern Cat:zz --threads 8
+```
+
+### Seed Forge
+
+BIP-39 index grinding (Solana, EVM, Bitcoin, Tron) lives on the web for now:
+
+```bash
+npx vanitas seed
+```
+
+Opens the pointer to [vanitas.fun/seed](https://vanitas.fun/seed).
 
 ## Chains
 

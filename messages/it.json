@@ -1089,7 +1089,7 @@
         }
       },
       "proof-cli": {
-        "label": "Prova e CLI",
+        "label": "Proof · CLI · Seed",
         "n": "09",
         "items": {
           "proof": {
@@ -1099,6 +1099,10 @@
           "cli": {
             "q": "Come si esegue la CLI?",
             "a": "`npx vanitas` per una procedura guidata o flag come `npx vanitas sol --prefix Ace --threads 8`. Supporta le stesse modalità di distribuzione dell'app Web (flag mint, CREATE, CREATE2)."
+          },
+          "seed": {
+            "q": "What is Seed Forge?",
+            "a": "You fix a BIP-39 recovery phrase first, then grind **derivation indices** until the address matches. A hit restores from the phrase in a normal wallet (path shown on find). Supports Solana, EVM, Bitcoin (legacy / SegWit / Taproot), and Tron. See [/seed](/seed) and [How it works → Seed](/how-it-works#seed)."
           }
         }
       },
@@ -1174,7 +1178,8 @@
         "workers": "Lavoratori",
         "proof": "Prova",
         "cli": "CLI",
-        "verify": "Verificare"
+        "verify": "Verificare",
+        "seed": "Seed"
       },
       "sections": {
         "overview": {
@@ -1317,22 +1322,30 @@
           "session": "I ritrovamenti recenti nell'interfaccia utente utilizzano `sessionStorage` solo per i metadati dell'indirizzo + del pattern. La chiusura della scheda cancella la cronologia; le chiavi non sono conservate lì."
         },
         "cli": {
-          "n": "08 — CLI",
+          "n": "09 — CLI",
           "title": "Fucina terminale",
-          "glyph": "Fig. H — Stele",
-          "p1": "Stessa idea fuori dal browser: `npx vanitas` apre una procedura guidata o passa flag per catena, modalità, prefisso, thread e parametri CREATE2. I risultati scrivono un file JSON con la modalità `0600` quando il sistema operativo lo supporta. Pacchetto: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
-          "example": "npx vanitas evm --mode contract --prefix cafe --threads 8"
+          "glyph": "Fig. I — Stele",
+          "p1": "Same idea outside the browser: `npx vanitas` opens a wizard, or pass flags for chain, mode, prefix, threads, and CREATE2 parameters. Repeat `--pattern prefix[:suffix]` for OR targets. Results write a JSON file with mode `0600` when the OS supports it. Package: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
+          "example": "npx vanitas sol --prefix Ace --pattern Bee --pattern Cat:zz --threads 8"
         },
         "verify": {
-          "n": "09 — Verifica",
+          "n": "10 — Verify",
           "title": "Confermalo tu stesso",
-          "glyph": "Fig. I - Occhio",
+          "glyph": "Fig. J — Eye",
           "steps": [
             "Apri DevTools → Rete, cancella il registro, avvia una fucina: non dovresti vedere **nessuna richiesta** durante l'estrazione.",
             "Carica la pagina, vai offline, genera di nuovo: funziona ancora.",
             "Esegui [live audit](/audit) e confronta gli hash di lavoro con `worker-hash.json`.",
             "Leggi la fonte su [GitHub](https://github.com/bytebrox/vanitas), in particolare `src/workers/`."
           ]
+        },
+        "seed": {
+          "n": "08 — Seed",
+          "title": "Seed Forge",
+          "glyph": "Fig. H — Phrase",
+          "p1": "Normal forges draw a fresh private key every attempt. **Seed Forge** fixes a BIP-39 mnemonic (and optional passphrase) first, stretches it once with PBKDF2, then walks **derivation indices** until the address matches. A hit is recoverable in any wallet that supports that path: you import the phrase and open the shown account index.",
+          "p2": "Supported today: **Solana** (SLIP-0010 Ed25519), **EVM** (BIP-44 `m/44'/60'/…`), **Bitcoin** (BIP-44 legacy, BIP-84 SegWit, BIP-86 Taproot), **Tron** (BIP-44 `m/44'/195'/…`). Export is chain-native (Solana keypair Base58, EVM/Tron hex, Bitcoin WIF). Open [/seed](/seed).",
+          "note": "Whoever holds the phrase holds every derived address. Write it down before you grind. The CLI does not mine seeds yet; use the web tool."
         }
       },
       "footer": {

@@ -1089,7 +1089,7 @@
         }
       },
       "proof-cli": {
-        "label": "Preuve et CLI",
+        "label": "Proof · CLI · Seed",
         "n": "09",
         "items": {
           "proof": {
@@ -1099,6 +1099,10 @@
           "cli": {
             "q": "Comment exécuter la CLI ?",
             "a": "`npx vanitas` pour un assistant, ou des indicateurs comme `npx vanitas sol --prefix Ace --threads 8`. Prend en charge les mêmes modes de déploiement que l'application Web (drapeaux menthe, CREATE, CREATE2)."
+          },
+          "seed": {
+            "q": "What is Seed Forge?",
+            "a": "You fix a BIP-39 recovery phrase first, then grind **derivation indices** until the address matches. A hit restores from the phrase in a normal wallet (path shown on find). Supports Solana, EVM, Bitcoin (legacy / SegWit / Taproot), and Tron. See [/seed](/seed) and [How it works → Seed](/how-it-works#seed)."
           }
         }
       },
@@ -1174,7 +1178,8 @@
         "workers": "Ouvriers",
         "proof": "Preuve",
         "cli": "CLI",
-        "verify": "Vérifier"
+        "verify": "Vérifier",
+        "seed": "Seed"
       },
       "sections": {
         "overview": {
@@ -1317,22 +1322,30 @@
           "session": "Les découvertes récentes dans l'interface utilisateur utilisent `sessionStorage` uniquement pour les métadonnées d'adresse et de modèle. La fermeture de l'onglet efface cet historique ; les clés n’y sont pas stockées."
         },
         "cli": {
-          "n": "08 — CLI",
+          "n": "09 — CLI",
           "title": "Forge terminale",
-          "glyph": "Fig. H — Stèle",
-          "p1": "Même idée en dehors du navigateur : `npx vanitas` ouvre un assistant ou transmet des indicateurs pour les paramètres chaîne, mode, préfixe, threads et CREATE2. Les résultats écrivent un fichier JSON avec le mode `0600` lorsque le système d'exploitation le prend en charge. Forfait : [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
-          "example": "npx vanitas evm --mode contrat --prefix café --threads 8"
+          "glyph": "Fig. I — Stele",
+          "p1": "Same idea outside the browser: `npx vanitas` opens a wizard, or pass flags for chain, mode, prefix, threads, and CREATE2 parameters. Repeat `--pattern prefix[:suffix]` for OR targets. Results write a JSON file with mode `0600` when the OS supports it. Package: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
+          "example": "npx vanitas sol --prefix Ace --pattern Bee --pattern Cat:zz --threads 8"
         },
         "verify": {
-          "n": "09 — Vérifier",
+          "n": "10 — Verify",
           "title": "Confirmez-le vous-même",
-          "glyph": "Fig. I — Œil",
+          "glyph": "Fig. J — Eye",
           "steps": [
             "Ouvrez DevTools → Réseau, effacez le journal, démarrez une forge — vous ne devriez voir **aucune demande** pendant l'exploitation minière.",
             "Chargez la page, déconnectez-vous, générez à nouveau – cela fonctionne toujours.",
             "Exécutez le [live audit](/audit) et comparez les hachages des travailleurs à `worker-hash.json`.",
             "Lisez la source sur [GitHub](https://github.com/bytebrox/vanitas) – en particulier `src/workers/`."
           ]
+        },
+        "seed": {
+          "n": "08 — Seed",
+          "title": "Seed Forge",
+          "glyph": "Fig. H — Phrase",
+          "p1": "Normal forges draw a fresh private key every attempt. **Seed Forge** fixes a BIP-39 mnemonic (and optional passphrase) first, stretches it once with PBKDF2, then walks **derivation indices** until the address matches. A hit is recoverable in any wallet that supports that path: you import the phrase and open the shown account index.",
+          "p2": "Supported today: **Solana** (SLIP-0010 Ed25519), **EVM** (BIP-44 `m/44'/60'/…`), **Bitcoin** (BIP-44 legacy, BIP-84 SegWit, BIP-86 Taproot), **Tron** (BIP-44 `m/44'/195'/…`). Export is chain-native (Solana keypair Base58, EVM/Tron hex, Bitcoin WIF). Open [/seed](/seed).",
+          "note": "Whoever holds the phrase holds every derived address. Write it down before you grind. The CLI does not mine seeds yet; use the web tool."
         }
       },
       "footer": {

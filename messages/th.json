@@ -1089,7 +1089,7 @@
         }
       },
       "proof-cli": {
-        "label": "พิสูจน์ & CLI",
+        "label": "Proof · CLI · Seed",
         "n": "09",
         "items": {
           "proof": {
@@ -1099,6 +1099,10 @@
           "cli": {
             "q": "ฉันจะรัน CLI ได้อย่างไร",
             "a": "`npx vanitas` สำหรับวิซาร์ด หรือแฟล็ก เช่น `npx vanitas sol --prefix Ace --threads 8` รองรับโหมดการปรับใช้เช่นเดียวกับเว็บแอป (แฟล็ก mint, CREATE, CREATE2)"
+          },
+          "seed": {
+            "q": "What is Seed Forge?",
+            "a": "You fix a BIP-39 recovery phrase first, then grind **derivation indices** until the address matches. A hit restores from the phrase in a normal wallet (path shown on find). Supports Solana, EVM, Bitcoin (legacy / SegWit / Taproot), and Tron. See [/seed](/seed) and [How it works → Seed](/how-it-works#seed)."
           }
         }
       },
@@ -1174,7 +1178,8 @@
         "workers": "คนงาน",
         "proof": "การพิสูจน์",
         "cli": "CLI",
-        "verify": "ตรวจสอบ"
+        "verify": "ตรวจสอบ",
+        "seed": "Seed"
       },
       "sections": {
         "overview": {
@@ -1317,22 +1322,30 @@
           "session": "การค้นพบล่าสุดใน UI ใช้ `sessionStorage` สำหรับที่อยู่ + ข้อมูลเมตาของรูปแบบเท่านั้น การปิดแท็บจะล้างประวัตินั้น ไม่ได้เก็บกุญแจไว้ที่นั่น"
         },
         "cli": {
-          "n": "08 — คลีไอ",
+          "n": "09 — CLI",
           "title": "เทอร์มินัลฟอร์จ",
-          "glyph": "มะเดื่อ H — Stele",
-          "p1": "แนวคิดเดียวกันนอกเบราว์เซอร์: `npx vanitas` เปิดตัวช่วยสร้างหรือส่งแฟล็กสำหรับพารามิเตอร์ลูกโซ่ โหมด คำนำหน้า เธรด และพารามิเตอร์ CREATE2 ผลลัพธ์จะเขียนไฟล์ JSON ด้วยโหมด `0600` เมื่อระบบปฏิบัติการรองรับ แพ็คเกจ: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
-          "example": "npx vanitas evm --mode สัญญา -- คำนำหน้า cafe --threads 8"
+          "glyph": "Fig. I — Stele",
+          "p1": "Same idea outside the browser: `npx vanitas` opens a wizard, or pass flags for chain, mode, prefix, threads, and CREATE2 parameters. Repeat `--pattern prefix[:suffix]` for OR targets. Results write a JSON file with mode `0600` when the OS supports it. Package: [npmjs.com/package/vanitas](https://www.npmjs.com/package/vanitas).",
+          "example": "npx vanitas sol --prefix Ace --pattern Bee --pattern Cat:zz --threads 8"
         },
         "verify": {
-          "n": "09 — ตรวจสอบ",
+          "n": "10 — Verify",
           "title": "ยืนยันด้วยตัวคุณเอง",
-          "glyph": "มะเดื่อ ฉัน — ตา",
+          "glyph": "Fig. J — Eye",
           "steps": [
             "เปิด DevTools → เครือข่าย ล้างบันทึก เริ่มต้นการปลอม — คุณควรเห็น **ไม่มีคำขอ** ในขณะที่ทำการขุด",
             "โหลดเพจ ออฟไลน์ สร้างใหม่ — ยังคงใช้งานได้",
             "เรียกใช้ [live audit](/audit) และเปรียบเทียบแฮชของผู้ปฏิบัติงานกับ `worker-hash.json`",
             "อ่านแหล่งที่มาใน [GitHub](https://github.com/bytebrox/vanitas) — โดยเฉพาะ `src/workers/`"
           ]
+        },
+        "seed": {
+          "n": "08 — Seed",
+          "title": "Seed Forge",
+          "glyph": "Fig. H — Phrase",
+          "p1": "Normal forges draw a fresh private key every attempt. **Seed Forge** fixes a BIP-39 mnemonic (and optional passphrase) first, stretches it once with PBKDF2, then walks **derivation indices** until the address matches. A hit is recoverable in any wallet that supports that path: you import the phrase and open the shown account index.",
+          "p2": "Supported today: **Solana** (SLIP-0010 Ed25519), **EVM** (BIP-44 `m/44'/60'/…`), **Bitcoin** (BIP-44 legacy, BIP-84 SegWit, BIP-86 Taproot), **Tron** (BIP-44 `m/44'/195'/…`). Export is chain-native (Solana keypair Base58, EVM/Tron hex, Bitcoin WIF). Open [/seed](/seed).",
+          "note": "Whoever holds the phrase holds every derived address. Write it down before you grind. The CLI does not mine seeds yet; use the web tool."
         }
       },
       "footer": {
