@@ -1,4 +1,4 @@
-﻿# Vanitas
+# Vanitas
 
 [Version: 1.13.0](https://vanitas.fun)
 [License: MIT](https://opensource.org/licenses/MIT)
