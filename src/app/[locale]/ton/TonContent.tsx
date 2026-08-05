@@ -25,6 +25,7 @@ import {
   estimateTonDifficulty,
 } from '@/lib/ton-validation';
 import { saveRecentFind } from '@/lib/find-history';
+import { hasAnyPattern, patternsFromSearchParams, writePatternsToSearchParams } from '@/lib/patterns';
 import { hasBlockingLookalikeErrors } from '@/lib/lookalike';
 import type { GeneratedTonResult, TonMode } from '@/types/ton';
 import { RecentFinds } from '@/components/RecentFinds';
@@ -70,21 +71,25 @@ export function TonContent() {
   }, [result, playSuccessSound]);
 
   useEffect(() => {
-    const urlPrefix = searchParams.get('prefix');
-    const urlSuffix = searchParams.get('suffix');
+    const urlPatterns = patternsFromSearchParams(searchParams);
     const urlMode = searchParams.get('mode');
-    if (urlPrefix) updateConfig({ prefix: urlPrefix });
-    if (urlSuffix) updateConfig({ suffix: urlSuffix });
-    if (urlMode === 'bounceable' || urlMode === 'non-bounceable') {
-      updateConfig({ mode: urlMode });
+    const patch: Parameters<typeof updateConfig>[0] = {};
+    if (urlPatterns.length) {
+      patch.patterns = urlPatterns;
+      patch.prefix = urlPatterns[0].prefix;
+      patch.suffix = urlPatterns[0].suffix;
     }
+    if (urlMode === 'bounceable' || urlMode === 'non-bounceable') {
+      patch.mode = urlMode;
+    }
+    if (Object.keys(patch).length) updateConfig(patch);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
   const expectedDifficulty = estimateTonDifficulty(prefix, suffix, mode);
   const prefixValid = validateTonPrefix(prefix).valid;
   const suffixValid = validateTonSuffix(suffix).valid;
-  const hasPattern = prefix.length > 0 || suffix.length > 0;
+  const hasPattern = hasAnyPattern(config);
   const patternBlocked = hasBlockingLookalikeErrors('ton', prefix, suffix);
   const canStart = prefixValid && suffixValid && hasPattern && !patternBlocked;
 
@@ -106,8 +111,7 @@ export function TonContent() {
   const generateShareLink = useCallback(() => {
     const params = new URLSearchParams();
     params.set('mode', mode);
-    if (prefix) params.set('prefix', prefix);
-    if (suffix) params.set('suffix', suffix);
+    writePatternsToSearchParams(params, config);
     const shareUrl = `${window.location.origin}/ton?${params.toString()}`;
     navigator.clipboard.writeText(shareUrl).then(() => {
       setCopied(true);
@@ -115,7 +119,7 @@ export function TonContent() {
         setCopied(false);
       }, 2000);
     }).catch(() => {});
-  }, [mode, prefix, suffix]);
+  }, [mode, config]);
 
   return (
     <div className="min-h-screen flex flex-col">

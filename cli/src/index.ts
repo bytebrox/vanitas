@@ -16,6 +16,7 @@ function parseArgs(argv: string[]) {
     mode?: string;
     prefix?: string;
     suffix?: string;
+    patterns: { prefix: string; suffix: string }[];
     threads?: number;
     out?: string;
     yes?: boolean;
@@ -23,14 +24,19 @@ function parseArgs(argv: string[]) {
     create2Salt?: string;
     create2InitCodeHash?: string;
     create2DeployerKey?: string;
-  } = {};
+  } = { patterns: [] };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === '-h' || a === '--help') out.help = true;
     else if (a === '-y' || a === '--yes') out.yes = true;
     else if (a === '--prefix') out.prefix = argv[++i];
     else if (a === '--suffix') out.suffix = argv[++i];
-    else if (a === '--mode') out.mode = argv[++i];
+    else if (a === '--pattern') {
+      const raw = argv[++i] || '';
+      const colon = raw.indexOf(':');
+      if (colon === -1) out.patterns.push({ prefix: raw, suffix: '' });
+      else out.patterns.push({ prefix: raw.slice(0, colon), suffix: raw.slice(colon + 1) });
+    } else if (a === '--mode') out.mode = argv[++i];
     else if (a === '--threads') out.threads = Number(argv[++i]);
     else if (a === '--out') out.out = argv[++i];
     else if (a === '--salt') out.create2Salt = argv[++i];
@@ -48,6 +54,7 @@ ${pc.bold('vanitas')} ${pc.dim('cli')} · vanity forge
 ${pc.bold('Usage')}
   npx vanitas                 Interactive wizard (recommended)
   npx vanitas sol --prefix Ace
+  npx vanitas sol --prefix Ace --pattern Bee --pattern Cat:zz
   npx vanitas sol --mode mint --prefix Ace
   npx vanitas evm --mode contract --prefix cafe
   npx vanitas evm --mode create2-salt --prefix cafe --deployer-key 0x… --init-code-hash 0x…
@@ -61,6 +68,7 @@ ${pc.bold('Chains')}
 ${pc.bold('Options')}
   --prefix <str>           Address prefix
   --suffix <str>           Address suffix
+  --pattern <prefix[:suffix]>  Extra OR target (repeatable); e.g. Ace or Ace:zz
   --mode <str>             Chain mode (see below)
   --threads <n>            Worker threads (default: CPU cores - 1)
   --out <file>             Write JSON result to file
@@ -261,14 +269,54 @@ function validateCreate2Flags(cfg: MineConfig) {
   }
 }
 
+
+function buildPatterns(args: ReturnType<typeof parseArgs>): { prefix: string; suffix: string }[] {
+  const list: { prefix: string; suffix: string }[] = [];
+  if (args.prefix || args.suffix) {
+    list.push({ prefix: args.prefix || '', suffix: args.suffix || '' });
+  }
+  for (const t of args.patterns) {
+    if (t.prefix || t.suffix) list.push(t);
+  }
+  return list;
+}
+
+function describePatterns(
+  prefix: string,
+  suffix: string,
+  patterns?: { prefix: string; suffix: string }[]
+): string {
+  const n =
+    patterns && patterns.length > 0
+      ? patterns.length
+      : prefix || suffix
+        ? 1
+        : 0;
+  if (n > 1) return `OR ${n} patterns`;
+  return `${prefix || '·'}…${suffix || '·'}`;
+}
+
 async function run() {
-  const args = parseArgs(process.argv.slice(2));
+  const argv = process.argv.slice(2);
+  const args = parseArgs(argv);
   if (args.help) {
     printHelp();
     return;
   }
 
-  const fullyFlagged = Boolean(args.chain && (args.prefix || args.suffix));
+  // Optional seed entry: BIP39 grind lives on the web for now
+  if (args.chain === 'seed' || argv[0] === 'seed') {
+    console.log(`
+Seed Forge (BIP39 index grind for Sol/EVM) is available at:
+  https://vanitas.fun/seed
+
+CLI seed mining is not in this package yet.
+`);
+    process.exit(0);
+  }
+
+  const patterns = buildPatterns(args);
+  const fullyFlagged = Boolean(args.chain && (args.prefix || args.suffix || args.patterns.length));
   const cfg: WizardResult = fullyFlagged
     ? {
         chain: args.chain as CliChain,
@@ -278,6 +326,7 @@ async function run() {
           'wallet',
         prefix: args.prefix || '',
         suffix: args.suffix || '',
+        patterns,
         caseSensitive: args.chain === 'ton',
         threads: args.threads ?? defaultThreads(),
         out: args.out,
@@ -300,8 +349,9 @@ async function run() {
   }
 
   if (!args.yes && !fullyFlagged) {
+    const patternLabel = describePatterns(cfg.prefix, cfg.suffix, cfg.patterns);
     const ok = await p.confirm({
-      message: `Mine ${cfg.chain}/${cfg.mode}  pattern ${pc.cyan(cfg.prefix || '·')}…${pc.cyan(cfg.suffix || '·')}  · ${cfg.threads} threads?`,
+      message: `Mine ${cfg.chain}/${cfg.mode}  pattern ${pc.cyan(patternLabel)}  · ${cfg.threads} threads?`,
     });
     if (p.isCancel(ok) || !ok) {
       p.cancel('Stopped.');
@@ -310,7 +360,7 @@ async function run() {
   } else if (fullyFlagged) {
     p.intro(`${pc.bgYellow(pc.black(' vanitas '))}`);
     p.log.info(
-      `${cfg.chain}/${cfg.mode} · ${cfg.prefix || '·'}…${cfg.suffix || '·'} · ${cfg.threads} threads`
+      `${cfg.chain}/${cfg.mode} · ${describePatterns(cfg.prefix, cfg.suffix, cfg.patterns)} · ${cfg.threads} threads`
     );
   }
 
@@ -324,6 +374,7 @@ async function run() {
         mode: cfg.mode,
         prefix: cfg.prefix,
         suffix: cfg.suffix,
+        patterns: cfg.patterns,
         caseSensitive: cfg.caseSensitive,
         create2Salt: cfg.create2Salt,
         create2InitCodeHash: cfg.create2InitCodeHash,

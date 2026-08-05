@@ -20,6 +20,7 @@ import { useBtcGenerator } from '@/hooks/useBtcGenerator';
 import { useSound } from '@/hooks/useSound';
 import { useForgeRunUi, requestForgeNotifyPermission } from '@/hooks/useForgeRunUi';
 import { validateBtcPrefix, validateBtcSuffix, estimateBtcDifficulty } from '@/lib/btc-validation';
+import { hasAnyPattern, patternsFromSearchParams, writePatternsToSearchParams } from '@/lib/patterns';
 import { saveRecentFind } from '@/lib/find-history';
 import { hasBlockingLookalikeErrors } from '@/lib/lookalike';
 import type { BtcMode, GeneratedBtcResult } from '@/types/btc';
@@ -65,21 +66,27 @@ export function BtcContent() {
   }, [result, playSuccessSound]);
 
   useEffect(() => {
-    const urlPrefix = searchParams.get('prefix');
-    const urlSuffix = searchParams.get('suffix');
+    const urlPatterns = patternsFromSearchParams(searchParams);
     const urlMode = searchParams.get('mode');
-    if (urlPrefix) updateConfig({ prefix: urlPrefix });
-    if (urlSuffix) updateConfig({ suffix: urlSuffix });
-    if (urlMode === 'legacy' || urlMode === 'segwit' || urlMode === 'taproot') {
-      updateConfig({ mode: urlMode });
+    const urlCs = searchParams.get('cs');
+    const patch: Parameters<typeof updateConfig>[0] = {};
+    if (urlPatterns.length) {
+      patch.patterns = urlPatterns;
+      patch.prefix = urlPatterns[0].prefix;
+      patch.suffix = urlPatterns[0].suffix;
     }
+    if (urlMode === 'legacy' || urlMode === 'segwit' || urlMode === 'taproot') {
+      patch.mode = urlMode;
+    }
+    if (urlCs === '1' || urlCs === 'true') patch.caseSensitive = true;
+    if (Object.keys(patch).length) updateConfig(patch);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
   const expectedDifficulty = estimateBtcDifficulty(prefix, suffix, mode, caseSensitive);
   const prefixValid = validateBtcPrefix(prefix, mode, caseSensitive).valid;
   const suffixValid = validateBtcSuffix(suffix, mode).valid;
-  const hasPattern = prefix.length > 0 || suffix.length > 0;
+  const hasPattern = hasAnyPattern(config);
   const patternBlocked = hasBlockingLookalikeErrors(
     mode === 'legacy' ? 'btc-legacy' : 'btc-bech32',
     prefix,
@@ -96,14 +103,14 @@ export function BtcContent() {
   const generateShareLink = useCallback(() => {
     const params = new URLSearchParams();
     params.set('mode', mode);
-    if (prefix) params.set('prefix', prefix);
-    if (suffix) params.set('suffix', suffix);
+    writePatternsToSearchParams(params, config);
+    if (caseSensitive && mode === 'legacy') params.set('cs', '1');
     const shareUrl = `${window.location.origin}/btc?${params.toString()}`;
     navigator.clipboard.writeText(shareUrl).then(() => {
       setCopied(true);
       setTimeout(() => { setCopied(false); }, 2000);
     }).catch(() => {});
-  }, [mode, prefix, suffix]);
+  }, [mode, config, caseSensitive]);
 
   const handleModeChange = useCallback(
     (next: BtcMode) => {

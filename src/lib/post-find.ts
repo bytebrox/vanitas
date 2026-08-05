@@ -38,6 +38,10 @@ function normalizeMode(chain: ProofChain, mode?: string): string {
     if (m === 'taproot' || m === 'segwit' || m === 'legacy') return m;
     return 'legacy';
   }
+  if (chain === 'ton') {
+    if (m === 'bounceable' || m === 'eq') return 'bounceable';
+    return 'non-bounceable';
+  }
   return 'wallet';
 }
 
@@ -55,7 +59,10 @@ const PROFILES: Record<string, PostFindProfile> = {
   'tron:contract': { playbookId: 'tronContract', importId: 'tronHex', launch: 'full' },
   'aptos:wallet': { playbookId: 'aptosWallet', importId: 'aptosHex', launch: 'compact' },
   'sui:wallet': { playbookId: 'suiWallet', importId: 'suiHex', launch: 'compact' },
-  'ton:wallet': { playbookId: 'tonWallet', importId: 'tonHex', launch: 'compact' },
+  'ton:non-bounceable': { playbookId: 'tonNonBounceable', importId: 'tonHex', launch: 'compact' },
+  'ton:bounceable': { playbookId: 'tonBounceable', importId: 'tonHex', launch: 'compact' },
+  /** @deprecated alias — normalizeMode maps bare wallet → non-bounceable */
+  'ton:wallet': { playbookId: 'tonNonBounceable', importId: 'tonHex', launch: 'compact' },
   'cardano:wallet': { playbookId: 'cardanoWallet', importId: 'cardanoHex', launch: 'compact' },
   'xrp:wallet': { playbookId: 'xrpWallet', importId: 'xrpSeed', launch: 'compact' },
 };

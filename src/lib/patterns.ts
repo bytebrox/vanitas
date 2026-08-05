@@ -47,3 +47,50 @@ export function combineOrDifficulty(difficulties: number[]): number {
 }
 
 export const MAX_PATTERN_TARGETS = 8;
+
+/** True when any prefix/suffix (scalar or patterns[]) is non-empty. */
+export function hasAnyPattern(
+  input:
+    | { patterns?: PatternTarget[]; prefix?: string; suffix?: string }
+    | PatternTarget[]
+    | null
+    | undefined
+): boolean {
+  return normalizePatterns(input).length > 0;
+}
+
+/** Read primary + OR alternatives from forge/lab share query (`prefix`/`suffix` + `p1`/`s1`…). */
+export function patternsFromSearchParams(
+  params: URLSearchParams | { get(name: string): string | null }
+): PatternTarget[] {
+  const raw: PatternTarget[] = [
+    {
+      prefix: params.get('prefix') || '',
+      suffix: params.get('suffix') || '',
+    },
+  ];
+  for (let i = 1; i < MAX_PATTERN_TARGETS; i++) {
+    const p = params.get(`p${i}`);
+    const s = params.get(`s${i}`);
+    if (p == null && s == null) break;
+    raw.push({ prefix: p || '', suffix: s || '' });
+  }
+  return normalizePatterns(raw);
+}
+
+/** Write primary + alternatives onto a URLSearchParams (does not clear unrelated keys). */
+export function writePatternsToSearchParams(
+  params: URLSearchParams,
+  patterns: PatternTarget[] | { patterns?: PatternTarget[]; prefix?: string; suffix?: string }
+): void {
+  const list = normalizePatterns(patterns);
+  const primary = list[0];
+  if (primary?.prefix) params.set('prefix', primary.prefix);
+  if (primary?.suffix) params.set('suffix', primary.suffix);
+  for (let i = 1; i < list.length; i++) {
+    const pt = list[i]!;
+    if (pt.prefix) params.set(`p${i}`, pt.prefix);
+    if (pt.suffix) params.set(`s${i}`, pt.suffix);
+  }
+}
+

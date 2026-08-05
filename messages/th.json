@@ -561,7 +561,9 @@
       "showPrivateKey": "แสดงคีย์ส่วนตัวแบบดิบ",
       "privateKeyNote": "จำเป็นเฉพาะเมื่อคุณอยากนำเข้าคีย์เดี่ยวแทนวลี ให้ระวังรักษาอย่างเดียวกัน",
       "exhausted": "ลองครบทุกดัชนีการอนุพัทธ์แล้ว ลองย่อรูปแบบให้สั้นลงหรือเลือกรูปแบบเส้นทางอื่น",
-      "needMnemonic": "กรอกหรือสร้างวลีกู้คืนที่ถูกต้องและรูปแบบหนึ่งเพื่อเริ่ม"
+      "needMnemonic": "กรอกหรือสร้างวลีกู้คืนที่ถูกต้องและรูปแบบหนึ่งเพื่อเริ่ม",
+      "alphabetBtc": "Bitcoin: Legacy Base58 (1…), SegWit bc1q…, Taproot bc1p…. You can omit the fixed 1 / bc1q / bc1p prefix.",
+      "alphabetTron": "Tron addresses are Base58 and start with T — you can omit the leading T."
     },
     "lookalike": {
       "title": "เช็คหน้าเหมือนกัน",
@@ -1688,7 +1690,7 @@
     },
     "seed": {
       "title": "โรงหลอม Seed — ที่อยู่ตามใจจากวลีกู้คืน",
-      "description": "หลอมที่อยู่ตามใจของ Solana หรือ EVM ที่กู้คืนได้ด้วยวลี BIP-39 สิบสองคำ ทำงานในเบราว์เซอร์ทั้งหมด",
+      "description": "Grind a Solana, EVM, Bitcoin, or Tron vanity address that restores from a BIP-39 phrase. Runs entirely in your browser.",
       "ogTitle": "โรงหลอม Seed | Vanitas",
       "ogDescription": "ที่อยู่ตามใจที่กู้คืนได้ด้วยสิบสองคำ ไม่มีคีย์ส่วนตัวหลงเหลือ"
     },
@@ -2045,7 +2047,8 @@
     "matching": "ชื่อที่ตรงกับ “{name}”",
     "via": "ผ่าน {provider}",
     "check": "ตรวจสอบ",
-    "note": "โดเมนช่วยให้แชร์ที่อยู่ได้ง่ายขึ้น ความว่างของชื่อยืนยันได้ที่เว็บผู้รับจดทะเบียน"
+    "note": "โดเมนช่วยให้แชร์ที่อยู่ได้ง่ายขึ้น ความว่างของชื่อยืนยันได้ที่เว็บผู้รับจดทะเบียน",
+    "noteEns": "An ENS name points people to your address. Check availability on app.ens.domains — we only suggest names from your pattern."
   },
   "offline": {
     "airGapped": "ตัดขาดจากเครือข่าย",
@@ -2155,16 +2158,6 @@
           "แชร์ proof ของรูปแบบโดยไม่มีคีย์"
         ]
       },
-      "tonWallet": {
-        "eyebrow": "ขั้นตอนถัดไป",
-        "title": "นำเข้าวอลเล็ต TON นี้",
-        "steps": [
-          "**บันทึกคีย์ส่วนตัว** (ไฟล์ส่งออกมักมี EQ ที่ bounce ได้เมื่อมี)",
-          "นำเข้า **Tonkeeper** หรือ **MyTonWallet**",
-          "ยืนยัน `{short}` ด้วยการส่งทดสอบเล็กน้อย",
-          "แชร์ proof รูปแบบ vanity — เก็บคีย์ออฟไลน์"
-        ]
-      },
       "cardanoWallet": {
         "eyebrow": "ขั้นตอนถัดไป",
         "title": "นำเข้าที่อยู่ Cardano นี้",
@@ -2193,6 +2186,26 @@
           "นำเข้าสู่วอลเล็ตที่รองรับเชนนี้",
           "ส่งจำนวนทดสอบเล็กน้อยเพื่อยืนยัน `{short}`",
           "แชร์ลิงก์ proof — ห้ามแชร์คีย์"
+        ]
+      },
+      "tonNonBounceable": {
+        "eyebrow": "Next steps",
+        "title": "Import this non-bounceable (UQ) wallet",
+        "steps": [
+          "**Save the private key** — export also lists the bounceable EQ twin when available.",
+          "Import into **Tonkeeper** or **MyTonWallet**. Prefer the **UQ / non-bounceable** form for everyday wallet receives.",
+          "Confirm {short} with a small test send (UQ is the usual user-wallet address).",
+          "Share proof for the vanity pattern — keep the key offline."
+        ]
+      },
+      "tonBounceable": {
+        "eyebrow": "Next steps",
+        "title": "Use this bounceable (EQ) address carefully",
+        "steps": [
+          "**Save the private key** — you forged the **EQ / bounceable** form; wallets still hold the same account.",
+          "Import into **Tonkeeper** or **MyTonWallet**. EQ is common for contracts / bounce-on-fail flows; UQ is the twin for simple receives.",
+          "Confirm {short} matches the form you intend before publishing.",
+          "Share proof for the vanity pattern — keep the key offline."
         ]
       }
     },

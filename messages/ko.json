@@ -561,7 +561,9 @@
       "showPrivateKey": "원본 개인키 보기",
       "privateKeyNote": "문구 대신 개인키 하나만 불러오고 싶을 때만 필요합니다. 문구와 똑같이 조심해서 보관하세요.",
       "exhausted": "모든 파생 인덱스를 시도했습니다. 패턴을 짧게 하거나 다른 경로 방식을 선택하세요.",
-      "needMnemonic": "유효한 복구 문구와 패턴을 입력하면 시작할 수 있습니다."
+      "needMnemonic": "유효한 복구 문구와 패턴을 입력하면 시작할 수 있습니다.",
+      "alphabetBtc": "Bitcoin: Legacy Base58 (1…), SegWit bc1q…, Taproot bc1p…. You can omit the fixed 1 / bc1q / bc1p prefix.",
+      "alphabetTron": "Tron addresses are Base58 and start with T — you can omit the leading T."
     },
     "lookalike": {
       "title": "유사 체크",
@@ -1688,7 +1690,7 @@
     },
     "seed": {
       "title": "시드 제련소 — 복구 문구로 만드는 원하는 주소",
-      "description": "12단어 BIP-39 문구로 복구되는 솔라나 또는 EVM 주소를 제련합니다. 전 과정이 브라우저 안에서 이뤄집니다.",
+      "description": "Grind a Solana, EVM, Bitcoin, or Tron vanity address that restores from a BIP-39 phrase. Runs entirely in your browser.",
       "ogTitle": "시드 제련소 | Vanitas",
       "ogDescription": "열두 단어로 되찾을 수 있는 원하는 주소 — 떠도는 개인키가 없습니다."
     },
@@ -2045,7 +2047,8 @@
     "matching": "“{name}”와(과) 어울리는 이름",
     "via": "{provider} 경유",
     "check": "확인",
-    "note": "도메인이 있으면 주소를 공유하기 쉬워집니다. 등록 가능 여부는 등록기관 사이트에서 확인하세요."
+    "note": "도메인이 있으면 주소를 공유하기 쉬워집니다. 등록 가능 여부는 등록기관 사이트에서 확인하세요.",
+    "noteEns": "An ENS name points people to your address. Check availability on app.ens.domains — we only suggest names from your pattern."
   },
   "offline": {
     "airGapped": "망 분리 상태",
@@ -2155,16 +2158,6 @@
           "키 없이 패턴 proof를 공유하세요."
         ]
       },
-      "tonWallet": {
-        "eyebrow": "다음 단계",
-        "title": "이 TON 지갑 가져오기",
-        "steps": [
-          "**개인키를 저장** (가능하면 내보내기에 bounceable EQ 포함).",
-          "**Tonkeeper** 또는 **MyTonWallet**으로 가져오세요.",
-          "소액 테스트 전송으로 `{short}`를 확인하세요.",
-          "vanity 패턴 proof를 공유 — 키는 오프라인으로 유지."
-        ]
-      },
       "cardanoWallet": {
         "eyebrow": "다음 단계",
         "title": "이 Cardano 주소 가져오기",
@@ -2193,6 +2186,26 @@
           "이 체인을 지원하는 지갑으로 가져오세요.",
           "`{short}` 확인을 위해 소액 테스트 금액을 보내세요.",
           "proof 링크를 공유 — 키는 절대 공유하지 마세요."
+        ]
+      },
+      "tonNonBounceable": {
+        "eyebrow": "Next steps",
+        "title": "Import this non-bounceable (UQ) wallet",
+        "steps": [
+          "**Save the private key** — export also lists the bounceable EQ twin when available.",
+          "Import into **Tonkeeper** or **MyTonWallet**. Prefer the **UQ / non-bounceable** form for everyday wallet receives.",
+          "Confirm {short} with a small test send (UQ is the usual user-wallet address).",
+          "Share proof for the vanity pattern — keep the key offline."
+        ]
+      },
+      "tonBounceable": {
+        "eyebrow": "Next steps",
+        "title": "Use this bounceable (EQ) address carefully",
+        "steps": [
+          "**Save the private key** — you forged the **EQ / bounceable** form; wallets still hold the same account.",
+          "Import into **Tonkeeper** or **MyTonWallet**. EQ is common for contracts / bounce-on-fail flows; UQ is the twin for simple receives.",
+          "Confirm {short} matches the form you intend before publishing.",
+          "Share proof for the vanity pattern — keep the key offline."
         ]
       }
     },

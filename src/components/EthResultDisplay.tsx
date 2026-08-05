@@ -17,6 +17,7 @@ import { ShareCardButton } from './ShareCardButton';
 import { PostFindPlaybook } from './PostFindPlaybook';
 import { ImportGuide } from './ImportGuide';
 import { LaunchKit } from './LaunchKit';
+import { DomainSuggestions } from './DomainSuggestions';
 
 interface EthResultDisplayProps {
   result: GeneratedEthResult;
@@ -293,6 +294,8 @@ export function EthResultDisplay({ result, onReset, onContinueSearch }: EthResul
         attempts={result.attempts}
         duration={result.duration}
       />
+
+      <DomainSuggestions pattern={result.matchedPattern} chain="evm" />
 
       <EntropyInfo />
     </div>

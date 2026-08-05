@@ -2,18 +2,23 @@
 
 import { useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { domainSuggestions, normalizeDomainName } from '@/lib/domains';
+import {
+  domainSuggestions,
+  normalizeDomainName,
+  type DomainChain,
+} from '@/lib/domains';
 
 interface DomainSuggestionsProps {
   pattern: string;
+  chain?: DomainChain;
 }
 
-export function DomainSuggestions({ pattern }: DomainSuggestionsProps) {
+export function DomainSuggestions({ pattern, chain = 'sol' }: DomainSuggestionsProps) {
   const t = useTranslations('domains');
   const [expanded, setExpanded] = useState(false);
 
   const name = useMemo(() => normalizeDomainName(pattern), [pattern]);
-  const suggestions = useMemo(() => domainSuggestions(pattern), [pattern]);
+  const suggestions = useMemo(() => domainSuggestions(pattern, chain), [pattern, chain]);
 
   if (name.length < 2) {
     return null;
@@ -23,7 +28,9 @@ export function DomainSuggestions({ pattern }: DomainSuggestionsProps) {
     <div className="border-y border-ink/15 py-5">
       <button
         type="button"
-        onClick={() => { setExpanded(!expanded); }}
+        onClick={() => {
+          setExpanded(!expanded);
+        }}
         className="w-full flex items-center justify-between text-left gap-4"
         aria-expanded={expanded}
       >
@@ -65,7 +72,7 @@ export function DomainSuggestions({ pattern }: DomainSuggestionsProps) {
               </li>
             ))}
           </ul>
-          <p className="text-micro text-muted">{t('note')}</p>
+          <p className="text-micro text-muted">{chain === 'evm' ? t('noteEns') : t('note')}</p>
         </div>
       )}
     </div>

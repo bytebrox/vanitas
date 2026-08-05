@@ -561,7 +561,9 @@
       "showPrivateKey": "Ham özel anahtarı göster",
       "privateKeyNote": "Yalnızca ifade yerine tek anahtarı içe aktarmayı tercih edersen gerekir. Aynı özenle koru.",
       "exhausted": "Tüm türetme dizinleri denendi. Deseni kısalt ya da başka bir yol şeması seç.",
-      "needMnemonic": "Başlamak için geçerli bir kurtarma ifadesi ve bir desen gir."
+      "needMnemonic": "Başlamak için geçerli bir kurtarma ifadesi ve bir desen gir.",
+      "alphabetBtc": "Bitcoin: Legacy Base58 (1…), SegWit bc1q…, Taproot bc1p…. You can omit the fixed 1 / bc1q / bc1p prefix.",
+      "alphabetTron": "Tron addresses are Base58 and start with T — you can omit the leading T."
     },
     "lookalike": {
       "title": "Benzerlik kontrolü",
@@ -1688,7 +1690,7 @@
     },
     "seed": {
       "title": "Seed Ocağı — Kurtarma ifadesinden özel adres",
-      "description": "12 kelimelik BIP-39 ifadesiyle geri getirilebilen Solana veya EVM özel adresi üret. Tamamen tarayıcında çalışır.",
+      "description": "Grind a Solana, EVM, Bitcoin, or Tron vanity address that restores from a BIP-39 phrase. Runs entirely in your browser.",
       "ogTitle": "Seed Ocağı | Vanitas",
       "ogDescription": "On iki kelimeyle geri getirebileceğin özel adresler — ortada gezen özel anahtar yok."
     },
@@ -2045,7 +2047,8 @@
     "matching": "“{name}” ile eşleşen adlar",
     "via": "{provider} üzerinden",
     "check": "Kontrol et",
-    "note": "Alan adı adresi paylaşmayı kolaylaştırır. Uygunluk, kayıt sağlayıcının kendi sitesinde doğrulanır."
+    "note": "Alan adı adresi paylaşmayı kolaylaştırır. Uygunluk, kayıt sağlayıcının kendi sitesinde doğrulanır.",
+    "noteEns": "An ENS name points people to your address. Check availability on app.ens.domains — we only suggest names from your pattern."
   },
   "offline": {
     "airGapped": "Ağdan yalıtılmış",
@@ -2155,16 +2158,6 @@
           "Anahtarsız kalıp proof’unu paylaşın."
         ]
       },
-      "tonWallet": {
-        "eyebrow": "Sonraki adımlar",
-        "title": "Bu TON cüzdanını içe aktar",
-        "steps": [
-          "**Özel anahtarı kaydedin** (dışa aktarım mümkünse bounceable EQ içerir).",
-          "**Tonkeeper** veya **MyTonWallet**’e aktarın.",
-          "Küçük bir test gönderimiyle `{short}` doğrulayın.",
-          "Vanity kalıp proof’unu paylaşın — anahtarı çevrimdışı tutun."
-        ]
-      },
       "cardanoWallet": {
         "eyebrow": "Sonraki adımlar",
         "title": "Bu Cardano adresini içe aktar",
@@ -2193,6 +2186,26 @@
           "Bu zinciri destekleyen bir cüzdana aktarın.",
           "`{short}` doğrulamak için küçük bir test tutarı gönderin.",
           "Proof bağlantıları paylaşın — asla anahtarları değil."
+        ]
+      },
+      "tonNonBounceable": {
+        "eyebrow": "Next steps",
+        "title": "Import this non-bounceable (UQ) wallet",
+        "steps": [
+          "**Save the private key** — export also lists the bounceable EQ twin when available.",
+          "Import into **Tonkeeper** or **MyTonWallet**. Prefer the **UQ / non-bounceable** form for everyday wallet receives.",
+          "Confirm {short} with a small test send (UQ is the usual user-wallet address).",
+          "Share proof for the vanity pattern — keep the key offline."
+        ]
+      },
+      "tonBounceable": {
+        "eyebrow": "Next steps",
+        "title": "Use this bounceable (EQ) address carefully",
+        "steps": [
+          "**Save the private key** — you forged the **EQ / bounceable** form; wallets still hold the same account.",
+          "Import into **Tonkeeper** or **MyTonWallet**. EQ is common for contracts / bounce-on-fail flows; UQ is the twin for simple receives.",
+          "Confirm {short} matches the form you intend before publishing.",
+          "Share proof for the vanity pattern — keep the key offline."
         ]
       }
     },

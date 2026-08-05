@@ -561,7 +561,9 @@
       "showPrivateKey": "Tampilkan kunci privat mentah",
       "privateKeyNote": "Hanya perlu jika kamu lebih suka mengimpor kunci tunggal daripada frasanya. Jaga dengan kehati-hatian yang sama.",
       "exhausted": "Semua indeks derivasi sudah dicoba. Perpendek polanya atau pilih skema jalur lain.",
-      "needMnemonic": "Masukkan atau buat frasa pemulihan yang valid dan sebuah pola untuk memulai."
+      "needMnemonic": "Masukkan atau buat frasa pemulihan yang valid dan sebuah pola untuk memulai.",
+      "alphabetBtc": "Bitcoin: Legacy Base58 (1…), SegWit bc1q…, Taproot bc1p…. You can omit the fixed 1 / bc1q / bc1p prefix.",
+      "alphabetTron": "Tron addresses are Base58 and start with T — you can omit the leading T."
     },
     "lookalike": {
       "title": "Cek serupa",
@@ -1688,7 +1690,7 @@
     },
     "seed": {
       "title": "Penempaan Seed — Alamat pilihan dari frasa pemulihan",
-      "description": "Tempa alamat pilihan Solana atau EVM yang bisa dipulihkan dari frasa BIP-39 12 kata. Sepenuhnya di browser.",
+      "description": "Grind a Solana, EVM, Bitcoin, or Tron vanity address that restores from a BIP-39 phrase. Runs entirely in your browser.",
       "ogTitle": "Penempaan Seed | Vanitas",
       "ogDescription": "Alamat pilihan yang bisa dipulihkan dari dua belas kata — tanpa kunci privat lepas."
     },
@@ -2045,7 +2047,8 @@
     "matching": "Nama yang cocok untuk “{name}”",
     "via": "via {provider}",
     "check": "Cek",
-    "note": "Domain membuat alamat lebih mudah dibagikan. Ketersediaan dikonfirmasi di situs registrar."
+    "note": "Domain membuat alamat lebih mudah dibagikan. Ketersediaan dikonfirmasi di situs registrar.",
+    "noteEns": "An ENS name points people to your address. Check availability on app.ens.domains — we only suggest names from your pattern."
   },
   "offline": {
     "airGapped": "Terputus dari jaringan",
@@ -2155,16 +2158,6 @@
           "Bagikan proof pola tanpa kunci."
         ]
       },
-      "tonWallet": {
-        "eyebrow": "Langkah berikutnya",
-        "title": "Impor dompet TON ini",
-        "steps": [
-          "**Simpan kunci pribadi** (ekspor sering mencakup EQ bounceable bila tersedia).",
-          "Impor ke **Tonkeeper** atau **MyTonWallet**.",
-          "Konfirmasi `{short}` dengan kiriman uji kecil.",
-          "Bagikan proof pola vanity — jaga kunci offline."
-        ]
-      },
       "cardanoWallet": {
         "eyebrow": "Langkah berikutnya",
         "title": "Impor alamat Cardano ini",
@@ -2193,6 +2186,26 @@
           "Impor ke dompet yang mendukung rantai ini.",
           "Kirim jumlah uji kecil untuk mengonfirmasi `{short}`.",
           "Bagikan tautan proof — jangan pernah kunci."
+        ]
+      },
+      "tonNonBounceable": {
+        "eyebrow": "Next steps",
+        "title": "Import this non-bounceable (UQ) wallet",
+        "steps": [
+          "**Save the private key** — export also lists the bounceable EQ twin when available.",
+          "Import into **Tonkeeper** or **MyTonWallet**. Prefer the **UQ / non-bounceable** form for everyday wallet receives.",
+          "Confirm {short} with a small test send (UQ is the usual user-wallet address).",
+          "Share proof for the vanity pattern — keep the key offline."
+        ]
+      },
+      "tonBounceable": {
+        "eyebrow": "Next steps",
+        "title": "Use this bounceable (EQ) address carefully",
+        "steps": [
+          "**Save the private key** — you forged the **EQ / bounceable** form; wallets still hold the same account.",
+          "Import into **Tonkeeper** or **MyTonWallet**. EQ is common for contracts / bounce-on-fail flows; UQ is the twin for simple receives.",
+          "Confirm {short} matches the form you intend before publishing.",
+          "Share proof for the vanity pattern — keep the key offline."
         ]
       }
     },

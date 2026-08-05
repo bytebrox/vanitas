@@ -25,6 +25,7 @@ import {
   xrpPrefixBody,
 } from '@/lib/xrp-validation';
 import { saveRecentFind } from '@/lib/find-history';
+import { hasAnyPattern, patternsFromSearchParams, writePatternsToSearchParams } from '@/lib/patterns';
 import { hasBlockingLookalikeErrors } from '@/lib/lookalike';
 import type { GeneratedXrpResult } from '@/types/xrp';
 import { RecentFinds } from '@/components/RecentFinds';
@@ -68,19 +69,26 @@ export function XrpContent() {
   }, [result, playSuccessSound]);
 
   useEffect(() => {
-    const urlPrefix = searchParams.get('prefix');
-    const urlSuffix = searchParams.get('suffix');
+    const urlPatterns = patternsFromSearchParams(searchParams).map((p) => ({
+      prefix: xrpPrefixBody(p.prefix),
+      suffix: p.suffix.replace(/^r+/, ''),
+    }));
     const urlCase = searchParams.get('case');
-    if (urlPrefix) updateConfig({ prefix: xrpPrefixBody(urlPrefix) });
-    if (urlSuffix) updateConfig({ suffix: urlSuffix.replace(/^r+/, '') });
-    if (urlCase === '1' || urlCase === 'true') updateConfig({ caseSensitive: true });
+    const patch: Parameters<typeof updateConfig>[0] = {};
+    if (urlPatterns.length) {
+      patch.patterns = urlPatterns;
+      patch.prefix = urlPatterns[0].prefix;
+      patch.suffix = urlPatterns[0].suffix;
+    }
+    if (urlCase === '1' || urlCase === 'true') patch.caseSensitive = true;
+    if (Object.keys(patch).length) updateConfig(patch);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
   const expectedDifficulty = estimateXrpDifficulty(prefix, suffix, caseSensitive);
   const prefixValid = validateXrpPrefix(prefix).valid;
   const suffixValid = validateXrpSuffix(suffix).valid;
-  const hasPattern = xrpPrefixBody(prefix).length > 0 || suffix.length > 0;
+  const hasPattern = hasAnyPattern(config);
   const patternBlocked = hasBlockingLookalikeErrors('xrp', prefix, suffix);
   const canStart = prefixValid && suffixValid && hasPattern && !patternBlocked;
 
@@ -92,8 +100,7 @@ export function XrpContent() {
 
   const generateShareLink = useCallback(() => {
     const params = new URLSearchParams();
-    if (prefix) params.set('prefix', prefix);
-    if (suffix) params.set('suffix', suffix);
+    writePatternsToSearchParams(params, config);
     if (caseSensitive) params.set('case', '1');
     const shareUrl = `${window.location.origin}/xrp?${params.toString()}`;
     navigator.clipboard
@@ -105,7 +112,7 @@ export function XrpContent() {
         }, 2000);
       })
       .catch(() => {});
-  }, [prefix, suffix, caseSensitive]);
+  }, [config, caseSensitive]);
 
   return (
     <div className="min-h-screen flex flex-col">

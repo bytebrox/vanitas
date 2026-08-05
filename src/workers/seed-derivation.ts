@@ -17,12 +17,19 @@ import { hmac } from '@noble/hashes/hmac.js';
 import { sha512 } from '@noble/hashes/sha2.js';
 import { keccak_256 } from '@noble/hashes/sha3.js';
 import * as ed25519 from '@noble/ed25519';
-import { getPublicKey as secp256k1PublicKey } from '@noble/secp256k1';
+import { getPublicKey as secp256k1PublicKey, schnorr } from '@noble/secp256k1';
 import { HDKey } from '@scure/bip32';
+import {
+  btcLegacyAddress,
+  btcSegwitAddress,
+  btcTaprootAddress,
+  btcWifCompressed,
+  tronAddressFromEth20,
+} from '../lib/address-encoding';
 
 ed25519.hashes.sha512 = sha512;
 
-export type SeedChain = 'sol' | 'evm';
+export type SeedChain = 'sol' | 'evm' | 'btc' | 'tron';
 
 /** Stands in for the level being ground wherever a path is shown unfilled. */
 export const INDEX_MARKER = '{i}';
@@ -34,6 +41,11 @@ export interface SeedPathStyle {
   template: string;
   /** Wallets known to use this layout. */
   wallets: string[];
+  /**
+   * Bitcoin address encoding when chain === 'btc'.
+   * legacy → BIP44 P2PKH · segwit → BIP84 P2WPKH · taproot → BIP86 P2TR
+   */
+  btcMode?: 'legacy' | 'segwit' | 'taproot';
 }
 
 export const SEED_PATH_STYLES: SeedPathStyle[] = [
@@ -60,6 +72,46 @@ export const SEED_PATH_STYLES: SeedPathStyle[] = [
     chain: 'evm',
     template: "m/44'/60'/{i}'/0/0",
     wallets: ['Ledger Live', 'Trezor'],
+  },
+  {
+    id: 'btc-legacy',
+    chain: 'btc',
+    btcMode: 'legacy',
+    template: "m/44'/0'/0'/0/{i}",
+    wallets: ['Electrum', 'Sparrow', 'Ledger Live'],
+  },
+  {
+    id: 'btc-segwit',
+    chain: 'btc',
+    btcMode: 'segwit',
+    template: "m/84'/0'/0'/0/{i}",
+    wallets: ['Electrum', 'Sparrow', 'BlueWallet'],
+  },
+  {
+    id: 'btc-taproot',
+    chain: 'btc',
+    btcMode: 'taproot',
+    template: "m/86'/0'/0'/0/{i}",
+    wallets: ['Sparrow', 'Electrum', 'BitBox'],
+  },
+  {
+    id: 'btc-legacy-account',
+    chain: 'btc',
+    btcMode: 'legacy',
+    template: "m/44'/0'/{i}'/0/0",
+    wallets: ['Ledger Live (account)'],
+  },
+  {
+    id: 'tron-address',
+    chain: 'tron',
+    template: "m/44'/195'/0'/0/{i}",
+    wallets: ['TronLink', 'Ledger'],
+  },
+  {
+    id: 'tron-account',
+    chain: 'tron',
+    template: "m/44'/195'/{i}'/0/0",
+    wallets: ['Ledger Live'],
   },
 ];
 
@@ -143,10 +195,27 @@ function evmAddressFor(privateKey: Uint8Array): string {
   return '0x' + toHex(keccak_256(uncompressed.slice(1)).slice(-20));
 }
 
+function eth20For(privateKey: Uint8Array): Uint8Array {
+  const uncompressed = secp256k1PublicKey(privateKey, false);
+  return keccak_256(uncompressed.slice(1)).slice(-20);
+}
+
+function tronAddressFor(privateKey: Uint8Array): string {
+  return tronAddressFromEth20(eth20For(privateKey));
+}
+
+function btcAddressFor(privateKey: Uint8Array, mode: 'legacy' | 'segwit' | 'taproot'): string {
+  if (mode === 'taproot') {
+    return btcTaprootAddress(schnorr.getPublicKey(privateKey));
+  }
+  const pub = secp256k1PublicKey(privateKey, true);
+  return mode === 'segwit' ? btcSegwitAddress(pub) : btcLegacyAddress(pub);
+}
+
 /* -------------------------------------------------------------- derivation */
 
 export interface SeedSecret {
-  /** Import format for the chain: base58 keypair (Solana) or 0x hex (EVM). */
+  /** Import format for the chain: base58 keypair (Solana), 0x hex (EVM/Tron), or WIF (BTC). */
   privateKey: string;
   address: string;
 }
@@ -217,13 +286,107 @@ function createEvmWalker(seed: Uint8Array, style: SeedPathStyle): SeedWalker {
   };
 }
 
-export function createWalker(seed: Uint8Array, style: SeedPathStyle): SeedWalker {
-  return style.chain === 'sol'
-    ? createSolWalker(seed, style)
-    : createEvmWalker(seed, style);
+function createBtcWalker(seed: Uint8Array, style: SeedPathStyle): SeedWalker {
+  const mode = style.btcMode || 'legacy';
+  const purpose = mode === 'segwit' ? 84 : mode === 'taproot' ? 86 : 44;
+  const master = HDKey.fromMasterSeed(seed);
+  const perAddress = !style.id.endsWith('-account');
+  const base = perAddress
+    ? master.derive(`m/${purpose}'/0'/0'/0`)
+    : master.derive(`m/${purpose}'/0'`);
+
+  const privateAt = (index: number): Uint8Array => {
+    const node = perAddress
+      ? base.deriveChild(index)
+      : base.deriveChild(index + HARDENED).derive('m/0/0');
+    if (!node.privateKey) throw new Error('derivation produced no private key');
+    return node.privateKey;
+  };
+
+  return {
+    addressAt(index) {
+      return btcAddressFor(privateAt(index), mode);
+    },
+    secretAt(index) {
+      const key = privateAt(index);
+      return {
+        privateKey: btcWifCompressed(key),
+        address: btcAddressFor(key, mode),
+      };
+    },
+  };
 }
 
-/** Prefix/suffix match, case-insensitive for EVM hex, exact for base58. */
+function createTronWalker(seed: Uint8Array, style: SeedPathStyle): SeedWalker {
+  const master = HDKey.fromMasterSeed(seed);
+  const perAddress = style.id === 'tron-address';
+  const base = perAddress ? master.derive("m/44'/195'/0'/0") : master.derive("m/44'/195'");
+
+  const privateAt = (index: number): Uint8Array => {
+    const node = perAddress
+      ? base.deriveChild(index)
+      : base.deriveChild(index + HARDENED).derive('m/0/0');
+    if (!node.privateKey) throw new Error('derivation produced no private key');
+    return node.privateKey;
+  };
+
+  return {
+    addressAt(index) {
+      return tronAddressFor(privateAt(index));
+    },
+    secretAt(index) {
+      const key = privateAt(index);
+      return {
+        privateKey: '0x' + toHex(key),
+        address: tronAddressFor(key),
+      };
+    },
+  };
+}
+
+export function createWalker(seed: Uint8Array, style: SeedPathStyle): SeedWalker {
+  switch (style.chain) {
+    case 'sol':
+      return createSolWalker(seed, style);
+    case 'evm':
+      return createEvmWalker(seed, style);
+    case 'btc':
+      return createBtcWalker(seed, style);
+    case 'tron':
+      return createTronWalker(seed, style);
+    default: {
+      const _exhaustive: never = style.chain;
+      throw new Error(`Unsupported seed chain: ${_exhaustive}`);
+    }
+  }
+}
+
+/** Normalize user prefix so it matches how forge patterns work per chain. */
+function normalizeMatchPrefix(chain: SeedChain, address: string, prefix: string): string {
+  if (!prefix) return '';
+  if (chain === 'btc') {
+    if (address.startsWith('bc1p')) {
+      const p = prefix.toLowerCase();
+      if (p.startsWith('bc1p') || p.startsWith('bc1')) return p;
+      return `bc1p${p}`;
+    }
+    if (address.startsWith('bc1')) {
+      const p = prefix.toLowerCase();
+      if (p.startsWith('bc1q') || p.startsWith('bc1')) return p;
+      return `bc1q${p}`;
+    }
+    return prefix.startsWith('1') ? prefix : `1${prefix}`;
+  }
+  if (chain === 'tron') {
+    return prefix.startsWith('T') ? prefix : `T${prefix}`;
+  }
+  return prefix;
+}
+
+/**
+ * Prefix/suffix match.
+ * EVM hex is always case-insensitive; bech32 BTC too; Base58 honours the flag.
+ */
 export function matchesAddress(
   chain: SeedChain,
   address: string,
@@ -233,11 +396,19 @@ export function matchesAddress(
 ): boolean {
   if (!prefix && !suffix) return true;
 
-  const body = chain === 'evm' ? address.slice(2) : address;
-  const insensitive = chain === 'evm' || !caseSensitive;
+  if (chain === 'evm') {
+    const hay = address.slice(2).toLowerCase();
+    const p = prefix.toLowerCase();
+    const s = suffix.toLowerCase();
+    return (!p || hay.startsWith(p)) && (!s || hay.endsWith(s));
+  }
 
-  const hay = insensitive ? body.toLowerCase() : body;
-  const p = insensitive ? prefix.toLowerCase() : prefix;
+  const normPrefix = normalizeMatchPrefix(chain, address, prefix);
+  const bech = chain === 'btc' && address.startsWith('bc1');
+  const insensitive = bech || !caseSensitive;
+
+  const hay = insensitive ? address.toLowerCase() : address;
+  const p = insensitive ? normPrefix.toLowerCase() : normPrefix;
   const s = insensitive ? suffix.toLowerCase() : suffix;
 
   return (!p || hay.startsWith(p)) && (!s || hay.endsWith(s));

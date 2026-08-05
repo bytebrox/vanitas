@@ -68,6 +68,11 @@ import {
   validateXrpPrefix,
   validateXrpSuffix,
 } from '@/lib/xrp-validation';
+import {
+  combineOrDifficulty,
+  normalizePatterns,
+  type PatternTarget,
+} from '@/lib/patterns';
 
 export type LabChain =
   | 'sol'
@@ -104,6 +109,8 @@ export interface LabAnalysis {
   label: string;
   prefix: string;
   suffix: string;
+  /** All OR targets (primary first). */
+  patterns: PatternTarget[];
   mode?: string;
   valid: boolean;
   /** empty = no input · ok = forgeable · impossible = beyond extreme / rejected as too hard */
@@ -148,29 +155,26 @@ function oneInLabel(d: number): string {
   return `1 in ~${(d / 1_000_000_000_000).toFixed(1)}T`;
 }
 
-export function analyzeLabPattern(input: {
-  chain: LabChain;
-  prefix: string;
-  suffix: string;
-  mode?: string;
-  caseSensitive?: boolean;
-}): LabAnalysis {
-  const meta = LAB_CHAINS.find((c) => c.id === input.chain)!;
-  const prefix = (input.prefix || '').trim();
-  const suffix = (input.suffix || '').trim();
-  const caseSensitive = Boolean(input.caseSensitive);
-  const errors: string[] = [];
-  const warnings: string[] = [];
+type PatternScore = {
+  difficulty: number;
+  difficultyLabel: string;
+  etaFn: (d: number, rate: number) => string;
+};
+
+function scoreOnePattern(
+  chain: LabChain,
+  prefix: string,
+  suffix: string,
+  caseSensitive: boolean,
+  mode: string | undefined,
+  errors: string[],
+  warnings: string[],
+): PatternScore {
   let difficulty = 1;
   let difficultyLabel = '~1 attempts';
   let etaFn = estimateTime;
-  let mode = input.mode;
 
-  if (!prefix && !suffix) {
-    errors.push('Enter at least a prefix or suffix.');
-  }
-
-  switch (input.chain) {
+  switch (chain) {
     case 'sol': {
       const p = validatePrefix(prefix, caseSensitive);
       const s = validateSuffix(suffix, caseSensitive);
@@ -182,7 +186,6 @@ export function analyzeLabPattern(input: {
       }
       difficulty = estimateDifficulty(prefix, suffix, caseSensitive);
       difficultyLabel = formatDifficulty(difficulty);
-      mode = mode || 'wallet';
       break;
     }
     case 'evm': {
@@ -192,30 +195,23 @@ export function analyzeLabPattern(input: {
       const s = validateEthSuffix(ns);
       if (!p.valid && p.error) errors.push(p.error);
       if (!s.valid && s.error) errors.push(s.error);
-      warnings.push('Matching is hex-only (0-9, a-f), case-insensitive.');
       difficulty = estimateEthDifficulty(np, ns);
       difficultyLabel = formatEthDifficulty(difficulty);
       etaFn = estimateEthTime;
-      mode = mode || 'wallet';
+      if (mode === 'create2-salt' || mode === 'create2-deployer') {
+        warnings.push('CREATE2 difficulty is the same math as EOA — salt/deployer search changes tooling, not odds.');
+      }
       break;
     }
     case 'btc': {
-      const btcMode = (mode as BtcMode) || 'segwit';
+      const btcMode = (mode || 'legacy') as BtcMode;
       const p = validateBtcPrefix(prefix, btcMode, caseSensitive);
       const s = validateBtcSuffix(suffix, btcMode);
       if (!p.valid && p.error) errors.push(p.error);
       if (!s.valid && s.error) errors.push(s.error);
-      if (btcMode === 'legacy') {
-        warnings.push('Legacy addresses start with 1 — auto-prepended if omitted.');
-      } else if (btcMode === 'taproot') {
-        warnings.push('Taproot HRP bc1p is fixed; pattern matches the body.');
-      } else {
-        warnings.push('SegWit HRP bc1q is fixed; pattern matches the body.');
-      }
       difficulty = estimateBtcDifficulty(prefix, suffix, btcMode, caseSensitive);
       difficultyLabel = formatBtcDifficulty(difficulty);
       etaFn = estimateBtcTime;
-      mode = btcMode;
       break;
     }
     case 'tron': {
@@ -223,11 +219,9 @@ export function analyzeLabPattern(input: {
       const s = validateTronSuffix(suffix);
       if (!p.valid && p.error) errors.push(p.error);
       if (!s.valid && s.error) errors.push(s.error);
-      warnings.push('Leading T is auto-added. Case-sensitive lowercase after T is often impossible.');
       difficulty = estimateTronDifficulty(prefix, suffix, caseSensitive);
       difficultyLabel = formatTronDifficulty(difficulty);
       etaFn = estimateTronTime;
-      mode = mode || 'wallet';
       break;
     }
     case 'aptos': {
@@ -251,16 +245,14 @@ export function analyzeLabPattern(input: {
       break;
     }
     case 'ton': {
-      const tonMode = (mode as TonMode) || 'non-bounceable';
+      const tonMode = (mode || 'non-bounceable') as TonMode;
       const p = validateTonPrefix(prefix);
       const s = validateTonSuffix(suffix);
       if (!p.valid && p.error) errors.push(p.error);
       if (!s.valid && s.error) errors.push(s.error);
-      warnings.push('TON addresses are case-sensitive (UQ / EQ).');
       difficulty = estimateTonDifficulty(prefix, suffix, tonMode);
       difficultyLabel = formatTonDifficulty(difficulty);
       etaFn = estimateTonTime;
-      mode = tonMode;
       break;
     }
     case 'cardano': {
@@ -268,7 +260,6 @@ export function analyzeLabPattern(input: {
       const s = validateCardanoSuffix(suffix);
       if (!p.valid && p.error) errors.push(p.error);
       if (!s.valid && s.error) errors.push(s.error);
-      warnings.push('Enterprise addr1… — body after HRP; first body char is constrained.');
       difficulty = estimateCardanoDifficulty(prefix, suffix);
       difficultyLabel = formatCardanoDifficulty(difficulty);
       etaFn = estimateCardanoTime;
@@ -279,7 +270,6 @@ export function analyzeLabPattern(input: {
       const s = validateXrpSuffix(suffix);
       if (!p.valid && p.error) errors.push(p.error);
       if (!s.valid && s.error) errors.push(s.error);
-      warnings.push('Classic r… — leading r auto-handled; XRPL Base58 ≠ Bitcoin Base58.');
       difficulty = estimateXrpDifficulty(prefix, suffix, caseSensitive);
       difficultyLabel = formatXrpDifficulty(difficulty);
       etaFn = estimateXrpTime;
@@ -287,61 +277,149 @@ export function analyzeLabPattern(input: {
     }
   }
 
-  const qs = new URLSearchParams();
-  if (prefix) qs.set('prefix', prefix);
-  if (suffix) qs.set('suffix', suffix);
-  if (mode && mode !== 'wallet') qs.set('mode', mode);
-  const forgeHref = qs.toString() ? `${meta.forgePath}?${qs}` : meta.forgePath;
+  return { difficulty, difficultyLabel, etaFn };
+}
 
-  const hasPattern = Boolean(prefix || suffix);
-  const tooHardError = errors.some((e) =>
-    /too long|impossible|effectively impossible/i.test(e)
-  );
-  const beyondExtreme =
-    !Number.isFinite(difficulty) || difficulty >= IMPOSSIBLE_DIFFICULTY || tooHardError;
-  const gauge: LabAnalysis['gauge'] = !hasPattern
+export function analyzeLabPattern(input: {
+  chain: LabChain;
+  prefix: string;
+  suffix: string;
+  patterns?: PatternTarget[];
+  mode?: string;
+  caseSensitive?: boolean;
+}): LabAnalysis {
+  const meta = LAB_CHAINS.find((c) => c.id === input.chain)!;
+  const caseSensitive = Boolean(input.caseSensitive);
+  const errors: string[] = [];
+  const warnings: string[] = [];
+  let mode = input.mode;
+
+  const rawPatterns =
+    input.patterns && input.patterns.length > 0
+      ? input.patterns
+      : [{ prefix: input.prefix || '', suffix: input.suffix || '' }];
+  const patterns = normalizePatterns(rawPatterns);
+  const prefix = patterns[0]?.prefix ?? '';
+  const suffix = patterns[0]?.suffix ?? '';
+
+  if (patterns.length === 0) {
+    errors.push('Enter at least a prefix or suffix.');
+  }
+
+  if (input.chain === 'sol') mode = mode || 'wallet';
+  if (input.chain === 'evm') mode = mode || 'wallet';
+  if (input.chain === 'btc') mode = mode || 'legacy';
+  if (input.chain === 'ton') mode = mode || 'non-bounceable';
+
+  const diffs: number[] = [];
+  let etaFn = estimateTime;
+  let primaryLabel = '~1 attempts';
+
+  for (let i = 0; i < patterns.length; i++) {
+    const pt = patterns[i]!;
+    const beforeErr = errors.length;
+    const score = scoreOnePattern(
+      input.chain,
+      pt.prefix,
+      pt.suffix,
+      caseSensitive,
+      mode,
+      errors,
+      i === 0 ? warnings : [],
+    );
+    if (errors.length > beforeErr && patterns.length > 1) {
+      const tagged = errors.splice(beforeErr).map((e) => `Pattern ${i + 1}: ${e}`);
+      errors.push(...tagged);
+    }
+    diffs.push(score.difficulty);
+    if (i === 0) {
+      etaFn = score.etaFn;
+      primaryLabel = score.difficultyLabel;
+    }
+  }
+
+  const difficulty = patterns.length <= 1 ? (diffs[0] ?? 1) : combineOrDifficulty(diffs);
+  const difficultyLabel =
+    patterns.length <= 1
+      ? primaryLabel
+      : `~${oneInLabel(difficulty).replace(/^1 in ~?/, '')} attempts (OR)`;
+
+  if (patterns.length > 1) {
+    warnings.push(`OR match across ${patterns.length} patterns — combined odds assume non-overlapping hits.`);
+  }
+
+  const valid = errors.length === 0 && patterns.length > 0;
+  const empty = patterns.length === 0;
+  const gauge: LabAnalysis['gauge'] = empty
     ? 'empty'
-    : beyondExtreme
+    : !valid || difficulty >= IMPOSSIBLE_DIFFICULTY
       ? 'impossible'
       : 'ok';
 
-  const rarityWord = rarityFromDifficulty(
-    beyondExtreme ? IMPOSSIBLE_DIFFICULTY : difficulty
-  );
-  const rarityLabel =
-    gauge === 'impossible'
-      ? 'Impossible · beyond extreme'
-      : `${rarityWord} · ${oneInLabel(difficulty)}`;
-
-  const safeDifficulty = Number.isFinite(difficulty) ? difficulty : IMPOSSIBLE_DIFFICULTY;
+  const forgeHref = buildForgeHref(input.chain, patterns, mode, caseSensitive);
 
   return {
     chain: input.chain,
     label: meta.label,
     prefix,
     suffix,
+    patterns,
     mode,
-    valid: errors.length === 0 && hasPattern,
+    valid,
     gauge,
-    errors,
-    warnings,
-    difficulty: safeDifficulty,
-    difficultyLabel:
-      gauge === 'impossible'
-        ? 'impossible'
-        : difficultyLabel,
-    rarityLabel,
+    errors: Array.from(new Set(errors)),
+    warnings: Array.from(new Set(warnings)),
+    difficulty,
+    difficultyLabel,
+    rarityLabel: rarityFromDifficulty(difficulty),
     alphabet: meta.alphabet,
     alphabetSize: meta.alphabetSize,
     forgeHref,
     timeRows: meta.defaultRates.map((rate) => ({
       rate,
       rateLabel: formatRate(rate),
-      eta: gauge === 'impossible' ? '—' : etaFn(safeDifficulty, rate),
+      eta: etaFn(difficulty, rate),
     })),
   };
 }
 
-export function buildForgeHref(chain: LabChain, prefix: string, suffix: string, mode?: string): string {
-  return analyzeLabPattern({ chain, prefix, suffix, mode }).forgeHref;
+export function buildForgeHref(
+  chain: LabChain,
+  patternsOrPrefix: PatternTarget[] | string,
+  suffixOrMode?: string,
+  modeOrCs?: string | boolean,
+  caseSensitiveLegacy?: boolean,
+): string {
+  const meta = LAB_CHAINS.find((c) => c.id === chain)!;
+  const params = new URLSearchParams();
+
+  let patterns: PatternTarget[];
+  let mode: string | undefined;
+  let caseSensitive = false;
+
+  if (typeof patternsOrPrefix === 'string') {
+    patterns = normalizePatterns([{ prefix: patternsOrPrefix, suffix: suffixOrMode || '' }]);
+    mode = typeof modeOrCs === 'string' ? modeOrCs : undefined;
+    caseSensitive = Boolean(caseSensitiveLegacy);
+  } else {
+    patterns = normalizePatterns(patternsOrPrefix);
+    mode = typeof suffixOrMode === 'string' ? suffixOrMode : undefined;
+    caseSensitive = Boolean(modeOrCs);
+  }
+
+  const primary = patterns[0];
+  if (primary?.prefix) params.set('prefix', primary.prefix);
+  if (primary?.suffix) params.set('suffix', primary.suffix);
+  for (let i = 1; i < patterns.length; i++) {
+    const pt = patterns[i]!;
+    if (pt.prefix) params.set(`p${i}`, pt.prefix);
+    if (pt.suffix) params.set(`s${i}`, pt.suffix);
+  }
+  if (mode) params.set('mode', mode);
+  if (caseSensitive) {
+    if (chain === 'sol' || chain === 'btc' || chain === 'tron') params.set('cs', '1');
+    if (chain === 'xrp') params.set('case', '1');
+  }
+  const q = params.toString();
+  return q ? `${meta.forgePath}?${q}` : meta.forgePath;
 }

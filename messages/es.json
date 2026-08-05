@@ -561,7 +561,9 @@
       "showPrivateKey": "Mostrar la clave privada en bruto",
       "privateKeyNote": "Solo hace falta si prefieres importar la clave suelta en vez de la frase. Protégela con el mismo cuidado.",
       "exhausted": "Se han probado todos los índices de derivación. Acorta el patrón o elige otro esquema de ruta.",
-      "needMnemonic": "Introduce o genera una frase de recuperación válida y un patrón para empezar."
+      "needMnemonic": "Introduce o genera una frase de recuperación válida y un patrón para empezar.",
+      "alphabetBtc": "Bitcoin: Legacy Base58 (1…), SegWit bc1q…, Taproot bc1p…. You can omit the fixed 1 / bc1q / bc1p prefix.",
+      "alphabetTron": "Tron addresses are Base58 and start with T — you can omit the leading T."
     },
     "lookalike": {
       "title": "cheque similar",
@@ -1688,7 +1690,7 @@
     },
     "seed": {
       "title": "Forja de semilla — Dirección personalizada desde una frase de recuperación",
-      "description": "Genera una dirección personalizada de Solana o EVM que se restaura con una frase BIP-39 de 12 palabras. Todo ocurre en tu navegador.",
+      "description": "Grind a Solana, EVM, Bitcoin, or Tron vanity address that restores from a BIP-39 phrase. Runs entirely in your browser.",
       "ogTitle": "Forja de semilla | Vanitas",
       "ogDescription": "Direcciones personalizadas que recuperas con doce palabras, sin claves privadas sueltas."
     },
@@ -2045,7 +2047,8 @@
     "matching": "Nombres que encajan con «{name}»",
     "via": "vía {provider}",
     "check": "Comprobar",
-    "note": "Un dominio hace que la dirección sea más fácil de compartir. La disponibilidad se confirma en la web del registrador."
+    "note": "Un dominio hace que la dirección sea más fácil de compartir. La disponibilidad se confirma en la web del registrador.",
+    "noteEns": "An ENS name points people to your address. Check availability on app.ens.domains — we only suggest names from your pattern."
   },
   "offline": {
     "airGapped": "Aislado de la red",
@@ -2155,16 +2158,6 @@
           "Comparte el proof del patrón sin claves."
         ]
       },
-      "tonWallet": {
-        "eyebrow": "Siguientes pasos",
-        "title": "Importa esta wallet TON",
-        "steps": [
-          "**Guarda la clave privada** (el export incluye EQ bounceable cuando está disponible).",
-          "Impórtala en **Tonkeeper** o **MyTonWallet**.",
-          "Confirma `{short}` con un envío de prueba pequeño.",
-          "Comparte el proof del patrón vanity — mantén la clave offline."
-        ]
-      },
       "cardanoWallet": {
         "eyebrow": "Siguientes pasos",
         "title": "Importa esta dirección Cardano",
@@ -2193,6 +2186,26 @@
           "Impórtala en una wallet compatible con esta cadena.",
           "Envía una cantidad de prueba pequeña para confirmar `{short}`.",
           "Comparte enlaces de proof — nunca claves."
+        ]
+      },
+      "tonNonBounceable": {
+        "eyebrow": "Next steps",
+        "title": "Import this non-bounceable (UQ) wallet",
+        "steps": [
+          "**Save the private key** — export also lists the bounceable EQ twin when available.",
+          "Import into **Tonkeeper** or **MyTonWallet**. Prefer the **UQ / non-bounceable** form for everyday wallet receives.",
+          "Confirm {short} with a small test send (UQ is the usual user-wallet address).",
+          "Share proof for the vanity pattern — keep the key offline."
+        ]
+      },
+      "tonBounceable": {
+        "eyebrow": "Next steps",
+        "title": "Use this bounceable (EQ) address carefully",
+        "steps": [
+          "**Save the private key** — you forged the **EQ / bounceable** form; wallets still hold the same account.",
+          "Import into **Tonkeeper** or **MyTonWallet**. EQ is common for contracts / bounce-on-fail flows; UQ is the twin for simple receives.",
+          "Confirm {short} matches the form you intend before publishing.",
+          "Share proof for the vanity pattern — keep the key offline."
         ]
       }
     },

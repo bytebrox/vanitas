@@ -1,6 +1,6 @@
 ﻿# Vanitas
 
-[![Version: 1.11.0](https://img.shields.io/badge/Version-1.11.0-8B7355.svg)](https://vanitas.fun)
+[![Version: 1.12.0](https://img.shields.io/badge/Version-1.12.0-8B7355.svg)](https://vanitas.fun)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![CI](https://github.com/bytebrox/vanitas/actions/workflows/build.yml/badge.svg)](https://github.com/bytebrox/vanitas/actions/workflows/build.yml)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/bytebrox/vanitas/badge)](https://securityscorecards.dev/viewer/?uri=github.com/bytebrox/vanitas)

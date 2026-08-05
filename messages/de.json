@@ -561,7 +561,9 @@
       "showPrivateKey": "Rohen Private Key anzeigen",
       "privateKeyNote": "Nur nötig, wenn du lieber den einzelnen Schlüssel als die Phrase importierst. Behandle ihn genauso sorgfältig.",
       "exhausted": "Alle Ableitungsindizes sind durchprobiert. Kürze das Muster oder wähle ein anderes Pfadschema.",
-      "needMnemonic": "Gib eine gültige Wiederherstellungsphrase und ein Muster ein, um zu starten."
+      "needMnemonic": "Gib eine gültige Wiederherstellungsphrase und ein Muster ein, um zu starten.",
+      "alphabetBtc": "Bitcoin: Legacy Base58 (1…), SegWit bc1q…, Taproot bc1p… — feste Prefixe nicht tippen.",
+      "alphabetTron": "Tron-Adressen sind Base58 und beginnen mit T — das T kannst du weglassen."
     },
     "lookalike": {
       "title": "Lookalike-Check",
@@ -1688,7 +1690,7 @@
     },
     "seed": {
       "title": "Seed-Schmiede — Wunschadresse aus einer Wiederherstellungsphrase",
-      "description": "Erzeuge eine Solana- oder EVM-Wunschadresse, die sich aus zwölf BIP-39-Wörtern wiederherstellen lässt. Läuft vollständig im Browser.",
+      "description": "Vanity-Adresse aus einer BIP-39-Phrase schmieden — Solana, EVM, Bitcoin und Tron. Läuft nur im Browser.",
       "ogTitle": "Seed-Schmiede | Vanitas",
       "ogDescription": "Wunschadressen, die sich aus zwölf Wörtern wiederherstellen lassen — kein loser Private Key."
     },
@@ -2045,7 +2047,8 @@
     "matching": "Passende Namen für „{name}“",
     "via": "über {provider}",
     "check": "Prüfen",
-    "note": "Eine Domain macht die Adresse leichter teilbar. Die Verfügbarkeit bestätigt die Registrierungsseite selbst."
+    "note": "Eine Domain macht die Adresse leichter teilbar. Die Verfügbarkeit bestätigt die Registrierungsseite selbst.",
+    "noteEns": "Ein ENS-Name leitet Menschen zu deiner Adresse. Verfügbarkeit auf app.ens.domains prüfen — wir schlagen nur Namen aus deinem Pattern vor."
   },
   "offline": {
     "airGapped": "Air-Gapped",
@@ -2155,16 +2158,6 @@
           "Muster-Proof ohne Keys teilen."
         ]
       },
-      "tonWallet": {
-        "eyebrow": "Nächste Schritte",
-        "title": "TON-Wallet importieren",
-        "steps": [
-          "**Private Key sichern** (Export enthält oft bounceable EQ).",
-          "In **Tonkeeper** oder **MyTonWallet** importieren.",
-          "`{short}` mit kleinem Test-Send bestätigen.",
-          "Proof für das Vanity-Muster teilen — Key offline lassen."
-        ]
-      },
       "cardanoWallet": {
         "eyebrow": "Nächste Schritte",
         "title": "Cardano-Adresse importieren",
@@ -2193,6 +2186,26 @@
           "In ein Wallet importieren, das diese Chain unterstützt.",
           "Kleinen Testbetrag senden und `{short}` bestätigen.",
           "Proof-Links teilen — nie Keys."
+        ]
+      },
+      "tonNonBounceable": {
+        "eyebrow": "Nächste Schritte",
+        "title": "Non-bounceable (UQ) Wallet importieren",
+        "steps": [
+          "**Private Key speichern** — der Export listet bei Bedarf auch die bounceable EQ-Zwillingadresse.",
+          "In **Tonkeeper** oder **MyTonWallet** importieren. Für alltägliche Empfänge die **UQ / non-bounceable**-Form bevorzugen.",
+          "{short} mit kleinem Test-Send bestätigen (UQ ist die übliche Wallet-Adresse).",
+          "Proof für das Vanity-Pattern teilen — Key offline halten."
+        ]
+      },
+      "tonBounceable": {
+        "eyebrow": "Nächste Schritte",
+        "title": "Bounceable (EQ) Adresse bewusst nutzen",
+        "steps": [
+          "**Private Key speichern** — du hast die **EQ / bounceable**-Form geschmiedet; Wallets halten denselben Account.",
+          "In **Tonkeeper** oder **MyTonWallet** importieren. EQ ist üblich für Contracts / Bounce-on-fail; UQ ist der Zwilling für einfache Empfänge.",
+          "Vor dem Veröffentlichen prüfen, dass {short} der gewünschten Form entspricht.",
+          "Proof für das Vanity-Pattern teilen — Key offline halten."
         ]
       }
     },

@@ -133,4 +133,10 @@ describe('post-find catalog', () => {
     expect(resolvePostFindProfile('sol', 'wallet').launch).toBe('compact');
     expect(resolvePostFindProfile('btc', 'taproot').importId).toBe('btcWif');
   });
+
+  it('splits TON bounceable vs non-bounceable playbooks', () => {
+    expect(resolvePostFindProfile('ton', 'non-bounceable').playbookId).toBe('tonNonBounceable');
+    expect(resolvePostFindProfile('ton', 'bounceable').playbookId).toBe('tonBounceable');
+    expect(resolvePostFindProfile('ton', 'eq').playbookId).toBe('tonBounceable');
+  });
 });

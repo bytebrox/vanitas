@@ -9,6 +9,8 @@ import {
   ContentWithSide,
   DocsToc,
   DocSection,
+  MultiPatternField,
+  mergePatternTargets,
 } from '@/components';
 import { LabRarityVisual } from '@/components/LabRarityVisual';
 import {
@@ -17,6 +19,7 @@ import {
   type LabChain,
   type LabAnalysis,
 } from '@/lib/pattern-lab';
+import type { PatternTarget } from '@/lib/patterns';
 import { Link } from '@/i18n/navigation';
 
 interface QueueItem {
@@ -24,21 +27,31 @@ interface QueueItem {
   analysis: LabAnalysis;
 }
 
-const MODE_LABEL_KEY: Record<string, 'wallet' | 'mint' | 'legacy' | 'segwit' | 'taproot' | 'create' | 'uq' | 'eq'> = {
+const MODE_LABEL_KEY: Record<
+  string,
+  'wallet' | 'mint' | 'legacy' | 'segwit' | 'taproot' | 'create' | 'create2' | 'uq' | 'eq'
+> = {
   wallet: 'wallet',
   mint: 'mint',
   legacy: 'legacy',
   segwit: 'segwit',
   taproot: 'taproot',
   contract: 'create',
+  'create2-salt': 'create2',
+  'create2-deployer': 'create2',
   'non-bounceable': 'uq',
   bounceable: 'eq',
 };
+
+function hexSanitize(v: string): string {
+  return v.replace(/^0x/i, '').replace(/[^0-9a-fA-F]/g, '').slice(0, 8);
+}
 
 export default function LabPage() {
   const t = useTranslations('tools.lab');
   const tCommon = useTranslations('common');
   const tModes = useTranslations('forge.modes');
+  const tEthMode = useTranslations('forge.eth.mode');
   const tNav = useTranslations('nav.chainItems');
 
   const toc = useMemo(
@@ -53,13 +66,19 @@ export default function LabPage() {
   const [chain, setChain] = useState<LabChain>('sol');
   const [prefix, setPrefix] = useState('Ace');
   const [suffix, setSuffix] = useState('');
+  const [alternatives, setAlternatives] = useState<PatternTarget[]>([]);
   const [mode, setMode] = useState('wallet');
   const [caseSensitive, setCaseSensitive] = useState(false);
   const [queue, setQueue] = useState<QueueItem[]>([]);
 
+  const patterns = useMemo(
+    () => mergePatternTargets({ prefix, suffix }, alternatives),
+    [prefix, suffix, alternatives]
+  );
+
   const analysis = useMemo(
-    () => analyzeLabPattern({ chain, prefix, suffix, mode, caseSensitive }),
-    [chain, prefix, suffix, mode, caseSensitive]
+    () => analyzeLabPattern({ chain, prefix, suffix, patterns, mode, caseSensitive }),
+    [chain, prefix, suffix, patterns, mode, caseSensitive]
   );
 
   const chainLabel = tNav(`${chain}.label`);
@@ -67,31 +86,39 @@ export default function LabPage() {
   const modeOptions = useMemo(() => {
     if (chain === 'btc') {
       return [
-        { id: 'legacy', labelKey: 'legacy' as const },
-        { id: 'segwit', labelKey: 'segwit' as const },
-        { id: 'taproot', labelKey: 'taproot' as const },
+        { id: 'legacy', label: tModes('legacy') },
+        { id: 'segwit', label: tModes('segwit') },
+        { id: 'taproot', label: tModes('taproot') },
       ];
     }
     if (chain === 'ton') {
       return [
-        { id: 'non-bounceable', labelKey: 'uq' as const },
-        { id: 'bounceable', labelKey: 'eq' as const },
+        { id: 'non-bounceable', label: tModes('uq') },
+        { id: 'bounceable', label: tModes('eq') },
       ];
     }
     if (chain === 'sol') {
       return [
-        { id: 'wallet', labelKey: 'wallet' as const },
-        { id: 'mint', labelKey: 'mint' as const },
+        { id: 'wallet', label: tModes('wallet') },
+        { id: 'mint', label: tModes('mint') },
       ];
     }
-    if (chain === 'evm' || chain === 'tron') {
+    if (chain === 'evm') {
       return [
-        { id: 'wallet', labelKey: 'wallet' as const },
-        { id: 'contract', labelKey: 'create' as const },
+        { id: 'wallet', label: tModes('wallet') },
+        { id: 'contract', label: tModes('create') },
+        { id: 'create2-salt', label: tEthMode('c2Salt') },
+        { id: 'create2-deployer', label: tEthMode('c2Key') },
       ];
     }
-    return [{ id: 'wallet', labelKey: 'wallet' as const }];
-  }, [chain]);
+    if (chain === 'tron') {
+      return [
+        { id: 'wallet', label: tModes('wallet') },
+        { id: 'contract', label: tModes('create') },
+      ];
+    }
+    return [{ id: 'wallet', label: tModes('wallet') }];
+  }, [chain, tModes, tEthMode]);
 
   const addToQueue = () => {
     if (!analysis.valid) return;
@@ -111,7 +138,7 @@ export default function LabPage() {
         mode: j.analysis.mode,
         prefix: j.analysis.prefix,
         suffix: j.analysis.suffix,
-        patterns: [{ prefix: j.analysis.prefix, suffix: j.analysis.suffix }],
+        patterns: j.analysis.patterns,
         difficulty: j.analysis.difficulty,
         rarity: j.analysis.rarityLabel,
         forgeHref: j.analysis.forgeHref,
@@ -127,6 +154,28 @@ export default function LabPage() {
   };
 
   const alertLine = analysis.errors[0] || analysis.warnings[0];
+  const show0x = chain === 'evm' || chain === 'aptos' || chain === 'sui';
+  const sanitize =
+    chain === 'evm' || chain === 'aptos' || chain === 'sui' ? hexSanitize : undefined;
+
+  const patternLabel = (a: LabAnalysis) => {
+    if (a.patterns.length <= 1) {
+      return (
+        <>
+          <span className="text-accent">{a.prefix || ''}</span>
+          <span className="text-ink/25">…</span>
+          <span className="text-accent">{a.suffix || ''}</span>
+        </>
+      );
+    }
+    return (
+      <span className="text-accent">
+        {a.patterns
+          .map((p) => `${p.prefix || '…'}${p.suffix ? `…${p.suffix}` : ''}`)
+          .join(' ∨ ')}
+      </span>
+    );
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -154,6 +203,7 @@ export default function LabPage() {
                         setMode(
                           c.id === 'btc' ? 'segwit' : c.id === 'ton' ? 'non-bounceable' : 'wallet'
                         );
+                        setAlternatives([]);
                       }}
                       className={`text-micro uppercase tracking-[0.14em] px-2.5 py-1.5 border transition-colors ${
                         chain === c.id
@@ -181,7 +231,7 @@ export default function LabPage() {
                             : 'border-ink/15 text-muted hover:text-ink'
                         }`}
                       >
-                        {tModes(m.labelKey)}
+                        {m.label}
                       </button>
                     ))}
                   </div>
@@ -192,16 +242,21 @@ export default function LabPage() {
                     <span className="text-micro uppercase tracking-[0.16em] text-muted">
                       {tCommon('prefix')}
                     </span>
-                    <input
-                      className="input mt-1"
-                      value={prefix}
-                      onChange={(e) => {
-                        setPrefix(e.target.value);
-                      }}
-                      placeholder={t('prefixPh')}
-                      spellCheck={false}
-                      autoComplete="off"
-                    />
+                    <div className="flex items-baseline gap-1 mt-1">
+                      {show0x && (
+                        <span className="font-mono text-sm text-ink/35 select-none">0x</span>
+                      )}
+                      <input
+                        className="input flex-1"
+                        value={prefix}
+                        onChange={(e) => {
+                          setPrefix(sanitize ? sanitize(e.target.value) : e.target.value);
+                        }}
+                        placeholder={t('prefixPh')}
+                        spellCheck={false}
+                        autoComplete="off"
+                      />
+                    </div>
                   </label>
                   <label className="block">
                     <span className="text-micro uppercase tracking-[0.16em] text-muted">
@@ -211,13 +266,22 @@ export default function LabPage() {
                       className="input mt-1"
                       value={suffix}
                       onChange={(e) => {
-                        setSuffix(e.target.value);
+                        setSuffix(sanitize ? sanitize(e.target.value) : e.target.value);
                       }}
                       placeholder={t('suffixPh')}
                       spellCheck={false}
                       autoComplete="off"
                     />
                   </label>
+                </div>
+
+                <div className="mb-4">
+                  <MultiPatternField
+                    alternatives={alternatives}
+                    onChange={setAlternatives}
+                    show0x={show0x}
+                    sanitize={sanitize}
+                  />
                 </div>
 
                 <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mb-4">
@@ -290,12 +354,14 @@ export default function LabPage() {
                   <div className="border-y border-ink/15 divide-y divide-ink/10">
                     {queue.map((item, idx) => {
                       const filled = Math.round(
-                        Math.min(1, Math.max(0, Math.log10(Math.max(1, item.analysis.difficulty)) / 15)) *
-                          8
+                        Math.min(
+                          1,
+                          Math.max(0, Math.log10(Math.max(1, item.analysis.difficulty)) / 15)
+                        ) * 8
                       );
-                      const mode = item.analysis.mode;
-                      const modeKey = mode ? MODE_LABEL_KEY[mode] : undefined;
-                      const modeLabel = modeKey ? tModes(modeKey) : mode ?? '';
+                      const itemMode = item.analysis.mode;
+                      const modeKey = itemMode ? MODE_LABEL_KEY[itemMode] : undefined;
+                      const modeLabel = modeKey ? tModes(modeKey) : itemMode ?? '';
                       return (
                         <div
                           key={item.id}
@@ -303,12 +369,11 @@ export default function LabPage() {
                         >
                           <div className="min-w-0 flex-1">
                             <p className="text-micro uppercase tracking-[0.14em] text-muted mb-1">
-                              {String(idx + 1).padStart(2, '0')} · {item.analysis.label} · {modeLabel}
+                              {String(idx + 1).padStart(2, '0')} · {item.analysis.label} ·{' '}
+                              {modeLabel}
                             </p>
                             <p className="font-display text-xl text-ink normal-case tracking-[0.02em]">
-                              <span className="text-accent">{item.analysis.prefix || ''}</span>
-                              <span className="text-ink/25">…</span>
-                              <span className="text-accent">{item.analysis.suffix || ''}</span>
+                              {patternLabel(item.analysis)}
                             </p>
                             <div className="mt-2 flex items-end gap-0.5 h-4" aria-hidden>
                               {Array.from({ length: 8 }, (_, i) => (

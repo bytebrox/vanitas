@@ -24,6 +24,7 @@ import { useEthGenerator } from '@/hooks/useEthGenerator';
 import { useSound } from '@/hooks/useSound';
 import { useForgeRunUi, requestForgeNotifyPermission } from '@/hooks/useForgeRunUi';
 import { validateEthPrefix, validateEthSuffix, estimateEthDifficulty } from '@/lib/eth-validation';
+import { hasAnyPattern, patternsFromSearchParams, writePatternsToSearchParams } from '@/lib/patterns';
 import { hasBlockingLookalikeErrors } from '@/lib/lookalike';
 import type { EthMode, GeneratedEthResult } from '@/types/eth';
 import { Link } from '@/i18n/navigation';
@@ -62,14 +63,19 @@ export function EvmContent() {
   }, [result, playSuccessSound]);
 
   useEffect(() => {
-    const urlPrefix = searchParams.get('prefix');
-    const urlSuffix = searchParams.get('suffix');
+    const urlPatterns = patternsFromSearchParams(searchParams).map((p) => ({
+      prefix: p.prefix.replace(/^0x/i, ''),
+      suffix: p.suffix.replace(/^0x/i, ''),
+    }));
     const urlMode = searchParams.get('mode');
     const urlHash = searchParams.get('initCodeHash');
     const urlSalt = searchParams.get('salt');
     const patch: Parameters<typeof updateConfig>[0] = {};
-    if (urlPrefix) patch.prefix = urlPrefix.replace(/^0x/i, '');
-    if (urlSuffix) patch.suffix = urlSuffix.replace(/^0x/i, '');
+    if (urlPatterns.length) {
+      patch.patterns = urlPatterns;
+      patch.prefix = urlPatterns[0].prefix;
+      patch.suffix = urlPatterns[0].suffix;
+    }
     if (
       urlMode === 'wallet' ||
       urlMode === 'contract' ||
@@ -91,19 +97,23 @@ export function EvmContent() {
   const generateShareLink = useCallback(() => {
     const params = new URLSearchParams();
     params.set('mode', mode);
-    if (prefix) params.set('prefix', prefix);
-    if (suffix) params.set('suffix', suffix);
+    writePatternsToSearchParams(params, config);
+    // CREATE2: share salt / initCodeHash only — never the deployer private key.
+    if (mode === 'create2-salt' || mode === 'create2-deployer') {
+      if (create2InitCodeHash) params.set('initCodeHash', create2InitCodeHash);
+      if (mode === 'create2-deployer' && create2Salt) params.set('salt', create2Salt);
+    }
     const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
     const shareUrl = `${baseUrl}/evm?${params.toString()}`;
     navigator.clipboard.writeText(shareUrl).then(() => {
       setCopied(true);
       setTimeout(() => { setCopied(false); }, 2000);
     }).catch(() => {});
-  }, [mode, prefix, suffix]);
+  }, [mode, config, create2InitCodeHash, create2Salt]);
 
   const prefixValid = validateEthPrefix(prefix).valid;
   const suffixValid = validateEthSuffix(suffix).valid;
-  const hasPattern = prefix.length > 0 || suffix.length > 0;
+  const hasPattern = hasAnyPattern(config);
   const create2Ok =
     mode === 'wallet' || mode === 'contract'
       ? true

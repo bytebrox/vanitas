@@ -37,11 +37,15 @@ describe('path styles', () => {
   it('renders the ground index into the template', () => {
     expect(renderPath(pathStyleById('sol-account')!, 7)).toBe("m/44'/501'/7'/0'");
     expect(renderPath(pathStyleById('evm-address')!, 7)).toBe("m/44'/60'/0'/0/7");
+    expect(renderPath(pathStyleById('btc-segwit')!, 3)).toBe("m/84'/0'/0'/0/3");
+    expect(renderPath(pathStyleById('tron-address')!, 2)).toBe("m/44'/195'/0'/0/2");
   });
 
-  it('covers both chains', () => {
+  it('covers sol, evm, btc, and tron', () => {
     expect(SEED_PATH_STYLES.filter((s) => s.chain === 'sol')).toHaveLength(2);
     expect(SEED_PATH_STYLES.filter((s) => s.chain === 'evm')).toHaveLength(2);
+    expect(SEED_PATH_STYLES.filter((s) => s.chain === 'btc')).toHaveLength(4);
+    expect(SEED_PATH_STYLES.filter((s) => s.chain === 'tron')).toHaveLength(2);
   });
 });
 
@@ -119,5 +123,80 @@ describe('pattern matching', () => {
 
   it('matches everything when no pattern is given', () => {
     expect(matchesAddress('sol', 'whatever', '', '', true)).toBe(true);
+  });
+
+  it('normalizes BTC and Tron fixed prefixes', () => {
+    expect(
+      matchesAddress('btc', '1LqBGSKuX5yYUonjxT5qGfpUsXKYYWeabA', 'Lq', '', false)
+    ).toBe(true);
+    expect(
+      matchesAddress(
+        'btc',
+        'bc1qcr8te4kr609gcawutmrza0j4xv80jy8z306fyu',
+        'cr8',
+        'fyu',
+        false
+      )
+    ).toBe(true);
+    expect(
+      matchesAddress('tron', 'TUEZSdKsoDHQMeZwihtdoBiN46zxhGWYdH', 'UEZ', 'dH', true)
+    ).toBe(true);
+  });
+});
+
+describe('bitcoin derivation', () => {
+  // Public addresses for BIP-39 abandon…about — BIP44/84/86 index 0.
+  it('matches BIP44 legacy at index 0', () => {
+    const walker = createWalker(seed, pathStyleById('btc-legacy')!);
+    expect(walker.addressAt(0)).toBe('1LqBGSKuX5yYUonjxT5qGfpUsXKYYWeabA');
+  });
+
+  it('matches BIP84 native segwit at index 0', () => {
+    const walker = createWalker(seed, pathStyleById('btc-segwit')!);
+    expect(walker.addressAt(0)).toBe('bc1qcr8te4kr609gcawutmrza0j4xv80jy8z306fyu');
+  });
+
+  it('matches BIP86 taproot at index 0', () => {
+    const walker = createWalker(seed, pathStyleById('btc-taproot')!);
+    expect(walker.addressAt(0)).toBe(
+      'bc1pej9yh3jd39aam30mctm8paaghg9nsemezpk0zg3udlza0nt0cy2sqvps98'
+    );
+  });
+
+  it('returns a compressed WIF for legacy hits', () => {
+    const walker = createWalker(seed, pathStyleById('btc-legacy')!);
+    const secret = walker.secretAt(1);
+    expect(secret.address).toBe('1Ak8PffB2meyfYnbXZR9EGfLfFZVpzJvQP');
+    expect(secret.privateKey).toMatch(/^[KL]/);
+  });
+
+  it('separates address-index and account-index layouts', () => {
+    const byAddress = createWalker(seed, pathStyleById('btc-legacy')!);
+    const byAccount = createWalker(seed, pathStyleById('btc-legacy-account')!);
+    expect(byAccount.addressAt(0)).toBe(byAddress.addressAt(0));
+    expect(byAccount.addressAt(1)).toBe('15qucUWKf95Fo58FdCBhUTSAtsm22HHE2Q');
+    expect(byAccount.addressAt(1)).not.toBe(byAddress.addressAt(1));
+  });
+});
+
+describe('tron derivation', () => {
+  it('matches TronLink BIP44 at index 0', () => {
+    const walker = createWalker(seed, pathStyleById('tron-address')!);
+    expect(walker.addressAt(0)).toBe('TUEZSdKsoDHQMeZwihtdoBiN46zxhGWYdH');
+  });
+
+  it('returns a 0x hex private key', () => {
+    const walker = createWalker(seed, pathStyleById('tron-address')!);
+    const secret = walker.secretAt(1);
+    expect(secret.address).toBe('TSeJkUh4Qv67VNFwY8LaAxERygNdy6NQZK');
+    expect(secret.privateKey).toMatch(/^0x[0-9a-f]{64}$/);
+  });
+
+  it('separates address and account paths after index 0', () => {
+    const byAddress = createWalker(seed, pathStyleById('tron-address')!);
+    const byAccount = createWalker(seed, pathStyleById('tron-account')!);
+    expect(byAccount.addressAt(0)).toBe(byAddress.addressAt(0));
+    expect(byAccount.addressAt(1)).toBe('TLrpNTBuCpGMrB9TyVwgEhNVRhtWEQPHh4');
+    expect(byAccount.addressAt(1)).not.toBe(byAddress.addressAt(1));
   });
 });

@@ -20,6 +20,7 @@ import {
 import { RichParagraph } from '@/lib/rich-text';
 import { useSeedGenerator } from '@/hooks/useSeedGenerator';
 import { isValidMnemonic } from '@/lib/seed-generator';
+import { hasAnyPattern } from '@/lib/patterns';
 import {
   INDEX_MARKER,
   SEED_PATH_STYLES,
@@ -27,6 +28,27 @@ import {
   pathStyleById,
 } from '@/workers/seed-derivation';
 import { tryChecksumAddress } from '@/lib/eip55';
+
+function alphabetKey(chain: string): 'alphabetSol' | 'alphabetEvm' | 'alphabetBtc' | 'alphabetTron' {
+  if (chain === 'evm') return 'alphabetEvm';
+  if (chain === 'btc') return 'alphabetBtc';
+  if (chain === 'tron') return 'alphabetTron';
+  return 'alphabetSol';
+}
+
+function prefixPlaceholder(chain: string): string {
+  if (chain === 'evm') return 'dead';
+  if (chain === 'btc') return 'qcr';
+  if (chain === 'tron') return 'UEZ';
+  return 'Ace';
+}
+
+function suffixPlaceholder(chain: string): string {
+  if (chain === 'evm') return 'beef';
+  if (chain === 'btc') return 'yu';
+  if (chain === 'tron') return 'dH';
+  return 'sol';
+}
 
 export default function SeedPage() {
   const t = useTranslations('tools.seed');
@@ -50,10 +72,7 @@ export default function SeedPage() {
   const style = pathStyleById(config.styleId) ?? SEED_PATH_STYLES[0];
   const mnemonicWords = config.mnemonic.trim() ? config.mnemonic.trim().split(/\s+/) : [];
   const mnemonicValid = mnemonicWords.length > 0 && isValidMnemonic(config.mnemonic);
-  const hasPattern =
-    config.prefix.length > 0 ||
-    config.suffix.length > 0 ||
-    (config.patterns?.some((p) => p.prefix || p.suffix) ?? false);
+  const hasPattern = hasAnyPattern(config);
   const canStart = mnemonicValid && hasPattern && status !== 'running';
 
   const copy = useCallback((value: string, id: string) => {
@@ -75,8 +94,15 @@ export default function SeedPage() {
     [reset, updateConfig]
   );
 
-  const alphabetHint =
-    style.chain === 'evm' ? t('alphabetEvm') : t('alphabetSol');
+  const alphabetHint = t(alphabetKey(style.chain));
+  const show0x = style.chain === 'evm';
+  const hexSanitize = (v: string) =>
+    v.replace(/^0x/i, '').replace(/[^0-9a-fA-F]/g, '').slice(0, 8);
+  const showCaseToggle = style.chain === 'sol' || style.chain === 'btc' || style.chain === 'tron';
+  const displayAddress =
+    style.chain === 'evm' && result
+      ? tryChecksumAddress(result.address) || result.address
+      : result?.address;
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -181,7 +207,15 @@ export default function SeedPage() {
                       <button
                         key={option.id}
                         type="button"
-                        onClick={() => { updateConfig({ styleId: option.id }); }}
+                        onClick={() => {
+                          updateConfig({
+                            styleId: option.id,
+                            caseSensitive:
+                              option.chain === 'btc' && option.btcMode !== 'legacy'
+                                ? false
+                                : config.caseSensitive,
+                          });
+                        }}
                         disabled={status === 'running'}
                         aria-pressed={active}
                         className={`border px-3.5 py-3 text-left transition-colors disabled:opacity-50 ${
@@ -190,6 +224,10 @@ export default function SeedPage() {
                             : 'border-ink/20 hover:border-ink/40'
                         }`}
                       >
+                        <span className="block text-micro uppercase tracking-[0.12em] text-muted mb-1">
+                          {option.chain}
+                          {option.btcMode ? ` · ${option.btcMode}` : ''}
+                        </span>
                         <span className="block font-mono text-sm text-ink">{option.template}</span>
                         <span className="block text-micro text-muted mt-1">
                           {option.wallets.join(' · ')}
@@ -204,23 +242,28 @@ export default function SeedPage() {
                     <span className="text-micro uppercase tracking-[0.16em] text-muted">
                       {tCommon('prefix')}
                     </span>
-                    <input
-                      value={config.prefix}
-                      onChange={(e) => {
-                        const nextPrefix = e.target.value;
-                        updateConfig({
-                          prefix: nextPrefix,
-                          patterns: mergePatternTargets(
-                            { prefix: nextPrefix, suffix: config.suffix },
-                            patternAlternatives(config.patterns)
-                          ),
-                        });
-                      }}
-                      spellCheck={false}
-                      disabled={status === 'running'}
-                      className="mt-2 w-full border border-ink/20 bg-surface px-3 py-2.5 font-mono text-ink text-sm focus:outline-none focus:border-accent disabled:opacity-60"
-                      placeholder={style.chain === 'evm' ? 'dead' : 'Ace'}
-                    />
+                    <div className="flex items-baseline gap-1 mt-2">
+                      {show0x && (
+                        <span className="font-mono text-sm text-ink/35 select-none">0x</span>
+                      )}
+                      <input
+                        value={config.prefix}
+                        onChange={(e) => {
+                          const nextPrefix = show0x ? hexSanitize(e.target.value) : e.target.value;
+                          updateConfig({
+                            prefix: nextPrefix,
+                            patterns: mergePatternTargets(
+                              { prefix: nextPrefix, suffix: config.suffix },
+                              patternAlternatives(config.patterns)
+                            ),
+                          });
+                        }}
+                        spellCheck={false}
+                        disabled={status === 'running'}
+                        className="w-full border border-ink/20 bg-surface px-3 py-2.5 font-mono text-ink text-sm focus:outline-none focus:border-accent disabled:opacity-60"
+                        placeholder={prefixPlaceholder(style.chain)}
+                      />
+                    </div>
                   </label>
                   <label className="block">
                     <span className="text-micro uppercase tracking-[0.16em] text-muted">
@@ -229,7 +272,7 @@ export default function SeedPage() {
                     <input
                       value={config.suffix}
                       onChange={(e) => {
-                        const nextSuffix = e.target.value;
+                        const nextSuffix = show0x ? hexSanitize(e.target.value) : e.target.value;
                         updateConfig({
                           suffix: nextSuffix,
                           patterns: mergePatternTargets(
@@ -241,7 +284,7 @@ export default function SeedPage() {
                       spellCheck={false}
                       disabled={status === 'running'}
                       className="mt-2 w-full border border-ink/20 bg-surface px-3 py-2.5 font-mono text-ink text-sm focus:outline-none focus:border-accent disabled:opacity-60"
-                      placeholder={style.chain === 'evm' ? 'beef' : 'sol'}
+                      placeholder={suffixPlaceholder(style.chain)}
                     />
                   </label>
                 </div>
@@ -249,12 +292,8 @@ export default function SeedPage() {
                 <MultiPatternField
                   alternatives={patternAlternatives(config.patterns)}
                   disabled={status === 'running'}
-                  show0x={style.chain === 'evm'}
-                  sanitize={
-                    style.chain === 'evm'
-                      ? (v) => v.replace(/^0x/i, '').replace(/[^0-9a-fA-F]/g, '').slice(0, 8)
-                      : undefined
-                  }
+                  show0x={show0x}
+                  sanitize={show0x ? hexSanitize : undefined}
                   onChange={(alts) => {
                     updateConfig({
                       patterns: mergePatternTargets(
@@ -266,6 +305,20 @@ export default function SeedPage() {
                 />
 
                 <p className="text-micro text-muted">{alphabetHint}</p>
+
+                {showCaseToggle && !(style.chain === 'btc' && style.btcMode !== 'legacy') && (
+                  <label className="inline-flex items-center gap-2 text-micro uppercase tracking-[0.14em] text-muted cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={config.caseSensitive}
+                      disabled={status === 'running'}
+                      onChange={(e) => {
+                        updateConfig({ caseSensitive: e.target.checked });
+                      }}
+                    />
+                    {tCommon('caseSensitive')}
+                  </label>
+                )}
 
                 <label className="block">
                   <span className="text-micro uppercase tracking-[0.16em] text-muted">
@@ -298,9 +351,7 @@ export default function SeedPage() {
                           {tCommon('publicAddress')}
                         </p>
                         <p className="font-mono text-sm sm:text-base text-ink break-all">
-                          {style.chain === 'evm'
-                            ? tryChecksumAddress(result.address) || result.address
-                            : result.address}
+                          {displayAddress}
                         </p>
                       </div>
                       <div>
@@ -320,11 +371,7 @@ export default function SeedPage() {
                         <button
                           type="button"
                           onClick={() => {
-                            const addr =
-                              style.chain === 'evm'
-                                ? tryChecksumAddress(result.address) || result.address
-                                : result.address;
-                            copy(addr, 'address');
+                            copy(displayAddress || result.address, 'address');
                           }}
                           className="text-muted hover:text-ink"
                         >

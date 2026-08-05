@@ -6,16 +6,16 @@
  */
 
 export const WORKER_INTEGRITY: Record<string, string> = {
-  "/vanity-worker.js": "sha256-02c9c78a06717f1397b705c4cb02a34b2991053fbdbf403026161e08b6f05531",
-  "/eth-worker.js": "sha256-2087c1aa870f500eb1cdf55b2a8f43b5be7429b38635e8789fb7c3f4fada3b67",
-  "/btc-worker.js": "sha256-ee298ec5c825192930007dab65cccee6ddddc112dfb0e25ff7ebb53ea91db33d",
-  "/tron-worker.js": "sha256-0ba21a3b6c8f0020c3e0dd18601401600945a64d5a515b994ba331be944be5e6",
-  "/aptos-worker.js": "sha256-9eadb8afdaf7ce370f759485b28e1e5e651e928cd6612c66f92987460c77426c",
-  "/sui-worker.js": "sha256-e0519b1f115bae644af29b8c5cf8c164759d7c4bc1540c25f749caeaa0cb3f79",
+  "/vanity-worker.js": "sha256-979fd6e7cea57200d5e6d3ec1abd617f5952b8dbaf223774d41e59364fd063c1",
+  "/eth-worker.js": "sha256-fed09feee88239aeb976f15182c0f17a1f05c83166834e046206cabcc01a4f6a",
+  "/btc-worker.js": "sha256-0daf0930be34f35b00a68f441a4b5fb3c78bf0ff2f5507baa13856e28523e430",
+  "/tron-worker.js": "sha256-83b084a3420c355eb11d59c001b1bb64873e203cdfc9c4b7a1c991d4e5fb5855",
+  "/aptos-worker.js": "sha256-1c0459c4728edcf8855be6deabc3f5e2b1a330517fecb074587957b8229acc53",
+  "/sui-worker.js": "sha256-b45de07b13baf858ca790c3e7a56718be3041a527e2dd983b32d323829956115",
   "/ton-worker.js": "sha256-db5f8b35c880f0ff76f17fb47bdb86d549030a753a064892022e570899dfc83b",
-  "/cardano-worker.js": "sha256-c2704ffa88cb0c305d6282e9ef0894637a0da8c609f30bb942aaa4de4db67b05",
-  "/xrp-worker.js": "sha256-4d54d197a3982c40095339e3d6d0cc233db44a40b530473da43eee86ce1cdda8",
-  "/seed-worker.js": "sha256-d8c0f5c9d34c56ba82a3fc0b28deaf50f35e0151607fd4360b23e69b1739b987"
+  "/cardano-worker.js": "sha256-061b61c489b59cf79ea094522ef09214c77a8b514fbd653823d269b1edb3d85b",
+  "/xrp-worker.js": "sha256-dc985a8e1ee37cf6ee862609e78984b2fa154f51199e2b9a8d864016a7ee841b",
+  "/seed-worker.js": "sha256-87bc8c46845612458fef01984b7f3b5bfd03e073557b0547e6ba2df887b65918"
 };
 
-export const WORKER_INTEGRITY_BUILT = "2026-08-04T11:19:00.710Z";
+export const WORKER_INTEGRITY_BUILT = "2026-08-05T08:10:12.899Z";

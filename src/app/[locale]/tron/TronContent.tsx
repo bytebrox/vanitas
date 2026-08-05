@@ -25,6 +25,7 @@ import {
   estimateTronDifficulty,
 } from '@/lib/tron-validation';
 import { saveRecentFind } from '@/lib/find-history';
+import { hasAnyPattern, patternsFromSearchParams, writePatternsToSearchParams } from '@/lib/patterns';
 import { hasBlockingLookalikeErrors } from '@/lib/lookalike';
 import type { GeneratedTronResult, TronMode } from '@/types/tron';
 import { RecentFinds } from '@/components/RecentFinds';
@@ -68,21 +69,27 @@ export function TronContent() {
   }, [result, playSuccessSound]);
 
   useEffect(() => {
-    const urlPrefix = searchParams.get('prefix');
-    const urlSuffix = searchParams.get('suffix');
+    const urlPatterns = patternsFromSearchParams(searchParams);
     const urlMode = searchParams.get('mode');
-    if (urlPrefix) updateConfig({ prefix: urlPrefix });
-    if (urlSuffix) updateConfig({ suffix: urlSuffix });
-    if (urlMode === 'wallet' || urlMode === 'contract') {
-      updateConfig({ mode: urlMode });
+    const urlCs = searchParams.get('cs');
+    const patch: Parameters<typeof updateConfig>[0] = {};
+    if (urlPatterns.length) {
+      patch.patterns = urlPatterns;
+      patch.prefix = urlPatterns[0].prefix;
+      patch.suffix = urlPatterns[0].suffix;
     }
+    if (urlMode === 'wallet' || urlMode === 'contract') {
+      patch.mode = urlMode;
+    }
+    if (urlCs === '1' || urlCs === 'true') patch.caseSensitive = true;
+    if (Object.keys(patch).length) updateConfig(patch);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
   const expectedDifficulty = estimateTronDifficulty(prefix, suffix, caseSensitive);
   const prefixValid = validateTronPrefix(prefix, caseSensitive).valid;
   const suffixValid = validateTronSuffix(suffix).valid;
-  const hasPattern = prefix.length > 0 || suffix.length > 0;
+  const hasPattern = hasAnyPattern(config);
   const patternBlocked = hasBlockingLookalikeErrors('tron', prefix, suffix);
   const canStart = prefixValid && suffixValid && hasPattern && !patternBlocked;
 
@@ -104,8 +111,8 @@ export function TronContent() {
   const generateShareLink = useCallback(() => {
     const params = new URLSearchParams();
     params.set('mode', mode);
-    if (prefix) params.set('prefix', prefix);
-    if (suffix) params.set('suffix', suffix);
+    writePatternsToSearchParams(params, config);
+    if (caseSensitive) params.set('cs', '1');
     const shareUrl = `${window.location.origin}/tron?${params.toString()}`;
     navigator.clipboard.writeText(shareUrl).then(() => {
       setCopied(true);
@@ -113,7 +120,7 @@ export function TronContent() {
         setCopied(false);
       }, 2000);
     }).catch(() => {});
-  }, [mode, prefix, suffix]);
+  }, [mode, config, caseSensitive]);
 
   return (
     <div className="min-h-screen flex flex-col">

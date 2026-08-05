@@ -46,6 +46,8 @@ export interface MineConfig {
   mode: CliMode;
   prefix: string;
   suffix: string;
+  /** Extra OR targets; if set (non-empty), preferred over scalar prefix/suffix via patternsOf */
+  patterns?: { prefix: string; suffix: string }[];
   caseSensitive: boolean;
   /** CREATE2: 32-byte hex salt — required for create2-deployer */
   create2Salt?: string;
@@ -63,6 +65,18 @@ export interface MineHit {
   extra?: Record<string, string>;
   attempts: number;
   durationMs: number;
+}
+
+
+/** Non-empty pattern targets: prefer cfg.patterns, else scalar prefix/suffix (or one empty pair). */
+export function patternsOf(cfg: MineConfig): { prefix: string; suffix: string }[] {
+  if (cfg.patterns && cfg.patterns.length > 0) {
+    const fromList = cfg.patterns
+      .map((t) => ({ prefix: t.prefix || '', suffix: t.suffix || '' }))
+      .filter((t) => t.prefix || t.suffix);
+    if (fromList.length > 0) return fromList;
+  }
+  return [{ prefix: cfg.prefix || '', suffix: cfg.suffix || '' }];
 }
 
 function solAddress(pub: Uint8Array): string {
@@ -241,13 +255,14 @@ function tryEvm(
   cfg: MineConfig,
   prepared?: EvmCreate2Prepared | null
 ): Omit<MineHit, 'attempts' | 'durationMs'> | null {
-  const { mode, prefix, suffix } = cfg;
+  const { mode } = cfg;
+  const targets = patternsOf(cfg);
   const c2 = prepared ?? prepareEvmCreate2(cfg);
 
   if (c2?.mode === 'create2-salt' && c2.deployer20 && c2.deployerKeyHex && c2.deployerAddress) {
     const salt = secpUtils.randomSecretKey();
     const address = create2Address(c2.deployer20, salt, c2.initHash);
-    if (!matchHex(address, prefix, suffix)) return null;
+    if (!targets.some((t) => matchHex(address, t.prefix, t.suffix))) return null;
     return {
       chain: 'evm',
       mode,
@@ -267,7 +282,7 @@ function tryEvm(
     const walletAddress = ethAddress(pub);
     const from20 = secpEtc.hexToBytes(walletAddress.slice(2));
     const address = create2Address(from20, c2.salt, c2.initHash);
-    if (!matchHex(address, prefix, suffix)) return null;
+    if (!targets.some((t) => matchHex(address, t.prefix, t.suffix))) return null;
     return {
       chain: 'evm',
       mode,
@@ -291,7 +306,7 @@ function tryEvm(
     address = contractAddressAtNonce0(from20);
     extra.deployerAddress = walletAddress;
   }
-  if (!matchHex(address, prefix, suffix)) return null;
+  if (!targets.some((t) => matchHex(address, t.prefix, t.suffix))) return null;
   return {
     chain: 'evm',
     mode: mode === 'contract' ? 'contract' : 'wallet',
@@ -306,13 +321,14 @@ export function tryOnce(
   cfg: MineConfig,
   preparedCreate2?: EvmCreate2Prepared | null
 ): Omit<MineHit, 'attempts' | 'durationMs'> | null {
-  const { chain, mode, prefix, suffix, caseSensitive } = cfg;
+  const { chain, mode, caseSensitive } = cfg;
+  const targets = patternsOf(cfg);
 
   if (chain === 'sol') {
     const secret = edUtils.randomSecretKey();
     const pub = getEd25519Pub(secret);
     const address = solAddress(pub);
-    if (!matchExact(address, prefix, suffix, caseSensitive)) return null;
+    if (!targets.some((t) => matchExact(address, t.prefix, t.suffix, caseSensitive))) return null;
     const sk = new Uint8Array(64);
     sk.set(secret, 0);
     sk.set(pub, 32);
@@ -344,7 +360,7 @@ export function tryOnce(
     } else {
       address = btcLegacyAddress(getSecpPub(secret, true));
     }
-    if (!matchBtc(address, prefix, suffix, mode, caseSensitive)) return null;
+    if (!targets.some((t) => matchBtc(address, t.prefix, t.suffix, mode, caseSensitive))) return null;
     return {
       chain,
       mode,
@@ -366,7 +382,7 @@ export function tryOnce(
       address = tronAddressFromEth20(contractEth20AtNonce0(wallet20));
       extra.deployerAddress = walletAddress;
     }
-    if (!matchTron(address, prefix, suffix, caseSensitive)) return null;
+    if (!targets.some((t) => matchTron(address, t.prefix, t.suffix, caseSensitive))) return null;
     return {
       chain,
       mode: mode === 'contract' ? 'contract' : 'wallet',
@@ -380,7 +396,7 @@ export function tryOnce(
     const secret = edUtils.randomSecretKey();
     const pub = getEd25519Pub(secret);
     const address = aptosAddress(pub);
-    if (!matchHex(address, prefix, suffix)) return null;
+    if (!targets.some((t) => matchHex(address, t.prefix, t.suffix))) return null;
     return {
       chain,
       mode: 'wallet',
@@ -394,7 +410,7 @@ export function tryOnce(
     const secret = edUtils.randomSecretKey();
     const pub = getEd25519Pub(secret);
     const address = suiAddress(pub);
-    if (!matchHex(address, prefix, suffix)) return null;
+    if (!targets.some((t) => matchHex(address, t.prefix, t.suffix))) return null;
     return {
       chain,
       mode: 'wallet',
@@ -415,11 +431,14 @@ export function tryOnce(
     const uq = wallet.address.toString({ urlSafe: true, bounceable: false });
     const eq = wallet.address.toString({ urlSafe: true, bounceable: true });
     const address = bounceable ? eq : uq;
-    let p = prefix;
-    if (p && !p.startsWith('UQ') && !p.startsWith('EQ')) {
-      p = (bounceable ? 'EQ' : 'UQ') + p;
-    }
-    if (!matchExact(address, p, suffix, true)) return null;
+    const matched = targets.some(({ prefix, suffix }) => {
+      let p = prefix;
+      if (p && !p.startsWith('UQ') && !p.startsWith('EQ')) {
+        p = (bounceable ? 'EQ' : 'UQ') + p;
+      }
+      return matchExact(address, p, suffix, true);
+    });
+    if (!matched) return null;
     return {
       chain,
       mode,
@@ -433,7 +452,7 @@ export function tryOnce(
     const secret = edUtils.randomSecretKey();
     const pub = getEd25519Pub(secret);
     const address = cardanoEnterpriseAddress(pub);
-    if (!matchCardano(address, prefix, suffix)) return null;
+    if (!targets.some((t) => matchCardano(address, t.prefix, t.suffix))) return null;
     return {
       chain,
       mode: 'enterprise',
@@ -447,9 +466,12 @@ export function tryOnce(
     const secret = secpUtils.randomSecretKey();
     const pub = getSecpPub(secret, true);
     const address = xrpClassicAddress(pub);
-    let p = prefix;
-    if (p && !p.startsWith('r')) p = `r${p}`;
-    if (!matchExact(address, p, suffix, caseSensitive)) return null;
+    const matched = targets.some(({ prefix, suffix }) => {
+      let p = prefix;
+      if (p && !p.startsWith('r')) p = `r${p}`;
+      return matchExact(address, p, suffix, caseSensitive);
+    });
+    if (!matched) return null;
     return {
       chain,
       mode: 'classic',

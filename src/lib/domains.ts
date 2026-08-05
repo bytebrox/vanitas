@@ -1,10 +1,12 @@
 /**
  * Domain suggestions — resolved entirely in the browser.
  *
- * Availability is not checked: .sol runs on SNS (Bonfida) and the AllDomains
- * TLDs use a separate registry, so the user confirms on the registrar page.
+ * Availability is not checked: .sol runs on SNS (Bonfida), AllDomains TLDs use
+ * a separate registry, and .eth is ENS — the user confirms on the registrar page.
  * Keeping this client-side means the searched pattern never reaches a server.
  */
+
+export type DomainChain = 'sol' | 'evm';
 
 export interface DomainSuggestion {
   domain: string;
@@ -13,12 +15,14 @@ export interface DomainSuggestion {
   provider: string;
 }
 
-const DOMAIN_OPTIONS = [
+const SOL_DOMAIN_OPTIONS = [
   { tld: '.sol', provider: 'SNS (Bonfida)' },
   { tld: '.solana', provider: 'AllDomains' },
   { tld: '.bonk', provider: 'AllDomains' },
   { tld: '.poor', provider: 'AllDomains' },
 ] as const;
+
+const EVM_DOMAIN_OPTIONS = [{ tld: '.eth', provider: 'ENS' }] as const;
 
 export const DOMAIN_NAME_MAX = 32;
 
@@ -35,14 +39,21 @@ function registrationUrl(name: string, tld: string): string {
   if (tld === '.sol') {
     return `https://www.sns.id/search/single?search=${encodeURIComponent(name)}`;
   }
+  if (tld === '.eth') {
+    return `https://app.ens.domains/${encodeURIComponent(`${name}.eth`)}`;
+  }
   const fullDomain = `${name}${tld}`;
   return `https://alldomains.id/buy-domain?q=${encodeURIComponent(name)}&domain=${encodeURIComponent(fullDomain)}`;
 }
 
-export function domainSuggestions(pattern: string): DomainSuggestion[] {
+export function domainSuggestions(
+  pattern: string,
+  chain: DomainChain = 'sol'
+): DomainSuggestion[] {
   const name = normalizeDomainName(pattern);
   if (!name) return [];
-  return DOMAIN_OPTIONS.map(({ tld, provider }) => ({
+  const options = chain === 'evm' ? EVM_DOMAIN_OPTIONS : SOL_DOMAIN_OPTIONS;
+  return options.map(({ tld, provider }) => ({
     domain: `${name}${tld}`,
     tld,
     provider,

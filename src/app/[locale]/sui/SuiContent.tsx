@@ -24,6 +24,7 @@ import {
   estimateSuiDifficulty,
 } from '@/lib/sui-validation';
 import { saveRecentFind } from '@/lib/find-history';
+import { hasAnyPattern, patternsFromSearchParams, writePatternsToSearchParams } from '@/lib/patterns';
 import { hasBlockingLookalikeErrors } from '@/lib/lookalike';
 import type { GeneratedSuiResult } from '@/types/sui';
 import { RecentFinds } from '@/components/RecentFinds';
@@ -67,17 +68,24 @@ export function SuiContent() {
   }, [result, playSuccessSound]);
 
   useEffect(() => {
-    const urlPrefix = searchParams.get('prefix');
-    const urlSuffix = searchParams.get('suffix');
-    if (urlPrefix) updateConfig({ prefix: urlPrefix.replace(/^0x/i, '').toLowerCase() });
-    if (urlSuffix) updateConfig({ suffix: urlSuffix.replace(/^0x/i, '').toLowerCase() });
+    const urlPatterns = patternsFromSearchParams(searchParams).map((p) => ({
+      prefix: p.prefix.replace(/^0x/i, '').toLowerCase(),
+      suffix: p.suffix.replace(/^0x/i, '').toLowerCase(),
+    }));
+    if (urlPatterns.length) {
+      updateConfig({
+        patterns: urlPatterns,
+        prefix: urlPatterns[0].prefix,
+        suffix: urlPatterns[0].suffix,
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
   const expectedDifficulty = estimateSuiDifficulty(prefix, suffix);
   const prefixValid = validateSuiPrefix(prefix).valid;
   const suffixValid = validateSuiSuffix(suffix).valid;
-  const hasPattern = prefix.length > 0 || suffix.length > 0;
+  const hasPattern = hasAnyPattern(config);
   const patternBlocked = hasBlockingLookalikeErrors('sui', prefix, suffix);
   const canStart = prefixValid && suffixValid && hasPattern && !patternBlocked;
 
@@ -89,8 +97,7 @@ export function SuiContent() {
 
   const generateShareLink = useCallback(() => {
     const params = new URLSearchParams();
-    if (prefix) params.set('prefix', prefix);
-    if (suffix) params.set('suffix', suffix);
+    writePatternsToSearchParams(params, config);
     const shareUrl = `${window.location.origin}/sui?${params.toString()}`;
     navigator.clipboard.writeText(shareUrl).then(() => {
       setCopied(true);
@@ -98,7 +105,7 @@ export function SuiContent() {
         setCopied(false);
       }, 2000);
     }).catch(() => {});
-  }, [prefix, suffix]);
+  }, [config]);
 
   return (
     <div className="min-h-screen flex flex-col">

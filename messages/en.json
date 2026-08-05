@@ -561,7 +561,9 @@
       "showPrivateKey": "Show the raw private key",
       "privateKeyNote": "Only needed if you would rather import the single key than the phrase. Guard it exactly as carefully.",
       "exhausted": "Every derivation index has been tried. Shorten the pattern or pick a different path layout.",
-      "needMnemonic": "Enter or generate a valid recovery phrase and a pattern to begin."
+      "needMnemonic": "Enter or generate a valid recovery phrase and a pattern to begin.",
+      "alphabetBtc": "Bitcoin: Legacy Base58 (1…), SegWit bc1q…, Taproot bc1p…. You can omit the fixed 1 / bc1q / bc1p prefix.",
+      "alphabetTron": "Tron addresses are Base58 and start with T — you can omit the leading T."
     },
     "lookalike": {
       "title": "Lookalike check",
@@ -1688,7 +1690,7 @@
     },
     "seed": {
       "title": "Seed Forge — Vanity Address from a Recovery Phrase",
-      "description": "Grind a Solana or EVM vanity address that restores from a 12-word BIP-39 phrase. Runs entirely in your browser.",
+      "description": "Grind a Solana, EVM, Bitcoin, or Tron vanity address that restores from a BIP-39 phrase. Runs entirely in your browser.",
       "ogTitle": "Seed Forge | Vanitas",
       "ogDescription": "Vanity addresses you can restore from twelve words — no loose private key."
     },
@@ -2045,7 +2047,8 @@
     "matching": "Matching names for “{name}”",
     "via": "via {provider}",
     "check": "Check",
-    "note": "A domain makes the address easier to share. Availability is confirmed on the registrar’s own site."
+    "note": "A domain makes the address easier to share. Availability is confirmed on the registrar’s own site.",
+    "noteEns": "An ENS name points people to your address. Check availability on app.ens.domains — we only suggest names from your pattern."
   },
   "offline": {
     "airGapped": "Air-gapped",
@@ -2155,16 +2158,6 @@
           "Share pattern proof without keys."
         ]
       },
-      "tonWallet": {
-        "eyebrow": "Next steps",
-        "title": "Import this TON wallet",
-        "steps": [
-          "**Save the private key** (export includes bounceable EQ when available).",
-          "Import into **Tonkeeper** or **MyTonWallet**.",
-          "Confirm `{short}` with a small test send.",
-          "Share proof for the vanity pattern — keep the key offline."
-        ]
-      },
       "cardanoWallet": {
         "eyebrow": "Next steps",
         "title": "Import this Cardano address",
@@ -2193,6 +2186,26 @@
           "Import into a wallet that supports this chain.",
           "Send a small test amount to confirm `{short}`.",
           "Share proof links — never keys."
+        ]
+      },
+      "tonNonBounceable": {
+        "eyebrow": "Next steps",
+        "title": "Import this non-bounceable (UQ) wallet",
+        "steps": [
+          "**Save the private key** — export also lists the bounceable EQ twin when available.",
+          "Import into **Tonkeeper** or **MyTonWallet**. Prefer the **UQ / non-bounceable** form for everyday wallet receives.",
+          "Confirm {short} with a small test send (UQ is the usual user-wallet address).",
+          "Share proof for the vanity pattern — keep the key offline."
+        ]
+      },
+      "tonBounceable": {
+        "eyebrow": "Next steps",
+        "title": "Use this bounceable (EQ) address carefully",
+        "steps": [
+          "**Save the private key** — you forged the **EQ / bounceable** form; wallets still hold the same account.",
+          "Import into **Tonkeeper** or **MyTonWallet**. EQ is common for contracts / bounce-on-fail flows; UQ is the twin for simple receives.",
+          "Confirm {short} matches the form you intend before publishing.",
+          "Share proof for the vanity pattern — keep the key offline."
         ]
       }
     },
