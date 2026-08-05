@@ -32,7 +32,7 @@
     "next": "^16.2.1",
     "next-intl": "^4.13.4",
     "qrcode-generator": "^2.0.4",
-    "react": "^19.0.0",
+    "react": "^19.2.8",
     "react-dom": "^19.0.0",
     "tweetnacl": "^1.0.3",
     "viem": "^2.55.11",
@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
-    "@types/react": "^19.0.0",
+    "@types/react": "^19.2.18",
     "@types/react-dom": "^19.0.0",
     "autoprefixer": "^10.4.0",
     "drizzle-kit": "^0.31.10",
